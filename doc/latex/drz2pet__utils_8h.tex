@@ -1,0 +1,451 @@
+\hypertarget{drz2pet__utils_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/drz2pet\_\-utils.h File Reference}
+\label{drz2pet__utils_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/drz2pet\_\-utils.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/drz2pet\_\-utils.h}}
+}
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacedrz2pet}{drz2pet}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{drz2pet__utils_8h_a9c231344c8a2af0c74777dd4b13ed22f}{make\_\-spc\_\-drztable} (\hyperlink{structobservation}{observation} $\ast$const obs, \hyperlink{structobservation}{observation} $\ast$const wobs, const \hyperlink{structobject}{object} $\ast$ob, const double lambda0, const double dlambda)
+\item 
+char $\ast$ \hyperlink{drz2pet__utils_8h_a3c3ec826594e43ab1fec0ad549fac954}{get\_\-ID\_\-num} (char $\ast$grism\_\-image, char $\ast$extname)
+\item 
+void \hyperlink{drz2pet__utils_8h_ad70f842615bbd5d0277252f63e7564a7}{normalize\_\-weight} (\hyperlink{structobservation}{observation} $\ast$wobs, \hyperlink{structobject}{object} $\ast$ob, const int opt\_\-extr)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{drz2pet__utils_8h_a57174076d9e90251f8a3cf8681d679d3}{comp\_\-equ\_\-weight} (gsl\_\-matrix $\ast$exp\_\-map, const \hyperlink{structobject}{object} $\ast$ob)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{drz2pet__utils_8h_aa6f230c18a0868f3cf4357d413b9015c}{comp\_\-exp\_\-weight} (gsl\_\-matrix $\ast$exp\_\-map, const \hyperlink{structobject}{object} $\ast$ob)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{drz2pet__utils_8h_a93ff2fe5d61878d9a772cdf10406e81d}{comp\_\-opt\_\-weight} (gsl\_\-matrix $\ast$mod\_\-map, gsl\_\-matrix $\ast$var\_\-map, const \hyperlink{structobject}{object} $\ast$ob)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{drz2pet__utils_8h_a57174076d9e90251f8a3cf8681d679d3}{
+\index{drz2pet\_\-utils.h@{drz2pet\_\-utils.h}!comp\_\-equ\_\-weight@{comp\_\-equ\_\-weight}}
+\index{comp\_\-equ\_\-weight@{comp\_\-equ\_\-weight}!drz2pet_utils.h@{drz2pet\_\-utils.h}}
+\subsubsection[{comp\_\-equ\_\-weight}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ comp\_\-equ\_\-weight (gsl\_\-matrix $\ast$ {\em exp\_\-map}, \/  const {\bf object} $\ast$ {\em ob})}}
+\label{drz2pet__utils_8h_a57174076d9e90251f8a3cf8681d679d3}
+
+
+
+\begin{DoxyCode}
+201 {
+202   gsl_matrix *weight;
+203   int i, j;
+204   int beamInt = 0;
+205 
+206   // allocate the matrix and set it to the default
+207   weight = gsl_matrix_alloc(exp_map->size1, exp_map->size2);
+208   gsl_matrix_set_all(weight, 0.0);
+209 
+210    // go over all columns
+211   for (i=0; i < exp_map->size1; i++)
+212     // go over all rows
+213     for (j=0; j < exp_map->size2; j++)
+214       // check whether the pixel is inside the extraction
+215       // area and has a positive exposure time
+216       if (fabs(ob->beams[beamInt].refpoint.y-(double)j) <= ob->beams[beamInt].
+      width+0.5 &&
+217           gsl_matrix_get(exp_map, i, j) > 0.0 )
+218         // set the weight to one
+219         gsl_matrix_set(weight, i,j,1.0);
+220 
+221   // return the resulting weight map
+222   return weight;
+223 }
+\end{DoxyCode}
+\hypertarget{drz2pet__utils_8h_aa6f230c18a0868f3cf4357d413b9015c}{
+\index{drz2pet\_\-utils.h@{drz2pet\_\-utils.h}!comp\_\-exp\_\-weight@{comp\_\-exp\_\-weight}}
+\index{comp\_\-exp\_\-weight@{comp\_\-exp\_\-weight}!drz2pet_utils.h@{drz2pet\_\-utils.h}}
+\subsubsection[{comp\_\-exp\_\-weight}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ comp\_\-exp\_\-weight (gsl\_\-matrix $\ast$ {\em exp\_\-map}, \/  const {\bf object} $\ast$ {\em ob})}}
+\label{drz2pet__utils_8h_aa6f230c18a0868f3cf4357d413b9015c}
+
+
+
+\begin{DoxyCode}
+243 {
+244   gsl_matrix *weight;
+245   int i, j;
+246   double sum, contr, norm, allweight;
+247   int beamInt = 0;
+248 
+249   // allocate the matrix and set it to the default
+250   weight = gsl_matrix_alloc(exp_map->size1, exp_map->size2);
+251   gsl_matrix_set_all(weight, 1000.0);
+252 
+253     //* go over all columns
+254   for (i=0; i < exp_map->size1; i++)
+255     {
+256       sum = 0.0;
+257       contr = 0.0;
+258       allweight = 0.0;
+259 
+260       // determine for each column the total exposure time
+261       // and the number of pixels with non-zero exposure time
+262       for (j=0; j < exp_map->size2; j++)
+263         {
+264           // check whether the pixel is inside the extraction
+265           // area and has a positive weight
+266           if (fabs(ob->beams[beamInt].refpoint.y-(double)j) <= ob->beams[beamInt]
+      .width+0.5 &&
+267               gsl_matrix_get(exp_map, i, j) > 0.0 )
+268             {
+269               // sum up the weigth and the number of pixels
+270               sum = sum + gsl_matrix_get(exp_map, i, j);
+271               contr = contr + 1.0;
+272             }
+273         }
+274 
+275       // check whether the row has exposure time at all
+276       if (sum > 0.0)
+277         {
+278           // if the row is exposed:
+279           // determine the mean exposure time
+280           norm = sum / contr;
+281 
+282           // go over each pixel
+283           for (j=0; j < exp_map->size2; j++)
+284             {
+285               // check whether the pixel is inside the extraction are
+286               if (fabs(ob->beams[beamInt].refpoint.y-(double)j) <= ob->beams[beam
+      Int].width+0.5)
+287                 {
+288                   // compute and store the relative exposure time (==weight)
+289                   // for positive exposure time
+290                   if (gsl_matrix_get(exp_map, i, j) > 0.0)
+291                     {
+292                       gsl_matrix_set(weight, i,j,gsl_matrix_get(exp_map, i, j)/no
+      rm);
+293                       allweight = allweight + gsl_matrix_get(weight, i, j);
+294                     }
+295                   // make a default to avoid values <0.0
+296                   else
+297                     {
+298                       gsl_matrix_set(weight, i,j,0.0);
+299                     }
+300                 }
+301             }
+302         }
+303       // treat unexposed columns differently:
+304       else
+305         {
+306 
+307           // go over each row
+308           for (j=0; j < exp_map->size2; j++)
+309             {
+310               // check whether the pixel is inside the extraction are
+311               if (fabs(ob->beams[beamInt].refpoint.y-(double)j) <= ob->beams[beam
+      Int].width+0.5)
+312                 {
+313                   // set inside pixels to the defaulkt 1.0
+314                   gsl_matrix_set(weight, i,j,1.0);
+315                   allweight = allweight + gsl_matrix_get(weight, i, j);
+316                 }
+317             }
+318         }
+319     }
+320 
+321   // return the resulting weight map
+322   return weight;
+323 }
+\end{DoxyCode}
+\hypertarget{drz2pet__utils_8h_a93ff2fe5d61878d9a772cdf10406e81d}{
+\index{drz2pet\_\-utils.h@{drz2pet\_\-utils.h}!comp\_\-opt\_\-weight@{comp\_\-opt\_\-weight}}
+\index{comp\_\-opt\_\-weight@{comp\_\-opt\_\-weight}!drz2pet_utils.h@{drz2pet\_\-utils.h}}
+\subsubsection[{comp\_\-opt\_\-weight}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ comp\_\-opt\_\-weight (gsl\_\-matrix $\ast$ {\em mod\_\-map}, \/  gsl\_\-matrix $\ast$ {\em var\_\-map}, \/  const {\bf object} $\ast$ {\em ob})}}
+\label{drz2pet__utils_8h_a93ff2fe5d61878d9a772cdf10406e81d}
+
+
+
+\begin{DoxyCode}
+344 {
+345   gsl_matrix *weight;
+346   int i, j;
+347   double mod_sum, weight_sum, contr, norm, allweight;
+348   int beamInt = 0;
+349   double mod_val;
+350   //double var_val;
+351 
+352   // allocate the weight matrix and set the default
+353   weight = gsl_matrix_alloc(mod_map->size1, mod_map->size2);
+354   gsl_matrix_set_all(weight, 0.0);
+355 
+356   //* go over all columns
+357   for (i=0; i < mod_map->size1; i++)
+358     {
+359       mod_sum = 0.0;
+360       contr = 0.0;
+361       allweight = 0.0;
+362       weight_sum=0.0;
+363 
+364       // determine for each column the total model counts
+365       // and the number of pixels with non-zero model_counts
+366       for (j=0; j < mod_map->size2; j++)
+367         {
+368           if (fabs(ob->beams[beamInt].refpoint.y-(double)j) <= ob->beams[beamInt]
+      .width+0.5 &&
+369               gsl_matrix_get(mod_map, i, j) > 0.0 )
+370             {
+371               mod_sum = mod_sum + gsl_matrix_get(mod_map, i, j);
+372               contr = contr + 1.0;
+373             }
+374         }
+375 
+376       // check whether the column has model values.
+377       // normalize the model values and compute
+378       // optimal weights if yes.
+379       if (mod_sum > 0.0)
+380         {
+381           //* determine the mean model value
+382           //      norm = mod_sum / contr;
+383           norm = mod_sum;
+384 
+385           // go over each row
+386           for (j=0; j < mod_map->size2; j++)
+387             {
+388               // check whether the pixel is inside the extraction area
+389               if (fabs(ob->beams[beamInt].refpoint.y-(double)j) <= ob->beams[beam
+      Int].width+0.5 &&
+390                   gsl_matrix_get(mod_map, i, j) > 0.0 )
+391                 {
+392                   // normalize the model counts
+393                   mod_val = gsl_matrix_get(mod_map, i, j)/norm;
+394 
+395                   // store the normalized model counts
+396                   gsl_matrix_set(mod_map, i, j, mod_val);
+397 
+398                   // add up the normalization value for the optimal weights
+399                   weight_sum = weight_sum + mod_val*mod_val/gsl_matrix_get(var_ma
+      p, i, j);
+400                 }
+401             }
+402 
+403           // finally compute and write the weights:
+404           // go over each pixel
+405           for (j=0; j < mod_map->size2; j++)
+406             {
+407               // check whether the pixel is inside the extraction area
+408               if (fabs(ob->beams[beamInt].refpoint.y-(double)j) <= ob->beams[beam
+      Int].width+0.5)
+409                 {
+410                   if (gsl_matrix_get(mod_map, i, j) > 0.0 )
+411                     {
+412                       // compute and set the individual pixel weight
+413                       gsl_matrix_set(weight, i, j, gsl_matrix_get(mod_map, i, j)/
+      gsl_matrix_get(var_map, i, j)/weight_sum);
+414                       allweight = allweight + gsl_matrix_get(weight, i, j);
+415                     }
+416                   else
+417                     {
+418                       // set the default value if no model value is zero
+419                       gsl_matrix_set(weight, i, j,0.0);
+420                     }
+421                 }
+422             }
+423         }
+424       // if the column does not have model values at all:
+425       else
+426         {
+427           // go over each row
+428           for (j=0; j < mod_map->size2; j++)
+429             {
+430               // check whether the pixel is within the extraction area
+431               if (fabs(ob->beams[beamInt].refpoint.y-(double)j) <= ob->beams[beam
+      Int].width+0.5)
+432                 {
+433                   // set the inside default value
+434                   gsl_matrix_set(weight, i,j,1.0);
+435                   allweight = allweight + gsl_matrix_get(mod_map, i, j);
+436                 }
+437             }
+438         }
+439     }
+440 
+441   // return the weight matrix
+442   return weight;
+443 }
+\end{DoxyCode}
+\hypertarget{drz2pet__utils_8h_a3c3ec826594e43ab1fec0ad549fac954}{
+\index{drz2pet\_\-utils.h@{drz2pet\_\-utils.h}!get\_\-ID\_\-num@{get\_\-ID\_\-num}}
+\index{get\_\-ID\_\-num@{get\_\-ID\_\-num}!drz2pet_utils.h@{drz2pet\_\-utils.h}}
+\subsubsection[{get\_\-ID\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\_\-ID\_\-num (char $\ast$ {\em grism\_\-image}, \/  char $\ast$ {\em extname})}}
+\label{drz2pet__utils_8h_a3c3ec826594e43ab1fec0ad549fac954}
+Function: get\_\-ID\_\-num The function generates the extension name used in the PET for a 2D drizzled grism image
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em grism\_\-image}]-\/ the name of the 2D drizzled grism image \item[{\em extname}]-\/ The ID number of the image\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+WorkPtr -\/ Pointer to the ID-\/string 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+114                                               {
+115 
+116   char *WorkPtr;
+117   char *WorkPtr2;
+118   char **t_err=NULL;
+119   char tmp[MAXCHAR];
+120   char ID[4];
+121 
+122   int len;
+123   int i=0;
+124 
+125   strcpy(ID,"_ID");
+126   strcpy(tmp, grism_image);
+127 
+128   t_err = (char **) malloc(sizeof(char *)*1);
+129 
+130   WorkPtr = strstr(tmp, ID)+3;
+131   WorkPtr2 = WorkPtr + strlen (WorkPtr);
+132   while (isspace ((int) *WorkPtr2))
+133     *WorkPtr2-- = '\0';
+134   WorkPtr2 = WorkPtr2 - 1;
+135   len = strlen(WorkPtr);
+136   while  (i++ < len){
+137     strtol(WorkPtr,t_err,10);
+138     if (strlen(t_err[0])==0)
+139       break;
+140     *WorkPtr2-- = '\0';
+141   }
+142   strcpy(extname,WorkPtr);
+143   free(t_err);
+144   return WorkPtr;
+145 }
+\end{DoxyCode}
+\hypertarget{drz2pet__utils_8h_a9c231344c8a2af0c74777dd4b13ed22f}{
+\index{drz2pet\_\-utils.h@{drz2pet\_\-utils.h}!make\_\-spc\_\-drztable@{make\_\-spc\_\-drztable}}
+\index{make\_\-spc\_\-drztable@{make\_\-spc\_\-drztable}!drz2pet_utils.h@{drz2pet\_\-utils.h}}
+\subsubsection[{make\_\-spc\_\-drztable}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ap\_\-pixel}$\ast$ make\_\-spc\_\-drztable ({\bf observation} $\ast$const  {\em obs}, \/  {\bf observation} $\ast$const  {\em wobs}, \/  const {\bf object} $\ast$ {\em ob}, \/  const double {\em lambda0}, \/  const double {\em dlambda})}}
+\label{drz2pet__utils_8h_a9c231344c8a2af0c74777dd4b13ed22f}
+Function: make\_\-spc\_\-drztable The function generates and fills an \hyperlink{structap__pixel}{ap\_\-pixel} vector for one drizzled 2D grism image.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em obs}]-\/ pointer to \hyperlink{structobservation}{observation} structure with image values \item[{\em obs}]-\/ pointer to \hyperlink{structobservation}{observation} structure with image values \item[{\em ob}]-\/ pointer to the description of the current \hyperlink{structbeam}{beam} \item[{\em lambda0}]-\/ the starting wavelength in this drizzled image \item[{\em dlambda}]-\/ the dispersion in this drizzled image\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+table -\/ pointer to an \hyperlink{structap__pixel}{ap\_\-pixel} vector 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+38                                        {
+39 
+40   ap_pixel *table, *cur_ap;
+41 
+42   int npix1, npix2;
+43   int nsub1=1, nsub2=1;
+44   int i, j;
+45   int beamInt = 0;
+46 
+47   npix1 = obs->grism->size1;
+48   npix2 = obs->grism->size2;
+49 
+50 
+51   if (!(table = malloc ((npix1 * npix2 + 1) * sizeof (ap_pixel) * nsub1 * nsub2))
+      )
+52     return NULL;
+53 
+54   cur_ap = table;
+55 
+56   for (i = 0; i < npix1; i++){
+57     for (j = 0; j < npix2; j++){
+58 
+59       //* check whether the pixel is within the extraction box
+60       if (fabs((double)j - ob->beams[beamInt].refpoint.y) > ob->beams[beamInt].
+      width + .5)
+61         continue;
+62 
+63       //* fill the ap_pixel
+64       cur_ap->p_x  = i;
+65       cur_ap->p_y  = j;
+66 
+67       cur_ap->x       = (double)i - ob->beams[beamInt].refpoint.x;
+68       cur_ap->y       = (double)j - ob->beams[beamInt].refpoint.y;
+69       cur_ap->dist    = (double)j - ob->beams[beamInt].refpoint.y;
+70       cur_ap->xs      = (double)i - ob->beams[beamInt].refpoint.x;
+71       cur_ap->ys      = 0.0;
+72       cur_ap->dxs     = 0.0;  // be reminded: dxs is the LOCAL TRACEANGLE, not th
+      e pixels size..
+73       cur_ap->xi      = (double)i - ob->beams[beamInt].refpoint.x;
+74       cur_ap->lambda  = lambda0 + dlambda * ((double)i - ob->beams[beamInt].
+      refpoint.x);
+75       cur_ap->dlambda = dlambda;
+76 
+77       // transfer the cps values and the weight values
+78       cur_ap->count  = gsl_matrix_get(obs->grism, i, j);
+79       cur_ap->weight = gsl_matrix_get(wobs->grism, i, j);
+80 
+81       cur_ap->error  = gsl_matrix_get(obs->pixerrs, i, j);
+82       cur_ap->contam = gsl_matrix_get(obs->dq, i, j);
+83 
+84       // dq is always set to zero, bad (=unexposed) pixels
+85       // have exptime=weight=0.0
+86       cur_ap->dq     = 0;
+87 
+88       // go to the next
+89       // PET pixel
+90       cur_ap++;
+91     }
+92   }
+93 
+94   cur_ap->p_x = -1;
+95   cur_ap->p_y = -1;
+96   cur_ap->count = -1;
+97 
+98   return table;
+99 }
+\end{DoxyCode}
+\hypertarget{drz2pet__utils_8h_ad70f842615bbd5d0277252f63e7564a7}{
+\index{drz2pet\_\-utils.h@{drz2pet\_\-utils.h}!normalize\_\-weight@{normalize\_\-weight}}
+\index{normalize\_\-weight@{normalize\_\-weight}!drz2pet_utils.h@{drz2pet\_\-utils.h}}
+\subsubsection[{normalize\_\-weight}]{\setlength{\rightskip}{0pt plus 5cm}void normalize\_\-weight ({\bf observation} $\ast$ {\em wobs}, \/  {\bf object} $\ast$ {\em ob}, \/  const int {\em opt\_\-extr})}}
+\label{drz2pet__utils_8h_ad70f842615bbd5d0277252f63e7564a7}
+Function: normalize\_\-weight The function computes the weights used in the extraction from the exposure times given for each pixel in a column.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em wobs}]-\/ pointer to the structure which carries the pixel data \item[{\em ob}]-\/ pointer to the \hyperlink{structbeam}{beam} description \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+159 {
+160   gsl_matrix *weight;
+161   //int i, j;
+162   // check for optimal extraction
+163   if (opt_extr)
+164     {
+165       // let the optimal weights compute
+166       fprintf(stdout, "aXe_DRZ2PET: Use otpimal weighting.\n");
+167       weight = comp_opt_weight(wobs->pixerrs, wobs->dq, ob);
+168     }
+169   else
+170     {
+171       // let the exposure time weights compute
+172       fprintf(stdout, "aXe_DRZ2PET: Use normal, flat  weighting.\n");
+173       weight = comp_equ_weight(wobs->grism, ob);
+174 
+175       // code lines for exposure time weighting
+176       //fprintf(stdout, "use exposure time  weighting\n");
+177       //weight = comp_exp_weight(wobs->grism, ob);
+178     }
+179 
+180   // replace the weight extension with the new weights
+181   gsl_matrix_free(wobs->grism);
+182   wobs->grism = weight;
+183 }
+\end{DoxyCode}

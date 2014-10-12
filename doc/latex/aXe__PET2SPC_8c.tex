@@ -1,0 +1,820 @@
+\hypertarget{aXe__PET2SPC_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-PET2SPC.c File Reference}
+\label{aXe__PET2SPC_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-PET2SPC.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-PET2SPC.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-interp.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-PET.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}inout\_\-aper.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}trace\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-sex.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}disp\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-wl\_\-calib.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-binning.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-optimum.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-spc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fringe\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-resp.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-FITScards.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aXe__PET2SPC_8c_a7a38b874452a6cde6ebee9e98c980eef}{AXE\_\-IMAGE\_\-PATH}~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__PET2SPC_8c_a75c154942e560254898bcafaf48bdf3d}{AXE\_\-OUTPUT\_\-PATH}~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__PET2SPC_8c_a387b2332dae116e8d0c1f8e489bc9057}{AXE\_\-DRIZZLE\_\-PATH}~\char`\"{}AXE\_\-DRIZZLE\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__PET2SPC_8c_a0b0be957330d9c69fa325ee014ce4dad}{AXE\_\-CONFIG\_\-PATH}~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{aXe__PET2SPC_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{aXe__PET2SPC_8c_a0b0be957330d9c69fa325ee014ce4dad}{
+\index{aXe\_\-PET2SPC.c@{aXe\_\-PET2SPC.c}!AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}}
+\index{AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}!aXe_PET2SPC.c@{aXe\_\-PET2SPC.c}}
+\subsubsection[{AXE\_\-CONFIG\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-CONFIG\_\-PATH~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}}}
+\label{aXe__PET2SPC_8c_a0b0be957330d9c69fa325ee014ce4dad}
+\hypertarget{aXe__PET2SPC_8c_a387b2332dae116e8d0c1f8e489bc9057}{
+\index{aXe\_\-PET2SPC.c@{aXe\_\-PET2SPC.c}!AXE\_\-DRIZZLE\_\-PATH@{AXE\_\-DRIZZLE\_\-PATH}}
+\index{AXE\_\-DRIZZLE\_\-PATH@{AXE\_\-DRIZZLE\_\-PATH}!aXe_PET2SPC.c@{aXe\_\-PET2SPC.c}}
+\subsubsection[{AXE\_\-DRIZZLE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-DRIZZLE\_\-PATH~\char`\"{}AXE\_\-DRIZZLE\_\-PATH\char`\"{}}}
+\label{aXe__PET2SPC_8c_a387b2332dae116e8d0c1f8e489bc9057}
+\hypertarget{aXe__PET2SPC_8c_a7a38b874452a6cde6ebee9e98c980eef}{
+\index{aXe\_\-PET2SPC.c@{aXe\_\-PET2SPC.c}!AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}}
+\index{AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}!aXe_PET2SPC.c@{aXe\_\-PET2SPC.c}}
+\subsubsection[{AXE\_\-IMAGE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-IMAGE\_\-PATH~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}}}
+\label{aXe__PET2SPC_8c_a7a38b874452a6cde6ebee9e98c980eef}
+\hypertarget{aXe__PET2SPC_8c_a75c154942e560254898bcafaf48bdf3d}{
+\index{aXe\_\-PET2SPC.c@{aXe\_\-PET2SPC.c}!AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}}
+\index{AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}!aXe_PET2SPC.c@{aXe\_\-PET2SPC.c}}
+\subsubsection[{AXE\_\-OUTPUT\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-OUTPUT\_\-PATH~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}}}
+\label{aXe__PET2SPC_8c_a75c154942e560254898bcafaf48bdf3d}
+
+
+\subsection{Function Documentation}
+\hypertarget{aXe__PET2SPC_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{aXe\_\-PET2SPC.c@{aXe\_\-PET2SPC.c}!main@{main}}
+\index{main@{main}!aXe_PET2SPC.c@{aXe\_\-PET2SPC.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{aXe__PET2SPC_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+
+\begin{DoxyCode}
+51 {
+52   char *opt;
+53 
+54   char grism_file[MAXCHAR];
+55   char grism_file_path[MAXCHAR];
+56 
+57   char aper_file[MAXCHAR];
+58   char aper_file_path[MAXCHAR];
+59 
+60   char obj_PET_file[MAXCHAR];
+61   char obj_PET_file_path[MAXCHAR];
+62 
+63   char bck_PET_file[MAXCHAR];
+64   char bck_PET_file_path[MAXCHAR];
+65 
+66   char conf_file[MAXCHAR];
+67   char conf_file_path[MAXCHAR];
+68 
+69   char SPC_file[MAXCHAR];
+70   char SPC_file_path[MAXCHAR];
+71 
+72   char SPC_opt_file[MAXCHAR];
+73   char SPC_opt_file_path[MAXCHAR];
+74 
+75   char WHT_file[MAXCHAR];
+76   char WHT_file_path[MAXCHAR];
+77 
+78   char label[MAXCHAR];
+79 
+80   int i, index, dobck = 0, noflux = 1;
+81 
+82   object **oblist;
+83 
+84   FITScards      *cards;
+85 
+86   ap_pixel *obj_PET = NULL, *bck_PET = NULL;
+87 
+88   observation *obs;
+89 
+90   //tracestruct *trace;
+91   aperture_conf *conf;
+92 
+93   spectrum *obj_spec = NULL, *bck_spec = NULL, *sobj_spec = NULL;
+94   spectrum *resp;
+95   response_function *resp_func;
+96   calib_function *wl_calibration;
+97 
+98   fitsfile *OPET_ptr, *BPET_ptr;
+99   int f_status = 0;
+100 
+101   fitsfile *SPC_ptr, *SPC_opt_ptr, *WHT_ptr;
+102 
+103   gsl_matrix *weights;
+104   drzstamp     *modvar;
+105 
+106   int obj_aperID, obj_beamID, objindex;
+107   int bck_aperID, bck_beamID;
+108 
+109   char table[MAXCHAR], table_path[MAXCHAR];
+110   //char comment[FLEN_COMMENT];
+111   int empty;
+112   int drizzle;
+113   int quant_cont=0;
+114   int opt_weights=0;
+115   int for_grism=0;
+116   int smooth_conv=0;
+117 
+118   d_point smooth_params;
+119 
+120   double exptime;
+121   double sky_cps;
+122 
+123   drzstamp_dim  dimension;
+124   gsl_matrix *coverage;
+125 
+126   if (((argc < 3))
+127       || (opt = get_online_option ("help", argc, argv)))
+128     {
+129       fprintf (stdout,
+130                "ST-ECF European Coordinating Facility\n"
+131                "Copyright (C) 2002 Martin Kuemmel\n"
+132                "aXe_PET2SPC Version %s:\n"
+133                "             aXe task that produces 1-D, binned spectra using inf
+      ormation\n"
+134                "             contained in a OPET and a BPET. A 1-D spectrum is ge
+      nerated\n"
+135                "             for each beam in each of both the OPET and the BPET 
+      files\n"
+136                "             The binned background spectra of each beam (order) i
+      s then\n"
+137                "             subtraced from the corresponding spectra form the OP
+      ET. Th\ne"
+138                "             background subtraction (and reading a BPET altogethe
+      r can be\n"
+139                "             avoided by using the -noBPET option\n"
+140                "             An SPC file, a multi-extension FITS file containing 
+      binned\n"
+141                "             spectra is produced. Each extension (named after the
+       beam ID,\n"
+142                "             e.g. 11B for aperture (object) 11,beam (order) B) co
+      ntains the\n"
+143                "             following columns:\n"
+144                "\n"
+145                "              LAMBDA      ; the wavelength (in A)\n"
+146                "              TCOUNT      ; the total number of counts (in DN)\n"
+      
+147                "              TERROR      ; the error in TERRORS (in DN)\n"
+148                "              BCOUNT      ; the estimated number of counts from t
+      he\n"
+149                "                            background (in DN)\n"
+150                "              BERROR      ; the error in BCOUNTS (in DN)\n"
+151                "              COUNT       ; the estimated number of counts from t
+      he\n"
+152                "                            object (in DN)\n"
+153                "              ERROR       ; the error in COUNTS (in DN)\n"
+154                "              FLUX        ; the estimated flux (in erg/s/cm^2/A)\
+      n"
+155                "              FERROR      ; the error in FLUX (in erg/s/cm^s/A)\n
+      "
+156                "              WEIGHT      ; weight (in pixels)\n"
+157                "\n"
+158                "             Input FITS mages are looked for in $AXE_IMAGE_PATH\n
+      "
+159                "             aXe config file is looked for in $AXE_CONFIG_PATH\n"
+      
+160                "             All outputs are writen to $AXE_OUTPUT_PATH\n"
+161                "\n"
+162                "Usage:\n"
+163                "     aXe_PET2SPC [g/prism image filename] [aXe config file name] 
+      [options]\n"
+164                "\n"
+165                "Options:\n"
+166                "             -noBPET         - to disable the use of a BPET file\
+      n"
+167                "             -noflux         - to disable the flux calibration\n"
+      
+168                "             -drz            - use $AXE_DRIZZLE_PATH to locate th
+      e grism-, OAF-\n"
+169                "                             - and PET-files instead of $AXE_IMAG
+      E/OUTPUT_PATH\n"
+170                "             -in_AF=[string] - overwrite the default input Apertu
+      re File name\n"
+171                "             -OPET=[string]  - overwrite the default input Object
+       PET file name\n"
+172                "             -BPET=[string]  - overwrite the default input Backgr
+      ound PET\n"
+173                "                               file name\n"
+174                "             -out_SPC=[string] - overwrite the default output SPC
+       file name\n"
+175                "\n"
+176                "Example:\n"
+177                "       ./aXe_PET2SPC slim_grism.fits SLIM.conf.A.0\n"
+178                "\n",RELEASE);
+179       exit (1);
+180     }
+181 
+182   // make a general opening statement
+183   fprintf (stdout, "aXe_PET2SPC: Starting...\n");
+184 
+185   // get the name of the flt-file
+186   index = 0;
+187   strcpy (grism_file, argv[++index]);
+188   if ((opt = get_online_option ("drz", argc, argv)))
+189     {
+190       build_path (AXE_DRIZZLE_PATH, grism_file, grism_file_path);
+191       drizzle=1;
+192     }
+193   else
+194     {
+195       build_path (AXE_IMAGE_PATH, grism_file, grism_file_path);
+196       drizzle=0;
+197     }
+198 
+199   // get the name of the configuration file
+200   strcpy (conf_file, argv[++index]);
+201   build_path (AXE_CONFIG_PATH, conf_file, conf_file_path);
+202 
+203   // load the configuration file
+204   conf = get_aperture_descriptor (conf_file_path);
+205 
+206   // Determine where the various extensions are in the FITS file
+207   get_extension_numbers(grism_file_path, conf,conf->optkey1,conf->optval1);
+208 
+209 
+210   // Build aperture file name
+211   replace_file_extension (grism_file, aper_file, ".fits",
+212                           ".OAF", conf->science_numext);
+213   if (drizzle)
+214     build_path (AXE_DRIZZLE_PATH, aper_file, aper_file_path);
+215   else
+216     build_path (AXE_OUTPUT_PATH, aper_file, aper_file_path);
+217 
+218   // Build object PET file name
+219   replace_file_extension (grism_file, obj_PET_file, ".fits",
+220                           ".PET.fits", conf->science_numext);
+221   // make the total filename
+222   if (drizzle)
+223     build_path (AXE_DRIZZLE_PATH, obj_PET_file, obj_PET_file_path);
+224   else
+225     build_path (AXE_OUTPUT_PATH, obj_PET_file, obj_PET_file_path);
+226 
+227 
+228   // Build background PET file name
+229   replace_file_extension (grism_file, bck_PET_file, ".fits",
+230                           ".BCK.PET.fits", conf->science_numext);
+231 
+232   // make the total filename
+233   if (drizzle)
+234     build_path (AXE_DRIZZLE_PATH, bck_PET_file, bck_PET_file_path);
+235   else
+236     build_path (AXE_OUTPUT_PATH, bck_PET_file, bck_PET_file_path);
+237 
+238   // make a non-standard AF name if necessary
+239   if ((opt = get_online_option ("in_AF", argc, argv)))
+240     {
+241       strcpy(aper_file,opt);
+242       strcpy(aper_file_path,opt);
+243     }
+244 
+245   // make a non-standard PET name if necessary
+246   if ((opt = get_online_option ("OPET", argc, argv)))
+247     {
+248       strcpy(obj_PET_file,opt);
+249       strcpy(obj_PET_file_path,opt);
+250     }
+251 
+252   // make a non-standard BPET name if necessary
+253   if ((opt = get_online_option ("BPET", argc, argv)))
+254     {
+255       strcpy(bck_PET_file,opt);
+256       strcpy(bck_PET_file_path,opt);
+257     }
+258 
+259   // set the flagg for no background subtraction
+260   if ((opt = get_online_option ("noBPET",argc,argv)))
+261     {
+262       dobck = 0;
+263       strcpy(bck_PET_file,"None");
+264       strcpy(bck_PET_file_path, "None");
+265     }
+266   else
+267     {
+268       dobck = 1;
+269     }
+270 
+271   // set the flagg for flux
+272   if ((opt = get_online_option ("noflux",argc,argv)))
+273     noflux = 1;
+274   else
+275     noflux = 0;
+276 
+277   // check for the weights flagg,
+278   // set the file name if the flagg is set
+279   if ((opt = get_online_option ("opt_weights",argc,argv)))
+280     opt_weights = 1;
+281   else
+282     opt_weights = 0;
+283 
+284   // read the trigger for smoothing the sensitivity
+285   if ((opt = get_online_option ("smooth_conv",argc,argv)))
+286     smooth_conv = 1;
+287   else
+288     smooth_conv = 0;
+289 
+290   if ((opt = get_online_option ("out_SPC", argc, argv)))
+291     {
+292       strcpy (SPC_file, opt);
+293       strcpy (SPC_file_path, opt);
+294 
+295       if (opt_weights)
+296         {
+297           replace_file_extension (SPC_file, SPC_opt_file, ".fits",
+298                               "_opt.SPC.fits", -1);
+299           replace_file_extension (SPC_file_path, SPC_opt_file_path, ".fits",
+300                               "_opt.SPC.fits", -1);
+301           replace_file_extension (SPC_opt_file, WHT_file, ".SPC.fits",
+302                                   ".WHT.fits", -1);
+303           replace_file_extension (SPC_opt_file_path, WHT_file_path, ".SPC.fits",
+304                                   ".WHT.fits", -1);
+305         }
+306     }
+307   else
+308     {
+309       replace_file_extension (obj_PET_file, SPC_file, ".PET.fits",
+310                               ".SPC.fits", -1);
+311       if (drizzle)
+312         build_path (AXE_DRIZZLE_PATH, SPC_file, SPC_file_path);
+313       else
+314         build_path (AXE_OUTPUT_PATH, SPC_file, SPC_file_path);
+315 
+316       if (opt_weights)
+317         {
+318           replace_file_extension (obj_PET_file, SPC_opt_file, ".PET.fits",
+319                                   "_opt.SPC.fits", -1);
+320           replace_file_extension (SPC_opt_file, WHT_file, ".SPC.fits",
+321                                   ".WHT.fits", -1);
+322           if (drizzle)
+323             {
+324               build_path (AXE_DRIZZLE_PATH, SPC_opt_file, SPC_opt_file_path);
+325               build_path (AXE_DRIZZLE_PATH, WHT_file, WHT_file_path);
+326             }
+327           else
+328             {
+329               build_path (AXE_OUTPUT_PATH, SPC_opt_file, SPC_opt_file_path);
+330               build_path (AXE_OUTPUT_PATH, WHT_file, WHT_file_path);
+331             }
+332         }
+333     }
+334 
+335   // check the configuration file for the smoothin keywords
+336   if (!check_conf_for_smoothing(conf, smooth_conv))
+337     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+338         "aXe_PET2SP: Either the configuration file %s does not contain\n"
+339         "the necessary keywords for the smoothing (POBJSIZE, SMFACTOR),\n"
+340         "or one of these keywords has an unreasonable value < 0.0!\n",
+341         conf_file_path);
+342 
+343 
+344   // give feedback onto the screen:
+345   // report on input and output
+346   // and also on specific parameter
+347   fprintf (stdout, "aXe_PET2SPC: Input configuration file name:   %s\n",
+348            conf_file_path);
+349   fprintf (stdout, "aXe_PET2SPC: Input Object Aperture file name: %s\n",
+350            aper_file_path);
+351   fprintf (stdout, "aXe_PET2SPC: Input Object PET file name:      %s\n",
+352            obj_PET_file_path);
+353   if (dobck)
+354     fprintf (stdout, "aXe_PET2SPC: Input Background PET file name:  %s\n",
+355              bck_PET_file_path);
+356   fprintf (stdout, "aXe_PET2SPC: Output SPC file name:            %s\n",
+357            SPC_file_path);
+358   if (opt_weights)
+359     {
+360       fprintf (stdout, "aXe_PET2SPC: Computing optimal weights.\n");
+361       fprintf (stdout, "aXe_PET2SPC: Optimized SPC file name:         %s\n",
+362                SPC_opt_file_path);
+363       fprintf (stdout, "aXe_PET2SPC: Output WHT file name:            %s\n",
+364                WHT_file_path);
+365     }
+366   if (!noflux)
+367     {
+368       fprintf (stdout, "aXe_PET2SPC: Performing flux calibration.\n");
+369       if (smooth_conv)
+370         fprintf (stdout, "aXe_PET2SPC: Using smoothed sensitivity curves.\n");
+371     }
+372   fprintf (stdout, "\n\n");
+373 
+374   //
+375   // try to get the descriptor 'exptime' from the 'sci'-extension
+376   //
+377   exptime = (double)get_float_from_keyword(grism_file_path, conf->science_numext,
+       conf->exptimekey);
+378   if (isnan(exptime))
+379     exptime = (double)get_float_from_keyword(grism_file_path, 1, conf->
+      exptimekey);
+380   if (isnan(exptime))
+381     exptime = 1.0;
+382 
+383   //
+384   // try to get the descriptor 'SKY_CPS' from the 'sci'-extension
+385   //
+386   sky_cps = (double)get_float_from_keyword(grism_file_path, conf->science_numext,
+       "SKY_CPS");
+387   if (isnan(sky_cps))
+388     sky_cps = 0.0;
+389 
+390 
+391   //  Open the OPET file for reading
+392   fits_open_file (&OPET_ptr, obj_PET_file_path, READONLY, &f_status);
+393   if (f_status)
+394     {
+395       ffrprt (stderr, f_status);
+396       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+397                    "aXe_PET2SPC: Could not open file: %s\n",
+398                    obj_PET_file_path);
+399     }
+400 
+401   // check whether the contamination is quantitative
+402   quant_cont = check_quantitative_contamination(OPET_ptr);
+403 
+404   if (opt_weights && !quant_cont)
+405     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+406                  "aXe_PET2SPC: The optimal extractions needs quantitative contami
+      nation! "
+407                  " Please re-run aXe with Gauss or Fluxcube contamination!");
+408 
+409   obs = load_dummy_observation ();
+410   /* Loading the object list */
+411   fprintf (stdout, "aXe_PET2SPC: Loading object aperture list...");
+412   oblist = file_to_object_list_seq (aper_file_path, obs);
+413   fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+414 
+415   if (dobck)
+416     {
+417       //  Open the file for reading
+418       fits_open_file (&BPET_ptr, bck_PET_file_path, READONLY, &f_status);
+419       if (f_status)
+420         {
+421           ffrprt (stderr, f_status);
+422           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+423                        "aXe_PET2SP: Could not open file: %s\n",
+424                        bck_PET_file_path);
+425         }
+426     }
+427 
+428 
+429   /* Copy the header info from the grism image */
+430   SPC_ptr = create_SPC_opened (SPC_file_path,1);
+431   cards = get_FITS_cards_opened(OPET_ptr);
+432   put_FITS_cards_opened(SPC_ptr, cards);
+433   free_FITScards(cards);
+434 
+435   if (opt_weights)
+436     {
+437       cards = get_FITS_cards_opened(OPET_ptr);
+438 
+439       // open the WHT file and add the header keywords
+440       WHT_ptr = create_FITSimage_opened (WHT_file_path, 1);
+441       put_FITS_cards_opened(WHT_ptr, cards);
+442 
+443       // open the opt_SPC and add the header keywords
+444       SPC_opt_ptr = create_SPC_opened (SPC_opt_file_path,1);
+445       put_FITS_cards_opened(SPC_opt_ptr, cards);
+446 
+447       // delete the header keywords
+448       free_FITScards(cards);
+449     }
+450 
+451   // do something only if there
+452   // exist valid objects
+453   i = 0;
+454   if (oblist!=NULL)
+455     {
+456 
+457       // turn until the end of the PET is reached
+458       while (1)
+459         {
+460           empty=0;
+461 
+462           // Get the PET for this object
+463           obj_PET = get_ALL_from_next_in_PET(OPET_ptr, &obj_aperID, &obj_beamID);
+      
+464 
+465           // load the background PET if requested
+466           if (dobck)
+467             {
+468               bck_PET = get_ALL_from_next_in_PET(BPET_ptr, &bck_aperID, &bck_beam
+      ID);
+469               if ((bck_aperID!=obj_aperID)||(bck_beamID!=obj_beamID))
+470                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+471                              "Background PET and Object PET extensions are not"
+472                              " in the same order and cannot be combined.\n");
+473             }
+474 
+475           // end of PET reached: the break condition
+476           if ((obj_aperID==-1) && (obj_beamID==-1))
+477             break;
+478 
+479           // signal an empty PET
+480           if (obj_PET==NULL)
+481             empty=1;
+482 
+483           // give feedback to the screen
+484           fprintf (stdout, "aXe_PET2SPC: BEAM %d; %d%c\n", i, obj_aperID, BEAM(ob
+      j_beamID));fflush(stdout);
+485 
+486           // identify the object which matches the PET
+487           objindex =  find_object_in_object_list(oblist,obj_aperID);
+488 
+489           // look whether we are for grisms or prisms
+490           for_grism = check_for_grism (conf_file_path, obj_beamID);
+491           wl_calibration  = get_calfunc_for_beam(oblist[objindex]->beams[obj_beam
+      ID], for_grism, conf_file_path, conf);
+492 
+493           // compute the object spectrum
+494           obj_spec = bin_naive (obj_PET, oblist[objindex]->beams[obj_beamID].widt
+      h,
+495                                 oblist[objindex]->beams[obj_beamID].orient,     q
+      uant_cont);
+496 
+497           // check for the existence of a background PET
+498           if (dobck)
+499             {
+500               // compute the background spectrum
+501               bck_spec = bin_naive (bck_PET,
+502                                     oblist[objindex]->beams[bck_beamID].width,
+503                                     oblist[objindex]->beams[bck_beamID].orient, q
+      uant_cont);
+504             }
+505           else
+506             {
+507               // create a dummy background spectrum
+508               bck_spec = empty_counts_spectrum_copy(obj_spec);
+509             }
+510 
+511 
+512           // subtract the background spectrum from the
+513           // object (or forground) spectrum
+514           sobj_spec = subtract_spectra (obj_spec, bck_spec);
+515 
+516           if(!noflux)
+517             {
+518               get_troughput_table_name(conf_file_path,
+519                                        oblist[objindex]->beams[obj_beamID].ID,
+520                                        table);
+521               if (strcmp(table,"None"))
+522                 {
+523                   build_path (AXE_CONFIG_PATH, table, table_path);
+524                   resp=get_response_function_from_FITS(table_path,2);
+525                   resp_func = create_response_function(table_path);
+526                   if (resp->spec_len <2)
+527                     {
+528                       aXe_message (aXe_M_WARN1, __FILE__, __LINE__,
+529                                    "Throughput table %s contains only %d"
+530                                    " values. No sensitivity curve was applied.\n"
+      ,
+531                                    table_path,resp->spec_len);
+532                     }
+533                   else
+534                     {
+535                       fprintf(stdout,"aXe_PET2SPC: Applying sensitivity contained
+       in %s\n",table_path);
+536                       smooth_params = get_smooth_pars_for_beam(conf, smooth_conv,
+       oblist[objindex]->beams[obj_beamID]);
+537                       if (smooth_params.x > 0.0)
+538                         {
+539                           // apply a smoothed flux conversion
+540                           apply_smoothed_response(wl_calibration, for_grism, quan
+      t_cont, resp_func, smooth_params, sobj_spec);
+541                         }
+542                       else
+543                         {
+544                           // apply a normal flux conversion
+545                           apply_response_function(sobj_spec,resp, quant_cont);
+546                         }
+547                     }
+548                   // free the memory of the
+549                   // response functions
+550                   free_spectrum(resp);
+551                   free_response_function(resp_func);
+552                 }
+553             }
+554           if (empty!=1)
+555             {
+556               add_spectra_to_SPC_opened (SPC_ptr, obj_spec, bck_spec,
+557                                          sobj_spec, oblist[objindex]->ID, oblist[
+      objindex]->beams[obj_beamID].ID);
+558 
+559 
+560               /* Copy header from OPET extension into this SPC extension */
+561               cards = get_FITS_cards_opened(OPET_ptr);
+562               put_FITS_cards_opened(SPC_ptr,cards);
+563               free_FITScards(cards);
+564 
+565             }
+566 
+567           free_spectrum (bck_spec);
+568           free_spectrum (sobj_spec);
+569           free_spectrum (obj_spec);
+570 
+571 
+572           if (opt_weights)
+573             {
+574               // get the dimension in trace length
+575               // and crossdispersion
+576               dimension = get_all_dims(obj_PET, bck_PET,
+577                                        oblist[objindex]->beams[obj_beamID], dobck
+      );
+578 
+579               // check for empty PET
+580               if (!dimension.resolution)
+581                 {
+582                   // create dummies in case of empty PET's
+583                   weights = get_default_weight();
+584                   modvar  = get_default_modvar();
+585                 }
+586               else
+587                 {
+588                   // prepare the PET's by computing the inverse variance.
+589                   // Also the trace distances are shifted by 0.5
+590                   // to get a sampling comparable to the unweighted
+591                   // extraction
+592                   prepare_inv_variance(obj_PET, bck_PET, dobck, conf, exptime, sk
+      y_cps, 0.0);
+593 
+594                   // compute the inverse variance and the profile
+595                   // image in the trace distance - crossdispersion plane
+596                   modvar = compute_modvar(obj_PET, oblist[objindex]->beams[obj_be
+      amID], dimension);
+597 
+598                   // compute the optimal weights
+599                   weights = comp_allweight(modvar);
+600 
+601                 }
+602 
+603               if (dimension.resolution && empty != 1)
+604                 {
+605                   sprintf (label, "WHT_%d%c", obj_aperID, BEAM (obj_beamID));
+606                   gsl_to_FITSimage_opened (weights, WHT_ptr ,0,label);
+607 
+608                   // make and store the default header
+609                   cards = beam_to_FITScards(oblist[objindex],obj_beamID);
+610                   put_FITS_cards_opened(WHT_ptr,cards);
+611                   free_FITScards(cards);
+612                 }
+613 
+614               // create the optimal weighted
+615               // foreground spectrum
+616               obj_spec = bin_optimal (obj_PET,oblist[objindex]->beams[obj_beamID]
+      ,
+617                                       quant_cont, weights, dimension, coverage);
+618 
+619 
+620 
+621               // check for the presence of a background PET
+622               if (dobck)
+623                 {
+624                   // create the optimal weighted
+625                   // background spectrum
+626                   bck_spec = bin_optimal (bck_PET,oblist[objindex]->beams[obj_bea
+      mID],
+627                                           quant_cont, weights, dimension, coverag
+      e);
+628                 }
+629               else
+630                 {
+631                   // make a dummy background spectrum
+632                   bck_spec = empty_counts_spectrum_copy(obj_spec);
+633                 }
+634 
+635               // release memory
+636               gsl_matrix_free(weights);
+637               free_drzstamp(modvar);
+638 
+639 
+640           // subtract the background spectrum from the
+641           // object (or forground) spectrum
+642           sobj_spec = subtract_spectra (obj_spec, bck_spec);
+643 
+644           if(!noflux)
+645             {
+646               get_troughput_table_name(conf_file_path,
+647                                        oblist[objindex]->beams[obj_beamID].ID,
+648                                        table);
+649             if (strcmp(table,"None"))
+650               {
+651                 build_path (AXE_CONFIG_PATH, table, table_path);
+652                 resp=get_response_function_from_FITS(table_path,2);
+653                 resp_func = create_response_function(table_path);
+654                 if (resp->spec_len <2)
+655                   {
+656                     aXe_message (aXe_M_WARN1, __FILE__, __LINE__,
+657                                  "Throughput table %s contains only %d"
+658                                  " values. No sensitivity curve was applied.\n",
+659                                  table_path,resp->spec_len);
+660                   }
+661                 else
+662                   {
+663                     fprintf(stdout,"aXe_PET2SPC: Applying sensitivity contained i
+      n %s\n",table_path);
+664                     smooth_params = get_smooth_pars_for_beam(conf, smooth_conv, o
+      blist[objindex]->beams[obj_beamID]);
+665                     if (smooth_params.x > 0.0)
+666                       {
+667                         apply_smoothed_response(wl_calibration, for_grism, quant_
+      cont, resp_func, smooth_params, sobj_spec);
+668                       }
+669                     else
+670                       {
+671                         apply_response_function(sobj_spec,resp, quant_cont);
+672                       }
+673                   }
+674                 // free the memory
+675                 free_spectrum(resp);
+676                 free_response_function(resp_func);
+677               }
+678             }
+679           if (empty!=1)
+680             {
+681               add_spectra_to_SPC_opened (SPC_opt_ptr, obj_spec, bck_spec,
+682                                          sobj_spec, oblist[objindex]->ID, oblist[
+      objindex]->beams[obj_beamID].ID);
+683 
+684 
+685               /* Copy header from OPET extension into this SPC extension */
+686               cards = get_FITS_cards_opened(OPET_ptr);
+687               put_FITS_cards_opened(SPC_opt_ptr,cards);
+688               free_FITScards(cards);
+689 
+690             }
+691 
+692           free_spectrum (bck_spec);
+693           free_spectrum (sobj_spec);
+694           free_spectrum (obj_spec);
+695             }
+696 
+697           // free memory
+698           free_calib (wl_calibration);
+699           if (bck_PET!=NULL)
+700             free (bck_PET);
+701           if (obj_PET!=NULL)
+702             free (obj_PET);
+703           i++;
+704         }
+705     }
+706 
+707   fits_close_file (SPC_ptr, &f_status);
+708   if (f_status)
+709     {
+710       ffrprt (stderr, f_status);
+711       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+712                    "aXe_PET2SPC: " "Error closing SPC: %s\n",
+713                    SPC_file_path);
+714     }
+715 
+716   if (opt_weights)
+717     {
+718       fits_close_file (WHT_ptr, &f_status);
+719       if (f_status)
+720         {
+721           ffrprt (stderr, f_status);
+722           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+723                        "aXe_PET2SPC: " "Error closing WHT: %s\n",
+724                        WHT_file_path);
+725         }
+726       fits_close_file (SPC_opt_ptr, &f_status);
+727       if (f_status)
+728         {
+729           ffrprt (stderr, f_status);
+730           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+731                        "aXe_PET2SPC: " "Error closing PSC: %s\n",
+732                        SPC_opt_file_path);
+733         }
+734     }
+735 
+736   if (oblist!=NULL)
+737     free_oblist (oblist);
+738 
+739   fprintf (stdout, "aXe_PET2SPC: Done...\n");
+740   exit (0);
+741 }
+\end{DoxyCode}

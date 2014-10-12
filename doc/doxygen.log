@@ -1,0 +1,735 @@
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_check.c:78: Warning: argument 'a' of command @param is not found in the argument list of add_ap_p_to_aXe_mask(ap_pixel *ap_p, aXe_mask *mask)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_check.c:78: Warning: The following parameters of add_ap_p_to_aXe_mask(ap_pixel *ap_p, aXe_mask *mask) are not documented:
+  parameter 'ap_p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_conf.c:24: Warning: argument 'actinfo' of command @param is not found in the argument list of get_aperture_descriptor(char *filename)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_conf.c:561: Warning: argument 'beam' of command @param is not found in the argument list of get_max_offset(aperture_conf *conf)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_conf.c:526: Warning: argument 'beam' of command @param is not found in the argument list of get_psf_offset(aperture_conf *conf, const beam actbeam)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_conf.c:526: Warning: The following parameters of get_psf_offset(aperture_conf *conf, const beam actbeam) are not documented:
+  parameter 'actbeam'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_errors.c:14: Warning: argument 'message' of command @param is not found in the argument list of aXe_message(const int level, const char *const w_file, const int w_line, const char *const msg,...)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_errors.c:14: Warning: The following parameters of aXe_message(const int level, const char *const w_file, const int w_line, const char *const msg,...) are not documented:
+  parameter 'msg'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:332: Warning: The following parameters of FITSnaxes_to_gsl(const char *const fname, int hdunum) are not documented:
+  parameter 'hdunum'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1837: Warning: argument 'sobjs' of command @param is not found in the argument list of free_oblist(object **oblist)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1837: Warning: argument 'a' of command @param is not found in the argument list of free_oblist(object **oblist)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1837: Warning: The following parameters of free_oblist(object **oblist) are not documented:
+  parameter 'oblist'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:2013: Warning: argument 'a' of command @param is not found in the argument list of get_hdunum_from_hduname(char filename[], char extname[], char keyword[], char keyval[], int extver)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:2013: Warning: The following parameters of get_hdunum_from_hduname(char filename[], char extname[], char keyword[], char keyval[], int extver) are not documented:
+  parameter 'keyval'
+  parameter 'extver'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1004: Warning: argument 'fname' of command @param is not found in the argument list of gsl_to_FITSimage(gsl_matrix *data, char filename[], int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1004: Warning: argument 'HDUfile' of command @param is not found in the argument list of gsl_to_FITSimage(gsl_matrix *data, char filename[], int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1004: Warning: argument 'HDUfilenum' of command @param is not found in the argument list of gsl_to_FITSimage(gsl_matrix *data, char filename[], int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1004: Warning: The following parameters of gsl_to_FITSimage(gsl_matrix *data, char filename[], int overwrite, char ID[]) are not documented:
+  parameter 'filename'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:936: Warning: argument 'fname' of command @param is not found in the argument list of gsl_to_FITSimage_opened(gsl_matrix *data, fitsfile *output, int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:936: Warning: argument 'HDUfile' of command @param is not found in the argument list of gsl_to_FITSimage_opened(gsl_matrix *data, fitsfile *output, int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:936: Warning: argument 'HDUfilenum' of command @param is not found in the argument list of gsl_to_FITSimage_opened(gsl_matrix *data, fitsfile *output, int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:936: Warning: The following parameters of gsl_to_FITSimage_opened(gsl_matrix *data, fitsfile *output, int overwrite, char ID[]) are not documented:
+  parameter 'output'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'fname' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'hdunum' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'an' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'HDUfile' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'HDUfilenum' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: The following parameters of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num) are not documented:
+  parameter 'filename'
+  parameter 'hdu_num'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:94: Warning: argument 'gain' of command @param is not found in the argument list of load_image_t(const char *const fname, int hdunum_data, int hdunum_err, int hdunum_dq, int dqmask, const double exptime, const double rdnoise)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:94: Warning: The following parameters of load_image_t(const char *const fname, int hdunum_data, int hdunum_err, int hdunum_dq, int dqmask, const double exptime, const double rdnoise) are not documented:
+  parameter 'rdnoise'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'hdunum_err' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'hdunum_dq' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'dqmask' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'exptime' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'gain' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1554: Warning: argument 'input' of command @param is not found in the argument list of put_FITS_cards_opened(fitsfile *output, FITScards *cards)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1554: Warning: argument 'hdu' of command @param is not found in the argument list of put_FITS_cards_opened(fitsfile *output, FITScards *cards)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1554: Warning: The following parameters of put_FITS_cards_opened(fitsfile *output, FITScards *cards) are not documented:
+  parameter 'output'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:24: Warning: The following parameters of simulate_errors_t(gsl_matrix *img, const double exptime, const double rdnoise) are not documented:
+  parameter 'exptime'
+  parameter 'rdnoise'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/disp_conf.c:157: Warning: The following parameters of get_beam_disp_order(char *filename, const int for_grism, int beamID, int order) are not documented:
+  parameter 'for_grism'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/disp_conf.c:213: Warning: The following parameters of get_disp_coeff_at_pos(char *filename, const int for_grism, int beamID, int order, d_point p) are not documented:
+  parameter 'for_grism'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/disp_conf.c:262: Warning: The following parameters of get_disp_coeffs_at_pos(char *filename, const int for_grism, int beamID, d_point p) are not documented:
+  parameter 'for_grism'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/disp_conf.c:295: Warning: The following parameters of get_dispstruct_at_pos(char *filename, const int for_grism, int beamID, d_point p) are not documented:
+  parameter 'for_grism'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/drz2pet_utils.c:20: Warning: The following parameters of make_spc_drztable(observation *const obs, observation *const wobs, const object *ob, const double lambda0, const double dlambda) are not documented:
+  parameter 'wobs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/drz2pet_utils.c:147: Warning: The following parameters of normalize_weight(observation *wobs, object *ob, const int opt_extr) are not documented:
+  parameter 'opt_extr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_conf.c:866: Warning: argument 'interp_type' of command @param is not found in the argument list of create_linint_ftable(const char table_name[], const int hdunum, char xcol[], char ycol[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_model.c:833: Warning: The following parameters of print_optprops_list(const optical_property *optprops, const int num_entries) are not documented:
+  parameter 'num_entries'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_model.c:501: Warning: The following parameters of redefine_filter_throughput(const int lower, const int upper, fringe_conf *fconf) are not documented:
+  parameter 'fconf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_utils.c:318: Warning: argument 'act_beam' of command @param is not found in the argument list of get_gauss_throughput(const fringe_conf *fconf, const ap_pixel *obj_pix, const double fwhm)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_utils.c:318: Warning: The following parameters of get_gauss_throughput(const fringe_conf *fconf, const ap_pixel *obj_pix, const double fwhm) are not documented:
+  parameter 'fwhm'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:219: Warning: argument 'name' of command @param is not found in the argument list of aper_file_apernum(char *filename)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:219: Warning: The following parameters of aper_file_apernum(char *filename) are not documented:
+  parameter 'filename'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:457: Warning: argument 'filename' of command @param is not found in the argument list of nbeams_from_char_array(char **apers, int num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:457: Warning: The following parameters of nbeams_from_char_array(char **apers, int num) are not documented:
+  parameter 'apers'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:414: Warning: argument 'filename' of command @param is not found in the argument list of nbeams_from_char_array2(char **apers, int num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:414: Warning: The following parameters of nbeams_from_char_array2(char **apers, int num) are not documented:
+  parameter 'apers'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:326: Warning: argument 'disp__input' of command @param is not found in the argument list of condense_dispersion(gsl_vector *disp_input)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:326: Warning: The following parameters of condense_dispersion(gsl_vector *disp_input) are not documented:
+  parameter 'disp_input'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:368: Warning: argument 'actbeam' of command @param is not found in the argument list of fitting_ipc_corr(beam act_beam, char conf_file_path[], interpolator *ipcorr, full_spectr *SPC, observation *obs, gsl_matrix *data_matrix, char ipc_file_path[], beam *beam_ptr)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:368: Warning: The following parameters of fitting_ipc_corr(beam act_beam, char conf_file_path[], interpolator *ipcorr, full_spectr *SPC, observation *obs, gsl_matrix *data_matrix, char ipc_file_path[], beam *beam_ptr) are not documented:
+  parameter 'act_beam'
+  parameter 'beam_ptr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:980: Warning: argument 'SPCn_ptr' of command @param is not found in the argument list of get_ALL_from_next_in_SPC(fitsfile *SPC_ptr, int *aperID, int *beamID)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:980: Warning: The following parameters of get_ALL_from_next_in_SPC(fitsfile *SPC_ptr, int *aperID, int *beamID) are not documented:
+  parameter 'SPC_ptr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1186: Warning: argument 'count_col' of command @param is not found in the argument list of get_dcolumn_from_SPC_opened(fitsfile *SPC_ptr, char colname[], int nelems)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1186: Warning: The following parameters of get_dcolumn_from_SPC_opened(fitsfile *SPC_ptr, char colname[], int nelems) are not documented:
+  parameter 'colname'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1245: Warning: argument 'count_col' of command @param is not found in the argument list of get_lcolumn_from_SPC_opened(fitsfile *SPC_ptr, char colname[], int nelems)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1245: Warning: The following parameters of get_lcolumn_from_SPC_opened(fitsfile *SPC_ptr, char colname[], int nelems) are not documented:
+  parameter 'colname'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1365: Warning: The following parameters of nlin_corr_beam(interpolator *nlincorr, double adcgain, full_spectr *SPC) are not documented:
+  parameter 'adcgain'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:321: Warning: The following parameters of compute_short_tracedata(const aperture_conf *conf, const beam actbeam, const dirobject *actdir, const calib_function *wl_calibration, const beamspec *actspec) are not documented:
+  parameter 'conf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:946: Warning: argument 'object_models' of command @param is not found in the argument list of fill_dirobj_fromdirim(const object *actobject, object_models *objmodels)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:946: Warning: The following parameters of fill_dirobj_fromdirim(const object *actobject, object_models *objmodels) are not documented:
+  parameter 'objmodels'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:862: Warning: The following parameters of fill_dirobject(const object *actobject, const px_point npixels, gsl_matrix *drzcoeffs, const double model_scale, const int max_offset) are not documented:
+  parameter 'max_offset'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:1631: Warning: Found unknown command `\paran'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:2138: Warning: The following parameters of get_dpsf(const double lambda_ref, const double lambda, const aperture_conf *conf, const beam actbeam) are not documented:
+  parameter 'actbeam'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:2257: Warning: argument 'pixscale' of command @param is not found in the argument list of get_emodel_value(const d_point dpixel, const beam actbeam, const d_point drzscale)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:2257: Warning: The following parameters of get_emodel_value(const d_point dpixel, const beam actbeam, const d_point drzscale) are not documented:
+  parameter 'drzscale'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/nicback_utils.c:199: Warning: The following parameters of compute_nicmos_back(const gsl_matrix *mbck_img, const double factor, const double offset, const gsl_matrix *corr_img) are not documented:
+  parameter 'offset'
+  parameter 'corr_img'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/nicback_utils.c:534: Warning: argument 'msk_image' of command @param is not found in the argument list of fill_fbck_data(const observation *const obs, const gsl_matrix *msk_img, const gsl_matrix *mbck_img, fitbck_data *fbck_data, char plist_name[], const gsl_matrix *corr_img)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/nicback_utils.c:534: Warning: The following parameters of fill_fbck_data(const observation *const obs, const gsl_matrix *msk_img, const gsl_matrix *mbck_img, fitbck_data *fbck_data, char plist_name[], const gsl_matrix *corr_img) are not documented:
+  parameter 'msk_img'
+  parameter 'plist_name'
+  parameter 'corr_img'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/nicback_utils.c:26: Warning: The following parameters of make_nicmos_back(const observation *const obs, const char *msk_name, const char *master_bck, char bck_name[], char plist_name[], const char corr_bck[]) are not documented:
+  parameter 'plist_name'
+  parameter 'corr_bck'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:767: Warning: The following parameters of comp_vector_interp(const double *const xs, double *const ys, double *const ws, double *const yi, const int n, const int interp, const int final) are not documented:
+  parameter 'yi'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1126: Warning: argument 'npoints' of command @param is not found in the argument list of compute_backsub_mask(observation *obs, object **oblist)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1126: Warning: argument 'interporder' of command @param is not found in the argument list of compute_backsub_mask(observation *obs, object **oblist)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1002: Warning: The following parameters of compute_fullimg_background(observation *obs, object **oblist, int npoints, int interporder, const int niter_med, const int niter_fit, const double kappa, int nor_flag, const int sm_length, const double fwhm) are not documented:
+  parameter 'nor_flag'
+  parameter 'sm_length'
+  parameter 'fwhm'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1209: Warning: The following parameters of compute_fullimg_global_background(observation *obs, object **oblist, int interporder, const int sm_length, const double fwhm) are not documented:
+  parameter 'sm_length'
+  parameter 'fwhm'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1749: Warning: argument 'smoot_length' of command @param is not found in the argument list of fill_pixvalues(const gsl_matrix *bck_mask, const int smooth_length, const fullimg_background *fib, const int ix, const int iy, gsl_vector *pixvalues, gsl_vector *pmask)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1749: Warning: The following parameters of fill_pixvalues(const gsl_matrix *bck_mask, const int smooth_length, const fullimg_background *fib, const int ix, const int iy, gsl_vector *pixvalues, gsl_vector *pmask) are not documented:
+  parameter 'smooth_length'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:968: Warning: argument 'pars' of command @param is not found in the argument list of fullimg_background_function(const int x, const int y, PIXEL_T *const val, PIXEL_T *const err, const background *const back)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:968: Warning: The following parameters of fullimg_background_function(const int x, const int y, PIXEL_T *const val, PIXEL_T *const err, const background *const back) are not documented:
+  parameter 'back'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:230: Warning: argument 'actbeam' of command @param is not found in the argument list of get_interp_points(observation *obs, gsl_matrix *bck_mask, int np, px_point tr_point)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1621: Warning: argument 'smoot_length' of command @param is not found in the argument list of gsmooth_background(const gsl_matrix *bck_mask, const int smooth_length, const double fwhm, fullimg_background *fib)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1621: Warning: The following parameters of gsmooth_background(const gsl_matrix *bck_mask, const int smooth_length, const double fwhm, fullimg_background *fib) are not documented:
+  parameter 'smooth_length'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_CD.c:111: Warning: argument 'a' of command @param is not found in the argument list of ij_to_radec(struct WorldCoor *wcs, d_point ij)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_CD.c:111: Warning: argument 'a' of command @param is not found in the argument list of ij_to_radec(struct WorldCoor *wcs, d_point ij)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_cfg.c:121: Warning: argument 'Filename' of command @param is not found in the argument list of CfgRead_from_array(char **arr, struct CfgStrings *CfgInfo)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_cfg.c:121: Warning: The following parameters of CfgRead_from_array(char **arr, struct CfgStrings *CfgInfo) are not documented:
+  parameter 'arr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_FITScards.c:112: Warning: argument 'b' of command @param is not found in the argument list of beam_to_FITScards(object *ob, int beamnum)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_FITScards.c:112: Warning: The following parameters of beam_to_FITScards(object *ob, int beamnum) are not documented:
+  parameter 'beamnum'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_FITScards.c:222: Warning: argument 'b' of command @param is not found in the argument list of drzinfo_to_FITScards(object *ob, int beamnum, d_point outref, aperture_conf *conf, gsl_matrix *drizzcoeffs, int trlength, double relx, double rely, double objwidth, d_point refwave_pos, float sky_cps, double drizzle_width, double cdref, double spcorr)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_FITScards.c:222: Warning: The following parameters of drzinfo_to_FITScards(object *ob, int beamnum, d_point outref, aperture_conf *conf, gsl_matrix *drizzcoeffs, int trlength, double relx, double rely, double objwidth, d_point refwave_pos, float sky_cps, double drizzle_width, double cdref, double spcorr) are not documented:
+  parameter 'beamnum'
+  parameter 'outref'
+  parameter 'conf'
+  parameter 'drizzcoeffs'
+  parameter 'trlength'
+  parameter 'relx'
+  parameter 'rely'
+  parameter 'objwidth'
+  parameter 'refwave_pos'
+  parameter 'sky_cps'
+  parameter 'drizzle_width'
+  parameter 'cdref'
+  parameter 'spcorr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_flatfield.c:78: Warning: The following parameters of poly_cube_flatfield_lambda(const double lambda, const int x, const int y, poly_cube_flatfield *poly_cube) are not documented:
+  parameter 'x'
+  parameter 'y'
+  parameter 'poly_cube'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_fluxcube.c:657: Warning: The following parameters of fill_fluxvalues(const flux_cube *fcube, const px_point point, dirobject *actdir, const int inter_type) are not documented:
+  parameter 'inter_type'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1822: Warning: The following parameters of compute_gauss_dirim(char grism_file[], char OAF_file[], char CONF_file[], const double model_scale, const int inter_type, const double lambda_psf, observation *obs, const char PET_file[], char map_file[], const int store) are not documented:
+  parameter 'inter_type'
+  parameter 'lambda_psf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:958: Warning: argument 'dirlist' of command @param is not found in the argument list of dimension_beamspec(dirobject *actdir, object *actobject, const px_point npixels, const aperture_conf *conf, int j)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:958: Warning: The following parameters of dimension_beamspec(dirobject *actdir, object *actobject, const px_point npixels, const aperture_conf *conf, int j) are not documented:
+  parameter 'actdir'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1537: Warning: The following parameters of fill_contam_info(const char PET_file[], beamspec **speclist, const gsl_matrix *all_models, char model_name[]) are not documented:
+  parameter 'model_name'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1080: Warning: argument 'eval' of command @param is not found in the argument list of fill_pixel_in_speed(const dirobject *actdir, const tracedata *acttrace, const d_point dpixel, const spectrum *resp, beamspec *actspec, const calib_function *wl_calibration)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1080: Warning: The following parameters of fill_pixel_in_speed(const dirobject *actdir, const tracedata *acttrace, const d_point dpixel, const spectrum *resp, beamspec *actspec, const calib_function *wl_calibration) are not documented:
+  parameter 'wl_calibration'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:739: Warning: The following parameters of make_fcube_spectra(object **oblist, dirobject **dirlist, const px_point npixels, char CONF_file[], const flux_cube *fcube, const int inter_type) are not documented:
+  parameter 'inter_type'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1875: Warning: The following parameters of make_gauss_dirim(object **oblist, dirobject **dirlist, const double lambda_psf, const px_point npixels, char CONF_file[], observation *obs) are not documented:
+  parameter 'lambda_psf'
+  parameter 'obs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1464: Warning: The following parameters of make_model_image(const px_point npixels, observation *obs, beamspec **speclist) are not documented:
+  parameter 'obs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:53: Warning: argument 'modvar' of command @param is not found in the argument list of compute_modvar(ap_pixel *ap_p, const beam actbeam, const drzstamp_dim dimension)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:235: Warning: argument 'xi_shift' of command @param is not found in the argument list of compute_object_ivar(ap_pixel *ap_p, const double rdnoise, const double exptime, const double sky_cps)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:281: Warning: argument 'xi_shift' of command @param is not found in the argument list of compute_total_ivar(ap_pixel *ap_p, const ap_pixel *bg_p, const double rdnoise, const double exptime, const double sky_cps)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:281: Warning: The following parameters of compute_total_ivar(ap_pixel *ap_p, const ap_pixel *bg_p, const double rdnoise, const double exptime, const double sky_cps) are not documented:
+  parameter 'bg_p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:194: Warning: The following parameters of prepare_inv_variance(ap_pixel *ap_p, ap_pixel *bg_p, const int dobck, const aperture_conf *conf, const double exptime, const double sky_cps, const double xi_shift) are not documented:
+  parameter 'xi_shift'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:225: Warning: argument 'exptime' of command @param is not found in the argument list of apply_response_function(spectrum *spec, spectrum *resp, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:225: Warning: argument 'gain' of command @param is not found in the argument list of apply_response_function(spectrum *spec, spectrum *resp, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:225: Warning: The following parameters of apply_response_function(spectrum *spec, spectrum *resp, const int quant_cont) are not documented:
+  parameter 'quant_cont'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:489: Warning: argument 'bwidth' of command @param is not found in the argument list of apply_smoothed_response(const calib_function *wl_calibration, const int for_grism, const int quant_cont, response_function *resp_func, const d_point smooth_pars, spectrum *spec)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:489: Warning: argument 'psf_ext' of command @param is not found in the argument list of apply_smoothed_response(const calib_function *wl_calibration, const int for_grism, const int quant_cont, response_function *resp_func, const d_point smooth_pars, spectrum *spec)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:489: Warning: The following parameters of apply_smoothed_response(const calib_function *wl_calibration, const int for_grism, const int quant_cont, response_function *resp_func, const d_point smooth_pars, spectrum *spec) are not documented:
+  parameter 'for_grism'
+  parameter 'smooth_pars'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:757: Warning: argument 'calib_function' of command @param is not found in the argument list of get_smoothed_response(const double wavelength, const d_point smooth_pars, const calib_function *wl_calibration, const int for_grism, const gsl_vector *weights, response_function *resp_func, double *resp_vals)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:757: Warning: The following parameters of get_smoothed_response(const double wavelength, const d_point smooth_pars, const calib_function *wl_calibration, const int for_grism, const gsl_vector *weights, response_function *resp_func, double *resp_vals) are not documented:
+  parameter 'wl_calibration'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:278: Warning: The following parameters of catalog_to_wcs(char grismfile[], int hdunum, char infile[], char outfile[], struct WorldCoor *from_wcs, struct WorldCoor *to_wcs, int distortion, int overwrite_wcs, int overwrite_img) are not documented:
+  parameter 'grismfile'
+  parameter 'hdunum'
+  parameter 'infile'
+  parameter 'outfile'
+  parameter 'from_wcs'
+  parameter 'to_wcs'
+  parameter 'distortion'
+  parameter 'overwrite_wcs'
+  parameter 'overwrite_img'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:419: Warning: argument 'from_wcs' of command @param is not found in the argument list of catalog_to_wcs_nodim(char infile[], char outfile[], struct WorldCoor *grism_wcs, int overwrite_wcs, int overwrite_img)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:419: Warning: argument 'to_wcs' of command @param is not found in the argument list of catalog_to_wcs_nodim(char infile[], char outfile[], struct WorldCoor *grism_wcs, int overwrite_wcs, int overwrite_img)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:419: Warning: The following parameters of catalog_to_wcs_nodim(char infile[], char outfile[], struct WorldCoor *grism_wcs, int overwrite_wcs, int overwrite_img) are not documented:
+  parameter 'grism_wcs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:2005: Warning: The following parameters of compute_new_image_sexobject(SexObject *o, struct WorldCoor *to_wcs, int th_sky) are not documented:
+  parameter 'th_sky'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:38: Warning: The following parameters of create_SexObject(const colinfo *actinfo, char *line, const gsl_vector *waves, const gsl_vector *cnums, const px_point backwin_cols, const px_point modinfo_cols, const int magcol, const int fullinfo) are not documented:
+  parameter 'backwin_cols'
+  parameter 'modinfo_cols'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1850: Warning: The following parameters of fill_missing_image_coordinates(SexObject *o, struct WorldCoor *from_wcs, int overwrite) are not documented:
+  parameter 'overwrite'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1785: Warning: The following parameters of fill_missing_WCS_coordinates(SexObject *o, struct WorldCoor *from_wcs, int overwrite) are not documented:
+  parameter 'overwrite'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1639: Warning: The following parameters of get_SexObject_from_catalog(char filename[], const double lambda_mark) are not documented:
+  parameter 'lambda_mark'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1051: Warning: argument 'maxmag' of command @param is not found in the argument list of SexObject_to_object(SexObject *sobj, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1051: Warning: The following parameters of SexObject_to_object(SexObject *sobj, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode) are not documented:
+  parameter 'conf'
+  parameter 'bck_mode'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:628: Warning: The following parameters of SexObject_to_slitgeom(const aperture_conf *conf, const SexObject *sobj, const double trace_angle, beam *actbeam) are not documented:
+  parameter 'conf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1328: Warning: argument 'mmag_extract' of command @param is not found in the argument list of SexObjects_to_oblist(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1328: Warning: argument 'mmag_mark' of command @param is not found in the argument list of SexObjects_to_oblist(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1328: Warning: The following parameters of SexObjects_to_oblist(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode) are not documented:
+  parameter 'conf'
+  parameter 'bck_mode'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1377: Warning: argument 'mmag_extract' of command @param is not found in the argument list of SexObjects_to_oblistII(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1377: Warning: argument 'mmag_mark' of command @param is not found in the argument list of SexObjects_to_oblistII(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1377: Warning: The following parameters of SexObjects_to_oblistII(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode) are not documented:
+  parameter 'conf'
+  parameter 'bck_mode'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:928: Warning: argument 'coutncolname' of command @param is not found in the argument list of add_data_to_SPC(spectrum *spec, char countcolname[], char errorcolname[], char weightcolname[], char ID[], char filename[], int hdunum, long N)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:928: Warning: The following parameters of add_data_to_SPC(spectrum *spec, char countcolname[], char errorcolname[], char weightcolname[], char ID[], char filename[], int hdunum, long N) are not documented:
+  parameter 'countcolname'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:1292: Warning: argument 'coutncolname' of command @param is not found in the argument list of add_data_to_SPC_opened(spectrum *spec, char countcolname[], char errorcolname[], char weightcolname[], char ID[], fitsfile *input, long N)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:1292: Warning: The following parameters of add_data_to_SPC_opened(spectrum *spec, char countcolname[], char errorcolname[], char weightcolname[], char ID[], fitsfile *input, long N) are not documented:
+  parameter 'countcolname'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:598: Warning: argument 'extname' of command @param is not found in the argument list of add_ID_to_SPC(char filename[], int N, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:598: Warning: The following parameters of add_ID_to_SPC(char filename[], int N, char ID[]) are not documented:
+  parameter 'ID'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:1223: Warning: argument 'filename' of command @param is not found in the argument list of add_spectra_to_SPC_opened(fitsfile *input, spectrum *obj_spec, spectrum *bck_spec, spectrum *sobj_spec, int aperID, int beamID)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:1223: Warning: The following parameters of add_spectra_to_SPC_opened(fitsfile *input, spectrum *obj_spec, spectrum *bck_spec, spectrum *sobj_spec, int aperID, int beamID) are not documented:
+  parameter 'input'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:200: Warning: argument 'res' of command @param is not found in the argument list of empty_counts_spectrum_copy(spectrum *a)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:115: Warning: argument 'res' of command @param is not found in the argument list of subtract_spectra(spectrum *a, spectrum *b)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_trace_functions.c:217: Warning: argument 'a' of command @param is not found in the argument list of create_polyN(gsl_vector *v)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_trace_functions.c:217: Warning: The following parameters of create_polyN(gsl_vector *v) are not documented:
+  parameter 'v'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_trace_functions.c:259: Warning: argument 'a' of command @param is not found in the argument list of vector_to_trace_poly2(gsl_vector *v)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_trace_functions.c:296: Warning: argument 'a' of command @param is not found in the argument list of vector_to_trace_polyN(gsl_vector *v)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:74: Warning: The following parameters of check_worldcoo_input(const colinfo *actcatinfo, const int thsky) are not documented:
+  parameter 'thsky'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:733: Warning: The following parameters of get_magauto_col(const gsl_vector *wavelength, const gsl_vector *colnums, const double lambda_mark) are not documented:
+  parameter 'lambda_mark'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:591: Warning: The following parameters of get_magcols(const colinfo *actcatinfo, gsl_vector *wavelength, gsl_vector *colnums) are not documented:
+  parameter 'colnums'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:893: Warning: argument 'str' of command @param is not found in the argument list of isnum2(char *string)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:893: Warning: The following parameters of isnum2(char *string) are not documented:
+  parameter 'string'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_wl_calib.c:234: Warning: argument 'order' of command @param is not found in the argument list of create_calib_from_gsl_vector(const int for_grism, const gsl_vector *a)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_wl_calib.c:96: Warning: argument 'ap_pixel' of command @param is not found in the argument list of prange_cut(ap_pixel *in_p, const gsl_vector *prange, const calib_function *wl_calibration)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_wl_calib.c:96: Warning: The following parameters of prange_cut(ap_pixel *in_p, const gsl_vector *prange, const calib_function *wl_calibration) are not documented:
+  parameter 'in_p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:317: Warning: argument 'px_width' of command @param is not found in the argument list of bin_naive(const ap_pixel *const ap_p, const double ob_width, const double ob_orient, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:317: Warning: argument 'ob_orientation' of command @param is not found in the argument list of bin_naive(const ap_pixel *const ap_p, const double ob_width, const double ob_orient, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:317: Warning: argument 'flags' of command @param is not found in the argument list of bin_naive(const ap_pixel *const ap_p, const double ob_width, const double ob_orient, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:317: Warning: The following parameters of bin_naive(const ap_pixel *const ap_p, const double ob_width, const double ob_orient, const int quant_cont) are not documented:
+  parameter 'ob_orient'
+  parameter 'quant_cont'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: argument 'px_width' of command @param is not found in the argument list of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: argument 'ob_width' of command @param is not found in the argument list of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: argument 'ob_orientation' of command @param is not found in the argument list of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: argument 'flags' of command @param is not found in the argument list of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: The following parameters of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage) are not documented:
+  parameter 'curbeam'
+  parameter 'quant_cont'
+  parameter 'weights'
+  parameter 'dimension'
+  parameter 'coverage'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:636: Warning: The following parameters of bin_weighted(const ap_pixel *const ap_p, const double ob_orient, const trace_func *const trace, const int n_sub, const int flags) are not documented:
+  parameter 'trace'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_fitting.c:299: Warning: The following parameters of comp_vector_polyN(const int m, const double *xs, double *ys, double *ws, double *yi, const int n, const int final) are not documented:
+  parameter 'm'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_fitting.c:149: Warning: argument 'c' of command @param is not found in the argument list of fill_polyN_interp(const double *const xs, double *const ys, double *const ws, double *yi, const int n, gsl_vector *coeffs, gsl_matrix *cov, gsl_vector *interp, const int final)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_fitting.c:149: Warning: The following parameters of fill_polyN_interp(const double *const xs, double *const ys, double *const ws, double *yi, const int n, gsl_vector *coeffs, gsl_matrix *cov, gsl_vector *interp, const int final) are not documented:
+  parameter 'coeffs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:473: Warning: The following parameters of drizzled_stamp_img(const ap_pixel *const ap_p, double width, double orient, const drzstamp_dim dimension) are not documented:
+  parameter 'orient'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:938: Warning: argument 'resampwidth' of command @param is not found in the argument list of drizzled_stamp_img_orig(const ap_pixel *const ap_p, float width, aperture_conf *conf)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:938: Warning: The following parameters of drizzled_stamp_img_orig(const ap_pixel *const ap_p, float width, aperture_conf *conf) are not documented:
+  parameter 'conf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:839: Warning: The following parameters of get_quad_from_pixel(const ap_pixel *cur_p, const double orient, const drzstamp_dim dimension) are not documented:
+  parameter 'orient'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:709: Warning: The following parameters of get_stamp_dim(const ap_pixel *const ap_p, float width, aperture_conf *conf, const int beamID, d_point *stp_min) are not documented:
+  parameter 'stp_min'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:379: Warning: The following parameters of rectified_stamp_img(const ap_pixel *const ap_p, float width, d_point *stp_min) are not documented:
+  parameter 'stp_min'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:194: Warning: The following parameters of stamp_img_drzprep(const int opt_extr, const ap_pixel *const ap_p, const ap_pixel *const se_p, float width, float nullval, int quant_cont, drzstamp_dim dimension, gsl_matrix *drzcoeffs, double exptime, double sky_cps, double rdnoise, const int bckmode) are not documented:
+  parameter 'se_p'
+  parameter 'rdnoise'
+  parameter 'bckmode'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_sect.c:51: Warning: The following parameters of find_section_point(sectionfun *sf, const double x, const double y, double *const res) are not documented:
+  parameter 'y'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/specmodel_utils.c:469: Warning: argument 'spectral_models_file' of command @param is not found in the argument list of access_fits_models(const char fits_models_file[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/specmodel_utils.c:469: Warning: The following parameters of access_fits_models(const char fits_models_file[]) are not documented:
+  parameter 'fits_models_file'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/specmodel_utils.c:824: Warning: argument 'spectral_models' of command @param is not found in the argument list of get_model_sed(const spectral_models *spec_mod, const int modspec)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/specmodel_utils.c:824: Warning: The following parameters of get_model_sed(const spectral_models *spec_mod, const int modspec) are not documented:
+  parameter 'spec_mod'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trace_conf.c:285: Warning: The following parameters of get_trace_xoff_at_pos(char *filename, int beamID, d_point p) are not documented:
+  parameter 'p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trace_conf.c:324: Warning: The following parameters of get_trace_yoff_at_pos(char *filename, int beamID, d_point p) are not documented:
+  parameter 'p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1116: Warning: argument 'data_matrix' of command @param is not found in the argument list of get_ipc_fdata(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1116: Warning: argument 'actbeam' of command @param is not found in the argument list of get_ipc_fdata(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1116: Warning: The following parameters of get_ipc_fdata(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam) are not documented:
+  parameter 'data_vals'
+  parameter 'act_beam'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1223: Warning: argument 'data_matrix' of command @param is not found in the argument list of get_wf_special(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam, double yoffs)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1223: Warning: argument 'actbeam' of command @param is not found in the argument list of get_wf_special(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam, double yoffs)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1223: Warning: The following parameters of get_wf_special(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam, double yoffs) are not documented:
+  parameter 'data_vals'
+  parameter 'act_beam'
+  parameter 'yoffs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1461: Warning: argument 'actbeam' of command @param is not found in the argument list of kappa_sigma_klipp_ipc(const aperture_conf *conf, observation *obs, gsl_matrix *data_matrix, beam act_beam, const char *ipc_file)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1461: Warning: argument 'ipc_file_path' of command @param is not found in the argument list of kappa_sigma_klipp_ipc(const aperture_conf *conf, observation *obs, gsl_matrix *data_matrix, beam act_beam, const char *ipc_file)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1461: Warning: The following parameters of kappa_sigma_klipp_ipc(const aperture_conf *conf, observation *obs, gsl_matrix *data_matrix, beam act_beam, const char *ipc_file) are not documented:
+  parameter 'act_beam'
+  parameter 'ipc_file'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1332: Warning: The following parameters of strip_wf_special(fit_data *old_fdata, double *y_fract, int i_max) are not documented:
+  parameter 'y_fract'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1013: Warning: The following parameters of write_ipc_fit(fit_data *f_data, double *y_values, const char *ipc_file, const double qual, double *yfract) are not documented:
+  parameter 'qual'
+  parameter 'yfract'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_check.c:78: Warning: argument 'a' of command @param is not found in the argument list of add_ap_p_to_aXe_mask(ap_pixel *ap_p, aXe_mask *mask)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_check.c:78: Warning: The following parameters of add_ap_p_to_aXe_mask(ap_pixel *ap_p, aXe_mask *mask) are not documented:
+  parameter 'ap_p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_conf.c:24: Warning: argument 'actinfo' of command @param is not found in the argument list of get_aperture_descriptor(char *filename)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_conf.c:561: Warning: argument 'beam' of command @param is not found in the argument list of get_max_offset(aperture_conf *conf)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_conf.c:526: Warning: argument 'beam' of command @param is not found in the argument list of get_psf_offset(aperture_conf *conf, const beam actbeam)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aper_conf.c:526: Warning: The following parameters of get_psf_offset(aperture_conf *conf, const beam actbeam) are not documented:
+  parameter 'actbeam'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_errors.c:14: Warning: argument 'message' of command @param is not found in the argument list of aXe_message(const int level, const char *const w_file, const int w_line, const char *const msg,...)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_errors.c:14: Warning: The following parameters of aXe_message(const int level, const char *const w_file, const int w_line, const char *const msg,...) are not documented:
+  parameter 'msg'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:332: Warning: The following parameters of FITSnaxes_to_gsl(const char *const fname, int hdunum) are not documented:
+  parameter 'hdunum'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1837: Warning: argument 'sobjs' of command @param is not found in the argument list of free_oblist(object **oblist)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1837: Warning: argument 'a' of command @param is not found in the argument list of free_oblist(object **oblist)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1837: Warning: The following parameters of free_oblist(object **oblist) are not documented:
+  parameter 'oblist'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:2013: Warning: argument 'a' of command @param is not found in the argument list of get_hdunum_from_hduname(char filename[], char extname[], char keyword[], char keyval[], int extver)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:2013: Warning: The following parameters of get_hdunum_from_hduname(char filename[], char extname[], char keyword[], char keyval[], int extver) are not documented:
+  parameter 'keyval'
+  parameter 'extver'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1004: Warning: argument 'fname' of command @param is not found in the argument list of gsl_to_FITSimage(gsl_matrix *data, char filename[], int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1004: Warning: argument 'HDUfile' of command @param is not found in the argument list of gsl_to_FITSimage(gsl_matrix *data, char filename[], int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1004: Warning: argument 'HDUfilenum' of command @param is not found in the argument list of gsl_to_FITSimage(gsl_matrix *data, char filename[], int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1004: Warning: The following parameters of gsl_to_FITSimage(gsl_matrix *data, char filename[], int overwrite, char ID[]) are not documented:
+  parameter 'filename'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:936: Warning: argument 'fname' of command @param is not found in the argument list of gsl_to_FITSimage_opened(gsl_matrix *data, fitsfile *output, int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:936: Warning: argument 'HDUfile' of command @param is not found in the argument list of gsl_to_FITSimage_opened(gsl_matrix *data, fitsfile *output, int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:936: Warning: argument 'HDUfilenum' of command @param is not found in the argument list of gsl_to_FITSimage_opened(gsl_matrix *data, fitsfile *output, int overwrite, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:936: Warning: The following parameters of gsl_to_FITSimage_opened(gsl_matrix *data, fitsfile *output, int overwrite, char ID[]) are not documented:
+  parameter 'output'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'fname' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'hdunum' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'an' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'HDUfile' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: argument 'HDUfilenum' of command @param is not found in the argument list of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1109: Warning: The following parameters of gsl_to_FITSimageHDU(gsl_matrix *data, char filename[], int overwrite, char ID[], int hdu_num) are not documented:
+  parameter 'filename'
+  parameter 'hdu_num'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:94: Warning: argument 'gain' of command @param is not found in the argument list of load_image_t(const char *const fname, int hdunum_data, int hdunum_err, int hdunum_dq, int dqmask, const double exptime, const double rdnoise)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:94: Warning: The following parameters of load_image_t(const char *const fname, int hdunum_data, int hdunum_err, int hdunum_dq, int dqmask, const double exptime, const double rdnoise) are not documented:
+  parameter 'rdnoise'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'hdunum_err' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'hdunum_dq' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'dqmask' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'exptime' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:182: Warning: argument 'gain' of command @param is not found in the argument list of load_sci_image(const char *const fname, int hdunum_data)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1554: Warning: argument 'input' of command @param is not found in the argument list of put_FITS_cards_opened(fitsfile *output, FITScards *cards)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1554: Warning: argument 'hdu' of command @param is not found in the argument list of put_FITS_cards_opened(fitsfile *output, FITScards *cards)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:1554: Warning: The following parameters of put_FITS_cards_opened(fitsfile *output, FITScards *cards) are not documented:
+  parameter 'output'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/aXe_utils.c:24: Warning: The following parameters of simulate_errors_t(gsl_matrix *img, const double exptime, const double rdnoise) are not documented:
+  parameter 'exptime'
+  parameter 'rdnoise'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/disp_conf.c:157: Warning: The following parameters of get_beam_disp_order(char *filename, const int for_grism, int beamID, int order) are not documented:
+  parameter 'for_grism'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/disp_conf.c:213: Warning: The following parameters of get_disp_coeff_at_pos(char *filename, const int for_grism, int beamID, int order, d_point p) are not documented:
+  parameter 'for_grism'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/disp_conf.c:262: Warning: The following parameters of get_disp_coeffs_at_pos(char *filename, const int for_grism, int beamID, d_point p) are not documented:
+  parameter 'for_grism'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/disp_conf.c:295: Warning: The following parameters of get_dispstruct_at_pos(char *filename, const int for_grism, int beamID, d_point p) are not documented:
+  parameter 'for_grism'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/drz2pet_utils.c:20: Warning: The following parameters of make_spc_drztable(observation *const obs, observation *const wobs, const object *ob, const double lambda0, const double dlambda) are not documented:
+  parameter 'wobs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/drz2pet_utils.c:147: Warning: The following parameters of normalize_weight(observation *wobs, object *ob, const int opt_extr) are not documented:
+  parameter 'opt_extr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_conf.c:866: Warning: argument 'interp_type' of command @param is not found in the argument list of create_linint_ftable(const char table_name[], const int hdunum, char xcol[], char ycol[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_model.c:833: Warning: The following parameters of print_optprops_list(const optical_property *optprops, const int num_entries) are not documented:
+  parameter 'num_entries'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_model.c:501: Warning: The following parameters of redefine_filter_throughput(const int lower, const int upper, fringe_conf *fconf) are not documented:
+  parameter 'fconf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_utils.c:318: Warning: argument 'act_beam' of command @param is not found in the argument list of get_gauss_throughput(const fringe_conf *fconf, const ap_pixel *obj_pix, const double fwhm)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/fringe_utils.c:318: Warning: The following parameters of get_gauss_throughput(const fringe_conf *fconf, const ap_pixel *obj_pix, const double fwhm) are not documented:
+  parameter 'fwhm'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:219: Warning: argument 'name' of command @param is not found in the argument list of aper_file_apernum(char *filename)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:219: Warning: The following parameters of aper_file_apernum(char *filename) are not documented:
+  parameter 'filename'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:844: Warning: argument 'filename' of command @param is not found in the argument list of get_aperture_from_char_array(char **aper, int aperID)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:844: Warning: The following parameters of get_aperture_from_char_array(char **aper, int aperID) are not documented:
+  parameter 'aper'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:511: Warning: argument 'filename' of command @param is not found in the argument list of get_beam_from_char_array(char **aper, int aperID, int beamID, beam *b)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:511: Warning: The following parameters of get_beam_from_char_array(char **aper, int aperID, int beamID, beam *b) are not documented:
+  parameter 'aper'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:457: Warning: argument 'filename' of command @param is not found in the argument list of nbeams_from_char_array(char **apers, int num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:457: Warning: The following parameters of nbeams_from_char_array(char **apers, int num) are not documented:
+  parameter 'apers'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:414: Warning: argument 'filename' of command @param is not found in the argument list of nbeams_from_char_array2(char **apers, int num)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/inout_aper.c:414: Warning: The following parameters of nbeams_from_char_array2(char **apers, int num) are not documented:
+  parameter 'apers'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:326: Warning: argument 'disp__input' of command @param is not found in the argument list of condense_dispersion(gsl_vector *disp_input)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:326: Warning: The following parameters of condense_dispersion(gsl_vector *disp_input) are not documented:
+  parameter 'disp_input'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:368: Warning: argument 'actbeam' of command @param is not found in the argument list of fitting_ipc_corr(beam act_beam, char conf_file_path[], interpolator *ipcorr, full_spectr *SPC, observation *obs, gsl_matrix *data_matrix, char ipc_file_path[], beam *beam_ptr)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:368: Warning: The following parameters of fitting_ipc_corr(beam act_beam, char conf_file_path[], interpolator *ipcorr, full_spectr *SPC, observation *obs, gsl_matrix *data_matrix, char ipc_file_path[], beam *beam_ptr) are not documented:
+  parameter 'act_beam'
+  parameter 'beam_ptr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:980: Warning: argument 'SPCn_ptr' of command @param is not found in the argument list of get_ALL_from_next_in_SPC(fitsfile *SPC_ptr, int *aperID, int *beamID)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:980: Warning: The following parameters of get_ALL_from_next_in_SPC(fitsfile *SPC_ptr, int *aperID, int *beamID) are not documented:
+  parameter 'SPC_ptr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1186: Warning: argument 'count_col' of command @param is not found in the argument list of get_dcolumn_from_SPC_opened(fitsfile *SPC_ptr, char colname[], int nelems)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1186: Warning: The following parameters of get_dcolumn_from_SPC_opened(fitsfile *SPC_ptr, char colname[], int nelems) are not documented:
+  parameter 'colname'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1245: Warning: argument 'count_col' of command @param is not found in the argument list of get_lcolumn_from_SPC_opened(fitsfile *SPC_ptr, char colname[], int nelems)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1245: Warning: The following parameters of get_lcolumn_from_SPC_opened(fitsfile *SPC_ptr, char colname[], int nelems) are not documented:
+  parameter 'colname'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/ipixcorr_utils.c:1365: Warning: The following parameters of nlin_corr_beam(interpolator *nlincorr, double adcgain, full_spectr *SPC) are not documented:
+  parameter 'adcgain'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:321: Warning: The following parameters of compute_short_tracedata(const aperture_conf *conf, const beam actbeam, const dirobject *actdir, const calib_function *wl_calibration, const beamspec *actspec) are not documented:
+  parameter 'conf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:946: Warning: argument 'object_models' of command @param is not found in the argument list of fill_dirobj_fromdirim(const object *actobject, object_models *objmodels)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:946: Warning: The following parameters of fill_dirobj_fromdirim(const object *actobject, object_models *objmodels) are not documented:
+  parameter 'objmodels'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:862: Warning: The following parameters of fill_dirobject(const object *actobject, const px_point npixels, gsl_matrix *drzcoeffs, const double model_scale, const int max_offset) are not documented:
+  parameter 'max_offset'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:1631: Warning: Found unknown command `\paran'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:2138: Warning: The following parameters of get_dpsf(const double lambda_ref, const double lambda, const aperture_conf *conf, const beam actbeam) are not documented:
+  parameter 'actbeam'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:2257: Warning: argument 'pixscale' of command @param is not found in the argument list of get_emodel_value(const d_point dpixel, const beam actbeam, const d_point drzscale)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/model_utils.c:2257: Warning: The following parameters of get_emodel_value(const d_point dpixel, const beam actbeam, const d_point drzscale) are not documented:
+  parameter 'drzscale'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/nicback_utils.c:199: Warning: The following parameters of compute_nicmos_back(const gsl_matrix *mbck_img, const double factor, const double offset, const gsl_matrix *corr_img) are not documented:
+  parameter 'offset'
+  parameter 'corr_img'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/nicback_utils.c:534: Warning: argument 'msk_image' of command @param is not found in the argument list of fill_fbck_data(const observation *const obs, const gsl_matrix *msk_img, const gsl_matrix *mbck_img, fitbck_data *fbck_data, char plist_name[], const gsl_matrix *corr_img)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/nicback_utils.c:534: Warning: The following parameters of fill_fbck_data(const observation *const obs, const gsl_matrix *msk_img, const gsl_matrix *mbck_img, fitbck_data *fbck_data, char plist_name[], const gsl_matrix *corr_img) are not documented:
+  parameter 'msk_img'
+  parameter 'plist_name'
+  parameter 'corr_img'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/nicback_utils.c:26: Warning: The following parameters of make_nicmos_back(const observation *const obs, const char *msk_name, const char *master_bck, char bck_name[], char plist_name[], const char corr_bck[]) are not documented:
+  parameter 'plist_name'
+  parameter 'corr_bck'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:767: Warning: The following parameters of comp_vector_interp(const double *const xs, double *const ys, double *const ws, double *const yi, const int n, const int interp, const int final) are not documented:
+  parameter 'yi'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1126: Warning: argument 'npoints' of command @param is not found in the argument list of compute_backsub_mask(observation *obs, object **oblist)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1126: Warning: argument 'interporder' of command @param is not found in the argument list of compute_backsub_mask(observation *obs, object **oblist)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1002: Warning: The following parameters of compute_fullimg_background(observation *obs, object **oblist, int npoints, int interporder, const int niter_med, const int niter_fit, const double kappa, int nor_flag, const int sm_length, const double fwhm) are not documented:
+  parameter 'nor_flag'
+  parameter 'sm_length'
+  parameter 'fwhm'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1209: Warning: The following parameters of compute_fullimg_global_background(observation *obs, object **oblist, int interporder, const int sm_length, const double fwhm) are not documented:
+  parameter 'sm_length'
+  parameter 'fwhm'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1749: Warning: argument 'smoot_length' of command @param is not found in the argument list of fill_pixvalues(const gsl_matrix *bck_mask, const int smooth_length, const fullimg_background *fib, const int ix, const int iy, gsl_vector *pixvalues, gsl_vector *pmask)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1749: Warning: The following parameters of fill_pixvalues(const gsl_matrix *bck_mask, const int smooth_length, const fullimg_background *fib, const int ix, const int iy, gsl_vector *pixvalues, gsl_vector *pmask) are not documented:
+  parameter 'smooth_length'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:968: Warning: argument 'pars' of command @param is not found in the argument list of fullimg_background_function(const int x, const int y, PIXEL_T *const val, PIXEL_T *const err, const background *const back)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:968: Warning: The following parameters of fullimg_background_function(const int x, const int y, PIXEL_T *const val, PIXEL_T *const err, const background *const back) are not documented:
+  parameter 'back'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:230: Warning: argument 'actbeam' of command @param is not found in the argument list of get_interp_points(observation *obs, gsl_matrix *bck_mask, int np, px_point tr_point)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1621: Warning: argument 'smoot_length' of command @param is not found in the argument list of gsmooth_background(const gsl_matrix *bck_mask, const int smooth_length, const double fwhm, fullimg_background *fib)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_back.c:1621: Warning: The following parameters of gsmooth_background(const gsl_matrix *bck_mask, const int smooth_length, const double fwhm, fullimg_background *fib) are not documented:
+  parameter 'smooth_length'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_CD.c:111: Warning: argument 'a' of command @param is not found in the argument list of ij_to_radec(struct WorldCoor *wcs, d_point ij)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_CD.c:111: Warning: argument 'a' of command @param is not found in the argument list of ij_to_radec(struct WorldCoor *wcs, d_point ij)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_cfg.c:121: Warning: argument 'Filename' of command @param is not found in the argument list of CfgRead_from_array(char **arr, struct CfgStrings *CfgInfo)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_cfg.c:121: Warning: The following parameters of CfgRead_from_array(char **arr, struct CfgStrings *CfgInfo) are not documented:
+  parameter 'arr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_extract.c:73: Warning: argument 'ob' of command @param is not found in the argument list of handle_one_pixel(const double x, const double y, const int px, const int py, const observation *const obs, sectionfun *const sf, const trace_func *const tracefun, ap_pixel *cur_ap)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_extract.c:73: Warning: The following parameters of handle_one_pixel(const double x, const double y, const int px, const int py, const observation *const obs, sectionfun *const sf, const trace_func *const tracefun, ap_pixel *cur_ap) are not documented:
+  parameter 'obs'
+  parameter 'tracefun'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_FITScards.c:112: Warning: argument 'b' of command @param is not found in the argument list of beam_to_FITScards(object *ob, int beamnum)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_FITScards.c:112: Warning: The following parameters of beam_to_FITScards(object *ob, int beamnum) are not documented:
+  parameter 'beamnum'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_FITScards.c:222: Warning: argument 'b' of command @param is not found in the argument list of drzinfo_to_FITScards(object *ob, int beamnum, d_point outref, aperture_conf *conf, gsl_matrix *drizzcoeffs, int trlength, double relx, double rely, double objwidth, d_point refwave_pos, float sky_cps, double drizzle_width, double cdref, double spcorr)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_FITScards.c:222: Warning: The following parameters of drzinfo_to_FITScards(object *ob, int beamnum, d_point outref, aperture_conf *conf, gsl_matrix *drizzcoeffs, int trlength, double relx, double rely, double objwidth, d_point refwave_pos, float sky_cps, double drizzle_width, double cdref, double spcorr) are not documented:
+  parameter 'beamnum'
+  parameter 'outref'
+  parameter 'conf'
+  parameter 'drizzcoeffs'
+  parameter 'trlength'
+  parameter 'relx'
+  parameter 'rely'
+  parameter 'objwidth'
+  parameter 'refwave_pos'
+  parameter 'sky_cps'
+  parameter 'drizzle_width'
+  parameter 'cdref'
+  parameter 'spcorr'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_flatfield.c:339: Warning: The following parameters of flat_multi_func(const double lambda, const int x, const int y, PIXEL_T *const val, PIXEL_T *const err, const flatfield_d *const flat) are not documented:
+  parameter 'val'
+  parameter 'err'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_flatfield.c:147: Warning: The following parameters of flat_poly_func(const double lambda, const int x, const int y, PIXEL_T *const val, PIXEL_T *const err, const flatfield_d *const flat) are not documented:
+  parameter 'val'
+  parameter 'err'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_flatfield.c:222: Warning: argument 'flat' of command @param is not found in the argument list of load_flatfield_errors(flatfield_d *const ff, const char *const flat_name)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_flatfield.c:222: Warning: The following parameters of load_flatfield_errors(flatfield_d *const ff, const char *const flat_name) are not documented:
+  parameter 'ff'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_flatfield.c:78: Warning: The following parameters of poly_cube_flatfield_lambda(const double lambda, const int x, const int y, poly_cube_flatfield *poly_cube) are not documented:
+  parameter 'x'
+  parameter 'y'
+  parameter 'poly_cube'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_fluxcube.c:657: Warning: The following parameters of fill_fluxvalues(const flux_cube *fcube, const px_point point, dirobject *actdir, const int inter_type) are not documented:
+  parameter 'inter_type'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1822: Warning: The following parameters of compute_gauss_dirim(char grism_file[], char OAF_file[], char CONF_file[], const double model_scale, const int inter_type, const double lambda_psf, observation *obs, const char PET_file[], char map_file[], const int store) are not documented:
+  parameter 'inter_type'
+  parameter 'lambda_psf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:958: Warning: argument 'dirlist' of command @param is not found in the argument list of dimension_beamspec(dirobject *actdir, object *actobject, const px_point npixels, const aperture_conf *conf, int j)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:958: Warning: The following parameters of dimension_beamspec(dirobject *actdir, object *actobject, const px_point npixels, const aperture_conf *conf, int j) are not documented:
+  parameter 'actdir'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1537: Warning: The following parameters of fill_contam_info(const char PET_file[], beamspec **speclist, const gsl_matrix *all_models, char model_name[]) are not documented:
+  parameter 'model_name'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1080: Warning: argument 'eval' of command @param is not found in the argument list of fill_pixel_in_speed(const dirobject *actdir, const tracedata *acttrace, const d_point dpixel, const spectrum *resp, beamspec *actspec, const calib_function *wl_calibration)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1080: Warning: The following parameters of fill_pixel_in_speed(const dirobject *actdir, const tracedata *acttrace, const d_point dpixel, const spectrum *resp, beamspec *actspec, const calib_function *wl_calibration) are not documented:
+  parameter 'wl_calibration'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:739: Warning: The following parameters of make_fcube_spectra(object **oblist, dirobject **dirlist, const px_point npixels, char CONF_file[], const flux_cube *fcube, const int inter_type) are not documented:
+  parameter 'inter_type'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1875: Warning: The following parameters of make_gauss_dirim(object **oblist, dirobject **dirlist, const double lambda_psf, const px_point npixels, char CONF_file[], observation *obs) are not documented:
+  parameter 'lambda_psf'
+  parameter 'obs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_model.c:1464: Warning: The following parameters of make_model_image(const px_point npixels, observation *obs, beamspec **speclist) are not documented:
+  parameter 'obs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:53: Warning: argument 'modvar' of command @param is not found in the argument list of compute_modvar(ap_pixel *ap_p, const beam actbeam, const drzstamp_dim dimension)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:235: Warning: argument 'xi_shift' of command @param is not found in the argument list of compute_object_ivar(ap_pixel *ap_p, const double rdnoise, const double exptime, const double sky_cps)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:281: Warning: argument 'xi_shift' of command @param is not found in the argument list of compute_total_ivar(ap_pixel *ap_p, const ap_pixel *bg_p, const double rdnoise, const double exptime, const double sky_cps)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:281: Warning: The following parameters of compute_total_ivar(ap_pixel *ap_p, const ap_pixel *bg_p, const double rdnoise, const double exptime, const double sky_cps) are not documented:
+  parameter 'bg_p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_optimum.c:194: Warning: The following parameters of prepare_inv_variance(ap_pixel *ap_p, ap_pixel *bg_p, const int dobck, const aperture_conf *conf, const double exptime, const double sky_cps, const double xi_shift) are not documented:
+  parameter 'xi_shift'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:225: Warning: argument 'exptime' of command @param is not found in the argument list of apply_response_function(spectrum *spec, spectrum *resp, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:225: Warning: argument 'gain' of command @param is not found in the argument list of apply_response_function(spectrum *spec, spectrum *resp, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:225: Warning: The following parameters of apply_response_function(spectrum *spec, spectrum *resp, const int quant_cont) are not documented:
+  parameter 'quant_cont'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:489: Warning: argument 'bwidth' of command @param is not found in the argument list of apply_smoothed_response(const calib_function *wl_calibration, const int for_grism, const int quant_cont, response_function *resp_func, const d_point smooth_pars, spectrum *spec)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:489: Warning: argument 'psf_ext' of command @param is not found in the argument list of apply_smoothed_response(const calib_function *wl_calibration, const int for_grism, const int quant_cont, response_function *resp_func, const d_point smooth_pars, spectrum *spec)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:489: Warning: The following parameters of apply_smoothed_response(const calib_function *wl_calibration, const int for_grism, const int quant_cont, response_function *resp_func, const d_point smooth_pars, spectrum *spec) are not documented:
+  parameter 'for_grism'
+  parameter 'smooth_pars'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:757: Warning: argument 'calib_function' of command @param is not found in the argument list of get_smoothed_response(const double wavelength, const d_point smooth_pars, const calib_function *wl_calibration, const int for_grism, const gsl_vector *weights, response_function *resp_func, double *resp_vals)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_resp.c:757: Warning: The following parameters of get_smoothed_response(const double wavelength, const d_point smooth_pars, const calib_function *wl_calibration, const int for_grism, const gsl_vector *weights, response_function *resp_func, double *resp_vals) are not documented:
+  parameter 'wl_calibration'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:278: Warning: The following parameters of catalog_to_wcs(char grismfile[], int hdunum, char infile[], char outfile[], struct WorldCoor *from_wcs, struct WorldCoor *to_wcs, int distortion, int overwrite_wcs, int overwrite_img) are not documented:
+  parameter 'grismfile'
+  parameter 'hdunum'
+  parameter 'infile'
+  parameter 'outfile'
+  parameter 'from_wcs'
+  parameter 'to_wcs'
+  parameter 'distortion'
+  parameter 'overwrite_wcs'
+  parameter 'overwrite_img'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:419: Warning: argument 'from_wcs' of command @param is not found in the argument list of catalog_to_wcs_nodim(char infile[], char outfile[], struct WorldCoor *grism_wcs, int overwrite_wcs, int overwrite_img)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:419: Warning: argument 'to_wcs' of command @param is not found in the argument list of catalog_to_wcs_nodim(char infile[], char outfile[], struct WorldCoor *grism_wcs, int overwrite_wcs, int overwrite_img)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:419: Warning: The following parameters of catalog_to_wcs_nodim(char infile[], char outfile[], struct WorldCoor *grism_wcs, int overwrite_wcs, int overwrite_img) are not documented:
+  parameter 'grism_wcs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:2005: Warning: The following parameters of compute_new_image_sexobject(SexObject *o, struct WorldCoor *to_wcs, int th_sky) are not documented:
+  parameter 'th_sky'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:38: Warning: The following parameters of create_SexObject(const colinfo *actinfo, char *line, const gsl_vector *waves, const gsl_vector *cnums, const px_point backwin_cols, const px_point modinfo_cols, const int magcol, const int fullinfo) are not documented:
+  parameter 'backwin_cols'
+  parameter 'modinfo_cols'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1850: Warning: The following parameters of fill_missing_image_coordinates(SexObject *o, struct WorldCoor *from_wcs, int overwrite) are not documented:
+  parameter 'overwrite'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1785: Warning: The following parameters of fill_missing_WCS_coordinates(SexObject *o, struct WorldCoor *from_wcs, int overwrite) are not documented:
+  parameter 'overwrite'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1639: Warning: The following parameters of get_SexObject_from_catalog(char filename[], const double lambda_mark) are not documented:
+  parameter 'lambda_mark'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:772: Warning: argument 'dmag' of command @param is not found in the argument list of set_extraction_parameters(SexObject *sobj, int bck_mode, float mfwhm, int auto_reorient, double trace_angle, beam *actbeam)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1051: Warning: argument 'maxmag' of command @param is not found in the argument list of SexObject_to_object(SexObject *sobj, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1051: Warning: The following parameters of SexObject_to_object(SexObject *sobj, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode) are not documented:
+  parameter 'conf'
+  parameter 'bck_mode'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:628: Warning: The following parameters of SexObject_to_slitgeom(const aperture_conf *conf, const SexObject *sobj, const double trace_angle, beam *actbeam) are not documented:
+  parameter 'conf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1328: Warning: argument 'mmag_extract' of command @param is not found in the argument list of SexObjects_to_oblist(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1328: Warning: argument 'mmag_mark' of command @param is not found in the argument list of SexObjects_to_oblist(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1328: Warning: The following parameters of SexObjects_to_oblist(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode) are not documented:
+  parameter 'conf'
+  parameter 'bck_mode'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1377: Warning: argument 'mmag_extract' of command @param is not found in the argument list of SexObjects_to_oblistII(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1377: Warning: argument 'mmag_mark' of command @param is not found in the argument list of SexObjects_to_oblistII(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_sex.c:1377: Warning: The following parameters of SexObjects_to_oblistII(SexObject **sobjs, observation *const obs, aperture_conf *conf, char conffile[], float mfwhm, float dmag, int auto_reorient, int bck_mode) are not documented:
+  parameter 'conf'
+  parameter 'bck_mode'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:928: Warning: argument 'coutncolname' of command @param is not found in the argument list of add_data_to_SPC(spectrum *spec, char countcolname[], char errorcolname[], char weightcolname[], char ID[], char filename[], int hdunum, long N)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:928: Warning: The following parameters of add_data_to_SPC(spectrum *spec, char countcolname[], char errorcolname[], char weightcolname[], char ID[], char filename[], int hdunum, long N) are not documented:
+  parameter 'countcolname'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:1292: Warning: argument 'coutncolname' of command @param is not found in the argument list of add_data_to_SPC_opened(spectrum *spec, char countcolname[], char errorcolname[], char weightcolname[], char ID[], fitsfile *input, long N)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:1292: Warning: The following parameters of add_data_to_SPC_opened(spectrum *spec, char countcolname[], char errorcolname[], char weightcolname[], char ID[], fitsfile *input, long N) are not documented:
+  parameter 'countcolname'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:598: Warning: argument 'extname' of command @param is not found in the argument list of add_ID_to_SPC(char filename[], int N, char ID[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:598: Warning: The following parameters of add_ID_to_SPC(char filename[], int N, char ID[]) are not documented:
+  parameter 'ID'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:1223: Warning: argument 'filename' of command @param is not found in the argument list of add_spectra_to_SPC_opened(fitsfile *input, spectrum *obj_spec, spectrum *bck_spec, spectrum *sobj_spec, int aperID, int beamID)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:1223: Warning: The following parameters of add_spectra_to_SPC_opened(fitsfile *input, spectrum *obj_spec, spectrum *bck_spec, spectrum *sobj_spec, int aperID, int beamID) are not documented:
+  parameter 'input'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:200: Warning: argument 'res' of command @param is not found in the argument list of empty_counts_spectrum_copy(spectrum *a)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_spc.c:115: Warning: argument 'res' of command @param is not found in the argument list of subtract_spectra(spectrum *a, spectrum *b)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_trace_functions.c:217: Warning: argument 'a' of command @param is not found in the argument list of create_polyN(gsl_vector *v)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_trace_functions.c:217: Warning: The following parameters of create_polyN(gsl_vector *v) are not documented:
+  parameter 'v'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_trace_functions.c:259: Warning: argument 'a' of command @param is not found in the argument list of vector_to_trace_poly2(gsl_vector *v)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_trace_functions.c:296: Warning: argument 'a' of command @param is not found in the argument list of vector_to_trace_polyN(gsl_vector *v)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:74: Warning: The following parameters of check_worldcoo_input(const colinfo *actcatinfo, const int thsky) are not documented:
+  parameter 'thsky'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:733: Warning: The following parameters of get_magauto_col(const gsl_vector *wavelength, const gsl_vector *colnums, const double lambda_mark) are not documented:
+  parameter 'lambda_mark'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:591: Warning: The following parameters of get_magcols(const colinfo *actcatinfo, gsl_vector *wavelength, gsl_vector *colnums) are not documented:
+  parameter 'colnums'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:893: Warning: argument 'str' of command @param is not found in the argument list of isnum2(char *string)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_utils.c:893: Warning: The following parameters of isnum2(char *string) are not documented:
+  parameter 'string'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_wl_calib.c:234: Warning: argument 'order' of command @param is not found in the argument list of create_calib_from_gsl_vector(const int for_grism, const gsl_vector *a)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_wl_calib.c:96: Warning: argument 'ap_pixel' of command @param is not found in the argument list of prange_cut(ap_pixel *in_p, const gsl_vector *prange, const calib_function *wl_calibration)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spc_wl_calib.c:96: Warning: The following parameters of prange_cut(ap_pixel *in_p, const gsl_vector *prange, const calib_function *wl_calibration) are not documented:
+  parameter 'in_p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:32: Warning: The following parameters of add_to_spec_table(spectrum *const spec, const int bin, const ap_pixel *const cur_p, const int quant_cont, const double weight) are not documented:
+  parameter 'quant_cont'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:317: Warning: argument 'px_width' of command @param is not found in the argument list of bin_naive(const ap_pixel *const ap_p, const double ob_width, const double ob_orient, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:317: Warning: argument 'ob_orientation' of command @param is not found in the argument list of bin_naive(const ap_pixel *const ap_p, const double ob_width, const double ob_orient, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:317: Warning: argument 'flags' of command @param is not found in the argument list of bin_naive(const ap_pixel *const ap_p, const double ob_width, const double ob_orient, const int quant_cont)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:317: Warning: The following parameters of bin_naive(const ap_pixel *const ap_p, const double ob_width, const double ob_orient, const int quant_cont) are not documented:
+  parameter 'ob_orient'
+  parameter 'quant_cont'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: argument 'px_width' of command @param is not found in the argument list of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: argument 'ob_width' of command @param is not found in the argument list of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: argument 'ob_orientation' of command @param is not found in the argument list of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: argument 'flags' of command @param is not found in the argument list of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:483: Warning: The following parameters of bin_optimal(const ap_pixel *const ap_p, const beam curbeam, const int quant_cont, const gsl_matrix *weights, const drzstamp_dim dimension, gsl_matrix *coverage) are not documented:
+  parameter 'curbeam'
+  parameter 'quant_cont'
+  parameter 'weights'
+  parameter 'dimension'
+  parameter 'coverage'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:636: Warning: The following parameters of bin_weighted(const ap_pixel *const ap_p, const double ob_orient, const trace_func *const trace, const int n_sub, const int flags) are not documented:
+  parameter 'trace'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_binning.c:256: Warning: argument 'size' of command @param is not found in the argument list of fill_w_pixel(w_pixel *const pix, const double x0, const double y0, const double angle)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_fitting.c:299: Warning: The following parameters of comp_vector_polyN(const int m, const double *xs, double *ys, double *ws, double *yi, const int n, const int final) are not documented:
+  parameter 'm'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_fitting.c:149: Warning: argument 'c' of command @param is not found in the argument list of fill_polyN_interp(const double *const xs, double *const ys, double *const ws, double *yi, const int n, gsl_vector *coeffs, gsl_matrix *cov, gsl_vector *interp, const int final)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_fitting.c:149: Warning: The following parameters of fill_polyN_interp(const double *const xs, double *const ys, double *const ws, double *yi, const int n, gsl_vector *coeffs, gsl_matrix *cov, gsl_vector *interp, const int final) are not documented:
+  parameter 'coeffs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:473: Warning: The following parameters of drizzled_stamp_img(const ap_pixel *const ap_p, double width, double orient, const drzstamp_dim dimension) are not documented:
+  parameter 'orient'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:938: Warning: argument 'resampwidth' of command @param is not found in the argument list of drizzled_stamp_img_orig(const ap_pixel *const ap_p, float width, aperture_conf *conf)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:938: Warning: The following parameters of drizzled_stamp_img_orig(const ap_pixel *const ap_p, float width, aperture_conf *conf) are not documented:
+  parameter 'conf'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:839: Warning: The following parameters of get_quad_from_pixel(const ap_pixel *cur_p, const double orient, const drzstamp_dim dimension) are not documented:
+  parameter 'orient'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:709: Warning: The following parameters of get_stamp_dim(const ap_pixel *const ap_p, float width, aperture_conf *conf, const int beamID, d_point *stp_min) are not documented:
+  parameter 'stp_min'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:379: Warning: The following parameters of rectified_stamp_img(const ap_pixel *const ap_p, float width, d_point *stp_min) are not documented:
+  parameter 'stp_min'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_output.c:194: Warning: The following parameters of stamp_img_drzprep(const int opt_extr, const ap_pixel *const ap_p, const ap_pixel *const se_p, float width, float nullval, int quant_cont, drzstamp_dim dimension, gsl_matrix *drzcoeffs, double exptime, double sky_cps, double rdnoise, const int bckmode) are not documented:
+  parameter 'se_p'
+  parameter 'rdnoise'
+  parameter 'bckmode'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/spce_sect.c:51: Warning: The following parameters of find_section_point(sectionfun *sf, const double x, const double y, double *const res) are not documented:
+  parameter 'y'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/specmodel_utils.c:469: Warning: argument 'spectral_models_file' of command @param is not found in the argument list of access_fits_models(const char fits_models_file[])
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/specmodel_utils.c:469: Warning: The following parameters of access_fits_models(const char fits_models_file[]) are not documented:
+  parameter 'fits_models_file'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/specmodel_utils.c:824: Warning: argument 'spectral_models' of command @param is not found in the argument list of get_model_sed(const spectral_models *spec_mod, const int modspec)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/specmodel_utils.c:824: Warning: The following parameters of get_model_sed(const spectral_models *spec_mod, const int modspec) are not documented:
+  parameter 'spec_mod'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trace_conf.c:285: Warning: The following parameters of get_trace_xoff_at_pos(char *filename, int beamID, d_point p) are not documented:
+  parameter 'p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trace_conf.c:324: Warning: The following parameters of get_trace_yoff_at_pos(char *filename, int beamID, d_point p) are not documented:
+  parameter 'p'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1116: Warning: argument 'data_matrix' of command @param is not found in the argument list of get_ipc_fdata(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1116: Warning: argument 'actbeam' of command @param is not found in the argument list of get_ipc_fdata(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1116: Warning: The following parameters of get_ipc_fdata(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam) are not documented:
+  parameter 'data_vals'
+  parameter 'act_beam'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1223: Warning: argument 'data_matrix' of command @param is not found in the argument list of get_wf_special(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam, double yoffs)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1223: Warning: argument 'actbeam' of command @param is not found in the argument list of get_wf_special(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam, double yoffs)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1223: Warning: The following parameters of get_wf_special(const aperture_conf *conf, observation *obs, gsl_matrix *data_vals, beam act_beam, double yoffs) are not documented:
+  parameter 'data_vals'
+  parameter 'act_beam'
+  parameter 'yoffs'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1461: Warning: argument 'actbeam' of command @param is not found in the argument list of kappa_sigma_klipp_ipc(const aperture_conf *conf, observation *obs, gsl_matrix *data_matrix, beam act_beam, const char *ipc_file)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1461: Warning: argument 'ipc_file_path' of command @param is not found in the argument list of kappa_sigma_klipp_ipc(const aperture_conf *conf, observation *obs, gsl_matrix *data_matrix, beam act_beam, const char *ipc_file)
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1461: Warning: The following parameters of kappa_sigma_klipp_ipc(const aperture_conf *conf, observation *obs, gsl_matrix *data_matrix, beam act_beam, const char *ipc_file) are not documented:
+  parameter 'act_beam'
+  parameter 'ipc_file'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1332: Warning: The following parameters of strip_wf_special(fit_data *old_fdata, double *y_fract, int i_max) are not documented:
+  parameter 'y_fract'
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/src/axesim/trfit_utils.c:1013: Warning: The following parameters of write_ipc_fit(fit_data *f_data, double *y_values, const char *ipc_file, const double qual, double *yfract) are not documented:
+  parameter 'qual'
+  parameter 'yfract'

@@ -1,0 +1,95 @@
+
+The source distribution for the aXe simulation software aXeSIM
+==============================================================
+
+1. Introduction
+---------------
+This are the sources of the C-executables for the beta-distribution of
+the aXeSIM package. You should try to compile from this package only
+if you are not working with Linux or in case that you encountered
+problems with the binaries that are delivered with the
+aXeSIM package.
+The programs used for aXeSIM are selection of the programs that
+are part of the aXe software
+(see http://stecf.org/software/slitless_software/axe),
+thus structure and setup are very similar to aXe.
+
+
+2. Requirements
+---------------
+The following are required to compile and install the aXeSIM
+executables:
+
+- GNU CC 2.95 or later compiler
+- GNU Scientific Libraries 1.0 (http://sources.redhat.com/gsl/)
+- WCStools 3.6 libraries (http://tdc-www.harvard.edu/software/wcstools/)
+- CFITSIO 2.x libraries
+(http://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html)
+
+Install the libraries according to the instructions given with the
+respective source or binary distributions.
+
+In case that you do not have the privileges to install the libraries
+at their default location (e.g. "/usr/local/lib" or similar) it
+may be wise to install them at a common location, e.g. under
+"/yourpath/axelibs/", where "yourpath" is the location of a directory
+accessible to you. In this case do not forget to:
+a) set the location of the libraries on the library path LD_LIBRARY_PATH
+   (e.g. by inserting the line
+    "setenv  LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/yourpath/axelibs/lib"
+    into your .cshrc);
+b) make the GSL-script "gsl-config" accessible by either putting its
+   location ("/yourpath/axelibs/bin") on your PATH-variable
+   or defining the variable GSL_CONFIG by inserting the
+   line "setenv GSL_CONFIG /yourpath/axelibs/bin/gsl-config"
+   into your .cshrc.
+
+3. Configuring aXeSIM
+---------------------
+The configure script generates a Makefile which can be used to compile
+the aXeSIM tasks. After all the above preparation it should be
+straightforward to configure aXeSIM. In the case that the libraries are
+at the usual locations this is done by typing
+
+>./configure
+
+in the directory where the aXeSIM-source was extracted.
+
+In the event that the libraries listed above are not installed in the
+usual places, online parameters should be used to tell the configure
+script where to find them. If you installed the libraries at the
+locations recommended above, typing
+
+>./configure --with-cfitsio-prefix=/yourpath/axelibs
+--with-wcstools-prefix=/yourpath/axelibs/wcstools-3.x.x
+
+should do the job. In case things do not go smoothly, follow the
+instructions which go along with the error messages to fix problems.
+Also the file "config.log" records continually the status information
+of the configuration process. A detailed description of the errors
+and possible solutions can be found there, too.
+
+The configure script should create a proper Makefile on Linux, Solaris
+and MacOSX platforms. Note that under MacOSX for Power PC's the option
+"--build=powerpc" must be added to the options listed above,
+and ``-build=i386-pc-macosx'' for Intel Macs.
+
+
+4. Compiling aXeSIM
+-------------------
+The next step consists of actually building the aXeSIM library
+and aXeSIM tasks:
+
+>make
+
+should create the following aXeSIM tasks:
+
+./bin/aXe_AF2PET
+./bin/aXe_DIRIMAGE
+./bin/aXe_GOL2AF
+./bin/aXe_PET2SPC
+./bin/aXe_PETCONT
+./bin/aXe_SEX2GOL
+./bin/aXe_STAMPS
+./bin/aXe_DISPIMAGE
+

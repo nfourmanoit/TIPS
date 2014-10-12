@@ -1,0 +1,432 @@
+\hypertarget{aXe__GOL2AF_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-GOL2AF.c File Reference}
+\label{aXe__GOL2AF_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-GOL2AF.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-GOL2AF.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-sex.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}inout\_\-aper.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aXe__GOL2AF_8c_a7a38b874452a6cde6ebee9e98c980eef}{AXE\_\-IMAGE\_\-PATH}~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__GOL2AF_8c_a75c154942e560254898bcafaf48bdf3d}{AXE\_\-OUTPUT\_\-PATH}~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__GOL2AF_8c_a0b0be957330d9c69fa325ee014ce4dad}{AXE\_\-CONFIG\_\-PATH}~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structobservation}{observation} $\ast$ \hyperlink{aXe__GOL2AF_8c_a2f04ea6193fe4e3445eb2fbfe59ddb37}{load\_\-empty\_\-image} (const char $\ast$const fname, int hdunum)
+\item 
+int \hyperlink{aXe__GOL2AF_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{aXe__GOL2AF_8c_a0b0be957330d9c69fa325ee014ce4dad}{
+\index{aXe\_\-GOL2AF.c@{aXe\_\-GOL2AF.c}!AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}}
+\index{AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}!aXe_GOL2AF.c@{aXe\_\-GOL2AF.c}}
+\subsubsection[{AXE\_\-CONFIG\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-CONFIG\_\-PATH~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}}}
+\label{aXe__GOL2AF_8c_a0b0be957330d9c69fa325ee014ce4dad}
+\hypertarget{aXe__GOL2AF_8c_a7a38b874452a6cde6ebee9e98c980eef}{
+\index{aXe\_\-GOL2AF.c@{aXe\_\-GOL2AF.c}!AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}}
+\index{AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}!aXe_GOL2AF.c@{aXe\_\-GOL2AF.c}}
+\subsubsection[{AXE\_\-IMAGE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-IMAGE\_\-PATH~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}}}
+\label{aXe__GOL2AF_8c_a7a38b874452a6cde6ebee9e98c980eef}
+\hypertarget{aXe__GOL2AF_8c_a75c154942e560254898bcafaf48bdf3d}{
+\index{aXe\_\-GOL2AF.c@{aXe\_\-GOL2AF.c}!AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}}
+\index{AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}!aXe_GOL2AF.c@{aXe\_\-GOL2AF.c}}
+\subsubsection[{AXE\_\-OUTPUT\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-OUTPUT\_\-PATH~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}}}
+\label{aXe__GOL2AF_8c_a75c154942e560254898bcafaf48bdf3d}
+
+
+\subsection{Function Documentation}
+\hypertarget{aXe__GOL2AF_8c_a2f04ea6193fe4e3445eb2fbfe59ddb37}{
+\index{aXe\_\-GOL2AF.c@{aXe\_\-GOL2AF.c}!load\_\-empty\_\-image@{load\_\-empty\_\-image}}
+\index{load\_\-empty\_\-image@{load\_\-empty\_\-image}!aXe_GOL2AF.c@{aXe\_\-GOL2AF.c}}
+\subsubsection[{load\_\-empty\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}{\bf observation}$\ast$ load\_\-empty\_\-image (const char $\ast$const  {\em fname}, \/  int {\em hdunum})}}
+\label{aXe__GOL2AF_8c_a2f04ea6193fe4e3445eb2fbfe59ddb37}
+
+
+
+\begin{DoxyCode}
+37 {
+38   observation *obs = malloc (sizeof (observation));
+39 
+40   obs->grism = FITSnaxes_to_gsl (fname, hdunum);
+41   return obs;
+42 }
+\end{DoxyCode}
+\hypertarget{aXe__GOL2AF_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{aXe\_\-GOL2AF.c@{aXe\_\-GOL2AF.c}!main@{main}}
+\index{main@{main}!aXe_GOL2AF.c@{aXe\_\-GOL2AF.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{aXe__GOL2AF_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+
+\begin{DoxyCode}
+46 {
+47   char *opt;
+48   char grism_image[MAXCHAR];
+49   char grism_image_path[MAXCHAR];
+50 
+51   char sex_catalog[MAXCHAR];
+52   char sex_catalog_path[MAXCHAR];
+53 
+54   char aper_file[MAXCHAR];
+55   char aper_file_path[MAXCHAR];
+56 
+57   char conf_file[MAXCHAR];
+58   char conf_file_path[MAXCHAR];
+59 
+60   //float mmag_extract, mmag_mark;
+61   float mfwhm, dmag;
+62 
+63   int leaveout_ignored = 1;
+64   int auto_reorient = 1;
+65   //int no_orient = 0;
+66   //int slitless_geom=0;
+67   int num;
+68   char ext[MAXCHAR];
+69   double lambda_mark=0.0;
+70   int bck_mode=0;
+71 
+72   aperture_conf *conf;
+73   SexObject **os;
+74   object **oblist;
+75   observation *obs;
+76 
+77   if ((argc < 3) || (opt = get_online_option ("help", argc, argv)))
+78     {
+79       fprintf (stdout,
+80                "ST-ECF European Coordinating Facility\n"
+81                "aXe_GOL2AF Version %s:\n"
+82                "            aXe task to create an Object Aperture File (OAF)\n"
+83                "            or a Background Aperture File (BAF) (-bck option)  us
+      ing an\n"
+84                "            input Sextractor Grism Object List (GOL).\n"
+85                "            The AF files contain information about each object (a
+      perture)\n"
+86                "            and information about the various beams (orders) in e
+      ach of \n"
+87                "            these apertures. These are simple text files which ca
+      n be\n"
+88                "            edited by hand. The IGNORE keywords can be set to 1 i
+      f a\n"
+89                "            particular beam (order) is to be ignored during the e
+      xtraction\n"
+90                "            process. The MMAG_EXTRACT and MMAG_MARK keyword of ea
+      ch beam\n"
+91                "            listed in the aXe configuration file determine if a p
+      articluar\n "
+92                "            beam is flagged to be extracted or completely ignored
+      .\n"
+93                "            The -dmag switch can be used to adjust these. See the
+       aXe manual\n"
+94                "            for more details. An extraction width multiplicative 
+      factor can\n"
+95                "            be set with the -mfwhm option (e.g. to generate BAF c
+      ontaining\n"
+96                "            broader apertures).\n"
+97                "            By default, when the extraction angle is too close to
+       the\n"
+98                "            dispersion direction, 90 degrees are added to the ext
+      raction\n"
+99                "            angle. This can be overwritten by using the -no_auto_
+      orient\n"
+100                "            online parameter.\n"
+101                "\n"
+102                "            Input FITS mages are looked for in $AXE_IMAGE_PATH\n"
+      
+103                "            aXe config file is looked for in $AXE_CONFIG_PATH\n"
+104                "            All outputs are writen to $AXE_OUTPUT_PATH\n"
+105                "\n"
+106                "Usage:\n"
+107                "        aXe_GOL2AF [g/prism image filename] [aXe filename] [optio
+      ns]\n"
+108                "\n"
+109                "Options:\n"
+110                "             -bck                - to generate a BAF instead of a
+      n OAF file\n"
+111                "             -SCI_hdu=[integer]  - overwrite the default from the
+       \n"
+112                "                                   configuration file \n"
+113                "             -mfwhm=[float]      - an extraction width multiplica
+      tive factor.\n"
+114                "             -exclude_faint      - do not even list faint object 
+      in the result.\n"
+115                "             -out_AF=[string]    - overwrites the default output 
+      aper filename.\n"
+116                "             -in_GOL=[string]    - overwrites the default input c
+      atalog name.\n"
+117                "             -auto_orient=[0/1]  - set to 0 to disable the automa
+      tic extraction\n"
+118                "                                   orientation.\n"
+119                "             -no_orient          - disable tilted extraction (ver
+      tical\n"
+120                "                                   extraction only).\n"
+121                "             -dmag=[float]       - A number to add to the MMAG_EX
+      TRACT and\n"
+122                "                                   MMAG_MARK values.\n"
+123                "\n"
+124                "Example: ./aXe_GOL2AF slim_grism.fits -bck -dmag=2 -mfwhm=2\n"
+125                "\n",RELEASE);
+126       exit (1);
+127     }
+128 
+129   fprintf (stdout, "aXe_GOL2AF: Starting...\n");
+130 
+131   /* Get the Grism/Prism image name */
+132   strcpy (grism_image, argv[1]);
+133   build_path (AXE_IMAGE_PATH, grism_image, grism_image_path);
+134 
+135   /* Get the name of the configuration file */
+136   strcpy (conf_file, argv[2]);
+137   build_path (AXE_CONFIG_PATH, conf_file, conf_file_path);
+138 
+139   /* Read the configuration file */
+140   conf = get_aperture_descriptor (conf_file_path);
+141 
+142   /* Determine where the various extensions are in the FITS file */
+143   get_extension_numbers(grism_image_path, conf,conf->optkey1,conf->optval1);
+144 
+145   if ((opt = get_online_option ("SCI_hdu", argc, argv)))
+146     {
+147       char str[MAXCHAR];
+148       strcpy(str,opt);
+149       conf->science_numext = atoi(str);
+150     }
+151 
+152 
+153   /* Get or set up the name of the output Aperture File */
+154   if ((opt = get_online_option ("out_AF", argc, argv)))
+155     {
+156       /* get it */
+157       strcpy (aper_file, opt);
+158       strcpy (aper_file_path, opt);
+159     }
+160   else
+161     {
+162       /* set the name automatically */
+163       /* Get the name of the aperture file type, OAF or BAF */
+164       if ((opt=get_online_option ("bck",argc,argv)))
+165         {
+166           strcpy (ext,".BAF");
+167           bck_mode=1;
+168         }
+169       else
+170         {
+171           strcpy (ext,".OAF");
+172         }
+173       strcpy (aper_file, argv[1]);
+174       replace_file_extension (grism_image, aper_file, ".fits", ext,
+175                               conf->science_numext);
+176       build_path (AXE_OUTPUT_PATH, aper_file, aper_file_path);
+177     }
+178 
+179      /* Set the option extraction width multiplicative factor */
+180   if ((opt = get_online_option ("mfwhm", argc, argv)))
+181     {
+182       {
+183         /*char str[MAXCHAR];
+184           strcpy (str, opt);
+185           sscanf (str, "%f", &mfwhm);*/
+186         mfwhm = atof(opt);
+187       }
+188     }
+189   else
+190     {
+191       mfwhm = 1.0;
+192     }
+193 
+194   if ((opt = get_online_option ("dmag", argc, argv)))
+195     {
+196       {
+197         /*char str[MAXCHAR];
+198           strcpy (str, opt);
+199           sscanf (str, "%f", &mfwhm);*/
+200         dmag = atof(opt);
+201       }
+202     }
+203   else
+204     {
+205       dmag = 0.0;
+206     }
+207 
+208   /* Set the option to include object that are too faint into the output
+209      aperture file.
+210   */
+211   if ((opt = get_online_option ("exclude_faint", argc, argv)))
+212     {
+213       leaveout_ignored = 1;
+214     }
+215   else
+216     {
+217       leaveout_ignored = 0;
+218     }
+219 
+220   /* Set the auto orientation mode for extraction on or off, default is on (=1)
+221 
+222   if ((opt = get_online_option ("auto_orient",argc,argv)))
+223     {
+224       if (!atof(opt))
+225         auto_reorient = 0;
+226     }
+227   else
+228     {
+229       auto_reorient = 1;
+230     }
+231   */
+232 
+233   // set the flag for using slitless geometry,
+234   // to say extraction parameters optimized for
+235   // slitless geometry
+236   if ((opt == get_online_option ("slitless_geom",argc,argv)))
+237         {
+238       if (!atof(opt))
+239         //slitless_geom = 0;
+240         auto_reorient = 0;
+241         }
+242   else
+243         {
+244     //slitless_geom = 1;
+245     auto_reorient = 1;
+246         }
+247 
+248   /* Set the option to disbale tilted extraction */
+249   if ((opt = get_online_option ("orient", argc, argv)))
+250     {
+251       if (!atof(opt))
+252         auto_reorient = 2;
+253     }
+254 
+255   /* Get or generate the name of the sextractor catalog to read */
+256   if ((opt = get_online_option ("in_GOL", argc, argv)))
+257     {
+258       strcpy (sex_catalog, opt);
+259       strcpy (sex_catalog_path, opt);
+260     }
+261   else
+262     {
+263       strcpy (sex_catalog, argv[1]);
+264       replace_file_extension (grism_image, sex_catalog, ".fits", ".cat",
+265                               conf->science_numext);
+266       build_path (AXE_OUTPUT_PATH, sex_catalog, sex_catalog_path);
+267     }
+268 
+269    if ((opt = get_online_option ("lambda_mark", argc, argv)))
+270     {
+271       lambda_mark = atof(opt);
+272     }
+273    else{
+274       lambda_mark = 800.0;
+275    }
+276 
+277    // check the configuration file for the smoothin keywords
+278    if (!check_conf_for_slitlessgeom(conf, auto_reorient))
+279    //if (!check_conf_for_slitlessgeom(conf, slitless_geom))
+280      aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+281          "aXe_GOL2AF: Either the configuration file %s does not contain\n"
+282          "the necessary keywords for the slitless geometry: POBJSIZE,\n"
+283          "or this keyword has an unreasonable value < 0.0!\n",
+284          conf_file_path);
+285 
+286   fprintf (stdout,
+287            "aXe_GOL2AF: Main configuration file name:    %s\n",
+288            conf_file_path);
+289   fprintf (stdout,
+290            "aXe_GOL2AF: Input data file name:            %s\n",
+291            grism_image_path);
+292   fprintf (stdout,
+293            "aXe_GOL2AF: SCI extension number:            %d\n",
+294            conf->science_numext);
+295   fprintf (stdout,
+296            "aXe_GOL2AF: Input grism object list (GOL):   %s\n",
+297            sex_catalog_path);
+298   fprintf (stdout,
+299            "aXe_GOL2AF: Output aperture file name:       %s\n",
+300            aper_file_path);
+301   fprintf (stdout,
+302            "aXe_GOL2AF: FWHM multiplicative factor:      %f\n",
+303            mfwhm);
+304   fprintf (stdout,
+305            "aXe_GOL2AF: Dmag adjustment:      %f\n",
+306            dmag);
+307   if (leaveout_ignored)
+308     fprintf (stdout,
+309              "aXe_GOL2AF: Ignored object will not "
+310              "be included in the output aperture file\n");
+311   if (!leaveout_ignored)
+312     fprintf (stdout,
+313              "aXe_GOL2AF: Ignored object will be "
+314              "included in the output aperture file\n");
+315   if (auto_reorient != 2)
+316     fprintf (stdout,
+317              "aXe_GOL2AF: Tilted extraction will be performed.\n");
+318   if (auto_reorient == 0)
+319     fprintf (stdout,
+320              "aXe_GOL2AF: The extraction geometry follows the object\n");
+321   if (auto_reorient == 1)
+322     //if (slitless_geom)
+323     fprintf (stdout,
+324         "aXe_GOL2AF: Extraction geometry is optimized for slitless spectroscopy.\
+      n");
+325     //else
+326     //  fprintf (stdout,
+327     //        "aXe_GOL2AF: The extraction geometry follows the object, but may sw
+      itch.\n");
+328   if (auto_reorient==2)
+329     fprintf (stdout,
+330              "aXe_GOL2AF: NO tilted extraction will be performed (e.g. vertical o
+      nly).\n");
+331   fprintf (stdout,
+332            "aXe_GOL2AF: Wavelength for object selection [nm]: %f\n",
+333            lambda_mark);
+334   fprintf(stdout,"\n\n");
+335 
+336   // extend the beams when creating
+337   // BAF's
+338   if (bck_mode)
+339     extend_config_beams(conf);
+340 
+341   fprintf (stdout, "aXe_GOL2AF: Loading object list...");
+342   os = get_SexObject_from_catalog (sex_catalog_path, lambda_mark);
+343   fprintf (stdout, "Done.\n");fflush(stdout);
+344 
+345   fprintf (stdout, "aXe_GOL2AF: Reading image...");
+346   obs = load_empty_image (grism_image_path, conf->science_numext);
+347   fprintf (stdout, "Done.\n");fflush(stdout);
+348 
+349   fprintf (stdout, "aXe_GOL2AF: Generating aperture list...");
+350 
+351   //if (!slitless_geom)
+352   //use the old, aXe-1.6  code
+353   //oblist = SexObjects_to_oblist(os, obs, conf, conf_file_path, mfwhm, dmag,
+354   //                               auto_reorient, bck_mode);
+355   // else
+356 
+357   // use the new aXe-1.7 code
+358   oblist = SexObjects_to_oblistII(os, obs, conf, conf_file_path, mfwhm, dmag, aut
+      o_reorient, bck_mode);
+359 
+360   fprintf (stdout, "Done.\n");fflush(stdout);
+361 
+362   fprintf (stdout, "aXe_GOL2AF: Writing aperture file...");fflush(stdout);
+363   num = object_list_to_file (oblist, aper_file_path, leaveout_ignored);
+364   fprintf (stdout, "%d beams written.\n", num);
+365 
+366   free_SexObjects (os);
+367   free_oblist (oblist);
+368 
+369   fprintf (stdout, "aXe_GOL2AF: Done...\n");
+370 
+371   exit (0);
+372 }
+\end{DoxyCode}

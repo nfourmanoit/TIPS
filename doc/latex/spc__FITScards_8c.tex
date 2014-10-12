@@ -1,0 +1,712 @@
+\hypertarget{spc__FITScards_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-FITScards.c File Reference}
+\label{spc__FITScards_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-FITScards.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-FITScards.c}}
+}
+{\ttfamily \#include \char`\"{}spc\_\-FITScards.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__FITScards}{spc\_\-FITScards}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structFITScards}{FITScards} $\ast$ \hyperlink{spc__FITScards_8c_a2b3df1d707d609ec92e837b96e79140d}{allocate\_\-FITScards} (int n)
+\item 
+void \hyperlink{spc__FITScards_8c_aaaba4aea09f708f12bf52e9446e5384b}{free\_\-FITScards} (\hyperlink{structFITScards}{FITScards} $\ast$cards)
+\item 
+\hyperlink{structFITScards}{FITScards} $\ast$ \hyperlink{spc__FITScards_8c_a7a09d3f4ae7b2068f051e00781080751}{get\_\-WCS\_\-FITScards} (const double rval1, const double delta1, const double rval2)
+\item 
+\hyperlink{structFITScards}{FITScards} $\ast$ \hyperlink{spc__FITScards_8c_a60d9bff1233863fe6771d0413d340bc5}{beam\_\-to\_\-FITScards} (\hyperlink{structobject}{object} $\ast$ob, int beamnum)
+\item 
+\hyperlink{structFITScards}{FITScards} $\ast$ \hyperlink{spc__FITScards_8c_a1c59aaa35e0ecd19cbbfc7d65b1cdf3a}{stpmin\_\-to\_\-FITScards} (\hyperlink{structd__point}{d\_\-point} stp\_\-min)
+\item 
+\hyperlink{structFITScards}{FITScards} $\ast$ \hyperlink{spc__FITScards_8c_a8b1e5d01354331f3046be5e0a432f51e}{drzinfo\_\-to\_\-FITScards} (\hyperlink{structobject}{object} $\ast$ob, int beamnum, \hyperlink{structd__point}{d\_\-point} outref, \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, gsl\_\-matrix $\ast$drizzcoeffs, int trlength, double relx, double rely, double objwidth, \hyperlink{structd__point}{d\_\-point} refwave\_\-pos, float sky\_\-cps, double drizzle\_\-width, double cdref, double spcorr)
+\item 
+\hyperlink{structFITScards}{FITScards} $\ast$ \hyperlink{spc__FITScards_8c_af17c0df011aa3245c5aecb6bf5d0b9b1}{nicbck\_\-info\_\-to\_\-FITScards} (const double skypix\_\-frac, const double scale\_\-factor, const double offset)
+\item 
+\hyperlink{structFITScards}{FITScards} $\ast$ \hyperlink{spc__FITScards_8c_a4a08bd7a333e8696bb347a2e7bec8a20}{dispstruct\_\-to\_\-FITScards} (\hyperlink{structdispstruct}{dispstruct} $\ast$disp)
+\item 
+void \hyperlink{spc__FITScards_8c_a6cb1187c647e381a5d1803846ee73a3e}{update\_\-contam\_\-model} (fitsfile $\ast$fptr, char model\_\-name\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{spc__FITScards_8c_a1ffb6615410d56886fdf5dc4ab8129ed}{check\_\-quantitative\_\-contamination} (fitsfile $\ast$fptr)
+\item 
+void \hyperlink{spc__FITScards_8c_a471d2609ea9bc328e07b18489922f5d2}{transport\_\-cont\_\-modname} (char grism\_\-file\_\-path\mbox{[}$\,$\mbox{]}, char PET\_\-file\_\-path\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__FITScards_8c_a2b3df1d707d609ec92e837b96e79140d}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!allocate\_\-FITScards@{allocate\_\-FITScards}}
+\index{allocate\_\-FITScards@{allocate\_\-FITScards}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{allocate\_\-FITScards}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FITScards}$\ast$ allocate\_\-FITScards (int {\em n})}}
+\label{spc__FITScards_8c_a2b3df1d707d609ec92e837b96e79140d}
+Routine to return a pointer to a FITScard structure with room allocated for n FITS header cards strings.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]the number of card to allocated memory for\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an allocated \hyperlink{structFITScards}{FITScards} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+21 {
+22     int i;
+23     FITScards *res;
+24 
+25     res = malloc(sizeof(FITScards));
+26 
+27     // Allocate enough room (n+1 for NULL termination) for all the cards
+28     res->cards = (char **) malloc(sizeof(char *)*n);
+29     if ( res->cards==NULL) {
+30         aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "allocate_FITScards: Out of
+       memory.");
+31     }
+32     for(i=0;i<n;i++) {
+33         res->cards[i] = (char *)malloc(sizeof(char)*FLEN_CARD);
+34         if (res->cards[i]==NULL) {
+35             aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "allocate_FITScards: Ou
+      t of memory.");
+36         }
+37     }
+38 
+39     res->n = n;
+40 
+41     return res;
+42 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_a60d9bff1233863fe6771d0413d340bc5}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!beam\_\-to\_\-FITScards@{beam\_\-to\_\-FITScards}}
+\index{beam\_\-to\_\-FITScards@{beam\_\-to\_\-FITScards}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{beam\_\-to\_\-FITScards}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FITScards}$\ast$ beam\_\-to\_\-FITScards ({\bf object} $\ast$ {\em ob}, \/  int {\em beamnum})}}
+\label{spc__FITScards_8c_a60d9bff1233863fe6771d0413d340bc5}
+Routine to generate FITS header cards containing the information contained in a \hyperlink{structbeam}{beam} structure
+
+The following information gets written about the \hyperlink{structbeam}{beam}:
+
+OBJECTID, Object ID, ob-\/$>$ID NBEAM,Number of \hyperlink{structbeam}{beam} in \hyperlink{structobject}{object}, ob-\/$>$nbeam BEAMID, This \hyperlink{structbeam}{beam} ID, b-\/$>$ID REFPNTX, x coord. of reference point, b-\/$>$refpoint.x REFPNTY, y coord. of reference point, b-\/$>$refpoint.y C0X, x coord. of 1st bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}0\mbox{]}.x C0Y, y coord. of 1st bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}0\mbox{]}.y C1X, x coord. of 2nd bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}1\mbox{]}.x C1Y, y coord. of 2nd bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}1\mbox{]}.y C2X, x coord. of 3rd bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}2\mbox{]}.x C2Y, y coord. of 3rd bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}2\mbox{]}.y C3X, x coord. of 4th bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}3\mbox{]}.x C3Y, y coord. of 4th bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}3\mbox{]}.y BB0X, x coord. of 1st bounding box corner, b-\/$>$bbox\mbox{[}0\mbox{]}.x BB0Y, y coord. of 1st bounding box corner, b-\/$>$bbox\mbox{[}0\mbox{]}.y BB1X, x coord. of 2nd bounding box corner, b-\/$>$bbox\mbox{[}1\mbox{]}.x BB1Y, y coord. of 2nd bounding box corner, b-\/$>$bbox\mbox{[}1\mbox{]}.y WIDTH, Width of \hyperlink{structobject}{object} in pixel, b-\/$>$width ORIENT, Orientation of \hyperlink{structobject}{object} in deg. wrt y-\/axis, CCW, b-\/$>$orient IGNORE, Ignore flag for this \hyperlink{structbeam}{beam}, b-\/$>$ignore
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ob}]a pointer to an existing \hyperlink{structobject}{object} structure containing the \hyperlink{structbeam}{beam} we are interested in \item[{\em b}]a pointer to an existing \hyperlink{structbeam}{beam} in the passed \hyperlink{structobject}{object} ob\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an allocated \hyperlink{structFITScards}{FITScards} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+146 {
+147     char templt[FLEN_CARD];
+148     int i=0,keytype, f_status=0;
+149     beam *b = ob->beams+beamnum;
+150 
+151     FITScards *cards;
+152 
+153     cards = allocate_FITScards(20);
+154 
+155     i=0;
+156     sprintf(templt,"OBJECTID = %d / Object ID",ob->ID);
+157     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+158     sprintf(templt,"NBEAM = %d / Number of beam in object",ob->nbeams);
+159     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+160     sprintf(templt,"BEAMID = %d / This beam ID",b->ID);
+161     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+162     sprintf(templt,"REFPNTX = %f / x coord. of reference point",b->refpoint.x);
+163     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+164     sprintf(templt,"REFPNTY = %f / y coord. of reference point",b->refpoint.y);
+165     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+166     sprintf(templt,"C0X = %d / x coord. of 1st bounding quadrangle corner",b->
+      corners[0].x);
+167     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+168     sprintf(templt,"C0Y = %d / y coord. of 1st bounding quadrangle corner",b->
+      corners[0].y);
+169     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+170     sprintf(templt,"C1X = %d / x coord. of 2nd bounding quadrangle corner",b->
+      corners[1].x);
+171     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+172     sprintf(templt,"C1Y = %d / y coord. of 2nd bounding quadrangle corner",b->
+      corners[1].y);
+173     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+174     sprintf(templt,"C2X = %d / x coord. of 3rd bounding quadrangle corner",b->
+      corners[2].x);
+175     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+176     sprintf(templt,"C2Y = %d / y coord. of 3rd bounding quadrangle corner",b->
+      corners[2].y);
+177     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+178     sprintf(templt,"C3X = %d / x coord. of 4th bounding quadrangle corner",b->
+      corners[3].x);
+179     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+180     sprintf(templt,"C3Y = %d / y coord. of 4th bounding quadrangle corner",b->
+      corners[3].y);
+181     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+182     sprintf(templt,"BB0X = %d / x coord. of 1st bounding box corner",b->bbox[0].
+      x);
+183     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+184     sprintf(templt,"BB0Y = %d / y coord. of 1st bounding box corner",b->bbox[0].
+      y);
+185     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+186     sprintf(templt,"BB1X = %d / x coord. of 2nd bounding box corner",b->bbox[1].
+      x);
+187     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+188     sprintf(templt,"BB1Y = %d / y coord. of 2nd bounding box corner",b->bbox[1].
+      y);
+189     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+190     sprintf(templt,"WIDTH = %f / Width of object in pixel",b->width);
+191     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+192     /* Angle reference frame is converted from aXe's to SeXtractor */
+193     sprintf(templt,"ORIENT = %f / Orientation of object in deg. wrt y-axis, CCW",
+      ((b->orient) / M_PI * 180. - 180.));
+194     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+195     sprintf(templt,"IGNORE = %d / Ignore flag for this beam",b->ignore);
+196     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+197 
+198     return cards;
+199 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_a1ffb6615410d56886fdf5dc4ab8129ed}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!check\_\-quantitative\_\-contamination@{check\_\-quantitative\_\-contamination}}
+\index{check\_\-quantitative\_\-contamination@{check\_\-quantitative\_\-contamination}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{check\_\-quantitative\_\-contamination}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-quantitative\_\-contamination (fitsfile $\ast$ {\em fptr})}}
+\label{spc__FITScards_8c_a1ffb6615410d56886fdf5dc4ab8129ed}
+The function reads the keyword \char`\"{}CONTAM\char`\"{} in an open FITS file and ananlyzes its content. In case that the content indicates a quantitative contamination model, 1 is returned. If not the value 0 is given back.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fptr}]-\/ pointer to the FITS-\/file \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+492 {
+493 
+494   char keyval[FLEN_CARD];
+495   char keyw[FLEN_KEYWORD];
+496   char comment[FLEN_COMMENT];
+497 
+498   int  f_status=0;
+499   int ret;
+500 
+501   // fill the keyword valiable
+502   sprintf(keyw,"CONTAM");
+503 
+504   // use the fitsio routine to read the keyword
+505   // react in case of an error
+506   fits_read_key(fptr, TSTRING, keyw, keyval, comment, &f_status);
+507   if (f_status)
+508     {
+509       ffrprt (stderr, f_status);
+510       aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+511                    "check_quantitative_contamination:\nCould not read keyword %s 
+      from fits-file.\n", keyw);
+512     }
+513 
+514   // check whether the keyword was there
+515   if (strlen(keyval) >0)
+516     {
+517       // check the keyword content agaist the
+518       // names of the non quantitative contamination models
+519       if (!strcmp(keyval,"GEOM"))
+520         ret=0;
+521       // set the quantitative contamination flag
+522       else
+523         ret=1;
+524     }
+525   // in case that the keyword does not exist,
+526   // the flag is not set
+527   else
+528     {
+529       ret=0;
+530     }
+531 
+532   // return the flag
+533   return ret;
+534 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_a4a08bd7a333e8696bb347a2e7bec8a20}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!dispstruct\_\-to\_\-FITScards@{dispstruct\_\-to\_\-FITScards}}
+\index{dispstruct\_\-to\_\-FITScards@{dispstruct\_\-to\_\-FITScards}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{dispstruct\_\-to\_\-FITScards}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FITScards}$\ast$ dispstruct\_\-to\_\-FITScards ({\bf dispstruct} $\ast$ {\em disp})}}
+\label{spc__FITScards_8c_a4a08bd7a333e8696bb347a2e7bec8a20}
+A helper function which generates FITS keywords containing the content of a disp structure.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em disp}]A pointer to a \hyperlink{structdispstruct}{dispstruct} structure\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an allocated \hyperlink{structFITScards}{FITScards} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+420 {
+421   char templt[FLEN_CARD];
+422   int i=0,j,keytype, f_status=0;
+423   int numcards=0;
+424   FITScards *cards;
+425 
+426   numcards += disp->pol->size;
+427   numcards +=1 ; /* for for_grism */
+428   //numcards +=2 ; /* for offset */
+429   numcards +=2 ; /* for cpoint */
+430   cards = allocate_FITScards(numcards);
+431 
+432   i=0;
+433   for (j=0;j<disp->pol->size;j++) {
+434     sprintf(templt,"DLDX%d = %g / Wavelength solution parameter",j,gsl_vector_get
+      (disp->pol,j));
+435     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+436   }
+437 
+438   sprintf(templt,"FORGRISM = %d / If 1 then grism polynomial used. Prism otherwis
+      e.",disp->for_grism);
+439   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+440   sprintf(templt,"CPOINTX = %f / X position where wavelength disp. was computed",
+      disp->cpoint.x);
+441   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+442   sprintf(templt,"CPOINTY = %f / X position where wavelength disp. was computed",
+      disp->cpoint.y);
+443   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+444   return cards;
+445 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_a8b1e5d01354331f3046be5e0a432f51e}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!drzinfo\_\-to\_\-FITScards@{drzinfo\_\-to\_\-FITScards}}
+\index{drzinfo\_\-to\_\-FITScards@{drzinfo\_\-to\_\-FITScards}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{drzinfo\_\-to\_\-FITScards}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FITScards}$\ast$ drzinfo\_\-to\_\-FITScards ({\bf object} $\ast$ {\em ob}, \/  int {\em beamnum}, \/  {\bf d\_\-point} {\em outref}, \/  {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  gsl\_\-matrix $\ast$ {\em drizzcoeffs}, \/  int {\em trlength}, \/  double {\em relx}, \/  double {\em rely}, \/  double {\em objwidth}, \/  {\bf d\_\-point} {\em refwave\_\-pos}, \/  float {\em sky\_\-cps}, \/  double {\em drizzle\_\-width}, \/  double {\em cdref}, \/  double {\em spcorr})}}
+\label{spc__FITScards_8c_a8b1e5d01354331f3046be5e0a432f51e}
+Routine to generate FITS header cards containing the information for drizzling and \hyperlink{structbeam}{beam} information contained in a \hyperlink{structbeam}{beam} structure
+
+The following information gets written about the \hyperlink{structbeam}{beam}:
+
+OBJECTID, Object ID, ob-\/$>$ID NBEAM,Number of \hyperlink{structbeam}{beam} in \hyperlink{structobject}{object}, ob-\/$>$nbeam BEAMID, This \hyperlink{structbeam}{beam} ID, b-\/$>$ID REFPNTX, x coord. of reference point, b-\/$>$refpoint.x REFPNTY, y coord. of reference point, b-\/$>$refpoint.y C0X, x coord. of 1st bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}0\mbox{]}.x C0Y, y coord. of 1st bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}0\mbox{]}.y C1X, x coord. of 2nd bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}1\mbox{]}.x C1Y, y coord. of 2nd bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}1\mbox{]}.y C2X, x coord. of 3rd bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}2\mbox{]}.x C2Y, y coord. of 3rd bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}2\mbox{]}.y C3X, x coord. of 4th bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}3\mbox{]}.x C3Y, y coord. of 4th bounding \hyperlink{structquadrangle}{quadrangle} corner, b-\/$>$corners\mbox{[}3\mbox{]}.y BB0X, x coord. of 1st bounding box corner, b-\/$>$bbox\mbox{[}0\mbox{]}.x BB0Y, y coord. of 1st bounding box corner, b-\/$>$bbox\mbox{[}0\mbox{]}.y BB1X, x coord. of 2nd bounding box corner, b-\/$>$bbox\mbox{[}1\mbox{]}.x BB1Y, y coord. of 2nd bounding box corner, b-\/$>$bbox\mbox{[}1\mbox{]}.y WIDTH, Width of \hyperlink{structobject}{object} in pixel, b-\/$>$width ORIENT, Orientation of \hyperlink{structobject}{object} in deg. wrt y-\/axis, CCW, b-\/$>$orient IGNORE, Ignore flag for this \hyperlink{structbeam}{beam}, b-\/$>$ignore
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ob}]a pointer to an existing \hyperlink{structobject}{object} structure containing the \hyperlink{structbeam}{beam} we are interested in \item[{\em b}]a pointer to an existing \hyperlink{structbeam}{beam} in the passed \hyperlink{structobject}{object} ob\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to an allocated \hyperlink{structFITScards}{FITScards} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+261 {
+262     //double dx, dy;
+263     char templt[FLEN_CARD];
+264     int i=0,keytype, f_status=0;
+265     beam *b = ob->beams+beamnum;
+266 
+267     FITScards *cards;
+268 
+269     cards = allocate_FITScards(56);
+270 
+271     i=0;
+272     sprintf(templt,"OBJECTID = %d / Object ID",ob->ID);
+273     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+274     sprintf(templt,"NBEAM = %d / Number of beam in object",ob->nbeams);
+275     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+276     sprintf(templt,"BEAMID = %d / This beam ID",b->ID);
+277     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+278     sprintf(templt,"REFPNTX = %f / x coord. of reference point",b->refpoint.x);
+279     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+280     sprintf(templt,"REFPNTY = %f / y coord. of reference point",b->refpoint.y);
+281     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+282     sprintf(templt,"C0X = %d / x coord. of 1st bounding quadrangle corner",b->
+      corners[0].x);
+283     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+284     sprintf(templt,"C0Y = %d / y coord. of 1st bounding quadrangle corner",b->
+      corners[0].y);
+285     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+286     sprintf(templt,"C1X = %d / x coord. of 2nd bounding quadrangle corner",b->
+      corners[1].x);
+287     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+288     sprintf(templt,"C1Y = %d / y coord. of 2nd bounding quadrangle corner",b->
+      corners[1].y);
+289     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+290     sprintf(templt,"C2X = %d / x coord. of 3rd bounding quadrangle corner",b->
+      corners[2].x);
+291     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+292     sprintf(templt,"C2Y = %d / y coord. of 3rd bounding quadrangle corner",b->
+      corners[2].y);
+293     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+294     sprintf(templt,"C3X = %d / x coord. of 4th bounding quadrangle corner",b->
+      corners[3].x);
+295     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+296     sprintf(templt,"C3Y = %d / y coord. of 4th bounding quadrangle corner",b->
+      corners[3].y);
+297     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+298     sprintf(templt,"BB0X = %d / x coord. of 1st bounding box corner",b->bbox[0].
+      x);
+299     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+300     sprintf(templt,"BB0Y = %d / y coord. of 1st bounding box corner",b->bbox[0].
+      y);
+301     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+302     sprintf(templt,"BB1X = %d / x coord. of 2nd bounding box corner",b->bbox[1].
+      x);
+303     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+304     sprintf(templt,"BB1Y = %d / y coord. of 2nd bounding box corner",b->bbox[1].
+      y);
+305     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+306     sprintf(templt,"WIDTH = %f / Width of object in pixel",b->width);
+307     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+308     sprintf(templt,"DRZWIDTH = %f / Width of object in pixel",drizzle_width);
+309     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+310     sprintf(templt,"LENGTH= %i / Length of object in pixel",trlength);
+311     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+312     sprintf(templt,"OWIDTH= %f / Maximum width of object in pixel",objwidth);
+313     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+314     /* Angle reference frame is converted from aXe's to SeXtractor */
+315     sprintf(templt,"ORIENT = %f / Orientation of object in deg. wrt y-axis, CCW",
+      ((b->orient) / M_PI * 180. - 180.));
+316     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+317     sprintf(templt,"IGNORE = %d / Ignore flag for this beam",b->ignore);
+318     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+319     sprintf(templt,"OREFPNTX = %f / x coord. of reference point",outref.x);
+320     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+321     sprintf(templt,"OREFPNTY = %f / y coord. of reference point",outref.y);
+322     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+323     sprintf(templt,"RREFPNTX = %f / x coord. of refpoint in stamp image",relx);
+324     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+325     sprintf(templt,"RREFPNTY = %f / y coord. of refpoint in stamp image",rely);
+326     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+327     sprintf(templt,"WAVPNTX = %f / x coord. of reference point", refwave_pos.x);
+328     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+329     sprintf(templt,"WAVPNTY = %f / y coord. of reference point", refwave_pos.y);
+330     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+331     sprintf(templt,"XOFFS = %f / x-offset after drizzling",conf->drz_xstart);
+332     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+333     sprintf(templt,"LAMBDA0 = %f / wavelength drizzled to",conf->drz_lamb0);
+334     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+335     sprintf(templt,"DLAMBDA = %f / wavelength increment drizzled to",conf->
+      drz_resol);
+336     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+337     sprintf(templt,"SKY_CPS = %f / electrons per second in the background",sky_cp
+      s);
+338     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+339     sprintf(templt,"CDSCALE = %f / pixel scale in cross dispersion",cdref);
+340     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+341     sprintf(templt,"SPCORR = %f / correction factor resolution",spcorr);
+342     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+343     sprintf(templt,"SLITWIDT = %f / slit width [pix]",b->slitgeom[2]);
+344     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+345     sprintf(templt,"DRZ00 = %e / drizzle coefficient (0, 0)",gsl_matrix_get(drizz
+      coeffs, 0, 0));
+346     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+347     sprintf(templt,"DRZ01 = %e / drizzle coefficient (0, 1)",gsl_matrix_get(drizz
+      coeffs, 0, 1));
+348     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+349     sprintf(templt,"DRZ02 = %e / drizzle coefficient (0, 2)",gsl_matrix_get(drizz
+      coeffs, 0, 2));
+350     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+351     sprintf(templt,"DRZ03 = %e / drizzle coefficient (0, 3)",gsl_matrix_get(drizz
+      coeffs, 0, 3));
+352     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+353     sprintf(templt,"DRZ04 = %e / drizzle coefficient (0, 4)",gsl_matrix_get(drizz
+      coeffs, 0, 4));
+354     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+355     sprintf(templt,"DRZ05 = %e / drizzle coefficient (0, 5)",gsl_matrix_get(drizz
+      coeffs, 0, 5));
+356     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+357     sprintf(templt,"DRZ06 = %e / drizzle coefficient (0, 6)",gsl_matrix_get(drizz
+      coeffs, 0, 6));
+358     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+359     sprintf(templt,"DRZ07 = %e / drizzle coefficient (0, 7)",gsl_matrix_get(drizz
+      coeffs, 0, 7));
+360     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+361     sprintf(templt,"DRZ08 = %e / drizzle coefficient (0, 8)",gsl_matrix_get(drizz
+      coeffs, 0, 8));
+362     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+363     sprintf(templt,"DRZ09 = %e / drizzle coefficient (0, 9)",gsl_matrix_get(drizz
+      coeffs, 0, 9));
+364     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+365     sprintf(templt,"DRZ10 = %e / drizzle coefficient (1, 0)",gsl_matrix_get(drizz
+      coeffs, 1, 0));
+366     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+367     sprintf(templt,"DRZ11 = %e / drizzle coefficient (1, 1)",gsl_matrix_get(drizz
+      coeffs, 1, 1));
+368     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+369     sprintf(templt,"DRZ12 = %e / drizzle coefficient (1, 2)",gsl_matrix_get(drizz
+      coeffs, 1, 2));
+370     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+371     sprintf(templt,"DRZ13 = %e / drizzle coefficient (1, 3)",gsl_matrix_get(drizz
+      coeffs, 1, 3));
+372     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+373     sprintf(templt,"DRZ14 = %e / drizzle coefficient (1, 4)",gsl_matrix_get(drizz
+      coeffs, 1, 4));
+374     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+375     sprintf(templt,"DRZ15 = %e / drizzle coefficient (1, 5)",gsl_matrix_get(drizz
+      coeffs, 1, 5));
+376     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+377     sprintf(templt,"DRZ16 = %e / drizzle coefficient (1, 6)",gsl_matrix_get(drizz
+      coeffs, 1, 6));
+378     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+379     sprintf(templt,"DRZ17 = %e / drizzle coefficient (1, 7)",gsl_matrix_get(drizz
+      coeffs, 1, 7));
+380     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+381     sprintf(templt,"DRZ18 = %e / drizzle coefficient (1, 8)",gsl_matrix_get(drizz
+      coeffs, 1, 8));
+382     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+383     sprintf(templt,"DRZ19 = %e / drizzle coefficient (1, 9)",gsl_matrix_get(drizz
+      coeffs, 1, 9));
+384     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+385 
+386     return cards;
+387 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_aaaba4aea09f708f12bf52e9446e5384b}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!free\_\-FITScards@{free\_\-FITScards}}
+\index{free\_\-FITScards@{free\_\-FITScards}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{free\_\-FITScards}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-FITScards ({\bf FITScards} $\ast$ {\em cards})}}
+\label{spc__FITScards_8c_aaaba4aea09f708f12bf52e9446e5384b}
+Routine to free a \hyperlink{structFITScards}{FITScards} structure.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em cards}]a pointer to an allocated \hyperlink{structFITScards}{FITScards} structure whose allocated memory is to be free'd. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+52 {
+53     int i;
+54     for (i=0;i<cards->n;i++)
+55       free(cards->cards[i]);
+56 
+57     free(cards->cards);
+58     free(cards);
+59 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_a7a09d3f4ae7b2068f051e00781080751}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!get\_\-WCS\_\-FITScards@{get\_\-WCS\_\-FITScards}}
+\index{get\_\-WCS\_\-FITScards@{get\_\-WCS\_\-FITScards}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{get\_\-WCS\_\-FITScards}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FITScards}$\ast$ get\_\-WCS\_\-FITScards (const double {\em rval1}, \/  const double {\em delta1}, \/  const double {\em rval2})}}
+\label{spc__FITScards_8c_a7a09d3f4ae7b2068f051e00781080751}
+
+
+
+\begin{DoxyCode}
+74 {
+75   char templt[FLEN_CARD];
+76   int i=0,keytype, f_status=0;
+77 
+78   FITScards *cards;
+79 
+80   cards = allocate_FITScards(10);
+81 
+82   i=0;
+83 
+84   // fill the cards for the first (dispersion) axis
+85   sprintf(templt,"CTYPE1 = 'WAVE' / Grating dispersion function");
+86   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+87   sprintf(templt,"CUNIT1 = 'Angstrom' / Dispersion units");
+88   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+89   sprintf(templt,"CRPIX1 = %f / [pixel] Reference pixel",1.0);
+90   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+91   sprintf(templt,"CRVAL1 = %f / [Angstrom] Reference value",rval1);
+92   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+93   sprintf(templt,"CDELT1 = %f / [Angstrom/pixel] dispersion",delta1);
+94   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+95 
+96   // fill the cards for the second (cross-dispersion) axis
+97   sprintf(templt,"CTYPE2 = 'CRDIST' / Cross-dispersion distance");
+98   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+99   sprintf(templt,"CUNIT2 = 'Pixel' / Cross-dispersion units");
+100   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+101   sprintf(templt,"CRPIX2 = %f / [pixel] Reference pixel",1.0);
+102   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+103   sprintf(templt,"CRVAL2 = %f / [pixel] Reference value",rval2);
+104   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+105   sprintf(templt,"CDELT2 = %f / [pixel/pixel] increment",1.0);
+106   fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+107 
+108   return cards;
+109 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_af17c0df011aa3245c5aecb6bf5d0b9b1}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!nicbck\_\-info\_\-to\_\-FITScards@{nicbck\_\-info\_\-to\_\-FITScards}}
+\index{nicbck\_\-info\_\-to\_\-FITScards@{nicbck\_\-info\_\-to\_\-FITScards}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{nicbck\_\-info\_\-to\_\-FITScards}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FITScards}$\ast$ nicbck\_\-info\_\-to\_\-FITScards (const double {\em skypix\_\-frac}, \/  const double {\em scale\_\-factor}, \/  const double {\em offset})}}
+\label{spc__FITScards_8c_af17c0df011aa3245c5aecb6bf5d0b9b1}
+
+
+
+\begin{DoxyCode}
+392 {
+393     char templt[FLEN_CARD];
+394     int i=0,keytype, f_status=0;
+395 
+396     FITScards *cards;
+397 
+398     cards = allocate_FITScards(3);
+399 
+400     i=0;
+401     sprintf(templt,"SKY_SCAL = %e / Scale factor for background", scale_factor);
+402     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+403     sprintf(templt,"SKY_OFFS = %e / Offset value for background", offset);
+404     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+405     sprintf(templt,"F_SKYPIX = %e / Fraction of sky pixels", skypix_frac);
+406     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+407 
+408     return cards;
+409 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_a1c59aaa35e0ecd19cbbfc7d65b1cdf3a}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!stpmin\_\-to\_\-FITScards@{stpmin\_\-to\_\-FITScards}}
+\index{stpmin\_\-to\_\-FITScards@{stpmin\_\-to\_\-FITScards}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{stpmin\_\-to\_\-FITScards}]{\setlength{\rightskip}{0pt plus 5cm}{\bf FITScards}$\ast$ stpmin\_\-to\_\-FITScards ({\bf d\_\-point} {\em stp\_\-min})}}
+\label{spc__FITScards_8c_a1c59aaa35e0ecd19cbbfc7d65b1cdf3a}
+
+
+
+\begin{DoxyCode}
+204 {
+205     char templt[FLEN_CARD];
+206     int i=0,keytype, f_status=0;
+207 
+208     FITScards *cards;
+209 
+210     cards = allocate_FITScards(2);
+211 
+212     i=0;
+213     sprintf(templt,"XINISTP = %f / starting x-coordinate of stamp image",stp_min.
+      x);
+214     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+215     sprintf(templt,"YINISTP = %f / starting y-coordinate of stamp image",stp_min.
+      y);
+216     fits_parse_template (templt, cards->cards[i++], &keytype, &f_status);
+217 
+218     return cards;
+219 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_a471d2609ea9bc328e07b18489922f5d2}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!transport\_\-cont\_\-modname@{transport\_\-cont\_\-modname}}
+\index{transport\_\-cont\_\-modname@{transport\_\-cont\_\-modname}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{transport\_\-cont\_\-modname}]{\setlength{\rightskip}{0pt plus 5cm}void transport\_\-cont\_\-modname (char {\em grism\_\-file\_\-path}\mbox{[}$\,$\mbox{]}, \/  char {\em PET\_\-file\_\-path}\mbox{[}$\,$\mbox{]})}}
+\label{spc__FITScards_8c_a471d2609ea9bc328e07b18489922f5d2}
+The function transports the keywird entry for the keyword \char`\"{}CONTAM\char`\"{} from one FITS file to another. As the parameter names suggest, this works particularly form drizzle grism images to PET's
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em grism\_\-file\_\-path}]-\/ the name of the input FITS file \item[{\em PET\_\-file\_\-path}]-\/ the name of the output FITS file \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+548 {
+549 
+550   fitsfile *in_fptr;
+551   fitsfile *ou_fptr;
+552 
+553   char keyval[FLEN_CARD];
+554   char keyw[FLEN_KEYWORD];
+555   char comment[FLEN_COMMENT];
+556 
+557   int  f_status=0;
+558 
+559   // open the input FITS file
+560   fits_open_file (&in_fptr, grism_file_path, READONLY, &f_status);
+561   if (f_status)
+562     {
+563       ffrprt (stderr, f_status);
+564       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+565                    "transport_cont_modname: Could not open file %s .\n", grism_fi
+      le_path);
+566     }
+567 
+568   // name the keyword variable
+569   sprintf(keyw,"CONTAM");
+570 
+571   // read the contamination keyword from the input file
+572   fits_read_key(in_fptr, TSTRING, keyw, keyval, comment, &f_status);
+573   if (f_status)
+574     {
+575       ffrprt (stderr, f_status);
+576       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+577                    "transport_cont_modname: Could not read keyword %s from %s.\n"
+      , keyw, grism_file_path);
+578     }
+579 
+580   // close the input FITSfile
+581   fits_close_file (in_fptr, &f_status);
+582   if (f_status)
+583     {
+584       ffrprt (stderr, f_status);
+585       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+586                    "transport_cont_modname: Could not close file %s .\n", grism_f
+      ile_path);
+587     }
+588 
+589   // uptdate that keyword in the output FITS-file
+590   // in case that it is not empty
+591   if (strlen(keyval) > 0)
+592     {
+593 
+594       // open the output FITS file
+595       fits_open_file (&ou_fptr, PET_file_path, READWRITE, &f_status);
+596       if (f_status)
+597         {
+598           ffrprt (stderr, f_status);
+599           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+600                        "transport_cont_modname: Could not open file %s .\n", PET_
+      file_path);
+601         }
+602 
+603       // use the function to update that keyword
+604       update_contam_model(ou_fptr, keyval);
+605 
+606 
+607       // close the output FITS file
+608       fits_close_file (ou_fptr, &f_status);
+609       if (f_status)
+610         {
+611           ffrprt (stderr, f_status);
+612           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+613                        "transport_cont_modname: Could not close file %s .\n", PET
+      _file_path);
+614         }
+615     }
+616 }
+\end{DoxyCode}
+\hypertarget{spc__FITScards_8c_a6cb1187c647e381a5d1803846ee73a3e}{
+\index{spc\_\-FITScards.c@{spc\_\-FITScards.c}!update\_\-contam\_\-model@{update\_\-contam\_\-model}}
+\index{update\_\-contam\_\-model@{update\_\-contam\_\-model}!spc_FITScards.c@{spc\_\-FITScards.c}}
+\subsubsection[{update\_\-contam\_\-model}]{\setlength{\rightskip}{0pt plus 5cm}void update\_\-contam\_\-model (fitsfile $\ast$ {\em fptr}, \/  char {\em model\_\-name}\mbox{[}$\,$\mbox{]})}}
+\label{spc__FITScards_8c_a6cb1187c647e381a5d1803846ee73a3e}
+The function updates the keyword \char`\"{}CONTAM\char`\"{} in a fits file. Update means that an existing entry is replace. It is used to update this keyword in a PET files within the command aXe\_\-PETCONT.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fptr}]-\/ pointer to the fits file \item[{\em model\_\-name}]-\/ the name of the model \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+459 {
+460 
+461  //char templt[FLEN_CARD];
+462  char keyw[FLEN_KEYWORD];
+463  char comment[FLEN_COMMENT];
+464 
+465  int  f_status=0;
+466 
+467  // fill the keyword valiable
+468  sprintf(keyw,"CONTAM");
+469  sprintf(comment,"Name of the contamination model");
+470 
+471  // use the fitsio routine to update the keyword
+472  // react in case of an error
+473  fits_update_key(fptr, TSTRING, keyw, model_name,comment, &f_status);
+474  if (f_status)
+475    {
+476      ffrprt (stderr, f_status);
+477      aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+478                   "update_contam_model: Could not update the contamination model 
+      name.\n");
+479    }
+480 }
+\end{DoxyCode}

@@ -1,0 +1,125 @@
+\hypertarget{structbeam}{
+\section{beam Struct Reference}
+\label{structbeam}\index{beam@{beam}}
+}
+
+
+{\ttfamily \#include $<$aXe\_\-grism.h$>$}\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structbeam_a5c3f06b67e4cc3c79be539d1b515f3c6}{ID}
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{structbeam_a54c64670a8b3e8732c1468d156ddb0ca}{refpoint}
+\item 
+\hyperlink{structpx__point}{px\_\-point} \hyperlink{structbeam_a785bab6bf808db6a8841654312d20899}{corners} \mbox{[}4\mbox{]}
+\item 
+\hyperlink{structpx__point}{px\_\-point} \hyperlink{structbeam_aa703d04290c347c35197ff52993b98f3}{bbox} \mbox{[}2\mbox{]}
+\item 
+\hyperlink{structtrace__func}{trace\_\-func} $\ast$ \hyperlink{structbeam_a918b8655ff4142f173ca73226ce27922}{spec\_\-trace}
+\item 
+double \hyperlink{structbeam_ae99ff960c070381b6e76af5a58cb9c45}{width}
+\item 
+double \hyperlink{structbeam_a362f20c7f29a9d08731a03939103c8c1}{orient}
+\item 
+int \hyperlink{structbeam_a60879dd4cb05dff92646b26f0b1ca8d8}{modspec}
+\item 
+int \hyperlink{structbeam_a343c47194d158bcc217a46923038e1a3}{modimage}
+\item 
+double \hyperlink{structbeam_a9a40c792769161a2526fb415c6dadad0}{awidth}
+\item 
+double \hyperlink{structbeam_acc52e3393f91f5f11a65d1a6806b681f}{bwidth}
+\item 
+double \hyperlink{structbeam_a5cbf4e447f3c6272f31215965e4d574c}{aorient}
+\item 
+double \hyperlink{structbeam_acc5dfdc4ba4457869ecb2a9395d1273e}{slitgeom} \mbox{[}4\mbox{]}
+\item 
+gsl\_\-vector $\ast$ \hyperlink{structbeam_a199b010e935235ef70f482416d113458}{flux}
+\item 
+int \hyperlink{structbeam_a8c7dc459dedfd957741d35c59440972f}{ignore}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{structbeam}{beam}, i.e., a description of the image of a \hyperlink{structspectrum}{spectrum} of a given order, including a reference point, the corners of a convex \hyperlink{structquadrangle}{quadrangle} bounding the image, and the parametrization of the \hyperlink{structspectrum}{spectrum} trace 
+
+\subsection{Field Documentation}
+\hypertarget{structbeam_a5cbf4e447f3c6272f31215965e4d574c}{
+\index{beam@{beam}!aorient@{aorient}}
+\index{aorient@{aorient}!beam@{beam}}
+\subsubsection[{aorient}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf beam::aorient}}}
+\label{structbeam_a5cbf4e447f3c6272f31215965e4d574c}
+\hypertarget{structbeam_a9a40c792769161a2526fb415c6dadad0}{
+\index{beam@{beam}!awidth@{awidth}}
+\index{awidth@{awidth}!beam@{beam}}
+\subsubsection[{awidth}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf beam::awidth}}}
+\label{structbeam_a9a40c792769161a2526fb415c6dadad0}
+\hypertarget{structbeam_aa703d04290c347c35197ff52993b98f3}{
+\index{beam@{beam}!bbox@{bbox}}
+\index{bbox@{bbox}!beam@{beam}}
+\subsubsection[{bbox}]{\setlength{\rightskip}{0pt plus 5cm}{\bf px\_\-point} {\bf beam::bbox}\mbox{[}2\mbox{]}}}
+\label{structbeam_aa703d04290c347c35197ff52993b98f3}
+\hypertarget{structbeam_acc52e3393f91f5f11a65d1a6806b681f}{
+\index{beam@{beam}!bwidth@{bwidth}}
+\index{bwidth@{bwidth}!beam@{beam}}
+\subsubsection[{bwidth}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf beam::bwidth}}}
+\label{structbeam_acc52e3393f91f5f11a65d1a6806b681f}
+\hypertarget{structbeam_a785bab6bf808db6a8841654312d20899}{
+\index{beam@{beam}!corners@{corners}}
+\index{corners@{corners}!beam@{beam}}
+\subsubsection[{corners}]{\setlength{\rightskip}{0pt plus 5cm}{\bf px\_\-point} {\bf beam::corners}\mbox{[}4\mbox{]}}}
+\label{structbeam_a785bab6bf808db6a8841654312d20899}
+\hypertarget{structbeam_a199b010e935235ef70f482416d113458}{
+\index{beam@{beam}!flux@{flux}}
+\index{flux@{flux}!beam@{beam}}
+\subsubsection[{flux}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ {\bf beam::flux}}}
+\label{structbeam_a199b010e935235ef70f482416d113458}
+\hypertarget{structbeam_a5c3f06b67e4cc3c79be539d1b515f3c6}{
+\index{beam@{beam}!ID@{ID}}
+\index{ID@{ID}!beam@{beam}}
+\subsubsection[{ID}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf beam::ID}}}
+\label{structbeam_a5c3f06b67e4cc3c79be539d1b515f3c6}
+\hypertarget{structbeam_a8c7dc459dedfd957741d35c59440972f}{
+\index{beam@{beam}!ignore@{ignore}}
+\index{ignore@{ignore}!beam@{beam}}
+\subsubsection[{ignore}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf beam::ignore}}}
+\label{structbeam_a8c7dc459dedfd957741d35c59440972f}
+\hypertarget{structbeam_a343c47194d158bcc217a46923038e1a3}{
+\index{beam@{beam}!modimage@{modimage}}
+\index{modimage@{modimage}!beam@{beam}}
+\subsubsection[{modimage}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf beam::modimage}}}
+\label{structbeam_a343c47194d158bcc217a46923038e1a3}
+\hypertarget{structbeam_a60879dd4cb05dff92646b26f0b1ca8d8}{
+\index{beam@{beam}!modspec@{modspec}}
+\index{modspec@{modspec}!beam@{beam}}
+\subsubsection[{modspec}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf beam::modspec}}}
+\label{structbeam_a60879dd4cb05dff92646b26f0b1ca8d8}
+\hypertarget{structbeam_a362f20c7f29a9d08731a03939103c8c1}{
+\index{beam@{beam}!orient@{orient}}
+\index{orient@{orient}!beam@{beam}}
+\subsubsection[{orient}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf beam::orient}}}
+\label{structbeam_a362f20c7f29a9d08731a03939103c8c1}
+\hypertarget{structbeam_a54c64670a8b3e8732c1468d156ddb0ca}{
+\index{beam@{beam}!refpoint@{refpoint}}
+\index{refpoint@{refpoint}!beam@{beam}}
+\subsubsection[{refpoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} {\bf beam::refpoint}}}
+\label{structbeam_a54c64670a8b3e8732c1468d156ddb0ca}
+\hypertarget{structbeam_acc5dfdc4ba4457869ecb2a9395d1273e}{
+\index{beam@{beam}!slitgeom@{slitgeom}}
+\index{slitgeom@{slitgeom}!beam@{beam}}
+\subsubsection[{slitgeom}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf beam::slitgeom}\mbox{[}4\mbox{]}}}
+\label{structbeam_acc5dfdc4ba4457869ecb2a9395d1273e}
+\hypertarget{structbeam_a918b8655ff4142f173ca73226ce27922}{
+\index{beam@{beam}!spec\_\-trace@{spec\_\-trace}}
+\index{spec\_\-trace@{spec\_\-trace}!beam@{beam}}
+\subsubsection[{spec\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-func}$\ast$ {\bf beam::spec\_\-trace}}}
+\label{structbeam_a918b8655ff4142f173ca73226ce27922}
+\hypertarget{structbeam_ae99ff960c070381b6e76af5a58cb9c45}{
+\index{beam@{beam}!width@{width}}
+\index{width@{width}!beam@{beam}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf beam::width}}}
+\label{structbeam_ae99ff960c070381b6e76af5a58cb9c45}
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/\hyperlink{aXe__grism_8h}{aXe\_\-grism.h}\end{DoxyCompactItemize}

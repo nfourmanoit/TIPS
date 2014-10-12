@@ -1,0 +1,893 @@
+\hypertarget{inima__utils_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/inima\_\-utils.h File Reference}
+\label{inima__utils_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/inima\_\-utils.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/inima\_\-utils.h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbasic__input}{basic\_\-input}
+\item 
+struct \hyperlink{structaxe__inputs}{axe\_\-inputs}
+\item 
+struct \hyperlink{structchar__array}{char\_\-array}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceinima__utils}{inima\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{inima__utils_8h_ac1535592e39e7edf0cafbd5e695ea622}{MAXCHAR}~255
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structaxe__inputs}{axe\_\-inputs} $\ast$ \hyperlink{inima__utils_8h_a7a2221c6ec7fd0d5fa6763a4176b1b0a}{get\_\-axe\_\-inputs} (char inima\mbox{[}$\,$\mbox{]}, char confterm\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{inima__utils_8h_a89edcc53ef73bfa07643214f34b74740}{copy\_\-basic\_\-input} (\hyperlink{structchar__array}{char\_\-array} $\ast$line\_\-array, \hyperlink{structchar__array}{char\_\-array} $\ast$iol\_\-array, \hyperlink{structchar__array}{char\_\-array} $\ast$conf\_\-array, int arr\_\-index, int dirim\_\-col, int dmag\_\-col, \hyperlink{structbasic__input}{basic\_\-input} $\ast$axe\_\-item)
+\item 
+\hyperlink{structaxe__inputs}{axe\_\-inputs} $\ast$ \hyperlink{inima__utils_8h_a5169febfb6d202bcd3a114c7606b9c5d}{extract\_\-axe\_\-inputs} (char inima\mbox{[}$\,$\mbox{]}, char confterm\mbox{[}$\,$\mbox{]}, int nrows, int nmult, int dirim\_\-col, int conf\_\-col, int dmag\_\-col)
+\item 
+void \hyperlink{inima__utils_8h_aba4979a845801955e4934f28433c60ca}{get\_\-inima\_\-cols} (char inima\mbox{[}$\,$\mbox{]}, int $\ast$dirim\_\-col, int $\ast$conf\_\-col, int $\ast$dmag\_\-col, int $\ast$nmult)
+\item 
+void \hyperlink{inima__utils_8h_afcb4a73748cbbdafbb61941d642507d1}{get\_\-inlist\_\-basics} (char inima\mbox{[}$\,$\mbox{]}, int $\ast$nrows, int $\ast$ncols)
+\item 
+\hyperlink{structchar__array}{char\_\-array} $\ast$ \hyperlink{inima__utils_8h_ab67048e9322493d5c241863cffb655c7}{get\_\-items} (char input\_\-line\mbox{[}$\,$\mbox{]}, char tokens\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{inima__utils_8h_aeeac181d0eee781be4340cf86addf1bb}{is\_\-valid\_\-inima\_\-line} (char input\_\-line\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{inima__utils_8h_a5606bbb98217bed6a62578dc75491f62}{get\_\-ntokens} (char input\_\-line\mbox{[}$\,$\mbox{]}, char tokens\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structchar__array}{char\_\-array} $\ast$ \hyperlink{inima__utils_8h_a2586f1aa61d1108da202b18134a74a97}{alloc\_\-char\_\-array} (int nitems)
+\item 
+void \hyperlink{inima__utils_8h_a6a508b8dc33fcd6c1de2cb5a5c0f7a7e}{free\_\-char\_\-array} (\hyperlink{structchar__array}{char\_\-array} $\ast$an\_\-array)
+\item 
+void \hyperlink{inima__utils_8h_aced1a5c36aa2d862ae401791f3cbae64}{print\_\-char\_\-array} (\hyperlink{structchar__array}{char\_\-array} $\ast$an\_\-array)
+\item 
+\hyperlink{structaxe__inputs}{axe\_\-inputs} $\ast$ \hyperlink{inima__utils_8h_a9b85fe6c9967cfe6ce19a66585018fff}{alloc\_\-axe\_\-inputs} (int nitems)
+\item 
+void \hyperlink{inima__utils_8h_ac010f00e95013798e29665c32049458f}{free\_\-axe\_\-inputs} (\hyperlink{structaxe__inputs}{axe\_\-inputs} $\ast$in\_\-list)
+\item 
+char $\ast$ \hyperlink{inima__utils_8h_a14ba84193a14d8e152018858dbac07b4}{trim} (char inString\mbox{[}$\,$\mbox{]}, char outString\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{inima__utils_8h_a1caa9871ceda5b9804538463e2938f00}{print\_\-axe\_\-inputs} (\hyperlink{structaxe__inputs}{axe\_\-inputs} $\ast$in\_\-list)
+\item 
+int \hyperlink{inima__utils_8h_a880cc2a273358cd9dc41dcc6a2dbea04}{get\_\-nitems} (char input\_\-line\mbox{[}$\,$\mbox{]}, char tokens\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{inima__utils_8h_ac1535592e39e7edf0cafbd5e695ea622}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!MAXCHAR@{MAXCHAR}}
+\index{MAXCHAR@{MAXCHAR}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{MAXCHAR}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXCHAR~255}}
+\label{inima__utils_8h_ac1535592e39e7edf0cafbd5e695ea622}
+
+
+\subsection{Function Documentation}
+\hypertarget{inima__utils_8h_a9b85fe6c9967cfe6ce19a66585018fff}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!alloc\_\-axe\_\-inputs@{alloc\_\-axe\_\-inputs}}
+\index{alloc\_\-axe\_\-inputs@{alloc\_\-axe\_\-inputs}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{alloc\_\-axe\_\-inputs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf axe\_\-inputs}$\ast$ alloc\_\-axe\_\-inputs (int {\em nitems})}}
+\label{inima__utils_8h_a9b85fe6c9967cfe6ce19a66585018fff}
+Function: alloc\_\-axe\_\-inputs
+
+The function allocates memory for an 'axe\_\-inputs' structure with a defined number of entries of type \hyperlink{structbasic__input}{basic\_\-input}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em nitems}]-\/ the number of items in the aXe input list\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+\hyperlink{structaxe__inputs}{axe\_\-inputs} -\/ the allocated aXe input structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+688 {
+689   axe_inputs *in_list;
+690 
+691   //int i;
+692 
+693   // allocate memory for the return structure
+694   in_list = (axe_inputs *)malloc(sizeof(axe_inputs));
+695 
+696   // allocate the memory for the pointers to the axe items
+697   in_list->axe_items = (basic_input *)malloc(nitems * sizeof(basic_input));
+698 
+699   // return the allocated structure
+700   return in_list;
+701 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a2586f1aa61d1108da202b18134a74a97}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!alloc\_\-char\_\-array@{alloc\_\-char\_\-array}}
+\index{alloc\_\-char\_\-array@{alloc\_\-char\_\-array}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{alloc\_\-char\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf char\_\-array}$\ast$ alloc\_\-char\_\-array (int {\em nitems})}}
+\label{inima__utils_8h_a2586f1aa61d1108da202b18134a74a97}
+Function: alloc\_\-char\_\-array The function allocates memory for a character array structure, which is given back to the calling routine.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em nitems}]-\/ the number of items in the charcter array\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+an\_\-array -\/ the allocated character array 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+598 {
+599   char_array *an_array;
+600 
+601   int i;
+602 
+603   // allocate memory for the return structure
+604   an_array = (char_array *)malloc(sizeof(char_array));
+605 
+606   // allocate the memory for the pointers to the char data
+607   an_array->char_items = (char **)malloc(nitems * sizeof(char *));
+608   
+609   // allocate memory for every cha data item
+610   for (i=0; i < nitems; i++) 
+611     // allocate the item
+612     an_array->char_items[i] = malloc(MAXCHAR * sizeof(char));
+613 
+614   return an_array;
+615 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a89edcc53ef73bfa07643214f34b74740}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!copy\_\-basic\_\-input@{copy\_\-basic\_\-input}}
+\index{copy\_\-basic\_\-input@{copy\_\-basic\_\-input}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{copy\_\-basic\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}void copy\_\-basic\_\-input ({\bf char\_\-array} $\ast$ {\em line\_\-array}, \/  {\bf char\_\-array} $\ast$ {\em iol\_\-array}, \/  {\bf char\_\-array} $\ast$ {\em conf\_\-array}, \/  int {\em arr\_\-index}, \/  int {\em dirim\_\-col}, \/  int {\em dmag\_\-col}, \/  {\bf basic\_\-input} $\ast$ {\em axe\_\-item})}}
+\label{inima__utils_8h_a89edcc53ef73bfa07643214f34b74740}
+Function: copy\_\-basic\_\-input The function fills one entry in an 'axe\_\-items'-\/structure with data from one line of the Input Image List. The data is just transferred as an item list, column indices are already known.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em line\_\-array}]-\/ the item list of the line \item[{\em iol\_\-array}]-\/ the item list of the Input Object Lists \item[{\em conf\_\-array}]-\/ the item list of the configuration files (from input) \item[{\em arr\_\-index}]-\/ the multiplicity index \item[{\em dirim\_\-col}]-\/ direct column index \item[{\em dmag\_\-col}]-\/ dmag column index \item[{\em axe\_\-item}]-\/ the aXe input to fill\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+122 {
+123   // define an entry for NULL's
+124   char null_entry[1] = "";
+125 
+126   // copy the basic input,
+127   // which is grism file, iol, config file
+128   strcpy(axe_item->grism_file,  line_array->char_items[0]);
+129   strcpy(axe_item->iol_cat,     iol_array->char_items[arr_index]);
+130   strcpy(axe_item->config_file, conf_array->char_items[arr_index]);
+131 
+132   // check whether a direct image exists,
+133   // copy it over if possible
+134   if (dirim_col > -1)
+135     strcpy(axe_item->dirima_file, line_array->char_items[dirim_col]);
+136   else
+137     // store the NULL value    
+138     strcpy(axe_item->dirima_file, null_entry);
+139     
+140   // check whether a dmag value exists
+141   // copy it over if possible
+142   if (dmag_col > -1)
+143     axe_item->dmag = atof(line_array->char_items[dmag_col]);
+144   else
+145     // store the NULL value
+146     axe_item->dmag = 0.0;
+147 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a5169febfb6d202bcd3a114c7606b9c5d}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!extract\_\-axe\_\-inputs@{extract\_\-axe\_\-inputs}}
+\index{extract\_\-axe\_\-inputs@{extract\_\-axe\_\-inputs}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{extract\_\-axe\_\-inputs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf axe\_\-inputs}$\ast$ extract\_\-axe\_\-inputs (char {\em inima}\mbox{[}$\,$\mbox{]}, \/  char {\em confterm}\mbox{[}$\,$\mbox{]}, \/  int {\em nrows}, \/  int {\em nmult}, \/  int {\em dirim\_\-col}, \/  int {\em conf\_\-col}, \/  int {\em dmag\_\-col})}}
+\label{inima__utils_8h_a5169febfb6d202bcd3a114c7606b9c5d}
+Function: extract\_\-axe\_\-inputs The function converts the data given in an Input Image List and in the line input (for aXe configuration files) to a list of aXe inputs. the columns to find optional inputs such as direct images are given as parameters. The filled structure with the aXe inputs is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em inima}]-\/ the name of the input image list \item[{\em confterm}]-\/ the configuration files given in the input \item[{\em nrows}]-\/ the number of rows \item[{\em nmult}]-\/ the multiplicity \item[{\em dirim\_\-col}]-\/ the direct column index \item[{\em conf\_\-col}]-\/ the configuration column index \item[{\em dmag\_\-col}]-\/ the dmag column index\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+in\_\-list -\/ the resolved list of aXe inputs 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+172 {  
+173   FILE *flist;
+174 
+175   char Buffer[LINE_LEN_MAX];
+176   char input[LINE_LEN_MAX];
+177 
+178   axe_inputs *in_list;
+179 
+180   //char null_entry[1] = "";
+181 
+182   char_array *line_array;
+183   char_array *conf_array;
+184   char_array *iol_array;
+185 
+186   int index=0;
+187   int arr_index=0;
+188 
+189   in_list = alloc_axe_inputs(nrows * nmult);
+190   in_list->nitems = nrows * nmult;
+191 
+192   // check whether the Input Image List exists
+193   flist = fopen (inima, "r");
+194 
+195   // reset the counter
+196   index=0;
+197 
+198   // load each line of the Input Image List
+199   while (fgets (Buffer, LINE_LEN_MAX, flist) != NULL)
+200     {
+201       // leave the loop if there is a valid line
+202       if (!is_valid_inima_line(Buffer))
+203         continue;
+204 
+205       // trim the input line
+206       trim(Buffer, input);
+207 
+208       // tokinze the input line
+209       line_array = get_items(input, " ");
+210 
+211       // tokenize the configuration term
+212       iol_array = get_items(line_array->char_items[1], ",");
+213 
+214       // check the number of IOL's against
+215       // the multiplicity
+216       if (iol_array->nitems != nmult)
+217         // report the error and go out
+218         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+219                      "extract_axe_inputs: Number of IOL's in \"%s\" conflicts wit
+      h multiplicity (%i) !\n", line_array->char_items[1], nmult);
+220       
+221       // get the aXe configuration files
+222       // either from the line of from the command input
+223       if (conf_col > -1)
+224         {
+225           conf_array = get_items(line_array->char_items[conf_col], ",");
+226           // check the number of IOL's against
+227           // the multiplicity
+228           if (conf_array->nitems != nmult)
+229             // report the error and go out
+230             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+231                          "extract_axe_inputs: Number of Config files in \"%s\" co
+      nflicts with multiplicity (%i) !\n", line_array->char_items[conf_col], nmult);
+232 
+233         }
+234       else
+235         {
+236           conf_array = get_items(confterm, ",");
+237         }
+238 
+239       // loop over the multiplicity
+240       for (arr_index=0; arr_index < nmult; arr_index++)
+241         {
+242           // make a line in the inlist structure
+243           copy_basic_input(line_array, iol_array, conf_array, arr_index, dirim_co
+      l,
+244                            dmag_col, &in_list->axe_items[index]);
+245 
+246           // enhance the counter
+247           index++;
+248         }
+249 
+250       free_char_array(line_array);
+251       free_char_array(iol_array);
+252       free_char_array(conf_array);
+253     }
+254 
+255   // close the file
+256   fclose(flist);
+257 
+258   return in_list;
+259 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_ac010f00e95013798e29665c32049458f}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!free\_\-axe\_\-inputs@{free\_\-axe\_\-inputs}}
+\index{free\_\-axe\_\-inputs@{free\_\-axe\_\-inputs}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{free\_\-axe\_\-inputs}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-axe\_\-inputs ({\bf axe\_\-inputs} $\ast$ {\em in\_\-list})}}
+\label{inima__utils_8h_ac010f00e95013798e29665c32049458f}
+Function: free\_\-axe\_\-inputs
+
+The function releases memory in an 'axe\_\-inputs' structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em in\_\-list}]-\/ the aXe input structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+716 {
+717   // free the item list
+718   free(in_list->axe_items);
+719 
+720   // free the base structure
+721   free(in_list);
+722   
+723   // set the structure to NULL
+724   in_list = NULL;
+725 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a6a508b8dc33fcd6c1de2cb5a5c0f7a7e}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!free\_\-char\_\-array@{free\_\-char\_\-array}}
+\index{free\_\-char\_\-array@{free\_\-char\_\-array}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{free\_\-char\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-char\_\-array ({\bf char\_\-array} $\ast$ {\em an\_\-array})}}
+\label{inima__utils_8h_a6a508b8dc33fcd6c1de2cb5a5c0f7a7e}
+Function: free\_\-char\_\-array The function releases the memory of a character array.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em an\_\-array}]-\/ the character array\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+630 {
+631   int i;
+632 
+633   // go over all char data items
+634   for (i=0; i < an_array->nitems; i++)
+635     {
+636       // free the allocated memory
+637       free(an_array->char_items[i]);
+638     }
+639 
+640   // free the pointer to the data items
+641   free(an_array->char_items);
+642 
+643   // fre the whole structure
+644   free(an_array);
+645 
+646   // set the whole structure to NULL
+647   an_array = NULL;
+648 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a7a2221c6ec7fd0d5fa6763a4176b1b0a}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!get\_\-axe\_\-inputs@{get\_\-axe\_\-inputs}}
+\index{get\_\-axe\_\-inputs@{get\_\-axe\_\-inputs}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{get\_\-axe\_\-inputs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf axe\_\-inputs}$\ast$ get\_\-axe\_\-inputs (char {\em inima}\mbox{[}$\,$\mbox{]}, \/  char {\em confterm}\mbox{[}$\,$\mbox{]})}}
+\label{inima__utils_8h_a7a2221c6ec7fd0d5fa6763a4176b1b0a}
+Function: get\_\-axe\_\-inputs The function reads the data in the input image list given as the first parameter and extracts all axe input data from it. If the configuration files are not given in the input image list, the aXe configuration files given in the command line is used. All data is stored and returned in an 'axe\_\-inputs' structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em inima}]-\/ the name of the input image list \item[{\em confterm}]-\/ the term for the aXe configuration file(s)\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+in\_\-list -\/ the resolved list of aXe input 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+38 {
+39   char_array *conf_array;
+40 
+41   int nrows, ncols;
+42   int dirim_col, conf_col, dmag_col, nmult;
+43 
+44   axe_inputs *in_list;
+45 
+46   FILE *Filelist;
+47 
+48   // check whether the Input Image List exists
+49   Filelist = fopen (inima, "r");
+50   if (NULL == Filelist)
+51       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Could not open %s\n",
+52                    inima); 
+53   fclose(Filelist);
+54 
+55   // convert the configuration term
+56   // into a character array
+57   conf_array = get_items(confterm, ",");
+58 
+59   // get the number of rows and the number
+60   // of items per row in the input image list
+61   get_inlist_basics(inima, &nrows, &ncols);
+62 
+63   // there mus be at least two columns,
+64   // one with the grism file and one with the IOL
+65   if (ncols < 2)
+66     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+67                  "get_axe_inputs: less than 2 items inlist: %s\n", inima); 
+68 
+69   // analyze the content of the input image list.
+70   // find the multiplicity, which is the number of
+71   // extensions in the grism image, and find the columns
+72   // for dmag, direct image and configuration files
+73   get_inima_cols(inima, &dirim_col, &conf_col, &dmag_col, &nmult);
+74 
+75 
+76   // check whether the multiplicity from the file
+77   // is consistent with the multiplicity from
+78   // the configterm-input
+79   if (nmult != conf_array->nitems)
+80     {
+81       // report the error and go out
+82       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+83                    "get_axe_inputs: Number of configs from input (%i) conflicts w
+      ith multiplicity (%i) !\n", conf_array->nitems, nmult); 
+84       //      fprintf(stderr, "ERROR: Number of configs from input (%i) conflicts
+       with multiplicity (%i) !\n", conf_array->nitems, nmult);
+85       //      exit(1);
+86     }
+87 
+88   // convert the input to an axe_inputs structure
+89   in_list = extract_axe_inputs(inima, confterm, nrows, nmult,
+90                                dirim_col, conf_col, dmag_col);
+91 
+92   // free the memory
+93   free_char_array(conf_array);
+94 
+95   // return the resulting structure
+96   return in_list;
+97 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_aba4979a845801955e4934f28433c60ca}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!get\_\-inima\_\-cols@{get\_\-inima\_\-cols}}
+\index{get\_\-inima\_\-cols@{get\_\-inima\_\-cols}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{get\_\-inima\_\-cols}]{\setlength{\rightskip}{0pt plus 5cm}void get\_\-inima\_\-cols (char {\em inima}\mbox{[}$\,$\mbox{]}, \/  int $\ast$ {\em dirim\_\-col}, \/  int $\ast$ {\em conf\_\-col}, \/  int $\ast$ {\em dmag\_\-col}, \/  int $\ast$ {\em nmult})}}
+\label{inima__utils_8h_aba4979a845801955e4934f28433c60ca}
+Function: get\_\-inima\_\-cols
+
+The function determines the column number with the dmag-\/information, the direct image names and the aXe configuration files. It determines the multiplicity, which is the number of input image lists and aXe configuration files per grism image.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em inima}]-\/ the name of the input image list \item[{\em dirim\_\-col}]-\/ the direct column index \item[{\em conf\_\-col}]-\/ the configuration column index \item[{\em dmag\_\-col}]-\/ the dmag column index \item[{\em nmult}]-\/ the multiplicity\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+283 {
+284   char_array *line_array;
+285   char_array *item_array;
+286 
+287   FILE *flist;
+288   char Buffer[LINE_LEN_MAX];
+289   char input[LINE_LEN_MAX];
+290 
+291   int index=0;
+292 
+293   char *t_err;
+294 
+295   *dirim_col = -1;
+296   *conf_col  = -1;
+297   *dmag_col  = -1;
+298   *nmult     = -1;
+299 
+300   float dmag;
+301 
+302   // check whether the Input Image List exists
+303   flist = fopen (inima, "r");
+304 
+305   // load each line of the Input Image List
+306   while (fgets (Buffer, LINE_LEN_MAX, flist) != NULL)
+307     {
+308       // leave the loop if there is a valid line
+309       if (is_valid_inima_line(Buffer))
+310         break;
+311     }
+312   // close the file
+313   fclose(flist);
+314 
+315   // get rid of whitespaces
+316   trim(Buffer, input);
+317 
+318   // tokenize the line
+319   line_array = get_items(input, " ");
+320 
+321   // tokenize the term with the input object lists
+322   item_array = get_items(line_array->char_items[1], ",");
+323 
+324   // store the number of items
+325   // derived from the IOL term
+326   *nmult = item_array->nitems;
+327   free_char_array(item_array);
+328 
+329   // go from item three to the end
+330   for (index=2; index < line_array->nitems; index++)
+331     {
+332       // try to convert the item to a float
+333       dmag = strtod(line_array->char_items[index], &t_err);
+334       
+335       // check whether the conversion to float was successful
+336       if (dmag || strcmp(line_array->char_items[index], t_err))
+337         // set the column for the dmag-values
+338         *dmag_col = index;
+339       // check whether there is a ".fits" in the item
+340       else if (strstr(line_array->char_items[index], ".fits"))
+341         *dirim_col = index;
+342       // if nothing fits, it must be the config file column
+343       else
+344         *conf_col = index;
+345     }
+346       
+347   // if there is a column with aXe configuration files
+348   if (*conf_col > -1)
+349     {
+350       // extract the items in an char_array
+351       item_array = get_items(line_array->char_items[*conf_col], ",");
+352       
+353       // check the multiplicity
+354       if (item_array->nitems != *nmult)
+355         // report the error and go out
+356         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+357                      "get_inima_cols: Multiplicity from IOL: %i, from Configs: %i
+      \n", *nmult, item_array->nitems);
+358 
+359       // release the memory
+360       free_char_array(item_array);
+361     }
+362 
+363   // release the memory
+364   free_char_array(line_array);
+365 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_afcb4a73748cbbdafbb61941d642507d1}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!get\_\-inlist\_\-basics@{get\_\-inlist\_\-basics}}
+\index{get\_\-inlist\_\-basics@{get\_\-inlist\_\-basics}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{get\_\-inlist\_\-basics}]{\setlength{\rightskip}{0pt plus 5cm}void get\_\-inlist\_\-basics (char {\em inima}\mbox{[}$\,$\mbox{]}, \/  int $\ast$ {\em nrows}, \/  int $\ast$ {\em ncols})}}
+\label{inima__utils_8h_afcb4a73748cbbdafbb61941d642507d1}
+Function:get\_\-inlist\_\-basics
+
+The function determines the basic format of the input image given as first parameter, which is the number of nonzero, uncommented rows and the number of items in every row. If the number of items changes from row to row, an error is given.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em inima}]-\/ the name of the input image list \item[{\em nrows}]-\/ the number of rows in the input image list \item[{\em ncols}]-\/ the multiplicity\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+386 {
+387   FILE *flist;
+388   char Buffer[LINE_LEN_MAX];
+389 
+390   int nitems;
+391 
+392   //initialize the counters
+393   *nrows   =  0;
+394   *ncols = -1;
+395 
+396   // check whether the Input Image List exists
+397   flist = fopen (inima, "r");
+398 
+399   // load each line of the Input Image List
+400   while (fgets (Buffer, LINE_LEN_MAX, flist) != NULL)
+401     {
+402 
+403       // check whether the line is valid
+404       nitems = is_valid_inima_line(Buffer);
+405 
+406       // go to the nex line
+407       // if the line is NOT valid
+408       if (!nitems)
+409         continue;
+410 
+411       // increment the row counter
+412       *nrows = *nrows + 1;
+413           
+414       // check whether the token counter
+415       // is not yet set
+416       if (*ncols < 0)
+417         {
+418           // set the token counter
+419           *ncols = nitems;
+420         }
+421       else
+422         {
+423           // check whether the number
+424           // of tokens disagrees with
+425           // the previous number
+426           if (*ncols != nitems)
+427             {
+428               // report the error and go out
+429               fclose(flist);
+430               aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+431                            "get_inlist_basics: %i != %i\n", *ncols, nitems);
+432             }
+433         }
+434     }
+435 
+436   // close the file
+437   fclose(flist);
+438 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_ab67048e9322493d5c241863cffb655c7}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!get\_\-items@{get\_\-items}}
+\index{get\_\-items@{get\_\-items}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{get\_\-items}]{\setlength{\rightskip}{0pt plus 5cm}{\bf char\_\-array}$\ast$ get\_\-items (char {\em input\_\-line}\mbox{[}$\,$\mbox{]}, \/  char {\em tokens}\mbox{[}$\,$\mbox{]})}}
+\label{inima__utils_8h_ab67048e9322493d5c241863cffb655c7}
+Funktion: get\_\-items
+
+The function analyzes the input line. It splits the line using the tokens given as second paramter and stores the items in a 'char\_\-array' structure. this structure is finally returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em input\_\-line}]-\/ the character string to analyze \item[{\em tokens}]-\/ the tokens to split the string\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+an\_\-array -\/ the list of items in the input 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+457 {
+458   char input[LINE_LEN_MAX];
+459 
+460   char_array *an_array;
+461 
+462   char *tok;
+463 
+464   int nitems = 0;
+465   int index    ;
+466 
+467   // determine the number of items
+468   nitems = get_nitems(input_line, tokens);
+469 
+470   // allocate an appropriate structure
+471   an_array = alloc_char_array(nitems);
+472 
+473   // store the number of items
+474   an_array->nitems = nitems;
+475 
+476   if (nitems > 0)
+477     {
+478       // copy the input in a local string
+479       strcpy(input, input_line);
+480 
+481       // search for the first token
+482       tok = strtok(input, tokens);
+483 
+484       // iterate while a token exists
+485       index = 0;
+486       while(tok)
+487         {
+488           // copy the token to the array structure
+489           strcpy(an_array->char_items[index], tok);
+490           index ++;
+491           
+492           // search for the next token
+493           tok = strtok(NULL, tokens);
+494         }
+495     }
+496 
+497   // return the strucutre
+498   return an_array;
+499 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a880cc2a273358cd9dc41dcc6a2dbea04}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!get\_\-nitems@{get\_\-nitems}}
+\index{get\_\-nitems@{get\_\-nitems}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{get\_\-nitems}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-nitems (char {\em input\_\-line}\mbox{[}$\,$\mbox{]}, \/  char {\em tokens}\mbox{[}$\,$\mbox{]})}}
+\label{inima__utils_8h_a880cc2a273358cd9dc41dcc6a2dbea04}
+Function: get\_\-nitems The function determines and returns the number of items in the input string when using the second parameter as token.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em input\_\-line}]-\/ the character string to analyze \item[{\em tokens}]-\/ the tokens to split the string\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+nitems -\/ number of items in the string 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+559 {
+560   char input[LINE_LEN_MAX];
+561   char *tok;
+562 
+563   int ntoken=0;
+564 
+565   // copy the input in a local string
+566   strcpy(input, input_line);
+567 
+568   // search for the first token
+569   tok = strtok(input, tokens);
+570 
+571   // iterate while a token exists
+572   while(tok)
+573     {
+574       // increase the counter
+575       ntoken++;
+576 
+577       // search for the next token
+578       tok = strtok(NULL, tokens);
+579     }
+580 
+581   // 
+582   return ntoken;
+583 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a5606bbb98217bed6a62578dc75491f62}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!get\_\-ntokens@{get\_\-ntokens}}
+\index{get\_\-ntokens@{get\_\-ntokens}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{get\_\-ntokens}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-ntokens (char {\em input\_\-line}\mbox{[}$\,$\mbox{]}, \/  char {\em tokens}\mbox{[}$\,$\mbox{]})}}
+\label{inima__utils_8h_a5606bbb98217bed6a62578dc75491f62}
+\hypertarget{inima__utils_8h_aeeac181d0eee781be4340cf86addf1bb}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!is\_\-valid\_\-inima\_\-line@{is\_\-valid\_\-inima\_\-line}}
+\index{is\_\-valid\_\-inima\_\-line@{is\_\-valid\_\-inima\_\-line}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{is\_\-valid\_\-inima\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}int is\_\-valid\_\-inima\_\-line (char {\em input\_\-line}\mbox{[}$\,$\mbox{]})}}
+\label{inima__utils_8h_aeeac181d0eee781be4340cf86addf1bb}
+Function: is\_\-valid\_\-inima\_\-line Checks whether a character string is a valid line in an input image list, which means it has zero length and does not start with a '\#'. The function returns the number of items for valid lines and 0 otherwise.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em input\_\-line}]-\/ the character string to analyze\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+nitems -\/ the number of items using blank as separator 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+515 {
+516   char input[LINE_LEN_MAX];
+517   char trim_input[LINE_LEN_MAX];
+518 
+519   char comment[2] = "#";
+520 
+521   int nitems = 0;
+522 
+523   // copy the input in a local string
+524   strcpy(input, input_line);
+525 
+526   // check whether there is something at all
+527   if (strlen(input) == 0)
+528     return 0;
+529 
+530   // trim the input line
+531   trim(input, trim_input);
+532   
+533   // check whether the line is commented
+534   if (!strncmp(trim_input, comment, 1))
+535     return 0;
+536 
+537   // get the number of items in the line
+538   nitems = get_nitems(trim_input, " ");
+539 
+540   // return the number of items
+541   return nitems;
+542 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a1caa9871ceda5b9804538463e2938f00}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!print\_\-axe\_\-inputs@{print\_\-axe\_\-inputs}}
+\index{print\_\-axe\_\-inputs@{print\_\-axe\_\-inputs}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{print\_\-axe\_\-inputs}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-axe\_\-inputs ({\bf axe\_\-inputs} $\ast$ {\em in\_\-list})}}
+\label{inima__utils_8h_a1caa9871ceda5b9804538463e2938f00}
+Function: print\_\-axe\_\-inputs
+
+Print the content of the structure onto the screen.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em in\_\-list}]-\/ the aXe input structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+740 {
+741   int index;
+742 
+743   // go over all entries
+744   for (index=0; index < in_list->nitems; index++)
+745     {
+746       // print the basic input onto the screen
+747       fprintf(stdout, "(%i) Grism: %s, IOL: %s, Conf: %s", index + 1,
+748               in_list->axe_items[index].grism_file,
+749               in_list->axe_items[index].iol_cat, 
+750               in_list->axe_items[index].config_file); 
+751 
+752       // print the direct image name, if there is any
+753       if (strlen(in_list->axe_items[index].dirima_file) > 0)
+754         fprintf(stdout, ", Direct: %s", in_list->axe_items[index].dirima_file);
+755 
+756       // print the dmag value
+757       fprintf(stdout, ", Dmag: %f", in_list->axe_items[index].dmag);
+758 
+759       // print a new line
+760       fprintf(stdout, "\n");
+761     }
+762 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_aced1a5c36aa2d862ae401791f3cbae64}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!print\_\-char\_\-array@{print\_\-char\_\-array}}
+\index{print\_\-char\_\-array@{print\_\-char\_\-array}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{print\_\-char\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-char\_\-array ({\bf char\_\-array} $\ast$ {\em an\_\-array})}}
+\label{inima__utils_8h_aced1a5c36aa2d862ae401791f3cbae64}
+Function: print\_\-char\_\-array The function prints the content of a character array onto the screen.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em an\_\-array}]-\/ the character array\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+664 {
+665   int i;
+666 
+667   for (i=0; i < an_array->nitems; i++)
+668     {
+669       fprintf(stdout, "item %i: %s", i+1, an_array->char_items[i]);
+670     }
+671   fprintf(stdout, "\n");
+672 }
+\end{DoxyCode}
+\hypertarget{inima__utils_8h_a14ba84193a14d8e152018858dbac07b4}{
+\index{inima\_\-utils.h@{inima\_\-utils.h}!trim@{trim}}
+\index{trim@{trim}!inima_utils.h@{inima\_\-utils.h}}
+\subsubsection[{trim}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ trim (char {\em inString}\mbox{[}$\,$\mbox{]}, \/  char {\em outString}\mbox{[}$\,$\mbox{]})}}
+\label{inima__utils_8h_a14ba84193a14d8e152018858dbac07b4}
+Function: trim Trim leading and trailing blank charachters from a string. blank charachters are the one recognised as such by the isspace lib function (Space, horizontal and vertical tab, form feed, carriage return).
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em inString}]-\/ the input string \item[{\em outString}]-\/ the output string\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+778 {
+779   int headIndex = 0;
+780   int tailIndex = 0;
+781   int outputLength = 0;
+782   
+783   if (inString == NULL) { return NULL; }
+784   
+785   tailIndex = strlen(inString) - 1; // Last char index in the input (excluding th
+      e '\0') 
+786   
+787   // Get rid of the leading blanks:
+788   while (isspace(inString[headIndex]) && (headIndex <= tailIndex)) {headIndex++; 
+      }
+789   
+790   // Get rid of the trailing blanks:
+791   while (isspace(inString[tailIndex]) && (tailIndex > headIndex)) {tailIndex--; }
+      
+792   
+793   // compute the total length
+794   // add one for the null character
+795   outputLength = tailIndex - headIndex + 1; 
+796   
+797   // copy over from input to output
+798   strncpy(outString, &inString[headIndex], outputLength);
+799 
+800   // add the null character
+801   outString[outputLength] = '\0';
+802 
+803   // just for fun, return also
+804   // the result here
+805   return outString; 
+806 }
+\end{DoxyCode}

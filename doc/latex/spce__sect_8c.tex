@@ -1,0 +1,230 @@
+\hypertarget{spce__sect_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-sect.c File Reference}
+\label{spce__sect_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-sect.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-sect.c}}
+}
+{\ttfamily \#include \char`\"{}spce\_\-sect.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \hyperlink{spce__sect_8c_a538576535bfcbfb9bf80d947987d653f}{compute\_\-sectionfun} (double x, void $\ast$data)
+\item 
+int \hyperlink{spce__sect_8c_ac1dac503ab0d34693a0ba15ab726ef81}{find\_\-section\_\-point} (\hyperlink{structsectionfun}{sectionfun} $\ast$sf, const double x, const double y, double $\ast$const res)
+\item 
+int \hyperlink{spce__sect_8c_ae2cd18c10f324ea7c2f50a1fa7864709}{fill\_\-in\_\-sectionfun} (\hyperlink{structsectionfun}{sectionfun} $\ast$const sf, const double inclination, const \hyperlink{structbeam}{beam} $\ast$const b)
+\item 
+void \hyperlink{spce__sect_8c_a048f454707d142b74123b2122c3e68cd}{free\_\-sectionfun} (\hyperlink{structsectionfun}{sectionfun} $\ast$const sf)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spce__sect_8c_a538576535bfcbfb9bf80d947987d653f}{
+\index{spce\_\-sect.c@{spce\_\-sect.c}!compute\_\-sectionfun@{compute\_\-sectionfun}}
+\index{compute\_\-sectionfun@{compute\_\-sectionfun}!spce_sect.c@{spce\_\-sect.c}}
+\subsubsection[{compute\_\-sectionfun}]{\setlength{\rightskip}{0pt plus 5cm}static double compute\_\-sectionfun (double {\em x}, \/  void $\ast$ {\em data})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spce__sect_8c_a538576535bfcbfb9bf80d947987d653f}
+computes the value of the section function.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]abscissa at which to evaluate (should be relative to the beam's refpoint). \item[{\em data}]a \hyperlink{structsectionfun}{sectionfun} struct (declared void to please gsl). \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the section function. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+41 {
+42   const sectionfun *const sf = data;
+43   double trace_y, sect_y;
+44   
+45   trace_y = sf->func->func (x, sf->func->data);
+46   sect_y = sf->m * (x - sf->x0) + sf->y0;
+47   return sect_y - trace_y;
+48 }
+\end{DoxyCode}
+\hypertarget{spce__sect_8c_ae2cd18c10f324ea7c2f50a1fa7864709}{
+\index{spce\_\-sect.c@{spce\_\-sect.c}!fill\_\-in\_\-sectionfun@{fill\_\-in\_\-sectionfun}}
+\index{fill\_\-in\_\-sectionfun@{fill\_\-in\_\-sectionfun}!spce_sect.c@{spce\_\-sect.c}}
+\subsubsection[{fill\_\-in\_\-sectionfun}]{\setlength{\rightskip}{0pt plus 5cm}int fill\_\-in\_\-sectionfun ({\bf sectionfun} $\ast$const  {\em sf}, \/  const double {\em inclination}, \/  const {\bf beam} $\ast$const  {\em b})}}
+\label{spce__sect_8c_ae2cd18c10f324ea7c2f50a1fa7864709}
+prepares a \hyperlink{structsectionfun}{sectionfun} structure
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sf}]a pointer to the structure to fill \item[{\em inclination}]the slope of the line (orientation of the \hyperlink{structobject}{object}) \item[{\em b}]the current \hyperlink{structbeam}{beam} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if successful, -\/1 otherwise 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+116 {
+117   gsl_function *gf;
+118   gsl_interval *interv;
+119   int i;
+120   double delta_x, delta_y, slope, x0, y0, x, xr, yr;
+121 
+122   if (fabs (inclination) < 0.001)
+123     {
+124       sf->vertical = 1;
+125       return 0;
+126     }
+127   else
+128     {
+129       sf->vertical = 0;
+130     }
+131   
+132   sf->m = tan (inclination);
+133   sf->func = b->spec_trace;
+134   
+135   if (!(gf = malloc (sizeof (gsl_function))))
+136     {
+137       return -1;
+138     }
+139   gf->function = &compute_sectionfun;
+140   gf->params = sf;
+141   
+142   if (!(interv = malloc (sizeof (gsl_interval))))
+143     {
+144       free (gf);
+145       gf = NULL;
+146       return -1;
+147     }
+148 
+149   interv->lower = b->bbox[0].x - b->refpoint.x;
+150   interv->upper = b->bbox[1].x - b->refpoint.x;
+151   
+152   /* find out slope of object w.r.t. the spectrum trace */
+153   xr = b->refpoint.x;
+154   yr = sf->func->func (0, sf->func->data) + b->refpoint.y;
+155   delta_y =
+156     b->spec_trace->func (interv->lower,
+157                          b->spec_trace->data) -
+158     b->spec_trace->func (interv->upper, b->spec_trace->data);
+159   delta_x = interv->lower - interv->upper;
+160   if (fabs (delta_x) < 1e-7)
+161     {
+162       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+163                    "Vanishing bounding box");
+164     }
+165   slope = delta_y / delta_x;
+166   if (fabs (sf->m - slope) < 1e-7)
+167     {
+168       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+169                    "Spectrum trace and object"
+170                    " orientation are almost parallel");
+171     }
+172 
+173   /* extend interval such that the section point should be found at
+174      least when everything is linear */
+175   for (i = 0; i < 4; i++)
+176     {
+177       x0 = b->corners[i].x - xr;
+178       y0 = b->corners[i].y - yr;
+179       x = (y0 - x0 * sf->m) / (slope - sf->m);
+180       if (x < interv->lower)
+181         interv->lower = x;
+182       if (x > interv->upper)
+183         interv->upper = x;
+184     }
+185   
+186   /* choose something harmless to initialize the solver */
+187   sf->x0 = 1;
+188   sf->y0 = 1;
+189   if (compute_sectionfun (interv->lower, sf) *
+190       compute_sectionfun (interv->upper, sf) >= 0)
+191     {
+192       //aXe_message(aXe_M_FATAL, __FILE__, __LINE__, "Invalid spectrum trace "
+193       //  "function");
+194     }
+195   sf->gslfun = gf;
+196   sf->interv = interv;
+197   sf->solver = gsl_root_fsolver_alloc (gsl_root_fsolver_brent);
+198   return 0;
+199 }
+\end{DoxyCode}
+\hypertarget{spce__sect_8c_ac1dac503ab0d34693a0ba15ab726ef81}{
+\index{spce\_\-sect.c@{spce\_\-sect.c}!find\_\-section\_\-point@{find\_\-section\_\-point}}
+\index{find\_\-section\_\-point@{find\_\-section\_\-point}!spce_sect.c@{spce\_\-sect.c}}
+\subsubsection[{find\_\-section\_\-point}]{\setlength{\rightskip}{0pt plus 5cm}int find\_\-section\_\-point ({\bf sectionfun} $\ast$ {\em sf}, \/  const double {\em x}, \/  const double {\em y}, \/  double $\ast$const  {\em res})}}
+\label{spce__sect_8c_ac1dac503ab0d34693a0ba15ab726ef81}
+finds the section point between a line of given slope through a given point and a not too unreasonable function.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sf}]the section function descriptor, created by fill\_\-in\_\-sectionfun. \item[{\em x}]abscissa of the given point. \item[{\em x}]ordinate of the given point. \item[{\em res}]abscissa of section point. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if section point could be found, -\/1 if not. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+64 {
+65   int iter_count = 0;
+66   double x_lower, x_upper;
+67   
+68   if (sf->vertical)
+69     {
+70       *res = x;
+71       return 0;
+72     }
+73   
+74   sf->x0 = x;
+75   sf->y0 = y;
+76   
+77   if (compute_sectionfun (sf->interv->lower, sf) *
+78       compute_sectionfun (sf->interv->upper, sf) >= 0)
+79     {
+80       return -1;
+81     }
+82   gsl_root_fsolver_set (sf->solver, sf->gslfun, sf->interv->lower,
+83                         sf->interv->upper);
+84 
+85   while (1)
+86     {
+87       gsl_root_fsolver_iterate (sf->solver);
+88       x_lower = gsl_root_fsolver_x_lower (sf->solver);
+89       x_upper = gsl_root_fsolver_x_upper (sf->solver);
+90       if (gsl_root_test_interval (x_lower, x_upper, 0.0001, 0.000001) ==
+91           GSL_SUCCESS)
+92         break;
+93       
+94       if (iter_count++ > 100)
+95         {
+96           return -1;
+97         }
+98     }
+99 
+100   *res = gsl_root_fsolver_root (sf->solver);
+101   return 0;
+102 }
+\end{DoxyCode}
+\hypertarget{spce__sect_8c_a048f454707d142b74123b2122c3e68cd}{
+\index{spce\_\-sect.c@{spce\_\-sect.c}!free\_\-sectionfun@{free\_\-sectionfun}}
+\index{free\_\-sectionfun@{free\_\-sectionfun}!spce_sect.c@{spce\_\-sect.c}}
+\subsubsection[{free\_\-sectionfun}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-sectionfun ({\bf sectionfun} $\ast$const  {\em sf})}}
+\label{spce__sect_8c_a048f454707d142b74123b2122c3e68cd}
+releases the memory allocated in the fields of a \hyperlink{structsectionfun}{sectionfun} structure (but not the structure itself)
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sf}]the struct the children of which should be freed \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+211 {
+212   if (sf->vertical)
+213     {
+214       return;
+215     }
+216   gsl_root_fsolver_free (sf->solver);
+217   free (sf->interv);
+218   sf->interv = NULL;
+219   free (sf->gslfun);
+220   sf->gslfun = NULL;
+221 }
+\end{DoxyCode}

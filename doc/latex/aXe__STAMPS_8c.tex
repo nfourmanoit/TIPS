@@ -1,0 +1,428 @@
+\hypertarget{aXe__STAMPS_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-STAMPS.c File Reference}
+\label{aXe__STAMPS_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-STAMPS.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-STAMPS.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-PET.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}inout\_\-aper.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}trace\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-sex.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}disp\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-wl\_\-calib.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-binning.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-spc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-FITScards.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-output.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aXe__STAMPS_8c_a7a38b874452a6cde6ebee9e98c980eef}{AXE\_\-IMAGE\_\-PATH}~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__STAMPS_8c_a75c154942e560254898bcafaf48bdf3d}{AXE\_\-OUTPUT\_\-PATH}~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__STAMPS_8c_a0b0be957330d9c69fa325ee014ce4dad}{AXE\_\-CONFIG\_\-PATH}~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__STAMPS_8c_a387b2332dae116e8d0c1f8e489bc9057}{AXE\_\-DRIZZLE\_\-PATH}~\char`\"{}AXE\_\-DRIZZLE\_\-PATH\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{aXe__STAMPS_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{aXe__STAMPS_8c_a0b0be957330d9c69fa325ee014ce4dad}{
+\index{aXe\_\-STAMPS.c@{aXe\_\-STAMPS.c}!AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}}
+\index{AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}!aXe_STAMPS.c@{aXe\_\-STAMPS.c}}
+\subsubsection[{AXE\_\-CONFIG\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-CONFIG\_\-PATH~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}}}
+\label{aXe__STAMPS_8c_a0b0be957330d9c69fa325ee014ce4dad}
+\hypertarget{aXe__STAMPS_8c_a387b2332dae116e8d0c1f8e489bc9057}{
+\index{aXe\_\-STAMPS.c@{aXe\_\-STAMPS.c}!AXE\_\-DRIZZLE\_\-PATH@{AXE\_\-DRIZZLE\_\-PATH}}
+\index{AXE\_\-DRIZZLE\_\-PATH@{AXE\_\-DRIZZLE\_\-PATH}!aXe_STAMPS.c@{aXe\_\-STAMPS.c}}
+\subsubsection[{AXE\_\-DRIZZLE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-DRIZZLE\_\-PATH~\char`\"{}AXE\_\-DRIZZLE\_\-PATH\char`\"{}}}
+\label{aXe__STAMPS_8c_a387b2332dae116e8d0c1f8e489bc9057}
+\hypertarget{aXe__STAMPS_8c_a7a38b874452a6cde6ebee9e98c980eef}{
+\index{aXe\_\-STAMPS.c@{aXe\_\-STAMPS.c}!AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}}
+\index{AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}!aXe_STAMPS.c@{aXe\_\-STAMPS.c}}
+\subsubsection[{AXE\_\-IMAGE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-IMAGE\_\-PATH~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}}}
+\label{aXe__STAMPS_8c_a7a38b874452a6cde6ebee9e98c980eef}
+\hypertarget{aXe__STAMPS_8c_a75c154942e560254898bcafaf48bdf3d}{
+\index{aXe\_\-STAMPS.c@{aXe\_\-STAMPS.c}!AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}}
+\index{AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}!aXe_STAMPS.c@{aXe\_\-STAMPS.c}}
+\subsubsection[{AXE\_\-OUTPUT\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-OUTPUT\_\-PATH~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}}}
+\label{aXe__STAMPS_8c_a75c154942e560254898bcafaf48bdf3d}
+
+
+\subsection{Function Documentation}
+\hypertarget{aXe__STAMPS_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{aXe\_\-STAMPS.c@{aXe\_\-STAMPS.c}!main@{main}}
+\index{main@{main}!aXe_STAMPS.c@{aXe\_\-STAMPS.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{aXe__STAMPS_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+
+\begin{DoxyCode}
+48 {
+49   char *opt;
+50   char aper_file[MAXCHAR];
+51   char aper_file_path[MAXCHAR];
+52 
+53   char conf_file[MAXCHAR];
+54   char conf_file_path[MAXCHAR];
+55 
+56   char grism_file[MAXCHAR];
+57   char grism_file_path[MAXCHAR];
+58 
+59   char PET_file[MAXCHAR];
+60   char PET_file_path[MAXCHAR];
+61 
+62   //  char outputroot[MAXCHAR];
+63   //  char outputroot_path[MAXCHAR];
+64   char STP_file[MAXCHAR];
+65   char STP_file_path[MAXCHAR];
+66 
+67   //  char output_path[MAXCHAR];
+68 
+69   aperture_conf *conf;
+70 
+71   object **oblist;
+72   observation *obs;
+73 
+74   ap_pixel *PET;
+75 
+76   int index, i;
+77   char label[MAXCHAR];
+78 
+79   fitsfile *PET_ptr, *STP_ptr;
+80   int f_status = 0;
+81 
+82   int aperID, beamID, objindex;
+83   FITScards *cards;
+84   FITScards *xymin_cards;
+85 
+86   gsl_matrix *rstamp;
+87   drzstamp *drzstmp;
+88   drzstamp_dim dim;
+89 
+90   int rectified = 0;
+91   //int drizzled = 0;
+92   int drizzle=0;
+93   int drzstamp=0;
+94   int for_grism=0;
+95 
+96   d_point stp_min;
+97 
+98   if ((argc < 3) || (opt = get_online_option ("help", argc, argv)))
+99     {
+100       fprintf (stdout,
+101                "ST-ECF European Coordinating Facility\n"
+102                "aXe_STAMPS Version %s:\n"
+103                "           Task that generates some Postscript stamp images from 
+      the\n"
+104                "           content of a Pixel Extraction Table (PET)\n"
+105                "           The trace is overplotted and is generated from the gro
+      up\n"
+106                "           of pixels in the PET which have the smallest projected
+       distance\n"
+107                "           to the trace in the PET. No analytical a-priori trace 
+      function \n"
+108                "           is used.\n"
+109                "\n"
+110                "Usage:\n"
+111                "      aXe_STAMPS g/prism_filename configuration_filename [options
+      ]\n"
+112                "\n"
+113                "Options:\n"
+114                "      -rectified            - produces rectified stamp image foll
+      owing the\n"
+115                "                              direction of the extraction process
+      \n"
+116                "      -drz                  - use $AXE_DRIZZLE_PATH to locate the
+       grism-, OAF-\n"
+117                "                              and PET-files instead of $AXE_IMAGE
+      /OUTPUT_PATH\n"
+118                "      -in_AF=[string]       - overwrite the automatically generat
+      ed name\n"
+119                "                              of the input aperture file\n"
+120                "      -in_PET=[string]      - overwrite the automatically generat
+      ed name\n"
+121                "                              of the input PET file\n"
+122                "      -out_STP=[string]     - overwrite the automatically generat
+      ed name\n"
+123                "                              of the output stamp FITS image\n"
+124                "\n",RELEASE);
+125       exit (1);
+126     }
+127 
+128   fprintf (stdout, "aXe_STAMPS: Starting...\n");
+129 
+130   index = 0;
+131   strcpy (grism_file, argv[++index]);
+132   if ((opt = get_online_option ("drz", argc, argv))){
+133     build_path (AXE_DRIZZLE_PATH, grism_file, grism_file_path);
+134     drizzle=1;
+135   }
+136   else{
+137     build_path (AXE_IMAGE_PATH, grism_file, grism_file_path);
+138     drizzle=0;
+139   }
+140 
+141   strcpy (conf_file, argv[++index]);
+142   build_path (AXE_CONFIG_PATH, conf_file, conf_file_path);
+143 
+144 
+145   conf = get_aperture_descriptor (conf_file_path);
+146 
+147   /* Determine where the various extensions are in the FITS file */
+148   get_extension_numbers(grism_file_path, conf,conf->optkey1,conf->optval1);
+149 
+150   /* Build aperture file name */
+151   if ((opt = get_online_option("in_AF", argc, argv))){
+152     /* get it */
+153     strcpy (aper_file, opt);
+154     strcpy (aper_file_path, opt);
+155   }
+156   else {
+157     replace_file_extension (grism_file, aper_file, ".fits",
+158                             ".OAF", conf->science_numext);
+159     if (drizzle)
+160       build_path (AXE_DRIZZLE_PATH, aper_file, aper_file_path);
+161     else
+162       build_path (AXE_OUTPUT_PATH, aper_file, aper_file_path);
+163   }
+164 
+165   if ((opt = get_online_option("in_PET", argc, argv))){
+166     /* get it */
+167     strcpy (PET_file, opt);
+168     strcpy (PET_file_path, opt);
+169   }
+170   else{
+171     /* Build object PET file name */
+172     replace_file_extension (grism_file, PET_file, ".fits",
+173                             ".PET.fits", conf->science_numext);
+174     if (drizzle)
+175       build_path (AXE_DRIZZLE_PATH, PET_file, PET_file_path);
+176     else
+177       build_path (AXE_OUTPUT_PATH, PET_file, PET_file_path);
+178   }
+179 
+180   if ( (opt = get_online_option ("out_STP", argc, argv)) )
+181     {
+182       strcpy (STP_file, opt);
+183       //      strcpy (STP_file_PATH, opt);
+184     }
+185   else
+186     {
+187       //      replace_file_extension (PET_file, STP_file, ".PET.fits", ".STP.fits
+      ",-1);
+188       replace_file_extension (grism_file, STP_file, ".fits", ".STP.fits",conf->
+      science_numext);
+189     }
+190 
+191 
+192   if (drizzle)
+193     build_path (AXE_DRIZZLE_PATH, STP_file, STP_file_path);
+194   else
+195     build_path (AXE_OUTPUT_PATH, STP_file, STP_file_path);
+196 
+197   if ((opt=get_online_option("rectified",argc,argv)))
+198     rectified = 1;
+199   else if ((opt = get_online_option ("drzstamp", argc, argv)))
+200     drzstamp=1;
+201 
+202 
+203   // give feedback onto the screen:
+204   // report on input and output
+205   // and also on specific parameters
+206   fprintf (stdout, "aXe_STAMPS: Input Image file name:               %s\n",
+207            grism_file_path);
+208   fprintf (stdout, "aXe_STAMPS: Input Aperture file name:            %s\n",
+209            aper_file_path);
+210   fprintf (stdout, "aXe_STAMPS: Input PET file name:                 %s\n",
+211            PET_file_path);
+212   fprintf (stdout, "aXe_STAMPS: Name of STP file :                   %s\n",
+213            STP_file_path);
+214   if (rectified)
+215     fprintf (stdout, "aXe_STAMPS: Producing rectified stamp images.\n");
+216   else if (drzstamp)
+217     fprintf (stdout, "aXe_STAMPS: Producing drizzled stamp images.\n");
+218   else
+219     fprintf (stdout, "aXe_STAMPS: Producing trace stamp images.\n");
+220 
+221 
+222   // Loading the object list
+223   obs = load_dummy_observation ();
+224   fprintf (stdout, "\naXe_STAMPS: Loading object aperture list...");
+225   oblist = file_to_object_list_seq (aper_file_path, obs);
+226   fprintf (stdout,"%d objects loaded.\n\n",object_list_size(oblist));
+227 
+228   //  Open the OPET file for reading
+229   fits_open_file (&PET_ptr, PET_file_path, READONLY, &f_status);
+230   if (f_status)
+231     {
+232       ffrprt (stdout, f_status);
+233       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+234                    "aXe_STAMPS: Could not open file: %s\n",
+235                    PET_file_path);
+236     }
+237 
+238   STP_ptr = create_FITSimage_opened (STP_file_path, 1);
+239 
+240   i = 0;
+241   if (oblist!=NULL)
+242     {
+243       while (1)
+244         {
+245 
+246           /* Get the PET for this object */
+247           PET = get_ALL_from_next_in_PET(PET_ptr, &aperID, &beamID);
+248           if ((aperID==-1) && (beamID==-1)) break;
+249           fprintf (stdout, "aXe_STAMPS: BEAM %d%c.", aperID, BEAM(beamID));
+250           objindex =  find_object_in_object_list(oblist,aperID);
+251 
+252           sprintf (label, "%s.%d%c.ps/CPS", STP_file_path,
+253                    oblist[objindex]->ID, BEAM (oblist[objindex]->beams[beamID].ID
+      ));
+254 
+255           // determine the minimum in x and y
+256           stp_min.x = -1.0;
+257           stp_min.y = -1.0;
+258 
+259           // special treatment for FORS2: dirzzled stamp images
+260           if (drzstamp)
+261             {
+262 
+263               for_grism = check_for_grism (conf_file_path, beamID);
+264               if (!for_grism)
+265                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+266                              "aXe_STAMPS: Drizzled stamp images are not\n"
+267                              "supported for prism images. Please choose a differe
+      nt option!\n");
+268 
+269               // get the dimensions of the drizzled stamp
+270               dim = get_stamp_dim(PET, oblist[objindex]->beams[beamID].width, con
+      f, beamID, &stp_min);
+271 
+272               // fill the drzstamp structure (counts plus weight matrix)
+273               drzstmp = drizzled_stamp_img (PET,oblist[objindex]->beams[beamID].w
+      idth,
+274                                             oblist[objindex]->beams[beamID].orien
+      t,  dim);
+275 
+276               // does this make sense
+277               interpolate_over_NaN (drzstmp->counts);
+278 
+279               // give the extension name and store the counts
+280               sprintf (label, "BEAM_%d%c",oblist[objindex]->ID, BEAM (oblist[obji
+      ndex]->beams[beamID].ID));
+281               gsl_to_FITSimage_opened (drzstmp->counts, STP_ptr ,0,label);
+282 
+283               // in case that the stamp is no dummy, make and store the WCS heade
+      r
+284               if (dim.resolution)
+285                 {
+286                   cards = get_WCS_FITScards(dim.xstart*dim.resolution, dim.
+      resolution, dim.ystart);
+287                   put_FITS_cards_opened(STP_ptr,cards);
+288                   free_FITScards(cards);
+289                 }
+290 
+291               // make and store the default header
+292               cards = beam_to_FITScards(oblist[objindex],beamID);
+293               xymin_cards = stpmin_to_FITScards(stp_min);
+294               put_FITS_cards_opened(STP_ptr,cards);
+295               put_FITS_cards_opened(STP_ptr,xymin_cards);
+296               free_FITScards(cards);
+297               free_FITScards(xymin_cards);
+298 
+299               // give the extension name and store the weight image
+300               sprintf (label, "WEIG_%d%c",oblist[objindex]->ID, BEAM (oblist[obji
+      ndex]->beams[beamID].ID));
+301               gsl_to_FITSimage_opened (drzstmp->weight, STP_ptr ,0,label);
+302 
+303               // in case that the stamp is no dummy, make and store the WCS heade
+      r
+304               if (dim.resolution)
+305                 {
+306                   cards = get_WCS_FITScards(dim.xstart*dim.resolution, dim.
+      resolution, dim.ystart);
+307                   put_FITS_cards_opened(STP_ptr,cards);
+308                   free_FITScards(cards);
+309                 }
+310 
+311               // make and store the default header
+312               cards = beam_to_FITScards(oblist[objindex],beamID);
+313               xymin_cards = stpmin_to_FITScards(stp_min);
+314               put_FITS_cards_opened(STP_ptr,cards);
+315               put_FITS_cards_opened(STP_ptr,xymin_cards);
+316               free_FITScards(cards);
+317               free_FITScards(xymin_cards);
+318 
+319               // free the structure with the count and weight matrix
+320               free_drzstamp(drzstmp);
+321             }
+322           else
+323             {
+324               if (rectified)
+325                 {
+326                   rstamp = rectified_stamp_img (PET,oblist[objindex]->beams[beamI
+      D].width, &stp_min);
+327                 }
+328               else
+329                 {
+330                   rstamp = stamp_img (PET,oblist[objindex]->beams[beamID].width, 
+      &stp_min);
+331                 }
+332               sprintf (label, "BEAM_%d%c",oblist[objindex]->ID, BEAM (oblist[obji
+      ndex]->beams[beamID].ID));
+333               interpolate_over_NaN (rstamp);
+334               gsl_to_FITSimage_opened (rstamp, STP_ptr ,0,label);
+335               cards = beam_to_FITScards(oblist[objindex],beamID);
+336               xymin_cards = stpmin_to_FITScards(stp_min);
+337               put_FITS_cards_opened(STP_ptr,cards);
+338               put_FITS_cards_opened(STP_ptr,xymin_cards);
+339               free_FITScards(cards);
+340               free_FITScards(xymin_cards);
+341 
+342               free_stamp_img(rstamp);
+343             }
+344 
+345           if (PET!=NULL)
+346             free(PET);
+347 
+348           fprintf (stdout, " Done.\n");
+349           i++;
+350         }
+351 
+352     }
+353   if (oblist!=NULL) free_oblist (oblist);
+354 
+355   fits_close_file (STP_ptr, &f_status);
+356   if (f_status)
+357     {
+358       ffrprt (stdout, f_status);
+359       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+360                    "aXe_STAMPS: Could not" " close STP file: %s\n", STP_file_path
+      );
+361     }
+362 
+363   fprintf (stdout, "aXe_STAMPS: Done...\n");
+364 
+365   /* Copy the header info from the grism image */
+366   {
+367     FITScards *cards;
+368     cards = get_FITS_cards (PET_file_path, 1);
+369     put_FITS_cards(STP_file_path,1,cards);
+370     free_FITScards(cards);
+371   }
+372   exit (0);
+373 }
+\end{DoxyCode}

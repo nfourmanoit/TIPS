@@ -1,0 +1,954 @@
+\hypertarget{drizzle__utils_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/drizzle\_\-utils.h File Reference}
+\label{drizzle__utils_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/drizzle\_\-utils.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/drizzle\_\-utils.h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structobjectobs}{objectobs}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacedrizzleutils}{drizzleutils}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{drizzle__utils_8h_a5931cd155dee5cb3ff0f477ab17b4de5}{NMAXOBS}~1100
+\item 
+\#define \hyperlink{drizzle__utils_8h_abdd4b075c372d90775cb4bd085724259}{NMAXOBJ}~20000
+\item 
+\#define \hyperlink{drizzle__utils_8h_ad253cabca2db57d87e27f3974d3cdbc1}{DRZMAX}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{drizzle__utils_8h_ae75f4fc3709218cacb7e8c3ca6905ba7}{get\_\-drizzle\_\-coeffs} (\hyperlink{structdispstruct}{dispstruct} $\ast$disp, \hyperlink{structtrace__func}{trace\_\-func} $\ast$trace, int boxwidth, int boxheight, int trlength, double relx, double rely, \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, double orient, \hyperlink{structdispstruct}{dispstruct} $\ast$outdisp, double cdcorr, double spref, double spmeanreso)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{drizzle__utils_8h_a2f70f442cfdf6bf042090db1c663bacf}{get\_\-coeffs\_\-back} (\hyperlink{structtrace__func}{trace\_\-func} $\ast$trace)
+\item 
+double \hyperlink{drizzle__utils_8h_a1431d7e8e0a0741067bfbc25fd224e72}{get\_\-rotation\_\-angle} (double dxdy)
+\item 
+int \hyperlink{drizzle__utils_8h_a1959c97360d5cfd7e17001192a50ae91}{add\_\-observation} (char $\ast$filename, char $\ast$conf\_\-file, \hyperlink{structobjectobs}{objectobs} $\ast$$\ast$allobjects, int nobjects, \hyperlink{structobject}{object} $\ast$$\ast$oblist, int list\_\-size, \hyperlink{structpx__point}{px\_\-point} pixmax, int sci\_\-numext)
+\item 
+void \hyperlink{drizzle__utils_8h_a574eac212ff4387eac287f61d0d7b965}{add\_\-obs\_\-to\_\-allobj} (\hyperlink{structobjectobs}{objectobs} $\ast$actobject, \hyperlink{structobject}{object} $\ast$actobs, \hyperlink{structpx__point}{px\_\-point} pixmax, double cdscale, double spreso, int tlength)
+\item 
+int \hyperlink{drizzle__utils_8h_a19246a6e447888b7905fedc2ca314a7b}{add\_\-obj\_\-to\_\-allobj} (\hyperlink{structobjectobs}{objectobs} $\ast$$\ast$allobjects, int nobjects, \hyperlink{structobject}{object} $\ast$actobs, \hyperlink{structpx__point}{px\_\-point} pixmax, double cdscale, double spreso, int tlength)
+\item 
+int \hyperlink{drizzle__utils_8h_af743259f0ad4589f433e9fe37f548f20}{make\_\-refpoints} (char $\ast$conf\_\-file, char $\ast$filename, \hyperlink{structpx__point}{px\_\-point} pixmax, \hyperlink{structobjectobs}{objectobs} $\ast$$\ast$allobjects, int nobjects)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{drizzle__utils_8h_a7b52f5d1d211d4305e7806caf5c2b333}{get\_\-mean\_\-refpoint} (\hyperlink{structobjectobs}{objectobs} $\ast$$\ast$allobjects, int nobjects, int ID, int $\ast$boxwidth, int $\ast$boxheight, double $\ast$relx, double $\ast$rely, double $\ast$objwidth, double $\ast$orient, double $\ast$cdref, double $\ast$cdscale, double $\ast$cdmeanscale, double $\ast$sprefreso, double $\ast$spreso, double $\ast$spmeanreso, int $\ast$tlength)
+\item 
+\hyperlink{structpx__point}{px\_\-point} \hyperlink{drizzle__utils_8h_af5b5dd6f7ac6237d3f1b17572cf57f7d}{recalc\_\-bbox} (int xmin, int xmax, int ymin, int ymax, \hyperlink{structpx__point}{px\_\-point} pixmax)
+\item 
+\hyperlink{structpx__point}{px\_\-point} \hyperlink{drizzle__utils_8h_a6f5ca50d01eab0c802d7d44c9c220d79}{recalc\_\-mins} (int xmin, int xmax, int ymin, int ymax, \hyperlink{structpx__point}{px\_\-point} pixmax)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{drizzle__utils_8h_af90500a90e42fe9606dfdabd1d8134cb}{get\_\-refwave\_\-position} (\hyperlink{structdispstruct}{dispstruct} $\ast$disp, \hyperlink{structtrace__func}{trace\_\-func} $\ast$trace, \hyperlink{structd__point}{d\_\-point} refpix, \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf)
+\item 
+double \hyperlink{drizzle__utils_8h_aa17030f12ca6e5091eafa4984a95a27f}{get\_\-drizzle\_\-width} (\hyperlink{structobject}{object} $\ast$ob, int beamnum, \hyperlink{structtrace__func}{trace\_\-func} $\ast$trace)
+\item 
+\hyperlink{structobjectobs}{objectobs} $\ast$$\ast$ \hyperlink{drizzle__utils_8h_a4dfd47514bf48a92a5aacd30d9f36aeb}{malloc\_\-objectobs} ()
+\item 
+void \hyperlink{drizzle__utils_8h_a309fe99515cba05756bf7e0a787b64b3}{free\_\-objectobs} (\hyperlink{structobjectobs}{objectobs} $\ast$$\ast$allobjects)
+\item 
+void \hyperlink{drizzle__utils_8h_a1b6434677bdc0aec5ed70630c578c912}{print\_\-objectobs} (\hyperlink{structobjectobs}{objectobs} $\ast$$\ast$allobjects, int nobjects)
+\item 
+void \hyperlink{drizzle__utils_8h_a4456ba253786a12ae572cb6631cdbf93}{print\_\-objectobs2} (\hyperlink{structobjectobs}{objectobs} allobjects\mbox{[}$\,$\mbox{]}, int nobjects)
+\item 
+int \hyperlink{drizzle__utils_8h_a20898be5609916ec8e182b7fbc09d140}{get\_\-beam\_\-trace\_\-length} (const \hyperlink{structbeam}{beam} actbeam)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{drizzle__utils_8h_ad253cabca2db57d87e27f3974d3cdbc1}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!DRZMAX@{DRZMAX}}
+\index{DRZMAX@{DRZMAX}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{DRZMAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define DRZMAX~0}}
+\label{drizzle__utils_8h_ad253cabca2db57d87e27f3974d3cdbc1}
+\hypertarget{drizzle__utils_8h_abdd4b075c372d90775cb4bd085724259}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!NMAXOBJ@{NMAXOBJ}}
+\index{NMAXOBJ@{NMAXOBJ}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{NMAXOBJ}]{\setlength{\rightskip}{0pt plus 5cm}\#define NMAXOBJ~20000}}
+\label{drizzle__utils_8h_abdd4b075c372d90775cb4bd085724259}
+\hypertarget{drizzle__utils_8h_a5931cd155dee5cb3ff0f477ab17b4de5}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!NMAXOBS@{NMAXOBS}}
+\index{NMAXOBS@{NMAXOBS}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{NMAXOBS}]{\setlength{\rightskip}{0pt plus 5cm}\#define NMAXOBS~1100}}
+\label{drizzle__utils_8h_a5931cd155dee5cb3ff0f477ab17b4de5}
+
+
+\subsection{Function Documentation}
+\hypertarget{drizzle__utils_8h_a19246a6e447888b7905fedc2ca314a7b}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!add\_\-obj\_\-to\_\-allobj@{add\_\-obj\_\-to\_\-allobj}}
+\index{add\_\-obj\_\-to\_\-allobj@{add\_\-obj\_\-to\_\-allobj}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{add\_\-obj\_\-to\_\-allobj}]{\setlength{\rightskip}{0pt plus 5cm}int add\_\-obj\_\-to\_\-allobj ({\bf objectobs} $\ast$$\ast$ {\em allobjects}, \/  int {\em nobjects}, \/  {\bf object} $\ast$ {\em actobs}, \/  {\bf px\_\-point} {\em pixmax}, \/  double {\em cdscale}, \/  double {\em spreso}, \/  int {\em tlength})}}
+\label{drizzle__utils_8h_a19246a6e447888b7905fedc2ca314a7b}
+
+
+
+\begin{DoxyCode}
+442 {
+443   int xmin, xmax, ymin, ymax;
+444   //double m, b;
+445 
+446   gsl_vector_int * xvec;
+447   gsl_vector_int * yvec;
+448 
+449   px_point bbox;
+450   px_point mins;
+451 
+452   double *gaga;
+453 
+454   //  object *ob = malloc (sizeof (object));
+455   objectobs *objobs = malloc (sizeof (objectobs));
+456 
+457   xvec = gsl_vector_int_alloc (4);
+458   yvec = gsl_vector_int_alloc (4);
+459 
+460   allobjects[nobjects] = objobs;
+461   /* Store the refpoint */
+462   allobjects[nobjects]->refpoint[0].x = actobs->beams[0].refpoint.x;
+463   allobjects[nobjects]->refpoint[0].y = actobs->beams[0].refpoint.y;
+464 
+465   //*************************************************
+466   // patch to correct the reference point in case
+467   // that the the trace descritpion
+468   // does have a non negligeable first order term!
+469   gaga = actobs->beams[0].spec_trace->data;
+470   allobjects[nobjects]->refpoint[0].y = allobjects[nobjects]->refpoint[0].y + gag
+      a[1];
+471   //*************************************************
+472 
+473   allobjects[nobjects]->OBJID = actobs->ID;
+474   allobjects[nobjects]->nobs = 1;
+475   allobjects[nobjects]->pointer = 0;
+476 
+477 
+478   gsl_vector_int_set(xvec, 0, actobs->beams[0].corners[0].x);
+479   gsl_vector_int_set(xvec, 1, actobs->beams[0].corners[1].x);
+480   gsl_vector_int_set(xvec, 2, actobs->beams[0].corners[2].x);
+481   gsl_vector_int_set(xvec, 3, actobs->beams[0].corners[3].x);
+482   xmin = gsl_stats_int_min(xvec->data, 1, 4);
+483   xmax = gsl_stats_int_max(xvec->data, 1, 4);
+484 
+485   gsl_vector_int_set(yvec, 0, actobs->beams[0].corners[0].y);
+486   gsl_vector_int_set(yvec, 1, actobs->beams[0].corners[1].y);
+487   gsl_vector_int_set(yvec, 2, actobs->beams[0].corners[2].y);
+488   gsl_vector_int_set(yvec, 3, actobs->beams[0].corners[3].y);
+489   ymin = gsl_stats_int_min(yvec->data, 1, 4);
+490   ymax = gsl_stats_int_max(yvec->data, 1, 4);
+491 
+492   bbox = recalc_bbox(xmin, xmax, ymin, ymax, pixmax);
+493   mins = recalc_mins(xmin, xmax, ymin, ymax, pixmax);
+494 
+495   allobjects[nobjects]->width[0]   = bbox.x;
+496   allobjects[nobjects]->height[0]  = bbox.y;
+497   allobjects[nobjects]->tlength[0] = tlength;
+498   allobjects[nobjects]->objwidth[0] = actobs->beams[0].width;
+499   allobjects[nobjects]->orient[0]   = actobs->beams[0].orient;
+500   allobjects[nobjects]->cdscale[0]  = cdscale;
+501   allobjects[nobjects]->spreso[0]   = spreso;
+502 
+503   allobjects[nobjects]->relrefpt[0].x = actobs->beams[0].refpoint.x - (double)min
+      s.x;
+504   allobjects[nobjects]->relrefpt[0].y = actobs->beams[0].refpoint.y - (double)min
+      s.y;
+505 
+506   ++nobjects;
+507 
+508   gsl_vector_int_free(xvec);
+509   gsl_vector_int_free(yvec);
+510 
+511   return nobjects;
+512 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a574eac212ff4387eac287f61d0d7b965}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!add\_\-obs\_\-to\_\-allobj@{add\_\-obs\_\-to\_\-allobj}}
+\index{add\_\-obs\_\-to\_\-allobj@{add\_\-obs\_\-to\_\-allobj}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{add\_\-obs\_\-to\_\-allobj}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-obs\_\-to\_\-allobj ({\bf objectobs} $\ast$ {\em actobject}, \/  {\bf object} $\ast$ {\em actobs}, \/  {\bf px\_\-point} {\em pixmax}, \/  double {\em cdscale}, \/  double {\em spreso}, \/  int {\em tlength})}}
+\label{drizzle__utils_8h_a574eac212ff4387eac287f61d0d7b965}
+
+
+
+\begin{DoxyCode}
+380 {
+381 
+382   int xmin, xmax, ymin, ymax;
+383   //double m, b;
+384   gsl_vector_int * xvec;
+385   gsl_vector_int * yvec;
+386   px_point bbox;
+387   px_point mins;
+388 
+389   double *gaga;
+390 
+391   xvec = gsl_vector_int_alloc (4);
+392   yvec = gsl_vector_int_alloc (4);
+393 
+394   /* Store the refpoint */
+395   actobject->refpoint[actobject->nobs].x = actobs->beams[0].refpoint.x;
+396   actobject->refpoint[actobject->nobs].y = actobs->beams[0].refpoint.y;
+397 
+398   //*************************************************
+399   // patch to correct the reference point in case
+400   // that the the trace descritpion
+401   // does have a non negligeable first order term!
+402   gaga = actobs->beams[0].spec_trace->data;
+403   actobject->refpoint[actobject->nobs].y = actobject->refpoint[actobject->nobs].
+      y + gaga[1];
+404   //*************************************************
+405 
+406   gsl_vector_int_set(xvec, 0, actobs->beams[0].corners[0].x);
+407   gsl_vector_int_set(xvec, 1, actobs->beams[0].corners[1].x);
+408   gsl_vector_int_set(xvec, 2, actobs->beams[0].corners[2].x);
+409   gsl_vector_int_set(xvec, 3, actobs->beams[0].corners[3].x);
+410   xmin = gsl_stats_int_min(xvec->data, 1, 4);
+411   xmax = gsl_stats_int_max(xvec->data, 1, 4);
+412   gsl_vector_int_set(yvec, 0, actobs->beams[0].corners[0].y);
+413   gsl_vector_int_set(yvec, 1, actobs->beams[0].corners[1].y);
+414   gsl_vector_int_set(yvec, 2, actobs->beams[0].corners[2].y);
+415   gsl_vector_int_set(yvec, 3, actobs->beams[0].corners[3].y);
+416   ymin = gsl_stats_int_min(yvec->data, 1, 4);
+417   ymax = gsl_stats_int_max(yvec->data, 1, 4);
+418 
+419   bbox = recalc_bbox(xmin, xmax, ymin, ymax, pixmax);
+420   mins = recalc_mins(xmin, xmax, ymin, ymax, pixmax);
+421 
+422   actobject->width[actobject->nobs]    = bbox.x;
+423   actobject->height[actobject->nobs]   = bbox.y;
+424   actobject->tlength[actobject->nobs]  = tlength;
+425   actobject->objwidth[actobject->nobs] = actobs->beams[0].width;
+426   actobject->orient[actobject->nobs]   = actobs->beams[0].orient;
+427   actobject->cdscale[actobject->nobs]   = cdscale;
+428   actobject->spreso[actobject->nobs]   = spreso;
+429 
+430   actobject->relrefpt[actobject->nobs].x = actobs->beams[0].refpoint.x - (double)
+      mins.x;
+431   actobject->relrefpt[actobject->nobs].y = actobs->beams[0].refpoint.y - (double)
+      mins.y;
+432 
+433   actobject->nobs = actobject->nobs + 1;
+434 
+435   gsl_vector_int_free(xvec);
+436   gsl_vector_int_free(yvec);
+437 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a1959c97360d5cfd7e17001192a50ae91}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!add\_\-observation@{add\_\-observation}}
+\index{add\_\-observation@{add\_\-observation}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{add\_\-observation}]{\setlength{\rightskip}{0pt plus 5cm}int add\_\-observation (char $\ast$ {\em filename}, \/  char $\ast$ {\em conf\_\-file}, \/  {\bf objectobs} $\ast$$\ast$ {\em allobjects}, \/  int {\em nobjects}, \/  {\bf object} $\ast$$\ast$ {\em oblist}, \/  int {\em list\_\-size}, \/  {\bf px\_\-point} {\em pixmax}, \/  int {\em sci\_\-numext})}}
+\label{drizzle__utils_8h_a1959c97360d5cfd7e17001192a50ae91}
+
+
+
+\begin{DoxyCode}
+321 {
+322 
+323   int i, j, dec;
+324   int beamID = 0;
+325   int get_scale=0;
+326   int tlength;
+327   gsl_matrix * drzcoeffs;
+328   double cdscale;
+329   double drzscale;
+330   dispstruct * disp;
+331   calib_function *wl_calib;
+332   double l1, l2, spreso;
+333 
+334   drzcoeffs = get_crossdisp_matrix(filename, sci_numext);
+335 
+336   if (drzcoeffs->size1 > 1 && drzcoeffs->size2)
+337     get_scale = 1;
+338 
+339   if (get_scale){
+340     drzscale =  (double)get_float_from_keyword(filename, 1, "DRZSCALE");
+341   }
+342   for (i=0; i < list_size; i++){
+343     if (oblist[i]->beams[beamID].ignore == 0){
+344       dec = 0;
+345 
+346       if (get_scale)
+347         cdscale = drzscale * get_crossdisp_scale(oblist[i]->beams[beamID].spec_tr
+      ace,
+348                                                  oblist[i]->beams[beamID].refpoin
+      t, drzcoeffs, pixmax);
+349       else
+350         cdscale=1.0;
+351 
+352       disp = get_dispstruct_at_pos(conf_file, 1, beamID,oblist[i]->beams[beamID].
+      refpoint);
+353       wl_calib = create_calib_from_gsl_vector(1, disp->pol);
+354       l1 =  wl_calib->func (0.0,  wl_calib->order,  wl_calib->coeffs);
+355       l2 =  wl_calib->func (1.0,  wl_calib->order,  wl_calib->coeffs);
+356       spreso = fabs(l2-l1);
+357 
+358       // compute the tracelength
+359       tlength = get_beam_trace_length(oblist[i]->beams[beamID]);
+360 
+361       for (j=0; j < nobjects; j++){
+362         if (allobjects[j]->OBJID == oblist[i]->ID){
+363           add_obs_to_allobj(allobjects[j], oblist[i], pixmax, cdscale, spreso, tl
+      ength);
+364           dec = 1;
+365         }
+366       }
+367       if (dec == 0) {
+368         nobjects = add_obj_to_allobj(allobjects, nobjects, oblist[i], pixmax, cds
+      cale, spreso, tlength);
+369       }
+370       free_dispstruct(disp);
+371       free_calib(wl_calib);
+372     }
+373   }
+374   gsl_matrix_free(drzcoeffs);
+375   return nobjects;
+376 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a309fe99515cba05756bf7e0a787b64b3}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!free\_\-objectobs@{free\_\-objectobs}}
+\index{free\_\-objectobs@{free\_\-objectobs}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{free\_\-objectobs}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-objectobs ({\bf objectobs} $\ast$$\ast$ {\em allobjects})}}
+\label{drizzle__utils_8h_a309fe99515cba05756bf7e0a787b64b3}
+
+
+
+\begin{DoxyCode}
+307                                       {
+308   //  int i, nobjs=0;
+309   //  while (allobjects[nobjs])
+310   //    nobjs++;
+311   //  for (i=0; i<nobjs; i++){
+312   //      free(allobjects[i]);
+313   //      //    allobjects[i] = NULL;
+314   //  }
+315   free(allobjects);
+316 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a20898be5609916ec8e182b7fbc09d140}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!get\_\-beam\_\-trace\_\-length@{get\_\-beam\_\-trace\_\-length}}
+\index{get\_\-beam\_\-trace\_\-length@{get\_\-beam\_\-trace\_\-length}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{get\_\-beam\_\-trace\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-beam\_\-trace\_\-length (const {\bf beam} {\em actbeam})}}
+\label{drizzle__utils_8h_a20898be5609916ec8e182b7fbc09d140}
+
+
+
+\begin{DoxyCode}
+726 {
+727   int trlength=0;
+728   double diagonal_1 = 0.0;
+729   double diagonal_2 = 0.0;
+730   double xdiff, ydiff;
+731 
+732   // compute the x- and y- differences for one corner pair
+733   xdiff = (float)actbeam.corners[0].x - (float)actbeam.corners[2].x;
+734   ydiff = (float)actbeam.corners[0].y - (float)actbeam.corners[2].y;
+735 
+736   // compute the diagonal distance
+737   diagonal_1 = xdiff*xdiff + ydiff*ydiff;
+738 
+739   // compute the x- and y- differences for the other corner pair
+740   xdiff = (float)actbeam.corners[1].x - (float)actbeam.corners[3].x;
+741   ydiff = (float)actbeam.corners[1].y - (float)actbeam.corners[3].y;
+742 
+743   // compute the diagonal distance
+744   diagonal_2 = xdiff*xdiff + ydiff*ydiff;
+745 
+746   // compute the tracelength
+747   // from the larger diagonal
+748   if (diagonal_1 > diagonal_2)
+749     trlength = (int)ceil(sqrt(diagonal_1)+3.0);
+750   else
+751     trlength = (int)ceil(sqrt(diagonal_2)+3.0);
+752 
+753   // return the result
+754   return trlength;
+755 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a2f70f442cfdf6bf042090db1c663bacf}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!get\_\-coeffs\_\-back@{get\_\-coeffs\_\-back}}
+\index{get\_\-coeffs\_\-back@{get\_\-coeffs\_\-back}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{get\_\-coeffs\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ get\_\-coeffs\_\-back ({\bf trace\_\-func} $\ast$ {\em trace})}}
+\label{drizzle__utils_8h_a2f70f442cfdf6bf042090db1c663bacf}
+
+
+
+\begin{DoxyCode}
+267 {
+268   double *cf;
+269   double rotation;
+270   gsl_matrix * ret = gsl_matrix_alloc(2,2);
+271 
+272   //  ret = gsl_matrix_alloc (2,2);
+273   gsl_matrix_set_all (ret, 0.0);
+274 
+275   cf = trace->data;
+276 
+277   rotation = get_rotation_angle(cf[2]);
+278 
+279   gsl_matrix_set(ret, 0, 0,      cos(rotation));
+280   gsl_matrix_set(ret, 0, 1,      sin(rotation));
+281   gsl_matrix_set(ret, 1, 0, -1.0*sin(rotation));
+282   gsl_matrix_set(ret, 1, 1,      cos(rotation));
+283 
+284   return ret;
+285 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_ae75f4fc3709218cacb7e8c3ca6905ba7}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!get\_\-drizzle\_\-coeffs@{get\_\-drizzle\_\-coeffs}}
+\index{get\_\-drizzle\_\-coeffs@{get\_\-drizzle\_\-coeffs}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{get\_\-drizzle\_\-coeffs}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ get\_\-drizzle\_\-coeffs ({\bf dispstruct} $\ast$ {\em disp}, \/  {\bf trace\_\-func} $\ast$ {\em trace}, \/  int {\em boxwidth}, \/  int {\em boxheight}, \/  int {\em trlength}, \/  double {\em relx}, \/  double {\em rely}, \/  {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  double {\em orient}, \/  {\bf dispstruct} $\ast$ {\em outdisp}, \/  double {\em cdcorr}, \/  double {\em spref}, \/  double {\em spmeanreso})}}
+\label{drizzle__utils_8h_ae75f4fc3709218cacb7e8c3ca6905ba7}
+
+
+
+\begin{DoxyCode}
+124 {
+125   double a, b, c;
+126   double ao, bo, co, bref, cref;
+127   double a11, a12, a21, a22;
+128   double xr, yr;
+129   //double lambda0, dlambda;
+130   double tmp, rotation;
+131   double *cf;
+132   double shear_term;
+133 
+134   gsl_matrix * ret = gsl_matrix_alloc(2,11);
+135   gsl_matrix * rotcoeffs;
+136 
+137   gsl_matrix_set_all (ret, 0.0);
+138 
+139 
+140   /* get the dispersion at the objects point */
+141   if (disp->pol->size > 2)
+142     a = gsl_vector_get(disp->pol, 2);
+143     //    fprintf (stdout, "quadratic solution:  %f\n", a);
+144   else
+145     a = 0.0;
+146 
+147   b = gsl_vector_get(disp->pol, 1);  // dlambda-term
+148   c = gsl_vector_get(disp->pol, 0);  // lambda0-term
+149 
+150   /* get the dispersion at the mean reference point */
+151   if (outdisp->pol->size > 2){
+152     ao = gsl_vector_get(outdisp->pol, 2);
+153     //    fprintf (stdout, "quadratic solution:  %f, old: %f\n", a, ao);
+154   }
+155   else{
+156     ao = 0.0;
+157   }
+158   bo = gsl_vector_get(outdisp->pol, 1);  // dlambda-term
+159   co = gsl_vector_get(outdisp->pol, 0);  // lambda0-term
+160   if (conf->drz_resol == 0.0) {
+161     conf->drz_resol = bo + ao*((double)trlength)/2.0;
+162   }
+163   if (conf->drz_lamb0 == 0.0) {
+164     conf->drz_lamb0 = co;
+165   }
+166 
+167   //  fprintf (stdout, "lambda terms:  4785.0 <-> %f, 24.0 <-> %f\n", cref, bref)
+      ;
+168 
+169   cref = conf->drz_lamb0;
+170   bref = conf->drz_resol;
+171   bref = sprefreso;
+172   //  cref = 4785.0;
+173   //  bref = 24.0;
+174 
+175   /* put the below lines to go BACK to
+176    * the old computation of the length of
+177    * the aXedrizzled images:
+178   fprintf(stdout, "New spectral length: %i", trlength);
+179   trlength = (int)ceil(bo/bref*sqrt(pow((double)boxwidth,2.0)
+180                                     +pow((double)boxheight,2.0)));
+181   trlength = (int)ceil(spmeanreso/sprefreso*sqrt(pow((double)boxwidth,2.0)
+182                                                  +pow((double)boxheight,2.0)));
+183   fprintf(stdout, "<--> old spectral length: %i\n", trlength);
+184   */
+185 
+186   //fprintf (stdout,"Drizzled to resolution: %e, mean resolution for object: %e\n
+      ", sprefreso, spmeanreso);
+187 
+188 
+189   gsl_matrix_set(ret, 0,10,trlength);
+190   //  gsl_matrix_set(ret, 1,10,bref);
+191 
+192   cf = trace->data;
+193   rotation = get_rotation_angle(cf[2]);
+194   rotcoeffs = get_coeffs_back(trace);
+195   a11 = gsl_matrix_get(rotcoeffs,0,0);
+196   a12 = gsl_matrix_get(rotcoeffs,0,1);
+197   a21 = gsl_matrix_get(rotcoeffs,1,0);
+198   a22 = gsl_matrix_get(rotcoeffs,1,1);
+199 
+200   // the following lines have to be changed
+201   // in order to go from a integer
+202   // center definition to floating point center
+203   // definition.
+204   xr = (relx+1.0)-((double)(boxwidth/2)+1);  // +1.0 to compensate for "sp_sex.c"
+       around line 537
+205   yr = (rely+1.0)-((double)(boxheight/2)+1); // +1.0 to compensate for "sp_sex.c"
+       around line 537
+206 
+207   if (b < 0.0)
+208     shear_term = -tan(orient-rotation);
+209   else
+210     shear_term = tan(orient-rotation);
+211 
+212   // Transformations for X, without the lambda-terms, only rotation:
+213   //  tmp = xoffs-(((double)trlength/2.0)+1)-a11*xr-a12*yr;
+214   //  gsl_matrix_set(ret, 0,0,tmp);  // constant term
+215 
+216   //  tmp = a11;
+217   //  gsl_matrix_set(ret, 0,1,tmp);  // x-term
+218 
+219   //  tmp = a12;
+220   //  gsl_matrix_set(ret, 0,2,tmp);  // y-term
+221   //-----------------------------------------------------------------------------
+      -----
+222 
+223 
+224 
+225 
+226   //------------------------------------------------------------------
+227   // Mathematica based run
+228   tmp = 1.0/bref*(c - cref - a11*b*xr + a*a11*a11*xr*xr - a12*b*yr + 2*a*a11*a12*
+      xr*yr + a*a12*a12*yr*yr) +
+229     (a21*xr + a22*yr)/shear_term - ((double)(trlength/2)+1.0) + conf->drz_xstart;
+      
+230   gsl_matrix_set(ret, 0,0,tmp);  // constant term
+231 
+232   tmp = 1.0/bref*(a11*b - 2*a*a11*a11*xr - 2*a*a11*a12*yr) - a21/shear_term;
+233   gsl_matrix_set(ret, 0,1,tmp);  // x-term
+234 
+235   tmp = 1.0/bref*(a12*b - 2*a*a12*a12*yr - 2*a*a11*a12*xr) - a22/shear_term;
+236   gsl_matrix_set(ret, 0,2,tmp);  // y-term
+237 
+238   tmp = a*a11*a11/bref;
+239   gsl_matrix_set(ret, 0,3,tmp);  // x^2-term
+240 
+241   tmp = 2*a*a11*a12/bref;
+242   gsl_matrix_set(ret, 0,4,tmp); ; // xy-term
+243 
+244   tmp = a*a12*a12/bref;
+245   gsl_matrix_set(ret, 0,5,tmp);  // y^2-term
+246 
+247   //------------------------------------------------------------------
+248 
+249 
+250   // Transformations for Y:
+251   tmp = -1.0*(a21*xr+a22*yr) * cdcorr; // -1.5  is some kind of a fudge factor, n
+      o idea where it comes from
+252   gsl_matrix_set(ret, 1,0,tmp);  // constant term
+253 
+254   tmp = a21 * cdcorr;
+255   gsl_matrix_set(ret, 1,1,tmp);  // x-term
+256 
+257   tmp = a22 * cdcorr;
+258   gsl_matrix_set(ret, 1,2,tmp);  // y-term
+259 
+260   gsl_matrix_free(rotcoeffs);
+261 
+262   return ret;
+263 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_aa17030f12ca6e5091eafa4984a95a27f}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!get\_\-drizzle\_\-width@{get\_\-drizzle\_\-width}}
+\index{get\_\-drizzle\_\-width@{get\_\-drizzle\_\-width}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{get\_\-drizzle\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-drizzle\_\-width ({\bf object} $\ast$ {\em ob}, \/  int {\em beamnum}, \/  {\bf trace\_\-func} $\ast$ {\em trace})}}
+\label{drizzle__utils_8h_aa17030f12ca6e5091eafa4984a95a27f}
+
+
+
+\begin{DoxyCode}
+87 {
+88   double drizzle_width, drizzle_orient;
+89   double orig_width, orig_orient;
+90   double rotation, angle, oangle, factor;
+91   double *cf;
+92   beam *b = ob->beams+beamnum;
+93 
+94   cf = trace->data;
+95   rotation = get_rotation_angle(cf[2]);
+96 
+97   orig_orient = b->orient;
+98   orig_width  = b->width;
+99 
+100   drizzle_orient = orig_orient-rotation;
+101 
+102   angle  = drizzle_orient / M_PI * 180.;
+103   oangle = orig_orient / M_PI * 180.;
+104 
+105   drizzle_width = fabs(orig_width * sin (drizzle_orient));
+106   factor = drizzle_width/orig_width;
+107 
+108   if (angle > 180.0)
+109     angle = angle-180.0;
+110   if (angle < 30.0 || angle > 150.0)
+111      fprintf (stdout,
+112               "Angle: %4.0f --> %4.0f, Width: %5.1f --> %5.1f, %5.3f\n",
+113               oangle, angle, orig_width, drizzle_width, factor);
+114 
+115   return drizzle_width;
+116 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a7b52f5d1d211d4305e7806caf5c2b333}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!get\_\-mean\_\-refpoint@{get\_\-mean\_\-refpoint}}
+\index{get\_\-mean\_\-refpoint@{get\_\-mean\_\-refpoint}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{get\_\-mean\_\-refpoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} get\_\-mean\_\-refpoint ({\bf objectobs} $\ast$$\ast$ {\em allobjects}, \/  int {\em nobjects}, \/  int {\em ID}, \/  int $\ast$ {\em boxwidth}, \/  int $\ast$ {\em boxheight}, \/  double $\ast$ {\em relx}, \/  double $\ast$ {\em rely}, \/  double $\ast$ {\em objwidth}, \/  double $\ast$ {\em orient}, \/  double $\ast$ {\em cdref}, \/  double $\ast$ {\em cdscale}, \/  double $\ast$ {\em cdmeanscale}, \/  double $\ast$ {\em sprefreso}, \/  double $\ast$ {\em spreso}, \/  double $\ast$ {\em spmeanreso}, \/  int $\ast$ {\em tlength})}}
+\label{drizzle__utils_8h_a7b52f5d1d211d4305e7806caf5c2b333}
+
+
+
+\begin{DoxyCode}
+643 {
+644   int i, dec=0;
+645   d_point mpoint;
+646 
+647   for (i=0; i < nobjects; i++){
+648     if (allobjects[i]->OBJID == ID){
+649       mpoint.x = allobjects[i]->mean_refpoint.x;
+650       mpoint.y = allobjects[i]->mean_refpoint.y;
+651       *boxwidth  = allobjects[i]->max_width;
+652       *boxheight = allobjects[i]->max_height;
+653       *tlength   = allobjects[i]->max_tlength;
+654       *objwidth  = allobjects[i]->owidthmax;
+655       *cdref     = allobjects[i]->cdrefscale;
+656       *cdmeanscale     = allobjects[i]->cdmeanscale;
+657       *spmeanreso= allobjects[i]->spmeanreso;
+658       *sprefreso = allobjects[i]->sprefreso;
+659       *orient    = allobjects[i]->orient[allobjects[i]->pointer];
+660       *cdscale   = allobjects[i]->cdscale[allobjects[i]->pointer];
+661       *spreso    = allobjects[i]->spreso[allobjects[i]->pointer];
+662       *relx      = allobjects[i]->relrefpt[allobjects[i]->pointer].x;
+663       *rely      = allobjects[i]->relrefpt[allobjects[i]->pointer].y;
+664       ++allobjects[i]->pointer;
+665       dec=1;
+666     }
+667   }
+668   return mpoint;
+669 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_af90500a90e42fe9606dfdabd1d8134cb}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!get\_\-refwave\_\-position@{get\_\-refwave\_\-position}}
+\index{get\_\-refwave\_\-position@{get\_\-refwave\_\-position}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{get\_\-refwave\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} get\_\-refwave\_\-position ({\bf dispstruct} $\ast$ {\em disp}, \/  {\bf trace\_\-func} $\ast$ {\em trace}, \/  {\bf d\_\-point} {\em refpix}, \/  {\bf aperture\_\-conf} $\ast$ {\em conf})}}
+\label{drizzle__utils_8h_af90500a90e42fe9606dfdabd1d8134cb}
+
+
+
+\begin{DoxyCode}
+29 {
+30   double a, b, c, c_star;
+31   double *cf;
+32   double rot;
+33   double dx, dy, dtr;
+34   d_point res;
+35 
+36   // check for a dispersion solution
+37   // higher that quadratic order
+38   if (disp->pol->size > 3)
+39     // this can not be solved; give an error
+40     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+41                 "Order of dispersion solution: %i!\n"
+42                 "At most qudratic solutions are allowed!\n",
+43                 disp->pol->size-1);
+44   else if (disp->pol->size > 2)
+45     // store the quadratic term, if it exists
+46     a = gsl_vector_get(disp->pol, 2);  // ddlambda-term
+47   else
+48     // set the qudratic term to zero
+49     a=0.0;
+50 
+51   // store the constant and linear terms
+52   b = gsl_vector_get(disp->pol, 1);  // dlambda-term
+53   c = gsl_vector_get(disp->pol, 0);  // lambda0-term
+54 
+55   // store the dydx value
+56   cf = trace->data;
+57 
+58   // dydx -->  rotation angle
+59   rot = get_rotation_angle(cf[2]);
+60 
+61   // determine the wavelength difference
+62   c_star = c - conf->drz_lamb0;
+63 
+64   // transform the wavelength difference
+65   // into a path length difference
+66   if (a)
+67     dtr = (-1.0*b+sqrt(b*b - 4.0*a*c_star))/(2.0*a);
+68   else
+69     dtr = c_star/b;
+70 
+71   // path length difference --> dx, dy
+72   dx = dtr*cos(rot);
+73   dy = dtr*sin(rot);
+74 
+75   // compute the absolute values
+76   // for the reference position
+77   // in the stamp images
+78   res.x = refpix.x + dx;
+79   res.y = refpix.y + dy;
+80 
+81   // return the result
+82   return res;
+83 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a1431d7e8e0a0741067bfbc25fd224e72}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!get\_\-rotation\_\-angle@{get\_\-rotation\_\-angle}}
+\index{get\_\-rotation\_\-angle@{get\_\-rotation\_\-angle}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{get\_\-rotation\_\-angle}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-rotation\_\-angle (double {\em dxdy})}}
+\label{drizzle__utils_8h_a1431d7e8e0a0741067bfbc25fd224e72}
+
+
+
+\begin{DoxyCode}
+288                                {
+289   double rotation=0.0;
+290 
+291   rotation = atan2(dxdy, 1.0);
+292 
+293   return rotation;
+294 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_af743259f0ad4589f433e9fe37f548f20}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!make\_\-refpoints@{make\_\-refpoints}}
+\index{make\_\-refpoints@{make\_\-refpoints}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{make\_\-refpoints}]{\setlength{\rightskip}{0pt plus 5cm}int make\_\-refpoints (char $\ast$ {\em conf\_\-file}, \/  char $\ast$ {\em filename}, \/  {\bf px\_\-point} {\em pixmax}, \/  {\bf objectobs} $\ast$$\ast$ {\em allobjects}, \/  int {\em nobjects})}}
+\label{drizzle__utils_8h_af743259f0ad4589f433e9fe37f548f20}
+
+
+
+\begin{DoxyCode}
+535 {
+536   int i, j;
+537   int nobs;
+538   int max_width, max_height, omax;
+539   double xmean, ymean;
+540   //double xdata[NMAXOBS];
+541   //double ydata[NMAXOBS];
+542   //  objectobs  oneobject;
+543   objectobs *oneobject; // = malloc (sizeof (objectobs));
+544 
+545   gsl_vector * xvec;
+546   gsl_vector * yvec;
+547   aperture_conf *conf;
+548   gsl_matrix * drzcoeffs;
+549   //double cdscale;
+550   double drzscale;
+551   trace_func  *trace;
+552   int beamID=0;
+553   dispstruct * disp;
+554   calib_function *wl_calib;
+555   double l1, l2;
+556 
+557   conf = get_aperture_descriptor(conf_file);
+558   get_extension_numbers(filename, conf,conf->optkey1,conf->optval1);
+559   drzcoeffs = get_crossdisp_matrix(filename,conf->science_numext);
+560   drzscale =  (double)get_float_from_keyword(filename, 1, "DRZSCALE");
+561 
+562   for (i=0; i < nobjects; i++){
+563     oneobject = allobjects[i];
+564     nobs = oneobject->nobs;
+565 
+566     xvec = gsl_vector_alloc (nobs);
+567     yvec = gsl_vector_alloc (nobs);
+568     for (j=0; j < nobs; j++){
+569       gsl_vector_set(xvec, j, oneobject->refpoint[j].x);
+570       gsl_vector_set(yvec, j, oneobject->refpoint[j].y);
+571     }
+572     xmean = gsl_stats_mean(xvec->data, 1, nobs);
+573     ymean = gsl_stats_mean(yvec->data, 1, nobs);
+574 
+575     max_width  = gsl_stats_int_max(oneobject->width,  1, nobs);
+576     max_height = gsl_stats_int_max(oneobject->height, 1, nobs);
+577     omax       = gsl_stats_max(oneobject->objwidth, 1, nobs);
+578 
+579     allobjects[i]->mean_refpoint.x = xmean;
+580     allobjects[i]->mean_refpoint.y = ymean;
+581     allobjects[i]->max_width  = max_width;
+582     allobjects[i]->max_height = max_height;
+583     allobjects[i]->owidthmax  = omax;
+584 
+585     allobjects[i]->max_tlength = gsl_stats_int_max(oneobject->tlength, 1, nobs);
+586 
+587     /*
+588      * Look whether the cross dispersion scale is given in the configuration.
+589      * If not determine the cross dispersion scale at the mean reference point an
+       store it
+590      * store also the mean correction in for to correct the width.
+591      *
+592      */
+593     if (conf->drz_scale < 1.0e-16){
+594       trace = get_tracefunc_at(conf_file, allobjects[i]->mean_refpoint);
+595       allobjects[i]->cdrefscale = drzscale * get_crossdisp_scale(trace, allobject
+      s[i]->mean_refpoint, drzcoeffs, pixmax);
+596     }
+597     else{
+598       allobjects[i]->cdrefscale = conf->drz_scale;
+599     }
+600     for (j=0; j < nobs; j++){
+601       gsl_vector_set(xvec, j, oneobject->cdscale[j]);
+602     }
+603     xmean = gsl_stats_mean(xvec->data, 1, nobs);
+604     allobjects[i]->cdmeanscale  = xmean;
+605 
+606     /*
+607      * look whether the wavelength dispersion is given in the conig file
+608      * if not determine the wavelength dispersion at the mean reference point amd
+       store
+609      * it. Store also the mean wavelength dispersion to correct the length
+610      */
+611     if (conf->drz_resol < 1.0e-16){
+612       disp = get_dispstruct_at_pos(conf_file, 1, beamID, allobjects[i]->mean_refp
+      oint);
+613       wl_calib = create_calib_from_gsl_vector(1, disp->pol);
+614       l1 =  wl_calib->func (0.0,  wl_calib->order,  wl_calib->coeffs);
+615       l2 =  wl_calib->func (1.0,  wl_calib->order,  wl_calib->coeffs);
+616       allobjects[i]->sprefreso = fabs(l2-l1);
+617     }
+618     else{
+619        allobjects[i]->sprefreso = conf->drz_resol;
+620     }
+621     for (j=0; j < nobs; j++){
+622       gsl_vector_set(xvec, j, oneobject->spreso[j]);
+623     }
+624     xmean = gsl_stats_mean(xvec->data, 1, nobs);
+625     allobjects[i]->spmeanreso  = xmean;
+626 
+627     gsl_vector_free(xvec);
+628     gsl_vector_free(yvec);
+629   }
+630 
+631   gsl_matrix_free(drzcoeffs);
+632   free(conf);
+633 
+634   return 0;
+635 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a4dfd47514bf48a92a5aacd30d9f36aeb}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!malloc\_\-objectobs@{malloc\_\-objectobs}}
+\index{malloc\_\-objectobs@{malloc\_\-objectobs}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{malloc\_\-objectobs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf objectobs}$\ast$$\ast$ malloc\_\-objectobs ()}}
+\label{drizzle__utils_8h_a4dfd47514bf48a92a5aacd30d9f36aeb}
+
+
+
+\begin{DoxyCode}
+298                   {
+299   objectobs **allobjects;
+300 
+301   allobjects = (objectobs **) malloc (NMAXOBJ*sizeof(objectobs *));
+302 
+303   return allobjects;
+304 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a1b6434677bdc0aec5ed70630c578c912}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!print\_\-objectobs@{print\_\-objectobs}}
+\index{print\_\-objectobs@{print\_\-objectobs}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{print\_\-objectobs}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-objectobs ({\bf objectobs} $\ast$$\ast$ {\em allobjects}, \/  int {\em nobjects})}}
+\label{drizzle__utils_8h_a1b6434677bdc0aec5ed70630c578c912}
+
+
+
+\begin{DoxyCode}
+514                                                           {
+515   int i, j;
+516 
+517   for (i = 0; i < nobjects; i++){
+518    fprintf(stdout, "OBJID: %i, no of observ.: %i\n", allobjects[i]->OBJID, allobj
+      ects[i]->nobs);
+519     for (j = 0; j < allobjects[i]->nobs; j++){
+520       fprintf(stdout, "No %i: width %f, height: %f, \n", j, allobjects[i]->relref
+      pt[j].x, allobjects[i]->relrefpt[j].y);
+521     }
+522   }
+523 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a4456ba253786a12ae572cb6631cdbf93}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!print\_\-objectobs2@{print\_\-objectobs2}}
+\index{print\_\-objectobs2@{print\_\-objectobs2}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{print\_\-objectobs2}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-objectobs2 ({\bf objectobs} {\em allobjects}\mbox{[}$\,$\mbox{]}, \/  int {\em nobjects})}}
+\label{drizzle__utils_8h_a4456ba253786a12ae572cb6631cdbf93}
+
+
+
+\begin{DoxyCode}
+524                                                            {
+525   int i, j;
+526 
+527   for (i = 0; i < nobjects; i++){
+528    fprintf(stdout, "OBJID: %i, no of observ.: %i\n", allobjects[i].OBJID, allobje
+      cts[i].nobs);
+529     for (j = 0; j < allobjects[i].nobs; j++){
+530       fprintf(stdout, "No %i: width %f, height: %f, \n", j, allobjects[i].relrefp
+      t[j].x, allobjects[i].relrefpt[j].y);
+531     }
+532   }
+533 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_af5b5dd6f7ac6237d3f1b17572cf57f7d}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!recalc\_\-bbox@{recalc\_\-bbox}}
+\index{recalc\_\-bbox@{recalc\_\-bbox}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{recalc\_\-bbox}]{\setlength{\rightskip}{0pt plus 5cm}{\bf px\_\-point} recalc\_\-bbox (int {\em xmin}, \/  int {\em xmax}, \/  int {\em ymin}, \/  int {\em ymax}, \/  {\bf px\_\-point} {\em pixmax})}}
+\label{drizzle__utils_8h_af5b5dd6f7ac6237d3f1b17572cf57f7d}
+
+
+
+\begin{DoxyCode}
+672 {
+673   px_point ret;
+674 
+675   if (xmax > pixmax.x)
+676     xmax = pixmax.x;
+677   if (ymax > pixmax.y)
+678     ymax = pixmax.y;
+679   if (xmin < 1)
+680     xmin = 1;
+681   if (ymin < 1)
+682     ymin = 1;
+683 
+684 
+685   ret.x = xmax - xmin + 2;
+686   ret.y = ymax - ymin + 2;
+687 
+688   return ret;
+689 }
+\end{DoxyCode}
+\hypertarget{drizzle__utils_8h_a6f5ca50d01eab0c802d7d44c9c220d79}{
+\index{drizzle\_\-utils.h@{drizzle\_\-utils.h}!recalc\_\-mins@{recalc\_\-mins}}
+\index{recalc\_\-mins@{recalc\_\-mins}!drizzle_utils.h@{drizzle\_\-utils.h}}
+\subsubsection[{recalc\_\-mins}]{\setlength{\rightskip}{0pt plus 5cm}{\bf px\_\-point} recalc\_\-mins (int {\em xmin}, \/  int {\em xmax}, \/  int {\em ymin}, \/  int {\em ymax}, \/  {\bf px\_\-point} {\em pixmax})}}
+\label{drizzle__utils_8h_a6f5ca50d01eab0c802d7d44c9c220d79}
+
+
+
+\begin{DoxyCode}
+696 {
+697   double m, b;
+698   px_point ret;
+699 
+700   m = ((double)ymin - (double)ymax)/((double)xmax - (double)xmin);
+701   b = (double)ymin - m * (double)xmax;
+702   if (xmin < 1){
+703     ymax = (int)ceil(1.0*m + b);
+704     xmin=1;
+705   }
+706   if (xmax > pixmax.x){
+707     ymin = (int)ceil((float)pixmax.x*m + b);
+708     xmax = pixmax.x;
+709   }
+710   if (ymin < 1){
+711     xmax = (int)ceil((1-b)/m);
+712     ymin=1;
+713   }
+714   if (ymax > pixmax.y){
+715     xmin = (int)ceil(((float)pixmax.y-b)/m);
+716     ymax=pixmax.y;
+717   }
+718   ret.x = xmin;
+719   ret.y = ymin;
+720 
+721   return ret;
+722 }
+\end{DoxyCode}

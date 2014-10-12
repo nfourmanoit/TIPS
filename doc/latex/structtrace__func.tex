@@ -1,0 +1,55 @@
+\hypertarget{structtrace__func}{
+\section{trace\_\-func Struct Reference}
+\label{structtrace__func}\index{trace\_\-func@{trace\_\-func}}
+}
+
+
+{\ttfamily \#include $<$spc\_\-trace\_\-functions.h$>$}\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structtrace__func_aedeeb1989f1f33f55e7c641f9510864e}{type}
+\item 
+double($\ast$ \hyperlink{structtrace__func_a7c1a538b7ae1293d6e0fc1bdd4c2739c}{func} )(const double, const void $\ast$const pars)
+\item 
+double($\ast$ \hyperlink{structtrace__func_acdda34da0c92344832184081c6f41718}{deriv} )(const double, const void $\ast$const pars)
+\item 
+double($\ast$ \hyperlink{structtrace__func_a0d9e428a3734aaad170ce069be219f32}{path\_\-len} )(const double, const void $\ast$const pars)
+\item 
+void $\ast$ \hyperlink{structtrace__func_aa610d641940ef4a567aef884dd0b32da}{data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A function for parametrizing \hyperlink{structspectrum}{spectrum} traces; deriv and/or path\_\-len (i.e. its derivative or the path length from parameter 0) may be NULL if they are not known analytically. func should return the the y offset for a given pixel column x of the \hyperlink{structspectrum}{spectrum} trace 
+
+\subsection{Field Documentation}
+\hypertarget{structtrace__func_aa610d641940ef4a567aef884dd0b32da}{
+\index{trace\_\-func@{trace\_\-func}!data@{data}}
+\index{data@{data}!trace_func@{trace\_\-func}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf trace\_\-func::data}}}
+\label{structtrace__func_aa610d641940ef4a567aef884dd0b32da}
+\hypertarget{structtrace__func_acdda34da0c92344832184081c6f41718}{
+\index{trace\_\-func@{trace\_\-func}!deriv@{deriv}}
+\index{deriv@{deriv}!trace_func@{trace\_\-func}}
+\subsubsection[{deriv}]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf trace\_\-func::deriv})(const double, const void $\ast$const pars)}}
+\label{structtrace__func_acdda34da0c92344832184081c6f41718}
+\hypertarget{structtrace__func_a7c1a538b7ae1293d6e0fc1bdd4c2739c}{
+\index{trace\_\-func@{trace\_\-func}!func@{func}}
+\index{func@{func}!trace_func@{trace\_\-func}}
+\subsubsection[{func}]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf trace\_\-func::func})(const double, const void $\ast$const pars)}}
+\label{structtrace__func_a7c1a538b7ae1293d6e0fc1bdd4c2739c}
+\hypertarget{structtrace__func_a0d9e428a3734aaad170ce069be219f32}{
+\index{trace\_\-func@{trace\_\-func}!path\_\-len@{path\_\-len}}
+\index{path\_\-len@{path\_\-len}!trace_func@{trace\_\-func}}
+\subsubsection[{path\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf trace\_\-func::path\_\-len})(const double, const void $\ast$const pars)}}
+\label{structtrace__func_a0d9e428a3734aaad170ce069be219f32}
+\hypertarget{structtrace__func_aedeeb1989f1f33f55e7c641f9510864e}{
+\index{trace\_\-func@{trace\_\-func}!type@{type}}
+\index{type@{type}!trace_func@{trace\_\-func}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf trace\_\-func::type}}}
+\label{structtrace__func_aedeeb1989f1f33f55e7c641f9510864e}
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/\hyperlink{spc__trace__functions_8h}{spc\_\-trace\_\-functions.h}\end{DoxyCompactItemize}

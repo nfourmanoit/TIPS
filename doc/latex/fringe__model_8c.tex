@@ -1,0 +1,1254 @@
+\hypertarget{fringe__model_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/fringe\_\-model.c File Reference}
+\label{fringe__model_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/fringe\_\-model.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/fringe\_\-model.c}}
+}
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-complex.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-complex\_\-math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-interp.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fringe\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fringe\_\-model.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacefringe__model}{fringe\_\-model}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{fringe__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{MAX}(x, y)~(((x)$>$(y))?(x):(y))
+\item 
+\#define \hyperlink{fringe__model_8c_a74e75242132eaabbc1c512488a135926}{MIN}(x, y)~(((x)$<$(y))?(x):(y))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{fringe__model_8c_a53c99dc930106fd2748fd0f3d5279e6e}{compute\_\-fringe\_\-amplitude} (\hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{fringe__model_8c_a4bee6456d00567df917dad489810ecf6}{alloc\_\-fringe\_\-image} (const \hyperlink{structccd__layers}{ccd\_\-layers} $\ast$opt\_\-layers)
+\item 
+gsl\_\-vector $\ast$$\ast$ \hyperlink{fringe__model_8c_aa1d042ae3943c7168b6d8c18bced875d}{get\_\-calibration\_\-data} ()
+\item 
+gsl\_\-vector $\ast$$\ast$ \hyperlink{fringe__model_8c_a825847406083c196d7fb8363cdd5f7ff}{get\_\-PET\_\-calibration\_\-data} ()
+\item 
+gsl\_\-vector $\ast$$\ast$ \hyperlink{fringe__model_8c_a49198f0a9909b50f00a1f8202b2905d3}{evaluate\_\-wavelength\_\-steps} (\hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{fringe__model_8c_a8f0e1b1f5664107be3cba2068c0a83e1}{redefine\_\-filter\_\-throughput} (const int lower, const int upper, \hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf)
+\item 
+double \hyperlink{fringe__model_8c_ac350c8322c6ddd6d21d854690076eed1}{eval\_\-linear\_\-interp} (\hyperlink{structlinear__interp}{linear\_\-interp} $\ast$lin\_\-int, const double xval)
+\item 
+double \hyperlink{fringe__model_8c_a4b144c7b307bae789a6b06582364de66}{get\_\-layer\_\-thickness} (const \hyperlink{structccd__layer}{ccd\_\-layer} $\ast$opt\_\-layer, const int ii, const int jj)
+\item 
+gsl\_\-complex \hyperlink{fringe__model_8c_acdd00a7b8f4c951200544ae65e90e38b}{get\_\-complex\_\-refindex} (const \hyperlink{structccd__layer}{ccd\_\-layer} $\ast$opt\_\-layer, const double lambda)
+\item 
+double \hyperlink{fringe__model_8c_a0c717cd5d164c86327c7077a33022724}{compute\_\-reflection} (const gsl\_\-complex refract\_\-l1, const gsl\_\-complex refract\_\-l2)
+\item 
+double \hyperlink{fringe__model_8c_a63e9f0b1fcef4d177b599ffb8c4c610d}{compute\_\-transmission} (const gsl\_\-complex refract\_\-l1, const gsl\_\-complex refract\_\-l2)
+\item 
+double \hyperlink{fringe__model_8c_ae4753d72683ba416c4b01b25685501f8}{compute\_\-attenuation} (const gsl\_\-complex refract, const double thickness, const double phase\_\-number)
+\item 
+gsl\_\-complex \hyperlink{fringe__model_8c_a45318b077b4923e5d339053d41d6d2b3}{compute\_\-pshift} (const gsl\_\-complex refract, const double thickness, const double phase\_\-number)
+\item 
+\hyperlink{structoptical__property}{optical\_\-property} $\ast$ \hyperlink{fringe__model_8c_ac701ed4f58f047e545bb39105bd38ba4}{alloc\_\-optprops\_\-list} (const \hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf)
+\item 
+void \hyperlink{fringe__model_8c_a8d36095f41729289c111fa1fa483a807}{print\_\-optprops\_\-list} (const \hyperlink{structoptical__property}{optical\_\-property} $\ast$optprops, const int num\_\-entries)
+\item 
+void \hyperlink{fringe__model_8c_a1b8ec54dcd7b41e31b24bbc5baacdd28}{free\_\-optprops\_\-list} (\hyperlink{structoptical__property}{optical\_\-property} $\ast$optprops)
+\item 
+void \hyperlink{fringe__model_8c_a30b4bda7a269be14d5225de5aaec952e}{init\_\-optprops\_\-list} (const \hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf, const double lambda\_\-mean, \hyperlink{structoptical__property}{optical\_\-property} $\ast$optprops)
+\item 
+void \hyperlink{fringe__model_8c_a4d241cd2c21f6836aabfc05690fa2361}{fill\_\-optprops\_\-thickness} (const \hyperlink{structccd__layers}{ccd\_\-layers} $\ast$opt\_\-layers, const int ii, const int jj, \hyperlink{structoptical__property}{optical\_\-property} $\ast$optprops)
+\item 
+void \hyperlink{fringe__model_8c_a7583c38c8f52f4db360e402b0cff8354}{fill\_\-optprops\_\-all} (const \hyperlink{structccd__layers}{ccd\_\-layers} $\ast$opt\_\-layers, const double lambda, \hyperlink{structoptical__property}{optical\_\-property} $\ast$optprops)
+\item 
+double \hyperlink{fringe__model_8c_ab3355b989a07f5f88786c7148a5c76e5}{fringe\_\-contrib\_\-single} (const \hyperlink{structoptical__property}{optical\_\-property} $\ast$optprops, const \hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{fringe__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!MAX@{MAX}}
+\index{MAX@{MAX}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(x, \/  y)~(((x)$>$(y))?(x):(y))}}
+\label{fringe__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}
+\hypertarget{fringe__model_8c_a74e75242132eaabbc1c512488a135926}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!MIN@{MIN}}
+\index{MIN@{MIN}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(x, \/  y)~(((x)$<$(y))?(x):(y))}}
+\label{fringe__model_8c_a74e75242132eaabbc1c512488a135926}
+
+
+\subsection{Function Documentation}
+\hypertarget{fringe__model_8c_a4bee6456d00567df917dad489810ecf6}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!alloc\_\-fringe\_\-image@{alloc\_\-fringe\_\-image}}
+\index{alloc\_\-fringe\_\-image@{alloc\_\-fringe\_\-image}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{alloc\_\-fringe\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ alloc\_\-fringe\_\-image (const {\bf ccd\_\-layers} $\ast$ {\em opt\_\-layers})}}
+\label{fringe__model_8c_a4bee6456d00567df917dad489810ecf6}
+Function: alloc\_\-fringe\_\-image The function browses through the the structure for the CCD layers and extracts all information on image sizes stored there in one or several thickness images. This information is checked for consistency. Finally, a matrix for a fringe image is allocated, initialized and returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em opt\_\-layers}]-\/ the optical layers in the CCD\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+fringe\_\-image -\/ the allocated matrix for the fringe image 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+141 {
+142   int n1         = 0;
+143   int n2         = 0;
+144   int n1_new     = 0;
+145   int n2_new     = 0;
+146   int index      = 0;
+147   int is_defined = 0;
+148   
+149   gsl_matrix *fringe_image;
+150   // go through all CCD layers
+151   for (index=0; index < opt_layers->num_layers; index++)
+152     {
+153       // check whether the thickness information
+154       // is represented by an image
+155       if (opt_layers->opt_layer[index]->thickness2D != NULL)
+156         {
+157 
+158           // mark that an image was found
+159           is_defined=1;
+160 
+161           // get the dimension of the image
+162           n1_new = opt_layers->opt_layer[index]->thickness2D->size1;
+163           n2_new = opt_layers->opt_layer[index]->thickness2D->size2;
+164         
+165           // check the frst axix value against
+166           // previous values, if possible
+167           if (n1 && n1_new != n1)
+168             // give an error if the new value is different
+169             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+170                          "Thickness image of layer %i "
+171                          "has %i pixels in first axis."
+172                          "This differs from the previous value %i\n",
+173                          index, n1_new, n1);
+174           else
+175             // store the new value
+176             n1 = n1_new;
+177           
+178           // check the frst axix value against
+179           // previous values, if possible
+180           if (n2 && n2_new != n2)
+181             // give an error if the new value is different
+182             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+183                          "Thickness image of layer %i "
+184                          "has %i pixels in second axis."
+185                          "This differs from the previous value %i\n",
+186                          index, n2_new, n2);
+187           else
+188             // store the new value
+189             n2 = n2_new;
+190         }
+191     }
+192 
+193 #ifdef DEBUGFCONF
+194   fprintf(stdout, "Allocating an image with size: (%i, %i)\n", n1, n2);
+195 #endif
+196 
+197   // check whether at least one image was
+198   // found as thickness information
+199   if (is_defined)
+200     {
+201       // allocate the image
+202       fringe_image =  gsl_matrix_alloc(n1, n2);
+203       
+204       // set all vallues to zero
+205       gsl_matrix_set_all(fringe_image, 0.0);
+206     }
+207   else
+208     {
+209       // no image found; report the error
+210       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+211                    "The size of the fringe image is unknown\n"
+212                    "since none of the layers has an image "
+213                    "to specify its thickness!\n");
+214     }
+215 
+216   // return the image
+217   return fringe_image;
+218 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_ac701ed4f58f047e545bb39105bd38ba4}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!alloc\_\-optprops\_\-list@{alloc\_\-optprops\_\-list}}
+\index{alloc\_\-optprops\_\-list@{alloc\_\-optprops\_\-list}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{alloc\_\-optprops\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf optical\_\-property}$\ast$ alloc\_\-optprops\_\-list (const {\bf fringe\_\-conf} $\ast$ {\em fconf})}}
+\label{fringe__model_8c_ac701ed4f58f047e545bb39105bd38ba4}
+Function: alloc\_\-optprops\_\-list The function allocates space for a list of optical property elements. the size of the list is derived from a fringe configuration structure given in the input.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fconf}]-\/ the fringe configuration file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+optprops -\/ the list of optical properties 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+821 {
+822   optical_property *optprops;
+823 
+824   // allocate large enough memory 
+825   optprops =
+826     (optical_property *)malloc(fconf->opt_layers->num_layers*sizeof(ap_pixel));
+827 
+828   // return the pointer
+829   return optprops;
+830 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_ae4753d72683ba416c4b01b25685501f8}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!compute\_\-attenuation@{compute\_\-attenuation}}
+\index{compute\_\-attenuation@{compute\_\-attenuation}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{compute\_\-attenuation}]{\setlength{\rightskip}{0pt plus 5cm}double compute\_\-attenuation (const gsl\_\-complex {\em refract}, \/  const double {\em thickness}, \/  const double {\em phase\_\-number})}}
+\label{fringe__model_8c_ae4753d72683ba416c4b01b25685501f8}
+Function: compute\_\-attenuation The function computes the attenuation/damping of a plane wave with a given inverse wavelelength (phase number) traversing TWO TIMES a layer of a given thickness and complex refraction index.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em refract}]-\/ the complex refraction index \item[{\em thickness}]-\/ the thickness of the layer \item[{\em phase\_\-number}]-\/ the inverse wavelength\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+(value) -\/ the attenuation 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+772 {
+773   // check if there is something to compute
+774   if (GSL_IMAG(refract)) 
+775     // compute and return the value
+776     return exp(-2.0*GSL_IMAG(refract)*thickness*phase_number);
+777   else
+778     // return the value for exp(0.0)
+779     return 1.0;
+780 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a53c99dc930106fd2748fd0f3d5279e6e}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!compute\_\-fringe\_\-amplitude@{compute\_\-fringe\_\-amplitude}}
+\index{compute\_\-fringe\_\-amplitude@{compute\_\-fringe\_\-amplitude}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{compute\_\-fringe\_\-amplitude}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ compute\_\-fringe\_\-amplitude ({\bf fringe\_\-conf} $\ast$ {\em fconf})}}
+\label{fringe__model_8c_a53c99dc930106fd2748fd0f3d5279e6e}
+Function: compute\_\-fringe\_\-amplitude The function computes the fringe image for a CCD setup stored in a fringe configuration structure. This fringe configuration structure completely describes the problem, and this function executes the loops for every pixel over the wavelength range spanned by the filter.
+
+Parameters 
+\begin{DoxyParams}{Parameters}
+\item[{\em fconf}]-\/ the fringe configuration structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+fringe\_\-image -\/ the image with the computed fringe amplitudes 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+45 {
+46   gsl_matrix *fringe_image;
+47   
+48   gsl_vector **filter_vectors;
+49 
+50   int index=0;
+51   int ii=0;
+52   int jj=0;
+53 
+54   double lambda_mean;
+55   double pixel_ampl;
+56   //double phase_number;
+57 
+58   optical_property *optprops;
+59 
+60   // allocate the fringe image
+61   fringe_image = alloc_fringe_image(fconf->opt_layers);
+62 
+63   // allocate memory for the optical property structure  
+64   optprops = alloc_optprops_list(fconf);
+65 
+66   // find the exact wavelength range,
+67   // and define the wavelength values and
+68   // normalized fiter throughput there
+69   filter_vectors = evaluate_wavelength_steps(fconf);
+70   //filter_vectors = get_PET_calibration_data();
+71 
+72   // compute the mean wavelength
+73   lambda_mean = gsl_vector_get(filter_vectors[0],filter_vectors[0]->size-1)/2.0
+74                  + gsl_vector_get(filter_vectors[0],0)/2.0;
+75 
+76   // initialize some values in the optical property list
+77   init_optprops_list(fconf, lambda_mean, optprops);
+78 
+79     for (ii=0; ii < fringe_image->size1; ii++)
+80       //    for (ii=0; ii < 2; ii++)
+81     {
+82       fprintf(stderr, "Computing row No.: %i\n", ii);
+83             for (jj=0; jj < fringe_image->size2; jj++)
+84               //for (jj=0; jj < 2; jj++)
+85         {
+86           // fill the optical thickness of the layers
+87           // into the structure
+88           fill_optprops_thickness(fconf->opt_layers, ii, jj, optprops);
+89 
+90           pixel_ampl = 0.0;
+91           for (index=0; index < filter_vectors[0]->size; index++)
+92             {
+93               // fill all information in the optical
+94               // property list
+95               fill_optprops_all(fconf->opt_layers,
+96                                 gsl_vector_get(filter_vectors[0],index),
+97                                 optprops);
+98 
+99               // compute and add the contribution at a wavelength
+100               pixel_ampl += gsl_vector_get(filter_vectors[1],index)*
+101                 fringe_contrib_single(optprops, fconf);
+102             }
+103 
+104           // finally set the pixel value
+105           // in the output image
+106           gsl_matrix_set(fringe_image, ii, jj,
+107                          fconf->fringe_amp * pixel_ampl + 1.0);
+108         }
+109     }
+110 
+111   // release the memory in the vectors
+112   gsl_vector_free(filter_vectors[0]);
+113   gsl_vector_free(filter_vectors[1]);
+114   free(filter_vectors);
+115 
+116   // free the optical property structure
+117   free_optprops_list(optprops);
+118 
+119   // return the fringe image
+120   return fringe_image;
+121 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a45318b077b4923e5d339053d41d6d2b3}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!compute\_\-pshift@{compute\_\-pshift}}
+\index{compute\_\-pshift@{compute\_\-pshift}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{compute\_\-pshift}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-complex compute\_\-pshift (const gsl\_\-complex {\em refract}, \/  const double {\em thickness}, \/  const double {\em phase\_\-number})}}
+\label{fringe__model_8c_a45318b077b4923e5d339053d41d6d2b3}
+Function: compute\_\-pshift The function computes the phase shift of a plane wave with a given inverse wavelelength (phase number) traversing TWO TIMES a layer of a given thickness and complex refraction index.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em refract}]-\/ the complex refraction index \item[{\em thickness}]-\/ the thickness of the layer \item[{\em phase\_\-number}]-\/ the inverse wavelength\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+(value) -\/ the complex phase shift 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+801 {
+802   // all in one line:
+803   return gsl_complex_exp(gsl_complex_rect(0.0,2.0*GSL_REAL(refract)*thickness*pha
+      se_number));
+804 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a0c717cd5d164c86327c7077a33022724}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!compute\_\-reflection@{compute\_\-reflection}}
+\index{compute\_\-reflection@{compute\_\-reflection}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{compute\_\-reflection}]{\setlength{\rightskip}{0pt plus 5cm}double compute\_\-reflection (const gsl\_\-complex {\em refract\_\-l1}, \/  const gsl\_\-complex {\em refract\_\-l2})}}
+\label{fringe__model_8c_a0c717cd5d164c86327c7077a33022724}
+Function: compute\_\-reflection The function computes and returns the reflection index (in \%) for two complex refraction indices at a given wavelength.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em refract\_\-l1}]-\/ refraction index of one layer \item[{\em refract\_\-l2}]-\/ refraction index of the second layer\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+(value) -\/ the reflection index 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+697 {
+698   gsl_complex conj_l1;
+699   gsl_complex conj_l2;
+700 
+701   gsl_complex refl_compl;
+702 
+703   // get the comlex conjugated values of the input
+704   conj_l1 = gsl_complex_conjugate(refract_l1);
+705   conj_l2 = gsl_complex_conjugate(refract_l2);
+706 
+707   // compute the complex reflection
+708   refl_compl = gsl_complex_div(gsl_complex_sub(conj_l1, conj_l2),
+709                                gsl_complex_add(conj_l1, conj_l2));
+710 
+711   // return the magnitude of the complex reflection
+712   return gsl_complex_abs2(refl_compl);
+713 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a63e9f0b1fcef4d177b599ffb8c4c610d}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!compute\_\-transmission@{compute\_\-transmission}}
+\index{compute\_\-transmission@{compute\_\-transmission}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{compute\_\-transmission}]{\setlength{\rightskip}{0pt plus 5cm}double compute\_\-transmission (const gsl\_\-complex {\em refract\_\-l1}, \/  const gsl\_\-complex {\em refract\_\-l2})}}
+\label{fringe__model_8c_a63e9f0b1fcef4d177b599ffb8c4c610d}
+Function: compute\_\-transmission The function computes and returns the transmission index (in \%) for two complex refraction indices at a given wavelength.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em refract\_\-l1}]-\/ refraction index of one layer \item[{\em refract\_\-l2}]-\/ refraction index of the second layer\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+(value) -\/ the trnasmission index 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+731 {
+732   gsl_complex conj_l1;
+733   gsl_complex conj_l2;
+734 
+735   gsl_complex trans_compl;
+736 
+737   // get the comlex conjugated values of the input
+738   conj_l1 = gsl_complex_conjugate(refract_l1);
+739   conj_l2 = gsl_complex_conjugate(refract_l2);
+740 
+741   // compute the complex transmission
+742   trans_compl =
+743     gsl_complex_div(gsl_complex_sqrt(gsl_complex_mul(conj_l1, conj_l2)),
+744                     gsl_complex_add(conj_l1, conj_l2));
+745   
+746   // finish the computation of the complex transmission
+747   trans_compl = gsl_complex_mul_real (trans_compl, 2.0);
+748 
+749   // return the magnitude of the complex transmission
+750   return gsl_complex_abs2(trans_compl);
+751 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_ac350c8322c6ddd6d21d854690076eed1}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!eval\_\-linear\_\-interp@{eval\_\-linear\_\-interp}}
+\index{eval\_\-linear\_\-interp@{eval\_\-linear\_\-interp}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{eval\_\-linear\_\-interp}]{\setlength{\rightskip}{0pt plus 5cm}double eval\_\-linear\_\-interp ({\bf linear\_\-interp} $\ast$ {\em lin\_\-int}, \/  const double {\em xval})}}
+\label{fringe__model_8c_ac350c8322c6ddd6d21d854690076eed1}
+Function: eval\_\-linear\_\-interp The function computes and returns the interpolated value at a given position for a linear \hyperlink{structinterpolator}{interpolator}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em lin\_\-int}]-\/ the linear \hyperlink{structinterpolator}{interpolator} \item[{\em xval}]-\/ the position to evaluate the linear \hyperlink{structinterpolator}{interpolator}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+(value) -\/ the interpolated data value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+582 {
+583 
+584   double factor=0.0;
+585 
+586   // check whether the x-value is within 
+587   // the range spanned by the data;
+588   // complain if the x-value is outside
+589   if (xval < lin_int->xmin || xval > lin_int->xmax)
+590     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+591                  "independent linear interpolation value %f "
+592                  "is outside interval (%f, %f)\n", xval,
+593                  lin_int->xmin, lin_int->xmax);
+594 
+595   // check whether you have to search upwards or downwards
+596   if (xval >= gsl_vector_get(lin_int->xvals, lin_int->act_index))
+597     {
+598 
+599       // in case that you search upwards, go up
+600       // the independent values until you find the right interval
+601       lin_int->act_index += 1;
+602       while(xval > gsl_vector_get(lin_int->xvals, lin_int->act_index))
+603         lin_int->act_index++;
+604     }
+605   else
+606     {
+607 
+608       // in case that you search downwards, go down
+609       // the independent values  until you find the right interval
+610       //      while(wavelength < resp->spec[nact-1].lambda_mean)
+611       while(xval < gsl_vector_get(lin_int->xvals, lin_int->act_index-1))
+612         lin_int->act_index--;
+613     }
+614 
+615   // interpolate within the interval to calculate the 
+616   // sensitivity
+617   factor = (xval - gsl_vector_get(lin_int->xvals, lin_int->act_index-1))/
+618     (gsl_vector_get(lin_int->xvals, lin_int->act_index) - gsl_vector_get(lin_int-
+      >xvals, lin_int->act_index-1));
+619 
+620   // compute and terutn the interpolated value
+621     return (gsl_vector_get(lin_int->yvals, lin_int->act_index-1)
+622     + factor * (gsl_vector_get(lin_int->yvals, lin_int->act_index)-gsl_vector_get
+      (lin_int->yvals, lin_int->act_index-1)));
+623 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a49198f0a9909b50f00a1f8202b2905d3}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!evaluate\_\-wavelength\_\-steps@{evaluate\_\-wavelength\_\-steps}}
+\index{evaluate\_\-wavelength\_\-steps@{evaluate\_\-wavelength\_\-steps}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{evaluate\_\-wavelength\_\-steps}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$$\ast$ evaluate\_\-wavelength\_\-steps ({\bf fringe\_\-conf} $\ast$ {\em fconf})}}
+\label{fringe__model_8c_a49198f0a9909b50f00a1f8202b2905d3}
+Function: evaluate\_\-wavelength\_\-steps The function defines and computes the wavelength steps and the filter throughputs which are used to compute the fringe amplitude for all pixels. The basis for the wavelength data are the filter data and the general are where fringing is significant and computed, which is defined in the fringe configuration structure. First all throughput values below a certain value are discarded at the short and long wavelength edge. Then the final wavelength range is determined using the fringing range. Then all wavelength values and the filter throughputs are determined and returned as two gsl-\/vectors.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fconf}]-\/ the fringe configuration structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+double\_\-vector -\/ a set of two gsl-\/vectors with wavlength and throughput 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+386 {
+387   int index=0;
+388   int lower=0;
+389   int upper=0;
+390 
+391   int nsteps;
+392 
+393   double lambda_min;
+394   double lambda_max;
+395   double lambda_act;
+396   double through_act=0.0;
+397   double through_tot=0.0;
+398 
+399   gsl_vector *lambda_values;
+400   gsl_vector *through_values;
+401 
+402   gsl_vector **double_vector;
+403 
+404 
+405   // allocate space for the return vector
+406   double_vector  = (gsl_vector **)malloc(2*sizeof (gsl_vector *));
+407 
+408   // search through the filter data
+409   // to narrow the usable range from below
+410   lower=0;
+411   while (lower < fconf->filter_through->nvals
+412          && fconf->filter_through->yvals[lower] < FILTER_THRESHOLD)
+413     lower++;
+414   lower = MAX(0,lower-1);
+415 
+416   // search through the filter data
+417   // to narrow the usable range from above
+418   upper=fconf->filter_through->nvals - 1;
+419   while (upper > -1
+420          && fconf->filter_through->yvals[upper] < FILTER_THRESHOLD)
+421     upper--;
+422   upper = MIN(fconf->filter_through->nvals - 1, upper+1);
+423 
+424 #ifdef DEBUGFCONF
+425   fprintf(stderr, "New lower range index: %i, new upper: %i, old number: %i\n",
+426           lower, upper, fconf->filter_through->nvals);
+427 #endif
+428 
+429   // replace the old filter interpolator
+430   // with a new one, if necessary
+431   if (lower != 0 || upper != (fconf->filter_through->nvals - 1))
+432     fconf->filter_through = redefine_filter_throughput(lower, upper, fconf);
+433 
+434   // compute the lower wavelength range by comparing
+435   // the filter throughput with the range important
+436   // for fringing; the latter is given in AA!!
+437   lambda_min = MAX(gsl_vector_get(fconf->fringe_range, 0),
+438                    fconf->filter_through->xmin);
+439 
+440   // compute the upper wavelength range by comparing
+441   // the filter throughput with the range important
+442   // for fringing; the latter is given in AA!!
+443   lambda_max = MIN(gsl_vector_get(fconf->fringe_range, 1),
+444                    fconf->filter_through->xmax);
+445 
+446   // find the number of steps to cover the wavelength range
+447   nsteps = (int)ceil((lambda_max-lambda_min)/(fconf->fringe_step)) + 1;
+448 
+449   // allocate the space for the vectors
+450   lambda_values  = gsl_vector_alloc(nsteps);
+451   through_values = gsl_vector_alloc(nsteps);
+452 
+453   // fill the vectors with the wavelength steps and the 
+454   // filter throughput at those wavelengths.
+455   lambda_act = lambda_min;
+456   for (index=0; index < nsteps-1; index+=1)
+457     {
+458       gsl_vector_set(lambda_values, index, lambda_act);
+459       through_act = eval_interp(fconf->filter_through, lambda_act);
+460       through_tot += through_act;
+461       gsl_vector_set(through_values, index, through_act);
+462       lambda_act += fconf->fringe_step;
+463     }
+464 
+465   // add also the values at lambda_amax
+466   gsl_vector_set(lambda_values, nsteps-1, lambda_max);
+467   through_act = eval_interp(fconf->filter_through, lambda_max);
+468   through_tot += through_act;
+469   gsl_vector_set(through_values, nsteps-1, through_act);
+470 
+471  
+472   for (index=0; index < through_values->size; index++)
+473     {
+474       // normalize the filter throughput values
+475       gsl_vector_set(through_values, index,
+476                      gsl_vector_get(through_values, index)/through_tot);
+477 
+478       // convert the wavelength from AA to micron
+479       gsl_vector_set(lambda_values, index,
+480                      gsl_vector_get(lambda_values, index)*1.0e-04);
+481     }
+482 #ifdef DEBUGFCONF
+483   through_tot = 0.0;
+484   for (index=0; index < through_values->size; index++)
+485     {
+486       fprintf(stderr, "Wavelength: %f, Throughput: %f\n",
+487               gsl_vector_get(lambda_values, index),
+488               gsl_vector_get(through_values, index));
+489       through_tot += gsl_vector_get(through_values, index);
+490     }
+491   fprintf(stderr, "Total throughput: %f\n", through_tot);
+492 #endif
+493 
+494   // build up the output array
+495   double_vector[0] = lambda_values;
+496   double_vector[1] = through_values;
+497 
+498   return double_vector;
+499 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a7583c38c8f52f4db360e402b0cff8354}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!fill\_\-optprops\_\-all@{fill\_\-optprops\_\-all}}
+\index{fill\_\-optprops\_\-all@{fill\_\-optprops\_\-all}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{fill\_\-optprops\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-optprops\_\-all (const {\bf ccd\_\-layers} $\ast$ {\em opt\_\-layers}, \/  const double {\em lambda}, \/  {\bf optical\_\-property} $\ast$ {\em optprops})}}
+\label{fringe__model_8c_a7583c38c8f52f4db360e402b0cff8354}
+
+
+
+\begin{DoxyCode}
+1009 {
+1010   int index;
+1011 
+1012   double phase_number;
+1013 
+1014   gsl_complex compl_upp;
+1015   gsl_complex compl_low;
+1016 
+1017   int num_layers;
+1018 
+1019   // store the number of layers
+1020   num_layers = opt_layers->num_layers;
+1021 
+1022   // compute the phase number
+1023   phase_number = 2.0*M_PI / lambda;
+1024 
+1025   // get the complex refractive index for the first layer
+1026   compl_upp =
+1027     get_complex_refindex(opt_layers->opt_layer[0],lambda);
+1028 
+1029   for (index=0; index < num_layers-1; index++)
+1030     {
+1031 
+1032       // get the refractive index for the next layer
+1033       compl_low =
+1034         get_complex_refindex(opt_layers->opt_layer[index+1],lambda);
+1035 
+1036       // compute the reflection and transmission
+1037       // to the lower layers
+1038       optprops[index].reflect_lower =
+1039         compute_reflection(compl_upp, compl_low);
+1040       optprops[index].trans_lower   = 1.0 - optprops[index].reflect_lower;
+1041 
+1042       // compute the reflection and transmission
+1043       // to the upper layers
+1044       optprops[index+1].reflect_upper = optprops[index].reflect_lower;
+1045       optprops[index+1].trans_upper   = 1.0 - optprops[index+1].reflect_upper;
+1046 
+1047       // compute the attenuation
+1048       optprops[index].double_attenuation =
+1049         compute_attenuation(compl_upp,optprops[index].thickness,phase_number);
+1050 
+1051       // compute the phase shift
+1052       optprops[index].double_phshift =
+1053         compute_pshift(compl_upp, optprops[index].thickness, phase_number);
+1054 
+1055 
+1056       // prepare the next iteration:
+1057       // the now upper layer will then be the lower
+1058       compl_upp = compl_low;
+1059     }
+1060   // compute the attenuation for the last layer
+1061   optprops[num_layers-1].double_attenuation =
+1062     compute_attenuation(compl_upp,optprops[num_layers-1].thickness,phase_number);
+      
+1063  
+1064   // compute the phase shift for the last layer
+1065   optprops[num_layers-1].double_phshift =
+1066     compute_pshift(compl_upp, optprops[num_layers-1].thickness, phase_number);
+1067 
+1068   // compute the transmission of the last layer
+1069   // towards the substrate
+1070   optprops[num_layers-1].trans_lower = 
+1071     eval_interp(opt_layers->substrate, lambda);
+1072 
+1073   // compute the reflection of the last layer
+1074   // towards the substrate
+1075   optprops[num_layers-1].reflect_lower =
+1076     1.0 - optprops[num_layers-1].trans_lower;
+1077 
+1078 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a4d241cd2c21f6836aabfc05690fa2361}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!fill\_\-optprops\_\-thickness@{fill\_\-optprops\_\-thickness}}
+\index{fill\_\-optprops\_\-thickness@{fill\_\-optprops\_\-thickness}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{fill\_\-optprops\_\-thickness}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-optprops\_\-thickness (const {\bf ccd\_\-layers} $\ast$ {\em opt\_\-layers}, \/  const int {\em ii}, \/  const int {\em jj}, \/  {\bf optical\_\-property} $\ast$ {\em optprops})}}
+\label{fringe__model_8c_a4d241cd2c21f6836aabfc05690fa2361}
+
+
+
+\begin{DoxyCode}
+979 {
+980   int index;
+981 
+982   // go over all layers
+983   for (index=0; index < opt_layers->num_layers; index++)
+984     // get and store the thickness
+985     optprops[index].thickness =
+986       get_layer_thickness(opt_layers->opt_layer[index], ii, jj);
+987 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a1b8ec54dcd7b41e31b24bbc5baacdd28}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!free\_\-optprops\_\-list@{free\_\-optprops\_\-list}}
+\index{free\_\-optprops\_\-list@{free\_\-optprops\_\-list}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{free\_\-optprops\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-optprops\_\-list ({\bf optical\_\-property} $\ast$ {\em optprops})}}
+\label{fringe__model_8c_a1b8ec54dcd7b41e31b24bbc5baacdd28}
+Function: free\_\-optprops\_\-list The function releases the space allocated in an optical property list.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em optprops}]-\/ the optical property list\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+872 {
+873   if (optprops != NULL)
+874     {
+875       // free the structure
+876       free(optprops);
+877 
+878       // set it to NULL
+879       optprops = NULL;
+880     }
+881 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_ab3355b989a07f5f88786c7148a5c76e5}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!fringe\_\-contrib\_\-single@{fringe\_\-contrib\_\-single}}
+\index{fringe\_\-contrib\_\-single@{fringe\_\-contrib\_\-single}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{fringe\_\-contrib\_\-single}]{\setlength{\rightskip}{0pt plus 5cm}double fringe\_\-contrib\_\-single (const {\bf optical\_\-property} $\ast$ {\em optprops}, \/  const {\bf fringe\_\-conf} $\ast$ {\em fconf})}}
+\label{fringe__model_8c_ab3355b989a07f5f88786c7148a5c76e5}
+
+
+
+\begin{DoxyCode}
+1101 {
+1102   int index=2;
+1103  
+1104   gsl_complex amp_tmp;
+1105   gsl_complex amp_tot;
+1106 
+1107 
+1108   // compute the initial phase at the top of the
+1109   // first layer
+1110   amp_tot =
+1111     gsl_complex_mul_real(gsl_complex_exp(gsl_complex_rect(0.0,fconf->
+      fringe_phase*M_PI/180.0)), 1.0);
+1112   
+1113 
+1114   // transfer the intitial value 
+1115   // to the running variable
+1116   amp_tmp = amp_tot; 
+1117    
+1118   // pile up the amplitude,
+1119   // also putting in the transmission
+1120   amp_tmp =
+1121     gsl_complex_mul(amp_tmp,
+1122                     gsl_complex_mul_real(optprops[0].double_phshift,
+1123                                          1.0*1.0*optprops[0].double_attenuation))
+      ;
+1124 
+1125   // compute the intermediate result 
+1126   // for the first layer
+1127   amp_tot = 
+1128     gsl_complex_add(amp_tot, 
+1129                     gsl_complex_mul_real(amp_tmp,
+1130                                          optprops[0].sign_lower*optprops[0].refle
+      ct_lower));
+1131 
+1132   // go over layer 2 to the end
+1133   for (index=1; index < fconf->opt_layers->num_layers; index++)
+1134     {
+1135       // pile up the amplitude 
+1136       // to that layer
+1137       amp_tmp =
+1138         gsl_complex_mul(amp_tmp,
+1139                         gsl_complex_mul_real(optprops[index].double_phshift,
+1140                                            optprops[index-1].trans_lower*optprops
+      [index].trans_upper*optprops[index].double_attenuation));
+1141 
+1142       // compute the intermediate result 
+1143       // for the that layer
+1144       amp_tot = 
+1145         gsl_complex_add(amp_tot, 
+1146                         gsl_complex_mul_real(amp_tmp,
+1147                                              optprops[index].sign_lower*optprops[
+      index].reflect_lower));
+1148       //      if (index==3)
+1149       //        fprintf(stdout,"ccc:%f, %f\n", GSL_REAL(amp_tmp),GSL_IMAG(amp_tmp
+      ) );
+1150 
+1151     }
+1152 
+1153   // return the final value
+1154   return (GSL_REAL(amp_tot) - 1.0);
+1155 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_aa1d042ae3943c7168b6d8c18bced875d}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!get\_\-calibration\_\-data@{get\_\-calibration\_\-data}}
+\index{get\_\-calibration\_\-data@{get\_\-calibration\_\-data}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{get\_\-calibration\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$$\ast$ get\_\-calibration\_\-data ()}}
+\label{fringe__model_8c_aa1d042ae3943c7168b6d8c18bced875d}
+Function: \hyperlink{fringe__model_8c_aa1d042ae3943c7168b6d8c18bced875d}{get\_\-calibration\_\-data()} This function is a data storage for filter throughput values as computed by the orioginal program 'final.f' of J.Walsh. The cubic spline routine used there turned out to give (slightly) different results than the gsl-\/routine used here. To be able making a in-\/depth comparison the throughuts were computed for the filter 'ccd\_\-ref.fits' and stored here.
+
+Parameters:
+
+Returns: \begin{DoxyReturn}{Returns}
+double\_\-vector -\/ interpolated standard filter throughputs 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+237 {
+238   gsl_vector *lambda_values;
+239   gsl_vector *through_values;
+240 
+241   gsl_vector **double_vector;
+242 
+243 
+244   // allocate space for the return vector
+245   double_vector  = (gsl_vector **)malloc(2*sizeof (gsl_vector *));
+246 
+247   // allocate the space for the vectors
+248   lambda_values  = gsl_vector_alloc(43);
+249   through_values = gsl_vector_alloc(43);
+250 
+251 
+252   // what follows is the wavelength steps as well as the normalized
+253   // filter throughputs which were computed in the original
+254   // program 'final.f' of J.Walsh.
+255   // The gsl-cubic spline routine yields slightly different values.
+256   // The values fixed here are good for a detailed cross-check
+257   // of the two programs.
+258   gsl_vector_set(through_values, 0, 0.0000000000000000);gsl_vector_set(lambda_val
+      ues, 0,   0.9179);
+259   gsl_vector_set(through_values, 1, 0.0095066184313808);gsl_vector_set(lambda_val
+      ues, 1,   0.9180);
+260   gsl_vector_set(through_values, 2, 0.0176006475945001);gsl_vector_set(lambda_val
+      ues, 2,   0.9181);
+261   gsl_vector_set(through_values, 3, 0.0240259215044616);gsl_vector_set(lambda_val
+      ues, 3,   0.9182);
+262   gsl_vector_set(through_values, 4, 0.0289185490230508);gsl_vector_set(lambda_val
+      ues, 4,   0.9183);
+263   gsl_vector_set(through_values, 5, 0.0324146730103703);gsl_vector_set(lambda_val
+      ues, 5,   0.9184);
+264   gsl_vector_set(through_values, 6, 0.0346504181940869);gsl_vector_set(lambda_val
+      ues, 6,   0.9185);
+265   gsl_vector_set(through_values, 7, 0.0357619115684218);gsl_vector_set(lambda_val
+      ues, 7,   0.9186);
+266   gsl_vector_set(through_values, 8, 0.0358852710613785);gsl_vector_set(lambda_val
+      ues, 8,   0.9187);
+267   gsl_vector_set(through_values, 9, 0.0351566282002872);gsl_vector_set(lambda_val
+      ues, 9,   0.9188);
+268   gsl_vector_set(through_values,10, 0.0337121099793692);gsl_vector_set(lambda_val
+      ues,10,   0.9189);
+269   gsl_vector_set(through_values,11, 0.0316878433928458);gsl_vector_set(lambda_val
+      ues,11,   0.9190);
+270   gsl_vector_set(through_values,12, 0.0292199509018293);gsl_vector_set(lambda_val
+      ues,12,   0.9191);
+271   gsl_vector_set(through_values,13, 0.0264445572339866);gsl_vector_set(lambda_val
+      ues,13,   0.9192);
+272   gsl_vector_set(through_values,14, 0.0234977916500934);gsl_vector_set(lambda_val
+      ues,14,   0.9193);
+273   gsl_vector_set(through_values,15, 0.0205157811443709);gsl_vector_set(lambda_val
+      ues,15,   0.9194);
+274   gsl_vector_set(through_values,16, 0.0176346504444861);gsl_vector_set(lambda_val
+      ues,16,   0.9195);
+275   gsl_vector_set(through_values,17, 0.0149905288112146);gsl_vector_set(lambda_val
+      ues,17,   0.9196);
+276   gsl_vector_set(through_values,18, 0.0127195375723916);gsl_vector_set(lambda_val
+      ues,18,   0.9197);
+277   gsl_vector_set(through_values,19, 0.0109578003224067);gsl_vector_set(lambda_val
+      ues,19,   0.9198);
+278   gsl_vector_set(through_values,20, 0.0098414542549762);gsl_vector_set(lambda_val
+      ues,20,   0.9199);
+279   gsl_vector_set(through_values,21, 0.0095066184313808);gsl_vector_set(lambda_val
+      ues,21,   0.9200);
+280   gsl_vector_set(through_values,22, 0.0100435357173845);gsl_vector_set(lambda_val
+      ues,22,   0.9201);
+281   gsl_vector_set(through_values,23, 0.0113589226644173);gsl_vector_set(lambda_val
+      ues,23,   0.9202);
+282   gsl_vector_set(through_values,24, 0.0133136264280558);gsl_vector_set(lambda_val
+      ues,24,   0.9203);
+283   gsl_vector_set(through_values,25, 0.0157684646986687);gsl_vector_set(lambda_val
+      ues,25,   0.9204);
+284   gsl_vector_set(through_values,26, 0.0185842800987238);gsl_vector_set(lambda_val
+      ues,26,   0.9205);
+285   gsl_vector_set(through_values,27, 0.0216219095843027);gsl_vector_set(lambda_val
+      ues,27,   0.9206);
+286   gsl_vector_set(through_values,28, 0.0247421844451007);gsl_vector_set(lambda_val
+      ues,28,   0.9207);
+287   gsl_vector_set(through_values,29, 0.0278059450370313);gsl_vector_set(lambda_val
+      ues,29,   0.9208);
+288   gsl_vector_set(through_values,30, 0.0306740203832353);gsl_vector_set(lambda_val
+      ues,30,   0.9209);
+289   gsl_vector_set(through_values,31, 0.0332072463065172);gsl_vector_set(lambda_val
+      ues,31,   0.9210);
+290   gsl_vector_set(through_values,32, 0.0352664608962358);gsl_vector_set(lambda_val
+      ues,32,   0.9211);
+291   gsl_vector_set(through_values,33, 0.0367124999751954);gsl_vector_set(lambda_val
+      ues,33,   0.9212);
+292   gsl_vector_set(through_values,34, 0.0374061970996460);gsl_vector_set(lambda_val
+      ues,34,   0.9213);
+293   gsl_vector_set(through_values,35, 0.0372083835592830);gsl_vector_set(lambda_val
+      ues,35,   0.9214);
+294   gsl_vector_set(through_values,36, 0.0359798997100196);gsl_vector_set(lambda_val
+      ues,36,   0.9215);
+295   gsl_vector_set(through_values,37, 0.0335815745749970);gsl_vector_set(lambda_val
+      ues,37,   0.9216);
+296   gsl_vector_set(through_values,38, 0.0298742553097917);gsl_vector_set(lambda_val
+      ues,38,   0.9217);
+297   gsl_vector_set(through_values,39, 0.0247187709375447);gsl_vector_set(lambda_val
+      ues,39,   0.9218);
+298   gsl_vector_set(through_values,40, 0.0179759414151792);gsl_vector_set(lambda_val
+      ues,40,   0.9219);
+299   gsl_vector_set(through_values,41, 0.0095066184313808);gsl_vector_set(lambda_val
+      ues,41,   0.9220);
+300   gsl_vector_set(through_values,42, 0.0000000000000000);gsl_vector_set(lambda_val
+      ues,42,   0.9221);
+301   
+302   // build up the output array
+303   double_vector[0] = lambda_values;
+304   double_vector[1] = through_values;
+305 
+306   // return the two vectors
+307   return double_vector;
+308 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_acdd00a7b8f4c951200544ae65e90e38b}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!get\_\-complex\_\-refindex@{get\_\-complex\_\-refindex}}
+\index{get\_\-complex\_\-refindex@{get\_\-complex\_\-refindex}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{get\_\-complex\_\-refindex}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-complex get\_\-complex\_\-refindex (const {\bf ccd\_\-layer} $\ast$ {\em opt\_\-layer}, \/  const double {\em lambda})}}
+\label{fringe__model_8c_acdd00a7b8f4c951200544ae65e90e38b}
+Function: get\_\-complex\_\-refindex The function computes and returns the complex refraction index of a given CCD layer at a given wavelength.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em opt\_\-layer}]-\/ the optical layer \item[{\em lambda}]-\/ the wavelength\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+(value) -\/ the complex refraction index 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+667 {
+668   double re;
+669   double im;
+670 
+671   // compute the real part
+672   re = eval_interp(opt_layer->re_refraction, lambda);
+673 
+674   // comute the imaginary part
+675   im = eval_interp(opt_layer->im_refraction, lambda);
+676 
+677   // return the complex number
+678   return gsl_complex_rect(re, im);
+679 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a4b144c7b307bae789a6b06582364de66}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!get\_\-layer\_\-thickness@{get\_\-layer\_\-thickness}}
+\index{get\_\-layer\_\-thickness@{get\_\-layer\_\-thickness}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{get\_\-layer\_\-thickness}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-layer\_\-thickness (const {\bf ccd\_\-layer} $\ast$ {\em opt\_\-layer}, \/  const int {\em ii}, \/  const int {\em jj})}}
+\label{fringe__model_8c_a4b144c7b307bae789a6b06582364de66}
+Function: get\_\-layer\_\-thickness The function determines the thickness of an individual layer at a given pixel position.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em opt\_\-layer}]-\/ the optical layer \item[{\em ii}]-\/ the first pixel index \item[{\em jj}]-\/ the second pixel index\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+(value) -\/ the thickness of the layer at the requested position 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+642 {
+643   // check whether the thickness is 2D
+644   if (opt_layer->thickness2D)
+645     // return the 2D value
+646     return gsl_matrix_get(opt_layer->thickness2D, ii, jj);
+647   else
+648     // return the constant value
+649     return opt_layer->thickness;
+650 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a825847406083c196d7fb8363cdd5f7ff}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!get\_\-PET\_\-calibration\_\-data@{get\_\-PET\_\-calibration\_\-data}}
+\index{get\_\-PET\_\-calibration\_\-data@{get\_\-PET\_\-calibration\_\-data}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{get\_\-PET\_\-calibration\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$$\ast$ get\_\-PET\_\-calibration\_\-data ()}}
+\label{fringe__model_8c_a825847406083c196d7fb8363cdd5f7ff}
+Function: \hyperlink{fringe__model_8c_a825847406083c196d7fb8363cdd5f7ff}{get\_\-PET\_\-calibration\_\-data()} 
+
+
+\begin{DoxyCode}
+316 {
+317   gsl_vector *lambda_values;
+318   gsl_vector *through_values;
+319 
+320   gsl_vector **double_vector;
+321 
+322 
+323   // allocate space for the return vector
+324   double_vector  = (gsl_vector **)malloc(2*sizeof (gsl_vector *));
+325 
+326   // allocate the space for the vectors
+327   lambda_values  = gsl_vector_alloc(21);
+328   through_values = gsl_vector_alloc(21);
+329 
+330   gsl_vector_set(lambda_values, 0,1.069460);  gsl_vector_set(through_values, 0, 0
+      .000000);
+331   gsl_vector_set(lambda_values, 1,1.069653);  gsl_vector_set(through_values, 1, 0
+      .012630);
+332   gsl_vector_set(lambda_values, 2,1.069846);  gsl_vector_set(through_values, 2, 0
+      .025261);
+333   gsl_vector_set(lambda_values, 3,1.070039);  gsl_vector_set(through_values, 3, 0
+      .037891);
+334   gsl_vector_set(lambda_values, 4,1.070232);  gsl_vector_set(through_values, 4,  
+       0.050522);
+335   gsl_vector_set(lambda_values, 5,1.070424);  gsl_vector_set(through_values, 5,  
+       0.063152);
+336   gsl_vector_set(lambda_values, 6,1.070617);  gsl_vector_set(through_values, 6,  
+       0.069010);
+337   gsl_vector_set(lambda_values, 7,1.070810);  gsl_vector_set(through_values, 7,  
+       0.069010);
+338   gsl_vector_set(lambda_values, 8,1.071003);  gsl_vector_set(through_values, 8,  
+       0.069010);
+339   gsl_vector_set(lambda_values, 9,1.071196);  gsl_vector_set(through_values, 9,  
+       0.069010);
+340   gsl_vector_set(lambda_values, 10,1.071389); gsl_vector_set(through_values, 10, 
+        0.069010);
+341   gsl_vector_set(lambda_values, 11,1.071582); gsl_vector_set(through_values, 11, 
+        0.069010);
+342   gsl_vector_set(lambda_values, 12,1.071775); gsl_vector_set(through_values, 12, 
+        0.069010);
+343   gsl_vector_set(lambda_values, 13,1.071967); gsl_vector_set(through_values, 13, 
+        0.069010);
+344   gsl_vector_set(lambda_values, 14,1.072160); gsl_vector_set(through_values, 14, 
+        0.069010);
+345   gsl_vector_set(lambda_values, 15,1.072353); gsl_vector_set(through_values, 15, 
+        0.063152);
+346   gsl_vector_set(lambda_values, 16,1.072546); gsl_vector_set(through_values, 16, 
+        0.050522);
+347   gsl_vector_set(lambda_values, 17,1.072739); gsl_vector_set(through_values, 17, 
+        0.037891);
+348   gsl_vector_set(lambda_values, 18,1.072932); gsl_vector_set(through_values, 18, 
+        0.025261);
+349   gsl_vector_set(lambda_values, 19,1.073125); gsl_vector_set(through_values, 19, 
+       0.012630);
+350   gsl_vector_set(lambda_values, 20,1.073318); gsl_vector_set(through_values, 20, 
+        0.000000);
+351 
+352   //Wavelength: 10713.888672, fringe factor: 1.097945, (x,y): (18, 745)
+353 
+354   
+355   // build up the output array
+356   double_vector[0] = lambda_values;
+357   double_vector[1] = through_values;
+358 
+359   // return the two vectors
+360   return double_vector;
+361 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a30b4bda7a269be14d5225de5aaec952e}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!init\_\-optprops\_\-list@{init\_\-optprops\_\-list}}
+\index{init\_\-optprops\_\-list@{init\_\-optprops\_\-list}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{init\_\-optprops\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-optprops\_\-list (const {\bf fringe\_\-conf} $\ast$ {\em fconf}, \/  const double {\em lambda\_\-mean}, \/  {\bf optical\_\-property} $\ast$ {\em optprops})}}
+\label{fringe__model_8c_a30b4bda7a269be14d5225de5aaec952e}
+
+
+
+\begin{DoxyCode}
+903 {
+904   int num_layers;
+905   int index;
+906 
+907   double n1;
+908   double n2;
+909 
+910   // determine the number of layers
+911   num_layers = fconf->opt_layers->num_layers;
+912 
+913   if (num_layers > 0)
+914     {
+915       // set the transmission and reflection
+916       // vacuum -- first CCD layer
+917       // that's a bit heuristic, since
+918       // the true value using the true
+919       // refration index for vacuum would
+920       // give a different result
+921       optprops[0].trans_upper   = 1.0;
+922       optprops[0].reflect_upper = 0.0;      
+923 
+924       // also that one is a bit heuristic
+925       // but assuming n(vacuum)=1.0 its also true 
+926       optprops[0].sign_upper = 1.0;
+927 
+928       // set the sign of the lowest layer -- substrate
+929       // this is purely heuristic and works 
+930       // only for the HRC/WFC fringing models!! 
+931       optprops[num_layers-1].sign_lower = -1.0;
+932     }
+933 
+934   for (index=0; index < num_layers-1; index++)
+935     {
+936       // get the real part of the refraction index
+937       // of the upper layer
+938       n1 = GSL_REAL(get_complex_refindex(fconf->opt_layers->opt_layer[index],
+939                                          lambda_mean));
+940 
+941       // get the real part of the refraction index
+942       // of the lower layer
+943       n2 = GSL_REAL(get_complex_refindex(fconf->opt_layers->opt_layer[index+1],
+944                                          lambda_mean));
+945 
+946       // distribute the signs
+947       // for the upper and lower layer
+948       if (n1 < n2)
+949         {
+950           optprops[index].sign_lower   =  1.0;
+951           optprops[index+1].sign_upper = -1.0;
+952         }
+953       else
+954         {
+955           optprops[index].sign_lower   = -1.0;
+956           optprops[index+1].sign_upper =  1.0;
+957         }
+958     }
+959 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a8d36095f41729289c111fa1fa483a807}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!print\_\-optprops\_\-list@{print\_\-optprops\_\-list}}
+\index{print\_\-optprops\_\-list@{print\_\-optprops\_\-list}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{print\_\-optprops\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-optprops\_\-list (const {\bf optical\_\-property} $\ast$ {\em optprops}, \/  const int {\em num\_\-entries})}}
+\label{fringe__model_8c_a8d36095f41729289c111fa1fa483a807}
+Function: print\_\-optprops\_\-list The function prints the content of an optical property list onto the screen.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em optprops}]-\/ the optical property list\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+846 {
+847   int index;
+848   
+849   for (index = 0; index < num_entries; index++)
+850     {
+851       fprintf(stdout, "#%i: %f %f %f %f %f %f \n",index,
+852               optprops[index].trans_upper, optprops[index].reflect_upper,
+853               GSL_REAL(optprops[index].double_phshift),
+854               GSL_IMAG(optprops[index].double_phshift),
+855               optprops[index].trans_lower, optprops[index].reflect_lower);
+856     }
+857 }
+\end{DoxyCode}
+\hypertarget{fringe__model_8c_a8f0e1b1f5664107be3cba2068c0a83e1}{
+\index{fringe\_\-model.c@{fringe\_\-model.c}!redefine\_\-filter\_\-throughput@{redefine\_\-filter\_\-throughput}}
+\index{redefine\_\-filter\_\-throughput@{redefine\_\-filter\_\-throughput}!fringe_model.c@{fringe\_\-model.c}}
+\subsubsection[{redefine\_\-filter\_\-throughput}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ redefine\_\-filter\_\-throughput (const int {\em lower}, \/  const int {\em upper}, \/  {\bf fringe\_\-conf} $\ast$ {\em fconf})}}
+\label{fringe__model_8c_a8f0e1b1f5664107be3cba2068c0a83e1}
+Function: redefine\_\-filter\_\-throughput The function re-\/defines an existing \hyperlink{structinterpolator}{interpolator} using only the existing data values in an index range given as parameters.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em lower}]-\/ index with the lowest data point \item[{\em upper}]-\/ index with the highest data point\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+new\_\-interp -\/ the new \hyperlink{structinterpolator}{interpolator} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+516 {
+517   int new_nvals;
+518   int index;
+519 
+520   double *new_x;
+521   double *new_y;
+522 
+523   interpolator *new_interp;
+524  
+525    // allocate space for the return structure;
+526   // complain if this fails
+527   new_interp = (interpolator *)malloc (sizeof (interpolator));
+528   if (new_interp == NULL)
+529       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+530                    "Could not allocate memory for interpolator");
+531 
+532   // compute the new length of the data arrays
+533   new_nvals = upper-lower+1;
+534 
+535   // allocate space for the new data arrays
+536   new_x = (double *)malloc(new_nvals*sizeof(double));
+537   new_y = (double *)malloc(new_nvals*sizeof(double));
+538 
+539   // transfer the data
+540   for (index=lower; index < upper+1; index++)
+541     {
+542       new_x[index-lower] = fconf->filter_through->xvals[index];
+543       new_y[index-lower] = fconf->filter_through->yvals[index];
+544     }
+545 
+546   // free the old structure
+547   free_interp(fconf->filter_through);
+548 
+549   // build up the interpolator structure
+550   new_interp->xmin    = new_x[0];
+551   new_interp->xmax    = new_x[new_nvals-1];
+552   new_interp->nvals   = new_nvals;
+553   new_interp->xvals   = new_x;
+554   new_interp->yvals   = new_y;
+555   new_interp->acc     = gsl_interp_accel_alloc();
+556   new_interp->interp  = gsl_interp_alloc(FILTER_INTERP_TYPE,
+557                                          new_interp->nvals);
+558 
+559   // initialize the cubic spline
+560   gsl_interp_init(new_interp->interp, new_interp->xvals, new_interp->yvals, 
+561                   new_interp->nvals);
+562   
+563   // return the new structure
+564   return new_interp;
+565 }
+\end{DoxyCode}

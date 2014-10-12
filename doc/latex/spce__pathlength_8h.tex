@@ -1,0 +1,48 @@
+\hypertarget{spce__pathlength_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spce\_\-pathlength.h File Reference}
+\label{spce__pathlength_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spce\_\-pathlength.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spce\_\-pathlength.h}}
+}
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-integration.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-spline.h$>$}\par
+{\ttfamily \#include \char`\"{}spc\_\-trace\_\-functions.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespce__pathlength}{spce\_\-pathlength}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{spce__pathlength_8h_a414f68dbdc28341ce5e57d2af4ab040c}{abscissa\_\-to\_\-pathlength} (const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const func, gsl\_\-vector $\ast$const data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spce__pathlength_8h_a414f68dbdc28341ce5e57d2af4ab040c}{
+\index{spce\_\-pathlength.h@{spce\_\-pathlength.h}!abscissa\_\-to\_\-pathlength@{abscissa\_\-to\_\-pathlength}}
+\index{abscissa\_\-to\_\-pathlength@{abscissa\_\-to\_\-pathlength}!spce_pathlength.h@{spce\_\-pathlength.h}}
+\subsubsection[{abscissa\_\-to\_\-pathlength}]{\setlength{\rightskip}{0pt plus 5cm}int abscissa\_\-to\_\-pathlength (const {\bf trace\_\-func} $\ast$const  {\em func}, \/  gsl\_\-vector $\ast$const  {\em data})}}
+\label{spce__pathlength_8h_a414f68dbdc28341ce5e57d2af4ab040c}
+transforms a list of abscissas to a list of path lengths. This function decides what of the absc\_\-to\_\-pathl\_\-len, absc\_\-to\_\-pathl\_\-deriv, or absc\_\-to\_\-pathl\_\-val\_\-only to use.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em func}]the \hyperlink{structspectrum}{spectrum} trace function to use in the transformation \item[{\em data}]the table of abscissas relative to the reference point \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+180 {
+181   if (func->path_len)
+182     {
+183       return absc_to_pathl_path_len (func, data);
+184     }
+185   if (func->deriv)
+186     {
+187       return absc_to_pathl_deriv (func, data);
+188     }
+189   return absc_to_pathl_val_only (func, data);
+190 }
+\end{DoxyCode}

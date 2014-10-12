@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/repos/tips/!svn/ver/221/branches/tips_build/cmake/modules
+END
+FindCFITSIO.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/tips/!svn/ver/221/branches/tips_build/cmake/modules/FindCFITSIO.cmake
+END
+CheckCCompilerFlag.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/tips/!svn/ver/221/branches/tips_build/cmake/modules/CheckCCompilerFlag.cmake
+END
+FindGSL.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/221/branches/tips_build/cmake/modules/FindGSL.cmake
+END

@@ -1,0 +1,604 @@
+\hypertarget{crossdisp__utils_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/crossdisp\_\-utils.c File Reference}
+\label{crossdisp__utils_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/crossdisp\_\-utils.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/crossdisp\_\-utils.c}}
+}
+{\ttfamily \#include \char`\"{}spc\_\-trace\_\-functions.h\char`\"{}}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-statistics.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-multiroots.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include \char`\"{}disp\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}trace\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}crossdisp\_\-utils.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacecrossdisp__utils}{crossdisp\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{crossdisp__utils_8c_aefae00dd27618c8713f65a0c53260db9}{print\_\-state} (size\_\-t iter, gsl\_\-multiroot\_\-fsolver $\ast$s)
+\item 
+int \hyperlink{crossdisp__utils_8c_a9190af0180751e81dc7035db14d53061}{drizzle\_\-distort} (const gsl\_\-vector $\ast$x, void $\ast$params, gsl\_\-vector $\ast$f)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{crossdisp__utils_8c_a952651847d0ab23bbd827533ae3e8f78}{distort\_\-point} (gsl\_\-matrix $\ast$coeffs, const \hyperlink{structpx__point}{px\_\-point} pixmax, \hyperlink{structd__point}{d\_\-point} xy\_\-image)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{crossdisp__utils_8c_a46a6d394002bfdfaff292fd95aa3186b}{undistort\_\-point} (gsl\_\-matrix $\ast$coeffs, const \hyperlink{structpx__point}{px\_\-point} pixmax, \hyperlink{structd__point}{d\_\-point} xy\_\-image)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{crossdisp__utils_8c_a24fed0f1bc1490134a2c5c5baaee6ad5}{get\_\-crossdisp\_\-matrix} (char $\ast$filename, int sci\_\-numext)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{crossdisp__utils_8c_afe2b6e94431b461cfa6e596a90108b1e}{get\_\-axis\_\-scales} (\hyperlink{structbeam}{beam} actbeam, gsl\_\-matrix $\ast$drzcoeffs, \hyperlink{structpx__point}{px\_\-point} pixmax)
+\item 
+double \hyperlink{crossdisp__utils_8c_a5e0a3d4c9b4a5fdd578cb08d8c9b1202}{get\_\-crossdisp\_\-scale} (\hyperlink{structtrace__func}{trace\_\-func} $\ast$trace, \hyperlink{structd__point}{d\_\-point} refpnt, gsl\_\-matrix $\ast$drzcoeffs, \hyperlink{structpx__point}{px\_\-point} pixmax)
+\item 
+double \hyperlink{crossdisp__utils_8c_a98324ec6babd8d167260e92aff194065}{evaln} (double x, double y, gsl\_\-matrix $\ast$drzcoeffs, int row)
+\item 
+double \hyperlink{crossdisp__utils_8c_abdb56db58850ae29bf279347cc886f21}{devalndx} (double x, double y, gsl\_\-matrix $\ast$drzcoeffs, int row)
+\item 
+double \hyperlink{crossdisp__utils_8c_ad0c41e863b3af83332466fc4a160be5e}{devalndy} (double x, double y, gsl\_\-matrix $\ast$drzcoeffs, int row)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{crossdisp__utils_8c_a8c5b4dec894622b79523577d483311c3}{get\_\-jacobian} (int i, int j, gsl\_\-matrix $\ast$drzcoeffs, int width, int height)
+\item 
+double \hyperlink{crossdisp__utils_8c_af2009fe7bc8f5da56261aab4baf9146a}{get\_\-det\_\-jacobian} (int i, int j, gsl\_\-matrix $\ast$drzcoeffs, int width, int height)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{crossdisp__utils_8c_a45a260b55c42f693743cfdcc6d7f7759}{get\_\-drz\_\-position} (\hyperlink{structd__point}{d\_\-point} in\_\-point, gsl\_\-matrix $\ast$drzcoeffs, \hyperlink{structpx__point}{px\_\-point} pixmax)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{crossdisp__utils_8c_a6947fa6cd3cf3c724598afcd842b92b1}{get\_\-drz\_\-position\_\-free} (\hyperlink{structd__point}{d\_\-point} in\_\-point, gsl\_\-matrix $\ast$drzcoeffs, \hyperlink{structpx__point}{px\_\-point} pix\_\-in, \hyperlink{structpx__point}{px\_\-point} pix\_\-out)
+\item 
+\hyperlink{structtrace__func}{trace\_\-func} $\ast$ \hyperlink{crossdisp__utils_8c_ac3fed627456a5f8c5781b6b5164b1851}{get\_\-tracefunc\_\-at} (char $\ast$filename, \hyperlink{structd__point}{d\_\-point} p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{crossdisp__utils_8c_abdb56db58850ae29bf279347cc886f21}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!devalndx@{devalndx}}
+\index{devalndx@{devalndx}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{devalndx}]{\setlength{\rightskip}{0pt plus 5cm}double devalndx (double {\em x}, \/  double {\em y}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  int {\em row})}}
+\label{crossdisp__utils_8c_abdb56db58850ae29bf279347cc886f21}
+
+
+
+\begin{DoxyCode}
+442                                                              {
+443   double ret=0.0;
+444   int order;
+445   int n,m,nc,ncoeffs;
+446 
+447   // derive the number of 'orders'
+448   order = 0;
+449   ncoeffs = 1;
+450   while(ncoeffs+order+2 <= (int)drzcoeffs->size2){
+451     ncoeffs = ncoeffs+order+2;
+452     order++;
+453   }
+454 
+455   // add each individual term
+456   nc = 0;
+457   for (n=1; n < order+2; n++){
+458     for (m=1; m < n; m++){
+459       ret = ret + gsl_matrix_get(drzcoeffs,row,nc) * (double)(n-m) * pow(x,(doubl
+      e)(n-m-1)) * pow(y,(double)(m-1));
+460       nc++;
+461     }
+462     nc++;
+463   }
+464 
+465   // return the result
+466   return ret;
+467 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_ad0c41e863b3af83332466fc4a160be5e}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!devalndy@{devalndy}}
+\index{devalndy@{devalndy}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{devalndy}]{\setlength{\rightskip}{0pt plus 5cm}double devalndy (double {\em x}, \/  double {\em y}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  int {\em row})}}
+\label{crossdisp__utils_8c_ad0c41e863b3af83332466fc4a160be5e}
+
+
+
+\begin{DoxyCode}
+485                                                              {
+486   double ret=0.0;
+487   int order;
+488   int n,m,nc,ncoeffs;
+489 
+490   // derive the number of 'orders'
+491   order = 0;
+492   ncoeffs = 1;
+493   while(ncoeffs+order+2 <= (int)drzcoeffs->size2){
+494     ncoeffs = ncoeffs+order+2;
+495     order++;
+496   }
+497 
+498   // add each individual term
+499   nc = 0;
+500   for (n=1; n < order+2; n++){
+501     nc++;
+502     for (m=2; m < n+1; m++){
+503       ret = ret + gsl_matrix_get(drzcoeffs,row,nc) * pow(x,(double)(n-m)) * (doub
+      le)(m-1) * pow(y,(double)(m-2));
+504       nc++;
+505     }
+506   }
+507 
+508   // return the result
+509   return ret;
+510 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a952651847d0ab23bbd827533ae3e8f78}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!distort\_\-point@{distort\_\-point}}
+\index{distort\_\-point@{distort\_\-point}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{distort\_\-point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} distort\_\-point (gsl\_\-matrix $\ast$ {\em coeffs}, \/  const {\bf px\_\-point} {\em pixmax}, \/  {\bf d\_\-point} {\em xy\_\-image})}}
+\label{crossdisp__utils_8c_a952651847d0ab23bbd827533ae3e8f78}
+
+
+
+\begin{DoxyCode}
+116 {
+117   const gsl_multiroot_fsolver_type *msolve_type;
+118   gsl_multiroot_fsolver *msolve;
+119 
+120   int status;
+121   //size_t i;
+122   size_t iter = 0;
+123   //const size_t n = 2;
+124 
+125   gsl_multiroot_function mult_func;
+126 
+127   drz_pars   *drzpars;
+128   gsl_vector *xy_in = gsl_vector_alloc(2);
+129   gsl_vector *xy_out = gsl_vector_alloc(2);
+130   d_point xy_ret;
+131 
+132   // set up the parameters for the
+133   // multi-d function
+134   drzpars = (drz_pars *) malloc(sizeof(drz_pars));
+135   drzpars->coeffs = coeffs;
+136   drzpars->offset = xy_image;
+137   drzpars->npixels = pixmax;
+138 
+139   // set up the multi-d function
+140   mult_func.f = &drizzle_distort;
+141   mult_func.n = 2;
+142   mult_func.params = drzpars;
+143 
+144   // set the starting coordinates
+145   gsl_vector_set(xy_in, 0, xy_image.x);
+146   gsl_vector_set(xy_in, 1, xy_image.y);
+147 
+148   // allocate and initialize the multi-d solver
+149   msolve_type = gsl_multiroot_fsolver_dnewton;
+150   msolve = gsl_multiroot_fsolver_alloc (msolve_type, 2);
+151   gsl_multiroot_fsolver_set (msolve, &mult_func, xy_in);
+152 
+153   //  print_state (iter, msolve);
+154 
+155   // iterate
+156   do
+157   {
+158     // count the number of iterations
+159     iter++;
+160 
+161     // do an iteration
+162     status = gsl_multiroot_fsolver_iterate (msolve);
+163     
+164     //    print_state (iter, msolve);
+165     
+166     // check if solver is stuck
+167     if (status)
+168       break;
+169 
+170     // evaluate the iteration
+171     status = gsl_multiroot_test_residual (msolve->f, 1e-7);
+172   }
+173   while (status == GSL_CONTINUE && iter < 1000);
+174   // chek for the break conditions
+175 
+176   // transfer the result to the return struct
+177   xy_ret.x = gsl_vector_get(msolve->x,0);
+178   xy_ret.y = gsl_vector_get(msolve->x,1);
+179 
+180   // deallocate the different structures
+181   gsl_multiroot_fsolver_free (msolve);
+182   gsl_vector_free(xy_in);
+183   gsl_vector_free(xy_out);
+184 
+185   // return the result
+186   return xy_ret;
+187 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a9190af0180751e81dc7035db14d53061}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!drizzle\_\-distort@{drizzle\_\-distort}}
+\index{drizzle\_\-distort@{drizzle\_\-distort}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{drizzle\_\-distort}]{\setlength{\rightskip}{0pt plus 5cm}int drizzle\_\-distort (const gsl\_\-vector $\ast$ {\em x}, \/  void $\ast$ {\em params}, \/  gsl\_\-vector $\ast$ {\em f})}}
+\label{crossdisp__utils_8c_a9190af0180751e81dc7035db14d53061}
+
+
+
+\begin{DoxyCode}
+69 {
+70   // extract the components from the parameter-structure
+71   gsl_matrix *coeffs = ((drz_pars *) params)->coeffs;
+72   px_point  npixels = ((drz_pars *) params)->npixels;
+73   d_point offset = ((drz_pars *) params)->offset;
+74 
+75   d_point xy_in;
+76   d_point xy_out;
+77 
+78   // extract the input
+79   xy_in.x = gsl_vector_get(x,0);
+80   xy_in.y = gsl_vector_get(x,1);
+81 
+82   // undistort the input
+83   xy_out = get_drz_position(xy_in, coeffs, npixels);
+84 
+85   // subtract the input
+86   xy_out.x = xy_out.x-offset.x;
+87   xy_out.y = xy_out.y-offset.y;
+88 
+89   // set the output
+90   gsl_vector_set(f, 0, xy_out.x);
+91   gsl_vector_set(f, 1, xy_out.y);
+92 
+93   // return always the same
+94   return GSL_SUCCESS;
+95 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a98324ec6babd8d167260e92aff194065}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!evaln@{evaln}}
+\index{evaln@{evaln}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{evaln}]{\setlength{\rightskip}{0pt plus 5cm}double evaln (double {\em x}, \/  double {\em y}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  int {\em row})}}
+\label{crossdisp__utils_8c_a98324ec6babd8d167260e92aff194065}
+
+
+
+\begin{DoxyCode}
+399                                                           {
+400 
+401   double ret=0.0;
+402   int order;
+403   int n,m,nc,ncoeffs;
+404   order = 0;
+405   ncoeffs = 1;
+406 
+407   // derive the number of 'orders'
+408   while(ncoeffs+order+2 <= (int)drzcoeffs->size2){
+409     ncoeffs = ncoeffs+order+2;
+410     order++;
+411   }
+412 
+413   // add each individual term
+414   nc = 0;
+415   for (n=1; n < order+2; n++){
+416     for (m=1; m < n+1; m++){
+417       ret = ret + gsl_matrix_get(drzcoeffs,row,nc) * pow(x,(double)(n-m)) * pow(y
+      ,(double)(m-1));
+418       nc++;
+419     }
+420   }
+421 
+422   // give back the result
+423   return ret;
+424 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_afe2b6e94431b461cfa6e596a90108b1e}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!get\_\-axis\_\-scales@{get\_\-axis\_\-scales}}
+\index{get\_\-axis\_\-scales@{get\_\-axis\_\-scales}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{get\_\-axis\_\-scales}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} get\_\-axis\_\-scales ({\bf beam} {\em actbeam}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  {\bf px\_\-point} {\em pixmax})}}
+\label{crossdisp__utils_8c_afe2b6e94431b461cfa6e596a90108b1e}
+
+
+
+\begin{DoxyCode}
+296                                                                       {
+297 
+298   d_point dispnt;
+299   d_point drz_ref;
+300   d_point drz_dis;
+301 
+302   d_point ret;
+303 
+304   // find a dummy point along the major half axis
+305   dispnt.x = actbeam.refpoint.x + cos(actbeam.aorient);
+306   dispnt.y = actbeam.refpoint.y + sin(actbeam.aorient);
+307 
+308   // compute the undistorted coos for the refpoint
+309   drz_ref = get_drz_position(actbeam.refpoint, drzcoeffs, pixmax);
+310 
+311   // compute the undistorted coos for the dummy point
+312   drz_dis = get_drz_position(dispnt, drzcoeffs, pixmax);
+313 
+314   // compute the scale along the major axis
+315   ret.x = sqrt((drz_ref.x-drz_dis.x)*(drz_ref.x-drz_dis.x) +
+316                (drz_ref.y-drz_dis.y)*(drz_ref.y-drz_dis.y));
+317 
+318   // find a dummy point along the minor half axis
+319   dispnt.x = actbeam.refpoint.x + cos(actbeam.aorient + M_PI/2.0);
+320   dispnt.y = actbeam.refpoint.y + sin(actbeam.aorient + M_PI/2.0);
+321 
+322   // compute the undistorted coos for the dummy point
+323   drz_dis = get_drz_position(dispnt, drzcoeffs, pixmax);
+324 
+325   // compute the scale along the minor axis
+326   ret.y = sqrt((drz_ref.x-drz_dis.x)*(drz_ref.x-drz_dis.x) +
+327                (drz_ref.y-drz_dis.y)*(drz_ref.y-drz_dis.y));
+328 
+329   // return the result
+330   return ret;
+331 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a24fed0f1bc1490134a2c5c5baaee6ad5}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!get\_\-crossdisp\_\-matrix@{get\_\-crossdisp\_\-matrix}}
+\index{get\_\-crossdisp\_\-matrix@{get\_\-crossdisp\_\-matrix}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{get\_\-crossdisp\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ get\_\-crossdisp\_\-matrix (char $\ast$ {\em filename}, \/  int {\em sci\_\-numext})}}
+\label{crossdisp__utils_8c_a24fed0f1bc1490134a2c5c5baaee6ad5}
+
+
+
+\begin{DoxyCode}
+230 {
+231   int ncoeffs;
+232   int i;
+233   gsl_matrix * ret;
+234   //px_point    pixmax;
+235   char templt[FLEN_CARD];
+236   float acoeff, tmp;
+237 
+238   // get the number of coefficients
+239   tmp = get_float_from_keyword(filename, 1, "DRZCNUM");
+240   //  tmp = get_float_from_keyword(filename, sci_numext, "DRZCNUM");
+241   if (isnan(tmp)){
+242     // in case that the keyword does not exist,
+243     // find a nice way out of the door
+244     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+245                 "Could not find drizzle keywords in: %s\n", filename); 
+246     ret = gsl_matrix_alloc(1,1);    
+247     gsl_matrix_set(ret, 0,0,GSL_NAN);
+248     return ret;
+249   }
+250   else {
+251     // cast the value to int
+252     ncoeffs = (int)tmp;
+253   }
+254 
+255   // allocate the matrix, set it to the default
+256   ret = gsl_matrix_alloc(2,ncoeffs);
+257   gsl_matrix_set_all (ret, 0.0);
+258   
+259   // go over the number of coefficients
+260   for (i=0; i<ncoeffs; i++){
+261 
+262     // set the name for the x-coefficient, get it and store it
+263     sprintf (templt, "DRZ%1iX%02i", sci_numext, i+1);
+264     //    acoeff = get_float_from_keyword(filename, sci_numext, templt);
+265     acoeff = get_float_from_keyword(filename, 1, templt);
+266     gsl_matrix_set(ret, 0,i,acoeff);
+267 
+268     // set the name for the y-coefficient, get it and store it
+269     sprintf (templt, "DRZ%1iY%02i", sci_numext, i+1);
+270     //    acoeff = get_float_from_keyword(filename, sci_numext, templt);
+271     acoeff = get_float_from_keyword(filename, 1, templt);
+272     gsl_matrix_set(ret, 1,i,acoeff);
+273 
+274   }
+275 
+276   // return the matrix
+277   return ret;
+278 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a5e0a3d4c9b4a5fdd578cb08d8c9b1202}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!get\_\-crossdisp\_\-scale@{get\_\-crossdisp\_\-scale}}
+\index{get\_\-crossdisp\_\-scale@{get\_\-crossdisp\_\-scale}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{get\_\-crossdisp\_\-scale}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-crossdisp\_\-scale ({\bf trace\_\-func} $\ast$ {\em trace}, \/  {\bf d\_\-point} {\em refpnt}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  {\bf px\_\-point} {\em pixmax})}}
+\label{crossdisp__utils_8c_a5e0a3d4c9b4a5fdd578cb08d8c9b1202}
+
+
+
+\begin{DoxyCode}
+353 {
+354   double crscale;
+355   double phi_trace;
+356   //int beamID = 0;
+357   d_point dispnt;
+358   d_point drz_ref;
+359   d_point drz_dis;
+360 
+361   // get the trace angle
+362   phi_trace = atan2 (trace->deriv (0.0, trace->data), 1.0);
+363 
+364   // compute a dummy point along the cross-dispersion direction
+365   dispnt.x = refpnt.x + cos(phi_trace + M_PI/2.0);
+366   dispnt.y = refpnt.y + sin(phi_trace + M_PI/2.0);
+367 
+368   // get the undistorted positions of the refpoint and
+369   // the dummy point
+370   drz_ref = get_drz_position(refpnt, drzcoeffs, pixmax);
+371   drz_dis = get_drz_position(dispnt, drzcoeffs, pixmax);
+372 
+373   // compute the drizzle scale
+374   crscale = sqrt((drz_ref.x-drz_dis.x)*(drz_ref.x-drz_dis.x) +
+375                  (drz_ref.y-drz_dis.y)*(drz_ref.y-drz_dis.y));
+376 
+377   // return the drizzle scale
+378   return crscale;
+379 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_af2009fe7bc8f5da56261aab4baf9146a}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!get\_\-det\_\-jacobian@{get\_\-det\_\-jacobian}}
+\index{get\_\-det\_\-jacobian@{get\_\-det\_\-jacobian}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{get\_\-det\_\-jacobian}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-det\_\-jacobian (int {\em i}, \/  int {\em j}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  int {\em width}, \/  int {\em height})}}
+\label{crossdisp__utils_8c_af2009fe7bc8f5da56261aab4baf9146a}
+
+
+
+\begin{DoxyCode}
+561                                                                              {
+562 
+563   gsl_matrix * jacob;
+564   double ret;
+565 
+566   jacob = get_jacobian(i,j,drzcoeffs,width,height);
+567 
+568   ret = gsl_matrix_get(jacob, 0, 0) * gsl_matrix_get(jacob, 1, 1) 
+569        -gsl_matrix_get(jacob, 0, 1) * gsl_matrix_get(jacob, 1, 0);
+570 
+571   gsl_matrix_free(jacob);
+572 
+573   return ret;
+574 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a45a260b55c42f693743cfdcc6d7f7759}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!get\_\-drz\_\-position@{get\_\-drz\_\-position}}
+\index{get\_\-drz\_\-position@{get\_\-drz\_\-position}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{get\_\-drz\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} get\_\-drz\_\-position ({\bf d\_\-point} {\em in\_\-point}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  {\bf px\_\-point} {\em pixmax})}}
+\label{crossdisp__utils_8c_a45a260b55c42f693743cfdcc6d7f7759}
+
+
+
+\begin{DoxyCode}
+593 {
+594   d_point ou_point;
+595   double xr, yr;
+596   double xn, yn;
+597   
+598   // transform the input coos into the drizzle system
+599   xr = in_point.x - ((double)(pixmax.x/2)+1.0);
+600   yr = in_point.y - ((double)(pixmax.y/2)+1.0);
+601 
+602   //  ou_point.x = evaln(xr,yr,drzcoeffs,0);
+603   //  ou_point.y = evaln(xr,yr,drzcoeffs,1);
+604   // get the undistorted coos in the drizzle system
+605   xn = evaln(xr,yr,drzcoeffs,0);
+606   yn = evaln(xr,yr,drzcoeffs,1);
+607 
+608   // transform back into the image system,
+609   // assuming identical image dimensions
+610   ou_point.x = xn + ((double)(pixmax.x/2)+1.0);
+611   ou_point.y = yn + ((double)(pixmax.y/2)+1.0);
+612 
+613   // return the undistorted coos
+614   return ou_point;
+615 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a6947fa6cd3cf3c724598afcd842b92b1}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!get\_\-drz\_\-position\_\-free@{get\_\-drz\_\-position\_\-free}}
+\index{get\_\-drz\_\-position\_\-free@{get\_\-drz\_\-position\_\-free}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{get\_\-drz\_\-position\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} get\_\-drz\_\-position\_\-free ({\bf d\_\-point} {\em in\_\-point}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  {\bf px\_\-point} {\em pix\_\-in}, \/  {\bf px\_\-point} {\em pix\_\-out})}}
+\label{crossdisp__utils_8c_a6947fa6cd3cf3c724598afcd842b92b1}
+
+
+
+\begin{DoxyCode}
+635 {
+636   d_point ou_point;
+637   double xr, yr;
+638   double xn, yn;
+639   
+640   // transform the input coos into the drizzle system
+641   xr = in_point.x - ((double)(pix_in.x/2)+1.0);
+642   yr = in_point.y - ((double)(pix_in.y/2)+1.0);
+643 
+644   //  ou_point.x = evaln(xr,yr,drzcoeffs,0);
+645   //  ou_point.y = evaln(xr,yr,drzcoeffs,1);
+646   // get the undistorted coos in the drizzle system
+647   xn = evaln(xr,yr,drzcoeffs,0);
+648   yn = evaln(xr,yr,drzcoeffs,1);
+649 
+650   // transform back into the image system,
+651   // assuming identical image dimensions
+652   ou_point.x = xn + ((double)(pix_out.x/2)+1.0);
+653   ou_point.y = yn + ((double)(pix_out.y/2)+1.0);
+654 
+655   // return the undistorted coos
+656   return ou_point;
+657 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a8c5b4dec894622b79523577d483311c3}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!get\_\-jacobian@{get\_\-jacobian}}
+\index{get\_\-jacobian@{get\_\-jacobian}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{get\_\-jacobian}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ get\_\-jacobian (int {\em i}, \/  int {\em j}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  int {\em width}, \/  int {\em height})}}
+\label{crossdisp__utils_8c_a8c5b4dec894622b79523577d483311c3}
+
+
+
+\begin{DoxyCode}
+527                                                                          {
+528 
+529   double xr, yr;
+530   gsl_matrix * ret;
+531 
+532   ret = gsl_matrix_alloc(2,2);
+533   gsl_matrix_set_all (ret, 0.0);
+534 
+535   xr = (double)i - ((double)(width/2)+1.0);
+536   yr = (double)j - ((double)(height/2)+1.0);
+537 
+538   gsl_matrix_set(ret, 0, 0, devalndx( xr, yr, drzcoeffs, 0));
+539   gsl_matrix_set(ret, 0, 1, devalndy( xr, yr, drzcoeffs, 0));
+540   gsl_matrix_set(ret, 1, 0, devalndx( xr, yr, drzcoeffs, 1));
+541   gsl_matrix_set(ret, 1, 1, devalndy( xr, yr, drzcoeffs, 1));
+542 
+543   return ret;
+544 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_ac3fed627456a5f8c5781b6b5164b1851}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!get\_\-tracefunc\_\-at@{get\_\-tracefunc\_\-at}}
+\index{get\_\-tracefunc\_\-at@{get\_\-tracefunc\_\-at}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{get\_\-tracefunc\_\-at}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-func}$\ast$ get\_\-tracefunc\_\-at (char $\ast$ {\em filename}, \/  {\bf d\_\-point} {\em p})}}
+\label{crossdisp__utils_8c_ac3fed627456a5f8c5781b6b5164b1851}
+
+
+
+\begin{DoxyCode}
+661                                            {
+662 
+663   int beamID = 0;
+664   trace_func  *trace;
+665   tracestruct *tstruct;
+666 
+667   tstruct = get_tracestruct_at_pos (filename, beamID, p);
+668   trace   = vector_to_trace_polyN ( tstruct->pol );
+669 
+670   return trace;
+671 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_aefae00dd27618c8713f65a0c53260db9}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!print\_\-state@{print\_\-state}}
+\index{print\_\-state@{print\_\-state}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{print\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-state (size\_\-t {\em iter}, \/  gsl\_\-multiroot\_\-fsolver $\ast$ {\em s})}}
+\label{crossdisp__utils_8c_aefae00dd27618c8713f65a0c53260db9}
+
+
+
+\begin{DoxyCode}
+34 {
+35   printf ("iter = %3u x = % .3f % .3f "
+36           "f(x) = % .3e % .3e\n",
+37           (unsigned int)iter,
+38           gsl_vector_get (s->x, 0), 
+39           gsl_vector_get (s->x, 1),
+40           gsl_vector_get (s->f, 0), 
+41           gsl_vector_get (s->f, 1));
+42   // print: current x-value, y-value, x-error, y-error
+43 }
+\end{DoxyCode}
+\hypertarget{crossdisp__utils_8c_a46a6d394002bfdfaff292fd95aa3186b}{
+\index{crossdisp\_\-utils.c@{crossdisp\_\-utils.c}!undistort\_\-point@{undistort\_\-point}}
+\index{undistort\_\-point@{undistort\_\-point}!crossdisp_utils.c@{crossdisp\_\-utils.c}}
+\subsubsection[{undistort\_\-point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} undistort\_\-point (gsl\_\-matrix $\ast$ {\em coeffs}, \/  const {\bf px\_\-point} {\em pixmax}, \/  {\bf d\_\-point} {\em xy\_\-image})}}
+\label{crossdisp__utils_8c_a46a6d394002bfdfaff292fd95aa3186b}
+
+
+
+\begin{DoxyCode}
+203 {
+204   d_point xy_new;
+205 
+206   xy_new = get_drz_position(xy_image, coeffs, pixmax);
+207 
+208   return xy_new;
+209 }
+\end{DoxyCode}

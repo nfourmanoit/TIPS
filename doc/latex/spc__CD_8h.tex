@@ -1,0 +1,187 @@
+\hypertarget{spc__CD_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-CD.h File Reference}
+\label{spc__CD_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-CD.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-CD.h}}
+}
+{\ttfamily \#include $<$fitsio.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}wcs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsky__coord}{sky\_\-coord}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__CD}{spc\_\-CD}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structsky__coord}{sky\_\-coord} $\ast$ \hyperlink{spc__CD_8h_a212b7e97b87e40b9015d39f1642801b9}{ij\_\-to\_\-radec} (struct WorldCoor $\ast$wcs, \hyperlink{structd__point}{d\_\-point} ij)
+\item 
+\hyperlink{structd__point}{d\_\-point} $\ast$ \hyperlink{spc__CD_8h_a93d762cce6c2c6d431a9c6925407f235}{radec\_\-to\_\-ij} (struct WorldCoor $\ast$wcs, \hyperlink{structsky__coord}{sky\_\-coord} radec)
+\item 
+char $\ast$ \hyperlink{spc__CD_8h_a2ea71b760451926b332e2142318e5d2a}{get\_\-fits\_\-header} (char filenamep\mbox{[}$\,$\mbox{]}, int hdunum)
+\item 
+struct WorldCoor $\ast$ \hyperlink{spc__CD_8h_a53e165fd0071c52cd16a995147a380c5}{get\_\-wcs} (char filename\mbox{[}$\,$\mbox{]}, int hdunum)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__CD_8h_a2ea71b760451926b332e2142318e5d2a}{
+\index{spc\_\-CD.h@{spc\_\-CD.h}!get\_\-fits\_\-header@{get\_\-fits\_\-header}}
+\index{get\_\-fits\_\-header@{get\_\-fits\_\-header}!spc_CD.h@{spc\_\-CD.h}}
+\subsubsection[{get\_\-fits\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\_\-fits\_\-header (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em hdunum})}}
+\label{spc__CD_8h_a2ea71b760451926b332e2142318e5d2a}
+Function: get\_\-fits\_\-header Returns the header of extension hdunum from a fits file filename
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]The name of the FITS file \item[{\em hdunum}]the number of the HDU to access\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+a pointer to a newly allocated string containing the entire header 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+27 {
+28 
+29   fitsfile *input;
+30   int f_status = 0, hdutype;
+31   int nkeys, i;
+32   char card[FLEN_CARD];
+33   
+34   char *header, *p;
+35 
+36   //  Open the file for creating/appending
+37   fits_open_file (&input, filename, READONLY, &f_status);
+38   if (f_status)
+39     {
+40       ffrprt (stderr, f_status);
+41       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+42                    "get_fits_header: Could not open" " file:", filename);
+43     }
+44   fits_movabs_hdu (input, hdunum, &hdutype, &f_status);
+45   if (f_status)
+46     {
+47       ffrprt (stderr, f_status);
+48       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+49                    "get_fits_header: "
+50                    "Could not read extention %d from file: %s", hdunum,
+51                    filename);
+52     }
+53   
+54 
+55 
+56   fits_get_hdrspace (input, &nkeys, NULL, &f_status);   /* get # of keywords */
+57   
+58   header = (char *) malloc ((nkeys + 1) * FLEN_CARD * sizeof (char));
+59   p = header;
+60   for (i = 0; i < nkeys; i++)
+61     {                   /* Read and print each keywords */
+62       
+63       if (fits_read_record (input, i + 1, card, &f_status))
+64         break;
+65       
+66       sprintf(p,"%-80s", card);
+67       p = p + 80;
+68     }
+69   /* Add END keyword */
+70   
+71   sprintf (card, "END");
+72   sprintf(p,"%-80s", card);
+73   
+74   return header;
+75 }
+\end{DoxyCode}
+\hypertarget{spc__CD_8h_a53e165fd0071c52cd16a995147a380c5}{
+\index{spc\_\-CD.h@{spc\_\-CD.h}!get\_\-wcs@{get\_\-wcs}}
+\index{get\_\-wcs@{get\_\-wcs}!spc_CD.h@{spc\_\-CD.h}}
+\subsubsection[{get\_\-wcs}]{\setlength{\rightskip}{0pt plus 5cm}struct WorldCoor$\ast$ get\_\-wcs (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em hdunum})\hspace{0.3cm}{\ttfamily  \mbox{[}read\mbox{]}}}}
+\label{spc__CD_8h_a53e165fd0071c52cd16a995147a380c5}
+Function: get\_\-wcs Returns a pointer to a WoldCoor structure filled using the extension hdunum of file filename. Sets things to use linear WCS and J2000 equinox.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]The name of the FITS file \item[{\em hdunum}]the number of the HDU to access\end{DoxyParams}
+Return: \begin{DoxyReturn}{Returns}
+a pointer to a WoldCoor structure. NULL if no WCS was found 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+92 {
+93   char *header;
+94   struct WorldCoor *wcs;
+95   
+96   // Read the FITS or IRAF image file header
+97   header = get_fits_header (filename, hdunum);
+98   
+99   // extract the WCS from the header
+100   wcs = wcsinit (header);
+101   
+102   // release memory
+103   free (header);
+104 
+105   // return the result
+106   return wcs;
+107 }
+\end{DoxyCode}
+\hypertarget{spc__CD_8h_a212b7e97b87e40b9015d39f1642801b9}{
+\index{spc\_\-CD.h@{spc\_\-CD.h}!ij\_\-to\_\-radec@{ij\_\-to\_\-radec}}
+\index{ij\_\-to\_\-radec@{ij\_\-to\_\-radec}!spc_CD.h@{spc\_\-CD.h}}
+\subsubsection[{ij\_\-to\_\-radec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf sky\_\-coord}$\ast$ ij\_\-to\_\-radec (struct WorldCoor $\ast$ {\em wcs}, \/  {\bf d\_\-point} {\em ij})}}
+\label{spc__CD_8h_a212b7e97b87e40b9015d39f1642801b9}
+Function: ij\_\-to\_\-radec Returns the world coordinates corresponding to the point ij in an image which as a WCS wcs.
+
+Parameter: 
+\begin{DoxyParams}{Parameters}
+\item[{\em wcs,a}]pointer to a WorldCoor WCS structure \item[{\em ij,a}]point inthe image\end{DoxyParams}
+Return: \begin{DoxyReturn}{Returns}
+a pointer to a \hyperlink{structd__point}{d\_\-point} structure containing the world coordinates at point ij in degrees. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+126 {
+127   sky_coord *pos;
+128 
+129   pos = malloc (sizeof (d_point));
+130   pix2wcs (wcs, ij.x, ij.y, &pos->ra, &pos->dec);
+131   
+132   return pos;
+133 }
+\end{DoxyCode}
+\hypertarget{spc__CD_8h_a93d762cce6c2c6d431a9c6925407f235}{
+\index{spc\_\-CD.h@{spc\_\-CD.h}!radec\_\-to\_\-ij@{radec\_\-to\_\-ij}}
+\index{radec\_\-to\_\-ij@{radec\_\-to\_\-ij}!spc_CD.h@{spc\_\-CD.h}}
+\subsubsection[{radec\_\-to\_\-ij}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point}$\ast$ radec\_\-to\_\-ij (struct WorldCoor $\ast$ {\em wcs}, \/  {\bf sky\_\-coord} {\em radec})}}
+\label{spc__CD_8h_a93d762cce6c2c6d431a9c6925407f235}
+Function: radec\_\-to\_\-ij Returns the detector pixel coordinates corresponding to the point radec in the sky sgiven the WCS wcs.
+
+Parameter: 
+\begin{DoxyParams}{Parameters}
+\item[{\em wcs}]a pointer to a WorldCoor WCS structure \item[{\em radec}]a point with celestial coordinates\end{DoxyParams}
+Return: \begin{DoxyReturn}{Returns}
+a pointer to a \hyperlink{structd__point}{d\_\-point} structure containing the image pixel coordinates. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+151 {
+152   d_point *pos;
+153   int offscl;
+154   
+155   pos = malloc (sizeof (d_point));
+156   wcs2pix (wcs, radec.ra, radec.dec, &pos->x, &pos->y, &offscl);
+157   
+158   return pos;
+159 }
+\end{DoxyCode}

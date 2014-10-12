@@ -1,0 +1,464 @@
+\hypertarget{spce__binning_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spce\_\-binning.h File Reference}
+\label{spce__binning_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spce\_\-binning.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spce\_\-binning.h}}
+}
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include \char`\"{}spce\_\-output.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-trace\_\-functions.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-spc.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structw__pixel__s}{w\_\-pixel\_\-s}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespce__binning}{spce\_\-binning}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spce__binning_8h_ad78a46aa43747fbba38c45a89e71f71f}{\_\-SPCE\_\-BINNING\_\-H}~1
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structw__pixel__s}{w\_\-pixel\_\-s} \hyperlink{spce__binning_8h_ae50ade366409636597e730a9ed54acf6}{w\_\-pixel}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{spce__binning_8h_aae5d0848d8dac6d3cecf1c6c4de7747d}{bin\_\-naive} (const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$const ap\_\-p, const double ob\_\-width, const double ob\_\-orient, const int quant\_\-cont)
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{spce__binning_8h_a49f87c0ee85edafe3f007ded3eb2bef9}{bin\_\-weighted} (const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$const ap\_\-p, const double ob\_\-orient, const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const trace, const int n\_\-sub, const int flags)
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{spce__binning_8h_a48edf641b650f9cded24b2616dc93072}{bin\_\-optimal} (const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$const ap\_\-p, const \hyperlink{structbeam}{beam} curbeam, const int quant\_\-cont, const gsl\_\-matrix $\ast$weights, const \hyperlink{structdrzstamp__dim}{drzstamp\_\-dim} dimension, gsl\_\-matrix $\ast$coverage)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spce__binning_8h_ad78a46aa43747fbba38c45a89e71f71f}{
+\index{spce\_\-binning.h@{spce\_\-binning.h}!\_\-SPCE\_\-BINNING\_\-H@{\_\-SPCE\_\-BINNING\_\-H}}
+\index{\_\-SPCE\_\-BINNING\_\-H@{\_\-SPCE\_\-BINNING\_\-H}!spce_binning.h@{spce\_\-binning.h}}
+\subsubsection[{\_\-SPCE\_\-BINNING\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-SPCE\_\-BINNING\_\-H~1}}
+\label{spce__binning_8h_ad78a46aa43747fbba38c45a89e71f71f}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{spce__binning_8h_ae50ade366409636597e730a9ed54acf6}{
+\index{spce\_\-binning.h@{spce\_\-binning.h}!w\_\-pixel@{w\_\-pixel}}
+\index{w\_\-pixel@{w\_\-pixel}!spce_binning.h@{spce\_\-binning.h}}
+\subsubsection[{w\_\-pixel}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf w\_\-pixel\_\-s}
+ {\bf w\_\-pixel}}}
+\label{spce__binning_8h_ae50ade366409636597e730a9ed54acf6}
+defines a pixel for weighting purposes. Here, p0, p1, p2, p3 are the coordinates of the points where the square first contribute, where its contribution becomes constant, where it slopes down again, and where it doesn't contribute any more. For example, a pixel at (0,0) viewed at from a side has p0=p1=0, p2=p3=1, whereas the same pixel viewed from a corner has p0=-\/1, p1=p2=0, p3=1; slope is the ascent on the non-\/constant parts, fmax the maximum contribution. angle is the angle viewing. Its tangent tana or its cotangent cota may be undefined for certain viewing angles. The function weight\_\-function is selected such that this is unimportatnt. x0, y0, and size are the coordinates of the lower left corner and the size of the square. 
+
+\subsection{Function Documentation}
+\hypertarget{spce__binning_8h_aae5d0848d8dac6d3cecf1c6c4de7747d}{
+\index{spce\_\-binning.h@{spce\_\-binning.h}!bin\_\-naive@{bin\_\-naive}}
+\index{bin\_\-naive@{bin\_\-naive}!spce_binning.h@{spce\_\-binning.h}}
+\subsubsection[{bin\_\-naive}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ bin\_\-naive (const {\bf ap\_\-pixel} $\ast$const  {\em ap\_\-p}, \/  const double {\em ob\_\-width}, \/  const double {\em ob\_\-orient}, \/  const int {\em quant\_\-cont})}}
+\label{spce__binning_8h_aae5d0848d8dac6d3cecf1c6c4de7747d}
+Function: bin\_\-naive computes a \hyperlink{structspectrum}{spectrum} from a table of aperture pixels generated from \hyperlink{namespacespc__extract}{spc\_\-extract}. This is adds up the pixel values, distributing them over the trace, taking into account the fracton of the pixel that projects onto the given \mbox{[}xi,xi+1\mbox{]} interval. Return NULL if ap\_\-p is NULL
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]the table of aperture pixels \item[{\em px\_\-width}]width of a pixel (=1 if not subsampled) \item[{\em ob\_\-width}]the width of the \hyperlink{structobject}{object} that has generated the \hyperlink{structspectrum}{spectrum} \item[{\em ob\_\-orientation}]the orientation of the \hyperlink{structobject}{object} that has generated the \hyperlink{structspectrum}{spectrum} \item[{\em flags}]problems that were accumulated in generating ap\_\-p; possible flags are defined for the warning member of the \hyperlink{structspectrum}{spectrum} struct\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+spec -\/ the 1D \hyperlink{structspectrum}{spectrum} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+340 {
+341   const ap_pixel *cur_p;
+342   int upper, lower;
+343 
+344   int bin;
+345   spectrum *spec, *tspec;
+346   double phi_trace;
+347   spc_entry *spec_table;
+348   double d, frac;
+349 
+350   // immediately return empty PET's
+351   if (ap_p==NULL)
+352     return NULL;
+353 
+354   // go through the PET,
+355   // find the minimum and
+356   // maximum in trace distance
+357   cur_p = ap_p;
+358   upper = NAIVE_VAL_TO_BININD (cur_p->xi);
+359   lower = NAIVE_VAL_TO_BININD (cur_p->xi);
+360   while (cur_p->p_x != -1)
+361     {
+362       bin = NAIVE_VAL_TO_BININD (cur_p->xi);
+363       upper = MAX (bin, upper);
+364       lower = MIN (bin, lower);
+365       cur_p++;
+366     }
+367 
+368   // check whether the spectrum
+369   // will ahve a finite length,
+370   // exit if not
+371   if (upper == lower)
+372     {
+373       aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+374                    "Pixel table empty.\n");
+375       return NULL;
+376     }
+377 
+378   // Thresh in some headway so we don't need to worry too much about
+379   //     accessing invalid elements now and then
+380   lower -= 10;
+381   upper += 10;
+382   spec = allocate_spectrum (upper - lower);
+383 
+384   spec_table = spec->spec;
+385   cur_p = ap_p;
+386 
+387   while (cur_p->p_x != -1)
+388     {
+389       // Compute any fractional pixel that might fall within the
+390       //desired extraction width
+391       d = ob_width;
+392       frac = 1.;
+393 
+394       // continue if the pixel is outside
+395       // of the extraction region
+396       if (fabs (cur_p->dist) > d + .5)
+397         {
+398           cur_p++;
+399           continue;
+400         }
+401       if ((fabs (cur_p->dist) >= d - .5) && (fabs (cur_p->dist) <= d + .5))
+402         {
+403           frac = fabs (d - (fabs (cur_p->dist) - 0.5));
+404         }
+405 
+406       // store the local trace angle
+407       phi_trace = cur_p->dxs;
+408 
+409       if (1)
+410         {
+411           double xi;
+412           w_pixel pix;
+413           double sinp = sin (phi_trace);
+414           double cosp = cos (phi_trace);
+415           double xc, yc;
+416           double w;
+417           double sum = 0;
+418 
+419           fill_w_pixel (&pix, cur_p->x, cur_p->y, ob_orient);
+420 
+421           xc = cur_p->xs;
+422           yc = cur_p->ys;
+423 
+424           // at cur_p->xi, there has to be some contribution. We go back
+425           // collecting, until w is zero
+426           for (xi = cur_p->xi;; xi -= 1)
+427             {
+428               bin = NAIVE_VAL_TO_BININD (xi);
+429               w = PIXWEIGHT (xc + (bin - cur_p->xi) * cosp,
+430                              yc + (bin - cur_p->xi) * sinp,
+431                              xc + (bin + 1 - cur_p->xi) * cosp,
+432                              yc + (bin + 1 - cur_p->xi) * sinp,
+433                              &pix);
+434               if (w < 1e-10)
+435                 break;
+436 
+437               add_to_spec_table (spec, bin - lower, cur_p, quant_cont,
+438                                  w * frac * cur_p->weight);
+439               //              if (cur_p->weight > 10.0){
+440               //                fprintf(stdout,"weight: %f, distance: %f, ewidth:
+       %f\n",
+441               //                        cur_p->weight, cur_p->dist, d+0.5);
+442               //              }
+443               sum += w;
+444             }
+445 
+446           /* Now collect contributions upward of cur_p->xi */
+447           for (xi = cur_p->xi + 1;; xi += 1)
+448             {
+449               bin = NAIVE_VAL_TO_BININD (xi);
+450 
+451               w = PIXWEIGHT (xc + (bin - cur_p->xi) * cosp,
+452                              yc + (bin - cur_p->xi) * sinp,
+453                              xc + (bin + 1 - cur_p->xi) * cosp,
+454                              yc + (bin + 1 - cur_p->xi) * sinp,
+455                              &pix);
+456               if (w < 1e-10)
+457                 break;
+458 
+459               add_to_spec_table (spec, bin - lower, cur_p, quant_cont,
+460                                  w * frac * cur_p->weight);
+461               sum += w;
+462             }
+463 
+464           if (fabs (sum - 1) > 1e-6)
+465             {
+466               fprintf(stdout,
+467                       "Weights added up to only %f for pixel from %4d,%4d\n",
+468                       sum, cur_p->p_x, cur_p->p_y);
+469             }
+470         }
+471       cur_p++;
+472     }
+473 
+474   /* Trimming the INDEF beginning and ending values in spectrum */
+475   tspec = trim_spectrum (spec);
+476   free_spectrum (spec);
+477   spec = NULL;
+478 
+479   // return the spectrum
+480   return tspec;
+481 }
+\end{DoxyCode}
+\hypertarget{spce__binning_8h_a48edf641b650f9cded24b2616dc93072}{
+\index{spce\_\-binning.h@{spce\_\-binning.h}!bin\_\-optimal@{bin\_\-optimal}}
+\index{bin\_\-optimal@{bin\_\-optimal}!spce_binning.h@{spce\_\-binning.h}}
+\subsubsection[{bin\_\-optimal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ bin\_\-optimal (const {\bf ap\_\-pixel} $\ast$const  {\em ap\_\-p}, \/  const {\bf beam} {\em curbeam}, \/  const int {\em quant\_\-cont}, \/  const gsl\_\-matrix $\ast$ {\em weights}, \/  const {\bf drzstamp\_\-dim} {\em dimension}, \/  gsl\_\-matrix $\ast$ {\em coverage})}}
+\label{spce__binning_8h_a48edf641b650f9cded24b2616dc93072}
+Function: bin\_\-optimal computes a \hyperlink{structspectrum}{spectrum} from a table of aperture pixels generated from \hyperlink{namespacespc__extract}{spc\_\-extract}. This is adds up the pixel values, distributing them over the trace, taking into account the fracton of the pixel that projects onto the given \mbox{[}xi,xi+1\mbox{]} interval. Return NULL if ap\_\-p is NULL
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]the table of aperture pixels \item[{\em px\_\-width}]width of a pixel (=1 if not subsampled) \item[{\em ob\_\-width}]the width of the \hyperlink{structobject}{object} that has generated the \hyperlink{structspectrum}{spectrum} \item[{\em ob\_\-orientation}]the orientation of the \hyperlink{structobject}{object} that has generated the \hyperlink{structspectrum}{spectrum} \item[{\em flags}]problems that were accumulated in generating ap\_\-p; possible flags are defined for the warning member of the \hyperlink{structspectrum}{spectrum} struct\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+spec -\/ the 1D \hyperlink{structspectrum}{spectrum} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+507 {
+508 
+509   const ap_pixel *cur_p;
+510   ap_pixel *tmp_p;
+511   spectrum *spec;
+512   spectrum *tspec;
+513   spc_entry *spec_table;
+514 
+515   quadrangle quad;
+516   //  drzstamp_dim dimension;
+517 
+518   double jacob, arr;
+519   double frac, totweight;
+520 
+521   int jcen, icen;
+522   int jupp, iupp;
+523   int jlow, ilow;
+524 
+525   int ii, jj;
+526   int stpi, stpj;
+527 
+528   // return NULL if
+529   // empty PET
+530   if (ap_p==NULL)
+531     return NULL;
+532 
+533   // allocate memory
+534   tmp_p = (ap_pixel *) malloc(sizeof(ap_pixel));
+535 
+536 
+537   // allocate memory for the spectrum
+538   spec = allocate_spectrum (weights->size1);
+539   spec_table = spec->spec;
+540 
+541 
+542   // go over each PET pixel
+543   cur_p = ap_p;
+544   for (cur_p = ap_p; cur_p->p_x != -1; cur_p++)
+545     {
+546 
+547       // continue if the pixel is outside
+548       // of the extraction region
+549       if (fabs (cur_p->dist) > curbeam.width + .5)
+550           continue;
+551 
+552       // determine which fraction
+553       // of the pixel is inside of the extraction area
+554       if ((fabs (cur_p->dist) >= curbeam.width - .5) && (fabs (cur_p->dist) <= cu
+      rbeam.width + .5))
+555         frac = fabs (curbeam.width - (fabs (cur_p->dist) - 0.5));
+556       else
+557         frac = 1.;
+558 
+559       // transfer values to the temporary pixel
+560       tmp_p->lambda  = cur_p->xi;
+561       tmp_p->dist    = cur_p->dist;
+562       tmp_p->dxs     = cur_p->dxs;
+563       tmp_p->dlambda = 1.0;
+564 
+565       // create the quadrangle for the current pixel
+566       quad = get_quad_from_pixel(tmp_p, curbeam.orient, dimension);
+567 
+568       // get the jacobian (well, easy here)
+569       // the term "cos(cur_p->dxs)" must be there
+570       // to correct the enlargement necessary
+571       // to cover the whole lambda-crossdispersion area!
+572       // NOT COMPLETELY understood
+573       jacob = cos(cur_p->dxs);
+574 
+575       // get the central pixel (icen, jcen) of the current PET-pixel
+576       icen = (int) floor(cur_p->xi   - dimension.xstart+.5);
+577       jcen = (int) floor(cur_p->dist - dimension.ystart+.5);
+578 
+579       // get the uper and lower extend of the quadrangle in x
+580       iupp = (int)floor(quad.xmax - (double)icen + 0.5)+1;
+581       ilow = (int)floor(quad.xmin - (double)icen + 0.5);
+582 
+583       // get the uper and lower extend of the quadrangle in x
+584       jupp = (int)floor(quad.ymax - (double)jcen + 0.5)+1;
+585       jlow = (int)floor(quad.ymin - (double)jcen + 0.5);
+586 
+587       // go over the extend in x
+588       for (ii=ilow;ii<iupp;ii++)
+589         {
+590           // go over the extend in x
+591           for (jj=jlow;jj<jupp;jj++)
+592             {
+593 
+594               // get the coordinates of the current output pixel
+595               stpi = icen+ii;
+596               stpj = jcen+jj;
+597 
+598               // check whether the current output pixel is within
+599               // the stamp image; continue if not
+600               if ( (stpi>=dimension.xsize)||(stpi<0)||(stpj>=dimension.ysize)||(s
+      tpj<0) )
+601                 continue;
+602 
+603               // get the area which falls onto the current output pixel
+604               arr = boxer(stpi,stpj,quad.x,quad.y);
+605 
+606               // compute the pixel weight from
+607               // the various inputs
+608               totweight =  arr*frac*jacob*gsl_matrix_get(weights, stpi, stpj);
+609               //totweight =  arr*frac*jacob;//*gsl_matrix_get(weights, stpi, stpj
+      );
+610 
+611               //gsl_matrix_set(coverage, stpi, stpj, gsl_matrix_get(coverage, stp
+      i, stpj) + arr*frac*jacob);
+612 
+613               // add the pixel to the spectrum
+614               if (totweight > 0.0)
+615                 add_to_spec_table (spec, stpi, cur_p, quant_cont,totweight);
+616               //              gsl_matrix_set(coverage, stpi, stpj, sqrt (SQR (gsl
+      _matrix_get(coverage, stpi, stpj)) + SQR (fabs(cur_p->error) * totweight)));
+617             }
+618         }
+619     }
+620 
+621 
+622 
+623   /* Trimming the INDEF beginning and ending values in spectrum */
+624   tspec = trim_spectrum (spec);
+625   free_spectrum (spec);
+626   spec = NULL;
+627 
+628   free(tmp_p);
+629 
+630   // return the spectrum
+631   return tspec;
+632 }
+\end{DoxyCode}
+\hypertarget{spce__binning_8h_a49f87c0ee85edafe3f007ded3eb2bef9}{
+\index{spce\_\-binning.h@{spce\_\-binning.h}!bin\_\-weighted@{bin\_\-weighted}}
+\index{bin\_\-weighted@{bin\_\-weighted}!spce_binning.h@{spce\_\-binning.h}}
+\subsubsection[{bin\_\-weighted}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ bin\_\-weighted (const {\bf ap\_\-pixel} $\ast$const  {\em ap\_\-p}, \/  const double {\em ob\_\-orient}, \/  const {\bf trace\_\-func} $\ast$const  {\em trace}, \/  const int {\em n\_\-sub}, \/  const int {\em flags})}}
+\label{spce__binning_8h_a49f87c0ee85edafe3f007ded3eb2bef9}
+does a straight forward summation/binning of an aperture pixel table with appropriate weights (cf. Hornes 1986)
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]the table of aperture pixels \item[{\em ob\_\-orient}]the orientation of the \hyperlink{structobject}{object} that has generated the \hyperlink{structspectrum}{spectrum} \item[{\em flags}]problems that were accumulated in generating ap\_\-p; possible flags are defined for the warning member of the \hyperlink{structspectrum}{spectrum} struct \item[{\em n\_\-sub}]subsampling factor \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an allocated \hyperlink{structspectrum}{spectrum} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{structspectrum}{spectrum} 
+\end{DoxySeeAlso}
+
+
+
+\begin{DoxyCode}
+654 {
+655      gsl_vector *binned_table;
+656      gsl_vector *wei_table;
+657      gsl_vector *wei2_table;
+658 
+659      double xi, d, w, wei, wei2;
+660      int xii, num_bin, bin;
+661      const ap_pixel *cur_p = ap_p;
+662      double upper = cur_p->xi, lower = cur_p->xi;
+663      spectrum *spec;
+664 
+665      while (cur_p->p_x != -1)
+666        {
+667             upper = MAX (cur_p->xi, upper);
+668             lower = MIN (cur_p->xi, lower);
+669             cur_p++;
+670        }
+671 
+672      lower -= 10;
+673      upper += 10;
+674 
+675      lower = floor (lower);
+676      upper = floor (upper + 1);
+677 
+678      num_bin = floor ((upper - lower) / n_sub);
+679      spec = allocate_spectrum (num_bin);
+680 
+681      binned_table = gsl_vector_alloc (num_bin);
+682      wei_table = gsl_vector_alloc (num_bin);
+683      wei2_table = gsl_vector_alloc (num_bin);
+684 
+685      gsl_vector_set_all (binned_table, 0);
+686      gsl_vector_set_all (wei_table, 0);
+687      gsl_vector_set_all (wei2_table, 0);
+688 
+689      cur_p = ap_p;
+690      while (cur_p->p_x != -1)
+691        {
+692             xi = (cur_p->xi - lower) / n_sub;
+693             xii = floor (xi);
+694 
+695             d = fabs(cur_p->dist);
+696             w = exp (-d * d / (2 * 6.66));
+697             w = 1.;
+698             add_to_spec_table (spec, xii - 1,cur_p, 0, w * (1 - (xi - xii)));
+699             add_to_spec_table (spec, xii   , cur_p, 0, w * (xi - xii));
+700 
+701             gsl_vector_set (wei_table, xii - 1,
+702                             gsl_vector_get (wei_table, xii - 1) + w);
+703             gsl_vector_set (wei_table, xii,
+704                             gsl_vector_get (wei_table, xii) + w);
+705 
+706             gsl_vector_set (wei2_table, xii - 1,
+707                             gsl_vector_get (wei2_table, xii - 1) + w * w);
+708             gsl_vector_set (wei2_table, xii,
+709                             gsl_vector_get (wei2_table, xii) + w * w);
+710 
+711             //fprintf(stderr,"%f,%d,%d\n",xi,xii,xii+1);
+712             cur_p++;
+713        }
+714      cur_p = ap_p;
+715      for (bin = 0; bin < num_bin; bin++)
+716        {
+717             wei = gsl_vector_get (wei_table, bin);
+718             wei2 = gsl_vector_get (wei2_table, bin);
+719             if (wei2 != 0)
+720               {
+721                    spec->spec[bin].count = spec->spec[bin].count * wei / wei2;
+722               }
+723        }
+724 
+725      spec->warning = 0;
+726      return spec;
+727 }
+\end{DoxyCode}

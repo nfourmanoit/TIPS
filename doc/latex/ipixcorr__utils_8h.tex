@@ -1,0 +1,1594 @@
+\hypertarget{ipixcorr__utils_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/ipixcorr\_\-utils.h File Reference}
+\label{ipixcorr__utils_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/ipixcorr\_\-utils.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/ipixcorr\_\-utils.h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structfull__spectr}{full\_\-spectr}
+\item 
+struct \hyperlink{structtlength__pars}{tlength\_\-pars}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceipixcorr__utils}{ipixcorr\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ipixcorr__utils_8h_ab6f58a9a73a7eade1a2f0bbc8f5f8657}{IPCORR\_\-INTERP\_\-TYPE}~gsl\_\-interp\_\-linear
+\item 
+\#define \hyperlink{ipixcorr__utils_8h_a6fe7977081409268795744b40b706596}{NLINCORR\_\-INTERP\_\-TYPE}~gsl\_\-interp\_\-linear
+\item 
+\#define \hyperlink{ipixcorr__utils_8h_a7a12c5ae2a7aa5651d4dde49a1a29bd3}{CORRMAX}~0
+\item 
+\#define \hyperlink{ipixcorr__utils_8h_acd517c6f195c75b9dd0f3aad65326f3b}{MAX\_\-ITER}~1000
+\item 
+\#define \hyperlink{ipixcorr__utils_8h_a2d56827b1d456cb0d5546dfd3bca0f9f}{INTERVEXT}~10
+\item 
+\#define \hyperlink{ipixcorr__utils_8h_a99d3339a8922f358fc9875c1e1dc9afa}{XSTEPSIZE}~0.5
+\item 
+\#define \hyperlink{ipixcorr__utils_8h_a75c39c28d1307d02529f28b9a4327f91}{MAXQUALITY}~1.5
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{ipixcorr__utils_8h_af4e9765f3104c17a1476c67db9c8a84f}{get\_\-intpix\_\-corr} (\hyperlink{structbeam}{beam} $\ast$actbeam, gsl\_\-vector $\ast$cdisp, \hyperlink{structinterpolator}{interpolator} $\ast$ipcorr, float lambda)
+\item 
+double \hyperlink{ipixcorr__utils_8h_a939a6e6f443e4e0fa40f51101f137309}{get\_\-yfract\_\-for\_\-xvalue} (const \hyperlink{structbeam}{beam} $\ast$actbeam, double xvalue)
+\item 
+double \hyperlink{ipixcorr__utils_8h_a5726174d85d0ab4c454528d0649e5db2}{get\_\-xvalue\_\-from\_\-tlength} (\hyperlink{structbeam}{beam} $\ast$actbeam, double tlength)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{ipixcorr__utils_8h_a3b46ac0fc3c8ebd989b486424d6a3152}{get\_\-xinterv\_\-from\_\-beam} (const \hyperlink{structbeam}{beam} $\ast$actbeam)
+\item 
+double \hyperlink{ipixcorr__utils_8h_a10bb24af557b72099c27576721cd8100}{zero\_\-tlength} (double x, void $\ast$params)
+\item 
+double \hyperlink{ipixcorr__utils_8h_ad686ad3fa4f574a675a9e2f1f1b88225}{get\_\-tlength\_\-from\_\-dispersion} (gsl\_\-vector $\ast$cdisp, float lambda)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{ipixcorr__utils_8h_a2da26172f91396f0e78e1f60d01a786a}{condense\_\-dispersion} (gsl\_\-vector $\ast$disp\_\-input)
+\item 
+int \hyperlink{ipixcorr__utils_8h_a6974f8614d588fa617386755767ecd4a}{fitting\_\-ipc\_\-corr} (\hyperlink{structbeam}{beam} act\_\-beam, char conf\_\-file\_\-path\mbox{[}$\,$\mbox{]}, \hyperlink{structinterpolator}{interpolator} $\ast$ipcorr, \hyperlink{structfull__spectr}{full\_\-spectr} $\ast$SPC, \hyperlink{structobservation}{observation} $\ast$obs, gsl\_\-matrix $\ast$data\_\-matrix, char ipc\_\-file\_\-path\mbox{[}$\,$\mbox{]}, \hyperlink{structbeam}{beam} $\ast$beam\_\-ptr)
+\item 
+void \hyperlink{ipixcorr__utils_8h_ad46502c245fb93ee30197de24a70464b}{intpix\_\-corr\_\-beam} (\hyperlink{structbeam}{beam} actbeam, char conf\_\-file\_\-path\mbox{[}$\,$\mbox{]}, \hyperlink{structinterpolator}{interpolator} $\ast$ipcorr, \hyperlink{structfull__spectr}{full\_\-spectr} $\ast$SPC)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{ipixcorr__utils_8h_a5fe31b6414ccdc53def40b719096d262}{get\_\-ipc\_\-lambdas} (const \hyperlink{structbeam}{beam} actbeam, char conf\_\-file\_\-path\mbox{[}$\,$\mbox{]}, gsl\_\-vector $\ast$xvalues)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{ipixcorr__utils_8h_aca657609c2dac5ac21c4b2f0d9b78674}{get\_\-ipc\_\-cvalues} (const \hyperlink{structbeam}{beam} actbeam, \hyperlink{structinterpolator}{interpolator} $\ast$ipcorr, gsl\_\-vector $\ast$xvalues)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{ipixcorr__utils_8h_a8003796c1b619b34fa8f964769cbbf14}{get\_\-ipc\_\-xvalues} (const \hyperlink{structbeam}{beam} actbeam)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{ipixcorr__utils_8h_a2f8e61631faac85222b6f6451db085b1}{get\_\-ipclambda} (\hyperlink{structbeam}{beam} actbeam, char conf\_\-file\_\-path\mbox{[}$\,$\mbox{]}, \hyperlink{structinterpolator}{interpolator} $\ast$ipcorr)
+\item 
+void \hyperlink{ipixcorr__utils_8h_a727f93ef1ebcbde730ff5930d5f379be}{apply\_\-corr\_\-pet} (\hyperlink{structinterpolator}{interpolator} $\ast$ipclambda, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$PET)
+\item 
+void \hyperlink{ipixcorr__utils_8h_a41eb356cbfa31c8062d1c702617b2983}{intpix\_\-corr\_\-pet} (\hyperlink{structbeam}{beam} actbeam, char conf\_\-file\_\-path\mbox{[}$\,$\mbox{]}, \hyperlink{structinterpolator}{interpolator} $\ast$ipcorr, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$PET)
+\item 
+int \hyperlink{ipixcorr__utils_8h_ae596c1811da8db43b343a0f21ddd418e}{is\_\-pointlike} (\hyperlink{structbeam}{beam} actbeam, int spec\_\-OAF, double max\_\-ext)
+\item 
+fitsfile $\ast$ \hyperlink{ipixcorr__utils_8h_ae32733e8fdf2ee4520d3664901a39781}{get\_\-SPC\_\-opened} (char SPCname\mbox{[}$\,$\mbox{]}, int mode)
+\item 
+\hyperlink{structfull__spectr}{full\_\-spectr} $\ast$ \hyperlink{ipixcorr__utils_8h_a63ff84c36a3d526c53eb1509181fd986}{get\_\-ALL\_\-from\_\-next\_\-in\_\-SPC} (fitsfile $\ast$SPC\_\-ptr, int $\ast$aperID, int $\ast$beamID)
+\item 
+void \hyperlink{ipixcorr__utils_8h_aed52e06198abe7964b8ab2684186a0ae}{free\_\-full\_\-spectr} (\hyperlink{structfull__spectr}{full\_\-spectr} $\ast$act\_\-spectr)
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{ipixcorr__utils_8h_a7cc3b80e223da09ba29b1a11f3a6187e}{get\_\-spectrum\_\-from\_\-SPC} (fitsfile $\ast$SPC\_\-ptr, char count\_\-col\mbox{[}$\,$\mbox{]}, char error\_\-col\mbox{[}$\,$\mbox{]}, int nelems)
+\item 
+double $\ast$ \hyperlink{ipixcorr__utils_8h_a8a51bc806e29c38d040ef21711503b1e}{get\_\-dcolumn\_\-from\_\-SPC\_\-opened} (fitsfile $\ast$SPC\_\-ptr, char colname\mbox{[}$\,$\mbox{]}, int nelems)
+\item 
+long $\ast$ \hyperlink{ipixcorr__utils_8h_adc3a06bf3550f201761db2e64f6e5d34}{get\_\-lcolumn\_\-from\_\-SPC\_\-opened} (fitsfile $\ast$SPC\_\-ptr, char colname\mbox{[}$\,$\mbox{]}, int nelems)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{ipixcorr__utils_8h_a73ef325bc09e4f02d034ac1f504388d1}{create\_\-nlincor} ()
+\item 
+void \hyperlink{ipixcorr__utils_8h_a7de262e2563e925ff59276137e4a1880}{nlin\_\-corr\_\-beam} (\hyperlink{structinterpolator}{interpolator} $\ast$nlincorr, double adcgain, \hyperlink{structfull__spectr}{full\_\-spectr} $\ast$SPC)
+\item 
+double \hyperlink{ipixcorr__utils_8h_a84e089833e7f6ea9ae5a48691e768c35}{get\_\-nlin\_\-corr} (\hyperlink{structinterpolator}{interpolator} $\ast$nlincorr, const double lambda, const double cps)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{ipixcorr__utils_8h_a7a12c5ae2a7aa5651d4dde49a1a29bd3}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!CORRMAX@{CORRMAX}}
+\index{CORRMAX@{CORRMAX}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{CORRMAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define CORRMAX~0}}
+\label{ipixcorr__utils_8h_a7a12c5ae2a7aa5651d4dde49a1a29bd3}
+\hypertarget{ipixcorr__utils_8h_a2d56827b1d456cb0d5546dfd3bca0f9f}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!INTERVEXT@{INTERVEXT}}
+\index{INTERVEXT@{INTERVEXT}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{INTERVEXT}]{\setlength{\rightskip}{0pt plus 5cm}\#define INTERVEXT~10}}
+\label{ipixcorr__utils_8h_a2d56827b1d456cb0d5546dfd3bca0f9f}
+\hypertarget{ipixcorr__utils_8h_ab6f58a9a73a7eade1a2f0bbc8f5f8657}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!IPCORR\_\-INTERP\_\-TYPE@{IPCORR\_\-INTERP\_\-TYPE}}
+\index{IPCORR\_\-INTERP\_\-TYPE@{IPCORR\_\-INTERP\_\-TYPE}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{IPCORR\_\-INTERP\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define IPCORR\_\-INTERP\_\-TYPE~gsl\_\-interp\_\-linear}}
+\label{ipixcorr__utils_8h_ab6f58a9a73a7eade1a2f0bbc8f5f8657}
+\hypertarget{ipixcorr__utils_8h_acd517c6f195c75b9dd0f3aad65326f3b}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!MAX\_\-ITER@{MAX\_\-ITER}}
+\index{MAX\_\-ITER@{MAX\_\-ITER}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{MAX\_\-ITER}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-ITER~1000}}
+\label{ipixcorr__utils_8h_acd517c6f195c75b9dd0f3aad65326f3b}
+\hypertarget{ipixcorr__utils_8h_a75c39c28d1307d02529f28b9a4327f91}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!MAXQUALITY@{MAXQUALITY}}
+\index{MAXQUALITY@{MAXQUALITY}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{MAXQUALITY}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXQUALITY~1.5}}
+\label{ipixcorr__utils_8h_a75c39c28d1307d02529f28b9a4327f91}
+\hypertarget{ipixcorr__utils_8h_a6fe7977081409268795744b40b706596}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!NLINCORR\_\-INTERP\_\-TYPE@{NLINCORR\_\-INTERP\_\-TYPE}}
+\index{NLINCORR\_\-INTERP\_\-TYPE@{NLINCORR\_\-INTERP\_\-TYPE}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{NLINCORR\_\-INTERP\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define NLINCORR\_\-INTERP\_\-TYPE~gsl\_\-interp\_\-linear}}
+\label{ipixcorr__utils_8h_a6fe7977081409268795744b40b706596}
+\hypertarget{ipixcorr__utils_8h_a99d3339a8922f358fc9875c1e1dc9afa}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!XSTEPSIZE@{XSTEPSIZE}}
+\index{XSTEPSIZE@{XSTEPSIZE}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{XSTEPSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define XSTEPSIZE~0.5}}
+\label{ipixcorr__utils_8h_a99d3339a8922f358fc9875c1e1dc9afa}
+
+
+\subsection{Function Documentation}
+\hypertarget{ipixcorr__utils_8h_a727f93ef1ebcbde730ff5930d5f379be}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!apply\_\-corr\_\-pet@{apply\_\-corr\_\-pet}}
+\index{apply\_\-corr\_\-pet@{apply\_\-corr\_\-pet}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{apply\_\-corr\_\-pet}]{\setlength{\rightskip}{0pt plus 5cm}void apply\_\-corr\_\-pet ({\bf interpolator} $\ast$ {\em ipclambda}, \/  {\bf ap\_\-pixel} $\ast$ {\em PET})}}
+\label{ipixcorr__utils_8h_a727f93ef1ebcbde730ff5930d5f379be}
+Function: apply\_\-corr\_\-pet The function applies an intra-\/pixel sensitivity correction to a list of PET pixels. The correction values are given depending on the wavelength of the pixel, and are applied to the PET pixels in place.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ipclambda}]-\/ the ipc correction factor as function of wavelength \item[{\em PET}]-\/ the list of PET pixels to correct\end{DoxyParams}
+Returns:
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+821 {
+822   int j = 0;
+823 
+824   double cvalue=0.0;
+825 
+826   // go along the PET pixels until you meet
+827   // the last
+828   while (PET[j].p_x != -1)
+829     {
+830       // get the correction factor
+831       cvalue = eval_interp(ipclambda, PET[j].lambda);
+832 
+833       // apply the corection factor
+834       // to the counts and the error
+835       PET[j].count = PET[j].count / cvalue;
+836       PET[j].error = PET[j].error / cvalue;
+837 
+838       //      fprintf(stdout, "lambda: %f, correction: %f\n", PET[j].lambda, cval
+      ue);
+839       j++;
+840     }
+841 
+842 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a2da26172f91396f0e78e1f60d01a786a}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!condense\_\-dispersion@{condense\_\-dispersion}}
+\index{condense\_\-dispersion@{condense\_\-dispersion}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{condense\_\-dispersion}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ condense\_\-dispersion (gsl\_\-vector $\ast$ {\em disp\_\-input})}}
+\label{ipixcorr__utils_8h_a2da26172f91396f0e78e1f60d01a786a}
+Function: condense\_\-dispersion The function strips off leading zeroes in the high order terms of the dispersion solution derived from the configuration file. These usually become a problem in the inversion to derive the tracelength.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em disp\_\-\_\-input}]-\/ the configuration file dispersion\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+cdisp -\/ the effective dispersion relation 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+341 {
+342   int index;
+343   int i;
+344 
+345   gsl_vector *cdisp;
+346 
+347   // get the size of the incomingg dispersion
+348   // vector
+349   index = disp_input->size;
+350 
+351   // determine the true size by subtracting
+352   // high order zeros
+353   while (index > -1 && !gsl_vector_get(disp_input, index-1))
+354     index--;
+355 
+356   // allocate space for the new vector
+357   cdisp = gsl_vector_alloc(index);
+358 
+359   // tranasfer the relevant values
+360   // from the old to the new vector
+361   for (i=0; i < index; i++)
+362     gsl_vector_set(cdisp, i, gsl_vector_get(disp_input, i));
+363 
+364   // return the new dispersion vector
+365   return cdisp;
+366 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a73ef325bc09e4f02d034ac1f504388d1}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!create\_\-nlincor@{create\_\-nlincor}}
+\index{create\_\-nlincor@{create\_\-nlincor}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{create\_\-nlincor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ create\_\-nlincor ()}}
+\label{ipixcorr__utils_8h_a73ef325bc09e4f02d034ac1f504388d1}
+Function: create\_\-nlincor The function creates an \hyperlink{structinterpolator}{interpolator} for the nonlinearity correction applied to NICMOS data.
+
+Parameters:
+
+Returns: \begin{DoxyReturn}{Returns}
+nlincorr -\/ the \hyperlink{structinterpolator}{interpolator} created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1316 {
+1317   interpolator *nlincorr;
+1318   /*
+1319   double x[14] = {8250.0, 8750.0, 9250.0, 9750.0, 11000.0, 12000.0, 13000.0, 1400
+      0.0, 15000.0, 16000.0, 17000.0, 18000.0, 19000.0, 20000.0};
+1320   double y[14] = {  .069,   .057,   .052,   .050,    .049,    .048,      .041,   
+       .023,    .013,    .008,    .004,    .0,      .0,      .0};
+1321   */
+1322   double *xx;
+1323   double *yy;
+1324 
+1325   xx = (double *) malloc(14 * sizeof(double));
+1326   yy = (double *) malloc(14 * sizeof(double));
+1327 
+1328   xx[0]  = 8250.0;
+1329   xx[1]  = 8750.0;
+1330   xx[2]  = 9250.0;
+1331   xx[3]  = 9750.0;
+1332   xx[4]  = 11000.0;
+1333   xx[5]  = 12000.0;
+1334   xx[6]  = 13000.0;
+1335   xx[7]  = 14000.0;
+1336   xx[8]  = 15000.0;
+1337   xx[9]  = 16000.0;
+1338   xx[10] = 17000.0;
+1339   xx[11] = 18000.0;
+1340   xx[12] = 19000.0;
+1341   xx[13] = 20000.0;
+1342 
+1343   yy[0]  = .069;
+1344   yy[1]  = .057;
+1345   yy[2]  = .052;
+1346   yy[3]  = .050;
+1347   yy[4]  = .049;
+1348   yy[5]  = .048;
+1349   yy[6]  = .041;
+1350   yy[7]  = .023;
+1351   yy[8]  = .013;
+1352   yy[9]  = .008;
+1353   yy[10] = .004;
+1354   yy[11] = .0;
+1355   yy[12] = .0;
+1356   yy[13] = .0;
+1357 
+1358   // create the interpolator
+1359   nlincorr = create_interp(14, NLINCORR_INTERP_TYPE, xx, yy);
+1360 
+1361   // return the interpolator
+1362   return nlincorr;
+1363 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a6974f8614d588fa617386755767ecd4a}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!fitting\_\-ipc\_\-corr@{fitting\_\-ipc\_\-corr}}
+\index{fitting\_\-ipc\_\-corr@{fitting\_\-ipc\_\-corr}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{fitting\_\-ipc\_\-corr}]{\setlength{\rightskip}{0pt plus 5cm}int fitting\_\-ipc\_\-corr ({\bf beam} {\em act\_\-beam}, \/  char {\em conf\_\-file\_\-path}\mbox{[}$\,$\mbox{]}, \/  {\bf interpolator} $\ast$ {\em ipcorr}, \/  {\bf full\_\-spectr} $\ast$ {\em SPC}, \/  {\bf observation} $\ast$ {\em obs}, \/  gsl\_\-matrix $\ast$ {\em data\_\-matrix}, \/  char {\em ipc\_\-file\_\-path}\mbox{[}$\,$\mbox{]}, \/  {\bf beam} $\ast$ {\em beam\_\-ptr})}}
+\label{ipixcorr__utils_8h_a6974f8614d588fa617386755767ecd4a}
+Function: fitting\_\-ipc\_\-corr
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to examine \item[{\em conf\_\-file\_\-path}]-\/ the full pathname too the configuration file \item[{\em ipcorr}]-\/ the \hyperlink{structinterpolator}{interpolator} with the correction factor \item[{\em SPC}]-\/ the full \hyperlink{structspectrum}{spectrum} to correct \item[{\em obs}]-\/ the grism image \item[{\em data\_\-matrix}]-\/ background subtracted grism image \item[{\em ipc\_\-file\_\-path}]-\/ file name for the phase data\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+icorr -\/ marker whether the correction was applied or not (1/0) 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+387 {
+388   aperture_conf *conf;
+389 
+390   d_point        fit_qual;
+391 
+392   int            icorr     = 0;
+393 
+394   trace_func    *tracefun  = act_beam.spec_trace;
+395   double        *tracedata =  (double *)(tracefun->data);
+396 
+397   // load the configuration file
+398   conf = get_aperture_descriptor(conf_file_path);
+399 
+400   // determine the phase data and fix the phase
+401   // by fitting a function to it
+402   fit_qual = kappa_sigma_klipp_ipc(conf, obs, data_matrix, act_beam, ipc_file_pat
+      h);
+403 
+404   // report on the shift and the quality
+405   fprintf(stdout, "shift-difference: %e, quality: %e\n", fit_qual.x, fit_qual.y);
+      
+406 
+407   // check whether the quality is good enough
+408   if (fit_qual.y < MAXQUALITY)
+409     {
+410       // apply a correction to the
+411       // reference point to achive the
+412       // right corrections
+413       act_beam.refpoint.y += fit_qual.x;
+414       beam_ptr->refpoint.y += fit_qual.x;
+415       beam_ptr->ignore = -100;
+416 
+417       // report the new y-shift
+418       fprintf(stdout, "new y-shift: %e\n", act_beam.refpoint.y - (double)(int)(ac
+      t_beam.refpoint.y + tracedata[1]));
+419 
+420       // apply the sensitivity correction to the spectrum
+421       intpix_corr_beam(act_beam, conf_file_path, ipcorr, SPC);
+422 
+423       // set the correction marker
+424       icorr=1;
+425     }
+426 
+427   // free allocated memory
+428   free_aperture_conf(conf);
+429 
+430   // return the marker
+431   return icorr;
+432 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_aed52e06198abe7964b8ab2684186a0ae}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!free\_\-full\_\-spectr@{free\_\-full\_\-spectr}}
+\index{free\_\-full\_\-spectr@{free\_\-full\_\-spectr}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{free\_\-full\_\-spectr}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-full\_\-spectr ({\bf full\_\-spectr} $\ast$ {\em SPC})}}
+\label{ipixcorr__utils_8h_aed52e06198abe7964b8ab2684186a0ae}
+Function: free\_\-full\_\-spectr The function frees the memory allocated in a full \hyperlink{structspectrum}{spectrum} structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em SPC}]-\/ the full \hyperlink{structspectrum}{spectrum} structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1096 {
+1097   // free the three spectra in the
+1098   // full spectrum structure
+1099   free_spectrum(SPC->obj_spec);
+1100   free_spectrum(SPC->fgr_spec);
+1101   free_spectrum(SPC->bck_spec);
+1102 
+1103   // free the full spectrum
+1104   free(SPC);
+1105 
+1106   // set the structure to NULL
+1107   SPC = NULL;
+1108 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a63ff84c36a3d526c53eb1509181fd986}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-ALL\_\-from\_\-next\_\-in\_\-SPC@{get\_\-ALL\_\-from\_\-next\_\-in\_\-SPC}}
+\index{get\_\-ALL\_\-from\_\-next\_\-in\_\-SPC@{get\_\-ALL\_\-from\_\-next\_\-in\_\-SPC}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-ALL\_\-from\_\-next\_\-in\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}{\bf full\_\-spectr}$\ast$ get\_\-ALL\_\-from\_\-next\_\-in\_\-SPC (fitsfile $\ast$ {\em SPC\_\-ptr}, \/  int $\ast$ {\em aperID}, \/  int $\ast$ {\em beamID})}}
+\label{ipixcorr__utils_8h_a63ff84c36a3d526c53eb1509181fd986}
+Function: get\_\-ALL\_\-from\_\-next\_\-in\_\-SPC The function creates and fills a full \hyperlink{structspectrum}{spectrum} structure with the content of a SPC table extension. This is only done when, according to the \hyperlink{structbeam}{beam} ID, this \hyperlink{structbeam}{beam} should be corrected. For extensions with higher order beams which are not corrected an emply structure is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em SPCn\_\-ptr}]-\/ pointer to the opened SPC file \item[{\em aperID}]-\/ pointer to aperture identification number \item[{\em beamID}]-\/ pointer to \hyperlink{structbeam}{beam} identification number\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+SPC -\/ the full \hyperlink{structspectrum}{spectrum} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+998 {
+999   int f_status=0, hdutype;
+1000 
+1001   long tmp;
+1002   //long nrows=0;
+1003   char comment[FLEN_COMMENT];
+1004 
+1005   full_spectr *SPC;
+1006 
+1007 
+1008   fits_movrel_hdu (SPC_ptr, 1, &hdutype, &f_status);
+1009 
+1010   if (f_status)
+1011     {
+1012       *aperID = -1;
+1013       *beamID = -1;
+1014       SPC = NULL;
+1015       return SPC;
+1016     }
+1017 
+1018 
+1019   // read the beam ID number
+1020   fits_read_key_lng (SPC_ptr, "BEAMID", &tmp, comment, &f_status);
+1021   if (f_status)
+1022     {
+1023       ffrprt (stderr, f_status);
+1024       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1025                    "get_ALL_from_next_in_SPC: Error getting index keyword OBJECTI
+      D");
+1026     }
+1027   *beamID = (int)tmp;
+1028 
+1029   // check whether this beam should be correct
+1030   if (*beamID > CORRMAX)
+1031     {
+1032       // set it to NULL and return
+1033       SPC = NULL;
+1034       //      fprintf (stdout, "aXe_PETFF: Skipping beam: %c.\n", BEAM(*beamID));
+      
+1035       return SPC;
+1036     }
+1037 
+1038   // the beam shall be corrected and
+1039   // first must be read in
+1040   SPC = (full_spectr *) malloc (sizeof (full_spectr ));
+1041 
+1042   // transfer the beam ID
+1043   SPC->beamID = (int)tmp;
+1044 
+1045   // read the aperture number
+1046   fits_read_key_lng (SPC_ptr, "OBJECTID", &tmp, comment, &f_status);
+1047   if (f_status)
+1048     {
+1049       ffrprt (stderr, f_status);
+1050       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1051                    "get_ALL_from_next_in_SPC: Error getting index keyword OBJECTI
+      D");
+1052     }
+1053   // transfer the aperture ID
+1054   *aperID = (int)tmp;
+1055   SPC->aperID = (int)tmp;
+1056 
+1057 
+1058   // Get the number of rows
+1059   fits_get_num_rows (SPC_ptr, &tmp, &f_status);
+1060   if (f_status) {
+1061     ffrprt (stderr, f_status);
+1062     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1063                  "get_ALL_from_next_in_SPC: "
+1064                  "Could not determine the number of rows in"
+1065                  " correction function table!");
+1066   }
+1067   SPC->nelems = (int)tmp;
+1068 
+1069   // load the background subtracted object spectrum
+1070   SPC->obj_spec = get_spectrum_from_SPC(SPC_ptr, "COUNT", "ERROR", SPC->nelems);
+1071 
+1072   // load the total object spectrum
+1073   SPC->fgr_spec = get_spectrum_from_SPC(SPC_ptr, "TCOUNT", "TERROR", SPC->nelems)
+      ;
+1074 
+1075   // load the background spectrum
+1076   SPC->bck_spec = get_spectrum_from_SPC(SPC_ptr, "BCOUNT", "BERROR", SPC->nelems)
+      ;
+1077 
+1078   // return the filled structure
+1079   return SPC;
+1080 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a8a51bc806e29c38d040ef21711503b1e}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-dcolumn\_\-from\_\-SPC\_\-opened@{get\_\-dcolumn\_\-from\_\-SPC\_\-opened}}
+\index{get\_\-dcolumn\_\-from\_\-SPC\_\-opened@{get\_\-dcolumn\_\-from\_\-SPC\_\-opened}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-dcolumn\_\-from\_\-SPC\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ get\_\-dcolumn\_\-from\_\-SPC\_\-opened (fitsfile $\ast$ {\em SPC\_\-ptr}, \/  char {\em colname}\mbox{[}$\,$\mbox{]}, \/  int {\em nelems})}}
+\label{ipixcorr__utils_8h_a8a51bc806e29c38d040ef21711503b1e}
+Function: get\_\-dcolumn\_\-from\_\-SPC\_\-opened The function reads the values from a double column specified by its name into a array of doubles. The array is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em SPC\_\-ptr}]-\/ pointer to the SPC extension \item[{\em count\_\-col}]-\/ name of the column to load \item[{\em nelems}]-\/ number of elements in the column\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+values -\/ pointer to a filled array 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1201 {
+1202   int colnum=0;
+1203   int anynul;
+1204   int f_status=0;
+1205   double *values;
+1206 
+1207   // allocate the return array;
+1208   // give an error if allocation fails
+1209   values = (double *) malloc(nelems * sizeof(double));
+1210   if (!values) {
+1211     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+1212                  "Memory allocation failed");
+1213   }
+1214 
+1215   // get the desired column number;
+1216   // give an error if the column name
+1217   // can not be read
+1218   fits_get_colnum (SPC_ptr, CASEINSEN, colname, &colnum, &f_status);
+1219   if (f_status)
+1220     {
+1221       ffrprt (stderr, f_status);
+1222       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1223                    "get_dcolumn_from_SPC_opened: "
+1224                    "Could not determine column %s in "
+1225                    " table!\n", colname);
+1226     }
+1227 
+1228   // read all data in the column
+1229   fits_read_col (SPC_ptr, TDOUBLE, colnum, 1, 1, nelems, NULL, values,
+1230                     &anynul, &f_status);
+1231   if (f_status)
+1232     {
+1233       ffrprt (stderr, f_status);
+1234       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1235                    "get_dcolumn_from_SPC_opened: "
+1236                    "Could not read column %s"
+1237                    " from BINARY table!",colname);
+1238     }
+1239 
+1240   // return the filled vector
+1241   return values;
+1242 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_af4e9765f3104c17a1476c67db9c8a84f}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-intpix\_\-corr@{get\_\-intpix\_\-corr}}
+\index{get\_\-intpix\_\-corr@{get\_\-intpix\_\-corr}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-intpix\_\-corr}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-intpix\_\-corr ({\bf beam} $\ast$ {\em actbeam}, \/  gsl\_\-vector $\ast$ {\em cdisp}, \/  {\bf interpolator} $\ast$ {\em ipcorr}, \/  float {\em lambda})}}
+\label{ipixcorr__utils_8h_af4e9765f3104c17a1476c67db9c8a84f}
+Function: get\_\-intpix\_\-corr The function determines and returns a correction factor with values stored in an \hyperlink{structinterpolator}{interpolator} at a certain wavelength. To derive the result the dispersion solution is inverted, then the trace position for the wavelength is determined. The the fractional pixel value in y is computed and the corresponding correction factor is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ \hyperlink{structbeam}{beam} to correct \item[{\em cdisp}]-\/ the dispersion coefficients for the \hyperlink{structbeam}{beam} \item[{\em ipcorr}]-\/ the correction values stored in an \hyperlink{structinterpolator}{interpolator} \item[{\em lambda}]-\/ the wavelength to correct\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+cfactor -\/ the correction factor 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+52 {
+53   double tlength;
+54 
+55   double xvalue;
+56   double yfract;
+57 
+58   double cfactor=0.0;
+59 
+60   // get the trace length for the dispersion
+61   // solution and wavelength
+62   tlength = get_tlength_from_dispersion(cdisp, lambda);
+63 
+64   // compute the x-offset from the reference point
+65   // for this trace length value
+66   xvalue = get_xvalue_from_tlength(actbeam, tlength);
+67 
+68   // compute the fractional y-value
+69   yfract = get_yfract_for_xvalue(actbeam, xvalue);
+70 
+71   // get the correction factor
+72   cfactor = eval_interp(ipcorr, yfract);
+73 
+74   fprintf(stdout, "xdiff: %e, yfrac: %e, factor: %e ", xvalue, yfract, cfactor);
+75 
+76   //fprintf(stdout, "lambda: %f, tlength: %f, xval: %f, yval: %f, yfract: %f, cfa
+      ctor: %f\n",
+77   //      lambda, tlength, actbeam->refpoint.x+xvalue, actbeam->refpoint.y+actbea
+      m->spec_trace->func (xvalue, actbeam->spec_trace->data),yfract, cfactor);
+78 
+79   // return the correction factor
+80   return cfactor;
+81 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_aca657609c2dac5ac21c4b2f0d9b78674}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-ipc\_\-cvalues@{get\_\-ipc\_\-cvalues}}
+\index{get\_\-ipc\_\-cvalues@{get\_\-ipc\_\-cvalues}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-ipc\_\-cvalues}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-ipc\_\-cvalues (const {\bf beam} {\em actbeam}, \/  {\bf interpolator} $\ast$ {\em ipcorr}, \/  gsl\_\-vector $\ast$ {\em xvalues})}}
+\label{ipixcorr__utils_8h_aca657609c2dac5ac21c4b2f0d9b78674}
+Function: get\_\-ipc\_\-cvalues The function computes the intra-\/pixel correction factors for a certain \hyperlink{structbeam}{beam} on a set of trace positions specified by their x-\/offset from the reference point. For every x-\/offset position the trace positon and its fractional y-\/pixel (in absolute coordinates) is evaluated. Then the correction factor is determined using the input \hyperlink{structinterpolator}{interpolator}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to correct \item[{\em ipcorr}]-\/ the correction values depending on fractional y-\/pixel \item[{\em xvalues}]-\/ the list x-\/offsets from the reference point\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+cvalues -\/ the list of correction values 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+645 {
+646   gsl_vector *cvalues;
+647   double yfract=0.0;
+648   int i;
+649 
+650   // allocate memory
+651   cvalues = gsl_vector_alloc(xvalues->size);
+652 
+653   // go over all x-values
+654   for (i=0; i < xvalues->size; i++)
+655     {
+656       // determine the y-fraction for the x-value
+657       yfract = get_yfract_for_xvalue(&actbeam, gsl_vector_get(xvalues, i));
+658 
+659       // detyermine and store the correction factor in the array
+660       gsl_vector_set(cvalues, i, eval_interp(ipcorr, yfract));
+661     }
+662 
+663   // return the array
+664   return cvalues;
+665 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a5fe31b6414ccdc53def40b719096d262}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-ipc\_\-lambdas@{get\_\-ipc\_\-lambdas}}
+\index{get\_\-ipc\_\-lambdas@{get\_\-ipc\_\-lambdas}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-ipc\_\-lambdas}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-ipc\_\-lambdas (const {\bf beam} {\em actbeam}, \/  char {\em conf\_\-file\_\-path}\mbox{[}$\,$\mbox{]}, \/  gsl\_\-vector $\ast$ {\em xvalues})}}
+\label{ipixcorr__utils_8h_a5fe31b6414ccdc53def40b719096d262}
+Function: get\_\-ipc\_\-lambdas The function computes the wavelengths for a list of x-\/offsets from the reference point of a certain \hyperlink{structbeam}{beam}. The wavelength values are returned as a gsl-\/vector.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} \item[{\em conf\_\-file\_\-path}]-\/ the full path to the aXe configuration file \item[{\em xvalues}]-\/ the list of x-\/offsets\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+lambdas -\/ the list of wavelength values 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+566 {
+567   aperture_conf  *conf;
+568 
+569   dispstruct     *disp;
+570   calib_function *wl_calib;
+571 
+572   gsl_vector *lambdas;
+573 
+574   d_point pixel;
+575   int for_grism;
+576 
+577   int i;
+578 
+579   // load the configuration file
+580   conf = get_aperture_descriptor(conf_file_path);
+581 
+582   // check whether it is grism (for_grism=1)
+583   // or prism (for_grism=0) data
+584   for_grism = check_for_grism (conf_file_path, actbeam.ID);
+585 
+586   // determine the referencee point position
+587   pixel.x = actbeam.refpoint.x - conf->refx;
+588   pixel.y = actbeam.refpoint.y - conf->refy;
+589 
+590   // determine the dispersion at the reference point
+591   disp = get_dispstruct_at_pos(conf_file_path, for_grism,
+592                                actbeam.ID,pixel);
+593 
+594   // make a calibration structure from the dispersion
+595   wl_calib = create_calib_from_gsl_vector(for_grism, disp->pol);
+596 
+597   // convert the x-values to tracelength-values
+598   abscissa_to_pathlength (actbeam.spec_trace, xvalues);
+599 
+600   // allocate memory for the wavelengths
+601   lambdas = gsl_vector_alloc(xvalues->size);
+602 
+603   // go over all tracelength values
+604   for (i=0; i < xvalues->size; i++)
+605     {
+606       // determine and store the wavelength for each tracelength
+607       gsl_vector_set(lambdas, i,
+608                      wl_calib->func(gsl_vector_get(xvalues, i), wl_calib->order,
+609                                     wl_calib->coeffs));
+610     }
+611 
+612   // free the configuration structure
+613   free_aperture_conf(conf);
+614 
+615   // free the memory in the calibration structure
+616   free_calib(wl_calib);
+617 
+618   // free the dispersion structure
+619   free_dispstruct(disp);
+620 
+621   // return the wavelengths
+622   return lambdas;
+623 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a8003796c1b619b34fa8f964769cbbf14}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-ipc\_\-xvalues@{get\_\-ipc\_\-xvalues}}
+\index{get\_\-ipc\_\-xvalues@{get\_\-ipc\_\-xvalues}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-ipc\_\-xvalues}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-ipc\_\-xvalues (const {\bf beam} {\em actbeam})}}
+\label{ipixcorr__utils_8h_a8003796c1b619b34fa8f964769cbbf14}
+Function: get\_\-ipc\_\-xvalues The function computes a list of x-\/offsets from the reference point of a \hyperlink{structbeam}{beam}. the regularly space offsets span the range of x-\/values covered by the pixels of the \hyperlink{structbeam}{beam}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to compute the x-\/offsets for\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+xvalues -\/ the list of x-\/offsets 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+682 {
+683   gsl_vector *xvalues;
+684   d_point xrange;
+685 
+686   int npoints;
+687   int i;
+688 
+689   // determine the x-range covered by the beam
+690   xrange =  get_xinterv_from_beam(&actbeam);
+691 
+692   // determine the number of points within the x-range
+693   npoints = (xrange.y - xrange.x) / XSTEPSIZE + 1;
+694 
+695   // allocate and fill a proper vector
+696   // with the x-values
+697   xvalues = gsl_vector_alloc(npoints);
+698   for (i=0; i < npoints; i++)
+699     {
+700       gsl_vector_set(xvalues, i, xrange.x + (double)i * XSTEPSIZE);
+701     }
+702 
+703   // return the vector with the x-values
+704   return xvalues;
+705 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a2f8e61631faac85222b6f6451db085b1}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-ipclambda@{get\_\-ipclambda}}
+\index{get\_\-ipclambda@{get\_\-ipclambda}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-ipclambda}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ get\_\-ipclambda ({\bf beam} {\em actbeam}, \/  char {\em conf\_\-file\_\-path}\mbox{[}$\,$\mbox{]}, \/  {\bf interpolator} $\ast$ {\em ipcorr})}}
+\label{ipixcorr__utils_8h_a2f8e61631faac85222b6f6451db085b1}
+Function: get\_\-ipclambda The function creates an \hyperlink{structinterpolator}{interpolator} for the intra-\/pixel correction as a function of wavelength based on this correction as function of fractional y-\/pixel and the full calibration information on a \hyperlink{structbeam}{beam}. The \hyperlink{structinterpolator}{interpolator} is created after stepping along the \hyperlink{structbeam}{beam} trace and combining the wavelength values with the correction values at the trace positions.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to find the correction values for \item[{\em conf\_\-file\_\-path}]-\/ the full path to the aXe cofiguration file \item[{\em ipcorr}]-\/ the correction values as function of y-\/fraction\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ipclambda -\/ the correction values as function of wavelength 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+729 {
+730   gsl_vector *xvalues;
+731   gsl_vector *cvalues;
+732   gsl_vector *lambdas;
+733 
+734   double *cv;
+735   double *lv;
+736 
+737   interpolator *ipclambda;
+738 
+739   int i=0;
+740   int j=0;
+741 
+742   // get the x values around the reference point
+743   xvalues = get_ipc_xvalues(actbeam);
+744 
+745   // get the correction factors for these x-values
+746   cvalues = get_ipc_cvalues(actbeam, ipcorr, xvalues);
+747 
+748   // get the wavelength at the correction factors
+749   lambdas = get_ipc_lambdas(actbeam, conf_file_path, xvalues);
+750 
+751   // allocate memory for the dependent values
+752   cv = (double *) malloc(cvalues->size * sizeof(double));
+753   if (!cv) {
+754     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+755                  "Memory allocation failed");
+756   }
+757 
+758   // allocate memory for the independent values
+759   lv = (double *) malloc(cvalues->size * sizeof(double));
+760   if (!lv) {
+761     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+762                  "Memory allocation failed");
+763   }
+764 
+765   if (gsl_vector_get(lambdas, lambdas->size-1) > gsl_vector_get(lambdas, 0))
+766     {
+767       // transfer the values from the
+768       // gsl vectors to the c-vectors
+769       for (i = 0; i < cvalues->size; i++)
+770         {
+771           cv[i] = gsl_vector_get(cvalues, i);
+772           lv[i] = gsl_vector_get(lambdas, i);
+773         }
+774     }
+775   else
+776     {
+777       // transfer the values from the
+778       // gsl vectors to the c-vectors
+779       // invert the order from the
+780       // gsl-vectors
+781       j = cvalues->size - 1;
+782       for (i = 0; i < cvalues->size; i++)
+783         {
+784           cv[j] = gsl_vector_get(cvalues, i);
+785           lv[j] = gsl_vector_get(lambdas, i);
+786           j--;
+787         }
+788     }
+789 
+790   // create the interpolator
+791   ipclambda = create_interp(cvalues->size, FILTER_INTERP_TYPE, lv, cv);
+792 
+793 
+794   // free the memory allocated to
+795   // the vectors
+796   gsl_vector_free(xvalues);
+797   gsl_vector_free(cvalues);
+798   gsl_vector_free(lambdas);
+799 
+800   // return the interpolator
+801   return ipclambda;
+802 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_adc3a06bf3550f201761db2e64f6e5d34}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-lcolumn\_\-from\_\-SPC\_\-opened@{get\_\-lcolumn\_\-from\_\-SPC\_\-opened}}
+\index{get\_\-lcolumn\_\-from\_\-SPC\_\-opened@{get\_\-lcolumn\_\-from\_\-SPC\_\-opened}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-lcolumn\_\-from\_\-SPC\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}long$\ast$ get\_\-lcolumn\_\-from\_\-SPC\_\-opened (fitsfile $\ast$ {\em SPC\_\-ptr}, \/  char {\em colname}\mbox{[}$\,$\mbox{]}, \/  int {\em nelems})}}
+\label{ipixcorr__utils_8h_adc3a06bf3550f201761db2e64f6e5d34}
+Function: get\_\-lcolumn\_\-from\_\-SPC\_\-opened The function reads the values from a column with long specified by its name into a array of type long. The array is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em SPC\_\-ptr}]-\/ pointer to the SPC extension \item[{\em count\_\-col}]-\/ name of the column to load \item[{\em nelems}]-\/ number of elements in the column\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+values -\/ pointer to a filled array 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1260 {
+1261   int colnum=0;
+1262   int anynul;
+1263   int f_status=0;
+1264   long *values;
+1265 
+1266   // allocate the return array;
+1267   // give an error if allocation fails
+1268   values = (long *) malloc(nelems * sizeof(long));
+1269   if (!values) {
+1270     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+1271                  "Memory allocation failed");
+1272   }
+1273 
+1274   // get the desired column number;
+1275   // give an error if the column name
+1276   // can not be read
+1277   fits_get_colnum (SPC_ptr, CASEINSEN, colname, &colnum, &f_status);
+1278   if (f_status)
+1279     {
+1280       ffrprt (stderr, f_status);
+1281       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1282                    "get_dcolumn_from_SPC_opened: "
+1283                    "Could not determine column %s in "
+1284                    " table!\n", colname);
+1285     }
+1286 
+1287   // read all data in the column
+1288   fits_read_col (SPC_ptr, TLONG, colnum, 1, 1, nelems, NULL, values,
+1289                     &anynul, &f_status);
+1290   if (f_status)
+1291     {
+1292       ffrprt (stderr, f_status);
+1293       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1294                    "get_dcolumn_from_SPC_opened: "
+1295                    "Could not read column %s"
+1296                    " from BINARY table!",colname);
+1297     }
+1298 
+1299   // return the filled array
+1300   return values;
+1301 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a84e089833e7f6ea9ae5a48691e768c35}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-nlin\_\-corr@{get\_\-nlin\_\-corr}}
+\index{get\_\-nlin\_\-corr@{get\_\-nlin\_\-corr}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-nlin\_\-corr}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-nlin\_\-corr ({\bf interpolator} $\ast$ {\em nlincorr}, \/  const double {\em lambda}, \/  const double {\em cps})}}
+\label{ipixcorr__utils_8h_a84e089833e7f6ea9ae5a48691e768c35}
+
+
+
+\begin{DoxyCode}
+1437 {
+1438   double cfactor;
+1439   double bbb;
+1440 
+1441   // evaluate the parameter
+1442   bbb = eval_interp(nlincorr, lambda);
+1443 
+1444   // compute the correction factor
+1445   cfactor = 1.0 - 2.0 * bbb + bbb * log10(cps);
+1446 
+1447   // return the correction factor
+1448   return cfactor;
+1449 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_ae32733e8fdf2ee4520d3664901a39781}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-SPC\_\-opened@{get\_\-SPC\_\-opened}}
+\index{get\_\-SPC\_\-opened@{get\_\-SPC\_\-opened}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-SPC\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}fitsfile$\ast$ get\_\-SPC\_\-opened (char {\em SPCname}\mbox{[}$\,$\mbox{]}, \/  int {\em mode})}}
+\label{ipixcorr__utils_8h_ae32733e8fdf2ee4520d3664901a39781}
+Function: get\_\-SPC\_\-opened The function opens an existing SPC file and returns the pointer to it. As of now, the mode of opening it is automatically READWRITE. Later on a differentiation using the free parameter \char`\"{}mode\char`\"{} might be added to generalize the function.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em SPCname}]-\/ name of the SPC file \item[{\em mode}]-\/ mode to open it (not yet used)\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+SPC\_\-ptr -\/ pointer to the opened fits file 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+961 {
+962     fitsfile *SPC_ptr;
+963     int f_status=0;
+964 
+965   // Open the OPET file for reading/writing
+966   fits_open_file (&SPC_ptr, SPCname, READWRITE, &f_status);
+967   if (f_status)
+968     {
+969       ffrprt (stdout, f_status);
+970       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+971                    "aXe_INTPIXCORR: Could not open file: %s\n",
+972                    SPCname);
+973     }
+974 
+975   // return the pointer to the fits file
+976   return SPC_ptr;
+977 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a7cc3b80e223da09ba29b1a11f3a6187e}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-spectrum\_\-from\_\-SPC@{get\_\-spectrum\_\-from\_\-SPC}}
+\index{get\_\-spectrum\_\-from\_\-SPC@{get\_\-spectrum\_\-from\_\-SPC}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-spectrum\_\-from\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ get\_\-spectrum\_\-from\_\-SPC (fitsfile $\ast$ {\em SPC\_\-ptr}, \/  char {\em count\_\-col}\mbox{[}$\,$\mbox{]}, \/  char {\em error\_\-col}\mbox{[}$\,$\mbox{]}, \/  int {\em nelems})}}
+\label{ipixcorr__utils_8h_a7cc3b80e223da09ba29b1a11f3a6187e}
+Function: get\_\-spectrum\_\-from\_\-SPC The function fills a \hyperlink{structspectrum}{spectrum} structure with data in an SPC extension. There is more data in an SPC extension than can be stored in a \hyperlink{structspectrum}{spectrum} structure. Two parameters in this function specify partly which data should be loaded.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em SPC\_\-ptr}]-\/ pointer to the SPC extension \item[{\em count\_\-col}]-\/ column to load for 'count' \item[{\em error\_\-col}]-\/ column to load for 'error' \item[{\em nelems}]-\/ the number ol elements in the \hyperlink{structspectrum}{spectrum}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+act\_\-spec -\/ the filled \hyperlink{structspectrum}{spectrum} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1130 {
+1131   int index=0;
+1132 
+1133   spectrum *act_spec;
+1134 
+1135   double *count;
+1136   double *lambda;
+1137   double *error;
+1138   double *flux;
+1139   double *ferror;
+1140   double *weight;
+1141   double *contam;
+1142   long   *dq;
+1143 
+1144   // allocate the spectrum
+1145   act_spec = allocate_spectrum (nelems);
+1146 
+1147   // transfer the column entries into a vector
+1148   lambda = get_dcolumn_from_SPC_opened(SPC_ptr, "LAMBDA", nelems);
+1149   count  = get_dcolumn_from_SPC_opened(SPC_ptr, count_col, nelems);
+1150   error  = get_dcolumn_from_SPC_opened(SPC_ptr, error_col, nelems);
+1151   flux   = get_dcolumn_from_SPC_opened(SPC_ptr, "FLUX", nelems);
+1152   ferror = get_dcolumn_from_SPC_opened(SPC_ptr, "FERROR", nelems);
+1153   weight = get_dcolumn_from_SPC_opened(SPC_ptr, "WEIGHT", nelems);
+1154   contam = get_dcolumn_from_SPC_opened(SPC_ptr, "CONTAM", nelems);
+1155   dq     = get_lcolumn_from_SPC_opened(SPC_ptr, "DQ", nelems);
+1156 
+1157   // transfer the data from the vector into the
+1158   // spectrum structure
+1159   for (index = 0; index < nelems; index++)
+1160     {
+1161       act_spec->spec[index].lambda_mean = lambda[index];
+1162       act_spec->spec[index].count       = count[index];
+1163       act_spec->spec[index].error       = error[index];
+1164       act_spec->spec[index].flux        = flux[index];
+1165       act_spec->spec[index].ferror      = ferror[index];
+1166       act_spec->spec[index].weight      = weight[index];
+1167       act_spec->spec[index].contam      = contam[index];
+1168       act_spec->spec[index].dq          = dq[index];
+1169     }
+1170 
+1171   // free the arrays
+1172   free(lambda);
+1173   free(count);
+1174   free(error);
+1175   free(flux);
+1176   free(ferror);
+1177   free(weight);
+1178   free(contam);
+1179   free(dq);
+1180 
+1181   // return the spectrum
+1182   return act_spec;
+1183 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_ad686ad3fa4f574a675a9e2f1f1b88225}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-tlength\_\-from\_\-dispersion@{get\_\-tlength\_\-from\_\-dispersion}}
+\index{get\_\-tlength\_\-from\_\-dispersion@{get\_\-tlength\_\-from\_\-dispersion}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-tlength\_\-from\_\-dispersion}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-tlength\_\-from\_\-dispersion (gsl\_\-vector $\ast$ {\em cdisp}, \/  float {\em lambda})}}
+\label{ipixcorr__utils_8h_ad686ad3fa4f574a675a9e2f1f1b88225}
+Function: get\_\-tlength\_\-from\_\-dispersion The function computes and returnes the trace length for a given diseprsion solution and wavelength. The tracelength value is returned. Currently only linear and quadratic dispersio solution are considered.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em cdisp}]-\/ the dispersion coefficient polynomial \item[{\em lambda}]-\/ the wavelength\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+tlength -\/ the trace length 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+287 {
+288   double tlength=0.0;
+289   //double tlength_a=0.0;
+290   double det;
+291 
+292   // check whether the polynomial is linear
+293   if (cdisp->size == 2)
+294     {
+295       // compute the tracelength for linear dispersion
+296       tlength = (lambda-gsl_vector_get(cdisp, 0))/gsl_vector_get(cdisp, 1);
+297     }
+298   // check whether the polynomial is quadratic
+299   else if (cdisp->size == 3)
+300     {
+301       // compute the determinante
+302       det = gsl_vector_get(cdisp, 1) * gsl_vector_get(cdisp, 1)
+303                  - 4.0 * gsl_vector_get(cdisp, 0) * gsl_vector_get(cdisp, 2);
+304 
+305       // gove error if det < 0.0
+306       if (det < 0.0)
+307         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+308                      "get_tlength_from_dispersion: Can not determine the tracelen
+      gth since det < 0.0!\n");
+309 
+310       // compute the tracelength
+311       tlength   = (-gsl_vector_get(cdisp, 1)+sqrt(det))/(2.0*gsl_vector_get(cdisp
+      , 2));
+312       //    tlength_a = (-gsl_vector_get(cdisp, 1)-sqrt(det))/(2.0*gsl_vector_get
+      (cdisp, 2));
+313       //    fprintf(stdout, "plus: %f, minus: f\n", tlength, tlength_a);
+314     }
+315   else
+316     {
+317       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+318                    "get_tlength_from_dispersion: The dispersion solution has %i c
+      oefficients and can not be inverted!\n", cdisp->size);
+319     }
+320 
+321   // return the tracelength
+322   return tlength;
+323 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a3b46ac0fc3c8ebd989b486424d6a3152}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-xinterv\_\-from\_\-beam@{get\_\-xinterv\_\-from\_\-beam}}
+\index{get\_\-xinterv\_\-from\_\-beam@{get\_\-xinterv\_\-from\_\-beam}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-xinterv\_\-from\_\-beam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} get\_\-xinterv\_\-from\_\-beam (const {\bf beam} $\ast$ {\em actbeam})}}
+\label{ipixcorr__utils_8h_a3b46ac0fc3c8ebd989b486424d6a3152}
+Function: get\_\-xinterv\_\-from\_\-beam Determines the maximum and minimum extension of a given \hyperlink{structbeam}{beam} along the x-\/axis. For security the interval is extended at both ends by a fixed amount (quantified in the header-\/file).
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+x\_\-interv -\/ xmin, xmax covered by the \hyperlink{structbeam}{beam} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+249 {
+250   d_point x_interv;
+251 
+252   // compute the beam extension
+253   // towards the negative x-axis
+254   x_interv.x = (double)MIN(actbeam->corners[0].x,
+255                            MIN(actbeam->corners[1].x,
+256                                MIN(actbeam->corners[2].x,
+257                                    actbeam->corners[3].x)))-actbeam->refpoint.x -
+       INTERVEXT;
+258 
+259   // compute the beam extension
+260   // towards the positive x-axis
+261   x_interv.y = (double)MAX(actbeam->corners[0].x,
+262                            MAX(actbeam->corners[1].x,
+263                                MAX(actbeam->corners[2].x,
+264                                    actbeam->corners[3].x)))-actbeam->refpoint.x +
+       INTERVEXT;
+265 
+266   // return the interval
+267   return x_interv;
+268 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a5726174d85d0ab4c454528d0649e5db2}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-xvalue\_\-from\_\-tlength@{get\_\-xvalue\_\-from\_\-tlength}}
+\index{get\_\-xvalue\_\-from\_\-tlength@{get\_\-xvalue\_\-from\_\-tlength}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-xvalue\_\-from\_\-tlength}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-xvalue\_\-from\_\-tlength ({\bf beam} $\ast$ {\em actbeam}, \/  double {\em tlength})}}
+\label{ipixcorr__utils_8h_a5726174d85d0ab4c454528d0649e5db2}
+Function: get\_\-xvalue\_\-from\_\-tlength The function computes the x-\/offset position from the reference point for a given tracelength in a given \hyperlink{structbeam}{beam}. The solution is numerically derived and therefore does work for any reasonable tracefunction.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to compute the x-\/offset \item[{\em tlength}]-\/ tracelength\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+xdiff -\/ the x-\/offset 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+134 {
+135   int iter=0;
+136   int status;
+137 
+138   double xdiff=0.0;
+139   d_point x_interv;
+140 
+141   // define and initialize the solver
+142   const gsl_root_fsolver_type *T = gsl_root_fsolver_brent;
+143   gsl_root_fsolver            *s = gsl_root_fsolver_alloc (T);
+144 
+145   gsl_function F;
+146   tlength_pars *tpars;
+147 
+148   // derive the x-interval from the beam boundaries
+149   x_interv = get_xinterv_from_beam(actbeam);
+150   //  fprintf(stdout, "xpos: %f, ypos: %f\n", x_interv.x, x_interv.y);
+151 
+152   // allocate and fill the parameters
+153   tpars = (tlength_pars *) malloc(sizeof(tlength_pars));
+154   tpars->actbeam = actbeam;
+155   tpars->tlength = tlength;
+156 
+157   // fille the GSL-function
+158   F.function = &zero_tlength;
+159   F.params =   tpars;
+160 
+161   // set the boundaries for the solver
+162   gsl_root_fsolver_set (s, &F, x_interv.x, x_interv.y);
+163 
+164 
+165   // iterate to find the zeropoint
+166   do
+167     {
+168       // increment the iteration counter
+169       iter++;
+170 
+171       // iterate on the solver
+172       status = gsl_root_fsolver_iterate (s);
+173 
+174       // get a new guess from the solver
+175       xdiff = gsl_root_fsolver_root (s);
+176 
+177       // derive and set new boundaries
+178       x_interv.x = gsl_root_fsolver_x_lower (s);
+179       x_interv.y = gsl_root_fsolver_x_upper (s);
+180 
+181       // check the accuracy
+182       status = gsl_root_test_interval (x_interv.x, x_interv.y,
+183                                        0, 0.0001);
+184       //--------------CAVEAT---------------------------------------
+185       // until March 28th 08 the code, wriongly was:
+186       //status = gsl_root_test_interval (x_interv.x, x_interv.x,
+187       //                                  0, 0.0001);
+188       // somehow this made no difference.....
+189       //-----------------------------------------------------------
+190     }
+191   // check for the break condition
+192   while (status == GSL_CONTINUE && iter < MAX_ITER);
+193 
+194   // free the memory
+195   free(tpars);
+196 
+197   // free the memory
+198   gsl_root_fsolver_free (s);
+199 
+200   // return the result
+201   return xdiff;
+202 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a939a6e6f443e4e0fa40f51101f137309}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!get\_\-yfract\_\-for\_\-xvalue@{get\_\-yfract\_\-for\_\-xvalue}}
+\index{get\_\-yfract\_\-for\_\-xvalue@{get\_\-yfract\_\-for\_\-xvalue}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{get\_\-yfract\_\-for\_\-xvalue}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-yfract\_\-for\_\-xvalue (const {\bf beam} $\ast$ {\em actbeam}, \/  double {\em xvalue})}}
+\label{ipixcorr__utils_8h_a939a6e6f443e4e0fa40f51101f137309}
+Function: get\_\-yfract\_\-for\_\-xvalue The function computes the fractional y-\/value for a trace position in a \hyperlink{structbeam}{beam}. The trace position is given as the x-\/offset position with respect to the reference position
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ \hyperlink{structbeam}{beam} to correct \item[{\em xvalue}]-\/ the x-\/value\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+yfract -\/ the fractional y-\/value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+99 {
+100   double dy;
+101   double yabs;
+102   double yfract;
+103 
+104   // compute the y-value relative to the reference point
+105   dy = actbeam->spec_trace->func (xvalue, actbeam->spec_trace->data);
+106 
+107   // compute the absolute y-value on the chip
+108   yabs = actbeam->refpoint.y + dy;
+109 
+110   // compute the fractional pixel of this y-value
+111   yfract = yabs - floor(yabs);
+112 
+113   // return the fractional y-value
+114   return yfract;
+115 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_ad46502c245fb93ee30197de24a70464b}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!intpix\_\-corr\_\-beam@{intpix\_\-corr\_\-beam}}
+\index{intpix\_\-corr\_\-beam@{intpix\_\-corr\_\-beam}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{intpix\_\-corr\_\-beam}]{\setlength{\rightskip}{0pt plus 5cm}void intpix\_\-corr\_\-beam ({\bf beam} {\em actbeam}, \/  char {\em conf\_\-file\_\-path}\mbox{[}$\,$\mbox{]}, \/  {\bf interpolator} $\ast$ {\em ipcorr}, \/  {\bf full\_\-spectr} $\ast$ {\em SPC})}}
+\label{ipixcorr__utils_8h_ad46502c245fb93ee30197de24a70464b}
+Function: intpix\_\-corr\_\-beam The functio corrects a full \hyperlink{structspectrum}{spectrum} for the intrapixel sensitivity variations. For every spectral element its fractional y-\/value is determined, and then the correction factor for this y-\/value is computed and applied to the appropriate elements of the spectral bin.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to examine \item[{\em conf\_\-file\_\-path}]-\/ the full pathname too the configuration file \item[{\em ipcorr}]-\/ the \hyperlink{structinterpolator}{interpolator} with the correction factor \item[{\em SPC}]-\/ the full \hyperlink{structspectrum}{spectrum} to correct\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+454 {
+455   int            index=0;
+456   int            for_grism=1;
+457 
+458   double         cfactor;
+459 
+460   double         lambda;
+461 
+462   gsl_vector     *cdisp;
+463 
+464   d_point        pixel;
+465 
+466   dispstruct     *beam_disp;
+467 
+468   aperture_conf  *conf;
+469 
+470   // load the configuration file
+471   conf = get_aperture_descriptor(conf_file_path);
+472 
+473   // check whether it is grism (for_grism=1)
+474   // or prism (for_grism=0) data
+475   // give an error if there is a prism solution
+476   for_grism = check_for_grism (conf_file_path, actbeam.ID);
+477   if (!for_grism)
+478     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+479                  "intpix_corr_beam: Only grism dispersion solution can be correct
+      ed.\n");
+480 
+481   // get the wavelength dispersion relation at
+482   // position "refpoint". conf->refx and conf->refy
+483   // are used at this point to allow for a non (0,0) centered
+484   // 2D field dependence.
+485   pixel.x = actbeam.refpoint.x - conf->refx;
+486   pixel.y = actbeam.refpoint.y - conf->refy;
+487 
+488   // derive the dispersion at the object position
+489   beam_disp = get_dispstruct_at_pos(conf_file_path, for_grism,
+490                                     actbeam.ID, pixel);
+491 
+492   // skipp high order zeroes in the dispersion solution
+493   cdisp = condense_dispersion(beam_disp->pol);
+494 
+495   for (index=0; index < SPC->nelems; index++)
+496     {
+497       lambda = SPC->fgr_spec->spec[index].lambda_mean;
+498 
+499       if (!gsl_isnan (lambda) && lambda)
+500         {
+501           cfactor = get_intpix_corr(&actbeam, cdisp, ipcorr, lambda);
+502 
+503           fprintf(stdout, "lambda: %e, factor: %e\n", lambda, cfactor);
+504           /*
+505           SPC->fgr_spec->spec[index].count  = SPC->fgr_spec->spec[index].count / 
+      cfactor;
+506           SPC->fgr_spec->spec[index].error  = SPC->fgr_spec->spec[index].error / 
+      cfactor;
+507           SPC->fgr_spec->spec[index].flux   = SPC->fgr_spec->spec[index].flux / c
+      factor;
+508           SPC->fgr_spec->spec[index].ferror = SPC->fgr_spec->spec[index].ferror /
+       cfactor;
+509 
+510           SPC->bck_spec->spec[index].count  = SPC->bck_spec->spec[index].count / 
+      cfactor;
+511           SPC->bck_spec->spec[index].error  = SPC->bck_spec->spec[index].error / 
+      cfactor;
+512           SPC->bck_spec->spec[index].flux   = SPC->bck_spec->spec[index].flux / c
+      factor;
+513           SPC->bck_spec->spec[index].ferror = SPC->bck_spec->spec[index].ferror /
+       cfactor;
+514 
+515           SPC->obj_spec->spec[index].count  = SPC->obj_spec->spec[index].count / 
+      cfactor;
+516           SPC->obj_spec->spec[index].error  = SPC->obj_spec->spec[index].error / 
+      cfactor;
+517           SPC->obj_spec->spec[index].flux   = SPC->obj_spec->spec[index].flux / c
+      factor;
+518           SPC->obj_spec->spec[index].ferror = SPC->obj_spec->spec[index].ferror /
+       cfactor;
+519 
+520           /* this is the wqrong version!!
+521           SPC->fgr_spec->spec[index].count  = SPC->fgr_spec->spec[index].count * 
+      cfactor;
+522           SPC->fgr_spec->spec[index].error  = SPC->fgr_spec->spec[index].error * 
+      cfactor;
+523           SPC->fgr_spec->spec[index].flux   = SPC->fgr_spec->spec[index].flux * c
+      factor;
+524           SPC->fgr_spec->spec[index].ferror = SPC->fgr_spec->spec[index].ferror *
+       cfactor;
+525 
+526           SPC->bck_spec->spec[index].count  = SPC->bck_spec->spec[index].count * 
+      cfactor;
+527           SPC->bck_spec->spec[index].error  = SPC->bck_spec->spec[index].error * 
+      cfactor;
+528           SPC->bck_spec->spec[index].flux   = SPC->bck_spec->spec[index].flux * c
+      factor;
+529           SPC->bck_spec->spec[index].ferror = SPC->bck_spec->spec[index].ferror *
+       cfactor;
+530 
+531           SPC->obj_spec->spec[index].count  = SPC->obj_spec->spec[index].count * 
+      cfactor;
+532           SPC->obj_spec->spec[index].error  = SPC->obj_spec->spec[index].error * 
+      cfactor;
+533           SPC->obj_spec->spec[index].flux   = SPC->obj_spec->spec[index].flux * c
+      factor;
+534           SPC->obj_spec->spec[index].ferror = SPC->obj_spec->spec[index].ferror *
+       cfactor;
+535           */
+536         }
+537     }
+538 
+539   // free the configuration structure
+540   free_aperture_conf(conf);
+541 
+542   // free the dispersion struct
+543   free_dispstruct(beam_disp);
+544 
+545   // free the memory for the dispersion
+546   gsl_vector_free(cdisp);
+547 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a41eb356cbfa31c8062d1c702617b2983}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!intpix\_\-corr\_\-pet@{intpix\_\-corr\_\-pet}}
+\index{intpix\_\-corr\_\-pet@{intpix\_\-corr\_\-pet}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{intpix\_\-corr\_\-pet}]{\setlength{\rightskip}{0pt plus 5cm}void intpix\_\-corr\_\-pet ({\bf beam} {\em actbeam}, \/  char {\em conf\_\-file\_\-path}\mbox{[}$\,$\mbox{]}, \/  {\bf interpolator} $\ast$ {\em ipcorr}, \/  {\bf ap\_\-pixel} $\ast$ {\em PET})}}
+\label{ipixcorr__utils_8h_a41eb356cbfa31c8062d1c702617b2983}
+Function: intpix\_\-corr\_\-pet The function applies the intra-\/pixel sensitivity correction to a list of PET pixels. The values in the pixels are corrected in place using the correction function, gemoetrical parameters and dispersion relation in the various parameters.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to correct \item[{\em conf\_\-file\_\-path}]-\/ full path to the axe configuration file \item[{\em ipcorr}]-\/ the ipc correction function \item[{\em PET}]-\/ the list of PET pixels to correct\end{DoxyParams}
+Returns:
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}
+863 {
+864   interpolator *ipclambda;
+865   aperture_conf  *conf;
+866 
+867   int for_grism=0;
+868 
+869   // load the configuration file
+870   conf = get_aperture_descriptor(conf_file_path);
+871 
+872   // check whether it is grism (for_grism=1)
+873   // or prism (for_grism=0) data
+874   // give an error if there is a prism solution
+875   for_grism = check_for_grism (conf_file_path, actbeam.ID);
+876   if (!for_grism)
+877     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+878                  "intpix_corr_beam: Only grism dispersion solution can be correct
+      ed.\n");
+879 
+880   // determine the correction factor versus wavelength
+881   ipclambda = get_ipclambda(actbeam, conf_file_path, ipcorr);
+882 
+883   print_interp(ipclambda);
+884 
+885   // apply the correction to the PET
+886   apply_corr_pet(ipclambda, PET);
+887 
+888   // free the configuration structure
+889   free_aperture_conf(conf);
+890 
+891   // free the memory in the interpolator
+892   free_interp(ipclambda);
+893 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_ae596c1811da8db43b343a0f21ddd418e}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!is\_\-pointlike@{is\_\-pointlike}}
+\index{is\_\-pointlike@{is\_\-pointlike}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{is\_\-pointlike}]{\setlength{\rightskip}{0pt plus 5cm}int is\_\-pointlike ({\bf beam} {\em actbeam}, \/  int {\em spec\_\-OAF}, \/  double {\em max\_\-ext})}}
+\label{ipixcorr__utils_8h_ae596c1811da8db43b343a0f21ddd418e}
+Function: is\_\-pointlike The function evaluates all criteria to decide whether an \hyperlink{structobject}{object} is pointlike or not. In the current implementation an \hyperlink{structobject}{object} is considered pointlike if a special OAF is given and the the \hyperlink{structbeam}{beam} is NOT excluded OR if the spatial extension of the \hyperlink{structobject}{object} is smaller than the maximal extension.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to examine \item[{\em spec\_\-OAF}]-\/ indicates a special OAF file \item[{\em max\_\-ext}]-\/ the maximal allowed extension\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+point\_\-like -\/ pointer to the opened fits file 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+914 {
+915   int point_like=0;
+916 
+917   int OAF_crit=0;
+918   int EXT_crit=0;
+919 
+920   // check whether a special OAF is given
+921   // and the beam should NOT be ignored
+922   if (spec_OAF && !actbeam.ignore)
+923     OAF_crit=1;
+924 
+925   // check whether the maximal extension
+926   // is given and the object extension
+927   // is smaller;
+928   // also check whether non-default values
+929   // for the object width are set
+930   if (actbeam.awidth > -1.0 && actbeam.bwidth > -1.0 && max_ext && actbeam.
+      awidth < max_ext && actbeam.bwidth < max_ext)
+931     EXT_crit=1;
+932 
+933   // set to pointlike if at least
+934   // one of the criteria is set
+935   if (OAF_crit || EXT_crit)
+936     point_like=1;
+937 
+938   // return the result
+939   return point_like;
+940 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a7de262e2563e925ff59276137e4a1880}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!nlin\_\-corr\_\-beam@{nlin\_\-corr\_\-beam}}
+\index{nlin\_\-corr\_\-beam@{nlin\_\-corr\_\-beam}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{nlin\_\-corr\_\-beam}]{\setlength{\rightskip}{0pt plus 5cm}void nlin\_\-corr\_\-beam ({\bf interpolator} $\ast$ {\em nlincorr}, \/  double {\em adcgain}, \/  {\bf full\_\-spectr} $\ast$ {\em SPC})}}
+\label{ipixcorr__utils_8h_a7de262e2563e925ff59276137e4a1880}
+Function: nlin\_\-corr\_\-beam
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em nlincorr}]-\/ the \hyperlink{structinterpolator}{interpolator} with the correction factor \item[{\em SPC}]-\/ the full \hyperlink{structspectrum}{spectrum} to correct\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1377 {
+1378   int            index=0;
+1379   //  int            for_grism=1;
+1380 
+1381   double         cfactor;
+1382   double         cps;
+1383 
+1384   double         lambda;
+1385 
+1386   for (index=0; index < SPC->nelems; index++)
+1387     {
+1388       // get the independent spectral values,
+1389       // the wavelenth and the cps value
+1390       lambda = SPC->obj_spec->spec[index].lambda_mean;
+1391       cps    = SPC->obj_spec->spec[index].count;
+1392 
+1393 
+1394       // check whether the spectral element
+1395       // is not corrupt
+1396       if (!gsl_isnan (lambda) && lambda)
+1397         {
+1398           if (cps > 0.0)
+1399             // compute the correction factor
+1400             cfactor = get_nlin_corr(nlincorr, lambda, cps/adcgain);
+1401           else
+1402             // make a dummy factor
+1403             cfactor = 1.0;
+1404           // correct what should be corrected
+1405           SPC->fgr_spec->spec[index].count  = SPC->fgr_spec->spec[index].count / 
+      cfactor;
+1406           SPC->fgr_spec->spec[index].error  = SPC->fgr_spec->spec[index].error / 
+      cfactor;
+1407           SPC->fgr_spec->spec[index].flux   = SPC->fgr_spec->spec[index].flux / c
+      factor;
+1408           SPC->fgr_spec->spec[index].ferror = SPC->fgr_spec->spec[index].ferror /
+       cfactor;
+1409 
+1410           SPC->bck_spec->spec[index].count  = SPC->bck_spec->spec[index].count / 
+      cfactor;
+1411           SPC->bck_spec->spec[index].error  = SPC->bck_spec->spec[index].error / 
+      cfactor;
+1412           SPC->bck_spec->spec[index].flux   = SPC->bck_spec->spec[index].flux / c
+      factor;
+1413           SPC->bck_spec->spec[index].ferror = SPC->bck_spec->spec[index].ferror /
+       cfactor;
+1414 
+1415           SPC->obj_spec->spec[index].count  = SPC->obj_spec->spec[index].count / 
+      cfactor;
+1416           SPC->obj_spec->spec[index].error  = SPC->obj_spec->spec[index].error / 
+      cfactor;
+1417           SPC->obj_spec->spec[index].flux   = SPC->obj_spec->spec[index].flux / c
+      factor;
+1418           SPC->obj_spec->spec[index].ferror = SPC->obj_spec->spec[index].ferror /
+       cfactor;
+1419         }
+1420     }
+1421 
+1422 }
+\end{DoxyCode}
+\hypertarget{ipixcorr__utils_8h_a10bb24af557b72099c27576721cd8100}{
+\index{ipixcorr\_\-utils.h@{ipixcorr\_\-utils.h}!zero\_\-tlength@{zero\_\-tlength}}
+\index{zero\_\-tlength@{zero\_\-tlength}!ipixcorr_utils.h@{ipixcorr\_\-utils.h}}
+\subsubsection[{zero\_\-tlength}]{\setlength{\rightskip}{0pt plus 5cm}double zero\_\-tlength (double {\em x}, \/  void $\ast$ {\em params})}}
+\label{ipixcorr__utils_8h_a10bb24af557b72099c27576721cd8100}
+Function: zero\_\-tlength Helper function for the 1D-\/root finding routine. Evaluates a functional value at the position given in the first parameter using the values given as second parameter.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]-\/ the independent value \item[{\em params}]-\/ ingredients to evaluate the function value\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+tzero -\/ the function value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+220 {
+221   double tzero;
+222 
+223   // extract the components from the parameter-structure
+224   beam  *actbeam = ((tlength_pars *) params)->actbeam;
+225   double tlength = ((tlength_pars *) params)->tlength;
+226 
+227   // compute the function value
+228   tzero = actbeam->spec_trace->path_len (x, actbeam->spec_trace->data) - tlength;
+      
+229 
+230   // return the function value
+231   return tzero;
+232 }
+\end{DoxyCode}

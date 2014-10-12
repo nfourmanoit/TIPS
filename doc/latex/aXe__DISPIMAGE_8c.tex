@@ -1,0 +1,184 @@
+\hypertarget{aXe__DISPIMAGE_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-DISPIMAGE.c File Reference}
+\label{aXe__DISPIMAGE_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-DISPIMAGE.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-DISPIMAGE.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-output.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}disp\_\-utils.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aXe__DISPIMAGE_8c_a7a38b874452a6cde6ebee9e98c980eef}{AXE\_\-IMAGE\_\-PATH}~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__DISPIMAGE_8c_a75c154942e560254898bcafaf48bdf3d}{AXE\_\-OUTPUT\_\-PATH}~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__DISPIMAGE_8c_a0b0be957330d9c69fa325ee014ce4dad}{AXE\_\-CONFIG\_\-PATH}~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{aXe__DISPIMAGE_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{aXe__DISPIMAGE_8c_a0b0be957330d9c69fa325ee014ce4dad}{
+\index{aXe\_\-DISPIMAGE.c@{aXe\_\-DISPIMAGE.c}!AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}}
+\index{AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}!aXe_DISPIMAGE.c@{aXe\_\-DISPIMAGE.c}}
+\subsubsection[{AXE\_\-CONFIG\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-CONFIG\_\-PATH~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}}}
+\label{aXe__DISPIMAGE_8c_a0b0be957330d9c69fa325ee014ce4dad}
+\hypertarget{aXe__DISPIMAGE_8c_a7a38b874452a6cde6ebee9e98c980eef}{
+\index{aXe\_\-DISPIMAGE.c@{aXe\_\-DISPIMAGE.c}!AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}}
+\index{AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}!aXe_DISPIMAGE.c@{aXe\_\-DISPIMAGE.c}}
+\subsubsection[{AXE\_\-IMAGE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-IMAGE\_\-PATH~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}}}
+\label{aXe__DISPIMAGE_8c_a7a38b874452a6cde6ebee9e98c980eef}
+\hypertarget{aXe__DISPIMAGE_8c_a75c154942e560254898bcafaf48bdf3d}{
+\index{aXe\_\-DISPIMAGE.c@{aXe\_\-DISPIMAGE.c}!AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}}
+\index{AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}!aXe_DISPIMAGE.c@{aXe\_\-DISPIMAGE.c}}
+\subsubsection[{AXE\_\-OUTPUT\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-OUTPUT\_\-PATH~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}}}
+\label{aXe__DISPIMAGE_8c_a75c154942e560254898bcafaf48bdf3d}
+
+
+\subsection{Function Documentation}
+\hypertarget{aXe__DISPIMAGE_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{aXe\_\-DISPIMAGE.c@{aXe\_\-DISPIMAGE.c}!main@{main}}
+\index{main@{main}!aXe_DISPIMAGE.c@{aXe\_\-DISPIMAGE.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{aXe__DISPIMAGE_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+
+\begin{DoxyCode}
+38 {
+39   char *opt;
+40   char aper_file[MAXCHAR];
+41   char aper_file_path[MAXCHAR];
+42 
+43   char conf_file[MAXCHAR];
+44   char conf_file_path[MAXCHAR];
+45 
+46   char grism_file[MAXCHAR];
+47   char grism_file_path[MAXCHAR];
+48 
+49   char specmod_file[MAXCHAR];
+50   char specmod_file_path[MAXCHAR];
+51 
+52   char objmod_file[MAXCHAR];
+53   char objmod_file_path[MAXCHAR];
+54 
+55   aperture_conf *conf;
+56 
+57   int index;
+58   double lambda_psf=0.0;
+59 
+60   observation *obs;
+61 
+62   if ((argc < 3) || (opt = get_online_option ("help", argc, argv)))
+63     {
+64       fprintf (stdout,
+65                   "Usage:\n"
+66                   "      aXe_DISPIMAGE g/prism_filename configuration_filename"
+67                   "\n"
+68                   "Options:\n"
+69                   "      -in_AF=[string]         - overwrite the automatically ge
+      nerated name\n"
+70                   "                                of the input aperture file\n"
+71                   "      -model_spectra=[string] - input model spectra"
+72                   "      -model_images=[string]  - input model images"
+73                   "      -lambda_psf=[float]     - lambda at which psf was measur
+      ed"
+74                   "\n",RELEASE);
+75       exit (1);
+76     }
+77 
+78   fprintf (stdout, "aXe_DISPIMAGE: Starting...\n");
+79 
+80   index = 0;
+81 
+82   strcpy (grism_file, argv[++index]);
+83   build_path (AXE_IMAGE_PATH, grism_file, grism_file_path);
+84 
+85   strcpy (conf_file, argv[++index]);
+86   build_path (AXE_CONFIG_PATH, conf_file, conf_file_path);
+87 
+88   conf = get_aperture_descriptor (conf_file_path);
+89   get_extension_numbers(grism_file_path, conf,conf->optkey1,conf->optval1);
+90 
+91  /* Get or set up the name of the output Aperture File */
+92   if ((opt = get_online_option ("in_AF", argc, argv)))
+93     {
+94       /* get it */
+95       strcpy (aper_file, opt);
+96       strcpy (aper_file_path, opt);
+97     }
+98   else {
+99     /* Build aperture file name */
+100     replace_file_extension (grism_file, aper_file, ".fits",
+101                             ".OAF", conf->science_numext);
+102     build_path (AXE_OUTPUT_PATH, aper_file, aper_file_path);
+103   }
+104 
+105   // determine the wavelength
+106   // the object extend was determined at
+107   if ((opt = get_online_option ("lambda_psf", argc, argv)))
+108     lambda_psf = atof(opt);
+109   else
+110     lambda_psf = 800.0;
+111 
+112   // check whether a name for the spectral
+113   // models file is given
+114   if ((opt = get_online_option ("model_spectra", argc, argv)))
+115     {
+116       // get and set up the filename
+117       strcpy (specmod_file, opt);
+118       build_path (AXE_IMAGE_PATH, specmod_file, specmod_file_path);
+119     }
+120   else
+121     {
+122       strcpy (specmod_file, "");
+123       strcpy (specmod_file_path, "");
+124     }
+125   
+126   // check whether a name for the images
+127   // models file is given
+128   if ((opt = get_online_option ("model_images", argc, argv)))
+129     {
+130       // get and set up the filename
+131       strcpy (objmod_file, opt);
+132       build_path (AXE_IMAGE_PATH, objmod_file, objmod_file_path);
+133     }
+134   else
+135     {
+136       strcpy (objmod_file, "");
+137       strcpy (objmod_file_path, "");
+138     }
+139 
+140   fprintf (stdout, "aXe_DISPIMAGE: grism image file name: %s\n", grism_file_path)
+      ;
+141   fprintf (stdout, "aXe_DISPIMAGE: Input Aperture file name: %s\n", aper_file_pat
+      h);
+142   fprintf (stdout, "aXe_DISPIMAGE: Using spectral models in table: %s\n", specmod
+      _file_path);
+143   fprintf (stdout, "aXe_DISPIMAGE: Using direct emission objects in image: %s\n",
+       objmod_file_path);
+144   fprintf (stdout, "aXe_DISPIMAGE: Object parameters determined at %fnm\n", lambd
+      a_psf);
+145 
+146   fprintf (stdout, "aXe_DISPIMAGE: ");
+147   obs = load_sci_image (grism_file_path, conf->science_numext);
+148 
+149   compute_disp(grism_file_path, aper_file_path, conf_file_path,
+150                        specmod_file_path,  objmod_file_path, lambda_psf, obs);
+151 
+152   free_observation(obs);
+153   free_aperture_conf(conf);
+154   fprintf (stdout, "aXe_DISPIMAGE: Done...\n");
+155   exit (0);
+156 }
+\end{DoxyCode}

@@ -1,0 +1,31 @@
+====
+TIPS
+====
+
+TIPS Is a Pixel Simulation Software
+
+TIPS is based on axesim.
+
+Contributors
+============
+
+Eric Jullo
+Gerard Smadja
+Julien Zoubian
+
+Thanks also to
+==============
+
+Anne Ealet
+Martin Kummel
+
+C code deps
+===========
+cfitsio
+wcstools
+gsl
+
+Python code deps:
+=================
+
+pyfits, asciidata, numpy, scipy

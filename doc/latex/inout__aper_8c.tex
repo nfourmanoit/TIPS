@@ -1,0 +1,1338 @@
+\hypertarget{inout__aper_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/inout\_\-aper.c File Reference}
+\label{inout__aper_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/inout\_\-aper.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/inout\_\-aper.c}}
+}
+{\ttfamily \#include \char`\"{}inout\_\-aper.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceinout__aper}{inout\_\-aper}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{inout__aper_8c_a881264311a05c31fe2ce9343bfb7f2d5}{object\_\-list\_\-to\_\-file} (\hyperlink{structobject}{object} $\ast$const $\ast$oblist, char $\ast$filename, int leaveout\_\-ignored)
+\item 
+int \hyperlink{inout__aper_8c_a493b0450d9124855228d1d2e6e66d2f5}{aper\_\-file\_\-apernum} (char $\ast$filename)
+\item 
+gsl\_\-vector\_\-int $\ast$ \hyperlink{inout__aper_8c_a5ae38f66e6732c36d3aaef11f37842a2}{aper\_\-file\_\-aperlist} (char $\ast$filename)
+\item 
+int \hyperlink{inout__aper_8c_a765604d8aaf1ea2d014d11adb1613fb4}{nbeams\_\-from\_\-aper\_\-file} (char $\ast$filename, int num)
+\item 
+int \hyperlink{inout__aper_8c_ad6c178c268863d6fa3f2bbe3b3d8f8af}{nbeams\_\-from\_\-char\_\-array2} (char $\ast$$\ast$apers, int num)
+\item 
+gsl\_\-vector\_\-int $\ast$ \hyperlink{inout__aper_8c_a5bfbf8150f27a4b1df4ab1d10d5bca7d}{nbeams\_\-from\_\-char\_\-array} (char $\ast$$\ast$apers, int num)
+\item 
+int \hyperlink{inout__aper_8c_a821a92870e32f77567f3090bd9dbac95}{get\_\-beam\_\-from\_\-char\_\-array} (char $\ast$$\ast$aper, int aperID, int beamID, \hyperlink{structbeam}{beam} $\ast$b)
+\item 
+\hyperlink{structobject}{object} $\ast$ \hyperlink{inout__aper_8c_a282d1ca5f24e99d5536da5ce2363f1c8}{get\_\-aperture\_\-from\_\-char\_\-array} (char $\ast$$\ast$aper, int aperID)
+\item 
+\hyperlink{structobject}{object} $\ast$$\ast$ \hyperlink{inout__aper_8c_ae18fecd8e762c35bae1376a8d637d8e8}{file\_\-to\_\-object\_\-list\_\-seq} (char filename\mbox{[}$\,$\mbox{]}, \hyperlink{structobservation}{observation} $\ast$obs)
+\item 
+char $\ast$$\ast$ \hyperlink{inout__aper_8c_a5610d36eaa966760f40180225de8faeb}{return\_\-next\_\-aperture} (FILE $\ast$input)
+\item 
+int \hyperlink{inout__aper_8c_a12854533fd67781a0bf70a93a6ad91e4}{find\_\-object\_\-in\_\-object\_\-list} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, const int ID)
+\item 
+\hyperlink{structbeam}{beam} \hyperlink{inout__aper_8c_a515c7167b798f972e4614a5404595e25}{find\_\-beam\_\-in\_\-object\_\-list} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, const int objID, const int beamID)
+\item 
+\hyperlink{structbeam}{beam} $\ast$ \hyperlink{inout__aper_8c_a435c8a237804e5f641b7401dfa81a059}{find\_\-beamptr\_\-in\_\-object\_\-list} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, const int objID, const int beamID)
+\item 
+void \hyperlink{inout__aper_8c_a76950235f36088ca98cd60aa2e431086}{refurbish\_\-object\_\-list} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, const int new\_\-default, const int old\_\-value, const int new\_\-value)
+\item 
+int \hyperlink{inout__aper_8c_aa4bd812673400180537c7ea98650d3fe}{object\_\-list\_\-size} (\hyperlink{structobject}{object} $\ast$$\ast$oblist)
+\item 
+int \hyperlink{inout__aper_8c_aa120fb983e10b94e79858e51b4d3e25e}{get\_\-beamspec\_\-size} (\hyperlink{structobject}{object} $\ast$$\ast$oblist)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{inout__aper_8c_a5ae38f66e6732c36d3aaef11f37842a2}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!aper\_\-file\_\-aperlist@{aper\_\-file\_\-aperlist}}
+\index{aper\_\-file\_\-aperlist@{aper\_\-file\_\-aperlist}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{aper\_\-file\_\-aperlist}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector\_\-int$\ast$ aper\_\-file\_\-aperlist (char $\ast$ {\em filename})}}
+\label{inout__aper_8c_a5ae38f66e6732c36d3aaef11f37842a2}
+Function: aper\_\-file\_\-aperlist This function returns a gsl\_\-vector containing the list of apertures found in the given aperture file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the aperture file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+apers -\/ a gsl\_\-vector\_\-int $\ast$ containing the list of aperture IDs 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+301   {
+302     int n = 0;
+303     char Buffer[BUFFERSIZE] = "\0";
+304     char *WorkPtr= NULL;
+305     char *CfgName= NULL;
+306     char *CfgData= NULL;
+307     FILE *CfgFile= NULL;
+308     int napers;
+309     gsl_vector_int *apers;
+310 
+311     napers = aper_file_apernum(filename);
+312     if (!(napers>0))
+313       return NULL;
+314 
+315     apers = gsl_vector_int_alloc(napers);
+316 
+317     CfgFile = fopen(filename, "r");
+318     if (NULL == CfgFile)
+319       {
+320         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+321         "Could not open aperture file %s\n", filename);
+322       }
+323 
+324     while (NULL != fgets (Buffer, BUFFERSIZE, CfgFile))
+325       {
+326         /* clip off optional comment tail indicated by a semi-colon
+327          */
+328         if (NULL != (WorkPtr = strchr (Buffer, ';')))
+329           *WorkPtr = '\0';
+330         else
+331           WorkPtr = Buffer + strlen(Buffer);
+332 
+333         /* clip off trailing and leading white space
+334          */
+335         WorkPtr--;
+336         while (isspace ((int) *WorkPtr) && WorkPtr >= Buffer)
+337           *WorkPtr-- = '\0';
+338         WorkPtr = Buffer;
+339         while (isspace ((int) *WorkPtr))
+340           WorkPtr++;
+341         if (0 == strlen(WorkPtr))
+342           continue;
+343 
+344         CfgName = strtok(WorkPtr, " =");
+345         CfgData = NULL;
+346         if (NULL != CfgName)
+347           {
+348             /* Condition the name (lower case required),
+349              and strip leading white and a 'late' = from data part.
+350              */
+351             //strlwr( CfgName );
+352             CfgData = strtok(NULL, "");
+353             if (CfgData != NULL)
+354               {
+355                 while (isspace ((int) *CfgData))
+356                   CfgData++;
+357                 if ('=' == *CfgData)
+358                   CfgData++;
+359                 while (isspace ((int) *CfgData))
+360                   CfgData++;
+361               }
+362           }
+363         if (!strcmp("APERTURE", CfgName) && strcmp("END", CfgData))
+364           {
+365             gsl_vector_int_set(apers, n, atoi(CfgData));
+366             n++;
+367             if (n > napers)
+368               {
+369                 aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+370                 "File format error in aperture file %s",
+371                 filename);
+372               }
+373           }
+374       }
+375     fclose(CfgFile);
+376     return apers;
+377   }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a493b0450d9124855228d1d2e6e66d2f5}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!aper\_\-file\_\-apernum@{aper\_\-file\_\-apernum}}
+\index{aper\_\-file\_\-apernum@{aper\_\-file\_\-apernum}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{aper\_\-file\_\-apernum}]{\setlength{\rightskip}{0pt plus 5cm}int aper\_\-file\_\-apernum (char $\ast$ {\em filename})}}
+\label{inout__aper_8c_a493b0450d9124855228d1d2e6e66d2f5}
+Function: aper\_\-file\_\-apernum A helper function which returns the number of time the keyword APERTURE appears in an Aperture File and returns that number.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]of an Aperture File\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+number of time APERTURE appears in the file 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+232 {
+233   int n = 0;
+234   char Buffer[BUFFERSIZE] = "\0";
+235   char *WorkPtr           = NULL;
+236   char *CfgName           = NULL;
+237   char *CfgData           = NULL;
+238   FILE *CfgFile;
+239 
+240   CfgFile = fopen (filename, "r");
+241   if (NULL == CfgFile)
+242     aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Could not open %s", filename);
+      
+243 
+244 
+245   while (NULL != fgets (Buffer, BUFFERSIZE, CfgFile))
+246     {
+247       /* clip off optional comment tail indicated by a semi-colon
+248        */
+249       if (NULL != (WorkPtr = strchr (Buffer, ';')))
+250         *WorkPtr = '\0';
+251       else
+252         WorkPtr = Buffer + strlen (Buffer);
+253 
+254       /* clip off trailing and leading white space
+255        */
+256       WorkPtr--;
+257       while (isspace ((int) *WorkPtr) && WorkPtr >= Buffer)
+258         *WorkPtr-- = '\0';
+259       WorkPtr = Buffer;
+260       while (isspace ((int) *WorkPtr))
+261         WorkPtr++;
+262       if (0 == strlen (WorkPtr))
+263         continue;
+264 
+265       CfgName = strtok (WorkPtr, " =");
+266       if (NULL != CfgName)
+267         {
+268           /* Condition the name (lower case required),
+269              and strip leading white and a 'late' = from data part.
+270            */
+271           CfgData = strtok (NULL, "");
+272           if (CfgData != NULL)
+273             {
+274               while (isspace ((int) *CfgData))
+275                 CfgData++;
+276               if ('=' == *CfgData)
+277                 CfgData++;
+278               while (isspace ((int) *CfgData))
+279                 CfgData++;
+280             }
+281         }
+282       if (!strcmp ("APERTURE", CfgName)  && strcmp ("END", CfgData) )
+283         n++;
+284     }
+285   fclose(CfgFile);
+286   return n;
+287 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_ae18fecd8e762c35bae1376a8d637d8e8}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!file\_\-to\_\-object\_\-list\_\-seq@{file\_\-to\_\-object\_\-list\_\-seq}}
+\index{file\_\-to\_\-object\_\-list\_\-seq@{file\_\-to\_\-object\_\-list\_\-seq}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{file\_\-to\_\-object\_\-list\_\-seq}]{\setlength{\rightskip}{0pt plus 5cm}{\bf object}$\ast$$\ast$ file\_\-to\_\-object\_\-list\_\-seq (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  {\bf observation} $\ast$ {\em obs})}}
+\label{inout__aper_8c_ae18fecd8e762c35bae1376a8d637d8e8}
+Function: file\_\-to\_\-object\_\-list\_\-seq Read all apertures from n aperture file and return an array of \hyperlink{structobject}{object} pointers. This function use a sequential read of the aperture file which requires apertures to be clearly separated by APERTURE \#/APERTURE END keys in the Aperture File. It is faster than the more generic file\_\-to\_\-object\_\-list function. This function relies on the from\_\-char-\/array() functions.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the aperture file. \item[{\em obs}]-\/ a pointer to an existing non NULL \hyperlink{structobservation}{observation} structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+oblist -\/ a newly allocated array of \hyperlink{structobject}{object} pointers 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+925   {
+926     gsl_vector_int *l;
+927     object **oblist;
+928     int i, j, aperID;
+929     char **aper;
+930     FILE *input;
+931     l = aper_file_aperlist(filename);
+932     if (l==NULL)
+933       return NULL; // no aperture was found
+934     /* Allocate memory for enough objects */
+935     oblist = (object **) malloc((l->size + 1) * sizeof(object *));
+936 
+937     // open the file;
+938     // report any problems
+939     input=fopen(filename, "r");
+940     if (input==NULL)
+941       aXe_message(aXe_M_FATAL, __FILE__, __LINE__, "Could not open %s", filename)
+      ;
+942 
+943     for (i = 0; i < l->size; i++)
+944       {
+945         aperID = gsl_vector_int_get(l, i);
+946         aper = return_next_aperture(input);
+947         oblist[i] = get_aperture_from_char_array(aper, aperID);
+948         oblist[i]->grism_obs = obs;
+949 
+950         // clean up memory allocated
+951         for (j=0; j<MAX_BEAMS*APER_MAXLINE; j++)
+952           free(aper[j]);
+953         free(aper);
+954       }
+955 
+956     oblist[i++] = NULL;
+957     fclose(input);
+958     gsl_vector_int_free(l);
+959 
+960     // return the object list
+961     return oblist;
+962   }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a515c7167b798f972e4614a5404595e25}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!find\_\-beam\_\-in\_\-object\_\-list@{find\_\-beam\_\-in\_\-object\_\-list}}
+\index{find\_\-beam\_\-in\_\-object\_\-list@{find\_\-beam\_\-in\_\-object\_\-list}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{find\_\-beam\_\-in\_\-object\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beam} find\_\-beam\_\-in\_\-object\_\-list ({\bf object} $\ast$$\ast$ {\em oblist}, \/  const int {\em objID}, \/  const int {\em beamID})}}
+\label{inout__aper_8c_a515c7167b798f972e4614a5404595e25}
+Function: find\_\-beam\_\-in\_\-object\_\-list This function returns the array index of the \hyperlink{structobject}{object} in a NULL terminated array of objects which corresponds to the passed ID
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ a NULL terminated array of objects \item[{\em objID}]-\/ the numeric ID of the object/aperture to look for \item[{\em beamID}]-\/ the numeric ID of the \hyperlink{structbeam}{beam} to look for\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+actbeam -\/ the \hyperlink{structbeam}{beam} identitified 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1075 {
+1076   beam actbeam;
+1077 
+1078   int obj_index=0;
+1079   int j=0;
+1080 
+1081   // set the beam ID to -1 to identify
+1082   // failed identification
+1083   actbeam.ID = -1;
+1084 
+1085   // identify the correct index in the object list
+1086   obj_index = find_object_in_object_list(oblist, objID);
+1087 
+1088   //
+1089   if (obj_index > -1)
+1090     {
+1091       // go over all beams in the matchin object
+1092       for (j=0; j < oblist[obj_index]->nbeams; j++)
+1093         {
+1094 
+1095           // search for a matching beam ID
+1096           if (oblist[obj_index]->beams[j].ID == beamID)
+1097             // copy the matching beam
+1098             actbeam = oblist[obj_index]->beams[j];
+1099         }
+1100     }
+1101 
+1102   // return the beam
+1103   return actbeam;
+1104 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a435c8a237804e5f641b7401dfa81a059}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!find\_\-beamptr\_\-in\_\-object\_\-list@{find\_\-beamptr\_\-in\_\-object\_\-list}}
+\index{find\_\-beamptr\_\-in\_\-object\_\-list@{find\_\-beamptr\_\-in\_\-object\_\-list}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{find\_\-beamptr\_\-in\_\-object\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beam}$\ast$ find\_\-beamptr\_\-in\_\-object\_\-list ({\bf object} $\ast$$\ast$ {\em oblist}, \/  const int {\em objID}, \/  const int {\em beamID})}}
+\label{inout__aper_8c_a435c8a237804e5f641b7401dfa81a059}
+Function: find\_\-beamptr\_\-in\_\-object\_\-list This function returns the array index of the \hyperlink{structobject}{object} in a NULL terminated array of objects which corresponds to the passed ID
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ a NULL terminated array of objects \item[{\em objID}]-\/ the numeric ID of the object/aperture to look for \item[{\em beamID}]-\/ the numeric ID of the \hyperlink{structbeam}{beam} to look for\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+actbeam -\/ the \hyperlink{structbeam}{beam} identitified 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1122 {
+1123   beam *actbeam;
+1124 
+1125   int obj_index=0;
+1126   int j=0;
+1127 
+1128   // set the beam ID to -1 to identify
+1129   // failed identification
+1130   //actbeam->ID = -1;
+1131 
+1132   // identify the correct index in the object list
+1133   obj_index = find_object_in_object_list(oblist, objID);
+1134   //fprintf(stderr, "found index: %i\n", obj_index);
+1135   //
+1136   if (obj_index > -1)
+1137     {
+1138       // go over all beams in the matchin object
+1139       for (j=0; j < oblist[obj_index]->nbeams; j++)
+1140         {
+1141 
+1142           // search for a matching beam ID
+1143           if (oblist[obj_index]->beams[j].ID == beamID)
+1144             // copy the matching beam
+1145             actbeam = &oblist[obj_index]->beams[j];
+1146         }
+1147     }
+1148 
+1149   // return the beam
+1150   return actbeam;
+1151 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a12854533fd67781a0bf70a93a6ad91e4}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!find\_\-object\_\-in\_\-object\_\-list@{find\_\-object\_\-in\_\-object\_\-list}}
+\index{find\_\-object\_\-in\_\-object\_\-list@{find\_\-object\_\-in\_\-object\_\-list}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{find\_\-object\_\-in\_\-object\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}int find\_\-object\_\-in\_\-object\_\-list ({\bf object} $\ast$$\ast$ {\em oblist}, \/  const int {\em ID})}}
+\label{inout__aper_8c_a12854533fd67781a0bf70a93a6ad91e4}
+Function: find\_\-object\_\-in\_\-object\_\-list This function returns the array index of the \hyperlink{structobject}{object} in a NULL terminated array of objects which corresponds to the passed ID
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ a NULL terminated array of objects \item[{\em ID}]-\/ the numeric ID of the object/aperture to look for\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+i/-\/1 -\/ the array index to the object/aperture with the wanted ID 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1043 {
+1044   int i;
+1045 
+1046   i=0;
+1047   while (oblist != NULL && oblist[i] != NULL)
+1048     {
+1049       if (oblist[i]->ID == ID) return i;
+1050       i++;
+1051     }
+1052 
+1053   //    return NULL;
+1054   // this is critical and not throughout testet!
+1055   return -1;
+1056 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a282d1ca5f24e99d5536da5ce2363f1c8}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!get\_\-aperture\_\-from\_\-char\_\-array@{get\_\-aperture\_\-from\_\-char\_\-array}}
+\index{get\_\-aperture\_\-from\_\-char\_\-array@{get\_\-aperture\_\-from\_\-char\_\-array}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{get\_\-aperture\_\-from\_\-char\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf object}$\ast$ get\_\-aperture\_\-from\_\-char\_\-array (char $\ast$$\ast$ {\em aper}, \/  int {\em aperID})}}
+\label{inout__aper_8c_a282d1ca5f24e99d5536da5ce2363f1c8}
+Function: get\_\-aperture\_\-from\_\-char\_\-array Read a specific aperture number from an array of strings
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the aperture file. \item[{\em aperID}]-\/ the number of the aperture.\end{DoxyParams}
+Reaturns: \begin{DoxyReturn}{Returns}
+ob -\/ an \hyperlink{structobject}{object} type containing the aperture description and all the included beams. Returns NULL if aperture was not found 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+859 {
+860   int nbeams, ibeam = 0, beamID;
+861   object *ob = malloc (sizeof (object));
+862   gsl_vector_int *beamlist;
+863 
+864   ob->ID = aperID;
+865   //  nbeams = nbeams_from_char_array2 (aper, aperID);
+866   // get the array with the integer ID's for the beams
+867   beamlist = nbeams_from_char_array(aper, aperID);
+868 
+869   // derive the number of beams by checking
+870   // the integer array for non default values
+871   nbeams=0;
+872   while( nbeams < beamlist->size && gsl_vector_int_get (beamlist, nbeams) > -1)
+873     nbeams++;
+874 
+875   // set some default values for struct
+876   // items which may NOT be overwritten with
+877   // OAF content
+878   for (beamID = 0; beamID < nbeams; beamID++)
+879     {
+880       ob->beams[beamID].flux        = NULL;
+881       ob->beams[beamID].slitgeom[0] = -1.0;
+882       ob->beams[beamID].slitgeom[1] = -1.0;
+883       ob->beams[beamID].slitgeom[2] = -1.0;
+884       ob->beams[beamID].slitgeom[3] = -1.0;
+885       ob->beams[beamID].modspec     = -1;
+886       ob->beams[beamID].modimage    = -1;
+887     }
+888 
+889   // go over all beams
+890   for (beamID = 0; beamID < nbeams; beamID++)
+891     // convert the current beam to a beam structure
+892     if (get_beam_from_char_array(aper, aperID, gsl_vector_int_get(beamlist,beamID
+      ),
+893                                    &(ob->beams[ibeam])))
+894       // enhance the counter
+895       ibeam++;
+896 
+897   // set the beam number
+898   ob->nbeams = ibeam;
+899 
+900   // free the integer ID array
+901   gsl_vector_int_free(beamlist);
+902 
+903   // return the object structure
+904   return ob;
+905 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a821a92870e32f77567f3090bd9dbac95}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!get\_\-beam\_\-from\_\-char\_\-array@{get\_\-beam\_\-from\_\-char\_\-array}}
+\index{get\_\-beam\_\-from\_\-char\_\-array@{get\_\-beam\_\-from\_\-char\_\-array}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{get\_\-beam\_\-from\_\-char\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-beam\_\-from\_\-char\_\-array (char $\ast$$\ast$ {\em aper}, \/  int {\em aperID}, \/  int {\em beamID}, \/  {\bf beam} $\ast$ {\em b})}}
+\label{inout__aper_8c_a821a92870e32f77567f3090bd9dbac95}
+Function: get\_\-beam\_\-from\_\-char\_\-array Read a single \hyperlink{structbeam}{beam} from a single aperture from a char array and set up the content of an \hyperlink{structobject}{object} structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the aperture file. \item[{\em aperID}]-\/ the int ID of the aperture. \item[{\em beamID}]-\/ the int ID of the \hyperlink{structbeam}{beam}. \item[{\em b}]-\/ a \hyperlink{structbeam}{beam} \hyperlink{structobject}{object} structure to contain the \hyperlink{structbeam}{beam} description\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+0/1 -\/ 0 if \hyperlink{structbeam}{beam} was not found, 1 if found 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+526   {
+527     char refpixel[MAXCHAR], corners[MAXCHAR], curve[MAXCHAR];
+528     char width[MAXCHAR], orient[MAXCHAR];
+529     char slitgeom[MAXCHAR];
+530     char beamname[MAXCHAR], awidth[MAXCHAR], bwidth[MAXCHAR];
+531     char aorient[MAXCHAR], flux[MAXCHAR], modspec[MAXCHAR];
+532     char modimage[MAXCHAR], ignore[MAXCHAR];
+533     int ix;
+534     gsl_vector *v;
+535     gsl_vector *fvals;
+536     //beam *b = malloc(sizeof(beam));
+537 
+538     struct CfgStrings AperData[] =
+539       {
+540         { NULL, NULL },
+541         { NULL, NULL },
+542         { NULL, NULL },
+543         { NULL, NULL },
+544         { NULL, NULL },
+545         { NULL, NULL },
+546         { NULL, NULL },
+547         { NULL, NULL },
+548         { NULL, NULL },
+549         { NULL, NULL },
+550         { NULL, NULL },
+551         { NULL, NULL },
+552         { NULL, NULL },
+553         { NULL, NULL } /* array terminator. REQUIRED !!! */
+554       };
+555 
+556     AperData[0].name  = refpixel;
+557     AperData[1].name  = corners;
+558     AperData[2].name  = curve;
+559     AperData[3].name  = width;
+560     AperData[4].name  = orient;
+561     AperData[5].name  = slitgeom;
+562     AperData[6].name  = modspec;
+563     AperData[7].name  = modimage;
+564     AperData[8].name  = awidth;
+565     AperData[9].name  = bwidth;
+566     AperData[10].name = aorient;
+567     AperData[11].name = flux;
+568     AperData[12].name = ignore;
+569 
+570     sprintf(beamname, "%d%c", aperID, BEAM (beamID));
+571 
+572     sprintf(refpixel, "REFPIXEL%s", beamname);
+573     sprintf(corners,  "CORNERS%s",  beamname);
+574     sprintf(curve,    "CURVE%s",    beamname);
+575     sprintf(width,    "WIDTH%s",    beamname);
+576     sprintf(orient,   "ORIENT%s",   beamname);
+577     sprintf(slitgeom, "SLITGEOM%s", beamname);
+578     sprintf(modspec,  "MODSPEC%s",  beamname);
+579     sprintf(modimage, "MODIMAGE%s", beamname);
+580     sprintf(awidth,   "AWIDTH%s",   beamname);
+581     sprintf(bwidth,   "BWIDTH%s",   beamname);
+582     sprintf(aorient,  "AORIENT%s",  beamname);
+583     sprintf(flux,     "FLUX%s",     beamname);
+584     sprintf(ignore,   "IGNORE%s",   beamname);
+585 
+586     // read in the structure
+587     CfgRead_from_array(aper, AperData);
+588 
+589     for (ix = 0; ix < 13; ix++)
+590       {
+591         // get the ignore flag
+592         if (!strcmp(AperData[ix].name, ignore))
+593           b->ignore = atoi(AperData[ix].data);
+594 
+595         /* Get the reference point */
+596         if (!strcmp(AperData[ix].name, refpixel))
+597           {
+598             if (AperData[ix].data == NULL)
+599               {
+600                 /* Whether the REFPIXEL entry is found or not determine whether t
+      his beam exists or not */
+601                 fprintf(stderr, "%s exit!\n", beamname);
+602                 return 0;
+603               }
+604             b->ID = beamID;
+605             v = string_to_gsl_array(AperData[ix].data);
+606             if (v->size != 2)
+607               {
+608                 aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+609                 "%s definition should contain 2 points.\n"
+610                 "\"%s\" only appears to contain %i.",
+611                 refpixel, AperData[ix].data, v->size);
+612               }
+613             b->refpoint.x = gsl_vector_get(v, 0);
+614             b->refpoint.y = gsl_vector_get(v, 1);
+615             gsl_vector_free(v);
+616           }
+617 
+618         /* Get the bounding box */
+619         if (!strcmp(AperData[ix].name, corners))
+620           {
+621             if (AperData[ix].data == NULL)
+622               aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+623               "%s not found\n", corners);
+624             v = string_to_gsl_array(AperData[ix].data);
+625             if (v->size != 8)
+626               {
+627                 aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+628                 "%s definition must contain 8 (4x2) points.\n"
+629                 "\"%s\" only appears to contain %i.",
+630                 corners, AperData[ix].data, v->size);
+631               }
+632             b->corners[0].x = gsl_vector_get(v, 0);
+633             b->corners[0].y = gsl_vector_get(v, 1);
+634             b->corners[1].x = gsl_vector_get(v, 2);
+635             b->corners[1].y = gsl_vector_get(v, 3);
+636             b->corners[2].x = gsl_vector_get(v, 4);
+637             b->corners[2].y = gsl_vector_get(v, 5);
+638             b->corners[3].x = gsl_vector_get(v, 6);
+639             b->corners[3].y = gsl_vector_get(v, 7);
+640             gsl_vector_free(v);
+641           }
+642 
+643         /* Get and set up the trace */
+644         if (!strcmp(AperData[ix].name, curve))
+645           {
+646             if (AperData[ix].data == NULL)
+647               aXe_message(aXe_M_FATAL, __FILE__, __LINE__, "%s not found\n", curv
+      e);
+648 
+649             // convert the string to an array
+650             v = string_to_gsl_array(AperData[ix].data);
+651               {
+652                 int ii;
+653                 gsl_vector *vv;
+654 
+655                 vv = gsl_vector_alloc(v->size -1);
+656                 for (ii=0; ii<v->size -1; ii++)
+657                   {
+658                     gsl_vector_set(vv, ii, gsl_vector_get(v, ii+1));
+659                   }
+660                 b->spec_trace = create_polyN(vv);
+661                 gsl_vector_free(vv);
+662               }
+663             gsl_vector_free(v);
+664           }
+665 
+666         /* Get the object orientation */
+667         if (!strcmp(AperData[ix].name, orient))
+668           {
+669             if (AperData[ix].data == NULL)
+670               aXe_message(aXe_M_FATAL, __FILE__, __LINE__, "%s not found in %s\n"
+      , orient);
+671             v = string_to_gsl_array(AperData[ix].data);
+672             if (v->size != 1)
+673               {
+674                 aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+675                 "%s definition must contain 1 angle (degrees).\n"
+676                 "\"%s\" appears to contain %i.",
+677                 orient, AperData[ix].data, v->size);
+678               }
+679             /* Convert from SeXtractor angle reference frame to aXe's */
+680             b->orient = (180 + gsl_vector_get(v, 0)) / 180. * M_PI;
+681             while (b->orient > M_PI)
+682               b->orient = b->orient - M_PI;
+683             gsl_vector_free(v);
+684           }
+685 
+686         /* Get the object width */
+687         if (!strcmp(AperData[ix].name, width))
+688           {
+689             if (AperData[ix].data == NULL)
+690               aXe_message(aXe_M_FATAL, __FILE__, __LINE__, "%s not found\n", widt
+      h);
+691             v = string_to_gsl_array(AperData[ix].data);
+692             if (v->size != 1)
+693               {
+694                 aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+695                 "%s definition must contain 1 width (pixel).\n"
+696                 "\"%s\" appears to contain %i.", width,
+697                 AperData[ix].data, v->size);
+698               }
+699             b->width = gsl_vector_get(v, 0);
+700             gsl_vector_free(v);
+701           }
+702 
+703         // get the slit geometry
+704         if (!strcmp(AperData[ix].name, slitgeom))
+705           {
+706             // complain if no data is found
+707             //if (AperData[ix].data == NULL)
+708             //  aXe_message(aXe_M_FATAL, __FILE__, __LINE__, "%s not found\n", sl
+      itgeom);
+709 
+710             if (AperData[ix].data != NULL)
+711               {
+712                 // convert the data string to a number vector
+713                 v = string_to_gsl_array(AperData[ix].data);
+714 
+715                 // check that you get four numbers
+716                 if (v->size != 4)
+717                   aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+718                       "%s definition must contain 1 width (pixel).\n"
+719                       "\"%s\" appears to contain %i.", width,
+720                       AperData[ix].data, v->size);
+721 
+722                 // transfer the data
+723                 b->slitgeom[0] = gsl_vector_get(v, 0);
+724                 b->slitgeom[1] = (gsl_vector_get(v, 1) + 180.0) / 180.0 * M_PI;
+725                 b->slitgeom[2] = gsl_vector_get(v, 2);
+726                 b->slitgeom[3] = gsl_vector_get(v, 3);
+727 
+728                 // free memory
+729                 gsl_vector_free(v);
+730               }
+731           }
+732 
+733         // get the spectral model index
+734         if (!strcmp(AperData[ix].name, modspec))
+735           {
+736             if (AperData[ix].data != NULL)
+737               b->modspec = atoi(AperData[ix].data);
+738           }
+739 
+740         // get the object shape index
+741         if (!strcmp(AperData[ix].name, modimage))
+742           {
+743             if (AperData[ix].data != NULL)
+744               b->modimage = atoi(AperData[ix].data);
+745           }
+746 
+747         /* Get the maximum object width */
+748         if (!strcmp(AperData[ix].name, awidth))
+749           {
+750             if (AperData[ix].data != NULL)
+751               {
+752                 //      fprintf(stderr, "Maximum object is %s.\n", AperData[ix].d
+      ata);
+753                 v = string_to_gsl_array(AperData[ix].data);
+754                 if (v->size != 1)
+755                   {
+756                     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+757                     "%s definition must contain 1 width (pixel).\n"
+758                     "\"%s\" appears to contain %i.", width,
+759                     AperData[ix].data, v->size);
+760                   }
+761                 b->awidth = gsl_vector_get(v, 0);
+762                 gsl_vector_free(v);
+763               }
+764             else
+765               {
+766                 // set the width to a default
+767                 // value
+768                 b->awidth = -1.0;
+769               }
+770           }
+771 
+772         /* Get the minimum object width */
+773         if (!strcmp(AperData[ix].name, bwidth))
+774           {
+775             if (AperData[ix].data != NULL)
+776               {
+777                 //      fprintf(stderr, "Minimum object is %s.\n", AperData[ix].d
+      ata);
+778                 v = string_to_gsl_array(AperData[ix].data);
+779                 if (v->size != 1)
+780                   {
+781                     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+782                     "%s definition must contain 1 width (pixel).\n"
+783                     "\"%s\" appears to contain %i.", width,
+784                     AperData[ix].data, v->size);
+785                   }
+786                 b->bwidth = gsl_vector_get(v, 0);
+787                 gsl_vector_free(v);
+788               }
+789             else
+790               {
+791                 // set the width to a default
+792                 // value
+793                 b->bwidth = -1.0;
+794               }
+795           }
+796 
+797         /* Get the orientation for maximum object width */
+798         if (!strcmp(AperData[ix].name, aorient))
+799           {
+800             if (AperData[ix].data != NULL)
+801               {
+802                 //      fprintf(stderr, "Orienation for awidth is %s.\n", AperDat
+      a[ix].data);
+803                 v = string_to_gsl_array(AperData[ix].data);
+804                 if (v->size != 1)
+805                   {
+806                     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+807                     "%s definition must contain 1 width (pixel).\n"
+808                     "\"%s\" appears to contain %i.", width,
+809                     AperData[ix].data, v->size);
+810                   }
+811                 //  Convert from SeXtractor angle reference frame to aXe's
+812                 b->aorient = (180 + gsl_vector_get(v, 0)) / 180. * M_PI;
+813                 while (b->aorient > M_PI)
+814                   b->aorient = b->aorient - M_PI;
+815                 gsl_vector_free(v);
+816               }
+817           }
+818 
+819         /* Get the flux values */
+820         if (!strcmp(AperData[ix].name, flux))
+821           {
+822             if (AperData[ix].data != NULL)
+823               {
+824                 //      fprintf(stderr, "Flux values are: %s.\n", AperData[ix].da
+      ta);
+825                 fvals = string_to_gsl_array(AperData[ix].data);
+826                 b->flux = fvals;
+827                 //      gsl_vector_free (v);
+828               }
+829           }
+830 
+831         /* Set up the bounding box */
+832         quad_to_bbox(b->corners, b->bbox, b->bbox + 1);
+833 
+834       }
+835     ix = 0;
+836     while (AperData[ix].name!=NULL)
+837       {
+838         free(AperData[ix++].data);
+839       }
+840     return 1;
+841   }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_aa120fb983e10b94e79858e51b4d3e25e}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!get\_\-beamspec\_\-size@{get\_\-beamspec\_\-size}}
+\index{get\_\-beamspec\_\-size@{get\_\-beamspec\_\-size}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{get\_\-beamspec\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-beamspec\_\-size ({\bf object} $\ast$$\ast$ {\em oblist})}}
+\label{inout__aper_8c_aa120fb983e10b94e79858e51b4d3e25e}
+Function: get\_\-beamspec\_\-size The function computes the numbers of beams that are supposed to modelled. This is done by checking the ignore flag of each \hyperlink{structbeam}{beam} in an \hyperlink{structobject}{object} list. Some of the beams might be completely outside of the image are. So the number delivered here is only an upper limit.
+
+Parameter: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ the list of objects\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+specsize -\/ the number of objects to be modeled 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1218 {
+1219   int specsize=0;
+1220   int objectsize=0;
+1221   int i=0;
+1222   int j=0;
+1223 
+1224   // determine the number of objects
+1225   objectsize = object_list_size(oblist);
+1226 
+1227   // go over each object
+1228   for (i=0; i< objectsize; i++)
+1229     {
+1230       // go over each beam
+1231       for (j=0; j < oblist[i]->nbeams; j++)
+1232         {
+1233           // check the ignore flag
+1234           // sum up the counter if permitted
+1235           if (oblist[i]->beams[j].ignore != 1)
+1236             specsize++;
+1237         }
+1238     }
+1239 
+1240   // return the counter
+1241   return specsize;
+1242 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a765604d8aaf1ea2d014d11adb1613fb4}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!nbeams\_\-from\_\-aper\_\-file@{nbeams\_\-from\_\-aper\_\-file}}
+\index{nbeams\_\-from\_\-aper\_\-file@{nbeams\_\-from\_\-aper\_\-file}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{nbeams\_\-from\_\-aper\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}int nbeams\_\-from\_\-aper\_\-file (char $\ast$ {\em filename}, \/  int {\em num})}}
+\label{inout__aper_8c_a765604d8aaf1ea2d014d11adb1613fb4}
+Function: nbeams\_\-from\_\-aper\_\-file Read an Aperture File and returns the number of beams found for a given aperture number (up to MAX\_\-BEAMS)
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ name of Aperture File \item[{\em num}]-\/ number of apertures found in Aperture File\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+nbeam -\/ the number of beams for the aperture 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+393   {
+394     int i, nbeam = 0;
+395     char refpixel[MAXCHAR];
+396 
+397     for (i = 0; i < MAX_BEAMS; i++)
+398       {
+399         struct CfgStrings AperData[] =
+400           {
+401             { refpixel, NULL },
+402             { NULL, NULL } /* array terminator. REQUIRED !!! */
+403           };
+404         sprintf(refpixel, "REFPIXEL%d%c", num, BEAM (i));
+405         CfgRead(filename, AperData);
+406 
+407         if (!strcmp(AperData[0].name, refpixel))
+408           if (AperData[0].data != NULL)
+409             nbeam++;
+410       }
+411     return nbeam;
+412   }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a5bfbf8150f27a4b1df4ab1d10d5bca7d}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!nbeams\_\-from\_\-char\_\-array@{nbeams\_\-from\_\-char\_\-array}}
+\index{nbeams\_\-from\_\-char\_\-array@{nbeams\_\-from\_\-char\_\-array}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{nbeams\_\-from\_\-char\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector\_\-int$\ast$ nbeams\_\-from\_\-char\_\-array (char $\ast$$\ast$ {\em apers}, \/  int {\em num})}}
+\label{inout__aper_8c_a5bfbf8150f27a4b1df4ab1d10d5bca7d}
+Function: nbeams\_\-from\_\-char\_\-array Read an Aperture File and returns an integer array which lists the integer ID's of the beams found in the given aperture.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ name of Aperture File \item[{\em num}]-\/ number of apertures found in Aperture File\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+beamIDs -\/ the array with \hyperlink{structbeam}{beam} ID's 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+471   {
+472     int i, j, nbeam = 0;
+473     char refpixel[MAXCHAR];
+474 
+475     gsl_vector_int *beamIDs;
+476 
+477     // allocate space for all possible beams
+478     beamIDs = gsl_vector_int_alloc(MAX_BEAMS);
+479 
+480     // set all integer ID's to the default value -1
+481     gsl_vector_int_set_all(beamIDs, -1);
+482 
+483     for (i = 0; i < MAX_BEAMS; i++)
+484       {
+485         struct CfgStrings AperData[] =
+486           {
+487             { refpixel, NULL },
+488             { NULL, NULL } /* array terminator. REQUIRED !!! */
+489           };
+490         sprintf(refpixel, "REFPIXEL%d%c", num, BEAM (i));
+491         CfgRead_from_array(apers, AperData);
+492 
+493         if (!strcmp(AperData[0].name, refpixel))
+494           {
+495             if (AperData[0].data != NULL)
+496               {
+497                 // set the integer array to the ID
+498                 gsl_vector_int_set(beamIDs, nbeam, i);
+499                 nbeam++;
+500               }
+501           }
+502 
+503         j = 0;
+504         while (AperData[j].name!=NULL)
+505           free(AperData[j++].data);
+506       }
+507     return beamIDs;
+508   }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_ad6c178c268863d6fa3f2bbe3b3d8f8af}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!nbeams\_\-from\_\-char\_\-array2@{nbeams\_\-from\_\-char\_\-array2}}
+\index{nbeams\_\-from\_\-char\_\-array2@{nbeams\_\-from\_\-char\_\-array2}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{nbeams\_\-from\_\-char\_\-array2}]{\setlength{\rightskip}{0pt plus 5cm}int nbeams\_\-from\_\-char\_\-array2 (char $\ast$$\ast$ {\em apers}, \/  int {\em num})}}
+\label{inout__aper_8c_ad6c178c268863d6fa3f2bbe3b3d8f8af}
+Function: nbeams\_\-from\_\-char\_\-array2 Read an Aperture File and returns the number of beams found for a given aperture number (up to MAX\_\-BEAMS)
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ name of Aperture File \item[{\em num}]-\/ number of apertures found in Aperture File\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+nbeam -\/ the number of beams for the aperture 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+429   {
+430     int i, j, nbeam = 0;
+431     char refpixel[MAXCHAR];
+432 
+433     for (i = 0; i < MAX_BEAMS; i++)
+434       {
+435         struct CfgStrings AperData[] = {
+436               {refpixel, NULL},
+437               {NULL, NULL}    /* array terminator. REQUIRED !!! */
+438         };
+439         sprintf (refpixel, "REFPIXEL%d%c", num, BEAM (i));
+440         CfgRead_from_array (apers, AperData);
+441 
+442         if (!strcmp (AperData[0].name, refpixel))
+443           {
+444             if (AperData[0].data != NULL)
+445               {
+446                 nbeam++;
+447               }
+448           }
+449         j = 0;
+450         while(AperData[j].name!=NULL){
+451           free(AperData[j++].data);
+452         }
+453       }
+454     return nbeam;
+455   }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_aa4bd812673400180537c7ea98650d3fe}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!object\_\-list\_\-size@{object\_\-list\_\-size}}
+\index{object\_\-list\_\-size@{object\_\-list\_\-size}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{object\_\-list\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int object\_\-list\_\-size ({\bf object} $\ast$$\ast$ {\em oblist})}}
+\label{inout__aper_8c_aa4bd812673400180537c7ea98650d3fe}
+Function: object\_\-list\_\-size This function returns the number of element in an array of objects.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ a NULL terminated array of objects\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+i -\/ number of elements 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1191 {
+1192     int i=0;
+1193 
+1194     if (oblist==NULL) return 0;
+1195 
+1196     while (oblist[i] != NULL)
+1197       i++;
+1198 
+1199     return i;
+1200 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a881264311a05c31fe2ce9343bfb7f2d5}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!object\_\-list\_\-to\_\-file@{object\_\-list\_\-to\_\-file}}
+\index{object\_\-list\_\-to\_\-file@{object\_\-list\_\-to\_\-file}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{object\_\-list\_\-to\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}int object\_\-list\_\-to\_\-file ({\bf object} $\ast$const $\ast$ {\em oblist}, \/  char $\ast$ {\em filename}, \/  int {\em leaveout\_\-ignored})}}
+\label{inout__aper_8c_a881264311a05c31fe2ce9343bfb7f2d5}
+Function: object\_\-list\_\-to\_\-file Dump an \hyperlink{structobject}{object} apperture list into a file
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ a point to an \hyperlink{structobject}{object} list \item[{\em filename}]-\/ name of the file to write output \item[{\em leaveout\_\-ignored}]-\/ if ignore=1 beams are left out of the aper file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+num -\/ number of beams written to the aperture file 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+28 {
+29   FILE *file;
+30   object *const *obp;
+31   const beam *b;
+32   char refpixel[MAXCHAR];
+33   char corners[MAXCHAR];
+34   char curve[MAXCHAR];
+35   char width[MAXCHAR];
+36   char orient[MAXCHAR];
+37   //char bwindow[MAXCHAR];
+38   char awidth[MAXCHAR];
+39   char bwidth[MAXCHAR];
+40   char aorient[MAXCHAR];
+41   char flux[MAXCHAR];
+42   char slitgeom[MAXCHAR];
+43   char modspec[MAXCHAR];
+44   char modimage[MAXCHAR];
+45   char ignore[MAXCHAR];
+46   char tmps[MAXCHAR];
+47   int oid, i, ii, num = 0;
+48   char label[80];
+49   double *cf;
+50   int wrote_aper;
+51   //int j = 0;
+52 
+53   // open the output file;
+54   // give error in case of problems
+55   file = fopen (filename, "w");
+56   if (file==NULL)
+57     {
+58       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Could not open %s", filename
+      );
+59     }
+60 
+61   // go over the apertures
+62   for (obp = oblist; *obp; obp++)
+63     {
+64       oid = (*obp)->ID;
+65       wrote_aper = 0;
+66       for (i = 0; i < (*obp)->nbeams; i++)
+67         {
+68           b = &((*obp)->beams[i]);
+69           if ((leaveout_ignored) && (b->ignore == 1))
+70             continue;
+71 
+72           if (!wrote_aper)
+73             {
+74               fprintf (file, "APERTURE %i\n", oid);
+75               wrote_aper = 1;
+76             }
+77 
+78           sprintf (label, "Aperture %i, BEAM %c", oid, BEAM (i));
+79 
+80           fprintf (file, "  BEAM %c\n", BEAM (i));
+81 
+82           /* Output REFPIXEL info */
+83           sprintf (refpixel,
+84               "     REFPIXEL%i%c %.3f %.3f"
+85               " \t\t\t\t;%s Reference Pixel.", oid, BEAM (i),
+86               b->refpoint.x, b->refpoint.y, label);
+87 
+88           /* Output CORNERS aperture info */
+89           sprintf (corners,
+90               "     CORNERS%i%c  %i %i %i %i %i %i %i %i"
+91               " \t\t;%s Aperture Coordinates.", oid, BEAM (i),
+92               b->corners[0].x, b->corners[0].y, b->corners[1].x,
+93               b->corners[1].y, b->corners[2].x, b->corners[2].y,
+94               b->corners[3].x, b->corners[3].y, label);
+95 
+96           /* Output CURVE trace description info */
+97           sprintf (curve,"     CURVE%i%c    %i", oid, BEAM (i), b->spec_trace->
+      type);
+98           cf = b->spec_trace->data;
+99 
+100           for (ii=0;ii<b->spec_trace->type + 1;ii++)
+101             {
+102               sprintf(tmps," %.3e",cf[ii+1]);
+103               strcat(curve,tmps);
+104             }
+105           sprintf(tmps,"\t\t\t;%s Trace description.",label);
+106           strcat(curve,tmps);
+107 
+108           /* Output WIDTH width of object info */
+109           sprintf (width,
+110               "     WIDTH%i%c    %.3f \t\t\t\t\t;%s Object Width.",
+111               oid, BEAM (i), b->width, label);
+112 
+113           /* Output ORIENT orientation angle of object info */
+114           /* Angle reference frame is converted from aXe's to SeXtractor */
+115           sprintf (orient,
+116               "     ORIENT%i%c   %.3f \t\t\t\t\t;%s Object Orientation.",
+117               oid, BEAM (i), ((b->orient) / M_PI * 180. - 180.), label);
+118 
+119 
+120           if (b->slitgeom[0] > -1.0)
+121             {
+122               /* Output CORNERS aperture info */
+123               sprintf (slitgeom,
+124                   "     SLITGEOM%i%c %.2f %.2f %.2f %.2f \t\t; %s Object Orientat
+      ion.", oid, BEAM (i),
+125                   b->slitgeom[0],
+126                   b->slitgeom[1] / M_PI * 180. - 180.,
+127                   b->slitgeom[2],
+128                   b->slitgeom[3],
+129                   label);
+130             }
+131 
+132           if (b->modspec >-1)
+133             {
+134               // outputmodel spectrum value
+135               sprintf (modspec,
+136                   "     MODSPEC%i%c  %3i \t\t\t\t;%s, Index for model spectrum.",
+      
+137                   oid, BEAM (i), b->modspec, label);
+138             }
+139           if (b->modimage >-1)
+140             {
+141               // output model image value
+142               sprintf (modimage,
+143                   "     MODIMAGE%i%c  %3i \t\t\t\t;%s, Index for direct emission.
+      ",
+144                   oid, BEAM (i), b->modimage, label);
+145             }
+146 
+147           if (b->awidth > 0.0)
+148             {
+149               /* Output AWIDTH width of object info */
+150               sprintf (awidth,
+151                   "     AWIDTH%i%c   %.3f \t\t\t\t\t\t;%s Maximum Object Width.",
+      
+152                   oid, BEAM (i), b->awidth, label);
+153 
+154               /* Output BWIDTH width of object info */
+155               sprintf (bwidth,
+156                   "     BWIDTH%i%c   %.3f \t\t\t\t\t\t;%s Minimum Object Width.",
+      
+157                   oid, BEAM (i), b->bwidth, label);
+158 
+159               /* Output AORIENT angle of object info */
+160               sprintf (aorient,
+161                   "     AORIENT%i%c  %.3f \t\t\t\t\t\t;%s Orientation of Max. Obj
+      ect Width.",
+162                   oid, BEAM (i), b->aorient, label);
+163 
+164               // print the identifier
+165               sprintf (flux,"     FLUX%i%c    ", oid, BEAM (i));
+166 
+167               // go over all flux vector values
+168               for (ii=0;ii<b->flux->size;ii++)
+169                 {
+170                   // print and append the current value
+171                   sprintf(tmps," %.5e", gsl_vector_get(b->flux, ii));
+172                   strcat(flux,tmps);
+173                 }
+174               // print an append the comment
+175               sprintf(tmps,"\t\t;%s Flux values.",label);
+176               strcat(flux,tmps);
+177             }
+178 
+179           /* Output IGNORE flag */
+180           sprintf (ignore,
+181               "     IGNORE%i%c   %1d  \t\t\t\t\t;%s ignore this beam.",
+182               oid, BEAM (i), b->ignore, label);
+183 
+184           // write the beam components to the file
+185           fprintf (file, "%s\n", refpixel);
+186           fprintf (file, "%s\n", corners);
+187           fprintf (file, "%s\n", curve);
+188           fprintf (file, "%s\n", width);
+189           fprintf (file, "%s\n", orient);
+190           if (b->slitgeom[0] > -1.0)
+191             fprintf (file, "%s\n", slitgeom);
+192           if (b->modspec > -1)
+193             fprintf (file, "%s\n", modspec);
+194           if (b->modimage > -1)
+195               fprintf (file, "%s\n", modimage);
+196           if (b->awidth > 0.0)
+197             {
+198               fprintf (file, "%s\n", awidth);
+199               fprintf (file, "%s\n", bwidth);
+200               fprintf (file, "%s\n", aorient);
+201               fprintf (file, "%s\n", flux);
+202             }
+203           fprintf (file, "%s\n", ignore);
+204 
+205           // mark the beam end
+206           fprintf (file, "  BEAM END\n");
+207 
+208           // enhance the beam counter
+209           num++;
+210         }
+211       if (wrote_aper)
+212         fprintf (file, "APERTURE END\n\n");
+213       }
+214   fclose (file);
+215   return num;
+216 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a76950235f36088ca98cd60aa2e431086}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!refurbish\_\-object\_\-list@{refurbish\_\-object\_\-list}}
+\index{refurbish\_\-object\_\-list@{refurbish\_\-object\_\-list}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{refurbish\_\-object\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}void refurbish\_\-object\_\-list ({\bf object} $\ast$$\ast$ {\em oblist}, \/  const int {\em new\_\-default}, \/  const int {\em old\_\-value}, \/  const int {\em new\_\-value})}}
+\label{inout__aper_8c_a76950235f36088ca98cd60aa2e431086}
+
+
+
+\begin{DoxyCode}
+1156 {
+1157   //object *act_obj;
+1158   beam   *act_beam;
+1159 
+1160   int j=0;
+1161   int i=0;
+1162 
+1163   i=0;
+1164   while (oblist != NULL && oblist[i] != NULL)
+1165     {
+1166       // go over all beams in the matchin object
+1167       for (j=0; j < oblist[i]->nbeams; j++)
+1168         {
+1169           act_beam = &oblist[i]->beams[j];
+1170           if (act_beam->ignore == old_value)
+1171             act_beam->ignore = new_value;
+1172           else
+1173             act_beam->ignore = new_default;
+1174         }
+1175       i++;
+1176     }
+1177 }
+\end{DoxyCode}
+\hypertarget{inout__aper_8c_a5610d36eaa966760f40180225de8faeb}{
+\index{inout\_\-aper.c@{inout\_\-aper.c}!return\_\-next\_\-aperture@{return\_\-next\_\-aperture}}
+\index{return\_\-next\_\-aperture@{return\_\-next\_\-aperture}!inout_aper.c@{inout\_\-aper.c}}
+\subsubsection[{return\_\-next\_\-aperture}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ return\_\-next\_\-aperture (FILE $\ast$ {\em input})}}
+\label{inout__aper_8c_a5610d36eaa966760f40180225de8faeb}
+Function: return\_\-next\_\-aperture this function allocates and returns an array of strings containing the content of the next APERTURE in an already opened aperture file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em input}]-\/ a pointer to an opened Aperture File\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+aper -\/ a pointer to a newly allocated array of strings 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+976   {
+977     char *WorkPtr;
+978     char Buffer[BUFFERSIZE], Buffer2[BUFFERSIZE];
+979     char *key;
+980     int new_aper=0;
+981     char **aper=NULL;
+982     int nlines= MAX_BEAMS*APER_MAXLINE, i=0;
+983 
+984     /* Allocate enough room to allow for MAXBEAM in returned string array */
+985 
+986     aper = (char **) malloc(sizeof(char *)*nlines);
+987     for (i=0; i<nlines; i++)
+988       aper[i] = malloc(sizeof(char)*BUFFERSIZE);
+989 
+990     i=0;
+991     while (NULL != fgets (Buffer, BUFFERSIZE, input))
+992       {
+993         strcpy(Buffer2,Buffer);
+994         /* clip off optional comment tail indicated by a semi-colon */
+995         if (NULL != (WorkPtr = strchr (Buffer, ';')))
+996           *WorkPtr = '\0';
+997         else
+998           WorkPtr = Buffer + strlen (Buffer);
+999 
+1000         /* clip off trailing and leading white space*/
+1001         WorkPtr--;
+1002         while (isspace ((int) *WorkPtr) && WorkPtr >= Buffer)
+1003           *WorkPtr-- = '\0';
+1004 
+1005         WorkPtr = Buffer;
+1006         while (isspace ((int) *WorkPtr))
+1007           WorkPtr++;
+1008 
+1009         if (0 == strlen (WorkPtr))
+1010           continue;
+1011         key = strtok (WorkPtr, " =");
+1012 
+1013         if (!strcmp(key,"APERTURE"))
+1014           new_aper++;
+1015 
+1016         sprintf(aper[i++],"%s",Buffer2);
+1017 
+1018         if (new_aper==2)
+1019           {
+1020             //sprintf(aper[i++],"NULL\0");
+1021                         sprintf(aper[i++],"NULL");
+1022             return aper;
+1023           }
+1024         }
+1025     return aper;
+1026   }
+\end{DoxyCode}

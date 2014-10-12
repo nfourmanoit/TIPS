@@ -1,0 +1,274 @@
+\hypertarget{spce__is__in_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-is\_\-in.c File Reference}
+\label{spce__is__in_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-is\_\-in.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-is\_\-in.c}}
+}
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-sect.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-is\_\-in.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespce__is__in}{spce\_\-is\_\-in}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spce__is__in_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{SQR}(x)~((x)$\ast$(x))
+\item 
+\#define \hyperlink{spce__is__in_8c_a74e75242132eaabbc1c512488a135926}{MIN}(x, y)~(((x)$<$(y))?(x):(y))
+\item 
+\#define \hyperlink{spce__is__in_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{MAX}(x, y)~(((x)$>$(y))?(x):(y))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{spce__is__in_8c_a5b58b28890b71cfe2f8f9a4a3a77f3bb}{fill\_\-triag\_\-struct} (\hyperlink{structtriangle}{triangle} $\ast$const trig, \hyperlink{structpx__point}{px\_\-point} points\mbox{[}3\mbox{]})
+\item 
+int \hyperlink{spce__is__in_8c_aea6b944b77bec44a66189391cdeeada1}{fill\_\-is\_\-in\_\-descriptor} (\hyperlink{structis__in__descriptor}{is\_\-in\_\-descriptor} $\ast$const iid, const \hyperlink{structpx__point}{px\_\-point} $\ast$const corners)
+\item 
+static int \hyperlink{spce__is__in_8c_ae09098a74a7ee9084f4dfaaaacfe3fc0}{is\_\-in\_\-triag} (const int pix\_\-x, const int pix\_\-y, const \hyperlink{structtriangle}{triangle} $\ast$const trig)
+\item 
+int \hyperlink{spce__is__in_8c_a3dffa5865ba3264ef10bed7249bac60e}{is\_\-in} (const int x, const int y, const \hyperlink{structis__in__descriptor}{is\_\-in\_\-descriptor} $\ast$const iid)
+\item 
+int \hyperlink{spce__is__in_8c_abce25363efe229bc8b56395baac38d60}{tracedist\_\-criteria} (const double x, const double y, \hyperlink{structsectionfun}{sectionfun} $\ast$sf, const \hyperlink{structtrace__func}{trace\_\-func} $\ast$tracefun, const double width)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spce__is__in_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{
+\index{spce\_\-is\_\-in.c@{spce\_\-is\_\-in.c}!MAX@{MAX}}
+\index{MAX@{MAX}!spce_is_in.c@{spce\_\-is\_\-in.c}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(x, \/  y)~(((x)$>$(y))?(x):(y))}}
+\label{spce__is__in_8c_aacc3ee1a7f283f8ef65cea31f4436a95}
+\hypertarget{spce__is__in_8c_a74e75242132eaabbc1c512488a135926}{
+\index{spce\_\-is\_\-in.c@{spce\_\-is\_\-in.c}!MIN@{MIN}}
+\index{MIN@{MIN}!spce_is_in.c@{spce\_\-is\_\-in.c}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(x, \/  y)~(((x)$<$(y))?(x):(y))}}
+\label{spce__is__in_8c_a74e75242132eaabbc1c512488a135926}
+\hypertarget{spce__is__in_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{
+\index{spce\_\-is\_\-in.c@{spce\_\-is\_\-in.c}!SQR@{SQR}}
+\index{SQR@{SQR}!spce_is_in.c@{spce\_\-is\_\-in.c}}
+\subsubsection[{SQR}]{\setlength{\rightskip}{0pt plus 5cm}\#define SQR(x)~((x)$\ast$(x))}}
+\label{spce__is__in_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}
+
+
+\subsection{Function Documentation}
+\hypertarget{spce__is__in_8c_aea6b944b77bec44a66189391cdeeada1}{
+\index{spce\_\-is\_\-in.c@{spce\_\-is\_\-in.c}!fill\_\-is\_\-in\_\-descriptor@{fill\_\-is\_\-in\_\-descriptor}}
+\index{fill\_\-is\_\-in\_\-descriptor@{fill\_\-is\_\-in\_\-descriptor}!spce_is_in.c@{spce\_\-is\_\-in.c}}
+\subsubsection[{fill\_\-is\_\-in\_\-descriptor}]{\setlength{\rightskip}{0pt plus 5cm}int fill\_\-is\_\-in\_\-descriptor ({\bf is\_\-in\_\-descriptor} $\ast$const  {\em iid}, \/  const {\bf px\_\-point} $\ast$const  {\em corners})}}
+\label{spce__is__in_8c_aea6b944b77bec44a66189391cdeeada1}
+pre-\/computes some constant items for deciding whether a point is in a given convex \hyperlink{structquadrangle}{quadrangle}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em iid}]the descriptor to fill \item[{\em corners}]the corners of the \hyperlink{structquadrangle}{quadrangle} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for success, -\/1 for error 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+69 {
+70   px_point points[3];
+71 
+72   points[0] = corners[0];
+73   points[1] = corners[1];
+74   points[2] = corners[3];
+75   iid->mini =
+76     MIN (MIN (MIN (corners[0].x, corners[1].x), corners[2].x),
+77          corners[3].x);
+78   iid->maxi =
+79     MAX (MAX (MAX (corners[0].x, corners[1].x), corners[2].x),
+80          corners[3].x);
+81   iid->minj =
+82     MIN (MIN (MIN (corners[0].y, corners[1].y), corners[2].y),
+83          corners[3].y);
+84   iid->maxj =
+85     MAX (MAX (MAX (corners[0].y, corners[1].y), corners[2].y),
+86          corners[3].y);
+87 
+88   fill_triag_struct (&(iid->trig1), points);
+89   points[0] = corners[2];
+90   points[1] = corners[1];
+91   points[2] = corners[3];
+92   fill_triag_struct (&(iid->trig2), points);
+93   return 0;
+94 }
+\end{DoxyCode}
+\hypertarget{spce__is__in_8c_a5b58b28890b71cfe2f8f9a4a3a77f3bb}{
+\index{spce\_\-is\_\-in.c@{spce\_\-is\_\-in.c}!fill\_\-triag\_\-struct@{fill\_\-triag\_\-struct}}
+\index{fill\_\-triag\_\-struct@{fill\_\-triag\_\-struct}!spce_is_in.c@{spce\_\-is\_\-in.c}}
+\subsubsection[{fill\_\-triag\_\-struct}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-triag\_\-struct ({\bf triangle} $\ast$const  {\em trig}, \/  {\bf px\_\-point} {\em points}\mbox{[}3\mbox{]})}}
+\label{spce__is__in_8c_a5b58b28890b71cfe2f8f9a4a3a77f3bb}
+Fills a \hyperlink{structtriangle}{triangle} structure and makes sure the angle at points\mbox{[}0\mbox{]} is $<$=90 deg.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em trig}]the struct to fill. \item[{\em points}]the three point at the corners of the \hyperlink{structtriangle}{triangle}. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+37 {
+38   trig->root = points[0];
+39   trig->s.x = points[1].x - points[0].x;
+40   trig->s.y = points[1].y - points[0].y;
+41   trig->t.x = points[2].x - points[0].x;
+42   trig->t.y = points[2].y - points[0].y;
+43   trig->sabs = sqrt (SQR (trig->s.x) + SQR (trig->s.y));
+44   trig->tabs = sqrt (SQR (trig->t.x) + SQR (trig->t.y));
+45   trig->s_t = trig->s.x * trig->t.x + trig->s.y * trig->t.y;
+46   
+47   if (trig->s_t / trig->sabs / trig->tabs < 0)
+48     {
+49       px_point tmp;
+50       tmp = points[0];
+51       points[0] = points[1];
+52       points[1] = tmp;
+53       fill_triag_struct (trig, points);
+54     }
+55 }
+\end{DoxyCode}
+\hypertarget{spce__is__in_8c_a3dffa5865ba3264ef10bed7249bac60e}{
+\index{spce\_\-is\_\-in.c@{spce\_\-is\_\-in.c}!is\_\-in@{is\_\-in}}
+\index{is\_\-in@{is\_\-in}!spce_is_in.c@{spce\_\-is\_\-in.c}}
+\subsubsection[{is\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}int is\_\-in (const int {\em x}, \/  const int {\em y}, \/  const {\bf is\_\-in\_\-descriptor} $\ast$const  {\em iid})}}
+\label{spce__is__in_8c_a3dffa5865ba3264ef10bed7249bac60e}
+Decides if a point is within a \hyperlink{structquadrangle}{quadrangle}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]The x-\/coordinate of the point. \item[{\em y}]The y-\/coordinate of the point. \item[{\em iid}]The descriptor of the \hyperlink{structquadrangle}{quadrangle}. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if point is in \hyperlink{structquadrangle}{quadrangle}, 0 otherwise. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{spce__is__in_8h_aea6b944b77bec44a66189391cdeeada1}{fill\_\-is\_\-in\_\-descriptor} 
+\end{DoxySeeAlso}
+
+
+
+\begin{DoxyCode}
+180 {
+181   if ((x < iid->mini) || (x > iid->maxi) || (y < iid->minj)
+182       || (y > iid->maxj))
+183     return 0;
+184   
+185   if (is_in_triag (x, y, &(iid->trig1)))
+186     return 1;
+187   if (is_in_triag (x, y, &(iid->trig2)))
+188     return 1;
+189   return 0;
+190 }
+\end{DoxyCode}
+\hypertarget{spce__is__in_8c_ae09098a74a7ee9084f4dfaaaacfe3fc0}{
+\index{spce\_\-is\_\-in.c@{spce\_\-is\_\-in.c}!is\_\-in\_\-triag@{is\_\-in\_\-triag}}
+\index{is\_\-in\_\-triag@{is\_\-in\_\-triag}!spce_is_in.c@{spce\_\-is\_\-in.c}}
+\subsubsection[{is\_\-in\_\-triag}]{\setlength{\rightskip}{0pt plus 5cm}static int is\_\-in\_\-triag (const int {\em pix\_\-x}, \/  const int {\em pix\_\-y}, \/  const {\bf triangle} $\ast$const  {\em trig})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spce__is__in_8c_ae09098a74a7ee9084f4dfaaaacfe3fc0}
+decides if a point is within a \hyperlink{structtriangle}{triangle}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em pix\_\-x}]x-\/coordinate of the point to check. \item[{\em pix\_\-y}]y-\/coordinate of the point to check. \item[{\em trig}]a pointer to the \hyperlink{structtriangle}{triangle} structure. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if point is in \hyperlink{structtriangle}{triangle}, 0 otherwise. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+108 {
+109   int x, y;
+110   double p_s, p_t, pabs, xsqrtarg, ysqrtarg, xp, yp;
+111   
+112   x = pix_x - trig->root.x;
+113   y = pix_y - trig->root.y;
+114   p_s = trig->s.x * x + trig->s.y * y;
+115   p_t = trig->t.x * x + trig->t.y * y;
+116   pabs = sqrt (SQR (x) + SQR (y));
+117   xsqrtarg =
+118     (1 - SQR (p_s) / SQR (pabs) / SQR (trig->sabs)) / (1 - SQR (trig->s_t) / SQR 
+      (trig->sabs) / SQR (trig->tabs));
+119   ysqrtarg =
+120     (1 - SQR (p_t) / SQR (pabs) / SQR (trig->tabs)) / (1 - SQR (trig->s_t) / SQR 
+      (trig->sabs) / SQR (trig->tabs));
+121 
+122   if (xsqrtarg < 0)
+123     {
+124       if (xsqrtarg > -1e-8)
+125         {
+126           xsqrtarg = 0;
+127         }
+128       else
+129         {
+130           printf ("is_in_triag: %d %d x%g\n", x, y, xsqrtarg);
+131           xsqrtarg = 0;
+132           
+133           //abort ();
+134         }
+135     }
+136   if (ysqrtarg < 0)
+137     {
+138       if (ysqrtarg > -1e-8)
+139         {
+140           ysqrtarg = 0;
+141         }
+142       else
+143         {
+144           printf ("is_in_triag: y%g\n", ysqrtarg);
+145           ysqrtarg = 0;
+146           
+147           //abort ();
+148         }
+149     }
+150   
+151   xp = 1. / SQR (trig->sabs) * (p_s -
+152                                 trig->s_t * pabs / trig->tabs *
+153                                 sqrt (xsqrtarg));
+154   yp = 1. / SQR (trig->tabs) * (p_t -
+155                                 trig->s_t * pabs / trig->sabs *
+156                                 sqrt (ysqrtarg));
+157 
+158   
+159   /* The 1.0xx1 should be harmless for 
+160      quadrangles that are not too extended since these points are at
+161      the point where the triangles are stitched together. */
+162   if ((-1e-10 <= xp) && (-1e-10 <= yp) && ((xp + yp) < (1.0 + 1e-10)))
+163     return 1;
+164   
+165   return 0;
+166 }
+\end{DoxyCode}
+\hypertarget{spce__is__in_8c_abce25363efe229bc8b56395baac38d60}{
+\index{spce\_\-is\_\-in.c@{spce\_\-is\_\-in.c}!tracedist\_\-criteria@{tracedist\_\-criteria}}
+\index{tracedist\_\-criteria@{tracedist\_\-criteria}!spce_is_in.c@{spce\_\-is\_\-in.c}}
+\subsubsection[{tracedist\_\-criteria}]{\setlength{\rightskip}{0pt plus 5cm}int tracedist\_\-criteria (const double {\em x}, \/  const double {\em y}, \/  {\bf sectionfun} $\ast$ {\em sf}, \/  const {\bf trace\_\-func} $\ast$ {\em tracefun}, \/  const double {\em width})}}
+\label{spce__is__in_8c_abce25363efe229bc8b56395baac38d60}
+
+
+
+\begin{DoxyCode}
+195 {
+196   double x_sect, y_sect;
+197   double dist;
+198   //double max_dist;
+199 
+200   int ireturn=0;
+201 
+202 
+203   find_section_point (sf, x, y, &x_sect);
+204   y_sect = tracefun->func (x_sect, tracefun->data);
+205  
+206   dist =  sqrt((y_sect-y)*(y_sect-y)+(x_sect-x)*(x_sect-x));
+207 
+208   if (dist < width)
+209     ireturn=1;
+210 
+211   return ireturn;
+212 }
+\end{DoxyCode}

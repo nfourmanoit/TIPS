@@ -1,0 +1,1218 @@
+\hypertarget{fringe__conf_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/fringe\_\-conf.h File Reference}
+\label{fringe__conf_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/fringe\_\-conf.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/fringe\_\-conf.h}}
+}
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$fitsio.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-interp.h$>$}\par
+{\ttfamily \#include \char`\"{}spc\_\-cfg.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structinterpolator}{interpolator}
+\item 
+struct \hyperlink{structlinear__interp}{linear\_\-interp}
+\item 
+struct \hyperlink{structccd__layer}{ccd\_\-layer}
+\item 
+struct \hyperlink{structccd__layers}{ccd\_\-layers}
+\item 
+struct \hyperlink{structfringe__conf}{fringe\_\-conf}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacefringe__conf}{fringe\_\-conf}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{fringe__conf_8h_a0a58ebfe806f868715ab7caba6285b9f}{NLAYERS\_\-MIN}~1
+\item 
+\#define \hyperlink{fringe__conf_8h_a1d8c6508482b95e72fc85e4b802999ee}{DEFAULT\_\-FRINGE\_\-STEP}~1.0
+\item 
+\#define \hyperlink{fringe__conf_8h_a618bdff9433319a955f0700bc82074be}{DEFAULT\_\-NUM\_\-STEPS}~100
+\item 
+\#define \hyperlink{fringe__conf_8h_a8ffc4b0d4cb1280039d9fa4c31785c33}{DEFAULT\_\-MAX\_\-DISPERSION}~1.0e+4
+\item 
+\#define \hyperlink{fringe__conf_8h_a126bdbfe2f61bd9f9bad4dee9615b7db}{DEFAULT\_\-MIN\_\-LAMBDA}~0.0
+\item 
+\#define \hyperlink{fringe__conf_8h_a0d23450665e4659eefa507d3d80c6305}{DEFAULT\_\-MAX\_\-LAMBDA}~2.0e+4
+\item 
+\#define \hyperlink{fringe__conf_8h_aee45f3007241406bbff51414aa630450}{FILTER\_\-THRESHOLD}~1.0e-\/05
+\item 
+\#define \hyperlink{fringe__conf_8h_a71212969dcee17149ade8393c642f454}{FILTER\_\-INTERP\_\-TYPE}~gsl\_\-interp\_\-linear
+\item 
+\#define \hyperlink{fringe__conf_8h_abe41c0b8e1e12ca4a1bbb16ed612fd01}{REFRAC\_\-INTERP\_\-TYPE}~gsl\_\-interp\_\-linear
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structccd__layer}{ccd\_\-layer} $\ast$ \hyperlink{fringe__conf_8h_a1d76d924398c2542446dbdbd5521485b}{load\_\-CCD\_\-layer} (const char refr\_\-table\mbox{[}$\,$\mbox{]}, const char thickness\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{fringe__conf_8h_a62b89222400c54b0d21b885711bb7406}{free\_\-CCD\_\-layer} (\hyperlink{structccd__layer}{ccd\_\-layer} $\ast$opt\_\-layer)
+\item 
+\hyperlink{structccd__layers}{ccd\_\-layers} $\ast$ \hyperlink{fringe__conf_8h_a172fbb75598773ad5e4d71975d888271}{load\_\-CCD\_\-layers} (char fring\_\-conf\_\-path\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{fringe__conf_8h_a87b98282bd83f1a69bce0c15d85c7524}{free\_\-CCD\_\-layers} (\hyperlink{structccd__layers}{ccd\_\-layers} $\ast$opt\_\-layers)
+\item 
+\hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$ \hyperlink{fringe__conf_8h_aa25be18a72ccd0510353165b78ce9cc2}{load\_\-fringe\_\-conf} (char fring\_\-conf\_\-path\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{fringe__conf_8h_a70c73e94f297b9b203fb0dcbe0484aad}{check\_\-fringe\_\-conf} (\hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf)
+\item 
+void \hyperlink{fringe__conf_8h_a9909b9fec924b9264b18fe2ac4ea5aa7}{free\_\-fringe\_\-conf} (\hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{fringe__conf_8h_a24151a564bd44662f254eb263fbda53c}{create\_\-interp\_\-ftable} (const char table\_\-name\mbox{[}$\,$\mbox{]}, const int fdunum, char xcol\mbox{[}$\,$\mbox{]}, char ycol\mbox{[}$\,$\mbox{]}, const gsl\_\-interp\_\-type $\ast$T)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{fringe__conf_8h_a970b309082c5565bd69f416eef888c2f}{create\_\-interp} (const int nvals, const gsl\_\-interp\_\-type $\ast$interp\_\-type, double $\ast$xvals, double $\ast$yvals)
+\item 
+void \hyperlink{fringe__conf_8h_aa8e6b6c598ef076a3b99c7a06dcdbec7}{print\_\-interp} (\hyperlink{structinterpolator}{interpolator} $\ast$interp)
+\item 
+double \hyperlink{fringe__conf_8h_ace9546cd2761b6436b8295f6ce94fba1}{eval\_\-interp} (\hyperlink{structinterpolator}{interpolator} $\ast$interp, const double xval)
+\item 
+void \hyperlink{fringe__conf_8h_a518a01a879febbaf974b85585defaf7c}{free\_\-interp} (\hyperlink{structinterpolator}{interpolator} $\ast$interp)
+\item 
+\hyperlink{structlinear__interp}{linear\_\-interp} $\ast$ \hyperlink{fringe__conf_8h_a8dca48e540ff4e45025aefbe95c310dc}{create\_\-linint\_\-ftable} (const char table\_\-name\mbox{[}$\,$\mbox{]}, const int fdunum, char xcol\mbox{[}$\,$\mbox{]}, char ycol\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{fringe__conf_8h_ac9a0aad96ba56eade6c619aed71ea9f6}{free\_\-linint} (\hyperlink{structlinear__interp}{linear\_\-interp} $\ast$lin\_\-int)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{fringe__conf_8h_a1d8c6508482b95e72fc85e4b802999ee}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!DEFAULT\_\-FRINGE\_\-STEP@{DEFAULT\_\-FRINGE\_\-STEP}}
+\index{DEFAULT\_\-FRINGE\_\-STEP@{DEFAULT\_\-FRINGE\_\-STEP}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{DEFAULT\_\-FRINGE\_\-STEP}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEFAULT\_\-FRINGE\_\-STEP~1.0}}
+\label{fringe__conf_8h_a1d8c6508482b95e72fc85e4b802999ee}
+\hypertarget{fringe__conf_8h_a8ffc4b0d4cb1280039d9fa4c31785c33}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!DEFAULT\_\-MAX\_\-DISPERSION@{DEFAULT\_\-MAX\_\-DISPERSION}}
+\index{DEFAULT\_\-MAX\_\-DISPERSION@{DEFAULT\_\-MAX\_\-DISPERSION}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{DEFAULT\_\-MAX\_\-DISPERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEFAULT\_\-MAX\_\-DISPERSION~1.0e+4}}
+\label{fringe__conf_8h_a8ffc4b0d4cb1280039d9fa4c31785c33}
+\hypertarget{fringe__conf_8h_a0d23450665e4659eefa507d3d80c6305}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!DEFAULT\_\-MAX\_\-LAMBDA@{DEFAULT\_\-MAX\_\-LAMBDA}}
+\index{DEFAULT\_\-MAX\_\-LAMBDA@{DEFAULT\_\-MAX\_\-LAMBDA}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{DEFAULT\_\-MAX\_\-LAMBDA}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEFAULT\_\-MAX\_\-LAMBDA~2.0e+4}}
+\label{fringe__conf_8h_a0d23450665e4659eefa507d3d80c6305}
+\hypertarget{fringe__conf_8h_a126bdbfe2f61bd9f9bad4dee9615b7db}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!DEFAULT\_\-MIN\_\-LAMBDA@{DEFAULT\_\-MIN\_\-LAMBDA}}
+\index{DEFAULT\_\-MIN\_\-LAMBDA@{DEFAULT\_\-MIN\_\-LAMBDA}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{DEFAULT\_\-MIN\_\-LAMBDA}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEFAULT\_\-MIN\_\-LAMBDA~0.0}}
+\label{fringe__conf_8h_a126bdbfe2f61bd9f9bad4dee9615b7db}
+\hypertarget{fringe__conf_8h_a618bdff9433319a955f0700bc82074be}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!DEFAULT\_\-NUM\_\-STEPS@{DEFAULT\_\-NUM\_\-STEPS}}
+\index{DEFAULT\_\-NUM\_\-STEPS@{DEFAULT\_\-NUM\_\-STEPS}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{DEFAULT\_\-NUM\_\-STEPS}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEFAULT\_\-NUM\_\-STEPS~100}}
+\label{fringe__conf_8h_a618bdff9433319a955f0700bc82074be}
+\hypertarget{fringe__conf_8h_a71212969dcee17149ade8393c642f454}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!FILTER\_\-INTERP\_\-TYPE@{FILTER\_\-INTERP\_\-TYPE}}
+\index{FILTER\_\-INTERP\_\-TYPE@{FILTER\_\-INTERP\_\-TYPE}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{FILTER\_\-INTERP\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define FILTER\_\-INTERP\_\-TYPE~gsl\_\-interp\_\-linear}}
+\label{fringe__conf_8h_a71212969dcee17149ade8393c642f454}
+\hypertarget{fringe__conf_8h_aee45f3007241406bbff51414aa630450}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!FILTER\_\-THRESHOLD@{FILTER\_\-THRESHOLD}}
+\index{FILTER\_\-THRESHOLD@{FILTER\_\-THRESHOLD}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{FILTER\_\-THRESHOLD}]{\setlength{\rightskip}{0pt plus 5cm}\#define FILTER\_\-THRESHOLD~1.0e-\/05}}
+\label{fringe__conf_8h_aee45f3007241406bbff51414aa630450}
+\hypertarget{fringe__conf_8h_a0a58ebfe806f868715ab7caba6285b9f}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!NLAYERS\_\-MIN@{NLAYERS\_\-MIN}}
+\index{NLAYERS\_\-MIN@{NLAYERS\_\-MIN}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{NLAYERS\_\-MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define NLAYERS\_\-MIN~1}}
+\label{fringe__conf_8h_a0a58ebfe806f868715ab7caba6285b9f}
+\hypertarget{fringe__conf_8h_abe41c0b8e1e12ca4a1bbb16ed612fd01}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!REFRAC\_\-INTERP\_\-TYPE@{REFRAC\_\-INTERP\_\-TYPE}}
+\index{REFRAC\_\-INTERP\_\-TYPE@{REFRAC\_\-INTERP\_\-TYPE}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{REFRAC\_\-INTERP\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define REFRAC\_\-INTERP\_\-TYPE~gsl\_\-interp\_\-linear}}
+\label{fringe__conf_8h_abe41c0b8e1e12ca4a1bbb16ed612fd01}
+
+
+\subsection{Function Documentation}
+\hypertarget{fringe__conf_8h_a70c73e94f297b9b203fb0dcbe0484aad}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!check\_\-fringe\_\-conf@{check\_\-fringe\_\-conf}}
+\index{check\_\-fringe\_\-conf@{check\_\-fringe\_\-conf}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{check\_\-fringe\_\-conf}]{\setlength{\rightskip}{0pt plus 5cm}void check\_\-fringe\_\-conf ({\bf fringe\_\-conf} $\ast$ {\em fconf})}}
+\label{fringe__conf_8h_a70c73e94f297b9b203fb0dcbe0484aad}
+Function: check\_\-fringe\_\-conf
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fconf}]-\/ the fringe configuration structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+456 {
+457   // make  sure the fringe amplitude is set
+458   if (!fconf->fringe_amp)
+459     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+460                  "fringe_conf: The fringing amplitude must\n"
+461                  "be set to be able determining pixel fringing!\n");
+462 
+463   // make  sure the fringe phase is set
+464   if (fconf->fringe_phase > 1.0e+31)
+465     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+466                  "fringe_conf: The fringing phase must\n"
+467                  "be set to be able determining pixel fringing!\n");
+468 
+469   // make  sure the transmission of the substrate
+470   // layer is given
+471   if (!fconf->opt_layers->substrate)
+472     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+473                  "fringe_conf: The substrate transmission\n"
+474                  "must be given to be able determining pixel fringing!\n");
+475 
+476   // make sure that there is a minimum 
+477   // number of layers.
+478   if (fconf->opt_layers->num_layers < NLAYERS_MIN)
+479     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+480                  "The number of layers in the configuration\n file is %i. "
+481                  "There must be at least: %i!\n",
+482                  fconf->opt_layers->num_layers, NLAYERS_MIN);
+483   
+484   // if not defined, give a meaningfull
+485   // default for the fringing range
+486    if (!fconf->fringe_range)
+487     {
+488       fconf->fringe_range = gsl_vector_alloc(2);
+489       gsl_vector_set(fconf->fringe_range, 0, DEFAULT_MIN_LAMBDA);
+490       gsl_vector_set(fconf->fringe_range, 1, DEFAULT_MAX_LAMBDA);
+491       fprintf(stdout, "Setting the fringing range to defaults: [ %f, %f].\n",
+492               DEFAULT_MIN_LAMBDA, DEFAULT_MAX_LAMBDA);
+493     }
+494    
+495    // give reasonable default for
+496    // the fringe step
+497    if (!fconf->fringe_step)
+498      {
+499        fconf->fringe_step = DEFAULT_FRINGE_STEP;
+500        fprintf(stdout, "Setting the fringing step to default: %f.\n",
+501                DEFAULT_FRINGE_STEP);
+502      }
+503 
+504    // give a reasonable default for the
+505    // number of steps 
+506    if (!fconf->num_steps)
+507      {
+508        fconf->num_steps = DEFAULT_NUM_STEPS;
+509        fprintf(stdout, "Setting the number of steps to default: %i.\n",
+510                DEFAULT_NUM_STEPS);
+511      }
+512    
+513    // give a reasonable default for the
+514    // maximum dispersion to correct for 
+515    if (!fconf->max_dispersion)
+516      {
+517        fconf->max_dispersion = DEFAULT_MAX_DISPERSION;
+518        fprintf(stdout, "Setting the maximal dispersion to default: %f.\n",
+519                DEFAULT_MAX_DISPERSION);
+520      }
+521 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a970b309082c5565bd69f416eef888c2f}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!create\_\-interp@{create\_\-interp}}
+\index{create\_\-interp@{create\_\-interp}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{create\_\-interp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ create\_\-interp (const int {\em nvals}, \/  const gsl\_\-interp\_\-type $\ast$ {\em interp\_\-type}, \/  double $\ast$ {\em xvals}, \/  double $\ast$ {\em yvals})}}
+\label{fringe__conf_8h_a970b309082c5565bd69f416eef888c2f}
+Function: create\_\-interp The function creates, and intializes and returns an \hyperlink{structinterpolator}{interpolator} from the basic input, which is the data, the number of data items and the \hyperlink{structinterpolator}{interpolator} type requested.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em nvals}]-\/ the number of data values in the arrays \item[{\em interp\_\-type}]-\/ the interpolation type \item[{\em xvals}]-\/ the array with the independent data values \item[{\em yvals}]-\/ the array with the dependent data values\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+interp -\/ the interpolation structure created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+734 {
+735   interpolator *interp;
+736 
+737   // allocate space for the return structure;
+738   // complain if this fails
+739   interp = (interpolator *)malloc (sizeof (interpolator));
+740   if (interp == NULL)
+741     {
+742       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+743                    "Could not allocate memory for interpolator");
+744     }
+745 
+746   // store the min and max values
+747   interp->xmin    = xvals[0];
+748   interp->xmax    = xvals[nvals-1];
+749 
+750   // check for ascending order in the
+751   // independent values
+752   if (interp->xmax < interp->xmin)
+753     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+754                  "The independent data values to be stored\n"
+755                  " in an interplator must be in INCREASING order!\n");
+756 
+757   // store the number of data values
+758   interp->nvals   = nvals;
+759 
+760   // store the data arrays
+761   interp->xvals   = xvals;
+762   interp->yvals   = yvals;
+763 
+764   // create and intitialize the gsl inteprolator
+765   interp->acc     = gsl_interp_accel_alloc();
+766   interp->interp  = gsl_interp_alloc(interp_type, interp->nvals);
+767   gsl_interp_init(interp->interp, interp->xvals, interp->yvals, interp->nvals);
+768 
+769   // return the new structure
+770   return interp;
+771 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a24151a564bd44662f254eb263fbda53c}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!create\_\-interp\_\-ftable@{create\_\-interp\_\-ftable}}
+\index{create\_\-interp\_\-ftable@{create\_\-interp\_\-ftable}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{create\_\-interp\_\-ftable}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ create\_\-interp\_\-ftable (const char {\em table\_\-name}\mbox{[}$\,$\mbox{]}, \/  const int {\em hdunum}, \/  char {\em xcol}\mbox{[}$\,$\mbox{]}, \/  char {\em ycol}\mbox{[}$\,$\mbox{]}, \/  const gsl\_\-interp\_\-type $\ast$ {\em interp\_\-type})}}
+\label{fringe__conf_8h_a24151a564bd44662f254eb263fbda53c}
+Function: create\_\-interp\_\-ftable This function cretaes an \hyperlink{structinterpolator}{interpolator} from data values stored in a fits table. An \hyperlink{structinterpolator}{interpolator} is a structure to hold all data to compute the interpolated data values for different interpolation methods. Core of this structure is the \hyperlink{structinterpolator}{interpolator} types offered in the gsl-\/library. This function is a tool to extract the relevant data points from a fits table and to set up and return the \hyperlink{structinterpolator}{interpolator}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em table\_\-name}]-\/ the name of the fits table \item[{\em hdunum}]-\/ the extension number with the data \item[{\em xcol}]-\/ the column name with the indepenent values \item[{\em ycol}]-\/ the column name with the dependent values \item[{\em interp\_\-type}]-\/ the interpolation type\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+interp -\/ the interpolation structure created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+580 {
+581 
+582   interpolator *interp;
+583 
+584   double *x;
+585   double *y;
+586   int    f_status = 0;
+587   int hdutype, anynul;
+588   long nrows=0;
+589   int colnum=0;
+590 
+591   fitsfile *input;
+592 
+593   // allocate space for the return structure;
+594   // complain if this fails
+595   //    interp = (interpolator *)malloc (sizeof (interpolator));
+596   //   if (interp == NULL)
+597   //     {
+598   //        aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+599   //               "Could not allocate memory for interpolator");
+600   //      }
+601 
+602 #ifdef DEBUGFCONF
+603   fprintf(stderr, "Loading columns %s and %s of fitstable: %s\n", xcol, ycol, tab
+      le_name);
+604 #endif
+605 
+606   //  Open the file for reading
+607   fits_open_file (&input, table_name, READONLY, &f_status);
+608   if (f_status)
+609     {
+610       ffrprt (stderr, f_status);
+611       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+612                    "get_response_function_fromFITS: "
+613                    "Could not open" " file: %s",
+614                    table_name);
+615     }  
+616 
+617   /* Move to the correct hdu */
+618   fits_movabs_hdu (input, hdunum, &hdutype, &f_status);
+619   if (f_status)
+620     {
+621       ffrprt (stderr, f_status);
+622       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+623                    "create_interp_ftable:"
+624                    "Could not read extention %d from file: %s", 
+625                    hdunum, table_name);
+626     }
+627 
+628   /* Get number of rows */
+629   fits_get_num_rows (input, &nrows, &f_status);
+630   if (f_status) {
+631     ffrprt (stderr, f_status);
+632     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+633                  "create_interp_ftable: "
+634                  "Could not determine the number of rows in"
+635                  " table %s",table_name);
+636   }
+637 
+638   /* Allocate temporary memory space */
+639   x = (double *) malloc(nrows*sizeof(double));
+640   if (!x) { 
+641     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+642                  "Memory allocation failed");
+643   }
+644   y = (double *) malloc(nrows*sizeof(double));
+645   if (!y) {
+646     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+647                  "Memory allocation failed");
+648   }
+649 
+650   /**************************/
+651   /* Read the X-column      */
+652   /**************************/
+653   /* Get column number */
+654   fits_get_colnum (input, CASEINSEN, xcol, &colnum, &f_status);
+655   if (f_status)
+656     {
+657       ffrprt (stderr, f_status);
+658       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+659                    "create_interp_ftable: "
+660                    "Could not determine column %s in "
+661                    " table %s", xcol, table_name);
+662     }
+663  
+664   /* Read the data */  
+665   fits_read_col (input, TDOUBLE, colnum, 1, 1, nrows, NULL, x,
+666                     &anynul, &f_status);
+667   if (f_status)
+668     {
+669       ffrprt (stderr, f_status);
+670       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+671                    "create_interp_ftable: "
+672                    "Could not read content of WAVELENGTH column "
+673                    " from BINARY table %s",table_name);
+674     }
+675 
+676   /**************************/
+677   /* Read the y-column      */
+678   /**************************/
+679   /* Get column number */
+680   fits_get_colnum (input, CASEINSEN, ycol, &colnum, &f_status);
+681   if (f_status)
+682     {
+683       ffrprt (stderr, f_status);
+684       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+685                    "create_interp_ftable: "
+686                    "Could not determine column %s in "
+687                    " table %s", ycol, table_name);
+688     }
+689  
+690   /* Read the data */  
+691   fits_read_col (input, TDOUBLE, colnum, 1, 1, nrows, NULL, y,
+692                     &anynul, &f_status);
+693   if (f_status)
+694     {
+695       ffrprt (stderr, f_status);
+696       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+697                    "create_interp_ftable: "
+698                    "Could not read column %s"
+699                    " from BINARY table %s", ycol, table_name);
+700     }
+701 
+702   fits_close_file(input,&f_status);
+703   if (f_status) {
+704       aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+705                    "Could not close %s", table_name);
+706   }
+707 
+708   // create the interpolator
+709   interp = create_interp(nrows, interp_type, x, y);
+710 
+711   // return the interpolator
+712   return interp;
+713 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a8dca48e540ff4e45025aefbe95c310dc}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!create\_\-linint\_\-ftable@{create\_\-linint\_\-ftable}}
+\index{create\_\-linint\_\-ftable@{create\_\-linint\_\-ftable}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{create\_\-linint\_\-ftable}]{\setlength{\rightskip}{0pt plus 5cm}{\bf linear\_\-interp}$\ast$ create\_\-linint\_\-ftable (const char {\em table\_\-name}\mbox{[}$\,$\mbox{]}, \/  const int {\em hdunum}, \/  char {\em xcol}\mbox{[}$\,$\mbox{]}, \/  char {\em ycol}\mbox{[}$\,$\mbox{]})}}
+\label{fringe__conf_8h_a8dca48e540ff4e45025aefbe95c310dc}
+Function: create\_\-linint\_\-ftable This function creates a linear \hyperlink{structinterpolator}{interpolator} from data values stored in a fits table. An linear \hyperlink{structinterpolator}{interpolator} is a structure to hold all data to compute the linear interpolated data values at any point bracketed by the data. This function is a tool to extract the relevant data points from a fits table and to set up and return the linear \hyperlink{structinterpolator}{interpolator}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em table\_\-name}]-\/ the name of the fits table \item[{\em hdunum}]-\/ the extension number with the data \item[{\em xcol}]-\/ the column name with the indepenent values \item[{\em ycol}]-\/ the column name with the dependent values \item[{\em interp\_\-type}]-\/ the interpolation type\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+lin\_\-int -\/ the linear interplator structure created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+888 {
+889 
+890   linear_interp *lin_int;
+891 
+892   double *x;
+893   double *y;
+894   int    f_status = 0;
+895   int hdutype, anynul;
+896   long nrows=0;
+897   int colnum;
+898   int index=0;
+899 
+900   gsl_vector *xvals;
+901   gsl_vector *yvals;
+902 
+903   fitsfile *input;
+904 
+905   // allocate space for the return structure;
+906   // complain if this fails
+907   lin_int = (linear_interp *)malloc (sizeof (linear_interp));
+908   if (lin_int == NULL)
+909     {
+910       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+911                    "Could not allocate memory for linear interpolator");
+912     }
+913 
+914 #ifdef DEBUGFCONF
+915   fprintf(stderr, "Loading columns %s and %s of fitstable: %s\n", xcol, ycol, tab
+      le_name);
+916 #endif
+917 
+918   //  Open the file for reading
+919   fits_open_file (&input, table_name, READONLY, &f_status);
+920   if (f_status)
+921     {
+922       ffrprt (stderr, f_status);
+923       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+924                    "get_response_function_fromFITS: "
+925                    "Could not open" " file: %s",
+926                    table_name);
+927     }  
+928 
+929   /* Move to the correct hdu */
+930   fits_movabs_hdu (input, hdunum, &hdutype, &f_status);
+931   if (f_status)
+932     {
+933       ffrprt (stderr, f_status);
+934       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+935                    "create_interp_ftable:"
+936                    "Could not read extention %d from file: %s", 
+937                    hdunum, table_name);
+938     }
+939 
+940   /* Get number of rows */
+941   fits_get_num_rows (input, &nrows, &f_status);
+942   if (f_status) {
+943     ffrprt (stderr, f_status);
+944     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+945                  "create_interp_ftable: "
+946                  "Could not determine the number of rows in"
+947                  " table %s",table_name);
+948   }
+949 
+950   /* Allocate temporary memory space */
+951   x = (double *) malloc(nrows*sizeof(double));
+952   if (!x) { 
+953     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+954                  "Memory allocation failed");
+955   }
+956   y = (double *) malloc(nrows*sizeof(double));
+957   if (!y) {
+958     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+959                  "Memory allocation failed");
+960   }
+961 
+962   /**************************/
+963   /* Read the X-column      */
+964   /**************************/
+965   /* Get column number */
+966   fits_get_colnum (input, CASEINSEN, xcol, &colnum, &f_status);
+967   if (f_status)
+968     {
+969       ffrprt (stderr, f_status);
+970       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+971                    "create_interp_ftable: "
+972                    "Could not determine column %s in "
+973                    " table %s", xcol, table_name);
+974     }
+975  
+976   /* Read the data */  
+977   fits_read_col (input, TDOUBLE, colnum, 1, 1, nrows, NULL, x,
+978                     &anynul, &f_status);
+979   if (f_status)
+980     {
+981       ffrprt (stderr, f_status);
+982       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+983                    "create_interp_ftable: "
+984                    "Could not read content of WAVELENGTH column "
+985                    " from BINARY table %s",table_name);
+986     }
+987 
+988   /**************************/
+989   /* Read the y-column      */
+990   /**************************/
+991   /* Get column number */
+992   fits_get_colnum (input, CASEINSEN, ycol, &colnum, &f_status);
+993   if (f_status)
+994     {
+995       ffrprt (stderr, f_status);
+996       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+997                    "create_interp_ftable: "
+998                    "Could not determine column %s in "
+999                    " table %s", ycol, table_name);
+1000     }
+1001  
+1002   /* Read the data */  
+1003   fits_read_col (input, TDOUBLE, colnum, 1, 1, nrows, NULL, y,
+1004                     &anynul, &f_status);
+1005   if (f_status)
+1006     {
+1007       ffrprt (stderr, f_status);
+1008       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1009                    "create_interp_ftable: "
+1010                    "Could not read column %s"
+1011                    " from BINARY table %s", ycol, table_name);
+1012     }
+1013 
+1014   fits_close_file(input,&f_status);
+1015   if (f_status) {
+1016       aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+1017                    "Could not close %s", table_name);
+1018   }
+1019   
+1020 #ifdef DEBUGFCONF
+1021   fprintf(stderr, "Number of rows: %i\n", nrows);
+1022 #endif
+1023 
+1024   // allocate space for the two vectors
+1025   xvals = gsl_vector_alloc(nrows);
+1026   yvals = gsl_vector_alloc(nrows);
+1027 
+1028   // transport the values from the
+1029   // arrays to the gsl-arrays
+1030   for (index=0; index < nrows; index++)
+1031     {
+1032       gsl_vector_set(xvals, index, x[index]);
+1033       gsl_vector_set(yvals, index, y[index]);      
+1034     }
+1035 
+1036   // reverse both vectors if necessary
+1037   if (gsl_vector_get(xvals, 0) > gsl_vector_get(xvals, nrows-1))
+1038     {
+1039       gsl_vector_reverse(xvals);
+1040       gsl_vector_reverse(yvals);
+1041     }
+1042 
+1043   // set the two helper elements
+1044   lin_int->act_index = 0;
+1045   lin_int->num_elem  = nrows;
+1046 
+1047   // set the minimum and maximum
+1048   lin_int->xmin = gsl_vector_get(xvals, 0);
+1049   lin_int->xmax = gsl_vector_get(xvals, nrows-1);
+1050 
+1051   // set the two vectors
+1052   lin_int->xvals = xvals;
+1053   lin_int->yvals = yvals;
+1054 
+1055   // release memory in the temp variables
+1056   free(x);
+1057   free(y);
+1058 
+1059   // return the new structure
+1060   return lin_int;
+1061 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_ace9546cd2761b6436b8295f6ce94fba1}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!eval\_\-interp@{eval\_\-interp}}
+\index{eval\_\-interp@{eval\_\-interp}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{eval\_\-interp}]{\setlength{\rightskip}{0pt plus 5cm}double eval\_\-interp ({\bf interpolator} $\ast$ {\em interp}, \/  const double {\em xval})}}
+\label{fringe__conf_8h_ace9546cd2761b6436b8295f6ce94fba1}
+Function: eval\_\-interp The function computes and returns the interpolated value at a given position for an interpolater.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em interp}]-\/ the \hyperlink{structinterpolator}{interpolator} \item[{\em xval}]-\/ the position to evaluate the \hyperlink{structinterpolator}{interpolator}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+(value) -\/ the interpolated data value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+819 {
+820   // check whether the x-value is within 
+821   // the range spanned by the data;
+822   // complain if the x-value is outside
+823   if (xval < interp->xmin || xval > interp->xmax)
+824       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+825                    "independent interpolation value %f "
+826                    "is outside interval (%f, %f)\n", xval,
+827                    interp->xmin, interp->xmax);
+828 
+829   // evaluate and return the interpolated value
+830   // in on the spot
+831   return  gsl_interp_eval(interp->interp, interp->xvals, interp->yvals,
+832                           xval, interp->acc);
+833 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a62b89222400c54b0d21b885711bb7406}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!free\_\-CCD\_\-layer@{free\_\-CCD\_\-layer}}
+\index{free\_\-CCD\_\-layer@{free\_\-CCD\_\-layer}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{free\_\-CCD\_\-layer}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-CCD\_\-layer ({\bf ccd\_\-layer} $\ast$ {\em opt\_\-layer})}}
+\label{fringe__conf_8h_a62b89222400c54b0d21b885711bb7406}
+Function: free\_\-CCD\_\-layer The function releases all the memory allocated in a structure for a CCD layer.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em opt\_\-layer}]-\/ structure for CCD layer\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+123 {
+124   // free the thickness matrix
+125   if (opt_layer->thickness2D)
+126     gsl_matrix_free(opt_layer->thickness2D);
+127 
+128   // free both interpolators
+129   free_interp(opt_layer->re_refraction);
+130   free_interp(opt_layer->im_refraction);
+131 
+132   // free the rest
+133   free(opt_layer);
+134 
+135   // set the structure to NULL
+136   opt_layer = NULL;
+137 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a87b98282bd83f1a69bce0c15d85c7524}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!free\_\-CCD\_\-layers@{free\_\-CCD\_\-layers}}
+\index{free\_\-CCD\_\-layers@{free\_\-CCD\_\-layers}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{free\_\-CCD\_\-layers}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-CCD\_\-layers ({\bf ccd\_\-layers} $\ast$ {\em opt\_\-layers})}}
+\label{fringe__conf_8h_a87b98282bd83f1a69bce0c15d85c7524}
+Function: free\_\-CCD\_\-layers The function releases all memory allocated in a CCD layers structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em opt\_\-layers}]-\/ the CCD layers structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+261 {
+262   int index=0;
+263 
+264   // free each layer individually
+265   for (index=0; index < opt_layers->num_layers; index++)
+266       free_CCD_layer(opt_layers->opt_layer[index]);
+267     
+268   // free the interpolator for the substrate
+269   //  free_linint(opt_layers->substrate);
+270   free_interp(opt_layers->substrate);
+271 
+272   // free everything
+273   free(opt_layers);
+274 
+275   // set the structure to NULL
+276   opt_layers = NULL;
+277 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a9909b9fec924b9264b18fe2ac4ea5aa7}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!free\_\-fringe\_\-conf@{free\_\-fringe\_\-conf}}
+\index{free\_\-fringe\_\-conf@{free\_\-fringe\_\-conf}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{free\_\-fringe\_\-conf}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-fringe\_\-conf ({\bf fringe\_\-conf} $\ast$ {\em fconf})}}
+\label{fringe__conf_8h_a9909b9fec924b9264b18fe2ac4ea5aa7}
+Function: free\_\-fringe\_\-conf The function deallocates all memory in a fringe configuration structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fconf}]-\/ the fringe configuration structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+536 {
+537 
+538 
+539   // free the filter throughput
+540   if (fconf->filter_through)
+541     free_interp(fconf->filter_through);
+542 
+543   // free the optical layers
+544   free_CCD_layers(fconf->opt_layers);
+545 
+546   // free the fringe range
+547   gsl_vector_free(fconf->fringe_range);
+548   fconf->fringe_range = NULL;
+549 
+550   // free everything
+551   free(fconf); 
+552 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a518a01a879febbaf974b85585defaf7c}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!free\_\-interp@{free\_\-interp}}
+\index{free\_\-interp@{free\_\-interp}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{free\_\-interp}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-interp ({\bf interpolator} $\ast$ {\em interp})}}
+\label{fringe__conf_8h_a518a01a879febbaf974b85585defaf7c}
+Function: free\_\-interp the function frees all memory allocated in an \hyperlink{structinterpolator}{interpolator} structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em interp}]-\/ the \hyperlink{structinterpolator}{interpolator} structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+849 {
+850   // free the data vectors
+851   free(interp->xvals);
+852   free(interp->yvals);
+853 
+854   // free the two gsl structures
+855   gsl_interp_accel_free(interp->acc);
+856   gsl_interp_free (interp->interp);
+857 
+858   // free the rest
+859   free(interp);
+860 
+861   // set it to NULL
+862   interp = NULL;
+863 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_ac9a0aad96ba56eade6c619aed71ea9f6}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!free\_\-linint@{free\_\-linint}}
+\index{free\_\-linint@{free\_\-linint}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{free\_\-linint}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-linint ({\bf linear\_\-interp} $\ast$ {\em lin\_\-int})}}
+\label{fringe__conf_8h_ac9a0aad96ba56eade6c619aed71ea9f6}
+Function: free\_\-linint The function frees all memory allocated in a linear \hyperlink{structinterpolator}{interpolator} structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em lin\_\-int}]-\/ the linear inteprolator\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1077 {
+1078   // free the two gsl-vectors
+1079   gsl_vector_free(lin_int->xvals);
+1080   gsl_vector_free(lin_int->yvals);
+1081 
+1082   // free the whole structure
+1083   free(lin_int);
+1084 
+1085   // set the structure to NULL
+1086   lin_int = NULL;
+1087 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a1d76d924398c2542446dbdbd5521485b}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!load\_\-CCD\_\-layer@{load\_\-CCD\_\-layer}}
+\index{load\_\-CCD\_\-layer@{load\_\-CCD\_\-layer}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{load\_\-CCD\_\-layer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ccd\_\-layer}$\ast$ load\_\-CCD\_\-layer (const char {\em refr\_\-table}\mbox{[}$\,$\mbox{]}, \/  const char {\em thickness}\mbox{[}$\,$\mbox{]})}}
+\label{fringe__conf_8h_a1d76d924398c2542446dbdbd5521485b}
+Function: load\_\-CCD\_\-layer The function creates and returns a structure for an optical CCD layer. The input parameters are interpreted, and the data which defines the CCD layer is loaded.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em refr\_\-table}]-\/ the name of the refractive index table \item[{\em thickness}]-\/ the value for the thicknes keyword (number or image name)\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+opt\_\-layer -\/ the optical layer created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+38 {
+39   ccd_layer *opt_layer;
+40 
+41   float tvalue;
+42 
+43   char **t_err=NULL;
+44 
+45   char refr_table_path[MAXCHAR];
+46   char thickness_path[MAXCHAR];
+47 
+48   // build the full pathname to the refraction table
+49   build_path (AXE_CONFIG_PATH, refr_table, refr_table_path);
+50 
+51 
+52   // allocate an error array
+53   t_err = (char **) malloc(sizeof(char *)*1);
+54 
+55   // allocate space for the return structure;
+56   // complain if this fails
+57   opt_layer = (ccd_layer *)malloc(sizeof(ccd_layer));
+58 
+59   // initialize both, the single value
+60   // as well as the matrix to NULL;
+61   opt_layer->thickness   = 0.0;
+62   opt_layer->thickness2D = NULL;
+63 
+64   // convert the keyvalue to a float
+65   // tvalue = atof(thickness);
+66   tvalue = strtod(thickness,t_err);
+67 
+68   // in case the float value is NULL = 0.0
+69   // the conversion failed, and it must be a string
+70   //  if (tvalue)
+71   if (strcmp(thickness, t_err[0]))
+72     {
+73 #ifdef DEBUGFCONF
+74       fprintf(stderr, "Setting the layer thickness to value: %f mum\n",tvalue);
+75 #endif
+76       // set the fixed thickness value
+77       opt_layer->thickness = tvalue;
+78     }
+79   else
+80     {
+81 #ifdef DEBUGFCONF
+82       fprintf(stderr, "Loading layer thickness image: %s\n", thickness);
+83 #endif
+84 
+85       // build the full pathname to the thickness image
+86       build_path (AXE_CONFIG_PATH, thickness, thickness_path);
+87       
+88       // load the 2D image for the thickness
+89       opt_layer->thickness2D = FITSimage_to_gsl(thickness_path, 1, 1);
+90     }
+91 
+92 #ifdef DEBUGFCONF
+93       fprintf(stderr, "Loading refractive index table: %s\n", refr_table);
+94 #endif
+95   // load the real part of the refraction index
+96   opt_layer->re_refraction = 
+97     create_interp_ftable(refr_table_path, 2, "WAVELENGTH", "N",
+98                          REFRAC_INTERP_TYPE);
+99 
+100   // load the real part of the refraction index
+101   opt_layer->im_refraction =
+102     create_interp_ftable(refr_table_path, 2, "WAVELENGTH", "K",
+103                          REFRAC_INTERP_TYPE);
+104 
+105   // return the optical layer
+106   return opt_layer;
+107 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_a172fbb75598773ad5e4d71975d888271}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!load\_\-CCD\_\-layers@{load\_\-CCD\_\-layers}}
+\index{load\_\-CCD\_\-layers@{load\_\-CCD\_\-layers}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{load\_\-CCD\_\-layers}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ccd\_\-layers}$\ast$ load\_\-CCD\_\-layers (char {\em fring\_\-conf\_\-path}\mbox{[}$\,$\mbox{]})}}
+\label{fringe__conf_8h_a172fbb75598773ad5e4d71975d888271}
+Function: load\_\-CCD\_\-layers The function extracts from a fringe configuration file all information on individual CCD layers. It creates the appropriate structure for every CCD layer, and creates and returns a structure which completely describes all layers in a CCD.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fring\_\-conf\_\-path}]-\/ the name of a fringe configuration file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+opt\_\-layers -\/ the structure for the optical layers created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+156 {
+157   ccd_layers *opt_layers;
+158 
+159   char layer[MAXCHAR];
+160   char refr_table[MAXCHAR];
+161 
+162   //int nlayers;
+163   int i=0;
+164 
+165   struct CfgStrings LayerConfig[] = {
+166     {NULL, NULL},
+167     {NULL, NULL}
+168   };
+169   
+170   LayerConfig[0].name = layer;
+171 
+172   // allocate space for the return structure;
+173   // complain if this fails
+174   opt_layers = malloc (sizeof (ccd_layers));
+175 
+176   // initialize the substrate
+177   opt_layers->substrate = NULL;
+178 
+179   // detemrine the number of layers
+180   // which are described in the
+181   //configuration file
+182   opt_layers->num_layers = 0;
+183   for (i = 0; i < MAX_BEAMS; i++)
+184     {
+185       sprintf (layer, "REFR_INDEX_%c", BEAM (i));
+186       CfgRead (fring_conf_path, LayerConfig);
+187       if (LayerConfig[0].data != NULL)
+188         {
+189           opt_layers->num_layers += 1;
+190           LayerConfig[0].data = NULL;
+191         }
+192     }
+193 
+194   //  if (opt_layers->num_layers < NLAYERS_MIN)
+195   //    aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+196   //             "The number of layers in the configuration\n file is %i. "
+197   //             "There must be at least: %i!\n",
+198   //             opt_layers->num_layers, NLAYERS_MIN);
+199 
+200 
+201   // allocate space for the array to
+202   // the layers described in the 
+203   // configuration file
+204   opt_layers->opt_layer =
+205     (ccd_layer **)malloc (opt_layers->num_layers*sizeof(ccd_layers));
+206 
+207   // successively find the 
+208   // description and finally
+209   // load all layers
+210   for (i = 0; i < MAX_BEAMS; i++)
+211     {
+212       // chekc for the first relevant keyword
+213       sprintf (layer, "REFR_INDEX_%c", BEAM (i));
+214       CfgRead (fring_conf_path, LayerConfig);
+215       if (LayerConfig[0].data != NULL)
+216         {
+217           sprintf (refr_table, "%s", LayerConfig[0].data);
+218           LayerConfig[0].data = NULL;
+219 
+220           // check for the second relevant keyword
+221           sprintf (layer, "THICKNESS_%c", BEAM (i));
+222           CfgRead (fring_conf_path, LayerConfig);
+223           if (LayerConfig[0].data != NULL)
+224             {
+225               // load the layer
+226               opt_layers->opt_layer[i] = 
+227                 load_CCD_layer(refr_table, LayerConfig[0].data);
+228 
+229               LayerConfig[0].data = NULL;
+230             }
+231           else
+232             {
+233               // complain that a keyword is missing
+234               // for a layer
+235               aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+236                            "Could load index table %s,\n"
+237                            "but not thickness information "
+238                            "for beam %c\n", refr_table, BEAM (i));
+239             }
+240         }
+241     }
+242 
+243   // return the whole structure
+244   return opt_layers;
+245 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_aa25be18a72ccd0510353165b78ce9cc2}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!load\_\-fringe\_\-conf@{load\_\-fringe\_\-conf}}
+\index{load\_\-fringe\_\-conf@{load\_\-fringe\_\-conf}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{load\_\-fringe\_\-conf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fringe\_\-conf}$\ast$ load\_\-fringe\_\-conf (char {\em fring\_\-conf\_\-path}\mbox{[}$\,$\mbox{]})}}
+\label{fringe__conf_8h_aa25be18a72ccd0510353165b78ce9cc2}
+Function: load\_\-fringe\_\-conf The function loads the fringe configuration file given as parameter. All relevant data marked with keywords is extracted. A fringe configuration structure is built up and returned from the data given in the keyvalues.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fring\_\-conf\_\-path}]-\/ the complete path-\/name to a fringe configuration file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+fconf -\/ the fringe configuration structure created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+295 {
+296   char beam[MAXCHAR];
+297 
+298   char ffile_name[MAXCHAR];
+299   char ffile_name_path[MAXCHAR];
+300 
+301   int index=0;
+302 
+303   fringe_conf *fconf=NULL;
+304 
+305   gsl_vector *v=NULL;
+306 
+307   struct CfgStrings FringeConfig[] = 
+308     {
+309       {"FRINGE_AMPLITUDE", NULL},
+310       {"FRINGE_PHASE", NULL},
+311       {"FRINGE_RANGE", NULL},
+312       {"MAX_DISPERSION", NULL},
+313       {"FILTER_NAME", NULL},
+314       {"FRINGE_STEP",NULL},
+315       {"NUM_STEPS",NULL},
+316       {"SUBSTR_TRANS",NULL},
+317       
+318       {NULL, NULL},
+319       {NULL, NULL}              /* array terminator. REQUIRED !!! */
+320     };
+321   
+322 
+323   FringeConfig[8].name = beam;
+324 
+325   // allocate space for the return structure;
+326   // complain if this fails
+327   fconf = malloc (sizeof (fringe_conf));
+328   if (fconf == NULL)
+329     {
+330       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+331                    "Could not allocate memory for fringe configuration");
+332     }
+333 
+334   // load the optical layers directly from the file
+335   fconf->opt_layers = load_CCD_layers(fring_conf_path);
+336 
+337   // read in the file
+338   CfgRead (fring_conf_path, FringeConfig);
+339 
+340   // make some intitializations
+341   fconf->fringe_amp     = 0.0;
+342   fconf->fringe_phase   = 1.0e+32;
+343   fconf->fringe_step    = 0.0;
+344   fconf->num_steps      = 0;
+345   fconf->fringe_range   = NULL;
+346   fconf->max_dispersion = 0.0;
+347   fconf->filter_through = NULL;
+348 
+349 
+350   for (index = 0; index < 9; index++)
+351     {
+352       
+353       // read in the fringe amplitude
+354       if (!strcmp (FringeConfig[index].name, "FRINGE_AMPLITUDE"))
+355         {
+356           if (FringeConfig[index].data != NULL)
+357             {
+358               fconf->fringe_amp = atof(FringeConfig[index].data);
+359             }
+360         }
+361 
+362       // read in the fringe phase
+363       if (!strcmp (FringeConfig[index].name, "FRINGE_PHASE"))
+364         {
+365           if (FringeConfig[index].data != NULL)
+366             {
+367               fconf->fringe_phase = atof(FringeConfig[index].data);
+368             }
+369         }
+370       
+371 
+372       // read in the fringe step
+373       if (!strcmp (FringeConfig[index].name, "FRINGE_STEP"))
+374         {
+375           if (FringeConfig[index].data != NULL)
+376             {
+377               fconf->fringe_step = atof(FringeConfig[index].data);
+378             }
+379         }
+380 
+381       // read in the number of steps
+382       if (!strcmp (FringeConfig[index].name, "NUM_STEPS"))
+383         {
+384           if (FringeConfig[index].data != NULL)
+385             {
+386               fconf->num_steps = atoi(FringeConfig[index].data);
+387             }
+388         }
+389 
+390       // read in the fringe range
+391       if (!strcmp (FringeConfig[index].name, "FRINGE_RANGE"))
+392         {
+393           if (FringeConfig[index].data != NULL)
+394             {
+395               v = string_to_gsl_array (FringeConfig[index].data);
+396               fconf->fringe_range = v;
+397             }
+398         }
+399 
+400       // read in the fringe amplitude
+401       if (!strcmp (FringeConfig[index].name, "MAX_DISPERSION"))
+402         {
+403           if (FringeConfig[index].data != NULL)
+404             {
+405               fconf->max_dispersion = atof(FringeConfig[index].data);
+406             }
+407         }
+408 
+409       // read in the filter name
+410       if (!strcmp (FringeConfig[index].name, "FILTER_NAME"))
+411         {
+412           if (FringeConfig[index].data != NULL)
+413             {
+414               sprintf (ffile_name, "%s", FringeConfig[index].data);
+415               
+416               // build the full pathname to the refraction table
+417               build_path (AXE_CONFIG_PATH, ffile_name, ffile_name_path);
+418               
+419               fconf->filter_through =
+420                 create_interp_ftable(ffile_name_path, 2, "WAVELENGTH",
+421                                      "THROUGHPUT", FILTER_INTERP_TYPE);
+422             }
+423         }
+424 
+425       // read in the substrate transmission
+426       if (!strcmp (FringeConfig[index].name, "SUBSTR_TRANS"))
+427         {
+428           if (FringeConfig[index].data != NULL)
+429             {
+430               sprintf (ffile_name, "%s", FringeConfig[index].data);
+431 
+432               // build the full pathname to the refraction table
+433               build_path (AXE_CONFIG_PATH, ffile_name, ffile_name_path);
+434 
+435               fconf->opt_layers->substrate =
+436                 create_interp_ftable(ffile_name_path, 2, "WAVELENGTH",
+437                                      "TRANSMISSION", REFRAC_INTERP_TYPE);
+438             }
+439         }
+440     }
+441 
+442   return fconf;
+443 }
+\end{DoxyCode}
+\hypertarget{fringe__conf_8h_aa8e6b6c598ef076a3b99c7a06dcdbec7}{
+\index{fringe\_\-conf.h@{fringe\_\-conf.h}!print\_\-interp@{print\_\-interp}}
+\index{print\_\-interp@{print\_\-interp}!fringe_conf.h@{fringe\_\-conf.h}}
+\subsubsection[{print\_\-interp}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-interp ({\bf interpolator} $\ast$ {\em interp})}}
+\label{fringe__conf_8h_aa8e6b6c598ef076a3b99c7a06dcdbec7}
+Function: print\_\-interp
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em interp}]-\/ the \hyperlink{structinterpolator}{interpolator} structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+784 {
+785   int index;
+786   double x_typical;
+787 
+788   x_typical = interp->xmin+(interp->xmax-interp->xmin)/2.0;
+789 
+790   fprintf(stdout, "xmin: %e, xmax: %e\n",interp->xmin, interp->xmax);
+791   fprintf(stdout, "number of data values: %i\n",interp->nvals);
+792   fprintf(stdout, "Interpolation type: %s\n", gsl_interp_name(interp->interp));
+793   fprintf(stdout, "Characteristic value pair: (x,y) = (%e, %e)\n",
+794           x_typical, gsl_interp_eval(interp->interp, interp->xvals,
+795                                      interp->yvals, x_typical, interp->acc));
+796   
+797   fprintf(stdout, "Alternative value pair: (x,y) = (%e, %e)\n",
+798           x_typical, eval_interp(interp, x_typical));  
+799   for (index=0; index < interp->nvals; index++)
+800     fprintf(stdout, "xvalue: %e, yvalue: %e\n",interp->xvals[index], interp->
+      yvals[index]);
+801   fprintf(stdout, "\n");
+802 }
+\end{DoxyCode}

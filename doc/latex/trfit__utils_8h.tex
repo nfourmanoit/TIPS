@@ -1,0 +1,1749 @@
+\hypertarget{trfit__utils_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/trfit\_\-utils.h File Reference}
+\label{trfit__utils_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/trfit\_\-utils.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/trfit\_\-utils.h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structfit__data}{fit\_\-data}
+\item 
+struct \hyperlink{structfunction__data}{function\_\-data}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacetrfit__utils}{trfit\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{trfit__utils_8h_a0ddd76d85a242276ab7acd649d5fca0a}{N\_\-COLUMNS\_\-FIT}~6
+\item 
+\#define \hyperlink{trfit__utils_8h_abbc5c3bbbb278095052bbee282bd34af}{N\_\-KAPPASIG\_\-ITER}~3
+\item 
+\#define \hyperlink{trfit__utils_8h_a53ad3a5e7cb4480cd736db21d36da950}{N\_\-KAPPASIG\_\-SIG}~3.0
+\item 
+\#define \hyperlink{trfit__utils_8h_af771b4da1836f3c94345daebc330d04e}{N\_\-ITER\_\-IPC}~5
+\item 
+\#define \hyperlink{trfit__utils_8h_a2c230b219e476bda0ddc339d4c6aec9e}{KAPPA\_\-IPC}~3.0
+\item 
+\#define \hyperlink{trfit__utils_8h_ad077a0aab0aa2429fd88f8ed3ab83322}{MIN\_\-IPC\_\-LENGTH}~60.0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trfit__utils_8h_a945a751a397f87f2889f7ddc3a13d1b5}{fit\_\-beamtrace} (const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, \hyperlink{structobservation}{observation} $\ast$obs, const int beamID, \hyperlink{structbeam}{beam} act\_\-beam)
+\item 
+double \hyperlink{trfit__utils_8h_a20834bada8c6f99e71a507189667957c}{gagauss} (double x, double $\ast$params)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trfit__utils_8h_a13f47cc2ed316df47f2159eea03544e1}{fit\_\-wuttke} (const \hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trfit__utils_8h_a959170e2281ce18447bab6f46d3b3e0c}{fit\_\-wuttke\_\-talk} (const \hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{trfit__utils_8h_acd7a385ac23250e217dac352f83eff30}{find\_\-grav\_\-center} (const \hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data)
+\item 
+\hyperlink{structpx__point}{px\_\-point} \hyperlink{trfit__utils_8h_af5ab056ba845f6b601296004b987a308}{get\_\-fit\_\-xrange} (const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, const \hyperlink{structobservation}{observation} $\ast$obs, \hyperlink{structbeam}{beam} act\_\-beam)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trfit__utils_8h_a44e5dad233bf5efe68f00a386808ab4b}{fit\_\-function} (const \hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data)
+\item 
+\hyperlink{structfit__data}{fit\_\-data} $\ast$ \hyperlink{trfit__utils_8h_abe9d290d559c74abe28d33a23dd60b39}{get\_\-fitdata} (\hyperlink{structobservation}{observation} $\ast$obs, int np, \hyperlink{structpx__point}{px\_\-point} tr\_\-point)
+\item 
+\hyperlink{structfit__data}{fit\_\-data} $\ast$ \hyperlink{trfit__utils_8h_abeebca9b2b0e0ef399a617ebebaf153c}{alloc\_\-fit\_\-data} (const int n\_\-data)
+\item 
+void \hyperlink{trfit__utils_8h_af835068cb11510dc4df75f70c5a6a9ae}{print\_\-fit\_\-data} (\hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data)
+\item 
+void \hyperlink{trfit__utils_8h_aee14fc032516622c96872a40bb42a881}{free\_\-fit\_\-data} (\hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data)
+\item 
+int \hyperlink{trfit__utils_8h_a6c11a9367ef5707dd79d5724e760748a}{gauss\_\-f} (const gsl\_\-vector $\ast$x, void $\ast$params, gsl\_\-vector $\ast$f)
+\item 
+int \hyperlink{trfit__utils_8h_a9adfb695acc2ab0a9a9426151854d9a7}{gauss\_\-df} (const gsl\_\-vector $\ast$x, void $\ast$params, gsl\_\-matrix $\ast$J)
+\item 
+int \hyperlink{trfit__utils_8h_a9243aaf584adbdcd38f11afa02e7ce50}{gauss\_\-fdf} (const gsl\_\-vector $\ast$x, void $\ast$params, gsl\_\-vector $\ast$f, gsl\_\-matrix $\ast$J)
+\item 
+void \hyperlink{trfit__utils_8h_a1fb623da8fffd6b8ac7f781b78528281}{print\_\-fit\_\-state} (size\_\-t iter, gsl\_\-multifit\_\-fdfsolver $\ast$s)
+\item 
+double \hyperlink{trfit__utils_8h_af85dbf0bc3aed08bcc993fe172841291}{comp\_\-intrel\_\-max} (const \hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{trfit__utils_8h_a9cc662d947100167ce2cdec1b25d89da}{bcksub\_\-observation} (\hyperlink{structobservation}{observation} $\ast$obs, \hyperlink{structobservation}{observation} $\ast$bck)
+\item 
+double $\ast$ \hyperlink{trfit__utils_8h_ab37e972ef3b795600cacb737080f738a}{evaluate\_\-ipc\_\-fit} (\hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data, double $\ast$gpars, double $\ast$fpars)
+\item 
+void \hyperlink{trfit__utils_8h_a5269c1a8a49150eeca25ae415bab605a}{write\_\-ipc\_\-fit} (\hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data, double $\ast$y\_\-values, const char $\ast$ipc\_\-file, const double qual, double $\ast$yfract)
+\item 
+double \hyperlink{trfit__utils_8h_a81e470a4fd426aff5dbc5f31cae2b556}{fit\_\-ipc\_\-data} (\hyperlink{structfit__data}{fit\_\-data} $\ast$fdata, double $\ast$gpars, int n\_\-gpars, double $\ast$fpars, int n\_\-fpars)
+\item 
+\hyperlink{structfit__data}{fit\_\-data} $\ast$ \hyperlink{trfit__utils_8h_a4369d3dcdc1cf50596d6ad144550a0e5}{get\_\-ipc\_\-fdata} (const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, \hyperlink{structobservation}{observation} $\ast$obs, gsl\_\-matrix $\ast$data\_\-vals, \hyperlink{structbeam}{beam} act\_\-beam)
+\item 
+double $\ast$ \hyperlink{trfit__utils_8h_aaab1041fd7dae007ce65005d962d6a83}{get\_\-wf\_\-special} (const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, \hyperlink{structobservation}{observation} $\ast$obs, gsl\_\-matrix $\ast$data\_\-vals, \hyperlink{structbeam}{beam} act\_\-beam, double yoffs)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trfit__utils_8h_ab5d171cfdd5bb6c137ec77062bb71ddd}{get\_\-ipc\_\-coldata} (gsl\_\-matrix $\ast$img\_\-data, int np, \hyperlink{structpx__point}{px\_\-point} tr\_\-point)
+\item 
+\hyperlink{structfit__data}{fit\_\-data} $\ast$ \hyperlink{trfit__utils_8h_ac4fe777a53dfbf9ba6ffe9817b39df55}{strip\_\-fitdata} (\hyperlink{structfit__data}{fit\_\-data} $\ast$old\_\-fdata, int i\_\-max)
+\item 
+double $\ast$ \hyperlink{trfit__utils_8h_a0622667d586967a4bb625b94c242754a}{strip\_\-wf\_\-special} (\hyperlink{structfit__data}{fit\_\-data} $\ast$old\_\-fdata, double $\ast$y\_\-fract, int i\_\-max)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{trfit__utils_8h_a9172689f3da692d31fe84ed505876cf0}{kappa\_\-sigma\_\-klipp\_\-ipc} (const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, \hyperlink{structobservation}{observation} $\ast$obs, gsl\_\-matrix $\ast$data\_\-matrix, \hyperlink{structbeam}{beam} act\_\-beam, const char $\ast$ipc\_\-file)
+\item 
+void \hyperlink{trfit__utils_8h_ac147d5b785ea19a1e8882cb53766bb3b}{reject\_\-kappasigma} (\hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data, double $\ast$y\_\-values, double max\_\-diff)
+\item 
+double \hyperlink{trfit__utils_8h_aee0d177b9df06be945d46fa7dd3596b6}{calculate\_\-sigma} (\hyperlink{structfit__data}{fit\_\-data} $\ast$f\_\-data, double $\ast$y\_\-values)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{trfit__utils_8h_a2c230b219e476bda0ddc339d4c6aec9e}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!KAPPA\_\-IPC@{KAPPA\_\-IPC}}
+\index{KAPPA\_\-IPC@{KAPPA\_\-IPC}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{KAPPA\_\-IPC}]{\setlength{\rightskip}{0pt plus 5cm}\#define KAPPA\_\-IPC~3.0}}
+\label{trfit__utils_8h_a2c230b219e476bda0ddc339d4c6aec9e}
+\hypertarget{trfit__utils_8h_ad077a0aab0aa2429fd88f8ed3ab83322}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!MIN\_\-IPC\_\-LENGTH@{MIN\_\-IPC\_\-LENGTH}}
+\index{MIN\_\-IPC\_\-LENGTH@{MIN\_\-IPC\_\-LENGTH}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{MIN\_\-IPC\_\-LENGTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN\_\-IPC\_\-LENGTH~60.0}}
+\label{trfit__utils_8h_ad077a0aab0aa2429fd88f8ed3ab83322}
+\hypertarget{trfit__utils_8h_a0ddd76d85a242276ab7acd649d5fca0a}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!N\_\-COLUMNS\_\-FIT@{N\_\-COLUMNS\_\-FIT}}
+\index{N\_\-COLUMNS\_\-FIT@{N\_\-COLUMNS\_\-FIT}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{N\_\-COLUMNS\_\-FIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\_\-COLUMNS\_\-FIT~6}}
+\label{trfit__utils_8h_a0ddd76d85a242276ab7acd649d5fca0a}
+\hypertarget{trfit__utils_8h_af771b4da1836f3c94345daebc330d04e}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!N\_\-ITER\_\-IPC@{N\_\-ITER\_\-IPC}}
+\index{N\_\-ITER\_\-IPC@{N\_\-ITER\_\-IPC}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{N\_\-ITER\_\-IPC}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\_\-ITER\_\-IPC~5}}
+\label{trfit__utils_8h_af771b4da1836f3c94345daebc330d04e}
+\hypertarget{trfit__utils_8h_abbc5c3bbbb278095052bbee282bd34af}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!N\_\-KAPPASIG\_\-ITER@{N\_\-KAPPASIG\_\-ITER}}
+\index{N\_\-KAPPASIG\_\-ITER@{N\_\-KAPPASIG\_\-ITER}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{N\_\-KAPPASIG\_\-ITER}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\_\-KAPPASIG\_\-ITER~3}}
+\label{trfit__utils_8h_abbc5c3bbbb278095052bbee282bd34af}
+\hypertarget{trfit__utils_8h_a53ad3a5e7cb4480cd736db21d36da950}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!N\_\-KAPPASIG\_\-SIG@{N\_\-KAPPASIG\_\-SIG}}
+\index{N\_\-KAPPASIG\_\-SIG@{N\_\-KAPPASIG\_\-SIG}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{N\_\-KAPPASIG\_\-SIG}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\_\-KAPPASIG\_\-SIG~3.0}}
+\label{trfit__utils_8h_a53ad3a5e7cb4480cd736db21d36da950}
+
+
+\subsection{Function Documentation}
+\hypertarget{trfit__utils_8h_abeebca9b2b0e0ef399a617ebebaf153c}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!alloc\_\-fit\_\-data@{alloc\_\-fit\_\-data}}
+\index{alloc\_\-fit\_\-data@{alloc\_\-fit\_\-data}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{alloc\_\-fit\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fit\_\-data}$\ast$ alloc\_\-fit\_\-data (const int {\em n\_\-data})}}
+\label{trfit__utils_8h_abeebca9b2b0e0ef399a617ebebaf153c}
+
+
+
+\begin{DoxyCode}
+816 {
+817   fit_data *f_data;
+818 
+819   f_data = (fit_data *)malloc(sizeof(fit_data));
+820 
+821   f_data->x_values = (double *)malloc(n_data * sizeof(double));
+822   f_data->y_values = (double *)malloc(n_data * sizeof(double));
+823   f_data->e_values = (double *)malloc(n_data * sizeof(double));
+824 
+825   f_data->n_data = n_data;
+826 
+827   return f_data;
+828 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a9cc662d947100167ce2cdec1b25d89da}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!bcksub\_\-observation@{bcksub\_\-observation}}
+\index{bcksub\_\-observation@{bcksub\_\-observation}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{bcksub\_\-observation}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ bcksub\_\-observation ({\bf observation} $\ast$ {\em obs}, \/  {\bf observation} $\ast$ {\em bck})}}
+\label{trfit__utils_8h_a9cc662d947100167ce2cdec1b25d89da}
+Function: bcksub\_\-observation
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em obs}]-\/ the grism image \item[{\em bck}]-\/ the background image\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ background subtracted data 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+950 {
+951   gsl_matrix *ret;
+952 
+953   int ii;
+954   int jj;
+955 
+956   // initialize the return
+957   ret = gsl_matrix_alloc(obs->grism->size1, obs->grism->size2); 
+958 
+959   // set all values to NAN
+960   gsl_matrix_set_all(ret, GSL_NAN);
+961   
+962   // go over all cols
+963   for (ii=0; ii < obs->grism->size1; ii++)
+964     // go over all rows
+965     for (jj=0; jj < obs->grism->size2; jj++)
+966       {
+967         // check whether there is valid data in
+968         // object and background image
+969         if (!isnan(gsl_matrix_get(obs->grism, ii, jj))
+970             && !isnan(gsl_matrix_get(bck->grism, ii, jj))
+971             && gsl_matrix_get(bck->grism, ii, jj))
+972 
+973           // compute and set the pixel
+974           gsl_matrix_set(ret, ii, jj, gsl_matrix_get(obs->grism, ii, jj) - 
+      gsl_matrix_get(bck->grism, ii, jj));
+975       }
+976 
+977   // return matrix
+978   return ret;
+979 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_aee0d177b9df06be945d46fa7dd3596b6}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!calculate\_\-sigma@{calculate\_\-sigma}}
+\index{calculate\_\-sigma@{calculate\_\-sigma}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{calculate\_\-sigma}]{\setlength{\rightskip}{0pt plus 5cm}double calculate\_\-sigma ({\bf fit\_\-data} $\ast$ {\em f\_\-data}, \/  double $\ast$ {\em y\_\-values})}}
+\label{trfit__utils_8h_aee0d177b9df06be945d46fa7dd3596b6}
+Function: calculate\_\-sigma
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em f\_\-data}]-\/ the experimental data \item[{\em y\_\-values}]-\/ the model data\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+sigma -\/ the standard deviation 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1637 {
+1638   double *tmp;
+1639 
+1640   double sigma;
+1641   double mean=0.0;
+1642   double diff;
+1643 
+1644   int n_data=0;
+1645   int index;
+1646   
+1647   // count the number of valid data points
+1648   for (index=0; index < f_data->n_data; index++)
+1649     if (f_data->e_values[index])
+1650       n_data++;
+1651 
+1652   // allocate a temporary vector for
+1653   // the valid data
+1654   tmp = (double *)malloc(n_data * sizeof(double));
+1655 
+1656   // re-set the counter;
+1657   // go over all data points
+1658   n_data=0;
+1659   for (index=0; index < f_data->n_data; index++)
+1660     {
+1661       // check whether the data point
+1662       // is valid
+1663       if (f_data->e_values[index])
+1664         {
+1665           // compute the difference between data and model
+1666           diff =  f_data->y_values[index] - y_values[index];
+1667 
+1668           // store the difference
+1669           tmp[n_data] = diff;
+1670           
+1671           // add to the mean
+1672           mean += diff;
+1673 
+1674           // enhance the counter
+1675           n_data++;
+1676         }
+1677     }
+1678 
+1679   // comopute the mean
+1680   mean /= (double)n_data;
+1681 
+1682   // compute standard deviation 
+1683   sigma = gsl_stats_sd_m(tmp, 1, n_data, mean);
+1684 
+1685   // relese the memory
+1686   free(tmp);
+1687 
+1688   // return the sigma
+1689   return sigma;
+1690 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_af85dbf0bc3aed08bcc993fe172841291}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!comp\_\-intrel\_\-max@{comp\_\-intrel\_\-max}}
+\index{comp\_\-intrel\_\-max@{comp\_\-intrel\_\-max}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{comp\_\-intrel\_\-max}]{\setlength{\rightskip}{0pt plus 5cm}double comp\_\-intrel\_\-max (const {\bf fit\_\-data} $\ast$ {\em f\_\-data})}}
+\label{trfit__utils_8h_af85dbf0bc3aed08bcc993fe172841291}
+Function: comp\_\-intrel\_\-max
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em f\_\-data}]-\/ the input data\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+rel12 -\/ \char`\"{}second brightes row pixel divided by brighest row pixel\char`\"{} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+903 {
+904 
+905   int i;
+906   double rel12=-100000.0;
+907 
+908   gsl_vector *val_vector;
+909 
+910   // check whether there is enough
+911   // data to make the relation
+912   if (f_data->n_data < 2)
+913     return rel12;
+914 
+915   // allocate a vector
+916   val_vector = gsl_vector_alloc(f_data->n_data);
+917 
+918   // fill in the data
+919   for (i=0; i < f_data->n_data; i++)
+920     gsl_vector_set(val_vector, i, f_data->y_values[i]);
+921   
+922   // sort the values
+923   gsl_sort_vector(val_vector);
+924 
+925   // prevent division by zero
+926   if (gsl_vector_get(val_vector, 0))
+927     // compute the quantity second brightes pixel
+928     // divided by brighest pixel 
+929     rel12 = gsl_vector_get(val_vector, f_data->n_data-2) / gsl_vector_get(val_vec
+      tor, f_data->n_data-1);
+930 
+931   // free the memory
+932   gsl_vector_free(val_vector);
+933 
+934   // return the result
+935   return rel12;
+936 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_ab37e972ef3b795600cacb737080f738a}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!evaluate\_\-ipc\_\-fit@{evaluate\_\-ipc\_\-fit}}
+\index{evaluate\_\-ipc\_\-fit@{evaluate\_\-ipc\_\-fit}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{evaluate\_\-ipc\_\-fit}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ evaluate\_\-ipc\_\-fit ({\bf fit\_\-data} $\ast$ {\em f\_\-data}, \/  double $\ast$ {\em gpars}, \/  double $\ast$ {\em fpars})}}
+\label{trfit__utils_8h_ab37e972ef3b795600cacb737080f738a}
+Function: evaluate\_\-ipc\_\-fit
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em f\_\-data}]-\/ the input for the independent values \item[{\em gpars}]-\/ the fited parameters \item[{\em fpars}]-\/ the fixed parameters\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+y\_\-values -\/ the function values 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+994 {
+995   int index;
+996   
+997   //double yvalue;
+998 
+999   double *y_values;
+1000 
+1001   // allocate memory for the function values
+1002   y_values = (double *)malloc(f_data->n_data * sizeof(double));
+1003 
+1004   // go over all independent data
+1005   for (index=0; index < f_data->n_data; index++)
+1006       // compute and store a function value
+1007       y_values[index] = comp_shift(f_data->x_values[index], gpars, fpars);
+1008 
+1009   // return the function values
+1010   return y_values;
+1011 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_acd7a385ac23250e217dac352f83eff30}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!find\_\-grav\_\-center@{find\_\-grav\_\-center}}
+\index{find\_\-grav\_\-center@{find\_\-grav\_\-center}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{find\_\-grav\_\-center}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} find\_\-grav\_\-center (const {\bf fit\_\-data} $\ast$ {\em f\_\-data})}}
+\label{trfit__utils_8h_acd7a385ac23250e217dac352f83eff30}
+
+
+
+\begin{DoxyCode}
+438 {
+439   d_point ret={0.0,0.0};
+440   
+441   int i=0;
+442   
+443   double sum    = 0.0;
+444   double w_sum    = 0.0;
+445   double weight = 0.0;
+446 
+447   for (i=0; i < f_data->n_data; i++)
+448     {
+449       weight = fabs(f_data->y_values[i]/f_data->e_values[i]);
+450       sum   += weight * f_data->x_values[i];
+451       w_sum += weight;
+452     }
+453 
+454   ret.x = sum/w_sum;
+455   ret.y = weight;
+456 
+457   return ret;
+458 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a945a751a397f87f2889f7ddc3a13d1b5}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!fit\_\-beamtrace@{fit\_\-beamtrace}}
+\index{fit\_\-beamtrace@{fit\_\-beamtrace}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{fit\_\-beamtrace}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ fit\_\-beamtrace (const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  {\bf observation} $\ast$ {\em obs}, \/  const int {\em beamID}, \/  {\bf beam} {\em act\_\-beam})}}
+\label{trfit__utils_8h_a945a751a397f87f2889f7ddc3a13d1b5}
+Function: fit\_\-beamtrace The function determines a new trace solution for a given \hyperlink{structbeam}{beam}. A gaussian is fitted to the pixel values around the nominal trace position. A kappa-\/sigma-\/klipping algorithm eliminates fitted trace centers which are off due to cosmics or similar. Finally the a new trace solution is fitted to the set of trace centers The new slope is directly written to the \hyperlink{structbeam}{beam} structure, the new y-\/value of the reference point is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em conf}]-\/ the aXe configuration structure \item[{\em obs}]-\/ the current \hyperlink{structobservation}{observation} \item[{\em beamID}]-\/ the ID of the current \hyperlink{structbeam}{beam} \item[{\em act\_\-beam}]-\/ the \hyperlink{structbeam}{beam} to fit\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+yf -\/ the y-\/value of the reference point for the fitted trace 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+134 {
+135   //gsl_vector_int *yvec;
+136   gsl_vector     *fit_params;
+137   gsl_vector     *lin_fit;
+138   gsl_vector     *fit_result;
+139   trace_func     *tracefun;
+140 
+141   px_point        xborder;  
+142   px_point        tpoint;
+143 
+144   fit_data       *f_data;
+145 
+146   double *x;
+147   double *y;
+148   double *w;
+149 
+150   double *trace;
+151 
+152   double yf, yf_err;
+153 
+154   int i;
+155   int index;
+156 
+157   // define the beam and the trace function
+158   tracefun = act_beam.spec_trace;
+159   trace = (double *)(tracefun->data);
+160 
+161   // If this beam's ignore flag is set to 1 then do nothing
+162   if (act_beam.ignore == 1)
+163     return NULL;
+164     
+165   // determine the start and end point in x
+166   //xborder = get_fit_xrange(conf, obs, beamID, act_beam);
+167   xborder = get_fit_xrange(conf, obs, act_beam);
+168 
+169   // allocate arrays for the fitting
+170   x = (double*)malloc((xborder.y-xborder.x+1)*sizeof(double));
+171   y = (double*)malloc((xborder.y-xborder.x+1)*sizeof(double));
+172   w = (double*)malloc((xborder.y-xborder.x+1)*sizeof(double));
+173 
+174   fit_result = gsl_vector_alloc(5);
+175 
+176   // Loop over all columns
+177   index = 0;
+178   for (i = xborder.x; i < xborder.y; i++)
+179     //for (i=130; i < 150; i++)
+180     {
+181       // determine the pixel which is
+182       // closest to the nominal trace position
+183       tpoint.x = i;
+184       tpoint.y = (int)floor(tracefun->func((double)i-act_beam.refpoint.x,
+185                                            tracefun->data)
+186                             + act_beam.refpoint.y+0.5);
+187       
+188       
+189       // get the data to be fitted
+190       // in the current column
+191       f_data = get_fitdata(obs, N_COLUMNS_FIT, tpoint);
+192       /*
+193       if (tpoint.x > 130 && tpoint.x < 150)
+194         {
+195           fprintf(stdout, "x: %i\n", tpoint.x);
+196           print_fit_data(f_data);
+197           fprintf(stdout, "\n\n");
+198         }
+199       if (tpoint.x == 135)
+200       {*/
+201       //fprintf(stdout, "x: %i\n", tpoint.x);
+202       //print_fit_data(f_data);
+203       //fprintf(stdout, "\n\n");
+204           // fit the gaussian to the data
+205           fit_params = fit_wuttke(f_data);
+206           /*    }
+207       else{
+208         fit_params = fit_wuttke_talk(f_data);   
+209         }*/
+210       // check whether the fit was successful
+211       if (gsl_vector_get(fit_params, 4) == 1)
+212         {
+213           // transfer the results of the fit
+214           // to this column in the vector 
+215           // which contains all fit results
+216           x[index] = (double)tpoint.x;
+217           y[index] = gsl_vector_get(fit_params, 3);
+218           w[index] = 1.0;
+219           index++;
+220         }
+221 
+222       // freem memory
+223       free_fit_data(f_data);
+224       gsl_vector_free(fit_params);
+225     }
+226 
+227   //for (i=0; i < index; i++)
+228   //  fprintf(stdout, "%f %f %f\n", x[i], y[i], w[i]);
+229 
+230   // do a kappa-sigma klipping on
+231   // the array with the trace locations
+232   // to improve the robustness of the result
+233   comp_kappasigma_interp(x, y, w, index, 1, N_KAPPASIG_ITER,
+234                          N_KAPPASIG_SIG, obs, 0);
+235 
+236   // make a linear fit to the trace positions
+237   lin_fit = det_vector_linear(x, y, w, index, 0);
+238   //for (i=0; i < index; i++)
+239   //fprintf(stdout, "%f %f %f\n", x[i], y[i], w[i]);
+240 
+241   // compute the y-position of the beam reference position
+242   // according to the new trace solution
+243   gsl_fit_linear_est (act_beam.refpoint.x-gsl_vector_get(lin_fit, 0), gsl_vector_
+      get(lin_fit, 1),
+244                       gsl_vector_get(lin_fit, 2), gsl_vector_get(lin_fit, 3),
+245                       gsl_vector_get(lin_fit, 4), gsl_vector_get(lin_fit, 5),
+246                       &yf, &yf_err);
+247 
+248   gsl_vector_set(fit_result, 0, yf);
+249   gsl_vector_set(fit_result, 1, yf_err);
+250   gsl_vector_set(fit_result, 2, gsl_vector_get(lin_fit, 2));
+251   gsl_vector_set(fit_result, 3, sqrt(gsl_vector_get(lin_fit, 5)));
+252   gsl_vector_set(fit_result, 4, gsl_vector_get(lin_fit, 6));
+253 
+254   
+255   fprintf(stdout, "\nFitting result XXX: xpos = %f , ypos = %f +- %f , slope = %f
+       +- %f , chi^2 = %f, x_pivot = %f, y_abs = %f\n",
+256           act_beam.refpoint.x, gsl_vector_get(fit_result, 0), gsl_vector_get(fit_
+      result, 1),
+257           gsl_vector_get(fit_result, 2), gsl_vector_get(fit_result, 3), gsl_vecto
+      r_get(lin_fit, 6),
+258           gsl_vector_get(lin_fit, 0), gsl_vector_get(lin_fit, 1));
+259   
+260 
+261   // copy the slope of the new trace solution
+262   // to the according position in the beam description
+263   trace[1] = gsl_vector_get(lin_fit, 2);
+264   trace[2] = sqrt(gsl_vector_get(lin_fit, 5));
+265 
+266   // free the memory
+267   gsl_vector_free(lin_fit);
+268   free(x);
+269   free(y);
+270   free(w);
+271 
+272   // return the new y-position of
+273   // the reference point
+274   //  return yf;
+275   return fit_result;
+276 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a44e5dad233bf5efe68f00a386808ab4b}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!fit\_\-function@{fit\_\-function}}
+\index{fit\_\-function@{fit\_\-function}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{fit\_\-function}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ fit\_\-function (const {\bf fit\_\-data} $\ast$ {\em f\_\-data})}}
+\label{trfit__utils_8h_a44e5dad233bf5efe68f00a386808ab4b}
+\hypertarget{trfit__utils_8h_a81e470a4fd426aff5dbc5f31cae2b556}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!fit\_\-ipc\_\-data@{fit\_\-ipc\_\-data}}
+\index{fit\_\-ipc\_\-data@{fit\_\-ipc\_\-data}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{fit\_\-ipc\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}double fit\_\-ipc\_\-data ({\bf fit\_\-data} $\ast$ {\em f\_\-data}, \/  double $\ast$ {\em gpars}, \/  int {\em n\_\-gpars}, \/  double $\ast$ {\em fpars}, \/  int {\em n\_\-fpars})}}
+\label{trfit__utils_8h_a81e470a4fd426aff5dbc5f31cae2b556}
+Function: fit\_\-ipc\_\-data
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em f\_\-data}]-\/ the input data \item[{\em gpars}]-\/ the guess or fit parameters \item[{\em n\_\-gpars}]-\/ number of guess or fit parameters \item[{\em fpars}]-\/ the fixed parameters \item[{\em n\_\-fpars}]-\/ number of fixed parameters\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+control.fnorm -\/ goodness of the fit value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1081 {
+1082   int m_dat = f_data->n_data;
+1083 
+1084   // auxiliary settings:
+1085   lm_control_type control;
+1086   lm_data_fpar_type data;
+1087   
+1088 
+1089   // initialize the fit
+1090   lm_initialize_control( &control );
+1091 
+1092   // define the parameters for the fitting
+1093   data.user_func = comp_shift;
+1094   data.user_t = f_data->x_values;
+1095   data.user_y = f_data->y_values;
+1096   data.fpars  = fpars;
+1097 
+1098   // print the initial 
+1099   // value
+1100   fprintf(stdout, "input: %e, ", gpars[0]);
+1101 
+1102   // perform the fit:
+1103   lm_minimize( m_dat, n_gpars, gpars, lm_evaluate_fpar, lm_print_nothing,
+1104                &data, &control );
+1105 
+1106   // print the new value plus additional information
+1107   fprintf(stdout, " output: %e, info: %i, niter: %i norm: %e\n",
+1108           gpars[0], control.info, control.nfev, control.fnorm);
+1109 
+1110   // return the variable
+1111   // describing the goodness
+1112   // of the fit
+1113   return control.fnorm;
+1114 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a13f47cc2ed316df47f2159eea03544e1}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!fit\_\-wuttke@{fit\_\-wuttke}}
+\index{fit\_\-wuttke@{fit\_\-wuttke}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{fit\_\-wuttke}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ fit\_\-wuttke (const {\bf fit\_\-data} $\ast$ {\em f\_\-data})}}
+\label{trfit__utils_8h_a13f47cc2ed316df47f2159eea03544e1}
+Function: fit\_\-wuttke Fits a gaussian to the data given in the input structure. Uses a library for nn-\/linear fits (made by Wuttke)
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em f\_\-data}]-\/ the fit data\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+params -\/ the fit results 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+342 {
+343   gsl_vector *params;
+344 
+345   int m_dat = f_data->n_data;
+346   int n_p =  4;
+347   
+348   double p[4];
+349 
+350   // auxiliary settings:
+351   lm_control_type control;
+352   lm_data_type data;
+353 
+354   // allocate the parameter vector
+355   params = gsl_vector_alloc(5);
+356 
+357   // give a first guess 
+358   // for the gauss parameters
+359   p[0] = f_data->y_values[f_data->n_data / 2];
+360   p[1] = 1.0;
+361   p[2] = (f_data->y_values[f_data->n_data-1]-f_data->y_values[0])/2.0;
+362   p[3] = f_data->x_values[0] + (f_data->x_values[f_data->n_data-1]-f_data->
+      x_values[0])/2.0;
+363 
+364   // initialize the fit
+365   lm_initialize_control( &control );
+366 
+367   // define the parameters for the fitting
+368   data.user_func = gagauss;
+369   data.user_t = f_data->x_values;
+370   data.user_y = f_data->y_values;
+371 
+372   // perform the fit:
+373   lm_minimize( m_dat, n_p, p, lm_evaluate_default, lm_print_nothing,
+374                &data, &control );
+375 
+376   //fprintf(stdout, "Result: %i, amp: %f, width: %f, const:  %f, pos: %f\n", cont
+      rol.info, p[0], p[1], p[2], p[3]);
+377 
+378   // copy the fit results to the output structure
+379   gsl_vector_set(params, 0, p[0]);
+380   gsl_vector_set(params, 1, p[1]);
+381   gsl_vector_set(params, 2, p[2]);
+382   gsl_vector_set(params, 3, p[3]);
+383   gsl_vector_set(params, 4, (double)control.info);
+384 
+385   // return the output structure
+386   return params;
+387 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a959170e2281ce18447bab6f46d3b3e0c}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!fit\_\-wuttke\_\-talk@{fit\_\-wuttke\_\-talk}}
+\index{fit\_\-wuttke\_\-talk@{fit\_\-wuttke\_\-talk}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{fit\_\-wuttke\_\-talk}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ fit\_\-wuttke\_\-talk (const {\bf fit\_\-data} $\ast$ {\em f\_\-data})}}
+\label{trfit__utils_8h_a959170e2281ce18447bab6f46d3b3e0c}
+
+
+
+\begin{DoxyCode}
+390 {
+391   gsl_vector *params;
+392 
+393   int m_dat = f_data->n_data;
+394   int n_p =  4;
+395   
+396   double p[4];
+397 
+398   // auxiliary settings:
+399   lm_control_type control;
+400   lm_data_type data;
+401 
+402   // allocate the parameter vector
+403   params = gsl_vector_alloc(5);
+404 
+405   // give a first guess 
+406   // for the gauss parameters
+407   p[0] = 1.0;
+408   p[1] = 1.0;
+409   p[2] = 0.0;
+410   p[3] = f_data->x_values[0] + (f_data->x_values[f_data->n_data-1]-f_data->
+      x_values[0])/2.0;
+411 
+412   // initialize the fit
+413   lm_initialize_control( &control );
+414 
+415   // define the parameters for the fitting
+416   data.user_func = gagauss;
+417   data.user_t = f_data->x_values;
+418   data.user_y = f_data->y_values;
+419 
+420   // perform the fit:
+421   lm_minimize( m_dat, n_p, p, lm_evaluate_default, lm_print_default,
+422                &data, &control );
+423 
+424   // copy the fit results to the output structure
+425   gsl_vector_set(params, 0, p[0]);
+426   gsl_vector_set(params, 1, p[1]);
+427   gsl_vector_set(params, 2, p[2]);
+428   gsl_vector_set(params, 3, p[3]);
+429   gsl_vector_set(params, 4, (double)control.info);
+430 
+431   // return the output structure
+432   return params;
+433 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_aee14fc032516622c96872a40bb42a881}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!free\_\-fit\_\-data@{free\_\-fit\_\-data}}
+\index{free\_\-fit\_\-data@{free\_\-fit\_\-data}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{free\_\-fit\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-fit\_\-data ({\bf fit\_\-data} $\ast$ {\em f\_\-data})}}
+\label{trfit__utils_8h_aee14fc032516622c96872a40bb42a881}
+
+
+
+\begin{DoxyCode}
+868 {
+869   free(f_data->x_values);
+870   free(f_data->y_values);
+871   free(f_data->e_values);
+872 
+873   free(f_data);
+874 
+875   f_data = NULL;
+876 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a20834bada8c6f99e71a507189667957c}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!gagauss@{gagauss}}
+\index{gagauss@{gagauss}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{gagauss}]{\setlength{\rightskip}{0pt plus 5cm}double gagauss (double {\em x}, \/  double $\ast$ {\em params})}}
+\label{trfit__utils_8h_a20834bada8c6f99e71a507189667957c}
+Function: gagauss The function computes and returns the value of a gauss function y = a $\ast$ exp(-\/b$\ast$(x-\/c)$^\wedge$2) -\/ d at a position x.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]-\/ the x-\/poition to evaluate the function \item[{\em params}]-\/ the function parameters\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ the function value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+293 {
+294   // just comute and return the result
+295   return (params[0] * exp (-params[1] * (x-params[3])*(x-params[3])) + params[2])
+      ;
+296 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a9adfb695acc2ab0a9a9426151854d9a7}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!gauss\_\-df@{gauss\_\-df}}
+\index{gauss\_\-df@{gauss\_\-df}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{gauss\_\-df}]{\setlength{\rightskip}{0pt plus 5cm}int gauss\_\-df (const gsl\_\-vector $\ast$ {\em x}, \/  void $\ast$ {\em params}, \/  gsl\_\-matrix $\ast$ {\em J})}}
+\label{trfit__utils_8h_a9adfb695acc2ab0a9a9426151854d9a7}
+
+
+
+\begin{DoxyCode}
+69 {
+70   int ndata      = ((struct function_data *)params)->n;
+71   double *x_data = ((struct function_data *)params)->x;
+72   //double *y_data = ((struct function_data *)params)->y;
+73   //double *e_data = ((struct function_data *)params)->sig;
+74 
+75   double a  = gsl_vector_get (x, 0);
+76   double b  = gsl_vector_get (x, 1);
+77   //double c  = gsl_vector_get (x, 2);
+78   double x0 = gsl_vector_get (x, 3);
+79 
+80   int i;
+81   double value;
+82   double xdiff;
+83 
+84   for (i = 0; i < ndata; i++)
+85     {
+86       /* Jacobian matrix J(i,j) = dfi / dxj, */
+87       /* where fi = (Yi - yi)/sigma[i],      */
+88       /* Model Yi = a * exp(-b*(Xi-X0) + c   */
+89       /* and the xj are the parameters (a,b,c,x0) */
+90 
+91       xdiff = x_data[i]-x0;
+92 
+93       value = exp(-b*(xdiff)*(xdiff));
+94 
+95       gsl_matrix_set (J, i, 0, value); 
+96       gsl_matrix_set (J, i, 1, -a*(xdiff)*(xdiff)*value); 
+97       gsl_matrix_set (J, i, 2, 1.0);
+98       gsl_matrix_set (J, i, 3,a*b*value*2*xdiff);
+99     }
+100   return GSL_SUCCESS;
+101 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a6c11a9367ef5707dd79d5724e760748a}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!gauss\_\-f@{gauss\_\-f}}
+\index{gauss\_\-f@{gauss\_\-f}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{gauss\_\-f}]{\setlength{\rightskip}{0pt plus 5cm}int gauss\_\-f (const gsl\_\-vector $\ast$ {\em x}, \/  void $\ast$ {\em params}, \/  gsl\_\-vector $\ast$ {\em f})}}
+\label{trfit__utils_8h_a6c11a9367ef5707dd79d5724e760748a}
+
+
+
+\begin{DoxyCode}
+36 {
+37   int ndata      = ((struct function_data *)params)->n;
+38   double *x_data = ((struct function_data *)params)->x;
+39   double *y_data = ((struct function_data *)params)->y;
+40   //double *e_data = ((struct function_data *)params)->sig;
+41   
+42   double a  = gsl_vector_get (x, 0);
+43   double b  = gsl_vector_get (x, 1);
+44   double c  = gsl_vector_get (x, 2);
+45   double x0 = gsl_vector_get (x, 3);
+46 
+47   double Yi = 0.0;
+48 
+49   int i;
+50 
+51 
+52   for (i = 0; i < ndata; i++)
+53     {
+54       /* Model Yi = a * exp(-b*(Xi-X0) + c */
+55       Yi = a * exp (-b * (x_data[i]-x0)*(x_data[i]-x0)) + c;
+56       //      gsl_vector_set (f, i, (Yi - y_data[i])/e_data[i]);
+57       gsl_vector_set (f, i, Yi - y_data[i]);
+58       //      fprintf(stderr, "Yi: %e, f: %e\n", Yi, (Yi - y_data[i])/e_data[i]);
+      
+59     }
+60 
+61   return GSL_SUCCESS;
+62 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a9243aaf584adbdcd38f11afa02e7ce50}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!gauss\_\-fdf@{gauss\_\-fdf}}
+\index{gauss\_\-fdf@{gauss\_\-fdf}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{gauss\_\-fdf}]{\setlength{\rightskip}{0pt plus 5cm}int gauss\_\-fdf (const gsl\_\-vector $\ast$ {\em x}, \/  void $\ast$ {\em params}, \/  gsl\_\-vector $\ast$ {\em f}, \/  gsl\_\-matrix $\ast$ {\em J})}}
+\label{trfit__utils_8h_a9243aaf584adbdcd38f11afa02e7ce50}
+
+
+
+\begin{DoxyCode}
+105 {
+106   gauss_f(x, params, f);
+107   gauss_df(x, params, J);
+108 
+109   return GSL_SUCCESS;
+110 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_af5ab056ba845f6b601296004b987a308}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!get\_\-fit\_\-xrange@{get\_\-fit\_\-xrange}}
+\index{get\_\-fit\_\-xrange@{get\_\-fit\_\-xrange}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{get\_\-fit\_\-xrange}]{\setlength{\rightskip}{0pt plus 5cm}{\bf px\_\-point} get\_\-fit\_\-xrange (const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  const {\bf observation} $\ast$ {\em obs}, \/  {\bf beam} {\em act\_\-beam})}}
+\label{trfit__utils_8h_af5ab056ba845f6b601296004b987a308}
+
+
+
+\begin{DoxyCode}
+477   {
+478     px_point ret;
+479 
+480     // compute one extremum
+481     ret.x = (int)floor(act_beam.refpoint.x
+482                        + conf->beam[act_beam.ID].offset.dx0 +.5);
+483 
+484     // compute the secund extremum
+485     ret.y = (int)floor(act_beam.refpoint.x
+486                        + conf->beam[act_beam.ID].offset.dx1 +.5);
+487 
+488     // limit the start and end column
+489     // to the image size
+490     ret.x = MAX(ret.x, 0);
+491     ret.y = MIN(ret.y, (int)obs->grism->size1);
+492     
+493     // return the min and the max value
+494     return ret;
+495   }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_abe9d290d559c74abe28d33a23dd60b39}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!get\_\-fitdata@{get\_\-fitdata}}
+\index{get\_\-fitdata@{get\_\-fitdata}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{get\_\-fitdata}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fit\_\-data}$\ast$ get\_\-fitdata ({\bf observation} $\ast$ {\em obs}, \/  int {\em np}, \/  {\bf px\_\-point} {\em tr\_\-point})}}
+\label{trfit__utils_8h_abe9d290d559c74abe28d33a23dd60b39}
+
+
+
+\begin{DoxyCode}
+585 {
+586   gsl_vector_int *tmp;
+587 
+588   fit_data *f_data;
+589 
+590   int np_act=0;
+591 
+592   //int y_low;
+593   //int y_upp;
+594 
+595   int l_space=1;
+596   int u_space=1;
+597 
+598   int l_act;
+599   int u_act;
+600 
+601   int l_np=0;
+602   int u_np=0;
+603 
+604   int ncols=obs->grism->size2;
+605 
+606   int ii;
+607   int index;
+608 
+609   // allocate the vector
+610   tmp = gsl_vector_int_alloc(2*np+2);
+611   gsl_vector_int_set_all(tmp, -1);
+612 
+613   // limit the starting ppoint of the search 
+614   // to values within the image dimension
+615   tr_point.y = MAX(0,tr_point.y);
+616   tr_point.y = MIN((int)obs->grism->size2,tr_point.y);
+617 
+618   // initialize the row numbers
+619   // to search up- and downwards
+620   l_act = tr_point.y - 1;
+621   u_act = tr_point.y;
+622 
+623   // as long as interpolation points are missing 
+624   // and one direction, either up or down,
+625   // is 'open', continue searching
+626   while (np_act < 2*np && (l_space || u_space))
+627     {
+628 
+629       // check whether the direction
+630       // downwards is still open
+631       if (l_space)
+632         {
+633           // if you are at the end of the frame
+634           if (l_act < 0)
+635             {
+636               // close the direction downwards
+637               l_space=0;
+638             }
+639           else
+640             {
+641               if (!isnan(gsl_matrix_get(obs->grism, tr_point.x, l_act)))
+642                 {
+643                   // else store the interpolation point,
+644                   // do the various increments
+645                   gsl_vector_int_set(tmp, np_act, l_act);
+646                   //              fprintf(stderr, "put in %i\n", l_act);
+647                   np_act++;
+648                   l_np++;
+649                 }
+650               l_act--;
+651             }
+652         }
+653       
+654       // check whether the direction
+655       // upwards is still open
+656       if (u_space)
+657         {
+658           // if you are at the end of the frame
+659           if (u_act >= ncols)
+660             {
+661               // close the direction upwards
+662               u_space=0;
+663             }
+664           else
+665             {
+666               if (!isnan(gsl_matrix_get(obs->grism, tr_point.x, u_act)))
+667                 {
+668                   // else store the interpolation point,
+669                   // do the various increments
+670                   gsl_vector_int_set(tmp, np_act, u_act);
+671                   np_act++;
+672                   u_np++;
+673                 }
+674               u_act++;
+675             }     
+676         }
+677     }
+678 
+679   // sort the pixel indices
+680   gsl_sort_vector_int(tmp);
+681 
+682   // allocate a data structure
+683   f_data = alloc_fit_data(np_act);
+684 
+685   // fill the pixel values into the data structure
+686   index = 0;
+687   for (ii=(tmp->size - np_act); ii < tmp->size; ii++)
+688     {
+689       f_data->x_values[index] = (double)gsl_vector_int_get(tmp, ii);
+690       f_data->y_values[index] = gsl_matrix_get(obs->grism, tr_point.x,
+691                                                gsl_vector_int_get(tmp, ii));
+692       f_data->e_values[index] = gsl_matrix_get(obs->pixerrs, tr_point.x,
+693                                                gsl_vector_int_get(tmp, ii));
+694       index++;
+695     }
+696 
+697   // release memory
+698   gsl_vector_int_free(tmp);
+699 
+700   //  return the result
+701   return f_data;
+702 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_ab5d171cfdd5bb6c137ec77062bb71ddd}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!get\_\-ipc\_\-coldata@{get\_\-ipc\_\-coldata}}
+\index{get\_\-ipc\_\-coldata@{get\_\-ipc\_\-coldata}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{get\_\-ipc\_\-coldata}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-ipc\_\-coldata (gsl\_\-matrix $\ast$ {\em img\_\-data}, \/  int {\em np}, \/  {\bf px\_\-point} {\em tr\_\-point})}}
+\label{trfit__utils_8h_ab5d171cfdd5bb6c137ec77062bb71ddd}
+
+
+
+\begin{DoxyCode}
+721 {
+722   gsl_vector *tmp;
+723 
+724   gsl_vector *ipc_row = NULL;
+725 
+726   int np_act=0;
+727 
+728   int y_act;
+729 
+730   int ncols = img_data->size2;
+731 
+732   int ii;
+733 
+734   // check whether the central tracepoint
+735   // is in the image
+736   if (tr_point.y < 0 || tr_point.y > ncols-1)
+737     // give back the NULL array
+738     return ipc_row;
+739 
+740   // allocate the vector
+741   tmp = gsl_vector_alloc(2*np+1);
+742   gsl_vector_set_all(tmp, -1.0);
+743 
+744   // set the current y-position
+745   y_act = tr_point.y;
+746 
+747   // check whether there is good data
+748   // at the current position
+749   if (!isnan(gsl_matrix_get(img_data, tr_point.x, y_act)))
+750     {
+751       // store the data point and enhance the counter
+752       gsl_vector_set(tmp, np_act, gsl_matrix_get(img_data, tr_point.x, y_act));
+753       np_act++;
+754     }
+755 
+756   // check on both sides
+757   // of the central tracepoint
+758   for (ii=1; ii <= np; ii++)
+759     {
+760       // go down
+761       y_act = tr_point.y - ii;
+762 
+763       // check whether we are still inside the image and
+764       // whether we have valid data
+765       if (y_act > -1 && !isnan(gsl_matrix_get(img_data, tr_point.x, y_act)))
+766         { 
+767           // store the data point and enhance the counter
+768           gsl_vector_set(tmp, np_act, gsl_matrix_get(img_data, tr_point.x, y_act)
+      );
+769           np_act++;
+770         }
+771         
+772       // go up
+773       y_act = tr_point.y + ii;
+774 
+775       // check whether we are still inside the image and
+776       // whether we have valid data
+777       if (y_act < ncols && !isnan(gsl_matrix_get(img_data, tr_point.x, y_act)))
+778         {
+779           // store the data point and enhance the counter
+780           gsl_vector_set(tmp, np_act, gsl_matrix_get(img_data, tr_point.x, y_act)
+      );
+781           np_act++;
+782         }
+783     }
+784 
+785   // check whether good data was found
+786   if (np_act > 0)
+787     {
+788       // allocate the return vector
+789       ipc_row = gsl_vector_alloc(np_act);
+790       
+791       // transfer the data to the 
+792       // return vector
+793       for (ii=0; ii < np_act; ii++)
+794         gsl_vector_set(ipc_row, ii, gsl_vector_get(tmp, ii));
+795     }
+796 
+797   // release memory
+798   gsl_vector_free(tmp);
+799 
+800   //  return the vector
+801   return ipc_row;
+802 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a4369d3dcdc1cf50596d6ad144550a0e5}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!get\_\-ipc\_\-fdata@{get\_\-ipc\_\-fdata}}
+\index{get\_\-ipc\_\-fdata@{get\_\-ipc\_\-fdata}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{get\_\-ipc\_\-fdata}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fit\_\-data}$\ast$ get\_\-ipc\_\-fdata (const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  {\bf observation} $\ast$ {\em obs}, \/  gsl\_\-matrix $\ast$ {\em data\_\-vals}, \/  {\bf beam} {\em act\_\-beam})}}
+\label{trfit__utils_8h_a4369d3dcdc1cf50596d6ad144550a0e5}
+Function: get\_\-ipc\_\-fdata
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em conf}]-\/ the aXe configuratuion structure \item[{\em obs}]-\/ the grism image \item[{\em data\_\-matrix}]-\/ background subtracted grism image \item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to examine\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+f\_\-final -\/ the filled data structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1131 {
+1132   trace_func     *tracefun;
+1133 
+1134   px_point        xborder;  
+1135   px_point        tpoint;
+1136 
+1137   gsl_vector      *ipc_data;
+1138 
+1139   double rel12;
+1140 
+1141   int i;
+1142   int index;
+1143 
+1144   fit_data *fdata  = NULL;
+1145   fit_data *f_final= NULL;
+1146 
+1147   // define the beam and the trace function
+1148   tracefun = act_beam.spec_trace;
+1149 
+1150   // If this beam's ignore flag is set to 1 then do nothing
+1151   if (act_beam.ignore == 1)
+1152     return NULL;
+1153     
+1154   // determine the start and end point in x
+1155   xborder = get_fit_xrange(conf, obs, act_beam);
+1156 
+1157   // an assertion to prevent 
+1158   // catastrophic failures
+1159   if  (xborder.x > xborder.y)
+1160     return fdata;
+1161   // introduced after making release 1 reduction
+1162 
+1163 
+1164   // allocate memory for the fitting structure 
+1165   fdata = alloc_fit_data(xborder.y-xborder.x);
+1166 
+1167   // Loop over all columns
+1168   index = 0;
+1169   for (i = xborder.x; i < xborder.y; i++)
+1170     {
+1171       // determine the pixel which is
+1172       // closest to the nominal trace position
+1173       tpoint.x = i;
+1174       tpoint.y = (int)floor(tracefun->func((double)i-act_beam.refpoint.x,
+1175                                            tracefun->data)
+1176                             + act_beam.refpoint.y+0.5);
+1177 
+1178 
+1179       // collect pixel data
+1180       ipc_data = get_ipc_coldata(data_vals, N_COLUMNS_FIT, tpoint);
+1181 
+1182       // go to the next
+1183       // row if no data is available
+1184       if (!ipc_data)
+1185         continue;
+1186 
+1187       // sort the values
+1188       gsl_sort_vector(ipc_data);
+1189 
+1190       // at least two values are needed;
+1191       // prevent division by zero
+1192       if (ipc_data->size > 1 && gsl_vector_get(ipc_data, ipc_data->size-1))
+1193         {
+1194           // compute the relation 
+1195           rel12 = gsl_vector_get(ipc_data, ipc_data->size-2) / gsl_vector_get(ipc
+      _data, ipc_data->size-1);
+1196 
+1197           fdata->x_values[index] = (double)i - act_beam.refpoint.x;
+1198           fdata->y_values[index] = rel12;
+1199           fdata->e_values[index] = 1.0;
+1200           index++;
+1201         }
+1202 
+1203       // free the allocated memory
+1204       gsl_vector_free(ipc_data);
+1205     }
+1206 
+1207 
+1208   // check whether the ipc data covers the minimum length
+1209   if (fabs(fdata->x_values[fdata->n_data-1] - fdata->x_values[0]) > 
+      MIN_IPC_LENGTH)
+1210     // reduce the data to what is necessary
+1211     f_final = strip_fitdata(fdata, index);
+1212   else
+1213     fprintf(stdout, "beam tooo short\n");
+1214    
+1215   // release the original structure
+1216   free_fit_data(fdata);
+1217 
+1218   // return the fit data
+1219   return f_final;
+1220 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_aaab1041fd7dae007ce65005d962d6a83}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!get\_\-wf\_\-special@{get\_\-wf\_\-special}}
+\index{get\_\-wf\_\-special@{get\_\-wf\_\-special}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{get\_\-wf\_\-special}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ get\_\-wf\_\-special (const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  {\bf observation} $\ast$ {\em obs}, \/  gsl\_\-matrix $\ast$ {\em data\_\-vals}, \/  {\bf beam} {\em act\_\-beam}, \/  double {\em yoffs})}}
+\label{trfit__utils_8h_aaab1041fd7dae007ce65005d962d6a83}
+Function: get\_\-wf\_\-special
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em conf}]-\/ the aXe configuratuion structure \item[{\em obs}]-\/ the grism image \item[{\em data\_\-matrix}]-\/ background subtracted grism image \item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to examine\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+f\_\-final -\/ the filled data structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1238 {
+1239   trace_func     *tracefun;
+1240 
+1241   px_point        xborder;  
+1242   px_point        tpoint;
+1243 
+1244   gsl_vector      *ipc_data;
+1245 
+1246   double rel12;
+1247 
+1248   int i;
+1249   int index;
+1250 
+1251   fit_data *fdata  = NULL;
+1252   //fit_data *f_final= NULL;
+1253 
+1254   double yyy;
+1255 
+1256   double *yfract=NULL;
+1257   double *yfinal;
+1258 
+1259 
+1260   // define the beam and the trace function
+1261   tracefun = act_beam.spec_trace;
+1262 
+1263   // If this beam's ignore flag is set to 1 then do nothing
+1264   if (act_beam.ignore == 1)
+1265     return NULL;
+1266     
+1267   // determine the start and end point in x
+1268   xborder = get_fit_xrange(conf, obs, act_beam);
+1269 
+1270   // allocate memory for the fitting structure 
+1271   fdata = alloc_fit_data(xborder.y-xborder.x);
+1272 
+1273   // allocate memory
+1274   yfract = (double *)malloc((xborder.y-xborder.x)*sizeof(double));
+1275 
+1276   // Loop over all columns
+1277   index = 0;
+1278   for (i = xborder.x; i < xborder.y; i++)
+1279     {
+1280       // determine the pixel which is
+1281       // closest to the nominal trace position
+1282       tpoint.x = i;
+1283       tpoint.y = (int)floor(tracefun->func((double)i-act_beam.refpoint.x,
+1284                                            tracefun->data)
+1285                             + act_beam.refpoint.y+0.5);
+1286 
+1287       yyy           = tracefun->func((double)i-act_beam.refpoint.x, tracefun->
+      data) + act_beam.refpoint.y + yoffs;
+1288       yfract[index] = yyy - floor(yyy);
+1289 
+1290       // collect pixel data
+1291       ipc_data = get_ipc_coldata(data_vals, N_COLUMNS_FIT, tpoint);
+1292 
+1293       // go to the next
+1294       // row if no data is available
+1295       if (!ipc_data)
+1296         continue;
+1297 
+1298       // sort the values
+1299       gsl_sort_vector(ipc_data);
+1300 
+1301       // at least two values are needed;
+1302       // prevent division by zero
+1303       if (ipc_data->size > 1 && gsl_vector_get(ipc_data, ipc_data->size-1))
+1304         {
+1305           // compute the relation 
+1306           rel12 = gsl_vector_get(ipc_data, ipc_data->size-2) / gsl_vector_get(ipc
+      _data, ipc_data->size-1);
+1307 
+1308           fdata->x_values[index] = (double)i - act_beam.refpoint.x;
+1309           fdata->y_values[index] = rel12;
+1310           fdata->e_values[index] = 1.0;
+1311           index++;
+1312         }
+1313 
+1314       // free the allocated memory
+1315       gsl_vector_free(ipc_data);
+1316     }
+1317 
+1318 
+1319   yfinal = strip_wf_special(fdata, yfract, index);
+1320    
+1321   // release the original structure
+1322   free_fit_data(fdata);
+1323   if (yfract)
+1324     free(yfract);
+1325 
+1326   // return the fit data
+1327   return yfinal;
+1328 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a9172689f3da692d31fe84ed505876cf0}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!kappa\_\-sigma\_\-klipp\_\-ipc@{kappa\_\-sigma\_\-klipp\_\-ipc}}
+\index{kappa\_\-sigma\_\-klipp\_\-ipc@{kappa\_\-sigma\_\-klipp\_\-ipc}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{kappa\_\-sigma\_\-klipp\_\-ipc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} kappa\_\-sigma\_\-klipp\_\-ipc (const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  {\bf observation} $\ast$ {\em obs}, \/  gsl\_\-matrix $\ast$ {\em data\_\-matrix}, \/  {\bf beam} {\em act\_\-beam}, \/  const char $\ast$ {\em ipc\_\-file})}}
+\label{trfit__utils_8h_a9172689f3da692d31fe84ed505876cf0}
+Function: kappa\_\-sigma\_\-klipp\_\-ipc
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em conf}]-\/ the aXe configuratuion structure \item[{\em obs}]-\/ the grism image \item[{\em data\_\-matrix}]-\/ background subtracted grism image \item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to examine \item[{\em ipc\_\-file\_\-path}]-\/ file name for the phase data\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ the change in y-\/shift and the goodness of the fit 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1478 {
+1479   fit_data *f_data   = NULL;
+1480   fit_data *f_work   = NULL;
+1481 
+1482   double   *y_values = NULL;
+1483   //double   *test = NULL;
+1484   double    sigma;
+1485 
+1486   d_point   ret;
+1487 
+1488   trace_func *tracefun  = act_beam.spec_trace;
+1489   double     *tracedata =  (double *)(tracefun->data);
+1490   
+1491   double p[1];
+1492   double f[3] = {0.6, 0.9, tracedata[2]};
+1493 
+1494   int index=0;
+1495   int nold_data;
+1496 
+1497   // REMOVEME ASAP !!!!!
+1498   double *yfract=NULL;
+1499 
+1500   // compute a first guess for the shift
+1501   p[0] = act_beam.refpoint.y - floor(act_beam.refpoint.y + tracedata[1]);
+1502 
+1503   // remember the shift
+1504   ret.x = p[0];
+1505 
+1506   // give infinity for 
+1507   // the goodness of the fit
+1508   ret.y = 1.0e+20;
+1509 
+1510   // get the data for the fit
+1511   f_data = get_ipc_fdata(conf, obs, data_matrix, act_beam);
+1512 
+1513   // check whether 
+1514   // there is data
+1515   if (f_data)
+1516     {
+1517 
+1518       // fix the number of initial data points
+1519       nold_data= f_data->n_data;
+1520 
+1521       // make the frist fit
+1522       ret.y = fit_ipc_data(f_data, p, 1, f, 3);
+1523 
+1524       // evaluate the fit; comute the sigma
+1525       y_values = evaluate_ipc_fit(f_data, p, f);
+1526       sigma = calculate_sigma(f_data, y_values); 
+1527       
+1528 
+1529       // start the iteration
+1530       while (index < N_ITER_IPC)
+1531         {
+1532 
+1533           // reject points according to the sigma
+1534           // generate a new struct to work with
+1535           reject_kappasigma(f_data, y_values, KAPPA_IPC*sigma);
+1536           // free memory in the old work structure
+1537 
+1538           if (f_work)
+1539             free_fit_data(f_work);
+1540           f_work = strip_fitdata(f_data, f_data->n_data);
+1541 
+1542           // check whether there
+1543           // is still data
+1544           if (!f_work)
+1545             break;
+1546           
+1547           // check whether data was rejected
+1548           // brek if 'yes' transfer the new number if 'no'
+1549           if (f_work->n_data == nold_data)
+1550             break;
+1551           else
+1552             nold_data = f_work->n_data;
+1553 
+1554           // make a new fit
+1555           ret.y = fit_ipc_data(f_work, p, 1, f, 3);
+1556 
+1557           // evaluate fit values; comute the sigma
+1558           if (y_values)
+1559             free(y_values);
+1560           y_values = evaluate_ipc_fit(f_data, p, f);
+1561           sigma = calculate_sigma(f_data, y_values);
+1562           
+1563           // enhance
+1564           // the kappa counter
+1565           index++;
+1566         }
+1567 
+1568       // evaluate the fit values
+1569       if (y_values)
+1570         free(y_values);
+1571       y_values = evaluate_ipc_fit(f_data, p, f);
+1572 
+1573       // REMOVEME ASAP
+1574       yfract = get_wf_special(conf, obs, data_matrix, act_beam, p[0] - ret.x);
+1575 
+1576       // CHANGEME back ASAP
+1577       // write the phase shift file
+1578       write_ipc_fit(f_data, y_values, ipc_file, ret.y, yfract);
+1579 
+1580       // release memory
+1581       if (f_data)
+1582         free_fit_data(f_data);
+1583       if (f_work)
+1584         free_fit_data(f_work);
+1585       if (y_values)
+1586         free(y_values);
+1587       if (yfract)
+1588         free(yfract);
+1589     }
+1590 
+1591   // compute the
+1592   // difference in y-shift
+1593   ret.x = p[0] - ret.x;
+1594 
+1595   // return the result
+1596   return ret;
+1597 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_af835068cb11510dc4df75f70c5a6a9ae}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!print\_\-fit\_\-data@{print\_\-fit\_\-data}}
+\index{print\_\-fit\_\-data@{print\_\-fit\_\-data}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{print\_\-fit\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-fit\_\-data ({\bf fit\_\-data} $\ast$ {\em f\_\-data})}}
+\label{trfit__utils_8h_af835068cb11510dc4df75f70c5a6a9ae}
+
+
+
+\begin{DoxyCode}
+843 {
+844   int i;
+845   
+846   for (i=0; i < f_data->n_data; i++)
+847     {
+848       fprintf(stdout, "%f %f %f\n", f_data->x_values[i],
+849               f_data->y_values[i], f_data->e_values[i]);
+850       //      fprintf(stderr, "x: %f, y: %f, err: %f\n", f_data->x_values[i],
+851       //              f_data->y_values[i], f_data->e_values[i]);
+852     }     
+853 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a1fb623da8fffd6b8ac7f781b78528281}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!print\_\-fit\_\-state@{print\_\-fit\_\-state}}
+\index{print\_\-fit\_\-state@{print\_\-fit\_\-state}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{print\_\-fit\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-fit\_\-state (size\_\-t {\em iter}, \/  gsl\_\-multifit\_\-fdfsolver $\ast$ {\em s})}}
+\label{trfit__utils_8h_a1fb623da8fffd6b8ac7f781b78528281}
+
+
+
+\begin{DoxyCode}
+880 {
+881   printf ("iter: %3u x = %e %e %e %e "
+882           "|f(x)| = %g |dx| = %g\n\n",
+883           (unsigned int)iter,
+884           gsl_vector_get (s->x, 0), 
+885           gsl_vector_get (s->x, 1),
+886           gsl_vector_get (s->x, 2), 
+887           gsl_vector_get (s->x, 3), 
+888           gsl_blas_dnrm2 (s->f),
+889           gsl_blas_dnrm2 (s->dx));
+890 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_ac147d5b785ea19a1e8882cb53766bb3b}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!reject\_\-kappasigma@{reject\_\-kappasigma}}
+\index{reject\_\-kappasigma@{reject\_\-kappasigma}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{reject\_\-kappasigma}]{\setlength{\rightskip}{0pt plus 5cm}void reject\_\-kappasigma ({\bf fit\_\-data} $\ast$ {\em f\_\-data}, \/  double $\ast$ {\em y\_\-values}, \/  double {\em max\_\-diff})}}
+\label{trfit__utils_8h_ac147d5b785ea19a1e8882cb53766bb3b}
+Function: reject\_\-kappasigma
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em f\_\-data}]-\/ the experimental data \item[{\em y\_\-values}]-\/ the model data \item[{\em max\_\-diff}]-\/ the maximum allowed difference between data and model\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1614 {
+1615   int index;
+1616 
+1617   // go over all data
+1618   for (index=0; index < f_data->n_data; index++)
+1619     // check whether the data point is valid and OVER the maximum allowed differe
+      nce
+1620     if (f_data->e_values[index] && fabs(f_data->y_values[index] - y_values[index]
+      ) > max_diff)
+1621       // make the data point INVALID
+1622       f_data->e_values[index] = 0.0;
+1623 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_ac4fe777a53dfbf9ba6ffe9817b39df55}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!strip\_\-fitdata@{strip\_\-fitdata}}
+\index{strip\_\-fitdata@{strip\_\-fitdata}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{strip\_\-fitdata}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fit\_\-data}$\ast$ strip\_\-fitdata ({\bf fit\_\-data} $\ast$ {\em old\_\-fdata}, \/  int {\em i\_\-max})}}
+\label{trfit__utils_8h_ac4fe777a53dfbf9ba6ffe9817b39df55}
+Function: strip\_\-fitdata
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em old\_\-fdata}]-\/ the experimental data \item[{\em i\_\-max}]-\/ the maximum index to check for valid data\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+fdata -\/ the new, completely filled data structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1408 {
+1409   fit_data *fdata = NULL;
+1410 
+1411   int ii;
+1412   int i_count;
+1413 
+1414   // check that SOME values
+1415   // are accepted
+1416   if (i_max < 1)
+1417     // return NULL if not
+1418     return fdata;
+1419   
+1420   // count the number of
+1421   // values with weight
+1422   i_count=0;
+1423   for (ii=0; ii < i_max; ii++)
+1424     if (old_fdata->e_values[ii])
+1425       i_count++;
+1426 
+1427   // check whether there
+1428   // is data at all
+1429   if (i_count < 1)
+1430     // return NULL if not
+1431     return fdata;
+1432         
+1433   // allocate a new structure 
+1434   fdata = alloc_fit_data(i_count);
+1435 
+1436   // set the counter
+1437   i_count=0;
+1438 
+1439   // go over the old data
+1440   // to the maximum index
+1441   for (ii=0; ii < i_max; ii++)
+1442     {
+1443       // check whether the 
+1444       // data is valid
+1445       if (old_fdata->e_values[ii])
+1446         {
+1447           // transfer valid data
+1448           fdata->x_values[i_count] = old_fdata->x_values[ii];
+1449           fdata->y_values[i_count] = old_fdata->y_values[ii];
+1450           fdata->e_values[i_count] = old_fdata->e_values[ii];
+1451           
+1452           // enhance the counter
+1453           i_count++;
+1454         }
+1455     }
+1456 
+1457   // return the new structure
+1458   return fdata;
+1459 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a0622667d586967a4bb625b94c242754a}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!strip\_\-wf\_\-special@{strip\_\-wf\_\-special}}
+\index{strip\_\-wf\_\-special@{strip\_\-wf\_\-special}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{strip\_\-wf\_\-special}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ strip\_\-wf\_\-special ({\bf fit\_\-data} $\ast$ {\em old\_\-fdata}, \/  double $\ast$ {\em y\_\-fract}, \/  int {\em i\_\-max})}}
+\label{trfit__utils_8h_a0622667d586967a4bb625b94c242754a}
+Function: strip\_\-wf\_\-special
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em old\_\-fdata}]-\/ the experimental data \item[{\em i\_\-max}]-\/ the maximum index to check for valid data\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+fdata -\/ the new, completely filled data structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1344 {
+1345   double *y_new=NULL;
+1346 
+1347   int ii;
+1348   int i_count;
+1349 
+1350   // check that SOME values
+1351   // are accepted
+1352   if (i_max < 1)
+1353     // return NULL if not
+1354     return y_new;
+1355   
+1356   // count the number of
+1357   // values with weight
+1358   i_count=0;
+1359   for (ii=0; ii < i_max; ii++)
+1360     if (old_fdata->e_values[ii])
+1361       i_count++;
+1362 
+1363   // check whether there
+1364   // is data at all
+1365   if (i_count < 1)
+1366     // return NULL if not
+1367     return y_new;
+1368         
+1369   // allocate a new structure 
+1370   y_new = (double *)malloc(i_count * sizeof(double));
+1371 
+1372   // set the counter
+1373   i_count=0;
+1374 
+1375   // go over the old data
+1376   // to the maximum index
+1377   for (ii=0; ii < i_max; ii++)
+1378     {
+1379       // check whether the 
+1380       // data is valid
+1381       if (old_fdata->e_values[ii])
+1382         {
+1383           // transfer valid data
+1384           y_new[i_count] = y_fract[ii];
+1385           
+1386           // enhance the counter
+1387           i_count++;
+1388         }
+1389     }
+1390 
+1391   // return the new structure
+1392   return y_new;
+1393 }
+\end{DoxyCode}
+\hypertarget{trfit__utils_8h_a5269c1a8a49150eeca25ae415bab605a}{
+\index{trfit\_\-utils.h@{trfit\_\-utils.h}!write\_\-ipc\_\-fit@{write\_\-ipc\_\-fit}}
+\index{write\_\-ipc\_\-fit@{write\_\-ipc\_\-fit}!trfit_utils.h@{trfit\_\-utils.h}}
+\subsubsection[{write\_\-ipc\_\-fit}]{\setlength{\rightskip}{0pt plus 5cm}void write\_\-ipc\_\-fit ({\bf fit\_\-data} $\ast$ {\em f\_\-data}, \/  double $\ast$ {\em y\_\-values}, \/  const char $\ast$ {\em ipc\_\-file}, \/  const double {\em qual}, \/  double $\ast$ {\em yfract})}}
+\label{trfit__utils_8h_a5269c1a8a49150eeca25ae415bab605a}
+Function: write\_\-ipc\_\-fit
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em f\_\-data}]-\/ the input data \item[{\em y\_\-values}]-\/ the model values \item[{\em ipc\_\-file}]-\/ name of the file to write to\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1026 {
+1027   FILE *fout;
+1028   char Buffer[MAXCHAR];
+1029 
+1030   int index;
+1031   
+1032   // open the file for the values
+1033   fout = fopen (ipc_file, "w");
+1034 
+1035   // write norm (= quality of fit) to comment line
+1036   sprintf (Buffer, "# norm of the residue vector: %e\n", qual);
+1037   fputs (Buffer, fout);
+1038   // write norm (= quality of fit) to comment line
+1039   sprintf (Buffer, "#\n", qual);
+1040   fputs (Buffer, fout);
+1041   sprintf (Buffer, "# Wanderer kommst Du nach Sparta\n");
+1042   fputs (Buffer, fout);
+1043   sprintf (Buffer, "# berichtige dorten\n");
+1044   fputs (Buffer, fout);
+1045   sprintf (Buffer, "# Du habest uns hier liegen gesehen\n");
+1046   fputs (Buffer, fout);
+1047   sprintf (Buffer, "# wie es die Geschichte befahl.\n");
+1048   fputs (Buffer, fout);
+1049   sprintf (Buffer, "#\n");
+1050   fputs (Buffer, fout);
+1051 
+1052   // go over the data
+1053   for (index=0; index < f_data->n_data; index++)
+1054     {
+1055       // write the data point to the buffer
+1056       sprintf (Buffer, "%e %e %e %e %e\n", f_data->x_values[index], f_data->
+      y_values[index], y_values[index],  f_data->e_values[index], yfract[index]);
+1057       // write the buffer to the file
+1058       fputs (Buffer, fout);
+1059     }
+1060 
+1061   // close the file
+1062   fclose(fout);
+1063 }
+\end{DoxyCode}

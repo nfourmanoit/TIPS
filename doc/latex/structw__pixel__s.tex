@@ -1,0 +1,111 @@
+\hypertarget{structw__pixel__s}{
+\section{w\_\-pixel\_\-s Struct Reference}
+\label{structw__pixel__s}\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}}
+}
+
+
+{\ttfamily \#include $<$spce\_\-binning.h$>$}\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{structw__pixel__s_aa573ff80cfafba3d756e11b8abeccf55}{p0}
+\item 
+double \hyperlink{structw__pixel__s_ac09b198d4fdd1f6575e1bd054d6dc49c}{p1}
+\item 
+double \hyperlink{structw__pixel__s_ad0db38112e89040778db44f2ed86031c}{p2}
+\item 
+double \hyperlink{structw__pixel__s_aa570917e9e9d0ab38a3ec5c1af5ec721}{p3}
+\item 
+double \hyperlink{structw__pixel__s_ad1a65366010f75f54f9dde10967ca11f}{angle}
+\item 
+double \hyperlink{structw__pixel__s_a7ec8bd3a93435d8fe1247ecf45f5a54c}{tana}
+\item 
+double \hyperlink{structw__pixel__s_a3de5b10d42a608e6e2139ece60448186}{cota}
+\item 
+double \hyperlink{structw__pixel__s_ad5f30e08ed1e83be6e28ef1681ea7dc6}{x0}
+\item 
+double \hyperlink{structw__pixel__s_a4e32e9f589e20889ddbe04235ceef96b}{y0}
+\item 
+double \hyperlink{structw__pixel__s_a8b4134dbbe9eb664a1c452fbfcf4b43a}{size}
+\item 
+double \hyperlink{structw__pixel__s_a6460d169eb7d6bac5c0fb4f79f4cf5b2}{fmax}
+\item 
+double \hyperlink{structw__pixel__s_ae586b14a26536b2fd7d4fa5fe8cb3ff2}{slope}
+\item 
+double($\ast$ \hyperlink{structw__pixel__s_ad04cb41431b0507e691b17c186986caa}{weight\_\-function} )(const double x1, const double y1, const double x2, const double y2, const struct \hyperlink{structw__pixel__s}{w\_\-pixel\_\-s} $\ast$const pix)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+defines a pixel for weighting purposes. Here, p0, p1, p2, p3 are the coordinates of the points where the square first contribute, where its contribution becomes constant, where it slopes down again, and where it doesn't contribute any more. For example, a pixel at (0,0) viewed at from a side has p0=p1=0, p2=p3=1, whereas the same pixel viewed from a corner has p0=-\/1, p1=p2=0, p3=1; slope is the ascent on the non-\/constant parts, fmax the maximum contribution. angle is the angle viewing. Its tangent tana or its cotangent cota may be undefined for certain viewing angles. The function weight\_\-function is selected such that this is unimportatnt. x0, y0, and size are the coordinates of the lower left corner and the size of the square. 
+
+\subsection{Field Documentation}
+\hypertarget{structw__pixel__s_ad1a65366010f75f54f9dde10967ca11f}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!angle@{angle}}
+\index{angle@{angle}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{angle}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::angle}}}
+\label{structw__pixel__s_ad1a65366010f75f54f9dde10967ca11f}
+\hypertarget{structw__pixel__s_a3de5b10d42a608e6e2139ece60448186}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!cota@{cota}}
+\index{cota@{cota}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{cota}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::cota}}}
+\label{structw__pixel__s_a3de5b10d42a608e6e2139ece60448186}
+\hypertarget{structw__pixel__s_a6460d169eb7d6bac5c0fb4f79f4cf5b2}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!fmax@{fmax}}
+\index{fmax@{fmax}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{fmax}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::fmax}}}
+\label{structw__pixel__s_a6460d169eb7d6bac5c0fb4f79f4cf5b2}
+\hypertarget{structw__pixel__s_aa573ff80cfafba3d756e11b8abeccf55}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!p0@{p0}}
+\index{p0@{p0}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{p0}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::p0}}}
+\label{structw__pixel__s_aa573ff80cfafba3d756e11b8abeccf55}
+\hypertarget{structw__pixel__s_ac09b198d4fdd1f6575e1bd054d6dc49c}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!p1@{p1}}
+\index{p1@{p1}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{p1}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::p1}}}
+\label{structw__pixel__s_ac09b198d4fdd1f6575e1bd054d6dc49c}
+\hypertarget{structw__pixel__s_ad0db38112e89040778db44f2ed86031c}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!p2@{p2}}
+\index{p2@{p2}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{p2}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::p2}}}
+\label{structw__pixel__s_ad0db38112e89040778db44f2ed86031c}
+\hypertarget{structw__pixel__s_aa570917e9e9d0ab38a3ec5c1af5ec721}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!p3@{p3}}
+\index{p3@{p3}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{p3}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::p3}}}
+\label{structw__pixel__s_aa570917e9e9d0ab38a3ec5c1af5ec721}
+\hypertarget{structw__pixel__s_a8b4134dbbe9eb664a1c452fbfcf4b43a}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!size@{size}}
+\index{size@{size}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::size}}}
+\label{structw__pixel__s_a8b4134dbbe9eb664a1c452fbfcf4b43a}
+\hypertarget{structw__pixel__s_ae586b14a26536b2fd7d4fa5fe8cb3ff2}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!slope@{slope}}
+\index{slope@{slope}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{slope}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::slope}}}
+\label{structw__pixel__s_ae586b14a26536b2fd7d4fa5fe8cb3ff2}
+\hypertarget{structw__pixel__s_a7ec8bd3a93435d8fe1247ecf45f5a54c}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!tana@{tana}}
+\index{tana@{tana}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{tana}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::tana}}}
+\label{structw__pixel__s_a7ec8bd3a93435d8fe1247ecf45f5a54c}
+\hypertarget{structw__pixel__s_ad04cb41431b0507e691b17c186986caa}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!weight\_\-function@{weight\_\-function}}
+\index{weight\_\-function@{weight\_\-function}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{weight\_\-function}]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf w\_\-pixel\_\-s::weight\_\-function})(const double x1, const double y1, const double x2, const double y2, const struct {\bf w\_\-pixel\_\-s} $\ast$const pix)}}
+\label{structw__pixel__s_ad04cb41431b0507e691b17c186986caa}
+\hypertarget{structw__pixel__s_ad5f30e08ed1e83be6e28ef1681ea7dc6}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!x0@{x0}}
+\index{x0@{x0}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{x0}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::x0}}}
+\label{structw__pixel__s_ad5f30e08ed1e83be6e28ef1681ea7dc6}
+\hypertarget{structw__pixel__s_a4e32e9f589e20889ddbe04235ceef96b}{
+\index{w\_\-pixel\_\-s@{w\_\-pixel\_\-s}!y0@{y0}}
+\index{y0@{y0}!w_pixel_s@{w\_\-pixel\_\-s}}
+\subsubsection[{y0}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf w\_\-pixel\_\-s::y0}}}
+\label{structw__pixel__s_a4e32e9f589e20889ddbe04235ceef96b}
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/\hyperlink{spce__binning_8h}{spce\_\-binning.h}\end{DoxyCompactItemize}

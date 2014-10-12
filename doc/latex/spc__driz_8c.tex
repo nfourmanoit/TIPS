@@ -1,0 +1,210 @@
+\hypertarget{spc__driz_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-driz.c File Reference}
+\label{spc__driz_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-driz.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-driz.c}}
+}
+{\ttfamily \#include \char`\"{}spc\_\-driz.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__driz}{spc\_\-driz}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__driz_8c_a74e75242132eaabbc1c512488a135926}{MIN}(x, y)~(((x)$<$(y))?(x):(y))
+\item 
+\#define \hyperlink{spc__driz_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{MAX}(x, y)~(((x)$>$(y))?(x):(y))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{spc__driz_8c_a8aae79a1f68a0ac2de5f34e6e9f9f2df}{boxer} (int is, int js, double $\ast$xx, double $\ast$yy)
+\item 
+double \hyperlink{spc__driz_8c_a96f6f09b909bd06f96087b1db502357f}{sgarea} (double x1, double y1, double x2, double y2, int is, int js)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__driz_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{
+\index{spc\_\-driz.c@{spc\_\-driz.c}!MAX@{MAX}}
+\index{MAX@{MAX}!spc_driz.c@{spc\_\-driz.c}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(x, \/  y)~(((x)$>$(y))?(x):(y))}}
+\label{spc__driz_8c_aacc3ee1a7f283f8ef65cea31f4436a95}
+\hypertarget{spc__driz_8c_a74e75242132eaabbc1c512488a135926}{
+\index{spc\_\-driz.c@{spc\_\-driz.c}!MIN@{MIN}}
+\index{MIN@{MIN}!spc_driz.c@{spc\_\-driz.c}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(x, \/  y)~(((x)$<$(y))?(x):(y))}}
+\label{spc__driz_8c_a74e75242132eaabbc1c512488a135926}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__driz_8c_a8aae79a1f68a0ac2de5f34e6e9f9f2df}{
+\index{spc\_\-driz.c@{spc\_\-driz.c}!boxer@{boxer}}
+\index{boxer@{boxer}!spc_driz.c@{spc\_\-driz.c}}
+\subsubsection[{boxer}]{\setlength{\rightskip}{0pt plus 5cm}double boxer (int {\em is}, \/  int {\em js}, \/  double $\ast$ {\em xx}, \/  double $\ast$ {\em yy})}}
+\label{spc__driz_8c_a8aae79a1f68a0ac2de5f34e6e9f9f2df}
+Calculate the area common to input clockwise polygon x(n), y(n) with square (is, js) to (is+1, js+1). This version is for a quadrilateral. W.B. Sparks STScI 2-\/June-\/1990. Phil Hodge 20-\/Nov-\/1990 Change calling sequence; single precision. Richard Hook ECF 24-\/Apr-\/1996 Change coordinate origin so that centre of pixel has integer position 03-\/Jan-\/2001 Removed accuracy check Nor Pirzkal 27-\/Jan-\/2003 C version 
+
+
+\begin{DoxyCode}
+27 {
+28   double px[4],py[4], sum;
+29   int i;
+30         
+31   /*
+32     Set up coords relative to unit square at origin
+33     Note that the +0.5s were added when this code was
+34     included in DRIZZLE
+35   */    
+36   for(i=0;i<4;i++) {
+37     px[i] = xx[i] - is + 0.5;
+38     py[i] = yy[i] - js + 0.5;
+39     // fprintf(stderr,"%d %d %f %f\n",is,js,px[i],py[i]);
+40   }
+41   
+42   /*
+43     For each line in the polygon (or at this stage, input quadrilateral)
+44     calculate the area common to the unit square (allow negative area for
+45     subsequent `vector' addition of subareas).
+46   */
+47   sum = 0.;
+48   for (i=0;i<3;i++) {
+49     sum += sgarea(px[i],py[i],px[i+1],py[i+1],is,js);
+50   }
+51   sum += sgarea(px[3],py[3],px[0],py[0],is,js);
+52   
+53   return sum;
+54   
+55 }
+\end{DoxyCode}
+\hypertarget{spc__driz_8c_a96f6f09b909bd06f96087b1db502357f}{
+\index{spc\_\-driz.c@{spc\_\-driz.c}!sgarea@{sgarea}}
+\index{sgarea@{sgarea}!spc_driz.c@{spc\_\-driz.c}}
+\subsubsection[{sgarea}]{\setlength{\rightskip}{0pt plus 5cm}double sgarea (double {\em x1}, \/  double {\em y1}, \/  double {\em x2}, \/  double {\em y2}, \/  int {\em is}, \/  int {\em js})}}
+\label{spc__driz_8c_a96f6f09b909bd06f96087b1db502357f}
+
+
+
+\begin{DoxyCode}
+58 {
+59   double m,c,dx;
+60   double xlo,xhi,ylo,yhi,xtop;
+61   int negdx=0;
+62   double res;
+63   
+64   dx = x2-x1;
+65   
+66   /* 
+67      Trap vertical line
+68   */
+69   if (dx==0.0) {
+70     res = 0.0;
+71     return res;
+72   }
+73   
+74   /*
+75     Order the two input points in x
+76   */
+77   if (x1<x2) {
+78     xlo = x1;
+79     xhi = x2;
+80   } else {
+81     xlo = x2;
+82     xhi = x1;
+83   }
+84 
+85   /* 
+86      And determine the bounds ignoring y for now
+87   */
+88   if (xlo>=1.0) {
+89     res = 0.0;
+90     return res;
+91   }
+92   
+93   if (xhi<=0.0) {
+94     res = 0.0;
+95     return res;
+96   }
+97   
+98   xlo = MAX(xlo,0.0);
+99   xhi = MIN(xhi,1.0);
+100   
+101   /*
+102     Now look at y basic info about the line y = mx+c
+103   */
+104   negdx = (dx<0.0);
+105   m = (y2-y1)/dx;
+106   c = y1-m*x1;
+107   ylo = m*xlo+c;
+108   yhi = m*xhi+c;
+109   
+110   /*
+111     Trap segment entirely below axis
+112   */
+113   if ( (ylo<=0.0)&&(yhi<=0.0) ) {
+114     res = 0.0;
+115     return res;
+116   }
+117   
+118   /*
+119     Adjust bounds if segment crosses axis (to exclude anything below axis)
+120   */
+121   if (ylo<0.0) {
+122     ylo = 0.0;
+123     xlo = -c/m;
+124   }
+125   if (yhi<0.0) {
+126     yhi = 0.0;
+127     xhi = -c/m;
+128   }
+129   
+130   /* 
+131      There are four possibilities: 
+132      both y below 1
+133      both y above 1
+134      and one of each
+135   */
+136         
+137 
+138   if ( (ylo>=1.0) && (yhi>=1.0) ) {
+139     /* Line segment is entirrely above square */
+140     if (negdx) {
+141       res = xlo-xhi;
+142     } else {
+143       res = xhi-xlo;
+144     }
+145     return res;
+146   }
+147   
+148   if ( (ylo<=1.0) && (yhi<=1.0) ) {
+149     /* segment is entirely within square */
+150     if (negdx) {
+151       res = 0.5*(xlo-xhi)*(yhi+ylo);
+152     } else {
+153       res = 0.5*(xhi-xlo)*(yhi+ylo);
+154     }
+155     return res;
+156   }
+157   
+158   
+159   /* Otherwise it must cross the top square */
+160   xtop = (1.0 -c)/m;
+161   
+162   if (ylo<1.) {
+163     if (negdx) {
+164       res = -(0.5*(xtop-xlo)*(1.0+ylo)+xhi-xtop);
+165     } else {
+166       res = 0.5*(xtop-xlo)*(1.0+ylo)+xhi-xtop;
+167     }
+168     return res;
+169   }
+170   
+171   if (negdx) {
+172     res = -(0.5*(xhi-xtop)*(1.0+yhi)+xtop-xlo);
+173   } else {
+174     res = 0.5*(xhi-xtop)*(1.0+yhi)+xtop-xlo;
+175   }     
+176   
+177   return res;
+178 }
+\end{DoxyCode}

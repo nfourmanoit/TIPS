@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/repos/tips/!svn/ver/221/branches/tips_build/cmake
+END
+FindWCSLIB1.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/cmake/FindWCSLIB1.cmake
+END
+FindWCSLIB2.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/cmake/FindWCSLIB2.cmake
+END
+FindWCSLIB3.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/cmake/FindWCSLIB3.cmake
+END

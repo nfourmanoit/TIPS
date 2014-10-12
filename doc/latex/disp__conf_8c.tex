@@ -1,0 +1,738 @@
+\hypertarget{disp__conf_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/disp\_\-conf.c File Reference}
+\label{disp__conf_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/disp\_\-conf.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/disp\_\-conf.c}}
+}
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-cfg.h\char`\"{}}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include \char`\"{}disp\_\-conf.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacedisp__conf}{disp\_\-conf}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{disp__conf_8c_ad0ea9b7deae249bc728d97a38d00f85d}{get\_\-beam\_\-mmag\_\-extract} (char $\ast$filename, int beamID)
+\item 
+float \hyperlink{disp__conf_8c_a3df85258e29ae38cdb56b3d6244b50ec}{get\_\-beam\_\-mmag\_\-mark} (char $\ast$filename, int beamID)
+\item 
+int \hyperlink{disp__conf_8c_a953f49304ef6a2951706756e0fde0f96}{get\_\-beam\_\-disp\_\-norder} (char $\ast$filename, int beamID)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{disp__conf_8c_a5903228cd4088bdb7e58fe64e277930d}{get\_\-beam\_\-disp\_\-order} (char $\ast$filename, const int for\_\-grism, int beamID, int order)
+\item 
+float \hyperlink{disp__conf_8c_a253e13f676943713360484f6f85497e8}{get\_\-disp\_\-coeff\_\-at\_\-pos} (char $\ast$filename, const int for\_\-grism, int beamID, int order, \hyperlink{structd__point}{d\_\-point} p)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{disp__conf_8c_a30f4ba971542ca108252fbc98e9a9ae3}{get\_\-disp\_\-coeffs\_\-at\_\-pos} (char $\ast$filename, const int for\_\-grism, int beamID, \hyperlink{structd__point}{d\_\-point} p)
+\item 
+\hyperlink{structdispstruct}{dispstruct} $\ast$ \hyperlink{disp__conf_8c_a4b76887b807b37abcfc6eae3b15ddf4f}{get\_\-dispstruct\_\-at\_\-pos} (char $\ast$filename, const int for\_\-grism, int beamID, \hyperlink{structd__point}{d\_\-point} p)
+\item 
+void \hyperlink{disp__conf_8c_a4f56bf7087ee22ccb4b0a85a7fe7c1bd}{free\_\-dispstruct} (\hyperlink{structdispstruct}{dispstruct} $\ast$p)
+\item 
+int \hyperlink{disp__conf_8c_a18a284f304a89240630f4f61869f468f}{check\_\-for\_\-grism} (char $\ast$filename, int beamID)
+\item 
+int \hyperlink{disp__conf_8c_a6d8ff92fdc05d8c0819cd52c03f673f3}{check\_\-disp\_\-coeff} (char $\ast$filename, const int for\_\-grism, int beamID, int order)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{disp__conf_8c_a689441b9d0c2037f5a6581423f8bfa88}{get\_\-prange} (char $\ast$filename, int beamID)
+\item 
+\hyperlink{structglobal__disp}{global\_\-disp} $\ast$ \hyperlink{disp__conf_8c_a75298ebaee9326b636e757146d9f1b7f}{get\_\-global\_\-disp} (char $\ast$filename, const int for\_\-grism, int beamID)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{disp__conf_8c_a19e3930852d1816c0a65e0caf16b7aff}{get\_\-calvector\_\-from\_\-gdisp} (const \hyperlink{structglobal__disp}{global\_\-disp} $\ast$gdisp, const \hyperlink{structd__point}{d\_\-point} p)
+\item 
+double \hyperlink{disp__conf_8c_a467b562614f4d452007388ea8ae1ee97}{get\_\-2Ddep\_\-value} (const gsl\_\-vector $\ast$coeffs, const \hyperlink{structd__point}{d\_\-point} p)
+\item 
+void \hyperlink{disp__conf_8c_af23756c4d8b2684b5ba4c645084bfcdb}{print\_\-global\_\-disp} (const \hyperlink{structglobal__disp}{global\_\-disp} $\ast$gdisp)
+\item 
+int \hyperlink{disp__conf_8c_a69cf62d7a2249d03e12582cdd048df43}{check\_\-disp\_\-order} (const gsl\_\-vector $\ast$tmp, const int beamID, const int order)
+\item 
+void \hyperlink{disp__conf_8c_aa4ac5d497886fc6c65d63a797daa605e}{free\_\-global\_\-disp} (\hyperlink{structglobal__disp}{global\_\-disp} $\ast$gdisp)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{disp__conf_8c_a6d8ff92fdc05d8c0819cd52c03f673f3}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!check\_\-disp\_\-coeff@{check\_\-disp\_\-coeff}}
+\index{check\_\-disp\_\-coeff@{check\_\-disp\_\-coeff}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{check\_\-disp\_\-coeff}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-disp\_\-coeff (char $\ast$ {\em filename}, \/  const int {\em for\_\-grism}, \/  int {\em beamID}, \/  int {\em order})}}
+\label{disp__conf_8c_a6d8ff92fdc05d8c0819cd52c03f673f3}
+The program checks an order of a dispersion solution for the \char`\"{}suspicion\char`\"{} to be either grismatic or prismatic.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em for\_\-grism}]the suspicion (=1 for grism, =0 for prism) \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em order}]the order of the dispersion solution to be invetigated\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+found integer to confirm (=0) or falsily (=1) the suspicion 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+407 {
+408   char beam[MAXCHAR];
+409 
+410   //int norder;
+411   int found = 1;
+412   int i;
+413 
+414   struct CfgStrings DispConfig[] = {
+415     {NULL, NULL},
+416     {NULL, NULL}
+417   };
+418   DispConfig[0].name = beam;
+419   if (for_grism == 1)
+420     {
+421       sprintf (beam, "DLDP_%c_%d", BEAM (beamID), order);
+422     }
+423   else
+424     {
+425       sprintf (beam, "DLD1P_%c_%d", BEAM (beamID), order);
+426     }
+427 
+428   CfgRead (filename, DispConfig);
+429   if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+430     {
+431       found = 0;
+432     }
+433   i = 0;
+434   while(DispConfig[i].name!=NULL){
+435     free(DispConfig[i++].data);
+436   }
+437   return found;
+438 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a69cf62d7a2249d03e12582cdd048df43}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!check\_\-disp\_\-order@{check\_\-disp\_\-order}}
+\index{check\_\-disp\_\-order@{check\_\-disp\_\-order}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{check\_\-disp\_\-order}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-disp\_\-order (const gsl\_\-vector $\ast$ {\em tmp}, \/  const int {\em beamID}, \/  const int {\em order})}}
+\label{disp__conf_8c_a69cf62d7a2249d03e12582cdd048df43}
+
+
+
+\begin{DoxyCode}
+585 {
+586 
+587   int n;
+588   
+589   n = 0.5 * (-1.0 + sqrt (1 + 8 * tmp->size));
+590   if ((floor (n) - n) != 0)
+591     {
+592       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+593                    "get_disp_coeff_at_pos: "
+594                    "Order %d of Beam %d does not contain a correct number of entr
+      ies (i.e. "
+595                    "1,3,6,10,15...,n^2/2+n/2", order, beamID);
+596     }
+597 
+598   return 1;
+599 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a18a284f304a89240630f4f61869f468f}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!check\_\-for\_\-grism@{check\_\-for\_\-grism}}
+\index{check\_\-for\_\-grism@{check\_\-for\_\-grism}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{check\_\-for\_\-grism}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-for\_\-grism (char $\ast$ {\em filename}, \/  int {\em beamID})}}
+\label{disp__conf_8c_a18a284f304a89240630f4f61869f468f}
+The program checks if the dispersion relation of a certain \hyperlink{structbeam}{beam} is given in \char`\"{}grism\char`\"{} form (polynomial) or in \char`\"{}prism\char`\"{} form (inverse polynomial)
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+c integer to declare grism (=1) or prism (=0) 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+352 {
+353   int norder, i;
+354   int c=0;
+355 
+356   // get the order of the dispersion solution
+357   norder = get_beam_disp_norder (filename, beamID);
+358 
+359   // go over all orders and check the assumption
+360   // that it is a grism
+361   for (i = 0; i < norder + 1; i++)
+362     c += check_disp_coeff (filename, 1, beamID, i);
+363 
+364   // if the assumption is right,
+365   // set the return value for grism
+366   if (c == 0)
+367     {
+368       c = 1;
+369     }
+370   // if the assumption is wrong
+371   else
+372     {
+373       // reset the variable
+374       c = 0;
+375 
+376       // check the assumption that it is a grism
+377       for (i = 0; i < norder + 1; i++)
+378         c += check_disp_coeff (filename, 0, beamID, i);
+379 
+380       // if also this assumption is wrong,
+381       // raise an error that the configuration file 
+382       // is inconsistent
+383       if (c != 0)
+384         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+385                      "check_for_grism: "
+386                      "The dispersion coefficients for beam %c in file",
+387                      "%s are inconsistent.", beamID, filename);
+388     }
+389 
+390   // return the result
+391   return c;
+392 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a4f56bf7087ee22ccb4b0a85a7fe7c1bd}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!free\_\-dispstruct@{free\_\-dispstruct}}
+\index{free\_\-dispstruct@{free\_\-dispstruct}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{free\_\-dispstruct}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-dispstruct ({\bf dispstruct} $\ast$ {\em p})}}
+\label{disp__conf_8c_a4f56bf7087ee22ccb4b0a85a7fe7c1bd}
+Free the memory allocated to a \hyperlink{structdispstruct}{dispstruct} structure
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em p}]pointer to a \hyperlink{structdispstruct}{dispstruct} structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+334 {
+335   if (p!=NULL)  gsl_vector_free(p->pol);
+336   free(p);
+337   p=NULL;
+338 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_aa4ac5d497886fc6c65d63a797daa605e}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!free\_\-global\_\-disp@{free\_\-global\_\-disp}}
+\index{free\_\-global\_\-disp@{free\_\-global\_\-disp}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{free\_\-global\_\-disp}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-global\_\-disp ({\bf global\_\-disp} $\ast$ {\em gdisp})}}
+\label{disp__conf_8c_aa4ac5d497886fc6c65d63a797daa605e}
+
+
+
+\begin{DoxyCode}
+603 {
+604   int order;
+605   
+606   for (order=0; order <  gdisp->n_order+1; order++)
+607     gsl_vector_free(gdisp->all_coeffs[order]);
+608   
+609   free(gdisp->all_coeffs);
+610   free(gdisp);
+611   gdisp = NULL;
+612 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a467b562614f4d452007388ea8ae1ee97}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-2Ddep\_\-value@{get\_\-2Ddep\_\-value}}
+\index{get\_\-2Ddep\_\-value@{get\_\-2Ddep\_\-value}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-2Ddep\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-2Ddep\_\-value (const gsl\_\-vector $\ast$ {\em coeffs}, \/  const {\bf d\_\-point} {\em p})}}
+\label{disp__conf_8c_a467b562614f4d452007388ea8ae1ee97}
+
+
+
+\begin{DoxyCode}
+543 {
+544   double value=0.0;
+545   double c=0.0;
+546   
+547   int i, j, k, n;
+548   
+549   i=0;
+550   n = 0.5 * (-1.0 + sqrt (1 + 8 * coeffs->size));
+551   for (j = 0; j < n; j++)
+552     {
+553       for (k = 0; k < (j + 1); k++)
+554         {
+555           c = gsl_vector_get (coeffs, i);
+556           value = value + c * pow (p.x, (j - k)) * pow (p.y, k);
+557           i++;
+558         }
+559     }
+560   return value;
+561 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a953f49304ef6a2951706756e0fde0f96}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-beam\_\-disp\_\-norder@{get\_\-beam\_\-disp\_\-norder}}
+\index{get\_\-beam\_\-disp\_\-norder@{get\_\-beam\_\-disp\_\-norder}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-beam\_\-disp\_\-norder}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-beam\_\-disp\_\-norder (char $\ast$ {\em filename}, \/  int {\em beamID})}}
+\label{disp__conf_8c_a953f49304ef6a2951706756e0fde0f96}
+Parses a configuration file and searches for DISP\_\-ORDER\_\-c keywords. Returns the order of the field dependent dispersion relation for that order.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+disporder the order of the dispersion relation for the \hyperlink{structbeam}{beam} of interest 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+124 {
+125   char beam[MAXCHAR];
+126   int disporder = -1, found = 0, i;
+127   
+128   struct CfgStrings DispConfig[] = {
+129     {NULL, NULL},
+130     {NULL, NULL}
+131   };
+132   DispConfig[0].name = beam;
+133   
+134   sprintf (beam, "DISP_ORDER_%c", BEAM (beamID));
+135   CfgRead (filename, DispConfig);
+136   if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+137     {
+138       disporder = atoi (DispConfig[0].data);
+139       found = 1;
+140     }
+141   if (!found)
+142     {
+143       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+144                    "get_beam_disp_norder: %s was not found in %s.\n",
+145                    beam, filename);
+146     }
+147   i = 0;
+148   while(DispConfig[i].name!=NULL){
+149     free(DispConfig[i++].data);
+150   }
+151   
+152   //free(DispConfig[0].data);
+153   return disporder;
+154   
+155 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a5903228cd4088bdb7e58fe64e277930d}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-beam\_\-disp\_\-order@{get\_\-beam\_\-disp\_\-order}}
+\index{get\_\-beam\_\-disp\_\-order@{get\_\-beam\_\-disp\_\-order}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-beam\_\-disp\_\-order}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-beam\_\-disp\_\-order (char $\ast$ {\em filename}, \/  const int {\em for\_\-grism}, \/  int {\em beamID}, \/  int {\em order})}}
+\label{disp__conf_8c_a5903228cd4088bdb7e58fe64e277930d}
+Parses a configuration file and returns a gsl vector containing the 2D polynomial coefficient allowing one to compute a given dispersion relation coefficient anywhere on the detector.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em order}]order of the coefficient for which the 2D field dependent coefficients are queried.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+v a gsl\_\-vector() containing all of the 2D field dependent polynomial coeffiecient 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+173 {
+174   char beam[MAXCHAR];
+175   
+176   int norder, found = 0;
+177   int i;
+178   gsl_vector *v = NULL;
+179   struct CfgStrings DispConfig[] = {
+180     {NULL, NULL},
+181     {NULL, NULL}
+182   };
+183   DispConfig[0].name = beam;
+184   norder = get_beam_disp_norder (filename, beamID);
+185   if (for_grism == 1)
+186     {
+187       sprintf (beam, "DLDP_%c_%d", BEAM (beamID), order);
+188     }
+189   else
+190     {
+191       sprintf (beam, "DLD1P_%c_%d", BEAM (beamID), order);
+192     }
+193   CfgRead (filename, DispConfig);
+194   if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+195     {
+196       v = string_to_gsl_array (DispConfig[0].data);
+197       found = 1;
+198     }
+199 
+200   if (!found)
+201     {
+202       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+203                    "get_beam_disp_order: %s was not found in %s.\n",
+204                    beam, filename);
+205     }
+206   i = 0;
+207   while(DispConfig[i].name!=NULL){
+208     free(DispConfig[i++].data);
+209   }
+210   return v;
+211 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_ad0ea9b7deae249bc728d97a38d00f85d}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-beam\_\-mmag\_\-extract@{get\_\-beam\_\-mmag\_\-extract}}
+\index{get\_\-beam\_\-mmag\_\-extract@{get\_\-beam\_\-mmag\_\-extract}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-beam\_\-mmag\_\-extract}]{\setlength{\rightskip}{0pt plus 5cm}float get\_\-beam\_\-mmag\_\-extract (char $\ast$ {\em filename}, \/  int {\em beamID})}}
+\label{disp__conf_8c_ad0ea9b7deae249bc728d97a38d00f85d}
+Routine to read in the MMAG\_\-EXTRACT keyword for a specific \hyperlink{structbeam}{beam} from the configuration file
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mmag\_\-extract mag\_\-extract-\/value for that \hyperlink{structbeam}{beam} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+30 {
+31   char beam[MAXCHAR];
+32   float mmag_extract = -1;
+33   int found = 0;
+34   int i=0;
+35   
+36   struct CfgStrings DispConfig[] = {
+37     {NULL, NULL},
+38     {NULL, NULL}
+39   };
+40   DispConfig[0].name = beam;
+41   
+42   sprintf (beam, "MMAG_EXTRACT_%c", BEAM (beamID));
+43   CfgRead (filename, DispConfig);
+44   if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+45     {
+46       mmag_extract = atof (DispConfig[0].data);
+47       found = 1;
+48     }
+49   if (!found)
+50     {
+51       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+52                    "get_beam_mmag_extract: %s was not found in %s.\n",
+53                    beam, filename);
+54     }
+55 
+56   // release memory
+57   i=0;
+58   while(DispConfig[i].name!=NULL)
+59     free(DispConfig[i++].data);
+60 
+61   // return the magnitude
+62   return mmag_extract;
+63 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a3df85258e29ae38cdb56b3d6244b50ec}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-beam\_\-mmag\_\-mark@{get\_\-beam\_\-mmag\_\-mark}}
+\index{get\_\-beam\_\-mmag\_\-mark@{get\_\-beam\_\-mmag\_\-mark}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-beam\_\-mmag\_\-mark}]{\setlength{\rightskip}{0pt plus 5cm}float get\_\-beam\_\-mmag\_\-mark (char $\ast$ {\em filename}, \/  int {\em beamID})}}
+\label{disp__conf_8c_a3df85258e29ae38cdb56b3d6244b50ec}
+Routine to read in the MMAG\_\-MARK keyword for a specific \hyperlink{structbeam}{beam} from the configuration file
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mmag\_\-mark mag\_\-mark-\/value for that \hyperlink{structbeam}{beam} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+76 {
+77   char beam[MAXCHAR];
+78   float mmag_mark = -1;
+79   int found = 0;
+80   int i=0;
+81   
+82   struct CfgStrings DispConfig[] = {
+83     {NULL, NULL},
+84     {NULL, NULL}
+85   };
+86   DispConfig[0].name = beam;
+87   
+88   sprintf (beam, "MMAG_MARK_%c", BEAM (beamID));
+89   CfgRead (filename, DispConfig);
+90   if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+91     {
+92       mmag_mark = atof (DispConfig[0].data);
+93       found = 1;
+94     }
+95   if (!found)
+96     {
+97       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+98                    "get_beam_mmag_mark: %s was not found in %s.\n",
+99                    beam, filename);
+100     }
+101 
+102   // release memory
+103   i=0;
+104   while(DispConfig[i].name!=NULL)
+105     free(DispConfig[i++].data);
+106 
+107   // return the value
+108   return mmag_mark;  
+109 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a19e3930852d1816c0a65e0caf16b7aff}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-calvector\_\-from\_\-gdisp@{get\_\-calvector\_\-from\_\-gdisp}}
+\index{get\_\-calvector\_\-from\_\-gdisp@{get\_\-calvector\_\-from\_\-gdisp}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-calvector\_\-from\_\-gdisp}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-calvector\_\-from\_\-gdisp (const {\bf global\_\-disp} $\ast$ {\em gdisp}, \/  const {\bf d\_\-point} {\em p})}}
+\label{disp__conf_8c_a19e3930852d1816c0a65e0caf16b7aff}
+
+
+
+\begin{DoxyCode}
+519 {
+520 
+521   gsl_vector *calvector;
+522   
+523   double value;
+524 
+525   int order;
+526 
+527 
+528   calvector = gsl_vector_alloc(gdisp->n_order+1);
+529 
+530   for (order=0; order <  gdisp->n_order+1; order++)
+531     {
+532       value = get_2Ddep_value(gdisp->all_coeffs[order], p);
+533       gsl_vector_set(calvector, order, value);
+534       //      fprintf(stdout, "coefficient: %f\n", value);
+535     }
+536 
+537   return calvector;
+538 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a253e13f676943713360484f6f85497e8}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-disp\_\-coeff\_\-at\_\-pos@{get\_\-disp\_\-coeff\_\-at\_\-pos}}
+\index{get\_\-disp\_\-coeff\_\-at\_\-pos@{get\_\-disp\_\-coeff\_\-at\_\-pos}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-disp\_\-coeff\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float get\_\-disp\_\-coeff\_\-at\_\-pos (char $\ast$ {\em filename}, \/  const int {\em for\_\-grism}, \/  int {\em beamID}, \/  int {\em order}, \/  {\bf d\_\-point} {\em p})}}
+\label{disp__conf_8c_a253e13f676943713360484f6f85497e8}
+Parses a configuration file, computes and return the value of the order$^\wedge$th dispersion polynomial coefficient at a given detector pixel.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em order}]order of the coefficient for which the 2D field dependent \item[{\em p}]a \hyperlink{structd__point}{d\_\-point} \hyperlink{structobject}{object} containing the position to compute the dispersion coefficient at.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res the value of the order6th coefficient of beamID computed at detector pixel p. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+230 {
+231   gsl_vector *v;
+232   float n, c, res;
+233   int i, j, k;
+234   
+235   v = get_beam_disp_order (filename, for_grism, beamID, order);
+236   n = 0.5 * (-1.0 + sqrt (1 + 8 * v->size));
+237   if ((floor (n) - n) != 0)
+238     {
+239       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+240                    "get_disp_coeff_at_pos: "
+241                    "Order %d of Beam %d in %s does not contain a correct number o
+      f entries (i.e. "
+242                    "1,3,6,10,15...,n^2/2+n/2", order, beamID, filename);
+243     }
+244   
+245   i = 0;
+246   res = 0;
+247   for (j = 0; j < n; j++)
+248     {
+249       for (k = 0; k < (j + 1); k++)
+250         {
+251           c = gsl_vector_get (v, i);
+252           res = res + c * pow (p.x, (j - k)) * pow (p.y, k);
+253           i++;
+254         }
+255     }
+256   gsl_vector_free (v);
+257   return res;
+258 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a30f4ba971542ca108252fbc98e9a9ae3}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-disp\_\-coeffs\_\-at\_\-pos@{get\_\-disp\_\-coeffs\_\-at\_\-pos}}
+\index{get\_\-disp\_\-coeffs\_\-at\_\-pos@{get\_\-disp\_\-coeffs\_\-at\_\-pos}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-disp\_\-coeffs\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-disp\_\-coeffs\_\-at\_\-pos (char $\ast$ {\em filename}, \/  const int {\em for\_\-grism}, \/  int {\em beamID}, \/  {\bf d\_\-point} {\em p})}}
+\label{disp__conf_8c_a30f4ba971542ca108252fbc98e9a9ae3}
+Parse a configuration file and return a gsl array containing all the dispersion relation polynomial coefficient computed at a pixel p.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em p}]a \hyperlink{structd__point}{d\_\-point} \hyperlink{structobject}{object} containing the position to compute the dispersion coefficients at.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+v a gsl\_\-vector containing all the polynomial dispersion relation coefficients computed at detector pixel p. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+277 {
+278   int norder, i;
+279   gsl_vector *v;
+280   float c;
+281   
+282   norder = get_beam_disp_norder (filename, beamID);
+283   
+284   v = gsl_vector_alloc (norder + 1);
+285   for (i = 0; i < norder + 1; i++)
+286     {
+287       c = get_disp_coeff_at_pos (filename, for_grism, beamID, i, p);
+288       gsl_vector_set (v, i, c);
+289     }
+290 
+291   return v;
+292 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a4b76887b807b37abcfc6eae3b15ddf4f}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-dispstruct\_\-at\_\-pos@{get\_\-dispstruct\_\-at\_\-pos}}
+\index{get\_\-dispstruct\_\-at\_\-pos@{get\_\-dispstruct\_\-at\_\-pos}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-dispstruct\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dispstruct}$\ast$ get\_\-dispstruct\_\-at\_\-pos (char $\ast$ {\em filename}, \/  const int {\em for\_\-grism}, \/  int {\em beamID}, \/  {\bf d\_\-point} {\em p})}}
+\label{disp__conf_8c_a4b76887b807b37abcfc6eae3b15ddf4f}
+Generate and returns a dispersion structure that is computed at the given pixel p detector location.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em p}]a \hyperlink{structd__point}{d\_\-point} \hyperlink{structobject}{object} containing the position to compute the dispersion coefficients at.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res a dispersion structure computed for \hyperlink{structbeam}{beam} beamID at detector pixel p. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+310 {
+311   dispstruct *res;
+312   gsl_vector *pol2;
+313   
+314   res = malloc (sizeof (dispstruct));
+315   
+316   
+317   res->pol = get_disp_coeffs_at_pos (filename, for_grism, beamID, p);
+318   pol2 = res->pol;
+319   
+320   res->ID = beamID;
+321   res->cpoint.x = p.x;
+322   res->cpoint.y = p.y;
+323   sprintf (res->file, "%s", filename);
+324   res->for_grism = for_grism;
+325   return res;
+326 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a75298ebaee9326b636e757146d9f1b7f}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-global\_\-disp@{get\_\-global\_\-disp}}
+\index{get\_\-global\_\-disp@{get\_\-global\_\-disp}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-global\_\-disp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf global\_\-disp}$\ast$ get\_\-global\_\-disp (char $\ast$ {\em filename}, \/  const int {\em for\_\-grism}, \/  int {\em beamID})}}
+\label{disp__conf_8c_a75298ebaee9326b636e757146d9f1b7f}
+
+
+
+\begin{DoxyCode}
+483 {
+484   global_disp *gdisp;
+485   
+486   gsl_vector *tmp;
+487   
+488   int order;
+489   
+490 
+491   gdisp =  (global_disp *)malloc (sizeof(global_disp));
+492   
+493   gdisp->n_order = get_beam_disp_norder(filename, beamID);
+494   
+495   //  fprintf (stdout, "Order of Polynomial: %i\n", gdisp->n_order);
+496     
+497   gdisp->all_coeffs = (gsl_vector **)malloc((gdisp->n_order+1)*sizeof(gsl_vector 
+      *));
+498 
+499   for (order=0; order <  gdisp->n_order+1; order++)
+500     {
+501         
+502       tmp = get_beam_disp_order (filename, for_grism, beamID, order);
+503       
+504       if (check_disp_order(tmp, beamID, order))
+505         gdisp->all_coeffs[order] = tmp;
+506 
+507     }
+508 
+509 
+510   gdisp->ID = beamID;
+511   sprintf (gdisp->file, "%s", filename);
+512   gdisp->for_grism = for_grism;
+513   
+514   return gdisp;
+515 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_a689441b9d0c2037f5a6581423f8bfa88}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!get\_\-prange@{get\_\-prange}}
+\index{get\_\-prange@{get\_\-prange}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{get\_\-prange}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-prange (char $\ast$ {\em filename}, \/  int {\em beamID})}}
+\label{disp__conf_8c_a689441b9d0c2037f5a6581423f8bfa88}
+Routine to read in the DLD1P\_\-?\_\-PRANGE keyword ? for a specific \hyperlink{structbeam}{beam} from the configuration file. This is only for a prismatic dispersion solution
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+v gsl-\/vector \mbox{[}pmin, pmax\mbox{]} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+452 {
+453   char beam[MAXCHAR];
+454 
+455   gsl_vector *v = NULL;
+456   
+457   struct CfgStrings DispConfig[] = {
+458     {NULL, NULL},
+459     {NULL, NULL}
+460   };
+461   DispConfig[0].name = beam;
+462 
+463   sprintf (beam, "DLD1P_%c_PRANGE", BEAM (beamID));
+464 
+465   CfgRead (filename, DispConfig);
+466 
+467   if (DispConfig[0].data != NULL){
+468     v = string_to_gsl_array (DispConfig[0].data);
+469     if (v->size != 2)
+470       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+471                    "get_prange: two items, PMIN and PMAX must be given, not %i\n"
+      , v->size);
+472     if (gsl_vector_get(v,0) > gsl_vector_get(v,1))
+473       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+474                    "get_prange: PMIN must be smaller than PMAX, however PMIN: %f,
+       PMAX %f\n",
+475                    gsl_vector_get(v,0), gsl_vector_get(v,1));
+476       
+477   }
+478   return v;
+479 }
+\end{DoxyCode}
+\hypertarget{disp__conf_8c_af23756c4d8b2684b5ba4c645084bfcdb}{
+\index{disp\_\-conf.c@{disp\_\-conf.c}!print\_\-global\_\-disp@{print\_\-global\_\-disp}}
+\index{print\_\-global\_\-disp@{print\_\-global\_\-disp}!disp_conf.c@{disp\_\-conf.c}}
+\subsubsection[{print\_\-global\_\-disp}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-global\_\-disp (const {\bf global\_\-disp} $\ast$ {\em gdisp})}}
+\label{disp__conf_8c_af23756c4d8b2684b5ba4c645084bfcdb}
+
+
+
+\begin{DoxyCode}
+565 {
+566   int order;
+567   int i;
+568   
+569   fprintf(stdout, "Filename: %s\n", gdisp->file);
+570   fprintf(stdout, "BEAM: %c\n", BEAM(gdisp->ID));
+571   fprintf(stdout, "Grism: %i\n", gdisp->for_grism);
+572   fprintf(stdout, "Number of orders: %i\n", gdisp->n_order);
+573   
+574   for (order=0; order <  gdisp->n_order+1; order++)
+575     {
+576       fprintf(stdout, "Dimension in order %i: %i", order, (int)gdisp->all_coeffs[
+      order]->size);
+577       for (i=0; i < gdisp->all_coeffs[order]->size; i++)
+578         fprintf(stdout, " %e ", gsl_vector_get(gdisp->all_coeffs[order], i));
+579       fprintf(stdout, "\n");
+580     }
+581 }
+\end{DoxyCode}

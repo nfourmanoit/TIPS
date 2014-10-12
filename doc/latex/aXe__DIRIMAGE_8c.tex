@@ -1,0 +1,244 @@
+\hypertarget{aXe__DIRIMAGE_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-DIRIMAGE.c File Reference}
+\label{aXe__DIRIMAGE_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-DIRIMAGE.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-DIRIMAGE.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-output.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}dirimage\_\-model.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aXe__DIRIMAGE_8c_a7a38b874452a6cde6ebee9e98c980eef}{AXE\_\-IMAGE\_\-PATH}~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__DIRIMAGE_8c_a75c154942e560254898bcafaf48bdf3d}{AXE\_\-OUTPUT\_\-PATH}~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__DIRIMAGE_8c_a0b0be957330d9c69fa325ee014ce4dad}{AXE\_\-CONFIG\_\-PATH}~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__DIRIMAGE_8c_aaa87dcf387c67861e989c6dcd8ab1aff}{AXE\_\-SIMDATA\_\-PATH}~\char`\"{}AXE\_\-SIMDATA\_\-PATH\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{aXe__DIRIMAGE_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{aXe__DIRIMAGE_8c_a0b0be957330d9c69fa325ee014ce4dad}{
+\index{aXe\_\-DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}!AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}}
+\index{AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}!aXe_DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}}
+\subsubsection[{AXE\_\-CONFIG\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-CONFIG\_\-PATH~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}}}
+\label{aXe__DIRIMAGE_8c_a0b0be957330d9c69fa325ee014ce4dad}
+\hypertarget{aXe__DIRIMAGE_8c_a7a38b874452a6cde6ebee9e98c980eef}{
+\index{aXe\_\-DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}!AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}}
+\index{AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}!aXe_DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}}
+\subsubsection[{AXE\_\-IMAGE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-IMAGE\_\-PATH~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}}}
+\label{aXe__DIRIMAGE_8c_a7a38b874452a6cde6ebee9e98c980eef}
+\hypertarget{aXe__DIRIMAGE_8c_a75c154942e560254898bcafaf48bdf3d}{
+\index{aXe\_\-DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}!AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}}
+\index{AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}!aXe_DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}}
+\subsubsection[{AXE\_\-OUTPUT\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-OUTPUT\_\-PATH~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}}}
+\label{aXe__DIRIMAGE_8c_a75c154942e560254898bcafaf48bdf3d}
+\hypertarget{aXe__DIRIMAGE_8c_aaa87dcf387c67861e989c6dcd8ab1aff}{
+\index{aXe\_\-DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}!AXE\_\-SIMDATA\_\-PATH@{AXE\_\-SIMDATA\_\-PATH}}
+\index{AXE\_\-SIMDATA\_\-PATH@{AXE\_\-SIMDATA\_\-PATH}!aXe_DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}}
+\subsubsection[{AXE\_\-SIMDATA\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-SIMDATA\_\-PATH~\char`\"{}AXE\_\-SIMDATA\_\-PATH\char`\"{}}}
+\label{aXe__DIRIMAGE_8c_aaa87dcf387c67861e989c6dcd8ab1aff}
+
+
+\subsection{Function Documentation}
+\hypertarget{aXe__DIRIMAGE_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{aXe\_\-DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}!main@{main}}
+\index{main@{main}!aXe_DIRIMAGE.c@{aXe\_\-DIRIMAGE.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{aXe__DIRIMAGE_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+
+\begin{DoxyCode}
+39 {
+40   char dirim_file[MAXCHAR];
+41   char dirim_file_path[MAXCHAR];
+42 
+43   char conf_file[MAXCHAR];
+44   char conf_file_path[MAXCHAR];
+45 
+46   char tpass_file[MAXCHAR];
+47   char tpass_file_path[MAXCHAR];
+48 
+49   char aper_file[MAXCHAR];
+50   char aper_file_path[MAXCHAR];
+51 
+52   char specmod_file[MAXCHAR];
+53   char specmod_file_path[MAXCHAR];
+54 
+55   char objmod_file[MAXCHAR];
+56   char objmod_file_path[MAXCHAR];
+57 
+58   char map_file[MAXCHAR];
+59   char map_file_path[MAXCHAR];
+60 
+61   char *opt;
+62   aperture_conf *conf;
+63   observation *obs;
+64 
+65   int index;
+66   double model_scale=0.0;
+67   double lambda_psf=0.0;
+68   double tel_area=0.0;
+69 
+70   FITScards      *cards;
+71 
+72   if ((argc < 3) || (opt = get_online_option ("help", argc, argv)))
+73     {
+74       fprintf (stdout,
+75                "ST-ECF European Coordinating Facility\n"
+76                "aXe_DIRIMAGE Version %s:\n"
+77                "\n",RELEASE);
+78       exit (1);
+79     }
+80 
+81   fprintf (stdout, "aXe_DIRIMAGE: Starting...\n");
+82 
+83   // initialize an index for the command arguments
+84   index = 0;
+85 
+86   // save the first argument as direct image name
+87   strcpy (dirim_file, argv[++index]);
+88   build_path (AXE_IMAGE_PATH, dirim_file, dirim_file_path);
+89 
+90   // save the second argument as aXe config file name
+91   strcpy (conf_file, argv[++index]);
+92   build_path (AXE_CONFIG_PATH, conf_file, conf_file_path);
+93 
+94   // save the third argument as total throughput file
+95   strcpy (tpass_file, argv[++index]);
+96   build_path (AXE_SIMDATA_PATH, tpass_file, tpass_file_path);
+97 
+98   // load the aXe configuration file
+99   conf = get_aperture_descriptor (conf_file_path);
+100 
+101   /* Determine where the various extensions are in the FITS file */
+102   get_extension_numbers(dirim_file_path, conf,conf->optkey1,conf->optval1);
+103 
+104   /* Get or set up the name of the output Aperture File */
+105   if ((opt = get_online_option ("in_AF", argc, argv)))
+106     {
+107       /* get it */
+108       strcpy (aper_file, opt);
+109       strcpy (aper_file_path, opt);
+110     }
+111   else {
+112     /* Build aperture file name */
+113     replace_file_extension (dirim_file, aper_file, ".fits",
+114                             ".OAF", conf->science_numext);
+115     build_path (AXE_OUTPUT_PATH, aper_file, aper_file_path);
+116   }
+117 
+118   // check whether a name for the spectral
+119   // models file is given
+120   if ((opt = get_online_option ("model_spectra", argc, argv)))
+121     {
+122       // get and set up the filename
+123       strcpy (specmod_file, opt);
+124       build_path (AXE_IMAGE_PATH, specmod_file, specmod_file_path);
+125     }
+126   else
+127     {
+128       // set the filenames to NULL,
+129       // indicating that they are NOT  used
+130       strcpy (specmod_file, "");
+131       strcpy (specmod_file_path, "");
+132     }
+133 
+134   if (opt = get_online_option ("model_images", argc, argv))
+135     {
+136       // get and set up the name for the image templates
+137       strcpy (objmod_file, opt);
+138       build_path (AXE_IMAGE_PATH, objmod_file, objmod_file_path);
+139     }
+140   else
+141     {
+142       // set the filenames to NULL,
+143       // indicating that they are NOT  used
+144       strcpy (objmod_file, "");
+145       strcpy (objmod_file_path, "");
+146     }
+147 
+148 
+149   /* Build object CONT file name */
+150   replace_file_extension (dirim_file, map_file, ".fits",
+151                           ".CONT.fits", conf->science_numext);
+152   build_path (AXE_OUTPUT_PATH, map_file, map_file_path);
+153 
+154   // determine the extend of the gaussian emission model
+155   if ((opt = get_online_option ("model_scale", argc, argv)))
+156     model_scale = atof(opt);
+157   else
+158     model_scale = 3.0;
+159 
+160   // determine the telescope area
+161   if ((opt = get_online_option ("tel_area", argc, argv)))
+162     tel_area = atof(opt);
+163   else
+164     // set the default HST collecting area
+165     tel_area = 45238.93;
+166 
+167   // give feedback onto the screen:
+168   // report on input and output
+169   // and also on specific parameter
+170   fprintf (stdout, "aXe_DIRIMAGE: Input Aperture file name:            %s\n",
+171            aper_file_path);
+172   fprintf (stdout, "aXe_DIRIMAGE: Output CONT file name:               %s\n",
+173            map_file_path);
+174   fprintf (stdout, "aXe_DIRIMAGE: Computing gaussian contamination\n");
+175   fprintf (stdout, "aXe_DIRIMAGE: Scale factor for the direct image model %f\n", 
+      model_scale);
+176   if (strlen(specmod_file_path) > 0)
+177     fprintf (stdout, "aXe_DIRIMAGE: Using spectral models in table: %s\n", specmo
+      d_file_path);
+178   if (strlen(objmod_file_path) > 0)
+179     fprintf (stdout, "aXe_DIRIMAGE: Using direct emission objects in image:: %s\n
+      ", specmod_file_path);
+180 
+181 
+182   fprintf (stdout, "aXe_DIRIMAGE: ");
+183   obs = load_sci_image (dirim_file_path, conf->science_numext);
+184 
+185 
+186   compute_dirimage_model(dirim_file_path, conf_file_path, tpass_file_path, specmo
+      d_file_path,
+187                          objmod_file_path, aper_file_path, model_scale, tel_area,
+      
+188                          lambda_psf, obs, map_file_path);
+189 //  compute_dirimage_modelOld(dirim_file_path, conf_file_path, tpass_file_path, s
+      pecmod_file_path,
+190 //                       objmod_file_path, aper_file_path, model_scale, tel_area,
+      
+191 //                       lambda_psf, obs, map_file_path);
+192 
+193   // copy the header from the grism image
+194   // to the contamination image
+195   cards = get_FITS_cards(dirim_file_path, conf->science_numext);
+196   put_FITS_cards(map_file_path, 2, cards);
+197   free_FITScards(cards);
+198 
+199   // de-allocate memory
+200   //free_observation(obs);
+201   free_aperture_conf(conf);
+202 
+203   // free the observation structure
+204   free_observation(obs);
+205 
+206   // report on the program end
+207   fprintf (stdout, "aXe_DIRIMAGE: Done...\n");
+208 
+209   exit (0);
+210 }
+\end{DoxyCode}

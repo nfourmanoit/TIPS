@@ -1,0 +1,857 @@
+\hypertarget{spc__fluxcube_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-fluxcube.h File Reference}
+\label{spc__fluxcube_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-fluxcube.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-fluxcube.h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structflux__image}{flux\_\-image}
+\item 
+struct \hyperlink{structflux__cube}{flux\_\-cube}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespcfluxcube}{spcfluxcube}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structflux__cube}{flux\_\-cube} $\ast$ \hyperlink{spc__fluxcube_8h_ab4f88c30f07f1b2e86e3c156ae495691}{load\_\-fluxcube} (const char fcube\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structflux__cube}{flux\_\-cube} $\ast$ \hyperlink{spc__fluxcube_8h_ad34f3325fb0c75b628a15f8dfb856b61}{alloc\_\-fluxcube} (const int nflux)
+\item 
+int \hyperlink{spc__fluxcube_8h_a20041a83ddc2d8aa08695983981141ba}{load\_\-offsets} (const char fcube\_\-file\mbox{[}$\,$\mbox{]}, \hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube)
+\item 
+gsl\_\-matrix\_\-int $\ast$ \hyperlink{spc__fluxcube_8h_a80aa93013c03ce8ca7d5a2fddf0ed404}{load\_\-segmentation} (const char fcube\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structflux__image}{flux\_\-image} $\ast$ \hyperlink{spc__fluxcube_8h_ab25b98aa66e43bc8a965e7ee056795ed}{load\_\-fluximage} (const char fcube\_\-file\mbox{[}$\,$\mbox{]}, int hdunum)
+\item 
+gsl\_\-vector\_\-int $\ast$ \hyperlink{spc__fluxcube_8h_a5c1a750847b6040abc13eeabb47585b2}{order\_\-fluxims} (\hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube)
+\item 
+void \hyperlink{spc__fluxcube_8h_a4326413c31d848f7f10076d3776b2d08}{free\_\-fluxcube} (\hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube)
+\item 
+void \hyperlink{spc__fluxcube_8h_a106c1cdd426ec4412413f3926a69e825}{free\_\-fluximage} (\hyperlink{structflux__image}{flux\_\-image} $\ast$fimage)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{spc__fluxcube_8h_aef90f2db72f958943e12811fd0210428}{flt\_\-to\_\-fcube\_\-trans} (const \hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube, const \hyperlink{structd__point}{d\_\-point} point)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{spc__fluxcube_8h_a5e301857770deb0cf2fb43efa0eade10}{fcube\_\-to\_\-flt\_\-trans} (const \hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube, const \hyperlink{structd__point}{d\_\-point} point)
+\item 
+\hyperlink{structdirobject}{dirobject} $\ast$$\ast$ \hyperlink{spc__fluxcube_8h_a682c533a63bf1a76022725edab374764}{fluxcube\_\-to\_\-dirlist} (const \hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube, \hyperlink{structobject}{object} $\ast$$\ast$oblist)
+\item 
+\hyperlink{structdirobject}{dirobject} $\ast$ \hyperlink{spc__fluxcube_8h_ab98f2db043d8b73b7615caf28a2b72f3}{dirobject\_\-from\_\-segpoint} (const \hyperlink{structpx__point}{px\_\-point} point, const \hyperlink{structobject}{object} $\ast$obj)
+\item 
+void \hyperlink{spc__fluxcube_8h_a00b102d93aaf4d96df497fe211383ae7}{update\_\-dirobject} (\hyperlink{structdirobject}{dirobject} $\ast$actdir, const \hyperlink{structpx__point}{px\_\-point} fcube\_\-point)
+\item 
+void \hyperlink{spc__fluxcube_8h_aecabb3459b749d8e33ea85f4e0bcfcbe}{fill\_\-xy\_\-offsets} (\hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist, char CONF\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{spc__fluxcube_8h_a2177a42473f70dd15e8fd25315589552}{fill\_\-fluxvalues} (const \hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube, const \hyperlink{structpx__point}{px\_\-point} point, \hyperlink{structdirobject}{dirobject} $\ast$actdir, const int inter\_\-type)
+\item 
+void \hyperlink{spc__fluxcube_8h_aeb6a2b975b5359734fec27bef4d60d3e}{print\_\-fluxcube} (const \hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__fluxcube_8h_ad34f3325fb0c75b628a15f8dfb856b61}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!alloc\_\-fluxcube@{alloc\_\-fluxcube}}
+\index{alloc\_\-fluxcube@{alloc\_\-fluxcube}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{alloc\_\-fluxcube}]{\setlength{\rightskip}{0pt plus 5cm}{\bf flux\_\-cube}$\ast$ alloc\_\-fluxcube (const int {\em nflux})}}
+\label{spc__fluxcube_8h_ad34f3325fb0c75b628a15f8dfb856b61}
+The function allocates space for a new fluxcube structure.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em nflux}]-\/ the number of fluximages\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret -\/ the fluxcube structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+98 {
+99    flux_cube *fcube;
+100 
+101    // allocate space for the flux_cube structure
+102    fcube = (flux_cube *)malloc(sizeof(flux_cube));
+103 
+104    // allocate space for the array of fluximages
+105    fcube->fluxims      = (flux_image **)malloc(nflux * sizeof(flux_image *));
+106 
+107    // return the result
+108    return fcube;
+109 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_ab98f2db043d8b73b7615caf28a2b72f3}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!dirobject\_\-from\_\-segpoint@{dirobject\_\-from\_\-segpoint}}
+\index{dirobject\_\-from\_\-segpoint@{dirobject\_\-from\_\-segpoint}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{dirobject\_\-from\_\-segpoint}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirobject}$\ast$ dirobject\_\-from\_\-segpoint (const {\bf px\_\-point} {\em flt\_\-point}, \/  const {\bf object} $\ast$ {\em actobject})}}
+\label{spc__fluxcube_8h_ab98f2db043d8b73b7615caf28a2b72f3}
+Function: dirobject\_\-from\_\-segpoint
+
+The function creates a a \hyperlink{structdirobject}{dirobject} on the basis of an \hyperlink{structobject}{object} and the pixel coos of a point which is part of that \hyperlink{structobject}{object}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em flt\_\-point}]-\/ the fluxcube structure \item[{\em actobject}]-\/ the \hyperlink{structobject}{object} list\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structdirobject}{dirobject} -\/ the \hyperlink{structdirobject}{dirobject} created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+534 {
+535 
+536   dirobject  *actdir;
+537 
+538   // allocate space for the dirobject
+539   actdir = (dirobject *) malloc (sizeof (dirobject));
+540   if (actdir == NULL)
+541     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+542                  "fill_dirobject:" " Could not allocate"
+543                  " memory for a dirobject object");
+544 
+545   // transfer refpoint and ID
+546   actdir->ID = actobject->ID;
+547   actdir->refpoint.x = actobject->beams[0].refpoint.x;
+548   actdir->refpoint.y = actobject->beams[0].refpoint.y;
+549 
+550   // derive and store min/max in x/y for the corners
+551   actdir->ix_min = flt_point.x;
+552   actdir->ix_max = flt_point.x;
+553   actdir->iy_min = flt_point.y;
+554   actdir->iy_max = flt_point.y;
+555 
+556   // derive the distortion scales along the major an minor axis
+557   actdir->drzscale.x = 1.0;
+558   actdir->drzscale.y = 1.0;
+559 
+560   // set the variable
+561   actdir->bb_sed = 0;
+562 
+563   // make it a dummy
+564   actdir->SED = NULL;
+565 
+566   // return the new dirobject
+567   return actdir;
+568 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a5e301857770deb0cf2fb43efa0eade10}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!fcube\_\-to\_\-flt\_\-trans@{fcube\_\-to\_\-flt\_\-trans}}
+\index{fcube\_\-to\_\-flt\_\-trans@{fcube\_\-to\_\-flt\_\-trans}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{fcube\_\-to\_\-flt\_\-trans}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} fcube\_\-to\_\-flt\_\-trans (const {\bf flux\_\-cube} $\ast$ {\em fcube}, \/  const {\bf d\_\-point} {\em fcube\_\-point})}}
+\label{spc__fluxcube_8h_a5e301857770deb0cf2fb43efa0eade10}
+The function transforms an image coordinate point in a fluxcube into an image coo point in the associated flt image
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube}]-\/ the fluxcube structure \item[{\em fcube\_\-point}]-\/ image-\/coo in the fcube\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+flt\_\-point -\/ the image coo in the flt 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+407 {
+408   d_point flt_point;
+409 
+410   flt_point.x = fcube_point.x + (double)fcube->xoffs;
+411   flt_point.y = fcube_point.y + (double)fcube->yoffs;
+412 
+413   return flt_point;
+414 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a2177a42473f70dd15e8fd25315589552}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!fill\_\-fluxvalues@{fill\_\-fluxvalues}}
+\index{fill\_\-fluxvalues@{fill\_\-fluxvalues}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{fill\_\-fluxvalues}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-fluxvalues (const {\bf flux\_\-cube} $\ast$ {\em fcube}, \/  const {\bf px\_\-point} {\em point}, \/  {\bf dirobject} $\ast$ {\em actdir}, \/  const int {\em inter\_\-type})}}
+\label{spc__fluxcube_8h_a2177a42473f70dd15e8fd25315589552}
+The function fills the flux information from a point in a fluxcube structure into the flux part of a direct \hyperlink{structobject}{object}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube}]-\/ the fluxcube structure \item[{\em point}]-\/ the position to take the flux from \item[{\em actdir}]-\/ the direct \hyperlink{structobject}{object} to update \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+668 {
+669 
+670 
+671   energy_distrib *sed;
+672   double *sed_wavs;
+673   double *sed_flux;
+674 
+675   int i;
+676   int iact;
+677 
+678 
+679   sed = (energy_distrib*) malloc(sizeof(energy_distrib));
+680   sed_wavs = (double*) malloc(fcube->n_fimage*sizeof(double));
+681   sed_flux = (double*) malloc(fcube->n_fimage*sizeof(double));
+682 
+683   if (actdir->SED)
+684     free_enerdist (actdir->SED);
+685 
+686   // go over each fluximage in the fluxcube structure
+687   for (i=0; i < fcube->n_fimage; i++)
+688     {
+689 
+690       // determine the index of the next fluximage
+691       iact = gsl_vector_int_get(fcube->fimage_order, i);
+692 
+693       // transfer the wavelength and flux from the fluxcube
+694       sed_wavs[i] = fcube->fluxims[iact]->wavelength;
+695       sed_flux[i] = gsl_matrix_get(fcube->fluxims[iact]->flux, point.x, point.y);
+      
+696     }
+697 
+698   sed->npoints    = fcube->n_fimage;
+699   sed->wavelength = sed_wavs ;
+700   sed->flux       = sed_flux;
+701 
+702   if (fcube->n_fimage > 1)
+703     {
+704       if (inter_type == 2)
+705         sed->interp     = gsl_interp_alloc (gsl_interp_polynomial, (size_t)fcube-
+      >n_fimage);
+706       else if (inter_type == 3)
+707         sed->interp     = gsl_interp_alloc (gsl_interp_cspline, (size_t)fcube->
+      n_fimage);
+708       else
+709         sed->interp     = gsl_interp_alloc (gsl_interp_linear, (size_t)fcube->
+      n_fimage);
+710 
+711       sed->accel      = gsl_interp_accel_alloc ();
+712       gsl_interp_init (sed->interp, sed->wavelength, sed->flux, (size_t)sed->
+      npoints);
+713     }
+714   else
+715     {
+716       sed->interp = NULL;
+717       sed->accel= NULL;
+718     }
+719 
+720   // transfer the SED;
+721   // announce the SED
+722   actdir->SED    = sed;
+723   actdir->bb_sed = 1;
+724 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_aecabb3459b749d8e33ea85f4e0bcfcbe}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!fill\_\-xy\_\-offsets@{fill\_\-xy\_\-offsets}}
+\index{fill\_\-xy\_\-offsets@{fill\_\-xy\_\-offsets}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{fill\_\-xy\_\-offsets}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-xy\_\-offsets ({\bf dirobject} $\ast$$\ast$ {\em dirlist}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{spc__fluxcube_8h_aecabb3459b749d8e33ea85f4e0bcfcbe}
+The function computes and stores at the according position the xy offsets of a direct image. This is only important in the fluxcube emission model, since the image coordinates in fluxcubes are 'filter' coordinates and do not take into account the offsets introduce by the grism. For each \hyperlink{structobject}{object} and \hyperlink{structbeam}{beam} those offsets are evaluated and stored in the direct \hyperlink{structobject}{object} structure.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dirlist}]-\/ the direct \hyperlink{structobject}{object} \item[{\em CONF\_\-file}]-\/ the new coordinate point \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+606 {
+607   aperture_conf   *conf;
+608 
+609   gsl_vector *x_coeffs;
+610   gsl_vector *y_coeffs;
+611 
+612   d_point m_point;
+613 
+614   //double xoffs, yoffs;
+615 
+616   int beamID=0;
+617   int i;
+618 
+619   // load the configuration file
+620   conf = get_aperture_descriptor (CONF_file);
+621 
+622   // go over each beam defined in the configuration
+623   // file
+624   for (beamID=0; beamID < conf->nbeams; beamID++)
+625     {
+626 
+627       // determine the coeeficients for the offsets
+628       // in x and in y
+629       x_coeffs = get_beam_trace_xoff (CONF_file, beamID);
+630       y_coeffs = get_beam_trace_yoff (CONF_file, beamID);
+631 
+632       // go over each direct object
+633       i=0;
+634       while (dirlist[i] !=NULL)
+635         {
+636 
+637           // get the mean direct object position
+638           m_point = get_dirobject_meanpos(dirlist[i]);
+639 
+640           // evaluate the coefficients for the 2D variable offsets
+641           // at the mean position
+642           dirlist[i]->xy_off[beamID].x = eval_trace_off_at_pos (x_coeffs, m_point
+      , beamID);
+643           dirlist[i]->xy_off[beamID].y = eval_trace_off_at_pos (y_coeffs, m_point
+      , beamID);
+644 
+645           // iterate the counter
+646           i++;
+647         }
+648 
+649       // free the vectors for the coefficients
+650       gsl_vector_free(x_coeffs);
+651       gsl_vector_free(y_coeffs);
+652     }
+653         // release memory
+654         free_aperture_conf(conf);
+655 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_aef90f2db72f958943e12811fd0210428}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!flt\_\-to\_\-fcube\_\-trans@{flt\_\-to\_\-fcube\_\-trans}}
+\index{flt\_\-to\_\-fcube\_\-trans@{flt\_\-to\_\-fcube\_\-trans}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{flt\_\-to\_\-fcube\_\-trans}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} flt\_\-to\_\-fcube\_\-trans (const {\bf flux\_\-cube} $\ast$ {\em fcube}, \/  const {\bf d\_\-point} {\em flt\_\-point})}}
+\label{spc__fluxcube_8h_aef90f2db72f958943e12811fd0210428}
+The function transforms a pixel coordinate point in a flt image into an pixel coordinate point in the associated fluxcube image
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube}]-\/ the fluxcube structure \item[{\em flt\_\-point}]-\/ pixel coordinate point in the flt-\/image\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+fcube\_\-point -\/ the pixel coordinate in the fluxcube 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+386 {
+387   d_point fcube_point;
+388 
+389   fcube_point.x = flt_point.x - (double)fcube->xoffs;
+390   fcube_point.y = flt_point.y - (double)fcube->yoffs;
+391 
+392   return fcube_point;
+393 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a682c533a63bf1a76022725edab374764}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!fluxcube\_\-to\_\-dirlist@{fluxcube\_\-to\_\-dirlist}}
+\index{fluxcube\_\-to\_\-dirlist@{fluxcube\_\-to\_\-dirlist}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{fluxcube\_\-to\_\-dirlist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirobject}$\ast$$\ast$ fluxcube\_\-to\_\-dirlist (const {\bf flux\_\-cube} $\ast$ {\em fcube}, \/  {\bf object} $\ast$$\ast$ {\em oblist})}}
+\label{spc__fluxcube_8h_a682c533a63bf1a76022725edab374764}
+The function converts the information stored in the segmenation matrix of a fluxcube and the \hyperlink{structobject}{object} list to a list of direct objects
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube}]-\/ the fluxcube structure \item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+dirlist -\/ the \hyperlink{structdirobject}{dirobject} list created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+428 {
+429   dirobject **dirlist;
+430   dirobject  *actdir;
+431 
+432   //px_point fcube_point;
+433   px_point flt_point;
+434 
+435   d_point tmp1, tmp2;
+436 
+437   int iact=0;
+438   int nobjects=0;
+439   int ndir=0;
+440   int i, j;
+441   int objindex;
+442 
+443   //int itmp=0;
+444 
+445   // determine the number of objects in the object list
+446   nobjects = object_list_size(oblist);
+447 
+448   // allocate space for the dirobject list
+449   dirlist = (dirobject **) malloc((nobjects+1) * sizeof(dirobject *));
+450   if (dirlist == NULL)
+451     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+452                  "fluxcube_to_dirlist:" " Could not allocate"
+453                  " memory for pointers to %i dirobject objects", nobjects+1);
+454 
+455   // initialize the number of direct object
+456   // and set the first item to NULL
+457   ndir=0;
+458   dirlist[ndir]=NULL;
+459 
+460   //  if (nobjects < 1)
+461   //    return dirlist;
+462 
+463   // go over each column in the segmentation image
+464   for (i=0; i < fcube->segmentation->size1; i++)
+465     {
+466 
+467       // go over each row in the segmentation image
+468       for (j=0; j < fcube->segmentation->size2; j++)
+469         {
+470 
+471           // get the pixel value in the segmentation image
+472           iact = gsl_matrix_int_get(fcube->segmentation, i, j);
+473 
+474           // do something if the pixel is part of an object
+475           if (iact > 0)
+476             {
+477 
+478               // transform the cooridnates from the fcube-system
+479               // into the flt system
+480               tmp1.x = (double)i;
+481               tmp1.y = (double)j;
+482               tmp2 = fcube_to_flt_trans(fcube, tmp1);
+483               flt_point.x = (int)tmp2.x;
+484               flt_point.y = (int)tmp2.y;
+485 
+486               // try to get a dirobject for that object (=pixel value)
+487               actdir = get_dirobject_from_list(dirlist, iact);
+488 
+489               // check whether a dirobject just exists
+490               if (actdir != NULL)
+491                 {
+492                   // udate an existing object
+493                   update_dirobject(actdir, flt_point);
+494                 }
+495               else
+496                 {
+497 
+498                   // find the the object index for a (hypotetical) new dirobject
+499                   objindex = find_object_in_object_list(oblist, iact);
+500                   // check whether object exists in oblist
+501                   if (objindex >-1)
+502                     {
+503                       // create a new dirobject and enhance the counter
+504                       dirlist[ndir++] = dirobject_from_segpoint(flt_point, oblist
+      [objindex]);
+505 
+506                       // set the actually last dirobject to NULL
+507                       // to get a properly closed list at all time
+508                       dirlist[ndir]=NULL;
+509                     }
+510                 }
+511             }
+512         }
+513     }
+514 
+515 
+516   // return the direct object list
+517   return dirlist;
+518 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a4326413c31d848f7f10076d3776b2d08}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!free\_\-fluxcube@{free\_\-fluxcube}}
+\index{free\_\-fluxcube@{free\_\-fluxcube}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{free\_\-fluxcube}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-fluxcube ({\bf flux\_\-cube} $\ast$ {\em fcube})}}
+\label{spc__fluxcube_8h_a4326413c31d848f7f10076d3776b2d08}
+The function releases the space allocated for a fluxcube structure.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube}]-\/ the pointer to the fluxcube structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+328 {
+329   int i;
+330 
+331   // free the segmentation matrix
+332   gsl_matrix_int_free(fcube->segmentation);
+333 
+334   // free the wavelength order vector
+335   gsl_vector_int_free(fcube->fimage_order);
+336 
+337   // go over the fluximages, and free them
+338   for (i=0; i < fcube->n_fimage; i++)
+339     free_fluximage(fcube->fluxims[i]);
+340 
+341   // free the fluximage vector
+342   free(fcube->fluxims);
+343 
+344   // free the fluximage order vector
+345   //  gsl_vector_int_free(fcube->fimage_order);
+346 
+347   // free the fluxcube
+348   free(fcube);
+349 
+350   // set the fluxcube to NULL
+351   fcube=NULL;
+352 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a106c1cdd426ec4412413f3926a69e825}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!free\_\-fluximage@{free\_\-fluximage}}
+\index{free\_\-fluximage@{free\_\-fluximage}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{free\_\-fluximage}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-fluximage ({\bf flux\_\-image} $\ast$ {\em fimage})}}
+\label{spc__fluxcube_8h_a106c1cdd426ec4412413f3926a69e825}
+The function releases the space allocated for a fluximage structure.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fimage}]-\/ the pointer to the fluximage structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+363 {
+364   // free the flux matrix
+365   gsl_matrix_free(fimage->flux);
+366 
+367   // free the fluximage
+368   free(fimage);
+369 
+370   // set the fluximage to NULL
+371   fimage=NULL;
+372 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_ab4f88c30f07f1b2e86e3c156ae495691}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!load\_\-fluxcube@{load\_\-fluxcube}}
+\index{load\_\-fluxcube@{load\_\-fluxcube}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{load\_\-fluxcube}]{\setlength{\rightskip}{0pt plus 5cm}{\bf flux\_\-cube}$\ast$ load\_\-fluxcube (const char {\em fcube\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{spc__fluxcube_8h_ab4f88c30f07f1b2e86e3c156ae495691}
+The function creates and loads a new \hyperlink{structflux__cube}{flux\_\-cube} structure The data is taken from the file specified in the input.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube\_\-file}]-\/ the file name of the fluxcube\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret -\/ the new \hyperlink{structflux__cube}{flux\_\-cube} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+44 {
+45   flux_cube *fcube;
+46 
+47   //gsl_matrix *test;
+48 
+49   int nflux, n_ext=0;
+50   int i;
+51 
+52 
+53   // get the number of extensions
+54   n_ext = FITSextnum(fcube_file);
+55   if (n_ext <3)
+56     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+57                 "aXe_PETCONT: " "the fluxcube file %s has only %i extensions!\n",
+      
+58                 fcube_file, n_ext);
+59 
+60   // determine the number of flux images and allocate
+61   // the space for the fluxcube structure
+62   nflux = n_ext-2;
+63   fcube = alloc_fluxcube(nflux);
+64 
+65   // load XOFFS and YOFFS
+66   load_offsets(fcube_file, fcube);
+67 
+68   // load the segmentation image into the structure
+69   fcube->segmentation = load_segmentation(fcube_file);
+70   //  gsl_to_FITSimage (fcube->segmentation, "gogo.fits", 1, "MOO");
+71 
+72   // load the fluximages
+73   for (i=0; i < nflux; i++)
+74     {
+75       fcube->fluxims[i] = load_fluximage(fcube_file, i+3);
+76     }
+77 
+78   // fill the number of fluximages
+79   fcube->n_fimage = nflux;
+80 
+81   // order the fluximages and store the
+82   // vector with the ordered indices
+83   fcube->fimage_order = order_fluxims(fcube);
+84 
+85   return fcube;
+86 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_ab25b98aa66e43bc8a965e7ee056795ed}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!load\_\-fluximage@{load\_\-fluximage}}
+\index{load\_\-fluximage@{load\_\-fluximage}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{load\_\-fluximage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf flux\_\-image}$\ast$ load\_\-fluximage (const char {\em fcube\_\-file}\mbox{[}$\,$\mbox{]}, \/  int {\em hdunum})}}
+\label{spc__fluxcube_8h_ab25b98aa66e43bc8a965e7ee056795ed}
+The function creates and loads a fluximage structure from an extention of a fluxcube file.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube\_\-file}]-\/ the file name of the fluxcube \item[{\em hdunum}]-\/ the extension number to load in a fluximage\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+fimage -\/ pointer to the fluximage structure loaded 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+212 {
+213   flux_image *fimage;
+214 
+215   char tmp[MAXCHAR];
+216 
+217   double wavelength;
+218 
+219   strcpy(tmp, fcube_file);
+220 
+221   // allocate space for the fluximage structure
+222   fimage = (flux_image *)malloc(sizeof(flux_image));
+223 
+224   // load the array from the specified extension number
+225   fimage->flux = FITSimage_to_gsl(fcube_file, hdunum, 1);
+226 
+227   // get the keyword "WAVELENG' from the specified extension number
+228   wavelength = (double)get_float_from_keyword(tmp, hdunum, "WAVELENG");
+229 
+230   // report an error in case that the extension does not have that keyword.
+231   // Otherwise store its content in the fluximage structure
+232   if (isnan(wavelength))
+233     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+234                 "aXe_PETCONT: " "Missing keyword WAVELENGTH in fluxcube %s, exten
+      sion %i!\n",
+235                 fcube_file, hdunum);
+236   else
+237     fimage->wavelength = wavelength;
+238 
+239   return fimage;
+240 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a20041a83ddc2d8aa08695983981141ba}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!load\_\-offsets@{load\_\-offsets}}
+\index{load\_\-offsets@{load\_\-offsets}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{load\_\-offsets}]{\setlength{\rightskip}{0pt plus 5cm}int load\_\-offsets (const char {\em fcube\_\-file}\mbox{[}$\,$\mbox{]}, \/  {\bf flux\_\-cube} $\ast$ {\em fcube})}}
+\label{spc__fluxcube_8h_a20041a83ddc2d8aa08695983981141ba}
+The function fills the keywords XOFFS and YOFFS from the primary header of the fitscube file into the according items of the fitscube structure. In case that those keywords are not present, they are set to 0.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube\_\-file}]-\/ the file name of the fluxcube \item[{\em fcube}]-\/ the fluxcube structure\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 -\/ always true 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+125 {
+126   char tmp[MAXCHAR];
+127 
+128   double dtmp=0.0;
+129 
+130   // avoid problems with the 'const' declaration
+131   strcpy(tmp, fcube_file);
+132 
+133   // read XOFFS from the primary header
+134   dtmp = get_float_from_keyword(tmp, 1, "XOFFS");
+135 
+136   // store the keyword value or 0 (if not present) in the fcube structure
+137   if (isnan(dtmp))
+138     fcube->xoffs = 0;
+139   else
+140     fcube->xoffs = (int)dtmp;
+141 
+142   // read XOFFS from the primary header
+143   dtmp = get_float_from_keyword(tmp, 1, "YOFFS");
+144 
+145   // store the keyword value or 0 (if not present) in the fcube structure
+146   if (isnan(dtmp))
+147     fcube->yoffs = 0;
+148   else
+149     fcube->yoffs = (int)dtmp;
+150 
+151   return 1;
+152 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a80aa93013c03ce8ca7d5a2fddf0ed404}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!load\_\-segmentation@{load\_\-segmentation}}
+\index{load\_\-segmentation@{load\_\-segmentation}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{load\_\-segmentation}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix\_\-int$\ast$ load\_\-segmentation (const char {\em fcube\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{spc__fluxcube_8h_a80aa93013c03ce8ca7d5a2fddf0ed404}
+The function creates and loads the segmentation image of a \hyperlink{structflux__cube}{flux\_\-cube} file into a gsl\_\-matrix\_\-int structure.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube\_\-file}]-\/ the file name of the fluxcube\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret -\/ pointer to the gsl\_\-matrix\_\-int structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+164 {
+165 
+166   gsl_matrix_int *segmentation;
+167   gsl_matrix     *dvals;
+168 
+169   int i,j;
+170 
+171   double diff;
+172 
+173   // load the segmentation image into a gsl_matrix_(double)
+174   dvals = FITSimage_to_gsl(fcube_file, 2, 1);
+175 
+176   // add 0.5 to get proper rounding with (int)
+177   gsl_matrix_add_constant (dvals, 0.5);
+178 
+179   // allocate space for the integer matrix
+180   segmentation = gsl_matrix_int_alloc(dvals->size1,dvals->size2);
+181 
+182   // fill the integer matrix with values from the double matrix
+183   for (i=0; i < dvals->size1; i++)
+184     {
+185       for (j=0; j < dvals->size2; j++)
+186         {
+187           gsl_matrix_int_set(segmentation, i, j, (int)gsl_matrix_get(dvals, i, j)
+      );
+188 
+189           diff = gsl_matrix_get(dvals, i, j) - (double)gsl_matrix_int_get(segment
+      ation, i, j);
+190           if (diff > 0.6 || diff < 0.4)
+191             fprintf(stdout, "diff %f; %f --> %i, (%i, %i)\n", diff, 
+      gsl_matrix_get(dvals, i, j), gsl_matrix_int_get(segmentation, i, j), i, j);
+192         }
+193     }
+194 
+195   // free the space for the double matrix
+196   gsl_matrix_free(dvals);
+197 
+198   return segmentation;
+199 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a5c1a750847b6040abc13eeabb47585b2}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!order\_\-fluxims@{order\_\-fluxims}}
+\index{order\_\-fluxims@{order\_\-fluxims}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{order\_\-fluxims}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector\_\-int$\ast$ order\_\-fluxims ({\bf flux\_\-cube} $\ast$ {\em fcube})}}
+\label{spc__fluxcube_8h_a5c1a750847b6040abc13eeabb47585b2}
+The function analyzes the fluximages in a fluxcube structure and sorts their indices in ascending wavelength. The vector with the ordered indices is given back.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube}]-\/ the pointer to the fluxcube structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+254 {
+255   gsl_vector     *fimage_wavelength;
+256 
+257   gsl_vector_int *fimage_order;
+258 
+259   int i, j, k;
+260 
+261   // allocate space for the order vector
+262   fimage_order = gsl_vector_int_alloc(fcube->n_fimage);
+263 
+264   // put a default order in the vector
+265   for (i=0; i<fcube->n_fimage; i++)
+266     gsl_vector_int_set(fimage_order, i, i);
+267 
+268   // order the wavelength
+269   if (fcube->n_fimage > 1)
+270     {
+271 
+272       // create a vector for the wavelengths
+273       fimage_wavelength = gsl_vector_alloc(fcube->n_fimage);
+274 
+275       // set the first entry for the wavelength
+276       gsl_vector_set(fimage_wavelength, 0, fcube->fluxims[0]->wavelength);
+277 
+278       // go over all fluximages
+279       for (i=1; i<fcube->n_fimage; i++)
+280         {
+281 
+282           // find the correct position of the fluximage
+283           j=0;
+284           while (j < i && gsl_vector_get(fimage_wavelength, j) <= fcube->fluxims[
+      i]->wavelength)
+285             j++;
+286 
+287           // check whether the correct poition of the fluximage is at the end
+288           if (j == i)
+289             {
+290 
+291               // append the fluximage at the end
+292               gsl_vector_set(fimage_wavelength, j, fcube->fluxims[i]->wavelength)
+      ;
+293               gsl_vector_int_set(fimage_order, j, i);
+294             }
+295           else
+296             {
+297 
+298               // move all fluximages one index up
+299               for (k=i; k > j; k--)
+300                 {
+301                   gsl_vector_set(fimage_wavelength, k, gsl_vector_get(fimage_wave
+      length, k-1));
+302                   gsl_vector_int_set(fimage_order, k, gsl_vector_int_get(fimage_o
+      rder, k-1));
+303                 }
+304 
+305               // place the flux image at the correct position
+306               gsl_vector_set(fimage_wavelength, j, fcube->fluxims[i]->wavelength)
+      ;
+307               gsl_vector_int_set(fimage_order, j, i);
+308             }
+309         }
+310 
+311       // release the space for the wavelength vector
+312       gsl_vector_free(fimage_wavelength);
+313     }
+314 
+315   // return the order vector
+316   return fimage_order;
+317 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_aeb6a2b975b5359734fec27bef4d60d3e}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!print\_\-fluxcube@{print\_\-fluxcube}}
+\index{print\_\-fluxcube@{print\_\-fluxcube}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{print\_\-fluxcube}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-fluxcube (const {\bf flux\_\-cube} $\ast$ {\em fcube})}}
+\label{spc__fluxcube_8h_aeb6a2b975b5359734fec27bef4d60d3e}
+The function prints the main properties of a fluxcube structure onto the screen. This is mostly for debuggin/development purposes, and not for production
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fcube}]-\/ the fluxcube structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+737 {
+738   int i;
+739 
+740   fprintf(stdout, "XOFFS,YOFFS: %i,%i\n", fcube->xoffs, fcube->yoffs);
+741   fprintf(stdout, "Number of flux-extension: %i\n", fcube->n_fimage);
+742 
+743   for (i=0; i<fcube->n_fimage; i++)
+744     fprintf(stdout, "Wavelength for flux extension %i: %f\n", i,
+745             fcube->fluxims[gsl_vector_int_get(fcube->fimage_order,i)]->
+      wavelength);
+746 }
+\end{DoxyCode}
+\hypertarget{spc__fluxcube_8h_a00b102d93aaf4d96df497fe211383ae7}{
+\index{spc\_\-fluxcube.h@{spc\_\-fluxcube.h}!update\_\-dirobject@{update\_\-dirobject}}
+\index{update\_\-dirobject@{update\_\-dirobject}!spc_fluxcube.h@{spc\_\-fluxcube.h}}
+\subsubsection[{update\_\-dirobject}]{\setlength{\rightskip}{0pt plus 5cm}void update\_\-dirobject ({\bf dirobject} $\ast$ {\em actdir}, \/  const {\bf px\_\-point} {\em flt\_\-point})}}
+\label{spc__fluxcube_8h_a00b102d93aaf4d96df497fe211383ae7}
+The function updates a \hyperlink{structdirobject}{dirobject} with a point belonging to the same \hyperlink{structobject}{object}. The new point may extend the \hyperlink{structobject}{object} size.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em actdir}]-\/ the direct \hyperlink{structobject}{object} \item[{\em flt\_\-point}]-\/ the new coordinate point \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+581 {
+582   // check whether the new points extends the
+583   // old min/max values in x or y.
+584   // correct the values if necessary.
+585   actdir->ix_min = MIN(actdir->ix_min, flt_point.x);
+586   actdir->ix_max = MAX(actdir->ix_max, flt_point.x);
+587   actdir->iy_min = MIN(actdir->iy_min, flt_point.y);
+588   actdir->iy_max = MAX(actdir->iy_max, flt_point.y);
+589 }
+\end{DoxyCode}

@@ -1,0 +1,371 @@
+\hypertarget{disp__utils_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/disp\_\-utils.h File Reference}
+\label{disp__utils_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/disp\_\-utils.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/disp\_\-utils.h}}
+}
+{\ttfamily \#include $<$time.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-interp.h$>$}\par
+{\ttfamily \#include \char`\"{}inout\_\-aper.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-sect.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-back.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-PET.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-wl\_\-calib.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fringe\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-resp.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-pathlength.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}specmodel\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}model\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-fluxcube.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-model.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacedisp__utils}{disp\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{disp__utils_8h_a09732c20cb3478586970093886a379ab}{compute\_\-disp} (char grism\_\-file\mbox{[}$\,$\mbox{]}, char OAF\_\-file\mbox{[}$\,$\mbox{]}, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const char specmod\_\-file\mbox{[}$\,$\mbox{]}, const char objmod\_\-file\mbox{[}$\,$\mbox{]}, const double lambda\_\-psf, \hyperlink{structobservation}{observation} $\ast$obs)
+\item 
+int \hyperlink{disp__utils_8h_a2665684d5c0fdbca115fd3f8f096bb16}{add2image} (const \hyperlink{structpx__point}{px\_\-point} npixels, \hyperlink{structobservation}{observation} $\ast$obs, \hyperlink{structbeamspec}{beamspec} $\ast$spec)
+\item 
+int \hyperlink{disp__utils_8h_a431ecf9949aaa139cfb55c4a9adc7270}{add2roij} (const \hyperlink{structdirobject}{dirobject} $\ast$actdir, const \hyperlink{structtracedata}{tracedata} $\ast$acttrace, const \hyperlink{structd__point}{d\_\-point} dpixel, const \hyperlink{structspectrum}{spectrum} $\ast$resp, \hyperlink{structbeamspec}{beamspec} $\ast$actspec, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration, fitsfile $\ast$ROIJ\_\-fitsptr, char ID\mbox{[}60\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{disp__utils_8h_a2665684d5c0fdbca115fd3f8f096bb16}{
+\index{disp\_\-utils.h@{disp\_\-utils.h}!add2image@{add2image}}
+\index{add2image@{add2image}!disp_utils.h@{disp\_\-utils.h}}
+\subsubsection[{add2image}]{\setlength{\rightskip}{0pt plus 5cm}int add2image (const {\bf px\_\-point} {\em npixels}, \/  {\bf observation} $\ast$ {\em obs}, \/  {\bf beamspec} $\ast$ {\em spec})}}
+\label{disp__utils_8h_a2665684d5c0fdbca115fd3f8f096bb16}
+Function: add2image The function add a model spectra to the grism image. Uses the Kahan summation \href{http://en.wikipedia.org/wiki/Kahan_summation_algorithm}{\tt http://en.wikipedia.org/wiki/Kahan\_\-summation\_\-algorithm} in order to reduce the numerical error. The pixerrs-\/array of the \hyperlink{structobservation}{observation} struct, which is not used in the simulations here, is taken to store the low-\/order bits. 
+
+
+\begin{DoxyCode}
+273 {
+274         double y, t;
+275         int xact, yact;
+276         int ix, iy;
+277 
+278         // go over each pixel in the array of the beam model
+279         for (xact=0; xact < spec->model->size1; xact++)
+280         {
+281                 for (yact=0; yact < spec->model->size2; yact++)
+282                 {
+283                         // find the coordinates of the pixels in the whole image 
+      model
+284                         ix = (int)spec->model_ref.x + xact;
+285                         iy = (int)spec->model_ref.y + yact;
+286 
+287                         // check for safety reasons whether the coordinates are i
+      nside
+288                         if (ix < 0 || iy < 0 || ix > (npixels.x-1) || iy > (npixe
+      ls.y-1))
+289                         {
+290                                 fprintf(stderr, "aXe_DISPIMAGE: function add2imag
+      e\n\
+291                        object %i beam %c pixel %i,%i is outside the image\n\
+292                        This should not happend!!!", spec->objectID, BEAM(spec->
+      beamID), xact, yact);
+293                         }
+294                         else {
+295                                 // sum up the pixels
+296                                 y = gsl_matrix_get(spec->model, xact, yact) - 
+      gsl_matrix_get(obs->pixerrs, ix, iy);
+297                                 t = gsl_matrix_get(obs->grism, ix, iy) + y;
+298                                 gsl_matrix_set(obs->pixerrs, ix, iy, (t-
+      gsl_matrix_get(obs->grism, ix, iy))-y);
+299                                 gsl_matrix_set(obs->grism, ix, iy, t);
+300                         }
+301                 }
+302         }
+303 
+304         return 1;
+305 }
+\end{DoxyCode}
+\hypertarget{disp__utils_8h_a431ecf9949aaa139cfb55c4a9adc7270}{
+\index{disp\_\-utils.h@{disp\_\-utils.h}!add2roij@{add2roij}}
+\index{add2roij@{add2roij}!disp_utils.h@{disp\_\-utils.h}}
+\subsubsection[{add2roij}]{\setlength{\rightskip}{0pt plus 5cm}int add2roij (const {\bf dirobject} $\ast$ {\em actdir}, \/  const {\bf tracedata} $\ast$ {\em acttrace}, \/  const {\bf d\_\-point} {\em dpixel}, \/  const {\bf spectrum} $\ast$ {\em resp}, \/  {\bf beamspec} $\ast$ {\em actspec}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration}, \/  fitsfile $\ast$ {\em ROIJ\_\-fitsptr}, \/  char {\em ID}\mbox{[}60\mbox{]})}}
+\label{disp__utils_8h_a431ecf9949aaa139cfb55c4a9adc7270}
+\hypertarget{disp__utils_8h_a09732c20cb3478586970093886a379ab}{
+\index{disp\_\-utils.h@{disp\_\-utils.h}!compute\_\-disp@{compute\_\-disp}}
+\index{compute\_\-disp@{compute\_\-disp}!disp_utils.h@{disp\_\-utils.h}}
+\subsubsection[{compute\_\-disp}]{\setlength{\rightskip}{0pt plus 5cm}int compute\_\-disp (char {\em grism\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em OAF\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const char {\em specmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  const char {\em objmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  const double {\em lambda\_\-psf}, \/  {\bf observation} $\ast$ {\em obs})}}
+\label{disp__utils_8h_a09732c20cb3478586970093886a379ab}
+Function: compute\_\-disp The function computes the grism image. 
+
+
+\begin{DoxyCode}
+49 {
+50         object **oblist;
+51 
+52         beamspec *spec;
+53 
+54         fits_access *spectrum_access;
+55         fits_access *modim_access;
+56 
+57         px_point npixels;
+58         gsl_matrix *drzcoeffs;
+59         int nobjects=0;
+60         int i=0;
+61         int j=0;
+62         int beamID;
+63         int max_offs;
+64 
+65         calib_function *wl_calibration;
+66         double psf_offset=0;
+67         spectrum *resp;
+68 
+69         aperture_conf *conf;
+70 
+71         beam actbeam;
+72 
+73         int nx, ny;
+74         d_point dpixel;
+75         double sval;
+76 
+77         int f_status = 0;
+78 
+79         dirobject *actdir;
+80         tracedata *acttrace;
+81 
+82         FITScards *gcards;
+83 
+84         char ID[60];
+85 
+86         // load the object list
+87         fprintf (stdout, "aXe_DISPIMAGE: Loading object aperture list...");
+88         oblist = file_to_object_list_seq (OAF_file, obs);
+89         fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+90 
+91         // check whether highres spectra are given are available
+92         if (strlen(specmod_file) > 0) {
+93                 // load the spectral models
+94                 fprintf (stdout, "aXe_DISPIMAGE: Loading spectral models...");
+95                 spectrum_access = access_fits_models(specmod_file);
+96                 // report the number of models loaded
+97                 fprintf (stdout,"%d models available.\n", spectrum_access->
+      n_modelHDU);
+98         }
+99         else {
+100                 // or set the struct to NULL
+101                 spectrum_access = NULL;
+102         }
+103 
+104         // check whether direct emission models are available
+105         if (strlen(objmod_file) > 0) {
+106                 // load the image models
+107                 fprintf (stdout, "aXe_DISPIMAGE: Loading direct image models...")
+      ;
+108                 modim_access = access_fits_models(objmod_file);
+109                 objmod_file = NULL;
+110                 fprintf (stdout,"%d images available.\n", modim_access->
+      n_modelHDU);
+111         }
+112         else {
+113                 modim_access = NULL;
+114         }
+115 
+116         // allocate memory for the error-matrix, which is used for the Kahan summ
+      ation;
+117         // initialize the two arrays
+118         if (!obs->pixerrs)
+119                 obs->pixerrs = gsl_matrix_alloc (obs->grism->size1, obs->grism->s
+      ize2);
+120         gsl_matrix_set_all(obs->grism,   0.0);
+121         gsl_matrix_set_all(obs->pixerrs, 0.0);
+122 
+123         // get the image dimensions
+124         npixels = get_npixel(obs);
+125 
+126         conf = get_aperture_descriptor (CONF_file);
+127         get_extension_numbers(grism_file, conf, conf->optkey1, conf->optval1);
+128         // save the fits header
+129         gcards = get_FITS_cards(grism_file, conf->science_numext);
+130 
+131         // get the  matrix with the drizzle coefficients
+132         drzcoeffs = get_crossdisp_matrix(grism_file, conf->science_numext);
+133         if (drzcoeffs->size1 < 2 || !drzcoeffs->size2)
+134                 fprintf (stderr, "aXe_DISPIMAGE: function oblist_to_dirlist\n\
+135                     Could not get the drizzle coefficients in file: %s\n", grism_
+      file);
+136 
+137         // determine an offset from the PSF_OFFSET
+138         max_offs = (int)ceil(get_max_offset(conf));
+139 
+140         // determine the number of objects in the object list
+141         nobjects = object_list_size(oblist);
+142 
+143         // for each object
+144         for (i = 0; i < nobjects; i++)
+145         {
+146                 if (oblist[i]->nbeams > 0) {
+147                         //---
+148                         //new way to get the direct image
+149                         if (has_aper_dirim(modim_access, oblist[i]))
+150                                 actdir = load_dirobj_img(oblist[i], modim_access)
+      ;
+151                         else
+152                                 actdir = fill_dirobject(oblist[i], npixels, drzco
+      effs, 5, max_offs);
+153                         //---
+154 
+155                         // load the spectral values into the dirobject
+156                         load_spectrum(oblist[i], actdir, spectrum_access, 1);
+157 
+158                         for (beamID=0; beamID < conf->nbeams; beamID++) {
+159                                 actdir->xy_off[beamID].x = 0.0;
+160                                 actdir->xy_off[beamID].y = 0.0;
+161                         }
+162 
+163                         // for each beam
+164                         for (j=0; j < oblist[i]->nbeams; j++) {
+165                                 spec=dimension_beamspec(actdir, oblist[i], npixel
+      s, conf, j);
+166 
+167                                 if (spec == NULL) {
+168                                         fprintf(stderr, "aXe_DISPIMAGE: function 
+      compute_disp\n\
+169                                 beamspec is NULL\n\
+170                                 skipping object %i beam %c ...", oblist[i]->ID, 
+      BEAM(j));
+171                                 }
+172                                 else {
+173                                         actbeam = get_beam_for_beamspec(oblist, n
+      objects, spec);
+174                                         if (actbeam.ignore != 1)
+175                                         {
+176                                                 psf_offset = get_psf_offset(conf,
+       actbeam);
+177                                                 wl_calibration = 
+      get_calib_function(spec, actdir, CONF_file, conf);
+178                                                 resp = get_throughput_spec(spec, 
+      CONF_file);
+179                                                 acttrace = 
+      compute_short_tracedata(conf, actbeam, actdir, wl_calibration, spec);
+180 
+181                                                 if (acttrace->npoints < 1)
+182                                                 {
+183                                                         fprintf(stderr, "aXe_DISP
+      IMAGE: function compute_disp\n\
+184                                         trace is empty\n\
+185                                         skipping object %i beam %c ...", spec->
+      objectID, BEAM(spec->beamID));
+186                                                 }
+187                                                 else {
+188 
+189                                                         // fill the flux informat
+      ion into the tracedata
+190                                                         fill_fluxfrom_SED(actdir,
+       acttrace);
+191                                                         fprintf(stdout, "aXe_DISP
+      IMAGE: modelling object %i beam %c ...", spec->objectID, BEAM(spec->beamID));
+192 
+193                                                         // iterate over the direc
+      t image area
+194                                                         for (nx=actdir->ix_min; n
+      x<=actdir->ix_max; nx++) {
+195                                                                 for (ny=actdir->
+      iy_min; ny<=actdir->iy_max; ny++) {
+196 
+197                                                                         // fill t
+      he dpixel structure
+198                                                                         dpixel.x 
+      = (double)nx;
+199                                                                         dpixel.y 
+      = (double)ny;
+200 
+201                                                                         if (actdi
+      r->dirim)
+202                                                                         {
+203                                                                                 s
+      val = get_diremission_value(actdir->dirim, dpixel.x - actbeam.refpoint.x, dpixel.
+      y - actbeam.refpoint.y);
+204                                                                                 g
+      sl_vector_set_all (acttrace->gvalue, sval);
+205                                                                         }
+206                                                                         else {
+207                                                                                 /
+      / check whether a wavelength-dependent
+208                                                                                 /
+      / emission profile is given
+209                                                                                 i
+      f ((conf->psfcoeffs && conf->psfrange) || psf_offset) {
+210                                                                                         /
+      / fill in the wavelength dependend
+211                                                                                         /
+      / emission values
+212                                                                                         
+      fill_gaussvalues(dpixel, actbeam, actdir, lambda_psf, conf, psf_offset, acttrace)
+      ;
+213                                                                                 }
+      
+214                                                                                 e
+      lse {
+215                                                                                         /
+      / do a subsampling over the pixel
+216                                                                                         /
+      / to get a more appropriate value for the
+217                                                                                         /
+      / emission val
+218                                                                                         s
+      val = get_sub_emodel_value(dpixel, actbeam, actdir->drzscale);
+219                                                                                         g
+      sl_vector_set_all (acttrace->gvalue, sval);
+220                                                                                 }
+      
+221                                                                         }
+222 
+223                                                                         // transf
+      er the pixel contribution to the beam spectrum
+224                                                                         
+      fill_pixel_in_speed(actdir, acttrace, dpixel, resp, spec, wl_calibration);
+225                                                                 }
+226                                                         }
+227 
+228                                                         // add the beam spectrum 
+      to the simulation
+229                                                         add2image(npixels, obs, s
+      pec);
+230                                                 }
+231 
+232                                                 // release the memory for the var
+      ious structures
+233                                                 fprintf(stdout, " Done\n");
+234                                                 free_calib(wl_calibration);
+235                                                 free_spectrum(resp);
+236                                                 free_tracedata(acttrace);
+237                                                 gsl_matrix_free (spec->model);
+238                                                 free(spec);
+239                                         }
+240                                 }
+241                         }
+242                         // free the entire direct image
+243                         free_dirobject (actdir);
+244                 }
+245         }
+246 
+247         // write grism image and copy the FITS header
+248         gsl_to_FITSimage(obs->grism, grism_file, 1, "SCI");
+249         put_FITS_cards(grism_file, 2, gcards);
+250 
+251         if (oblist !=NULL)
+252                 free_oblist (oblist);
+253         if (spectrum_access != NULL)
+254                 free_fits_access(spectrum_access);
+255         if (modim_access!=NULL)
+256                 free_fits_access(modim_access);
+257         gsl_matrix_free(drzcoeffs);
+258         free_FITScards(gcards);
+259         free_aperture_conf(conf);
+260 
+261         return 1;
+262 }
+\end{DoxyCode}

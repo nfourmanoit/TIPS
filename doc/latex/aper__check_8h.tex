@@ -1,0 +1,125 @@
+\hypertarget{aper__check_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/aper\_\-check.h File Reference}
+\label{aper__check_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/aper\_\-check.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/aper\_\-check.h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structaXe__mask}{aXe\_\-mask}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structaXe__mask}{aXe\_\-mask} $\ast$ \hyperlink{aper__check_8h_a5ab77f1fa14c326c6c3f206c15e295ae}{aXe\_\-mask\_\-init} (\hyperlink{structobservation}{observation} $\ast$ob)
+\item 
+void \hyperlink{aper__check_8h_a0b175e95c7ca1a198a6d6a7c4f40e12e}{add\_\-ap\_\-p\_\-to\_\-aXe\_\-mask} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, \hyperlink{structaXe__mask}{aXe\_\-mask} $\ast$mask)
+\item 
+void \hyperlink{aper__check_8h_abc28dfb5c53815f5861e4882bd079448}{mark\_\-trace\_\-in\_\-aXe\_\-mask} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, \hyperlink{structaXe__mask}{aXe\_\-mask} $\ast$mask)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{aper__check_8h_a0b175e95c7ca1a198a6d6a7c4f40e12e}{
+\index{aper\_\-check.h@{aper\_\-check.h}!add\_\-ap\_\-p\_\-to\_\-aXe\_\-mask@{add\_\-ap\_\-p\_\-to\_\-aXe\_\-mask}}
+\index{add\_\-ap\_\-p\_\-to\_\-aXe\_\-mask@{add\_\-ap\_\-p\_\-to\_\-aXe\_\-mask}!aper_check.h@{aper\_\-check.h}}
+\subsubsection[{add\_\-ap\_\-p\_\-to\_\-aXe\_\-mask}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-ap\_\-p\_\-to\_\-aXe\_\-mask ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  {\bf aXe\_\-mask} $\ast$ {\em mask})}}
+\label{aper__check_8h_a0b175e95c7ca1a198a6d6a7c4f40e12e}
+This function sets all the pixels listed in an \hyperlink{structap__pixel}{ap\_\-pixel} list in an \hyperlink{structaXe__mask}{aXe\_\-mask} to 0.0
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]pointer to a \hyperlink{structap__pixel}{ap\_\-pixel} array \item[{\em mask}]an existing \hyperlink{structaXe__mask}{aXe\_\-mask} structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+88 {
+89   ap_pixel *cur_p;
+90   
+91   if (ap_p==NULL) return;
+92   
+93   for (cur_p = ap_p; cur_p->p_x != -1; cur_p++)
+94     {
+95 
+96       /* Loop over pixels which are valid */
+97       if (!isnan (cur_p->count))
+98         {
+99           //   fprintf(stderr,"%d %d\n",cur_p->p_x, cur_p->p_y);
+100           
+101           gsl_matrix_set (mask->img, cur_p->p_x, cur_p->p_y, 0.0);
+102         }
+103     }
+104 }
+\end{DoxyCode}
+\hypertarget{aper__check_8h_a5ab77f1fa14c326c6c3f206c15e295ae}{
+\index{aper\_\-check.h@{aper\_\-check.h}!aXe\_\-mask\_\-init@{aXe\_\-mask\_\-init}}
+\index{aXe\_\-mask\_\-init@{aXe\_\-mask\_\-init}!aper_check.h@{aper\_\-check.h}}
+\subsubsection[{aXe\_\-mask\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf aXe\_\-mask}$\ast$ aXe\_\-mask\_\-init ({\bf observation} $\ast$ {\em ob})}}
+\label{aper__check_8h_a5ab77f1fa14c326c6c3f206c15e295ae}
+Function to create and return a gsl array of the same size as the grism part of n \hyperlink{structobservation}{observation} structure.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ob}]a pointer to an \hyperlink{structobservation}{observation} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a newly allocated \hyperlink{structaXe__mask}{aXe\_\-mask} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+48 {
+49   aXe_mask *mask;
+50   long i,j;
+51   double v;
+52 
+53      /* Allocated space for the mask array */
+54   mask = (aXe_mask *) malloc (sizeof (aXe_mask));
+55   if (!mask)
+56     {
+57       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory.");
+58     }
+59 
+60   /* Create the GSL image array */
+61   mask->img = gsl_matrix_alloc (ob->grism->size1, ob->grism->size2);
+62   //  fprintf(stderr,"%ld %ld\n",ob->grism->size1,ob->grism->size2);
+63 
+64   /* Initialise the mask array */
+65   for (i=0;i<ob->grism->size1;i++) {
+66     for (j=0;j<ob->grism->size2;j++) {
+67       v = gsl_matrix_get(ob->grism,i,j);
+68       gsl_matrix_set(mask->img, i,j, v);
+69       
+70     }
+71   }
+72 
+73   //gsl_matrix_set_all (mask->img, 1.0);
+74 
+75   return mask;
+76 }
+\end{DoxyCode}
+\hypertarget{aper__check_8h_abc28dfb5c53815f5861e4882bd079448}{
+\index{aper\_\-check.h@{aper\_\-check.h}!mark\_\-trace\_\-in\_\-aXe\_\-mask@{mark\_\-trace\_\-in\_\-aXe\_\-mask}}
+\index{mark\_\-trace\_\-in\_\-aXe\_\-mask@{mark\_\-trace\_\-in\_\-aXe\_\-mask}!aper_check.h@{aper\_\-check.h}}
+\subsubsection[{mark\_\-trace\_\-in\_\-aXe\_\-mask}]{\setlength{\rightskip}{0pt plus 5cm}void mark\_\-trace\_\-in\_\-aXe\_\-mask ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  {\bf aXe\_\-mask} $\ast$ {\em mask})}}
+\label{aper__check_8h_abc28dfb5c53815f5861e4882bd079448}
+
+
+
+\begin{DoxyCode}
+22 {
+23   gsl_vector_int *trace_inds;
+24   int i, ind;
+25         
+26   trace_inds = (gsl_vector_int *) get_trace_inds (ap_p);
+27 
+28 
+29   for (i = 0; i < trace_inds->size; i++)
+30     {
+31       ind = gsl_vector_int_get (trace_inds, i);
+32       fprintf(stderr,"%d %d\n",ap_p[ind].p_x,ap_p[ind].p_y);
+33     }
+34 
+35   gsl_vector_int_free(trace_inds);
+36 }
+\end{DoxyCode}

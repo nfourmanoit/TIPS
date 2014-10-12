@@ -1,0 +1,703 @@
+\hypertarget{nicback__utils_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/nicback\_\-utils.c File Reference}
+\label{nicback__utils_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/nicback\_\-utils.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/nicback\_\-utils.c}}
+}
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-multifit\_\-nlin.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-FITScards.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-sect.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-fitting.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-is\_\-in.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-back.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-pathlength.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}trfit\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}nicback\_\-utils.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacenickback__utils}{nickback\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{nicback__utils_8c_a9342e0a07b86a22d5d66f05d0e4b8ae0}{make\_\-nicmos\_\-back} (const \hyperlink{structobservation}{observation} $\ast$const obs, const char $\ast$msk\_\-name, const char $\ast$master\_\-bck, char bck\_\-name\mbox{[}$\,$\mbox{]}, char plist\_\-name\mbox{[}$\,$\mbox{]}, const char corr\_\-bck\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structfitbck__data}{fitbck\_\-data} $\ast$ \hyperlink{nicback__utils_8c_ab52b28abe12e4b0ac525cc5cbbddaaff}{alloc\_\-fitbck\_\-data} (const int n\_\-data)
+\item 
+double \hyperlink{nicback__utils_8c_afba22b93224b6f161189d9dd72ec476a}{get\_\-skypix\_\-frac} (const \hyperlink{structfitbck__data}{fitbck\_\-data} $\ast$fbck\_\-data)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{nicback__utils_8c_a9918a17ac8953bd066cfebd20ad5c06e}{compute\_\-nicmos\_\-back} (const gsl\_\-matrix $\ast$mbck\_\-img, const double factor, const double offset, const gsl\_\-matrix $\ast$corr\_\-img)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{nicback__utils_8c_a759a87323afd2c28ba9796698ff4e53b}{make\_\-ksig\_\-linfit} (\hyperlink{structfitbck__data}{fitbck\_\-data} $\ast$fbck\_\-data)
+\item 
+int \hyperlink{nicback__utils_8c_aca6b3d4156c6ee05da065b49242e0fbb}{check\_\-fbck\_\-data} (\hyperlink{structfitbck__data}{fitbck\_\-data} $\ast$fbck\_\-data)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{nicback__utils_8c_a9bc21cd51c17da1e981a93f7d41873ce}{get\_\-fbck\_\-defaults} ()
+\item 
+int \hyperlink{nicback__utils_8c_a601af82b7d386fc678ed78772bd72f31}{clipp\_\-fbck\_\-data} (\hyperlink{structfitbck__data}{fitbck\_\-data} $\ast$fbck\_\-data, const gsl\_\-vector $\ast$lfit, const float kappa)
+\item 
+double \hyperlink{nicback__utils_8c_ab2885f4df15e7ad912a28b9c84e5edca}{comp\_\-stdev\_\-from\_\-array} (const double $\ast$data, const int ndata, const double mean)
+\item 
+void \hyperlink{nicback__utils_8c_a0c83d0f59622e62084c934e8c61d91dc}{fill\_\-fbck\_\-data} (const \hyperlink{structobservation}{observation} $\ast$const obs, const gsl\_\-matrix $\ast$msk\_\-img, const gsl\_\-matrix $\ast$mbck\_\-img, \hyperlink{structfitbck__data}{fitbck\_\-data} $\ast$fbck\_\-data, char plist\_\-name\mbox{[}$\,$\mbox{]}, const gsl\_\-matrix $\ast$corr\_\-img)
+\item 
+void \hyperlink{nicback__utils_8c_aea8c23d52efddd074ca3abc3f7c59c75}{free\_\-fitbck\_\-data} (\hyperlink{structfitbck__data}{fitbck\_\-data} $\ast$fbck\_\-data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{nicback__utils_8c_ab52b28abe12e4b0ac525cc5cbbddaaff}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!alloc\_\-fitbck\_\-data@{alloc\_\-fitbck\_\-data}}
+\index{alloc\_\-fitbck\_\-data@{alloc\_\-fitbck\_\-data}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{alloc\_\-fitbck\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fitbck\_\-data}$\ast$ alloc\_\-fitbck\_\-data (const int {\em n\_\-data})}}
+\label{nicback__utils_8c_ab52b28abe12e4b0ac525cc5cbbddaaff}
+Function: alloc\_\-fitbck\_\-data 
+
+
+\begin{DoxyCode}
+146 {
+147   fitbck_data *fbck_data;
+148 
+149   fbck_data = (fitbck_data *)malloc(sizeof(fitbck_data));
+150 
+151   fbck_data->x_values = (double *)malloc(n_data * sizeof(double));
+152   fbck_data->y_values = (double *)malloc(n_data * sizeof(double));
+153   fbck_data->e_values = (double *)malloc(n_data * sizeof(double));
+154   fbck_data->x_pos = (int *)malloc(n_data * sizeof(int));
+155   fbck_data->y_pos = (int *)malloc(n_data * sizeof(int));
+156 
+157   fbck_data->n_data = n_data;
+158 
+159   return fbck_data;
+160 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_aca6b3d4156c6ee05da065b49242e0fbb}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!check\_\-fbck\_\-data@{check\_\-fbck\_\-data}}
+\index{check\_\-fbck\_\-data@{check\_\-fbck\_\-data}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{check\_\-fbck\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-fbck\_\-data ({\bf fitbck\_\-data} $\ast$ {\em fbck\_\-data})}}
+\label{nicback__utils_8c_aca6b3d4156c6ee05da065b49242e0fbb}
+
+
+
+\begin{DoxyCode}
+315 {
+316   int check=1;
+317   int ix_min=60000;
+318   int ix_max=0;
+319   int iy_min=60000;
+320   int iy_max=0;
+321   int index;
+322   double frac;
+323   double x_ext, y_ext;
+324 
+325   // get the fraction of background pixel
+326   frac =  get_skypix_frac(fbck_data);
+327 
+328   if (frac < FRAC_BPIX_MIN)
+329     {
+330       check = 0;
+331       fprintf(stdout, "aXe_NICBACK: Not enough background pixels. Fraction: %e\n"
+      , frac);
+332     }
+333   else
+334     {
+335       // go over all data values
+336       for (index=0; index < fbck_data->n_data; index++)
+337         {
+338           // check whether the weight is not NULL
+339           if (fbck_data->e_values[index])
+340             {
+341               if (fbck_data->x_pos[index] > ix_max)
+342                 ix_max = fbck_data->x_pos[index];
+343               if (fbck_data->x_pos[index] < ix_min)
+344                 ix_min = fbck_data->x_pos[index];
+345               if (fbck_data->y_pos[index] > iy_max)
+346                 iy_max = fbck_data->y_pos[index];
+347               if (fbck_data->y_pos[index] < iy_min)
+348                 iy_min = fbck_data->y_pos[index];
+349             }
+350         }
+351       x_ext = (float)(ix_max-ix_min) / NPIX_DIM1;
+352       y_ext = (float)(iy_max-iy_min) / NPIX_DIM2;
+353 
+354       if (x_ext < AREA_EXTEND_MIN || y_ext < AREA_EXTEND_MIN)
+355         {
+356           check = 0;
+357           fprintf(stdout, "aXe_NICBACK: Not enough coverage. xcover,ycover: %e,%e
+      \n", x_ext, y_ext);
+358         }
+359     }
+360 
+361   return check;
+362 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_a601af82b7d386fc678ed78772bd72f31}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!clipp\_\-fbck\_\-data@{clipp\_\-fbck\_\-data}}
+\index{clipp\_\-fbck\_\-data@{clipp\_\-fbck\_\-data}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{clipp\_\-fbck\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}int clipp\_\-fbck\_\-data ({\bf fitbck\_\-data} $\ast$ {\em fbck\_\-data}, \/  const gsl\_\-vector $\ast$ {\em lfit}, \/  const float {\em kappa})}}
+\label{nicback__utils_8c_a601af82b7d386fc678ed78772bd72f31}
+Function: clipp\_\-fbck\_\-data The subroutine applies kappa-\/sigma clipping to a set of data points. The difference between the measured values and the expected values according to linear regression are determined. Data which is outside of the accepted interval is excluded by setting the weight to '0.0'. If at least one value was clipped, '1' is returned, otherwise '0' (if all values are within the accepted interval.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fbck\_\-data}]-\/ the data used for the fits \item[{\em lfit}]-\/ the result of the fit \item[{\em kappa}]-\/ the kappa value\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+clipped -\/ boolean to indicate clipped values 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+412 {
+413   int clipped=0;
+414 
+415   int ndata=0;
+416   int index;
+417 
+418   double dy_mean=0.0;
+419   double stdev=0.0;
+420   double absdev;
+421   double dy_act;
+422 
+423   double *y_diff;
+424 
+425   // allocate memory for the tmp-vector
+426   y_diff = (double *) malloc(fbck_data->n_data * sizeof(double));
+427 
+428   // go over all data values
+429   for (index=0; index < fbck_data->n_data; index++)
+430     {
+431       // check whether the weight is not NULL
+432       if (fbck_data->e_values[index])
+433         {
+434           // compute the difference from the data point
+435           // to the prediction from the fit
+436           dy_act = (fbck_data->x_values[index] - gsl_vector_get(lfit, 0)) * gsl_v
+      ector_get(lfit, 2)
+437             + gsl_vector_get(lfit, 1)-fbck_data->y_values[index];
+438 
+439           // fill the tmp vector
+440           y_diff[ndata] = dy_act;
+441 
+442           // pre-comute the mean
+443           dy_mean += dy_act;
+444 
+445           // enhance the counter
+446           // of non-NULL values
+447           ndata++;
+448         }
+449     }
+450 
+451   // compute the mean offset
+452   dy_mean = dy_mean / (double)ndata;
+453 
+454   // compute the standard deviation
+455   stdev = comp_stdev_from_array(y_diff, ndata, dy_mean);
+456 
+457   // get the maximum allowed
+458   // deviation
+459   absdev = kappa*stdev;
+460 
+461   // go over the data
+462   for (index=0; index < fbck_data->n_data; index++)
+463     {
+464       // check whether the data has weigth
+465       if (fbck_data->e_values[index])
+466         {
+467           // compute the absolute difference from the data point
+468           // to the prediction from the fit
+469           dy_act = fabs((fbck_data->x_values[index] - gsl_vector_get(lfit, 0)) * 
+      gsl_vector_get(lfit, 2)
+470                         + gsl_vector_get(lfit, 1)-fbck_data->y_values[index]);
+471 
+472           // check whether the difference
+473           // is larger than allowed
+474           if (dy_act > absdev)
+475             {
+476               // make the weight NULL
+477               fbck_data->e_values[index] = 0.0;
+478 
+479               // set the clipped flagg
+480               clipped=1;
+481             }
+482         }
+483     }
+484 
+485 
+486   // release memory
+487   free(y_diff);
+488 
+489   // return the integer
+490   // indicating clipped values
+491   return clipped;
+492 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_ab2885f4df15e7ad912a28b9c84e5edca}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!comp\_\-stdev\_\-from\_\-array@{comp\_\-stdev\_\-from\_\-array}}
+\index{comp\_\-stdev\_\-from\_\-array@{comp\_\-stdev\_\-from\_\-array}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{comp\_\-stdev\_\-from\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}double comp\_\-stdev\_\-from\_\-array (const double $\ast$ {\em data}, \/  const int {\em ndata}, \/  const double {\em mean})}}
+\label{nicback__utils_8c_ab2885f4df15e7ad912a28b9c84e5edca}
+Function: comp\_\-stdev\_\-from\_\-array The subroutine computes the standard deviation of a data vector, using the known mean value.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]-\/ the data vector \item[{\em ndata}]-\/ number of data points to use \item[{\em mean}]-\/ mean value of the data points\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+clipped -\/ boolean to indicate clipped values 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+509 {
+510   int index=0;
+511 
+512   double stdev=0.0;
+513 
+514   // go over the data array
+515   for (index=0; index < ndata; index++)
+516     {
+517       // compute and add the square difference to the mean
+518       stdev += (data[index] - mean) * (data[index] - mean);
+519     }
+520 
+521   // compute the average square difference
+522   if (ndata > 1)
+523     stdev /= ((double)ndata-1);
+524 
+525   // compute the final
+526   // standard deviation
+527   stdev = sqrt(stdev);
+528 
+529   // return the stdev
+530   return stdev;
+531 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_a9918a17ac8953bd066cfebd20ad5c06e}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!compute\_\-nicmos\_\-back@{compute\_\-nicmos\_\-back}}
+\index{compute\_\-nicmos\_\-back@{compute\_\-nicmos\_\-back}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{compute\_\-nicmos\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ compute\_\-nicmos\_\-back (const gsl\_\-matrix $\ast$ {\em mbck\_\-img}, \/  const double {\em factor}, \/  const double {\em offset}, \/  const gsl\_\-matrix $\ast$ {\em corr\_\-img})}}
+\label{nicback__utils_8c_a9918a17ac8953bd066cfebd20ad5c06e}
+Function: compute\_\-nicmos\_\-back The subroutine applies a scaling factor to a master background in order to get the background image for a specific grism image.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em mbck\_\-img}]-\/ the master background pixel \item[{\em factor}]-\/ the scaling factor\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+grism\_\-bck -\/ the background image as gsl-\/matrix 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+214 {
+215   gsl_matrix *grism_bck;
+216 
+217   int ii, jj;
+218 
+219   // allocate the space for the background image
+220   grism_bck = gsl_matrix_alloc(mbck_img->size1, mbck_img->size2);
+221 
+222   // go over each row
+223   for (ii=0; ii < mbck_img->size1; ii++)
+224     {
+225       // go over each column
+226       for (jj=0; jj < mbck_img->size2; jj++)
+227         {
+228           // compute and set the value in the background image
+229           if (corr_img != NULL)
+230             // using the pedestal image
+231             gsl_matrix_set(grism_bck, ii, jj,
+232                 (gsl_matrix_get(mbck_img, ii, jj) + gsl_matrix_get(corr_img, ii, 
+      jj)) * factor);
+233           else
+234             // using the fit values only
+235             gsl_matrix_set(grism_bck, ii, jj, gsl_matrix_get(mbck_img, ii, jj) * 
+      factor + offset);
+236         }
+237     }
+238 
+239   // return the background image
+240   return grism_bck;
+241 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_a0c83d0f59622e62084c934e8c61d91dc}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!fill\_\-fbck\_\-data@{fill\_\-fbck\_\-data}}
+\index{fill\_\-fbck\_\-data@{fill\_\-fbck\_\-data}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{fill\_\-fbck\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-fbck\_\-data (const {\bf observation} $\ast$const  {\em obs}, \/  const gsl\_\-matrix $\ast$ {\em msk\_\-img}, \/  const gsl\_\-matrix $\ast$ {\em mbck\_\-img}, \/  {\bf fitbck\_\-data} $\ast$ {\em fbck\_\-data}, \/  char {\em plist\_\-name}\mbox{[}$\,$\mbox{]}, \/  const gsl\_\-matrix $\ast$ {\em corr\_\-img})}}
+\label{nicback__utils_8c_a0c83d0f59622e62084c934e8c61d91dc}
+Function: make\_\-nicmos\_\-back The subroutine creates and fills a structure with pairs of correpsonding from a grism image and a master sky background. Dq-\/masked pixels values and pixels which are part of an \hyperlink{structobject}{object} \hyperlink{structbeam}{beam} are used, but marked with a zero weight.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em obs}]-\/ the \hyperlink{structobservation}{observation} for the grism image \item[{\em msk\_\-image}]-\/ the maks image values \item[{\em mbck\_\-img}]-\/ the master background values \item[{\em fbck\_\-data}]-\/ structure with the data pairs\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+554 {
+555   int ix=0;
+556   int iy=0;
+557   int index=0;
+558   char Buffer[10240];
+559   FILE *fout;
+560 
+561   int px_min=20;
+562   int px_max=180;
+563   int py_min=50;
+564   int py_max=245;
+565   //int px_min=0;
+566   //int px_max=255;
+567   //int py_min=0;
+568   //int py_max=255;
+569   //10:240,15:245[10:180,20:245][20:180,50:245]
+570 
+571   // intitialize the index for
+572   // the fit_data structure
+573   index = 0;
+574 
+575   double diffval;
+576 
+577   fout = fopen(plist_name, "w");
+578 
+579   // go over all pixels
+580   // in the grism image
+581   for (ix=0; ix < obs->grism->size1; ix++)
+582     {
+583       for (iy=0; iy < obs->grism->size2; iy++)
+584         {
+585           // set the master background pixel as independent variable
+586           fbck_data->x_values[index] = gsl_matrix_get(mbck_img, ix, iy);
+587 
+588           if (corr_img != NULL)
+589             // subtract the correction value from the background value
+590             diffval = gsl_matrix_get(obs->grism, ix, iy) - gsl_matrix_get(corr_im
+      g, ix, iy);
+591           else
+592             // use the naked background value
+593             diffval = gsl_matrix_get(obs->grism, ix, iy);
+594 
+595           // set the grism image pixel as dependent variable
+596           //fbck_data->y_values[index] = gsl_matrix_get(obs->grism, ix, iy);
+597           // set the difference as dependent variable
+598           fbck_data->y_values[index] = diffval;
+599 
+600           // set the x- and y-positions
+601           fbck_data->x_pos[index] = ix;
+602           fbck_data->y_pos[index] = iy;
+603 
+604           // check whether the pixel was masked out
+605           // or is part of an object
+606           if (isnan(gsl_matrix_get(obs->grism, ix, iy))
+607                     || gsl_matrix_get(msk_img, ix, iy) < -9.0e+05)
+608             // mask the pixel in the array
+609             fbck_data->e_values[index] = 0.0;
+610           else
+611             {
+612               // give the pixel full weight
+613               //x,y,value_back,value_grism_imag
+614               fbck_data->e_values[index] = 1.0;
+615               sprintf (Buffer, "%i %i %e %e\n",ix, iy, gsl_matrix_get(obs->grism,
+       ix, iy), gsl_matrix_get(mbck_img, ix, iy));
+616               fputs (Buffer, fout);
+617             }
+618 
+619           // check whether the pixel is in the
+620           // allowed are
+621           if (ix < px_min || ix > px_max
+622               || iy < py_min || iy > py_max)
+623             // mask the pixel in the array
+624             fbck_data->e_values[index] = 0.0;
+625           // enhance the counter
+626           index++;
+627         }
+628     }
+629 
+630   fclose (fout);
+631 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_aea8c23d52efddd074ca3abc3f7c59c75}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!free\_\-fitbck\_\-data@{free\_\-fitbck\_\-data}}
+\index{free\_\-fitbck\_\-data@{free\_\-fitbck\_\-data}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{free\_\-fitbck\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-fitbck\_\-data ({\bf fitbck\_\-data} $\ast$ {\em fbck\_\-data})}}
+\label{nicback__utils_8c_aea8c23d52efddd074ca3abc3f7c59c75}
+
+
+
+\begin{DoxyCode}
+646 {
+647   free(fbck_data->x_values);
+648   free(fbck_data->y_values);
+649   free(fbck_data->e_values);
+650   free(fbck_data->x_pos);
+651   free(fbck_data->y_pos);
+652 
+653   free(fbck_data);
+654 
+655   fbck_data = NULL;
+656 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_a9bc21cd51c17da1e981a93f7d41873ce}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!get\_\-fbck\_\-defaults@{get\_\-fbck\_\-defaults}}
+\index{get\_\-fbck\_\-defaults@{get\_\-fbck\_\-defaults}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{get\_\-fbck\_\-defaults}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-fbck\_\-defaults ()}}
+\label{nicback__utils_8c_a9bc21cd51c17da1e981a93f7d41873ce}
+
+
+
+\begin{DoxyCode}
+366 {
+367   gsl_vector *ret;
+368 
+369   ret = gsl_vector_alloc(10);
+370 
+371   /*
+372   gsl_vector_set(ret, 0, xean);
+373   gsl_vector_set(ret, 1, c0);
+374   gsl_vector_set(ret, 2, c1);
+375   gsl_vector_set(ret, 3, cov00);
+376   gsl_vector_set(ret, 4, cov01);
+377   gsl_vector_set(ret, 5, cov11);
+378   gsl_vector_set(ret, 6, chisq);
+379   */
+380 
+381   gsl_vector_set(ret, 0, 0.0);
+382   gsl_vector_set(ret, 1, 0.0);
+383   gsl_vector_set(ret, 2, 1.0);
+384   gsl_vector_set(ret, 3, 1.0);
+385   gsl_vector_set(ret, 4, 0.0);
+386   gsl_vector_set(ret, 5, 1.0);
+387   gsl_vector_set(ret, 6, 0.0);
+388 
+389   return ret;
+390 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_afba22b93224b6f161189d9dd72ec476a}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!get\_\-skypix\_\-frac@{get\_\-skypix\_\-frac}}
+\index{get\_\-skypix\_\-frac@{get\_\-skypix\_\-frac}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{get\_\-skypix\_\-frac}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-skypix\_\-frac (const {\bf fitbck\_\-data} $\ast$ {\em fbck\_\-data})}}
+\label{nicback__utils_8c_afba22b93224b6f161189d9dd72ec476a}
+Function: get\_\-skypix\_\-frac The subroutine computes the fraction of image pixels which were used for determining the scaling factor of the master background and the computation of the bacground image. Pixels not used were masked out, since they are part of an \hyperlink{structobject}{object} \hyperlink{structbeam}{beam} or rejected in the kappa-\/sigma clipping.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fbck\_\-data}]-\/ the data used for the fit\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+skypix\_\-frac -\/ fraction of pixels used for background determination 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+177 {
+178   int index;
+179   int nvalues=0;
+180 
+181   double skypix_frac=0.0;
+182 
+183   // go over all data values
+184   for (index=0; index < fbck_data->n_data; index++)
+185     {
+186       // check whether the weight is not NULL
+187       if (fbck_data->e_values[index])
+188         // enhance the number of used pixels
+189         nvalues++;
+190     }
+191 
+192   // compute the fration of used pixels
+193   skypix_frac = (double)nvalues / (double)fbck_data->n_data;
+194 
+195   // return the fraction
+196   return skypix_frac;
+197 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_a759a87323afd2c28ba9796698ff4e53b}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!make\_\-ksig\_\-linfit@{make\_\-ksig\_\-linfit}}
+\index{make\_\-ksig\_\-linfit@{make\_\-ksig\_\-linfit}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{make\_\-ksig\_\-linfit}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ make\_\-ksig\_\-linfit ({\bf fitbck\_\-data} $\ast$ {\em fbck\_\-data})}}
+\label{nicback__utils_8c_a759a87323afd2c28ba9796698ff4e53b}
+Function: compute\_\-nicmos\_\-back The subroutine iteratively fits a linear relation to the pairs of grism image -\/ master background pixel values. After each fit, pairs with large deviations are determined and excluded. The result of the final fit is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fbck\_\-data}]-\/ the data used for the fits\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+lfit -\/ the results of the final fit 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+258 {
+259   gsl_vector *lfit=NULL;
+260 
+261   int index=0;
+262 
+263   int clipped=1;
+264 
+265   // check whether iterations still
+266   // must be done and whether
+267   // the data was changed from clipping
+268   while (index < N_KSIGBCK_ITER && clipped)
+269     {
+270       if (check_fbck_data(fbck_data))
+271         {
+272           // make a non-weighted linear fit
+273           lfit = det_vector_linear(fbck_data->x_values, fbck_data->y_values, fbck
+      _data->e_values,
+274                                    fbck_data->n_data, 0);
+275 
+276           // make a clipping iteration
+277           clipped = clipp_fbck_data(fbck_data, lfit, N_KSIGBCK_KAPPA);
+278 
+279           // inhance the clipping counter
+280           index++;
+281         }
+282       else
+283         {
+284           // release the space
+285           // for the old vector
+286           if (lfit)
+287             gsl_vector_free(lfit);
+288 
+289           // get a new dummy vector
+290           lfit = get_fbck_defaults();
+291 
+292           break;
+293         }
+294     }
+295 
+296   // check whether the scale is within the boundaries
+297   if (gsl_vector_get(lfit, 2) < BCK_SCALE_MIN || gsl_vector_get(lfit, 2) > 
+      BCK_SCALE_MAX)
+298     {
+299 
+300       fprintf(stdout, "aXe_NICBACK: Background scale is out of bounds. It is re-a
+      djusted.\n");
+301       // release the space
+302       // for the old vector
+303       gsl_vector_free(lfit);
+304 
+305       // get a new dummy vector
+306       lfit = get_fbck_defaults();
+307     }
+308 
+309   // return the fit result
+310   return lfit;
+311 }
+\end{DoxyCode}
+\hypertarget{nicback__utils_8c_a9342e0a07b86a22d5d66f05d0e4b8ae0}{
+\index{nicback\_\-utils.c@{nicback\_\-utils.c}!make\_\-nicmos\_\-back@{make\_\-nicmos\_\-back}}
+\index{make\_\-nicmos\_\-back@{make\_\-nicmos\_\-back}!nicback_utils.c@{nicback\_\-utils.c}}
+\subsubsection[{make\_\-nicmos\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}void make\_\-nicmos\_\-back (const {\bf observation} $\ast$const  {\em obs}, \/  const char $\ast$ {\em msk\_\-name}, \/  const char $\ast$ {\em master\_\-bck}, \/  char {\em bck\_\-name}\mbox{[}$\,$\mbox{]}, \/  char {\em plist\_\-name}\mbox{[}$\,$\mbox{]}, \/  const char {\em corr\_\-bck}\mbox{[}$\,$\mbox{]})}}
+\label{nicback__utils_8c_a9342e0a07b86a22d5d66f05d0e4b8ae0}
+Function: make\_\-nicmos\_\-back The subroutine computes and stores the background image for a specific NICMOS grism image. The non-\/masked pixels in the grism image are correlated with their corresponding values in the master background image. A linear relation is fitted to the value pairs. Deviating points are excluded using kappa-\/sigma clipping. Using the slope of the final fit, the background image is computed and stored as a fits image.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em obs}]-\/ the \hyperlink{structobservation}{observation} for the grism image \item[{\em msk\_\-name}]-\/ the full name of the mask file \item[{\em master\_\-bck}]-\/ the full name of the master sky background \item[{\em bck\_\-name}]-\/ the full name of the background image\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+49 {
+50   px_point npixels;
+51 
+52   double skypix_frac;
+53 
+54   gsl_matrix *msk_img;
+55   gsl_matrix *mbck_img;
+56   gsl_matrix *corr_img=NULL;
+57   gsl_matrix *grism_bck;
+58 
+59   gsl_vector *lfit;
+60 
+61   fitbck_data *fbck_data;
+62   //int f_status=0;
+63 
+64   FITScards *cards;
+65 
+66   char  ID[MAXCHAR];
+67 
+68   // fix the extension name
+69   sprintf (ID, "BCK");
+70 
+71   // load the master background image
+72   fprintf(stdout,"Loading DATA from: %s...", master_bck);
+73   mbck_img = FITSimage_to_gsl(master_bck, 1, 1);
+74   fprintf(stdout,". Done.\n");
+75 
+76   if (strlen(corr_bck) > 0)
+77     {
+78       // load the correction background image
+79       fprintf(stdout,"Loading DATA from: %s...", corr_bck);
+80       corr_img = FITSimage_to_gsl(corr_bck, 1, 1);
+81       fprintf(stdout,". Done.\n");
+82     }
+83 
+84   // load the mask image
+85   fprintf(stdout,"Loading DATA from: %s...", msk_name);
+86   msk_img = FITSimage_to_gsl(msk_name, 2, 1);
+87   fprintf(stdout,". Done.\n");
+88 
+89   // get the dimension of
+90   // the grism image
+91   npixels = get_npixel(obs);
+92 
+93   // allocate memory for the fit data
+94   fbck_data = alloc_fitbck_data(npixels.x * npixels.y);
+95 
+96   // fill the fit data into the structure
+97   fill_fbck_data(obs, msk_img, mbck_img, fbck_data, plist_name, corr_img);
+98 
+99   // make the fit, including
+100   // kappa-sigma iterations
+101   lfit = make_ksig_linfit(fbck_data);
+102 
+103   // report the result of the fit onto the screen
+104   fprintf(stdout, "\nFitting result: c0 = %f +- %f , c1 = %f +- %f , chi^2 = %f\n
+      \n",
+105           gsl_vector_get(lfit, 1), gsl_vector_get(lfit, 3),
+106           gsl_vector_get(lfit, 2), gsl_vector_get(lfit, 4), gsl_vector_get(lfit, 
+      6));
+107 
+108   // compute the background for the grism frame
+109   grism_bck = compute_nicmos_back(mbck_img, gsl_vector_get(lfit, 2),
+110                                   gsl_vector_get(lfit, 1), corr_img);
+111 
+112   // write the background image to a file
+113   fprintf(stdout,"Writing data to: %s...", bck_name);
+114   gsl_to_FITSimage (grism_bck, bck_name, 1, ID);
+115   fprintf(stdout,". Done.\n");
+116 
+117   // determine the fraction of pixels
+118   // used in the background determination
+119   skypix_frac = get_skypix_frac(fbck_data);
+120 
+121   // create the fits keywords
+122   cards = nicbck_info_to_FITScards(skypix_frac, gsl_vector_get(lfit, 2),
+123                                    gsl_vector_get(lfit, 1));
+124 
+125   // transfer the fits keywords
+126   // to the background image
+127   put_FITS_cards (bck_name, 2, cards);
+128 
+129   // release memory
+130   free_fitbck_data(fbck_data);
+131   gsl_matrix_free(mbck_img);
+132   if (corr_img != NULL)
+133     gsl_matrix_free(corr_img);
+134   gsl_matrix_free(msk_img);
+135   gsl_matrix_free(grism_bck);
+136   gsl_vector_free(lfit);
+137   free_FITScards(cards);
+138 }
+\end{DoxyCode}

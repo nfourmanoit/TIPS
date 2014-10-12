@@ -1,0 +1,1300 @@
+\hypertarget{spc__resp_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-resp.h File Reference}
+\label{spc__resp_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-resp.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-resp.h}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$ctype.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-spline.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-nan.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-sys.h$>$}\par
+{\ttfamily \#include $<$fitsio.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-cfg.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-spc.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structresponse__function}{response\_\-function}
+\item 
+struct \hyperlink{structtrlength__search}{trlength\_\-search}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__resp}{spc\_\-resp}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__resp_8h_a8ca328fe755fff0dfe3ee97eb5d108f9}{RESPBUFFERSIZE}~1024
+\item 
+\#define \hyperlink{spc__resp_8h_aa72ff6f8d89621381bba997b34673399}{RESP\_\-SMOOTH\_\-LENGTH}~50
+\item 
+\#define \hyperlink{spc__resp_8h_a099bf5a5a124fe8705039105a8b79e83}{RESP\_\-SMOOTH\_\-NSIG}~3.0
+\item 
+\#define \hyperlink{spc__resp_8h_aa94b4f63b483d88c0f30c4c6aaba3c48}{MAX\_\-ITER\_\-TL}~1000
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{spc__resp_8h_a5249f78ca40468a3e4634fe15c87da20}{get\_\-response\_\-function\_\-from\_\-FITS} (char filename\mbox{[}$\,$\mbox{]}, int hdunum)
+\item 
+void \hyperlink{spc__resp_8h_a5f44fcc178b2da25927271b53d5d1f17}{apply\_\-response\_\-function} (\hyperlink{structspectrum}{spectrum} $\ast$spec, \hyperlink{structspectrum}{spectrum} $\ast$resp, const int quant\_\-cont)
+\item 
+void \hyperlink{spc__resp_8h_a60eb0a59f94e070ca4f3ee71ee182ca9}{apply\_\-response\_\-functionII} (\hyperlink{structspectrum}{spectrum} $\ast$spec, \hyperlink{structresponse__function}{response\_\-function} $\ast$resp\_\-func, const int quant\_\-cont)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{spc__resp_8h_a157a1202bd6a233046e0bd6576bc61ca}{get\_\-smooth\_\-pars\_\-for\_\-beam} (const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, const int smooth\_\-conv, \hyperlink{structbeam}{beam} actbeam)
+\item 
+int \hyperlink{spc__resp_8h_a5fde07d1ba5295c2a04d17b9517c8b3f}{check\_\-conf\_\-for\_\-smoothing} (const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, const int smooth\_\-conv)
+\item 
+void \hyperlink{spc__resp_8h_af2a378bacf12bd151d4b8d9d66e696a0}{apply\_\-smoothed\_\-response} (const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration, const int for\_\-grism, const int quant\_\-cont, \hyperlink{structresponse__function}{response\_\-function} $\ast$resp\_\-func, const \hyperlink{structd__point}{d\_\-point} smooth\_\-pars, \hyperlink{structspectrum}{spectrum} $\ast$spec)
+\item 
+double \hyperlink{spc__resp_8h_a801a7c3ef4ee95658274156c6910a1cb}{find\_\-wavelength} (double x, void $\ast$params)
+\item 
+double \hyperlink{spc__resp_8h_a8cc19f5af89c3055fc5b37110687a58d}{get\_\-tlength\_\-prismwav} (const double wavelength, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration)
+\item 
+double \hyperlink{spc__resp_8h_ab84a3c4ebe3efacf7c89a6833225eb9a}{get\_\-central\_\-tracelength} (const double wavelength, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration, const int for\_\-grism)
+\item 
+void \hyperlink{spc__resp_8h_a1fd4f613775df35ada9d78832a1c0906}{get\_\-smoothed\_\-response} (const double wavelength, const \hyperlink{structd__point}{d\_\-point} smooth\_\-pars, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration, const int for\_\-grism, const gsl\_\-vector $\ast$weights, \hyperlink{structresponse__function}{response\_\-function} $\ast$resp\_\-func, double $\ast$resp\_\-vals)
+\item 
+void \hyperlink{spc__resp_8h_a63e4d5535bbccf8346f35ed139018440}{get\_\-weighted\_\-sensitivity} (const gsl\_\-vector $\ast$pixvalues, const gsl\_\-vector $\ast$errvalues, const gsl\_\-vector $\ast$weights, const gsl\_\-vector $\ast$pmask, double $\ast$resp\_\-vals)
+\item 
+void \hyperlink{spc__resp_8h_a49bc35d27187cb2fef40786e969743a7}{fill\_\-weight} (gsl\_\-vector $\ast$weights)
+\item 
+void \hyperlink{spc__resp_8h_add20ced757ce2623320cfa20db81e4ac}{get\_\-troughput\_\-table\_\-name} (char $\ast$filename, int beamID, char $\ast$table\_\-name)
+\item 
+double \hyperlink{spc__resp_8h_a92c6c9b541b7b862a2b9903e3587a8a2}{get\_\-response\_\-value\_\-plus} (const \hyperlink{structspectrum}{spectrum} $\ast$resp, const double wavelength, int $\ast$nguess)
+\item 
+void \hyperlink{spc__resp_8h_a3e4ae40aa1401897ab1c66dffc99e0a4}{get\_\-response\_\-values} (\hyperlink{structresponse__function}{response\_\-function} $\ast$resp\_\-func, double wavelength, double $\ast$resp\_\-vals)
+\item 
+\hyperlink{structresponse__function}{response\_\-function} $\ast$ \hyperlink{spc__resp_8h_a7ac8453607987c5bac189f4e6a65ad35}{create\_\-response\_\-function} (char $\ast$filename)
+\item 
+void \hyperlink{spc__resp_8h_a0443087ea673f1af845bcdba1ed60a2a}{free\_\-response\_\-function} (\hyperlink{structresponse__function}{response\_\-function} $\ast$resp\_\-func)
+\item 
+\hyperlink{structcalib__function}{calib\_\-function} $\ast$ \hyperlink{spc__resp_8h_a857611dff2d0a5a648328f76b16f1ab0}{get\_\-calfunc\_\-for\_\-beam} (const \hyperlink{structbeam}{beam} actbeam, const int for\_\-grism, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__resp_8h_aa94b4f63b483d88c0f30c4c6aaba3c48}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!MAX\_\-ITER\_\-TL@{MAX\_\-ITER\_\-TL}}
+\index{MAX\_\-ITER\_\-TL@{MAX\_\-ITER\_\-TL}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{MAX\_\-ITER\_\-TL}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-ITER\_\-TL~1000}}
+\label{spc__resp_8h_aa94b4f63b483d88c0f30c4c6aaba3c48}
+\hypertarget{spc__resp_8h_aa72ff6f8d89621381bba997b34673399}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!RESP\_\-SMOOTH\_\-LENGTH@{RESP\_\-SMOOTH\_\-LENGTH}}
+\index{RESP\_\-SMOOTH\_\-LENGTH@{RESP\_\-SMOOTH\_\-LENGTH}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{RESP\_\-SMOOTH\_\-LENGTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define RESP\_\-SMOOTH\_\-LENGTH~50}}
+\label{spc__resp_8h_aa72ff6f8d89621381bba997b34673399}
+\hypertarget{spc__resp_8h_a099bf5a5a124fe8705039105a8b79e83}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!RESP\_\-SMOOTH\_\-NSIG@{RESP\_\-SMOOTH\_\-NSIG}}
+\index{RESP\_\-SMOOTH\_\-NSIG@{RESP\_\-SMOOTH\_\-NSIG}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{RESP\_\-SMOOTH\_\-NSIG}]{\setlength{\rightskip}{0pt plus 5cm}\#define RESP\_\-SMOOTH\_\-NSIG~3.0}}
+\label{spc__resp_8h_a099bf5a5a124fe8705039105a8b79e83}
+\hypertarget{spc__resp_8h_a8ca328fe755fff0dfe3ee97eb5d108f9}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!RESPBUFFERSIZE@{RESPBUFFERSIZE}}
+\index{RESPBUFFERSIZE@{RESPBUFFERSIZE}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{RESPBUFFERSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RESPBUFFERSIZE~1024}}
+\label{spc__resp_8h_a8ca328fe755fff0dfe3ee97eb5d108f9}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__resp_8h_a5f44fcc178b2da25927271b53d5d1f17}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!apply\_\-response\_\-function@{apply\_\-response\_\-function}}
+\index{apply\_\-response\_\-function@{apply\_\-response\_\-function}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{apply\_\-response\_\-function}]{\setlength{\rightskip}{0pt plus 5cm}void apply\_\-response\_\-function ({\bf spectrum} $\ast$ {\em spec}, \/  {\bf spectrum} $\ast$ {\em resp}, \/  const int {\em quant\_\-cont})}}
+\label{spc__resp_8h_a5f44fcc178b2da25927271b53d5d1f17}
+Function: apply\_\-response\_\-function This function applies a thoughput curve to a given \hyperlink{structspectrum}{spectrum} by dividing the count attribute of the \hyperlink{structspectrum}{spectrum}. The flux and ferror attributes of the \hyperlink{structspectrum}{spectrum} are populated. gsl spline interpolation is used to compute the throughput curve at the needed spectral wavelengths.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spec}]-\/ a pointer to an existing \hyperlink{structspectrum}{spectrum} array \item[{\em resp}]-\/ a pointer to a \hyperlink{structspectrum}{spectrum} structure containing a throughput curve previously loaded \item[{\em exptime}]-\/ the exposure time \item[{\em gain}]-\/ the gain\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+245 {
+246   gsl_interp_accel *acc1 = gsl_interp_accel_alloc();
+247   gsl_spline *spline1 = gsl_spline_alloc (gsl_interp_cspline, resp->spec_len);
+248 
+249   gsl_interp_accel *acc2 = gsl_interp_accel_alloc();
+250   gsl_spline *spline2 = gsl_spline_alloc (gsl_interp_cspline, resp->spec_len);
+251 
+252   double *x1,*y1, *x2, *y2;
+253   long i,j;
+254   double r1, r2, fr, fr1, fr2;
+255 
+256   // test
+257   //  int nguess;
+258   //  double tval=0.0;
+259 
+260   if ( spec==NULL)
+261     {
+262       aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+263                    "apply_response_function: spectra empty.");
+264       gsl_spline_free(spline1);
+265       gsl_interp_accel_free(acc1);
+266       gsl_spline_free(spline2);
+267       gsl_interp_accel_free(acc2);
+268       return;
+269     }
+270 
+271   x1 = malloc(resp->spec_len*sizeof(double));
+272   y1 = malloc(resp->spec_len*sizeof(double));
+273   x2 = malloc(resp->spec_len*sizeof(double));
+274   y2 = malloc(resp->spec_len*sizeof(double));
+275 
+276   for (i=0;i<resp->spec_len;i++) {
+277     x1[i] = resp->spec[i].lambda_mean;
+278     y1[i] = resp->spec[i].flux - resp->spec[i].ferror;
+279     x2[i] = resp->spec[i].lambda_mean;
+280     y2[i] = resp->spec[i].flux + resp->spec[i].ferror;
+281   }
+282 
+283   gsl_spline_init (spline1, x1, y1, resp->spec_len);
+284   gsl_spline_init (spline2, x2, y2, resp->spec_len);
+285 
+286   // test
+287   //  nguess = 0;
+288 
+289   for (j=0;j<spec->spec_len;j++) {
+290     r1 = gsl_spline_eval (spline1, spec->spec[j].lambda_mean, acc1);
+291     r2 = gsl_spline_eval (spline2, spec->spec[j].lambda_mean, acc2);
+292 
+293     // test
+294     //    tval = get_response_value_plus(resp, spec->spec[j].lambda_mean, &nguess
+      );
+295 
+296 
+297     /* Need to divide by the pixel width of the
+298        wavelength calibration at the given lambda */
+299 
+300     if ((r2+r1)!=0) {
+301 
+302       // test
+303       //      spec->spec[j].flux = spec->spec[j].count / tval;
+304       spec->spec[j].flux = spec->spec[j].count / ((r2+r1)/2.);
+305       spec->spec[j].flux = spec->spec[j].flux/spec->spec[j].dlambda;
+306       //      fprintf(stdout, "# %f %f %f\n", spec->spec[j].lambda_mean, spec->sp
+      ec[j].dlambda, spec->spec[j].weight);
+307 
+308 
+309       if (quant_cont && (int)spec->spec[j].contam != -1)
+310         {
+311           // test
+312           //      spec->spec[j].contam = spec->spec[j].contam / tval;
+313           spec->spec[j].contam = spec->spec[j].contam / ((r2+r1)/2.);
+314           spec->spec[j].contam = spec->spec[j].contam/spec->spec[j].dlambda;
+315         }
+316     } else {
+317       spec->spec[j].flux = GSL_NAN;
+318     }
+319 
+320     fr1 = spec->spec[j].error / spec->spec[j].count; /* frac. error */
+321     fr2 = fabs((r2-r1)/((r1+r2)/2.0)); /* frac. error in resp. */
+322     fr = sqrt(fr1*fr1+fr2*fr2);
+323     spec->spec[j].ferror = fabs(spec->spec[j].flux) * fr;
+324   }
+325 
+326   gsl_spline_free(spline1);
+327   gsl_interp_accel_free(acc1);
+328   gsl_spline_free(spline2);
+329   gsl_interp_accel_free(acc2);
+330   free(x1);
+331   free(x2);
+332   free(y1);
+333   free(y2);
+334 
+335 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a60eb0a59f94e070ca4f3ee71ee182ca9}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!apply\_\-response\_\-functionII@{apply\_\-response\_\-functionII}}
+\index{apply\_\-response\_\-functionII@{apply\_\-response\_\-functionII}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{apply\_\-response\_\-functionII}]{\setlength{\rightskip}{0pt plus 5cm}void apply\_\-response\_\-functionII ({\bf spectrum} $\ast$ {\em spec}, \/  {\bf response\_\-function} $\ast$ {\em resp\_\-func}, \/  const int {\em quant\_\-cont})}}
+\label{spc__resp_8h_a60eb0a59f94e070ca4f3ee71ee182ca9}
+Function: apply\_\-response\_\-functionII This function applies a thoughput curve to a given \hyperlink{structspectrum}{spectrum} by dividing the count attribute of the \hyperlink{structspectrum}{spectrum}. The flux and ferror attributes of the \hyperlink{structspectrum}{spectrum} are populated.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spec}]-\/ a pointer to an existing \hyperlink{structspectrum}{spectrum} array \item[{\em resp\_\-func}]-\/ a pointer to a \hyperlink{structspectrum}{spectrum} structure containing a throughput curve previously loaded \item[{\em quant\_\-cont}]-\/ the exposure time\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+354 {
+355   long j;
+356   double fr, fr1, fr2;
+357 
+358   double *resp_vals = malloc( 2 * sizeof(double));
+359 
+360   // immediately return
+361   // an empty spectrum
+362   if ( spec==NULL)
+363     {
+364       aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+365                    "apply_response_function: spectra empty.");
+366       return;
+367     }
+368 
+369   // go over all elements
+370   for (j=0;j<spec->spec_len;j++)
+371     {
+372       // get the sensitivity value plus error
+373       get_response_values(resp_func, spec->spec[j].lambda_mean, resp_vals);
+374 
+375       // make sure you can compute the flux value
+376       if (resp_vals[0] != 0.0)
+377         {
+378           // compute the flux value
+379           spec->spec[j].flux = spec->spec[j].count / resp_vals[0];
+380           spec->spec[j].flux = spec->spec[j].flux/spec->spec[j].dlambda;
+381 
+382           // compute the flux error
+383           fr1 = spec->spec[j].error / spec->spec[j].count; /* frac. error */
+384           fr2 = fabs(resp_vals[1] / resp_vals[0]); /* frac. error in resp. */
+385           fr = sqrt(fr1*fr1+fr2*fr2);
+386           spec->spec[j].ferror = fabs(spec->spec[j].flux) * fr;
+387 
+388           // check whether the contamination value is necessary
+389           if (quant_cont && (int)spec->spec[j].contam != -1)
+390             {
+391               // compute the contamination value
+392               spec->spec[j].contam = spec->spec[j].contam / resp_vals[0];
+393               spec->spec[j].contam = spec->spec[j].contam/spec->spec[j].dlambda;
+394             }
+395         }
+396       else
+397         {
+398           // set the flux and the error to NaN
+399           spec->spec[j].flux = GSL_NAN;
+400           spec->spec[j].ferror = GSL_NAN;
+401         }
+402     }
+403 
+404   // free the memory
+405   free(resp_vals);
+406 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_af2a378bacf12bd151d4b8d9d66e696a0}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!apply\_\-smoothed\_\-response@{apply\_\-smoothed\_\-response}}
+\index{apply\_\-smoothed\_\-response@{apply\_\-smoothed\_\-response}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{apply\_\-smoothed\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}void apply\_\-smoothed\_\-response (const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration}, \/  const int {\em for\_\-grism}, \/  const int {\em quant\_\-cont}, \/  {\bf response\_\-function} $\ast$ {\em resp\_\-func}, \/  const {\bf d\_\-point} {\em smooth\_\-pars}, \/  {\bf spectrum} $\ast$ {\em spec})}}
+\label{spc__resp_8h_af2a378bacf12bd151d4b8d9d66e696a0}
+Function: apply\_\-smoothed\_\-response Convert a \hyperlink{structspectrum}{spectrum} from e/s to flux units in f\_\-lambda. The conversion is done using smoothed sensitivity values that take the \hyperlink{structobject}{object} width into account by smoothing the sensitivity function. Gaussian smoothing is applied, taking into account that the original calibration function was derived for a point like \hyperlink{structobject}{object} with a finite size.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spec}]-\/ a pointer to an existing \hyperlink{structspectrum}{spectrum} array \item[{\em resp\_\-func}]-\/ a pointer to a \hyperlink{structspectrum}{spectrum} structure containing a throughput curve \item[{\em quant\_\-cont}]-\/ indicator for quantitative contamination \item[{\em bwidth}]-\/ the B\_\-IMAGE value of the \hyperlink{structbeam}{beam} \item[{\em psf\_\-ext}]-\/ the width of a point-\/like \hyperlink{structobject}{object} \item[{\em wl\_\-calibration}]-\/ the wavelength calibration structure\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+513 {
+514   long j;
+515   double fr, fr1, fr2;
+516   //double sigma_wav=10.0;
+517 
+518   double *resp_vals = malloc( 2 * sizeof(double));
+519   //double *tmp_vals  = malloc( 2 * sizeof(double));
+520 
+521   gsl_vector *weights;
+522 
+523   // allocate memory for the vectors
+524   weights = gsl_vector_alloc(2 * RESP_SMOOTH_LENGTH + 1);
+525 
+526   // immediately return
+527   // an empty spectrum
+528   if ( spec==NULL)
+529     {
+530       aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+531                    "apply_response_function: spectra empty.");
+532       return;
+533     }
+534 
+535   // fill the weight vector
+536   // for smoothing
+537   fill_weight(weights);
+538 
+539   // output to screen
+540   fprintf(stdout, "aXe_PET2SPC: Gaussian smoothing in tracelength: %.2f * %.2f = 
+      %.2f pix\n", smooth_pars.x, smooth_pars.y, smooth_pars.x * smooth_pars.y);
+541 
+542   // go over all elements
+543   for (j=0;j<spec->spec_len;j++)
+544     {
+545       // get the smoothed sensitivity value plus error
+546       get_smoothed_response(spec->spec[j].lambda_mean, smooth_pars, wl_calibratio
+      n,
+547                             for_grism, weights, resp_func, resp_vals);
+548 
+549       // make sure you can compute the flux value
+550       if (resp_vals[0] != 0.0)
+551         {
+552           // compute the flux value
+553           spec->spec[j].flux = spec->spec[j].count / resp_vals[0];
+554           spec->spec[j].flux = spec->spec[j].flux/spec->spec[j].dlambda;
+555 
+556           // compute the flux error
+557           fr1 = spec->spec[j].error / spec->spec[j].count; /* frac. error */
+558           fr2 = fabs(resp_vals[1] / resp_vals[0]); /* frac. error in resp. */
+559           fr = sqrt(fr1*fr1+fr2*fr2);
+560           spec->spec[j].ferror = fabs(spec->spec[j].flux) * fr;
+561 
+562           // check whether the contamination value is necessary
+563           if (quant_cont && (int)spec->spec[j].contam != -1)
+564             {
+565               // compute the contamination value
+566               spec->spec[j].contam = spec->spec[j].contam / resp_vals[0];
+567               spec->spec[j].contam = spec->spec[j].contam/spec->spec[j].dlambda;
+568             }
+569         }
+570       else
+571         {
+572           // set the flux and the error to NaN
+573           spec->spec[j].flux = GSL_NAN;
+574           spec->spec[j].ferror = GSL_NAN;
+575         }
+576     }
+577 
+578   // free the memory
+579   free(resp_vals);
+580   gsl_vector_free(weights);
+581 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a5fde07d1ba5295c2a04d17b9517c8b3f}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!check\_\-conf\_\-for\_\-smoothing@{check\_\-conf\_\-for\_\-smoothing}}
+\index{check\_\-conf\_\-for\_\-smoothing@{check\_\-conf\_\-for\_\-smoothing}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{check\_\-conf\_\-for\_\-smoothing}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-conf\_\-for\_\-smoothing (const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  const int {\em smooth\_\-conv})}}
+\label{spc__resp_8h_a5fde07d1ba5295c2a04d17b9517c8b3f}
+Function: check\_\-conf\_\-for\_\-smoothing The functions checks whether a smoothed flux conversion is possible or not. In case that keywords in the configuration files are missing, it is NOT possible, and 0 is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em conf}]-\/ the configuarion file structure \item[{\em smooth\_\-conv}]-\/ boolean for smooth conversion\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+is\_\-possible -\/ the paramters used in the smoothing 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+476   {
+477     int is_possible=1;
+478 
+479     // make sure that, if smoothed covnersion is requested,
+480     // a point-like objects size and an adjustment factor is defined
+481     if (smooth_conv && (conf->pobjsize < 0.0 || conf->smfactor < 0.0))
+482       // change the switch
+483       is_possible = 0;
+484 
+485     // return the pointer
+486     return is_possible;
+487   }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a7ac8453607987c5bac189f4e6a65ad35}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!create\_\-response\_\-function@{create\_\-response\_\-function}}
+\index{create\_\-response\_\-function@{create\_\-response\_\-function}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{create\_\-response\_\-function}]{\setlength{\rightskip}{0pt plus 5cm}{\bf response\_\-function}$\ast$ create\_\-response\_\-function (char $\ast$ {\em filename})}}
+\label{spc__resp_8h_a7ac8453607987c5bac189f4e6a65ad35}
+Function: create\_\-response\_\-function Load the sensitivity file and creates a new response function. Relies heavily on other subroutines
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ sensitivity file name\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+resp\_\-func -\/ the response function created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1118 {
+1119   response_function *resp_func;
+1120 
+1121   // allocate space for the return structure;
+1122   // complain if this fails
+1123   resp_func = (response_function *)malloc (sizeof (response_function));
+1124   if (resp_func == NULL)
+1125     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1126                  "Could not allocate memory for response function");
+1127 
+1128   // load the two intgerpolators
+1129   resp_func->resp_values = create_interp_ftable(filename, 2, "WAVELENGTH", "SENSI
+      TIVITY", RESP_FUNC_INTERP_TYPE);
+1130   resp_func->resp_errors = create_interp_ftable(filename, 2, "WAVELENGTH", "ERROR
+      ", RESP_FUNC_INTERP_TYPE);
+1131 
+1132   // transfer the min and max values from the interpolator
+1133   resp_func->xmin = resp_func->resp_values->xmin;
+1134   resp_func->xmax = resp_func->resp_values->xmax;
+1135 
+1136   // return the respons function
+1137   return resp_func;
+1138 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a49bc35d27187cb2fef40786e969743a7}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!fill\_\-weight@{fill\_\-weight}}
+\index{fill\_\-weight@{fill\_\-weight}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{fill\_\-weight}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-weight (gsl\_\-vector $\ast$ {\em weights})}}
+\label{spc__resp_8h_a49bc35d27187cb2fef40786e969743a7}
+Function: fill\_\-weight The function fills an array with Gaussian values. The number of points and the extend are all defined in global variables in the h-\/file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em weights}]-\/ the weight vector\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+937 {
+938   int j;
+939 
+940   double d_incr;
+941   double value;
+942 
+943   // determine the increments
+944   d_incr = (double)RESP_SMOOTH_NSIG / (double)RESP_SMOOTH_LENGTH;
+945 
+946   // compute the initial exponent
+947   // go over the weights vector
+948   value = -(double)RESP_SMOOTH_NSIG;
+949   for (j=0; j < weights->size; j++)
+950     {
+951       // compute and set the weight
+952       gsl_vector_set(weights, j, exp(-1.0*value * value));
+953 
+954       // increment the exponent
+955       value += d_incr;
+956     }
+957 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a801a7c3ef4ee95658274156c6910a1cb}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!find\_\-wavelength@{find\_\-wavelength}}
+\index{find\_\-wavelength@{find\_\-wavelength}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{find\_\-wavelength}]{\setlength{\rightskip}{0pt plus 5cm}double find\_\-wavelength (double {\em x}, \/  void $\ast$ {\em params})}}
+\label{spc__resp_8h_a801a7c3ef4ee95658274156c6910a1cb}
+Function: find\_\-wavelength For a given trace-\/length value, the function returns the difference between the actual and the targeted wavelength. The function is designed t be called by a gsl root-\/solving procedure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]-\/ guess value for the tracelength \item[{\em params}]-\/ structure with input parameters\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+wav\_\-zero -\/ difference between actual and targeted wavelength 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+598   {
+599     double wav_zero;
+600 
+601     // extract the components from the parameter-structure
+602     const calib_function *wl_calib = ((trlength_search *) params)->wl_calibration
+      ;
+603     double wavelength        = ((trlength_search *) params)->wavelength;
+604 
+605     // compute the function value
+606     wav_zero = wl_calib->func (x, wl_calib->order, wl_calib->coeffs) - wavelength
+      ;
+607 
+608     // return the function value
+609     return wav_zero;
+610   }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a0443087ea673f1af845bcdba1ed60a2a}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!free\_\-response\_\-function@{free\_\-response\_\-function}}
+\index{free\_\-response\_\-function@{free\_\-response\_\-function}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{free\_\-response\_\-function}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-response\_\-function ({\bf response\_\-function} $\ast$ {\em resp\_\-func})}}
+\label{spc__resp_8h_a0443087ea673f1af845bcdba1ed60a2a}
+Function: free\_\-response\_\-function Releases the memory allocated in a response function
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em resp\_\-func}]-\/ the response function\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1152 {
+1153   // free the two interpolators
+1154   free_interp(resp_func->resp_values);
+1155   free_interp(resp_func->resp_errors);
+1156 
+1157   // free the rest
+1158   free(resp_func);
+1159 
+1160   // set it to NULL
+1161   resp_func = NULL;
+1162 
+1163 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a857611dff2d0a5a648328f76b16f1ab0}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-calfunc\_\-for\_\-beam@{get\_\-calfunc\_\-for\_\-beam}}
+\index{get\_\-calfunc\_\-for\_\-beam@{get\_\-calfunc\_\-for\_\-beam}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-calfunc\_\-for\_\-beam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf calib\_\-function}$\ast$ get\_\-calfunc\_\-for\_\-beam (const {\bf beam} {\em actbeam}, \/  const int {\em for\_\-grism}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const {\bf aperture\_\-conf} $\ast$ {\em conf})}}
+\label{spc__resp_8h_a857611dff2d0a5a648328f76b16f1ab0}
+Function: get\_\-calfunc\_\-for\_\-beam The subroutine determines and returns the calibration function for a certain \hyperlink{structbeam}{beam} and configuration file. The coefficients of the wavelength calibration are evaluated at the position of the \hyperlink{structbeam}{beam} \hyperlink{structobject}{object}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the current \hyperlink{structbeam}{beam} \item[{\em for\_\-grism}]-\/ indicator for grism or prism dispersion \item[{\em CONF\_\-file}]-\/ full pathname to configuration file \item[{\em conf}]-\/ the configuration structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+wl\_\-calibration -\/ the calibration function 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1184 {
+1185   calib_function *wl_calibration;
+1186   dispstruct     *disp;
+1187   d_point         pixel;
+1188 
+1189   // get the reference point right
+1190   pixel.x = actbeam.refpoint.x - conf->refx;
+1191   pixel.y = actbeam.refpoint.y - conf->refy;
+1192 
+1193   // get the dispersion structure
+1194   disp = get_dispstruct_at_pos(CONF_file, for_grism, actbeam.ID, pixel);
+1195 
+1196   // transform the dispersion structure into the
+1197   // wavelength calibration
+1198   wl_calibration = create_calib_from_gsl_vector(for_grism, disp->pol);
+1199   if (!for_grism)
+1200     wl_calibration->pr_range = get_prange (CONF_file, actbeam.ID);
+1201 
+1202   // free the whole structure
+1203   free_dispstruct(disp);
+1204 
+1205   // return the wavelength calibration
+1206   return wl_calibration;
+1207 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_ab84a3c4ebe3efacf7c89a6833225eb9a}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-central\_\-tracelength@{get\_\-central\_\-tracelength}}
+\index{get\_\-central\_\-tracelength@{get\_\-central\_\-tracelength}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-central\_\-tracelength}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-central\_\-tracelength (const double {\em wavelength}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration}, \/  const int {\em for\_\-grism})}}
+\label{spc__resp_8h_ab84a3c4ebe3efacf7c89a6833225eb9a}
+Function: get\_\-tlength\_\-prismwav The function determines the tracelength value for a given wavelength value and dispersion function. Should be called only for a prism dispersion. The gsl root solver is used.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em wavelength}]-\/ the wavelength value \item[{\em wl\_\-calibration}]-\/ the dispersion solution \item[{\em for\_\-grism}]-\/ boolean to indicate grism/prism dispersion solution\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+wav\_\-zero -\/ difference between actual and targeted wavelength 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+709   {
+710     double tl_central=0.0;
+711     double a, b, c;
+712 
+713     // checc whether it's a grism
+714     if (for_grism)
+715       {
+716         // solve a linear dispersion
+717         if (wl_calibration->order == 1)
+718           {
+719             tl_central = (wavelength - wl_calibration->coeffs[0]) / wl_calibratio
+      n->coeffs[1];
+720           }
+721         // solve a quadratic dispersion
+722         else if (wl_calibration->order == 2)
+723           {
+724             // make the quantities
+725             a = wl_calibration->coeffs[2];
+726             b = wl_calibration->coeffs[1];
+727             c = wl_calibration->coeffs[0] - wavelength;
+728 
+729             // compute the central tracelength
+730             //tl_central = (-b + sqrt(b*b - 4.0*a*c)) / (2.0*c);
+731             tl_central = (-b + sqrt(b*b - 4.0*a*c)) / (2.0*a);
+732             //fprintf(stdout, "I should be here... %g %g %g %g\n", tl_central, a,
+       b, c);
+733           }
+734         else
+735           {
+736             // give error message
+737             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+738                 "Smoothed flux conversion is impossible for grism "
+739                 "data with dispersion solution of order: %i", wl_calibration->
+      order);
+740           }
+741       }
+742     else
+743       {
+744         // use the root finder to get the tace-length value
+745         // for the given wavelength
+746         if (isnan(wavelength))
+747           tl_central = GSL_NAN;
+748         else
+749           tl_central = get_tlength_prismwav(wavelength, wl_calibration);
+750       }
+751 
+752     // return the central
+753     // tracelength value
+754     return tl_central;
+755   }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a5249f78ca40468a3e4634fe15c87da20}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-response\_\-function\_\-from\_\-FITS@{get\_\-response\_\-function\_\-from\_\-FITS}}
+\index{get\_\-response\_\-function\_\-from\_\-FITS@{get\_\-response\_\-function\_\-from\_\-FITS}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-response\_\-function\_\-from\_\-FITS}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ get\_\-response\_\-function\_\-from\_\-FITS (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em hdunum})}}
+\label{spc__resp_8h_a5249f78ca40468a3e4634fe15c87da20}
+Function: get\_\-response\_\-function\_\-from\_\-FITS This function reads a FITS table, reads the WAVELENGTH, SENSITIVITY, and ERROR columns and returns a \hyperlink{structspectrum}{spectrum} structure which has been populated with this throughput.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ a pointer to a char array containing the name of an existing FITS file \item[{\em hdunum}]-\/ the extension number to read (2 for STSDAS tables)\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+res -\/ a pointer to a newly allocated \hyperlink{structspectrum}{spectrum} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+45 {
+46   fitsfile *input;
+47   int f_status = 0;
+48   int hdutype, anynul;
+49   double *lambda, *resp, *error;
+50   double tmp;
+51   long numrows;
+52   int colnum, i;
+53   spectrum *res;
+54 
+55   //  Open the file for reading
+56   fits_open_file (&input, filename, READONLY, &f_status);
+57   if (f_status)
+58     {
+59       ffrprt (stderr, f_status);
+60       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+61                    "get_response_function_fromFITS: "
+62                    "Could not open" " file: %s",
+63                    filename);
+64     }
+65   /* Move to first hdu */
+66   fits_movabs_hdu (input, hdunum, &hdutype, &f_status);
+67   if (f_status)
+68     {
+69       ffrprt (stderr, f_status);
+70       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+71                    "get_response_function_fromFITS: "
+72                    "Could not read extention %d from file: %s",
+73                    hdunum, filename);
+74     }
+75 
+76   /* Get number of rows */
+77   fits_get_num_rows (input, &numrows, &f_status);
+78   if (f_status) {
+79     ffrprt (stderr, f_status);
+80     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+81                  "get_response_function_fromFITS: "
+82                  "Could not determine the number of rows in"
+83                  " table %s",filename);
+84   }
+85 
+86   /* Allocate temporary memory space */
+87   lambda = (double *) malloc(numrows*sizeof(double));
+88   if (!lambda) {
+89     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+90                  "Memory allocation failed");
+91   }
+92   resp = (double *) malloc(numrows*sizeof(double));
+93   if (!resp) {
+94     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+95                  "Memory allocation failed");
+96   }
+97   error = (double *) malloc(numrows*sizeof(double));
+98   if (!error) {
+99     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+100                  "Memory allocation failed");
+101   }
+102 
+103   /**************************/
+104   /* Read the WAVELENGTH column */
+105   /**************************/
+106   /* Get column number */
+107   fits_get_colnum (input, CASEINSEN, "WAVELENGTH", &colnum, &f_status);
+108   if (f_status)
+109     {
+110       ffrprt (stderr, f_status);
+111       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+112                    "get_response_function_fromFITS: "
+113                    "Could not determine WAVELENGTH column number in "
+114                    " table %s",filename);
+115     }
+116 
+117   /* Read the data */
+118   fits_read_col (input, TDOUBLE, colnum, 1, 1, numrows, NULL, lambda,
+119                     &anynul, &f_status);
+120   if (f_status)
+121     {
+122       ffrprt (stderr, f_status);
+123       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+124                    "get_response_function_fromFITS: "
+125                    "Could not read content of WAVELENGTH column "
+126                    " from BINARY table %s",filename);
+127     }
+128 
+129   /**************************/
+130   /* Read the SENSITIVITY column */
+131   /**************************/
+132   /* Get column number */
+133   fits_get_colnum (input, CASEINSEN, "SENSITIVITY", &colnum, &f_status);
+134   if (f_status)
+135     {
+136       ffrprt (stderr, f_status);
+137       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+138                    "get_response_function_fromFITS: "
+139                    "Could not determine SENSITIVITY column number in "
+140                    " table %s",filename);
+141     }
+142   /* Read the data */
+143   fits_read_col (input, TDOUBLE, colnum, 1, 1, numrows, NULL, resp,
+144                     &anynul, &f_status);
+145   if (f_status)
+146     {
+147       ffrprt (stderr, f_status);
+148       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+149                    "get_response_function_fromFITS: "
+150                    "Could not read content of SENSITIVITY column "
+151                    " from BINARY table %s",filename);
+152     }
+153   /**************************/
+154   /* Read the ERROR column */
+155   /**************************/
+156   /* Get column number */
+157   fits_get_colnum (input, CASEINSEN, "ERROR", &colnum, &f_status);
+158   if (f_status)
+159     {
+160       ffrprt (stderr, f_status);
+161       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+162                    "get_response_function_fromFITS: "
+163                    "Could not determine ERROR column number in "
+164                    " table %s",filename);
+165     }
+166   /* Read the data */
+167   fits_read_col (input, TDOUBLE, colnum, 1, 1, numrows, NULL, error,
+168                     &anynul, &f_status);
+169   if (f_status)
+170     {
+171       ffrprt (stderr, f_status);
+172       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+173                    "get_response_function_fromFITS: "
+174                    "Could not read content of ERROR column "
+175                    " from BINARY table %s",filename);
+176     }
+177 
+178 
+179   /* Allocate memory */
+180   res = (spectrum *) malloc(sizeof(spectrum));
+181   if(!res) {
+182       aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+183                    "Memory allocation failed");
+184   }
+185   res->spec = (spc_entry *) malloc(numrows*sizeof(spc_entry));
+186   if(!(res->spec)) {
+187       aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+188                    "Memory allocation failed");
+189   }
+190 
+191   for (i=0;i<numrows;i++) {
+192     res->spec[i].lambda_mean = lambda[i];
+193     res->spec[i].flux = resp[i];
+194     res->spec[i].ferror = error[i];
+195   }
+196 
+197   res->spec_len=i;
+198 
+199   // define the minimum and maximum wavelength
+200   res->lambdamin=res->spec[0].lambda_mean;
+201   res->lambdamax=res->spec[numrows-1].lambda_mean;
+202 
+203   // check whether the wavelength is raising.
+204   // switch minimum and maximum for falling spectrum
+205   if (res->lambdamin > res->lambdamax)
+206     {
+207       tmp = res->lambdamin;
+208       res->lambdamin = res->lambdamax;
+209       res->lambdamax = tmp;
+210     }
+211 
+212   fits_close_file(input,&f_status);
+213   if (f_status) {
+214       aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+215                    "Could not close %s",filename);
+216   }
+217 
+218   free(lambda);
+219   free(resp);
+220   free(error);
+221 
+222   return res;
+223 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a92c6c9b541b7b862a2b9903e3587a8a2}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-response\_\-value\_\-plus@{get\_\-response\_\-value\_\-plus}}
+\index{get\_\-response\_\-value\_\-plus@{get\_\-response\_\-value\_\-plus}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-response\_\-value\_\-plus}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-response\_\-value\_\-plus (const {\bf spectrum} $\ast$ {\em resp}, \/  const double {\em wavelength}, \/  int $\ast$ {\em nguess})}}
+\label{spc__resp_8h_a92c6c9b541b7b862a2b9903e3587a8a2}
+Function: get\_\-response\_\-value\_\-plus The function determines the sensitivity at a given wavelength in a sensitivity curve. A guess value helps to start searching around the estimated position of the wavelength in the vector of the sensitifity curve. This should considerably speed up the code. the guess value is updated in case that a sensitivity value could be determined. The return value is interpolated between the adjacent tabulated values.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em resp}]-\/ the sensitivity \hyperlink{structspectrum}{spectrum} \item[{\em wavelength}]-\/ the wavelength to determine the sensitivity for \item[{\em nguess}]-\/ the guess value for the array to start searching from\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ the sensitivity value at the input wavelength 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1027 {
+1028   double ret;
+1029   double factor;
+1030 
+1031   int nact;
+1032 
+1033   // check whether the wavelength is within the range of
+1034   //the sensitivity curve return GSL_NAN if not
+1035   if (wavelength < resp->lambdamin || wavelength > resp->lambdamax)
+1036     return GSL_NAN;
+1037 
+1038   // check whether you have to search upwards or downwards
+1039   if (wavelength >= resp->spec[*nguess].lambda_mean)
+1040     {
+1041 
+1042       // in case that you search upwards, go up
+1043       // the spectrum until you find the right interval
+1044       nact = *nguess + 1;
+1045       while(wavelength > resp->spec[nact].lambda_mean)
+1046         nact++;
+1047     }
+1048   else
+1049     {
+1050 
+1051       // in case that you search upwards, go up
+1052       // the spectrum until you find the right interval
+1053       nact = *nguess;
+1054       while(wavelength < resp->spec[nact-1].lambda_mean)
+1055         nact--;
+1056     }
+1057 
+1058   // interpolate within the interval to calculate the
+1059   // sensitivity
+1060   factor = (wavelength - resp->spec[nact-1].lambda_mean) /
+1061     (resp->spec[nact].lambda_mean - resp->spec[nact-1].lambda_mean);
+1062   ret = resp->spec[nact-1].flux + factor * (resp->spec[nact].flux - resp->spec[na
+      ct-1].flux);
+1063 
+1064   // update the guess value
+1065   *nguess = nact;
+1066 
+1067   // return the sensitivity value
+1068   return ret;
+1069 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a3e4ae40aa1401897ab1c66dffc99e0a4}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-response\_\-values@{get\_\-response\_\-values}}
+\index{get\_\-response\_\-values@{get\_\-response\_\-values}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-response\_\-values}]{\setlength{\rightskip}{0pt plus 5cm}void get\_\-response\_\-values ({\bf response\_\-function} $\ast$ {\em resp\_\-func}, \/  double {\em wavelength}, \/  double $\ast$ {\em resp\_\-vals})}}
+\label{spc__resp_8h_a3e4ae40aa1401897ab1c66dffc99e0a4}
+Function: get\_\-response\_\-values The function evaluates the response function at the desired independent value. The sensitivity and it error are returned in an array parameter.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em resp\_\-func}]-\/ the response function \item[{\em wavelength}]-\/ the independent value \item[{\em resp\_\-vals}]-\/ the dependent value and its error\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1087 {
+1088   // check whether the independent value is outside the deifned range
+1089   if (wavelength < resp_func->xmin || wavelength > resp_func->xmax)
+1090     {
+1091       // give the default
+1092       // outside values
+1093       resp_vals[0] = 0.0;
+1094       resp_vals[1] = 0.0;
+1095     }
+1096   else
+1097     {
+1098       // get the response value and its error
+1099       resp_vals[0] = eval_interp(resp_func->resp_values, wavelength);
+1100       resp_vals[1] = eval_interp(resp_func->resp_errors, wavelength);
+1101     }
+1102 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a157a1202bd6a233046e0bd6576bc61ca}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-smooth\_\-pars\_\-for\_\-beam@{get\_\-smooth\_\-pars\_\-for\_\-beam}}
+\index{get\_\-smooth\_\-pars\_\-for\_\-beam@{get\_\-smooth\_\-pars\_\-for\_\-beam}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-smooth\_\-pars\_\-for\_\-beam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} get\_\-smooth\_\-pars\_\-for\_\-beam (const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  const int {\em smooth\_\-conv}, \/  {\bf beam} {\em actbeam})}}
+\label{spc__resp_8h_a157a1202bd6a233046e0bd6576bc61ca}
+Function: get\_\-smooth\_\-pars\_\-for\_\-beam The function determines the smoothing parameters for an \hyperlink{structobject}{object} \hyperlink{structbeam}{beam} and a given indicator. If smoothed calibration is requested, the source size (in dispersion direction) is compared to the poin-\/like \hyperlink{structobject}{object} size. For non poin-\/like objects, the adjustment factor is extracted and the smoothing size from the \hyperlink{structobject}{object} is derived.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em conf}]-\/ the configuarion file structure \item[{\em smooth\_\-conv}]-\/ boolean for smooth conversion \item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to be calibrated\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+smooth\_\-pars -\/ the paramters used in the smoothing 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+426   {
+427     d_point smooth_pars;
+428 
+429     // initialize the return
+430     smooth_pars.x = -1.0;
+431     smooth_pars.y = -1.0;
+432 
+433     // if there is nothing to
+434     // do, return the default
+435     if (!smooth_conv)
+436       return smooth_pars;
+437 
+438     // check whether the relevant information
+439     // does exist
+440     if (smooth_conv && actbeam.slitgeom[2] < 0.0)
+441       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+442           "Smoothed flux conversion is impossible"
+443           " since the OAF\ndoes not contain the slit width!\n");
+444 
+445     //fprintf(stdout, "smoothing factor: %f, point-like size: %f\n", conf->smfact
+      or, conf->pobjsize);
+446     // check whether the objects is smaller than a psf-object
+447     // in dispersion direction
+448     if (conf->pobjsize < actbeam.slitgeom[2])
+449       {
+450         // compute the smoothing size from the objects;
+451         // transfer the adjustment factor
+452         smooth_pars.x = pow((actbeam.slitgeom[2]* actbeam.slitgeom[2]) - (conf->
+      pobjsize*conf->pobjsize), 0.5);
+453         smooth_pars.y = conf->smfactor;
+454       }
+455 
+456     // return the
+457     // smoothing parameters
+458     return smooth_pars;
+459   }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a1fd4f613775df35ada9d78832a1c0906}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-smoothed\_\-response@{get\_\-smoothed\_\-response}}
+\index{get\_\-smoothed\_\-response@{get\_\-smoothed\_\-response}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-smoothed\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}void get\_\-smoothed\_\-response (const double {\em wavelength}, \/  const {\bf d\_\-point} {\em smooth\_\-pars}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration}, \/  const int {\em for\_\-grism}, \/  const gsl\_\-vector $\ast$ {\em weights}, \/  {\bf response\_\-function} $\ast$ {\em resp\_\-func}, \/  double $\ast$ {\em resp\_\-vals})}}
+\label{spc__resp_8h_a1fd4f613775df35ada9d78832a1c0906}
+Function: get\_\-smoothed\_\-response The function determine a smoothe sensitivity value and its error. Gaussian smoothing is applied, but the Gaussian weights are delivered as a function paramter (for perfomrance reasons). The function detemines the response values over the weight window and then combines these values with the weights to get one weighted sensitivity value at the desired wavelength.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em wavelength}]-\/ the central wavelength \item[{\em smooth\_\-pars}]-\/ the smoothing parameters \item[{\em \hyperlink{structcalib__function}{calib\_\-function}}]-\/ the wavelength calibration function \item[{\em for\_\-grism}]-\/ boolean to indicate grism/prism solution \item[{\em weights}]-\/ the weight vector \item[{\em resp\_\-func}]-\/ the response function \item[{\em resp\_\-vals}]-\/ vector for the response values\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+782 {
+783   int j;
+784 
+785   double tl_incr;
+786   double tl_act;
+787   double tl_central;
+788   double lambda_act;
+789 
+790   gsl_vector *pixvalues;
+791   gsl_vector *errvalues;
+792   gsl_vector *pmask;
+793 
+794   double *tmp_vals = malloc( 2 * sizeof(double));
+795 
+796   // allocate memory for the vectors
+797   pixvalues = gsl_vector_alloc(2 * RESP_SMOOTH_LENGTH + 1);
+798   errvalues = gsl_vector_alloc(2 * RESP_SMOOTH_LENGTH + 1);
+799   pmask     = gsl_vector_alloc(2 * RESP_SMOOTH_LENGTH + 1);
+800 
+801   // set all mask points to zero
+802   gsl_vector_set_all(pmask, 0.0);
+803 
+804   // determine the tracelength value
+805   tl_central = get_central_tracelength(wavelength, wl_calibration, for_grism);
+806 
+807   // determine the wavelength increments
+808   //wav_incr = (double)RESP_SMOOTH_NSIG * sigma_wav / (double)RESP_SMOOTH_LENGTH;
+      
+809   tl_incr = smooth_pars.x * smooth_pars.y * (double)RESP_SMOOTH_NSIG / (double)
+      RESP_SMOOTH_LENGTH;
+810 
+811   // set the initial wavelength value
+812   //value = wavelength - sigma_wav * (double)RESP_SMOOTH_NSIG;
+813   tl_act = tl_central - 1.0 * smooth_pars.x * smooth_pars.y * (double)
+      RESP_SMOOTH_NSIG;
+814 
+815   // print the starting and central wavelength
+816   //fprintf(stdout, " %.5g < %.5g",
+817   //    wl_calibration->func(tl_act, wl_calibration->order, wl_calibration->coeff
+      s),
+818   //    wl_calibration->func(tl_central, wl_calibration->order, wl_calibration->c
+      oeffs));
+819 
+820   // go over the array
+821   for (j=0; j < pixvalues->size; j++)
+822     {
+823       // determine the wavelength value
+824       lambda_act = wl_calibration->func(tl_act, wl_calibration->order, wl_calibra
+      tion->coeffs);
+825 
+826       // check whether the actual wavelength is inside
+827       // the defined sensitivity interval
+828       if  (lambda_act < resp_func->xmin || lambda_act > resp_func->xmax)
+829         {
+830           // for outside values:
+831           // set everything to zero
+832           gsl_vector_set(pixvalues, j, 0.0);
+833           gsl_vector_set(errvalues, j, 0.0);
+834           gsl_vector_set(pmask, j, 0.0);
+835         }
+836       else
+837         {
+838           // for inside values:
+839           // compute and set the response
+840           get_response_values(resp_func, lambda_act, tmp_vals);
+841           gsl_vector_set(pixvalues, j, tmp_vals[0]);
+842           gsl_vector_set(errvalues, j, tmp_vals[1]);
+843           gsl_vector_set(pmask, j, 1.0);
+844         }
+845 
+846       // increment trace length
+847       tl_act += tl_incr;
+848     }
+849   // print the ending wavelength
+850   //fprintf(stdout, " > %.5g;", wl_calibration->func(tl_act, wl_calibration->orde
+      r, wl_calibration->coeffs));
+851 
+852   // get the weighted response values
+853   get_weighted_sensitivity(pixvalues, errvalues, weights, pmask, resp_vals);
+854 
+855   // free the memory
+856   free(tmp_vals);
+857   gsl_vector_free(pixvalues);
+858   gsl_vector_free(errvalues);
+859   gsl_vector_free(pmask);
+860 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a8cc19f5af89c3055fc5b37110687a58d}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-tlength\_\-prismwav@{get\_\-tlength\_\-prismwav}}
+\index{get\_\-tlength\_\-prismwav@{get\_\-tlength\_\-prismwav}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-tlength\_\-prismwav}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-tlength\_\-prismwav (const double {\em wavelength}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration})}}
+\label{spc__resp_8h_a8cc19f5af89c3055fc5b37110687a58d}
+Function: get\_\-tlength\_\-prismwav The function determines the tracelength value for a given wavelength value and dispersion function. Should be called only for a prism dispersion. The gsl root solver is used.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em wavelength}]-\/ the wavelength value \item[{\em wl\_\-calibration}]-\/ the dispersion solution\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+wav\_\-zero -\/ difference between actual and targeted wavelength 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+627 {
+628   int iter=0;
+629   int status;
+630 
+631   d_point x_interv;
+632 
+633   double tr_length=0.0;
+634 
+635 
+636   // define and initialize the solver
+637   const gsl_root_fsolver_type *T = gsl_root_fsolver_brent;
+638   gsl_root_fsolver            *s = gsl_root_fsolver_alloc (T);
+639 
+640   gsl_function F;
+641   trlength_search *tr_pars;
+642 
+643   // allocate and fill the parameters
+644   tr_pars = (trlength_search *) malloc(sizeof(trlength_search));
+645   tr_pars->wl_calibration = wl_calibration;
+646   tr_pars->wavelength     = wavelength;
+647 
+648   // fille the GSL-function
+649   F.function = &find_wavelength;
+650   F.params =   tr_pars;
+651 
+652   // initialize the intervall variable
+653   x_interv.x = gsl_vector_get(wl_calibration->pr_range, 0) + wl_calibration->
+      coeffs[0];
+654   x_interv.y = gsl_vector_get(wl_calibration->pr_range, 1) + wl_calibration->
+      coeffs[0];
+655 
+656   // set the boundaries for the solver
+657   gsl_root_fsolver_set (s, &F, x_interv.x, x_interv.y);
+658 
+659   // iterate to find the zeropoint
+660   do
+661     {
+662       // increment the iteration counter
+663       iter++;
+664 
+665       // iterate on the solver
+666       status = gsl_root_fsolver_iterate (s);
+667 
+668       // get a new guess from the solver
+669       tr_length = gsl_root_fsolver_root (s);
+670 
+671       // derive and set new boundaries
+672       x_interv.x = gsl_root_fsolver_x_lower (s);
+673       x_interv.y = gsl_root_fsolver_x_upper (s);
+674 
+675       // check the accuracy
+676       status = gsl_root_test_interval (x_interv.x, x_interv.y,
+677                                        0, 0.0001);
+678     }
+679   // check for the break condition
+680   while (status == GSL_CONTINUE && iter < MAX_ITER_TL);
+681 
+682   // free the memory
+683   free(tr_pars);
+684 
+685   // free the memory
+686   gsl_root_fsolver_free (s);
+687 
+688   // return the result
+689   return tr_length;
+690 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_add20ced757ce2623320cfa20db81e4ac}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-troughput\_\-table\_\-name@{get\_\-troughput\_\-table\_\-name}}
+\index{get\_\-troughput\_\-table\_\-name@{get\_\-troughput\_\-table\_\-name}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-troughput\_\-table\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}void get\_\-troughput\_\-table\_\-name (char $\ast$ {\em filename}, \/  int {\em beamID}, \/  char $\ast$ {\em table\_\-name})}}
+\label{spc__resp_8h_add20ced757ce2623320cfa20db81e4ac}
+Function: get\_\-troughput\_\-table\_\-name Parses a configuration file and get the name of the SENSITIVITY curve defined for a wanted beamID
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ a pointer to a string containing the name of the configuration file \item[{\em beamID}]-\/ the \hyperlink{structbeam}{beam} ID number (see \hyperlink{aXe__grism_8h_a7d90dabb6016bb0e09b6ab84087b70a7}{BEAM()}) \item[{\em table\_\-name}]-\/ a pointer pointing to a string to contain the name of the file.\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+976 {
+977   char beam[MAXCHAR];
+978   char name[MAXCHAR];
+979   int i=0;
+980 
+981   struct CfgStrings ThrConfig[] = {
+982     {NULL, NULL},
+983     {NULL,NULL}
+984   };
+985   ThrConfig[0].name = beam;
+986   sprintf (beam, "SENSITIVITY_%c", BEAM(beamID));
+987 
+988   CfgRead (filename, ThrConfig);
+989   if ((ThrConfig[0].name == beam) && (ThrConfig[0].data != NULL))
+990     {
+991       strcpy(name,ThrConfig[0].data);
+992     } else {
+993       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+994                    "get_throughput_table_name: %s was not found in "
+995                    "%s",beam,filename);
+996     }
+997 
+998   // release memory
+999   i=0;
+1000   while(ThrConfig[i].name!=NULL)
+1001     free(ThrConfig[i++].data);
+1002 
+1003   strcpy(table_name,name);
+1004 }
+\end{DoxyCode}
+\hypertarget{spc__resp_8h_a63e4d5535bbccf8346f35ed139018440}{
+\index{spc\_\-resp.h@{spc\_\-resp.h}!get\_\-weighted\_\-sensitivity@{get\_\-weighted\_\-sensitivity}}
+\index{get\_\-weighted\_\-sensitivity@{get\_\-weighted\_\-sensitivity}!spc_resp.h@{spc\_\-resp.h}}
+\subsubsection[{get\_\-weighted\_\-sensitivity}]{\setlength{\rightskip}{0pt plus 5cm}void get\_\-weighted\_\-sensitivity (const gsl\_\-vector $\ast$ {\em pixvalues}, \/  const gsl\_\-vector $\ast$ {\em errvalues}, \/  const gsl\_\-vector $\ast$ {\em weights}, \/  const gsl\_\-vector $\ast$ {\em pmask}, \/  double $\ast$ {\em resp\_\-vals})}}
+\label{spc__resp_8h_a63e4d5535bbccf8346f35ed139018440}
+Function: get\_\-weighted\_\-sensitivity Combines the weihg values, the sensitivity and error at the weight point to a single sensitivity value plus error. A mask array defines at which points values do exist.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em pixvalues}]-\/ the central wavelength \item[{\em errvalues}]-\/ the Gaussian sigma used in smoothing \item[{\em weights}]-\/ the weight vector \item[{\em pmask}]-\/ the response function \item[{\em resp\_\-vals}]-\/ vector for the response values\end{DoxyParams}
+Returns \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+881 {
+882   int index;
+883 
+884   // initialize the total
+885   // sum and weight
+886   double val_sum = 0.0;
+887   double err_sum = 0.0;
+888   double www=0.0;
+889 
+890   // go over all indices of an array
+891   for (index=0; index < pixvalues->size; index ++)
+892     {
+893       // check whether the index is masked
+894       if (gsl_vector_get(pmask, index) != 0.0)
+895         {
+896           // enhance the total sum
+897           val_sum += gsl_vector_get(pixvalues, index) * gsl_vector_get(weights, i
+      ndex);
+898           err_sum += gsl_vector_get(errvalues, index) * gsl_vector_get(errvalues,
+       index)
+899             * gsl_vector_get(weights, index) * gsl_vector_get(weights, index);
+900 
+901           // enhance the total weight
+902           www += gsl_vector_get(weights, index);
+903         }
+904     }
+905 
+906   // check whether there
+907   // were weights at all
+908   if (www)
+909     {
+910       // return the total sum,
+911       // divided by the total weight
+912       resp_vals[0] =  val_sum / www;
+913       resp_vals[1] =  sqrt(err_sum) / www;
+914     }
+915   else
+916     {
+917       // set zero sensitivity
+918       resp_vals[0] = 0.0;
+919       resp_vals[1] = 0.0;
+920     }
+921 }
+\end{DoxyCode}

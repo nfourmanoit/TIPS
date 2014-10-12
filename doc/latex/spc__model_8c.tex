@@ -1,0 +1,1969 @@
+\hypertarget{spc__model_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-model.c File Reference}
+\label{spc__model_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-model.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-model.c}}
+}
+{\ttfamily \#include $<$time.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-interp.h$>$}\par
+{\ttfamily \#include \char`\"{}inout\_\-aper.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-sect.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-back.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-PET.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-wl\_\-calib.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fringe\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-resp.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-pathlength.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}specmodel\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}model\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-fluxcube.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-model.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__model}{spc\_\-model}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{MAX}(x, y)~(((x)$>$(y))?(x):(y))
+\item 
+\#define \hyperlink{spc__model_8c_a74e75242132eaabbc1c512488a135926}{MIN}(x, y)~(((x)$<$(y))?(x):(y))
+\item 
+\#define \hyperlink{spc__model_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{SQR}(x)~((x)$\ast$(x))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{spc__model_8c_a38b6ce346cbc8cd237fdfd3694c9b11e}{compute\_\-gauss\_\-cont} (char grism\_\-file\mbox{[}$\,$\mbox{]}, char OAF\_\-file\mbox{[}$\,$\mbox{]}, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const char specmod\_\-file\mbox{[}$\,$\mbox{]}, const double model\_\-scale, const int inter\_\-type, const double lambda\_\-psf, \hyperlink{structobservation}{observation} $\ast$obs, const char PET\_\-file\mbox{[}$\,$\mbox{]}, char map\_\-file\mbox{[}$\,$\mbox{]}, const int store)
+\item 
+int \hyperlink{spc__model_8c_ac807e950441746662b1ae3eab9ef2b33}{compute\_\-gaussdirim\_\-cont} (char grism\_\-file\mbox{[}$\,$\mbox{]}, char OAF\_\-file\mbox{[}$\,$\mbox{]}, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const char specmod\_\-file\mbox{[}$\,$\mbox{]}, const char objmod\_\-file\mbox{[}$\,$\mbox{]}, const double model\_\-scale, const int inter\_\-type, const double lambda\_\-psf, \hyperlink{structobservation}{observation} $\ast$obs, const char PET\_\-file\mbox{[}$\,$\mbox{]}, char map\_\-file\mbox{[}$\,$\mbox{]}, const int store)
+\item 
+\hyperlink{structbeamspec}{beamspec} $\ast$$\ast$ \hyperlink{spc__model_8c_ae7dcf882713246ce40e28942522142a5}{make\_\-gauss\_\-spectra2} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, \hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist, const double lambda\_\-psf, const \hyperlink{structpx__point}{px\_\-point} npixels, char CONF\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structbeamspec}{beamspec} $\ast$$\ast$ \hyperlink{spc__model_8c_a537ee6c7685fe9d7749342e56437f02d}{make\_\-gauss\_\-spectra} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, \hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist, const double lambda\_\-psf, const \hyperlink{structpx__point}{px\_\-point} npixels, char CONF\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{spc__model_8c_a523b7a0a13a92f1b0a61ab5324c4facf}{compute\_\-fcube\_\-cont} (char grism\_\-file\mbox{[}$\,$\mbox{]}, char OAF\_\-file\mbox{[}$\,$\mbox{]}, char fcube\_\-file\mbox{[}$\,$\mbox{]}, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const double model\_\-scale, const int inter\_\-type, \hyperlink{structobservation}{observation} $\ast$obs, const char PET\_\-file\mbox{[}$\,$\mbox{]}, char map\_\-file\mbox{[}$\,$\mbox{]}, const int store)
+\item 
+\hyperlink{structbeamspec}{beamspec} $\ast$$\ast$ \hyperlink{spc__model_8c_a15bbdbd96e729c0edb66bd4e3c9f6b8c}{make\_\-fcube\_\-spectra} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, \hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist, const \hyperlink{structpx__point}{px\_\-point} npixels, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const \hyperlink{structflux__cube}{flux\_\-cube} $\ast$fcube, const int inter\_\-type)
+\item 
+\hyperlink{structbeamspec}{beamspec} $\ast$$\ast$ \hyperlink{spc__model_8c_aba4320035294553956a3f535cc484ead}{alloc\_\-beamlist\_\-from\_\-dirlist} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, \hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist, const \hyperlink{structpx__point}{px\_\-point} npixels, \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf)
+\item 
+\hyperlink{structbeamspec}{beamspec} $\ast$ \hyperlink{spc__model_8c_a8a1e63b6f29be161a726a1c08a26ebb9}{dimension\_\-beamspec} (\hyperlink{structdirobject}{dirobject} $\ast$actdir, \hyperlink{structobject}{object} $\ast$actobject, const \hyperlink{structpx__point}{px\_\-point} npixels, const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, int j)
+\item 
+int \hyperlink{spc__model_8c_a069e0ff507381b9e8d1351c4fcd7f788}{fill\_\-pixel\_\-in\_\-speed} (const \hyperlink{structdirobject}{dirobject} $\ast$actdir, const \hyperlink{structtracedata}{tracedata} $\ast$acttrace, const \hyperlink{structd__point}{d\_\-point} dpixel, const \hyperlink{structspectrum}{spectrum} $\ast$resp, \hyperlink{structbeamspec}{beamspec} $\ast$actspec, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration)
+\item 
+int \hyperlink{spc__model_8c_a4761f8467dc7a48825badf15b3905a47}{get\_\-index\_\-for\_\-tracepoint} (const \hyperlink{structtracedata}{tracedata} $\ast$acttrace, const double dx)
+\item 
+int \hyperlink{spc__model_8c_a39fc258229e615e5b82c1f81b8c09bde}{no\_\-diffuse\_\-spectrum} (int ix, int iy, double cps, \hyperlink{structbeamspec}{beamspec} $\ast$actspec)
+\item 
+int \hyperlink{spc__model_8c_a144898574df3c20e24cac35dc2e4df8f}{diffuse\_\-spectrum} (double ddx, double ddy, double cps, \hyperlink{structbeamspec}{beamspec} $\ast$actspec)
+\item 
+int \hyperlink{spc__model_8c_a8fe760d3449f5cedb4bbf7ecc5abab08}{diffuse\_\-spectrumII} (double ddx, double ddy, double cps, \hyperlink{structbeamspec}{beamspec} $\ast$actspec)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{spc__model_8c_aa210c0aa4d37a6f3914b73a39162301b}{make\_\-model\_\-image} (const \hyperlink{structpx__point}{px\_\-point} npixels, \hyperlink{structobservation}{observation} $\ast$obs, \hyperlink{structbeamspec}{beamspec} $\ast$$\ast$speclist)
+\item 
+int \hyperlink{spc__model_8c_a3d953255a2ae0faf92105f0909a05053}{fill\_\-contam\_\-info} (const char PET\_\-file\mbox{[}$\,$\mbox{]}, \hyperlink{structbeamspec}{beamspec} $\ast$$\ast$speclist, const gsl\_\-matrix $\ast$all\_\-models, char model\_\-name\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{spc__model_8c_a3e988115996eb29019bb46673cdacb12}{compute\_\-geometr\_\-cont} (char OAF\_\-file\mbox{[}$\,$\mbox{]}, \hyperlink{structobservation}{observation} $\ast$obs, const char PET\_\-file\mbox{[}$\,$\mbox{]}, char map\_\-file\mbox{[}$\,$\mbox{]}, const int store)
+\item 
+int \hyperlink{spc__model_8c_aa0440d5bc85fc01a75dca2c32a3239fe}{compute\_\-gauss\_\-dirim} (char grism\_\-file\mbox{[}$\,$\mbox{]}, char OAF\_\-file\mbox{[}$\,$\mbox{]}, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const double model\_\-scale, const int inter\_\-type, const double lambda\_\-psf, \hyperlink{structobservation}{observation} $\ast$obs, const char PET\_\-file\mbox{[}$\,$\mbox{]}, char map\_\-file\mbox{[}$\,$\mbox{]}, const int store)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{spc__model_8c_a64acb42dee15b4bd66149391bbdb982e}{make\_\-gauss\_\-dirim} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, \hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist, const double lambda\_\-psf, const \hyperlink{structpx__point}{px\_\-point} npixels, char CONF\_\-file\mbox{[}$\,$\mbox{]}, \hyperlink{structobservation}{observation} $\ast$obs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{
+\index{spc\_\-model.c@{spc\_\-model.c}!MAX@{MAX}}
+\index{MAX@{MAX}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(x, \/  y)~(((x)$>$(y))?(x):(y))}}
+\label{spc__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}
+\hypertarget{spc__model_8c_a74e75242132eaabbc1c512488a135926}{
+\index{spc\_\-model.c@{spc\_\-model.c}!MIN@{MIN}}
+\index{MIN@{MIN}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(x, \/  y)~(((x)$<$(y))?(x):(y))}}
+\label{spc__model_8c_a74e75242132eaabbc1c512488a135926}
+\hypertarget{spc__model_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{
+\index{spc\_\-model.c@{spc\_\-model.c}!SQR@{SQR}}
+\index{SQR@{SQR}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{SQR}]{\setlength{\rightskip}{0pt plus 5cm}\#define SQR(x)~((x)$\ast$(x))}}
+\label{spc__model_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__model_8c_aba4320035294553956a3f535cc484ead}{
+\index{spc\_\-model.c@{spc\_\-model.c}!alloc\_\-beamlist\_\-from\_\-dirlist@{alloc\_\-beamlist\_\-from\_\-dirlist}}
+\index{alloc\_\-beamlist\_\-from\_\-dirlist@{alloc\_\-beamlist\_\-from\_\-dirlist}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{alloc\_\-beamlist\_\-from\_\-dirlist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beamspec}$\ast$$\ast$ alloc\_\-beamlist\_\-from\_\-dirlist ({\bf object} $\ast$$\ast$ {\em oblist}, \/  {\bf dirobject} $\ast$$\ast$ {\em dirlist}, \/  const {\bf px\_\-point} {\em npixels}, \/  {\bf aperture\_\-conf} $\ast$ {\em conf})}}
+\label{spc__model_8c_aba4320035294553956a3f535cc484ead}
+Function: alloc\_\-beamlist\_\-from\_\-dirlist The function determines which beams of a direct \hyperlink{structobject}{object} are included in the contamination model. Then the size for each of the spectral beams is estimated, and the space is allocated.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list as input to select beams \item[{\em dirlist}]-\/ the direct \hyperlink{structobject}{object} list to dimension the models \item[{\em npixels}]-\/ the dimensions of the model for the whole image \item[{\em conf}]-\/ configuration structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+speclist -\/ the list of modelled beams 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+887 {
+888   beamspec  **speclist;
+889   //dirobject  *actdir;
+890   //object     *actobj;
+891 
+892   int nspecs;
+893   int i, j, jj=0;
+894   int objindex;
+895 
+896   // get the number of beams included in the contamination
+897   // (mag < mag_mark(BEAM)
+898   nspecs = get_beamspec_size(oblist);
+899 
+900   // allocate space for the vector of spectral beams
+901   speclist = (beamspec  **) malloc((nspecs+1) * sizeof(beamspec  *));
+902   if (speclist == NULL)
+903     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+904                  "make_model_spectra:" " Could not allocate"
+905                  " memory for pointers to %i beamspec objects", nspecs+1);
+906 
+907   fprintf(stdout, "aXe_PETCONT: %i beams are included in the contamination.\n",ns
+      pecs);
+908 
+909   // go over all objects
+910   i=0;
+911   while (dirlist[i] != NULL)
+912     {
+913 
+914       // find the object structure to the directo object
+915       objindex = find_object_in_object_list(oblist, dirlist[i]->ID);
+916       if (objindex < 0)
+917         {
+918           i++;
+919           continue;
+920         }
+921 
+922       // go over each beam in an object
+923       for (j=0; j < oblist[objindex]->nbeams; j++)
+924         {
+925 
+926           // check whether the beam is included in the contamination
+927           if (oblist[objindex]->beams[j].ignore != 1)
+928             {
+929               // check whether the beam is inside the image,
+930               // if yes, allocate space for the beam model
+931               //              fprintf(stdout, "Trying %i, beam %c\n", dirlist[i]-
+      >ID, BEAM(j));
+932               speclist[jj] = dimension_beamspec(dirlist[i], oblist[objindex],  np
+      ixels, conf, j);
+933 
+934               // increment the counter if space was allocated
+935               if (speclist[jj] != NULL)
+936                 jj++;
+937 
+938             }
+939         }
+940       i++;
+941     }
+942 
+943   fprintf(stdout, "aXe_PETCONT: %i beams are modelled.\n",jj);
+944 
+945   // terminate the beamspec list with NULL's
+946   for (i=jj; i < nspecs+1; i++)
+947     speclist[i] = NULL;
+948 
+949   // return the list of spectral beams
+950   return speclist;
+951 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a523b7a0a13a92f1b0a61ab5324c4facf}{
+\index{spc\_\-model.c@{spc\_\-model.c}!compute\_\-fcube\_\-cont@{compute\_\-fcube\_\-cont}}
+\index{compute\_\-fcube\_\-cont@{compute\_\-fcube\_\-cont}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{compute\_\-fcube\_\-cont}]{\setlength{\rightskip}{0pt plus 5cm}int compute\_\-fcube\_\-cont (char {\em grism\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em OAF\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em fcube\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const double {\em model\_\-scale}, \/  const int {\em inter\_\-type}, \/  {\bf observation} $\ast$ {\em obs}, \/  const char {\em PET\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em map\_\-file}\mbox{[}$\,$\mbox{]}, \/  const int {\em store})}}
+\label{spc__model_8c_a523b7a0a13a92f1b0a61ab5324c4facf}
+
+
+
+\begin{DoxyCode}
+665 {
+666   object    **oblist;
+667   dirobject **dirlist;
+668   beamspec  **speclist;
+669   flux_cube  *fcube;
+670 
+671   //dirobject  *actdir;
+672   gsl_matrix *all_models;
+673 
+674   char model_name[60];
+675 
+676   px_point npixels;
+677 
+678   int i_type;
+679 
+680   fprintf (stdout, "aXe_PETCONT: Loading fluxcube image %s ...", fcube_file);
+681   fcube = load_fluxcube(fcube_file);
+682   fprintf (stdout, " Done\n");
+683 
+684   //  load the object list
+685   fprintf (stdout, "aXe_PETCONT: Loading object aperture list...");
+686   oblist = file_to_object_list_seq (OAF_file, obs);
+687   fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+688 
+689   // get the dimension of the grism images
+690   npixels = get_npixel(obs);
+691 
+692   // generate the list of emitters from the
+693   // fluxcube image
+694   dirlist = fluxcube_to_dirlist(fcube, oblist);
+695 
+696   // make the offsets??
+697   fill_xy_offsets(dirlist, CONF_file);
+698 
+699   // check whether there is enough information
+700   // for the desired interpolation type
+701   i_type = check_interp_type(inter_type, fcube->n_fimage, 0);
+702 
+703   // model the beams
+704   speclist = make_fcube_spectra(oblist, dirlist, npixels, CONF_file, fcube, i_typ
+      e);
+705 
+706   // compute the contamination image from the
+707   // modelled beams
+708   all_models = make_model_image(npixels, obs, speclist);
+709 
+710   // check whether the contamination
+711   // image should be stored
+712   if (store)
+713     // store the contamination image
+714     gsl_to_FITSimage (all_models, map_file, 1, NULL);
+715 
+716   // store the name of the contamination model
+717   sprintf (model_name, "FLUXCUBE");
+718 
+719   // check whether a PET exists
+720   if (strlen(PET_file) > 0)
+721     // compute and transfer the contamination
+722     // information fot the PET pixels
+723     fill_contam_info(PET_file, speclist, all_models, model_name);
+724 
+725   // free the memory allocated
+726   // in the various structures
+727   gsl_matrix_free(all_models);
+728   free_speclist(speclist);
+729   free_dirlist (dirlist);
+730   free_fluxcube(fcube);
+731   if (oblist != NULL)
+732     free_oblist (oblist);
+733 
+734   // return '1' as a dummy
+735   return 1;
+736 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a38b6ce346cbc8cd237fdfd3694c9b11e}{
+\index{spc\_\-model.c@{spc\_\-model.c}!compute\_\-gauss\_\-cont@{compute\_\-gauss\_\-cont}}
+\index{compute\_\-gauss\_\-cont@{compute\_\-gauss\_\-cont}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{compute\_\-gauss\_\-cont}]{\setlength{\rightskip}{0pt plus 5cm}int compute\_\-gauss\_\-cont (char {\em grism\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em OAF\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const char {\em specmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  const double {\em model\_\-scale}, \/  const int {\em inter\_\-type}, \/  const double {\em lambda\_\-psf}, \/  {\bf observation} $\ast$ {\em obs}, \/  const char {\em PET\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em map\_\-file}\mbox{[}$\,$\mbox{]}, \/  const int {\em store})}}
+\label{spc__model_8c_a38b6ce346cbc8cd237fdfd3694c9b11e}
+Function: compute\_\-gauss\_\-cont The subroutine computes ans stores the quantitative contamination using the Gaussian emission model. The emitting \hyperlink{structobject}{object} with Gaussian shape and SED as derived from the AB filter magnitudes are composed The individual nbeams are modelled, then the complete contamination image is composed from the \hyperlink{structbeam}{beam} models. Finally, the contaminating flux is computed by subtracting the \hyperlink{structbeam}{beam} emission from the contamination image for all PET pixels.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em grism\_\-file}]-\/ the full name of the grism file \item[{\em OAF\_\-file}]-\/ the name of the aperture file \item[{\em CONF\_\-file}]-\/ the full name of configuration file \item[{\em specmod\_\-file-\/}]fits table with the model spectra \item[{\em model\_\-scale}]-\/ the scale for extension of the direct \hyperlink{structobject}{object} area \item[{\em inter\_\-type}]-\/ the interpolation method for the flux values \item[{\em lambda\_\-psf}]-\/ wavelength the Gaussian parameters were determined at \item[{\em obs}]-\/ the \hyperlink{structobservation}{observation} \item[{\em PET\_\-file}]-\/ the name of the PET which is modified \item[{\em map\_\-file}]-\/ the name of the contamination map \item[{\em store}]-\/ flag whether the contamination image is stored or not\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+status -\/ returns success or failure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+74 {
+75 
+76   object    **oblist;
+77   dirobject **dirlist;
+78   beamspec  **speclist;
+79   spectral_models *spec_mod;
+80 
+81   //dirobject  *actdir;
+82   gsl_matrix *all_models;
+83   char model_name[60];
+84 
+85   px_point npixels;
+86 
+87   //time_t timer;
+88 
+89   // load the object list
+90   fprintf (stdout, "aXe_PETCONT: Loading object aperture list...");
+91   oblist = file_to_object_list_seq (OAF_file, obs);
+92   fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+93 
+94   // check whether highres models
+95   // are given
+96   if (strlen(specmod_file) > 0)
+97     // load the spectral models
+98     spec_mod = load_spectral_models(specmod_file);
+99   else
+100     // or set the struct to NULL
+101     spec_mod = NULL;
+102 
+103   // get the image dimensions
+104   npixels = get_npixel(obs);
+105 
+106   // create the list of direct objects to be simulated
+107   dirlist = oblist_to_dirlist(grism_file, CONF_file, npixels, oblist, spec_mod, m
+      odel_scale, inter_type);
+108 
+109   //  timer=time(NULL);
+110   //  printf("The current time is %s.\n",asctime(localtime(&timer)));
+111   speclist = make_gauss_spectra(oblist, dirlist, lambda_psf, npixels, CONF_file);
+      
+112   //  timer=time(NULL);
+113   //  printf("The current time is %s.\n",asctime(localtime(&timer)));
+114 
+115   // compose the contamination image from the modelled beams
+116   all_models = make_model_image(npixels, obs, speclist);
+117 
+118   // check whether the contamination image
+119   // should be stored
+120   if (store)
+121     // store the contamination image
+122     gsl_to_FITSimage (all_models, map_file, 1, NULL);
+123 
+124   // store the name of the
+125   // contamination model
+126   sprintf (model_name, "GAUSS");
+127 
+128   // put the contamination info into the PET
+129   fill_contam_info(PET_file, speclist, all_models, model_name);
+130 
+131   // release allocated memory
+132   // in the various structures
+133   gsl_matrix_free(all_models);
+134   if (spec_mod != NULL)
+135     free_spectral_models(spec_mod);
+136   free_dirlist(dirlist);
+137   free_speclist(speclist);
+138   if (oblist !=NULL)
+139     free_oblist (oblist);
+140 
+141   // return always '1'
+142   return 1;
+143 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_aa0440d5bc85fc01a75dca2c32a3239fe}{
+\index{spc\_\-model.c@{spc\_\-model.c}!compute\_\-gauss\_\-dirim@{compute\_\-gauss\_\-dirim}}
+\index{compute\_\-gauss\_\-dirim@{compute\_\-gauss\_\-dirim}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{compute\_\-gauss\_\-dirim}]{\setlength{\rightskip}{0pt plus 5cm}int compute\_\-gauss\_\-dirim (char {\em grism\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em OAF\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const double {\em model\_\-scale}, \/  const int {\em inter\_\-type}, \/  const double {\em lambda\_\-psf}, \/  {\bf observation} $\ast$ {\em obs}, \/  const char {\em PET\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em map\_\-file}\mbox{[}$\,$\mbox{]}, \/  const int {\em store})}}
+\label{spc__model_8c_aa0440d5bc85fc01a75dca2c32a3239fe}
+Function: compute\_\-gauss\_\-dirim
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em grism\_\-file}]-\/ the full name of the grism file \item[{\em OAF\_\-file}]-\/ the name of the aperture file \item[{\em obs}]-\/ the \hyperlink{structobservation}{observation} \item[{\em PET\_\-file}]-\/ the name of the PET which is modified \item[{\em CONF\_\-file}]-\/ the full name of configuration file \item[{\em map\_\-file}]-\/ the name of the contamination map \item[{\em model\_\-scale}]-\/ the scale for extension of the direct \hyperlink{structobject}{object} area \item[{\em store}]-\/ flagg whether the contamination image is stored or not\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status -\/ returns success or failure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1840                                                                             {
+1841 
+1842   object    **oblist;
+1843   dirobject **dirlist;
+1844 
+1845   //dirobject  *actdir;
+1846   gsl_matrix *all_models;
+1847 
+1848   //char model_name[60];
+1849 
+1850   px_point npixels;
+1851 
+1852   //  load the object list
+1853   fprintf (stdout, "aXe_PETCONT: Loading object aperture list...");
+1854   oblist = file_to_object_list_seq (OAF_file, obs);
+1855   fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+1856 
+1857   npixels = get_npixel(obs);
+1858 
+1859   dirlist = oblist_to_dirlist(grism_file, CONF_file, npixels, oblist, NULL, model
+      _scale, inter_type);
+1860 
+1861   all_models = make_gauss_dirim(oblist, dirlist, lambda_psf, npixels, CONF_file, 
+      obs);
+1862 
+1863 
+1864   if (store)
+1865     gsl_to_FITSimage (all_models, map_file, 1, NULL);
+1866 
+1867 
+1868   gsl_matrix_free(all_models);
+1869   free_dirlist (dirlist);
+1870   if (oblist != NULL)
+1871     free_oblist (oblist);
+1872 
+1873   return 1;
+1874 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_ac807e950441746662b1ae3eab9ef2b33}{
+\index{spc\_\-model.c@{spc\_\-model.c}!compute\_\-gaussdirim\_\-cont@{compute\_\-gaussdirim\_\-cont}}
+\index{compute\_\-gaussdirim\_\-cont@{compute\_\-gaussdirim\_\-cont}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{compute\_\-gaussdirim\_\-cont}]{\setlength{\rightskip}{0pt plus 5cm}int compute\_\-gaussdirim\_\-cont (char {\em grism\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em OAF\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const char {\em specmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  const char {\em objmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  const double {\em model\_\-scale}, \/  const int {\em inter\_\-type}, \/  const double {\em lambda\_\-psf}, \/  {\bf observation} $\ast$ {\em obs}, \/  const char {\em PET\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em map\_\-file}\mbox{[}$\,$\mbox{]}, \/  const int {\em store})}}
+\label{spc__model_8c_ac807e950441746662b1ae3eab9ef2b33}
+Function: compute\_\-gaussdirim\_\-cont The subroutine computes ans stores the quantitative contamination using the Gaussian emission model. The \hyperlink{structobject}{object} shape can be defined in a fits file with \hyperlink{structobject}{object} models, and the SED may be defined in a fits table with high resolution spectra. If no detailed \hyperlink{structobject}{object} shape or SED is given for an individual \hyperlink{structobject}{object}, Gaussian shape and SED as derived from the AB filter magnitudes are composed. The individual nbeams are modelled, then the complete contamination image is composed from the \hyperlink{structbeam}{beam} models. Finally, the contaminating flux is computed by subtracting the \hyperlink{structbeam}{beam} emission from the contamination image for all PET pixels.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em grism\_\-file}]-\/ the full name of the grism file \item[{\em OAF\_\-file}]-\/ the name of the aperture file \item[{\em CONF\_\-file}]-\/ the full name of configuration file \item[{\em specmod\_\-file-\/}]fits table with the model spectra \item[{\em objmod\_\-file}]-\/ fits image with \hyperlink{structobject}{object} models \item[{\em model\_\-scale}]-\/ the scale for extension of the direct \hyperlink{structobject}{object} area \item[{\em inter\_\-type}]-\/ the interpolation method for the flux values \item[{\em lambda\_\-psf}]-\/ wavelength the Gaussian parameters were determined at \item[{\em obs}]-\/ the \hyperlink{structobservation}{observation} \item[{\em PET\_\-file}]-\/ the name of the PET which is modified \item[{\em map\_\-file}]-\/ the name of the contamination map \item[{\em store}]-\/ flag whether the contamination image is stored or not\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+status -\/ returns success or failure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+181 {
+182 
+183   object        **oblist;
+184   dirobject     **dirlist;
+185   beamspec      **speclist;
+186   spectral_models *spec_mod;
+187   object_models   *obj_mod;
+188 
+189   //dirobject  *actdir;
+190   gsl_matrix *all_models;
+191   char model_name[60];
+192 
+193   px_point npixels;
+194 
+195   //time_t timer;
+196 
+197   // load the object list
+198   fprintf (stdout, "aXe_PETCONT: Loading object aperture list...");
+199   oblist = file_to_object_list_seq (OAF_file, obs);
+200   fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+201 
+202   // check whether highres models
+203   // are given
+204   if (strlen(specmod_file) > 0)
+205     // load the spectral models
+206     spec_mod = load_spectral_models(specmod_file);
+207   else
+208     // or set the struct to NULL
+209     spec_mod = NULL;
+210 
+211   // check whether direct emission models
+212   // are given
+213   if (strlen(objmod_file) > 0)
+214     obj_mod = load_object_models(objmod_file);
+215   else
+216     obj_mod = NULL;
+217 
+218   // get the image dimensions
+219   npixels = get_npixel(obs);
+220 
+221   // create the list of direct objects to be simulated
+222   dirlist = oblist_to_dirlist2(grism_file, CONF_file, npixels, oblist,
+223                                spec_mod, obj_mod, model_scale, inter_type);
+224 
+225   //timer=time(NULL);
+226   //printf("The current time is %s.\n",asctime(localtime(&timer)));
+227   speclist = make_gauss_spectra2(oblist, dirlist, lambda_psf, npixels, CONF_file)
+      ;
+228   //timer=time(NULL);
+229   //printf("The current time is %s.\n",asctime(localtime(&timer)));
+230 
+231   // compose the contamination image from the modelled beams
+232   all_models = make_model_image(npixels, obs, speclist);
+233 
+234   // check whether the contamination image
+235   // should be stored
+236   if (store)
+237     // store the contamination image
+238     gsl_to_FITSimage (all_models, map_file, 1, NULL);
+239 
+240   // store the name of the
+241   // contamination model
+242   if (obj_mod != NULL)
+243     sprintf (model_name, "DIRIM");
+244   else
+245     sprintf (model_name, "GAUSS");
+246 
+247   // check whether a PET exists
+248   if (strlen(PET_file) > 0)
+249     // put the contamination info into the PET
+250     fill_contam_info(PET_file, speclist, all_models, model_name);
+251 
+252   // release allocated memory
+253   // in the various structures
+254   gsl_matrix_free(all_models);
+255   if (spec_mod != NULL)
+256     free_spectral_models(spec_mod);
+257   free_dirlist(dirlist);
+258   if (obj_mod != NULL)
+259     free_object_models(obj_mod);
+260   free_speclist(speclist);
+261   if (oblist !=NULL)
+262     free_oblist (oblist);
+263 
+264   // return always '1'
+265   return 1;
+266 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a3e988115996eb29019bb46673cdacb12}{
+\index{spc\_\-model.c@{spc\_\-model.c}!compute\_\-geometr\_\-cont@{compute\_\-geometr\_\-cont}}
+\index{compute\_\-geometr\_\-cont@{compute\_\-geometr\_\-cont}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{compute\_\-geometr\_\-cont}]{\setlength{\rightskip}{0pt plus 5cm}int compute\_\-geometr\_\-cont (char {\em OAF\_\-file}\mbox{[}$\,$\mbox{]}, \/  {\bf observation} $\ast$ {\em obs}, \/  const char {\em PET\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em map\_\-file}\mbox{[}$\,$\mbox{]}, \/  const int {\em store})}}
+\label{spc__model_8c_a3e988115996eb29019bb46673cdacb12}
+Function: compute\_\-geometr\_\-cont The subroutine computes the original, geometrical contamination model where every beams contaminates the area he occupies. Source brightness and source shape are not taken into account. For every \hyperlink{structbeam}{beam} the sum of all contaminations by othe beams is written into the PET.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em OAF\_\-file}]-\/ the name of the aperture file \item[{\em obs}]-\/ the \hyperlink{structobservation}{observation} \item[{\em PET\_\-file}]-\/ the name of the PET which is modified \item[{\em map\_\-file}]-\/ the name of the contamination map \item[{\em store}]-\/ flagg whether the contamination image is stored or not\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+status -\/ returns success or failure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1702                                      {
+1703 
+1704   object **oblist;
+1705   ap_pixel *PET;
+1706   int f_status=0;
+1707   fitsfile *OPET_ptr;
+1708   int aperID, beamID, objindex;
+1709   gsl_matrix *aper_mask;
+1710   int status=0;
+1711   char model_name[60];
+1712 
+1713   //  load the object list
+1714   fprintf (stdout, "aXe_PETCONT: Loading object aperture list...");
+1715   oblist = file_to_object_list_seq (OAF_file, obs);
+1716   fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+1717 
+1718   // Open the OPET file for reading/writing
+1719   ffopen (&OPET_ptr, PET_file, READWRITE, &f_status);
+1720   if (f_status)
+1721     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1722                  "aXe_PETCONT: Could not open file: %s\n",
+1723                  PET_file);
+1724 
+1725   // store the contamination model name in the PET
+1726   sprintf (model_name, "GEOM");
+1727   update_contam_model(OPET_ptr, model_name);
+1728 
+1729   // do something in case that there are objects
+1730   if (oblist!=NULL)
+1731     {
+1732 
+1733       // make the aperture mask
+1734       aper_mask = aperture_mask(obs,oblist);
+1735 
+1736       // store the aperture mask into a fits file if requested
+1737       if (store)
+1738         gsl_to_FITSimage (aper_mask, map_file, 1, NULL);
+1739 
+1740       // loop over all beams
+1741       while (1)
+1742         {
+1743 
+1744           // get the PET at the actual position of the PET file
+1745           PET = get_ALL_from_next_in_PET(OPET_ptr, &aperID, &beamID);
+1746 
+1747           // leave the while loop if there is the end
+1748           if ((aperID==-1) && (beamID==-1))
+1749             break;
+1750 
+1751           // search for the particular beam in 'oblist', continue
+1752           // if PET is empty
+1753           fprintf (stdout, "aXe_PETCONT: BEAM %d%c", aperID, BEAM(beamID));
+1754           objindex =  find_object_in_object_list(oblist,aperID);
+1755           if (PET==NULL)
+1756             {
+1757               fprintf (stdout, ".Done\n");
+1758               continue;
+1759             }
+1760 
+1761           // transfer the information from the aperture mask
+1762           // into the beam
+1763           {
+1764             int j = 0;
+1765             double c;
+1766 
+1767             // go over all PET entries
+1768             while  (PET[j].p_x != -1)
+1769               {
+1770                 // subtract self contamination, then store the contamination
+1771                 c = gsl_matrix_get(aper_mask,PET[j].p_x,PET[j].p_y)-1.0;
+1772                 if (c < 0.0)
+1773                   c = 0.0;
+1774                 PET[j].contam = c;
+1775                 j++;
+1776               }
+1777           }
+1778 
+1779           // write the updated PET into the PET file
+1780           {
+1781             char ID[60];
+1782             sprintf (ID, "%d%c", oblist[objindex]->ID, BEAM (oblist[objindex]->be
+      ams[beamID].ID));
+1783             add_ALL_to_PET (PET, ID, OPET_ptr,1);
+1784           }
+1785 
+1786           // free PET memory
+1787           if (PET!=NULL)
+1788             {
+1789               free(PET);
+1790               PET=NULL;
+1791             }
+1792           fprintf (stdout, ".Done\n");
+1793         }
+1794     }
+1795 
+1796   // free obl;ist memory
+1797   if (oblist!=NULL)
+1798     free_oblist (oblist);
+1799 
+1800   // free observation memory
+1801   free_observation(obs);
+1802 
+1803   // close the PET file
+1804   fits_close_file (OPET_ptr, &f_status);
+1805   if (f_status)
+1806     {
+1807       ffrprt (stderr, f_status);
+1808       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1809                    "aXe_PETCONT: " "Error closing PET: %s \n",
+1810                    PET_file);
+1811     }
+1812 
+1813   // set the status to 'success' and return it
+1814   status=1;
+1815   return status;
+1816 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a144898574df3c20e24cac35dc2e4df8f}{
+\index{spc\_\-model.c@{spc\_\-model.c}!diffuse\_\-spectrum@{diffuse\_\-spectrum}}
+\index{diffuse\_\-spectrum@{diffuse\_\-spectrum}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{diffuse\_\-spectrum}]{\setlength{\rightskip}{0pt plus 5cm}int diffuse\_\-spectrum (double {\em ddx}, \/  double {\em ddy}, \/  double {\em cps}, \/  {\bf beamspec} $\ast$ {\em actspec})}}
+\label{spc__model_8c_a144898574df3c20e24cac35dc2e4df8f}
+Function diffuse\_\-spectrum Distribute the flux simulated for the area of one pixel square in the emission model over a pixel square in the \hyperlink{structbeam}{beam} model. This method uses sub-\/steps starting from the exact center of the light This smoothes the modelled \hyperlink{structbeam}{beam} by avoiding integer rounding effects.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ddx}]-\/ the exact x-\/position in the \hyperlink{structbeam}{beam} \item[{\em ddy}]-\/ the exact y-\/position in the \hyperlink{structbeam}{beam} \item[{\em cps}]-\/ the cps-\/value for one entire pixel \item[{\em actspec}]-\/ the \hyperlink{structbeam}{beam} to model\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+1.0 -\/ return a dummy value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1293 {
+1294   double step;
+1295   double offset;
+1296   double ncps;
+1297   double oldvalue;
+1298 
+1299   double sum=0.0;
+1300 
+1301   double dx_act;
+1302   double dy_act;
+1303 
+1304   int irange;
+1305   int kk, ll;
+1306 
+1307   int ix, iy;
+1308 
+1309   // convert the number of steps to a local integer
+1310   irange = (int)NDIFF;
+1311 
+1312   // compute the step size
+1313   step = 1.0/(2.0*(double)NDIFF);
+1314 
+1315   // compute the initial offset
+1316   offset = step/2.0;
+1317 
+1318   // compute the incremental flux
+1319   ncps = cps * step * step;
+1320 
+1321   for (kk=-irange; kk < irange; kk++)
+1322     {
+1323       for (ll=-irange; ll < irange; ll++)
+1324         {
+1325           // determine the actual grid position
+1326           dx_act = ddx + (double)kk * step + offset;
+1327           dy_act = ddy + (double)ll * step + offset;
+1328 
+1329           // get the current pixel grid value
+1330           ix = floor(dx_act + 0.5);
+1331           iy = floor(dy_act + 0.5);
+1332 
+1333           // double check whether we are inside the image
+1334           if (ix < 0 || iy < 0 || ix > (actspec->model->size1-1) || iy > (actspec
+      ->model->size2-1))
+1335             continue;
+1336 
+1337           // add the contribution of the actual dx value to the model spectrum
+1338           oldvalue = gsl_matrix_get(actspec->model, ix, iy);
+1339           gsl_matrix_set(actspec->model, ix, iy, oldvalue + ncps);
+1340           sum += ncps;
+1341         }
+1342     }
+1343 
+1344   // return a dummy
+1345   return 1.0;
+1346 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a8fe760d3449f5cedb4bbf7ecc5abab08}{
+\index{spc\_\-model.c@{spc\_\-model.c}!diffuse\_\-spectrumII@{diffuse\_\-spectrumII}}
+\index{diffuse\_\-spectrumII@{diffuse\_\-spectrumII}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{diffuse\_\-spectrumII}]{\setlength{\rightskip}{0pt plus 5cm}int diffuse\_\-spectrumII (double {\em ddx}, \/  double {\em ddy}, \/  double {\em cps}, \/  {\bf beamspec} $\ast$ {\em actspec})}}
+\label{spc__model_8c_a8fe760d3449f5cedb4bbf7ecc5abab08}
+Function diffuse\_\-spectrumII Distribute the flux simulated for the area of one pixel square in the emission model over a pixel square in the \hyperlink{structbeam}{beam} model. Starting from the exact center of the light, the exact fraction falling on the four affected pixels is comuted and then added to the spectral \hyperlink{structbeam}{beam}. This smoothes the modelled \hyperlink{structbeam}{beam} by avoiding integer rounding effects.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ddx}]-\/ the exact x-\/position in the \hyperlink{structbeam}{beam} \item[{\em ddy}]-\/ the exact y-\/position in the \hyperlink{structbeam}{beam} \item[{\em cps}]-\/ the cps-\/value for one entire pixel \item[{\em actspec}]-\/ the \hyperlink{structbeam}{beam} to model\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+1.0 -\/ return a dummy value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1370 {
+1371   int ix;
+1372   int iy;
+1373   int ix_rem;
+1374   int iy_rem;
+1375 
+1376   double p=0.0;
+1377   double q=0.0;
+1378   double p_rem=0.0;
+1379   double q_rem=0.0;
+1380 
+1381   double d_incr = 0.0;
+1382   double oldvalue;
+1383 
+1384   double sum = 0.0;
+1385 
+1386   // compute the indices
+1387   // of the pixels involved
+1388   ix     = (int)floor(ddx);
+1389   iy     = (int)floor(ddy);
+1390   ix_rem = ix + 1;
+1391   iy_rem = iy + 1;
+1392 
+1393 
+1394   // compute the basic
+1395   // quantities for
+1396   // the increments;
+1397   // it seems to be the wrong way,
+1398   // however we are talking about
+1399   // pixels, not coordinates...
+1400   p_rem = ddx - floor(ddx);
+1401   q_rem = ddy - floor(ddy);
+1402   p     = 1.0 - p_rem;
+1403   q     = 1.0 - q_rem;
+1404 
+1405 
+1406   // increment the first quarter
+1407   // double check whether we are inside the image
+1408   if ( ! (ix < 0 || iy < 0 || ix > (actspec->model->size1-1) || iy > (actspec->
+      model->size2-1)))
+1409     {
+1410       // compute the area
+1411       d_incr = p * q;
+1412 
+1413       // add the fractional contribution to the model spectrum
+1414       oldvalue = gsl_matrix_get(actspec->model, ix, iy);
+1415       gsl_matrix_set(actspec->model, ix, iy, oldvalue + d_incr*cps);
+1416       sum += d_incr;
+1417     }
+1418 
+1419   // increment the second quarter
+1420   // double check whether we are inside the image
+1421   if ( ! (ix < 0 || iy_rem < 0 || ix > (actspec->model->size1-1) || iy_rem > (act
+      spec->model->size2-1)))
+1422     {
+1423       // compute the area
+1424       d_incr = p * q_rem;
+1425 
+1426       // add the fractional contribution to the model spectrum
+1427       oldvalue = gsl_matrix_get(actspec->model, ix, iy_rem);
+1428       gsl_matrix_set(actspec->model, ix, iy_rem, oldvalue + d_incr*cps);
+1429       sum += d_incr;
+1430     }
+1431 
+1432   // increment the third quarter
+1433   // double check whether we are inside the image
+1434   if ( ! (ix_rem < 0 || iy < 0 || ix_rem > (actspec->model->size1-1) || iy > (act
+      spec->model->size2-1)))
+1435     {
+1436       // compute the area
+1437       d_incr = p_rem * q;
+1438 
+1439       // add the fractional contribution to the model spectrum
+1440       oldvalue = gsl_matrix_get(actspec->model, ix_rem, iy);
+1441       gsl_matrix_set(actspec->model, ix_rem, iy, oldvalue + d_incr*cps);
+1442       sum += d_incr;
+1443     }
+1444 
+1445   // increment the fourth quarter
+1446   // double check whether we are inside the image
+1447   if ( ! (ix_rem < 0 || iy_rem < 0 || ix_rem > (actspec->model->size1-1) || iy_re
+      m > (actspec->model->size2-1)))
+1448     {
+1449       // compute the area
+1450       d_incr = p_rem * q_rem;
+1451 
+1452       // add the fractional contribution to the model spectrum
+1453       oldvalue = gsl_matrix_get(actspec->model, ix_rem, iy_rem);
+1454       gsl_matrix_set(actspec->model, ix_rem, iy_rem, oldvalue + d_incr*cps);
+1455       sum += d_incr;
+1456     }
+1457 
+1458 
+1459   // return a dummy
+1460   return 1.0;
+1461 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a8a1e63b6f29be161a726a1c08a26ebb9}{
+\index{spc\_\-model.c@{spc\_\-model.c}!dimension\_\-beamspec@{dimension\_\-beamspec}}
+\index{dimension\_\-beamspec@{dimension\_\-beamspec}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{dimension\_\-beamspec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beamspec}$\ast$ dimension\_\-beamspec ({\bf dirobject} $\ast$ {\em actdir}, \/  {\bf object} $\ast$ {\em actobject}, \/  const {\bf px\_\-point} {\em npixels}, \/  const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  int {\em j})}}
+\label{spc__model_8c_a8a1e63b6f29be161a726a1c08a26ebb9}
+Function: dimension\_\-beamspec The function checks the boundaries of a candidate model \hyperlink{structspectrum}{spectrum} of a \hyperlink{structbeam}{beam}. In case that the model \hyperlink{structspectrum}{spectrum} is completely outside the frame, a NULL model \hyperlink{structspectrum}{spectrum} is returned. Otherwise space is allocated for the model \hyperlink{structspectrum}{spectrum} and the matrix therein, and the data are filled in. Only the matrix is not defined and filled.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em dirlist}]-\/ the list with all dirobjects \item[{\em actobject}]-\/ one \hyperlink{structbeam}{beam} of this \hyperlink{structobject}{object} is examined \item[{\em npixels}]-\/ the size of the CCD \item[{\em conf}]-\/ the configutration structure \item[{\em j}]-\/ the \hyperlink{structbeam}{beam} number to be examined\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+actspec -\/ the \hyperlink{structbeamspec}{beamspec} \hyperlink{structobject}{object} created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+981 {
+982   beamspec   *actspec;
+983   trace_func *tracefun;
+984   gsl_matrix *stamp;
+985   double     dx0, dy0, dx1, dy1;
+986   double     xmin, xmax, ymin, ymax;
+987 
+988 
+989   // allocate space for the beamspoec
+990   actspec = (beamspec *)malloc(sizeof(beamspec));
+991   if (actspec == NULL)
+992     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+993                  "make_model_spectra:" " Could not allocate"
+994                  " memory for a beamspec object");
+995 
+996   // determine the range of x-values covered by that beam
+997   // (relative to a refpoint)
+998   tracefun =  actobject->beams[j].spec_trace;
+999   dx0 = (double)conf->beam[actobject->beams[j].ID].offset.dx0;
+1000   dx1 = (double)conf->beam[actobject->beams[j].ID].offset.dx1;
+1001 
+1002   // determine the range of y-values covered by that beam
+1003   // (relative to a refpoint)
+1004   dy0 = tracefun->func (dx0, tracefun->data);
+1005   dy1 = tracefun->func (dx1, tracefun->data);
+1006 
+1007   // apply the positional corrections;
+1008   // in case of the fluxcube model
+1009   // they are needed to transform
+1010   // the coordinates from the direct
+1011   // image to the grism image system
+1012   dx0 = dx0 + actdir->xy_off[j].x;
+1013   dx1 = dx1 + actdir->xy_off[j].x;
+1014   dy0 = dy0 + actdir->xy_off[j].y;
+1015   dy1 = dy1 + actdir->xy_off[j].y;
+1016 
+1017   // using the corners of the direct image object as refpoints,
+1018   // translate the x- and y-ranges to the real area subtended
+1019   // bye that model beam on the CCD
+1020   xmin = floor(MIN((double)actdir->ix_min + dx0, (double)actdir->ix_min + dx1)+0.
+      5);
+1021   xmax = floor(MAX((double)actdir->ix_max + dx0, (double)actdir->ix_max + dx1)+0.
+      5);
+1022   ymin = floor(MIN((double)actdir->iy_min + dy0, (double)actdir->iy_min + dy1)+0.
+      5);
+1023   ymax = floor(MAX((double)actdir->iy_max + dy0, (double)actdir->iy_max + dy1)+0.
+      5);
+1024 
+1025   // check whether the area is completely outside the CCD
+1026   if ((xmax < 0.0) || (ymax < 0.0))
+1027     {
+1028       //      fprintf(stdout, "Beam's too low: %i %i\n",actobject->ID, actobject-
+      >beams[j].ID);
+1029       // if yes, release the memory and return NULL
+1030       free(actspec);
+1031       actspec = NULL;
+1032       return actspec;
+1033     }
+1034 
+1035   // check whether the area is completely outside the CCD
+1036   if ((xmin > (double)(npixels.x-1)) || (ymin > (double)(npixels.y-1)))
+1037     {
+1038       //      fprintf(stdout, "Beam's too high: %i %i\n",actobject->ID, actobject
+      ->beams[j].ID);
+1039       // if yes, release the memory and return NULL
+1040       free(actspec);
+1041       actspec = NULL;
+1042       return actspec;
+1043     }
+1044 
+1045   // check whether part of the are is outside;
+1046   // correct if necessary
+1047   xmin = MAX(xmin-1, 0.0);
+1048   ymin = MAX(ymin-1, 0.0);
+1049 
+1050   // check whether part of the are is outside;
+1051   // correct if necessary
+1052   xmax = MIN(xmax+1, (double)(npixels.x-1.0));
+1053   ymax = MIN(ymax+1, (double)(npixels.y-1.0));
+1054 
+1055   // transfer the ID's to the model beam
+1056   actspec->objectID = actobject->ID;
+1057   actspec->beamID   = actobject->beams[j].ID;
+1058 
+1059   // transfer the coo's of the starting point;
+1060   // leave one pixel for the 'drizzling'
+1061   actspec->model_ref.x = (int)xmin;
+1062   actspec->model_ref.y = (int)ymin;
+1063 
+1064   // allocate space for the matrix;
+1065   // give two pixels more on each side for 'drizzling';
+1066   // set the matrix to 0.0 and give it to the model beam
+1067   stamp = gsl_matrix_alloc((int)(xmax-xmin)+1, (int)(ymax-ymin)+1);
+1068   if (stamp == NULL)
+1069     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1070                  "dimension_beamspec:" " Could not allocate"
+1071                  " memory for %i x %i GSL matrix", (int)(xmax-xmin)+1, (int)(ymax
+      -ymin)+1);
+1072   gsl_matrix_set_all(stamp, 0.0);
+1073   actspec->model = stamp;
+1074 
+1075   // return the beam created
+1076   return actspec;
+1077 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a3d953255a2ae0faf92105f0909a05053}{
+\index{spc\_\-model.c@{spc\_\-model.c}!fill\_\-contam\_\-info@{fill\_\-contam\_\-info}}
+\index{fill\_\-contam\_\-info@{fill\_\-contam\_\-info}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{fill\_\-contam\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}int fill\_\-contam\_\-info (const char {\em PET\_\-file}\mbox{[}$\,$\mbox{]}, \/  {\bf beamspec} $\ast$$\ast$ {\em speclist}, \/  const gsl\_\-matrix $\ast$ {\em all\_\-models}, \/  char {\em model\_\-name}\mbox{[}$\,$\mbox{]})}}
+\label{spc__model_8c_a3d953255a2ae0faf92105f0909a05053}
+Function: fill\_\-contam\_\-info The function fills the contamination information into the PET. To do that it transfers the information from the aperture mask matrix into each PET. Self contamination is taken into account by subtracting the value from the modelled \hyperlink{structspectrum}{spectrum} before storing the contamination.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em PET\_\-file}]-\/ the PET file to add contamination \item[{\em speclist}]-\/ the list of modelled spectra \item[{\em all\_\-models}]-\/ the contamination image\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+1 -\/ returns always 1 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1556 {
+1557   fitsfile *OPET_ptr;
+1558   ap_pixel *PET;
+1559   beamspec *actspec;
+1560   //FITScards *cards;
+1561 
+1562   char ID[60];
+1563 
+1564   double c;
+1565   double m;
+1566 
+1567   int aperID, beamID;
+1568   int f_status=0;
+1569   int status;
+1570   int ix, iy;
+1571   int j;
+1572 
+1573   // Open the OPET file for reading/writing
+1574   ffopen (&OPET_ptr, PET_file, READWRITE, &f_status);
+1575   if (f_status){
+1576     ffrprt(stdout, f_status);
+1577     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1578                  "aXe_PETCONT: Could not open file: %s\n",
+1579                  PET_file);
+1580   }
+1581 
+1582   // store the contamination model name in the PET
+1583   update_contam_model(OPET_ptr, model_name);
+1584 
+1585   // report the action
+1586   fprintf (stdout, "\naXe_PETCONT: Writing the contamination into the PET.\n");
+1587 
+1588   while (1)
+1589     {
+1590 
+1591       // get the PET at the actual position of the PET file
+1592       PET = get_ALL_from_next_in_PET(OPET_ptr, &aperID, &beamID);
+1593 
+1594       // leave the while loop if there is the end
+1595       if ((aperID==-1) && (beamID==-1))
+1596         break;
+1597 
+1598       // report progress
+1599       fprintf(stdout, "aXe_PETCONT: writing contamination for object %i beam %c .
+      .. ", aperID, BEAM(beamID));
+1600 
+1601       // skip the PET if empty
+1602       if (PET==NULL)
+1603         {
+1604           fprintf (stdout, ".Done\n");
+1605           continue;
+1606         }
+1607 
+1608       // get the model spectrum for the actual PET
+1609       actspec = get_beamspec_from_list(speclist, aperID, beamID);
+1610 
+1611       // go over all PET entries
+1612       j=0;
+1613       while  (PET[j].p_x != -1)
+1614         {
+1615 
+1616           // get the value from the contamination matrix
+1617           c = gsl_matrix_get(all_models,PET[j].p_x,PET[j].p_y);
+1618           m = 0.0;
+1619 
+1620           // correct for self-contamination if the beams was modelled
+1621           if (actspec != NULL){
+1622 
+1623             // get the coordinates in the model array
+1624             ix = PET[j].p_x - actspec->model_ref.x;
+1625             iy = PET[j].p_y - actspec->model_ref.y;
+1626 
+1627             // check whether the PET entry is outside of the model array.
+1628             // correct for self contamination if the PET-etry is inside
+1629 
+1630             if (ix > -1 && iy >-1 && ix < actspec->model->size1 && iy < actspec->
+      model->size2)
+1631               {
+1632                 m = gsl_matrix_get(actspec->model, ix, iy);
+1633                 c = c - m;
+1634               }
+1635           }
+1636 
+1637           // well, it should never be below zero
+1638           if (c < 0.0)
+1639             c = 0.0;
+1640 
+1641           // write the contamination into the PET-entry
+1642           PET[j].contam = c;
+1643           PET[j].model = m;
+1644 
+1645           // enhance the counter
+1646           j++;
+1647         }
+1648 
+1649       // write the updated PET into the PET file
+1650       sprintf (ID, "%d%c", aperID, BEAM (beamID));
+1651       add_ALL_to_PET (PET, ID, OPET_ptr,1);
+1652 
+1653       // free PET memory
+1654       if (PET!=NULL)
+1655         {
+1656           free(PET);
+1657           PET=NULL;
+1658         }
+1659       fprintf (stdout, ".Done\n");
+1660     }
+1661 
+1662   // close the PET file
+1663   fits_close_file (OPET_ptr, &f_status);
+1664   if (f_status)
+1665     {
+1666       ffrprt (stderr, f_status);
+1667       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1668                    "aXe_PETCONT: " "Error closing PET: %s \n",
+1669                    PET_file);
+1670     }
+1671 
+1672   // set the status to 'success' and return it
+1673   status=1;
+1674   return status;
+1675 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a069e0ff507381b9e8d1351c4fcd7f788}{
+\index{spc\_\-model.c@{spc\_\-model.c}!fill\_\-pixel\_\-in\_\-speed@{fill\_\-pixel\_\-in\_\-speed}}
+\index{fill\_\-pixel\_\-in\_\-speed@{fill\_\-pixel\_\-in\_\-speed}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{fill\_\-pixel\_\-in\_\-speed}]{\setlength{\rightskip}{0pt plus 5cm}int fill\_\-pixel\_\-in\_\-speed (const {\bf dirobject} $\ast$ {\em actdir}, \/  const {\bf tracedata} $\ast$ {\em acttrace}, \/  const {\bf d\_\-point} {\em dpixel}, \/  const {\bf spectrum} $\ast$ {\em resp}, \/  {\bf beamspec} $\ast$ {\em actspec}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration})}}
+\label{spc__model_8c_a069e0ff507381b9e8d1351c4fcd7f788}
+Function: fill\_\-pixel\_\-in\_\-speed The function determines and coadds the contribution of a single pixel in the direct image area to the model \hyperlink{structspectrum}{spectrum}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actdir}]-\/ the direct \hyperlink{structobject}{object} of the model \hyperlink{structspectrum}{spectrum} \item[{\em acttrace}]-\/ the \hyperlink{structtracedata}{tracedata} of the model \hyperlink{structspectrum}{spectrum} \item[{\em dpixel}]-\/ the coordinates of the modelled pixel \item[{\em eval}]-\/ the emission value of the source at the modelled pixel \item[{\em resp}]-\/ the sensitivity data \item[{\em actspec}]-\/ the structure for the model \hyperlink{structspectrum}{spectrum}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+1 -\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1100 {
+1101 
+1102   double dx;
+1103   double sens;
+1104   double fval;
+1105   double tmp1;
+1106   //double tmp2, tmp3;
+1107 
+1108   double ddx, ddy;
+1109 
+1110   int ix, iy;
+1111 
+1112   int xstart, xend;
+1113   int xact;
+1114   int ipos;
+1115   int nguess;
+1116 
+1117   // define the dx-range for which a pixel is modelled
+1118   xstart = actspec->model_ref.x;
+1119   xend   = actspec->model_ref.x + actspec->model->size1;
+1120 
+1121   // nguess is the approximate possition
+1122   // to find a wavelength in the sensitivity table.
+1123   // should speed upt things
+1124   nguess=0;
+1125 
+1126   // go over the dx-range
+1127   for (xact = xstart; xact <  xend; xact++)
+1128     {
+1129 
+1130       // compute the actual dx-value
+1131       dx = xact-dpixel.x;
+1132 
+1133       // get the index to find the data for the actual
+1134       ipos = get_index_for_tracepoint(acttrace, dx);
+1135 
+1136       // in case that the dx-value is not in the tracedata,
+1137       // something is wrong. exit
+1138       if (ipos <0)
+1139         {
+1140           //if (wl_calibration->pr_range == NULL)
+1141           //  aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+1142           //              "aXe_PETCONT: " "tracepoint is outside the prepared ran
+      ge!\n");
+1143           //else
+1144           continue;
+1145         }
+1146 
+1147       // compute the y-position in the matrix of the beamspec
+1148       iy = (int)(gsl_vector_get(acttrace->dy,ipos) + actdir->xy_off[actspec->
+      beamID].y + 0.5) + (int)dpixel.y - actspec->model_ref.y;
+1149 
+1150       // the same quantity as a double
+1151       ddy = gsl_vector_get(acttrace->dy,ipos) + actdir->xy_off[actspec->beamID].
+      y + dpixel.y - actspec->model_ref.y;
+1152 
+1153       // if the y-position is outside, go to the next dx value
+1154       if (iy < 0 || iy > actspec->model->size2-1)
+1155         continue;
+1156 
+1157       // in case that the actual wavelength is outside the range
+1158       // of the sensitivity data, continue with the next dx-value
+1159       if (gsl_vector_get(acttrace->lambda, ipos) < resp->lambdamin || gsl_vector_
+      get(acttrace->lambda, ipos) > resp->lambdamax)
+1160         continue;
+1161 
+1162       // compute the x-position in the matrix of the beamspec
+1163       ix = (int)(gsl_vector_get(acttrace->dx,ipos) + actdir->xy_off[actspec->
+      beamID].x) + (int)dpixel.x - actspec->model_ref.x;
+1164 
+1165       // the same quantity as double
+1166       ddx = gsl_vector_get(acttrace->dx,ipos) + actdir->xy_off[actspec->beamID].
+      x + dpixel.x - actspec->model_ref.x;
+1167 
+1168       // get the total flux value of the source at the wavelength of the actual d
+      x-value
+1169       fval = gsl_vector_get(acttrace->gvalue, ipos) * gsl_vector_get(acttrace->
+      flux, ipos);
+1170 
+1171 
+1172       // get the sensitivity at the wavelength of the actual dx-value
+1173       sens = get_response_value_plus(resp, gsl_vector_get(acttrace->lambda, ipos)
+      , &nguess);
+1174 
+1175       // compute the contribution of the actual dx-value to the model spectrum
+1176       tmp1 = fval * sens * gsl_vector_get(acttrace->dlambda,ipos);
+1177 
+1178       // double check whether we are inside the image
+1179       if (ix < 0 || iy < 0 || ix > (actspec->model->size1-1) || iy > (actspec->
+      model->size2-1))
+1180         {
+1181           fprintf(stdout, "xval: %i, yval: %i, size1: %i, size2: %i\n",ix, iy, (i
+      nt)actspec->model->size1, (int)actspec->model->size2);
+1182         }
+1183       else
+1184         {
+1185           // add the contribution of the actual dx value to
+1186           // the model spectrum, using NO diffusion
+1187           //no_diffuse_spectrum(ix, iy, tmp1, actspec);
+1188 
+1189           // add the contribution of the actual dx value to
+1190           // the model spectrum, using GRID diffusion
+1191           // diffuse_spectrum(ddx, ddy, tmp1, actspec);
+1192 
+1193           // add the contribution of the actual dx value to
+1194           // the model spectrum, using PROPORTIONAL diffusion
+1195           diffuse_spectrumII(ddx, ddy, tmp1, actspec);
+1196         }
+1197     }
+1198 
+1199   // return a dummy
+1200   return 1;
+1201 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a4761f8467dc7a48825badf15b3905a47}{
+\index{spc\_\-model.c@{spc\_\-model.c}!get\_\-index\_\-for\_\-tracepoint@{get\_\-index\_\-for\_\-tracepoint}}
+\index{get\_\-index\_\-for\_\-tracepoint@{get\_\-index\_\-for\_\-tracepoint}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{get\_\-index\_\-for\_\-tracepoint}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-index\_\-for\_\-tracepoint (const {\bf tracedata} $\ast$ {\em acttrace}, \/  const double {\em dx})}}
+\label{spc__model_8c_a4761f8467dc7a48825badf15b3905a47}
+Function: get\_\-index\_\-for\_\-tracepoint For a given dx-\/value, the function derives the index under which data for this dx-\/value is stored in a \hyperlink{structtracedata}{tracedata} structure. The index is simply returned. If the dx-\/value is not inside the \hyperlink{structtracedata}{tracedata}, '-\/1' is returned. In contrast to the first attempt (now 'get\_\-index\_\-for\_\-tracepoint2') this routine uses the minimum dx value stored in the \hyperlink{structtracedata}{tracedata} structure. It becomes much much faster by that!
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em acttrace}]-\/ the \hyperlink{structtracedata}{tracedata} to search an index \item[{\em dx}]-\/ the dx-\/value to identify in the \hyperlink{structtracedata}{tracedata}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ipos -\/ the index where the dx-\/value is stored 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1223 {
+1224   int ipos;
+1225 
+1226   // compute the index using the minimum dx value
+1227   // stored in the structure
+1228   ipos = (int)(dx - acttrace->dx_start);
+1229 
+1230   // check whether the index is within the acceptable range
+1231   // make it -1 if not
+1232   if (ipos < 0 || ipos > (acttrace->npoints -1))
+1233     ipos=-1;
+1234 
+1235   // return the index
+1236   return ipos;
+1237 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a15bbdbd96e729c0edb66bd4e3c9f6b8c}{
+\index{spc\_\-model.c@{spc\_\-model.c}!make\_\-fcube\_\-spectra@{make\_\-fcube\_\-spectra}}
+\index{make\_\-fcube\_\-spectra@{make\_\-fcube\_\-spectra}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{make\_\-fcube\_\-spectra}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beamspec}$\ast$$\ast$ make\_\-fcube\_\-spectra ({\bf object} $\ast$$\ast$ {\em oblist}, \/  {\bf dirobject} $\ast$$\ast$ {\em dirlist}, \/  const {\bf px\_\-point} {\em npixels}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const {\bf flux\_\-cube} $\ast$ {\em fcube}, \/  const int {\em inter\_\-type})}}
+\label{spc__model_8c_a15bbdbd96e729c0edb66bd4e3c9f6b8c}
+Function: make\_\-fcube\_\-spectra The function creates a spectral model for the beams that are considered in the contamination. It uses the fluxcube emission model to calculate the emission in the different beams.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list as input to select beams \item[{\em dirlist}]-\/ the direct \hyperlink{structobject}{object} list to dimension the models \item[{\em npixels}]-\/ the dimensions of the model for the whole image \item[{\em CONF\_\-file}]-\/ the name of the configuration file \item[{\em fcube}]-\/ the fluxcube to get the flux data from\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+speclist -\/ the list of modelled beams 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+760 {
+761   beamspec       **speclist;
+762   dirobject       *actdir;
+763   aperture_conf   *conf;
+764   calib_function  *wl_calibration;
+765   spectrum        *resp;
+766   beam             actbeam;
+767   tracedata       *acttrace;
+768 
+769   int i;
+770   int nobjects;
+771 
+772   int nx, ny;
+773   //d_point dpixel;
+774   d_point dflt_point;
+775   px_point fcube_point;
+776 
+777   d_point tmp2;
+778 
+779 
+780   // determine the number of objects in the object list
+781   nobjects = object_list_size(oblist);
+782 
+783   // load the configuration file
+784   conf = get_aperture_descriptor (CONF_file);
+785 
+786   speclist = alloc_beamlist_from_dirlist(oblist, dirlist, npixels, conf);
+787 
+788   // go over each beam model
+789   i = 0;
+790   while (speclist[i] != NULL)
+791     {
+792 
+793       // get the direct object for the actual model spectrum
+794       actdir = get_dirobject_from_list(dirlist, speclist[i]->objectID);
+795 
+796       // get the beam for the actual model spectrum
+797       actbeam = get_beam_for_beamspec(oblist,nobjects,speclist[i]);
+798 
+799       // get the wavelength calibration for the actual model spectrum
+800       wl_calibration = get_calib_function(speclist[i], actdir, CONF_file, conf);
+801 
+802       // get the sensitivity data for the actual model spectrum
+803       resp = get_throughput_spec(speclist[i], CONF_file);
+804 
+805       // fill the tracedata structure for the model spectrum
+806       acttrace = compute_tracedata(actbeam,actdir, wl_calibration,speclist[i]);
+807       if (acttrace->npoints < 1)
+808         {
+809           // release the space for the various structures
+810           free_calib(wl_calibration);
+811           free_spectrum(resp);
+812           free_tracedata(acttrace);
+813      fprintf(stdout, "aXe_PETCONT: skipping object %i beam %c ...", speclist[i]->
+      objectID, BEAM(speclist[i]->beamID));
+814 
+815           continue;
+816         }
+817 
+818       fprintf(stdout, "aXe_PETCONT: modelling object %i beam %c ...", speclist[i]
+      ->objectID, BEAM(speclist[i]->beamID));
+819 
+820       // go over each pixel in the direct object area
+821       for (nx=actdir->ix_min; nx<=actdir->ix_max; nx++)
+822         {
+823           for (ny=actdir->iy_min; ny<=actdir->iy_max; ny++)
+824             {
+825 
+826               // transform the flt-coordinates
+827               // to fcube coordinates
+828               dflt_point.x = (double)nx;
+829               dflt_point.y = (double)ny;
+830               tmp2 = flt_to_fcube_trans(fcube, dflt_point);
+831               fcube_point.x = (int)tmp2.x;
+832               fcube_point.y = (int)tmp2.y;
+833 
+834               // check whether the coordinate point actually
+835               // does belong to the spectral beam
+836               if ( gsl_matrix_int_get(fcube->segmentation, fcube_point.x,fcube_po
+      int.y) == actdir->ID)
+837                 {
+838 
+839                   // transfer the flux information from the current pixel
+840                   // to the SED of the direct object
+841                   fill_fluxvalues(fcube, fcube_point, actdir, inter_type);
+842 
+843                   // fill theflux-vector of the tracedata
+844                   fill_fluxfrom_SED(actdir, acttrace);
+845 
+846                   // compute the contribution of the current pixel to the
+847                   // current beam object
+848                   fill_pixel_in_speed(actdir, acttrace, dflt_point, resp, speclis
+      t[i], wl_calibration);
+849                 }
+850             }
+851         }
+852 
+853       // release the space fpr the various structures
+854       fprintf(stdout, " Done\n");
+855       free_calib(wl_calibration);
+856       free_spectrum(resp);
+857       free_tracedata(acttrace);
+858 
+859       i++;
+860     }
+861   // release memory
+862   free_aperture_conf(conf);
+863 
+864   // return the spectrum list
+865   return speclist;
+866 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a64acb42dee15b4bd66149391bbdb982e}{
+\index{spc\_\-model.c@{spc\_\-model.c}!make\_\-gauss\_\-dirim@{make\_\-gauss\_\-dirim}}
+\index{make\_\-gauss\_\-dirim@{make\_\-gauss\_\-dirim}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{make\_\-gauss\_\-dirim}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ make\_\-gauss\_\-dirim ({\bf object} $\ast$$\ast$ {\em oblist}, \/  {\bf dirobject} $\ast$$\ast$ {\em dirlist}, \/  const double {\em lambda\_\-psf}, \/  const {\bf px\_\-point} {\em npixels}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  {\bf observation} $\ast$ {\em obs})}}
+\label{spc__model_8c_a64acb42dee15b4bd66149391bbdb982e}
+Function: make\_\-gauss\_\-dirim The function creates a spectral model for the beams that are considered in the contamination. The modelled beams are returned as a list.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list as input to select beams \item[{\em dirlist}]-\/ the direct \hyperlink{structobject}{object} list to dimension the models \item[{\em npixels}]-\/ the dimensions of the model for the whole image \item[{\em CONF\_\-file}]-\/ the name of the configuration file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+speclist -\/ the list of modelled beams 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1894 {
+1895   gsl_matrix *all_models;
+1896   dirobject       *actdir;
+1897   beam             actbeam;
+1898 
+1899   //int nspecs;
+1900   //int i=0;
+1901   //int j=0;
+1902   //int jj=0;
+1903   int ii=0;
+1904   int nobjects;
+1905 
+1906   //int kk, ll;
+1907   double sval=0.0;
+1908   double flux=0.0;
+1909   double value=0.0;
+1910 
+1911   int nx, ny;
+1912   d_point dpixel;
+1913 
+1914   // determine the number of objects in the object list
+1915   nobjects = object_list_size(oblist);
+1916 
+1917   // allocate space for the result,
+1918   // set the matrix to 0.0
+1919   //  all_models = gsl_matrix_alloc(npixels.x, npixels.y);
+1920   all_models = obs->grism;
+1921   gsl_matrix_set_all(all_models,0.0);
+1922 
+1923   // go over each beam model
+1924   ii = 0;
+1925   while (oblist[ii] != NULL)
+1926     {
+1927 
+1928       // get the direct object for the actual model spectrum
+1929       actdir = get_dirobject_from_list(dirlist, oblist[ii]->ID);
+1930 
+1931       // get the beam for the actual model spectrum
+1932       actbeam = oblist[ii]->beams[0];
+1933 
+1934       fprintf(stdout, "aXe_PETCONT: modelling object %i ...", oblist[ii]->ID);
+1935 
+1936       // go over each pixel in the direct object area
+1937       for (nx=actdir->ix_min; nx<=actdir->ix_max; nx++)
+1938         {
+1939           for (ny=actdir->iy_min; ny<=actdir->iy_max; ny++)
+1940             {
+1941 
+1942               // fill the dpixel structure
+1943               dpixel.x = (double)nx;
+1944               dpixel.y = (double)ny;
+1945 
+1946               sval = get_sub_emodel_value(dpixel, actbeam, actdir->drzscale);
+1947               flux = get_flux_from_SED(actdir->SED, 890.0);
+1948 
+1949               if (nx > -1 && ny > -1 && nx < npixels.x && ny < npixels.y)
+1950                 {
+1951                   value = gsl_matrix_get(all_models, nx, ny) + sval*flux;
+1952                   gsl_matrix_set(all_models, nx, ny, value);
+1953                 }
+1954             }
+1955         }
+1956 
+1957       // release the space for the various structures
+1958       fprintf(stdout, " Done\n");
+1959 
+1960       ii++;
+1961     }
+1962 
+1963   return all_models;
+1964 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a537ee6c7685fe9d7749342e56437f02d}{
+\index{spc\_\-model.c@{spc\_\-model.c}!make\_\-gauss\_\-spectra@{make\_\-gauss\_\-spectra}}
+\index{make\_\-gauss\_\-spectra@{make\_\-gauss\_\-spectra}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{make\_\-gauss\_\-spectra}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beamspec}$\ast$$\ast$ make\_\-gauss\_\-spectra ({\bf object} $\ast$$\ast$ {\em oblist}, \/  {\bf dirobject} $\ast$$\ast$ {\em dirlist}, \/  const double {\em lambda\_\-psf}, \/  const {\bf px\_\-point} {\em npixels}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{spc__model_8c_a537ee6c7685fe9d7749342e56437f02d}
+Function: make\_\-gauss\_\-spectra The function creates a spectral model for the beams that are considered in the contamination. The modelled beams are returned as a list.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list as input to select beams \item[{\em dirlist}]-\/ the direct \hyperlink{structobject}{object} list to dimension the models \item[{\em lambda\_\-psf}]-\/ the wavelength the \hyperlink{structobject}{object} psf was determined at \item[{\em npixels}]-\/ the dimensions of the model for the whole image \item[{\em CONF\_\-file}]-\/ the name of the configuration file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+speclist -\/ the list of modelled beams 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+457 {
+458   beamspec       **speclist;
+459   dirobject       *actdir;
+460   aperture_conf   *conf;
+461   calib_function  *wl_calibration;
+462   spectrum        *resp;
+463   beam             actbeam;
+464   tracedata       *acttrace;
+465 
+466   //double eval=0.0;
+467   double psf_offset=0;
+468 
+469   int nspecs;
+470   int i=0;
+471   int j=0;
+472   int jj=0,ii=0;
+473   int nobjects;
+474 
+475   //int kk, ll;
+476   double sval;
+477 
+478   int nx, ny;
+479   d_point dpixel;
+480 
+481   // determine the number of objects in the object list
+482   nobjects = object_list_size(oblist);
+483 
+484   // load the configuration file
+485   conf = get_aperture_descriptor (CONF_file);
+486 
+487   // get the number of beams included in the contamination
+488   // (mag < mag_mark(BEAM)
+489   nspecs = get_beamspec_size(oblist);
+490   speclist = (beamspec  **) malloc((nspecs+1) * sizeof(beamspec  *));
+491   if (speclist == NULL)
+492     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+493                  "make_model_spectra:" " Could not allocate"
+494                  " memory for pointers to %i beamspec objects", nspecs+1);
+495 
+496   fprintf(stdout, "aXe_PETCONT: %i beams are included in the contamination.\n",ns
+      pecs);
+497 
+498   // go over all objects
+499   for (i = 0; i < nobjects; i++)
+500     {
+501 
+502       // go over each beam in an object
+503       for (j=0; j < oblist[i]->nbeams; j++)
+504         {
+505 
+506           // check whether the beam is included in the contamination
+507           if (oblist[i]->beams[j].ignore != 1)
+508             {
+509 
+510               // get the direct object for the beam
+511               actdir = get_dirobject_from_list(dirlist, oblist[i]->ID);
+512 
+513               // check whether the beam is inside the image,
+514               // if yes, allocate space for the beam model
+515               speclist[jj] = dimension_beamspec(actdir, oblist[i],  npixels, conf
+      , j);
+516 
+517               // increment the counter if space was allocated
+518               if (speclist[jj] != NULL)
+519                 jj++;
+520 
+521             }
+522         }
+523     }
+524 
+525   fprintf(stdout, "aXe_PETCONT: %i beams are modelled.\n",jj);
+526 
+527   // terminate the beamspec list with NULL's
+528   for (ii=jj; ii < nspecs+1; ii++)
+529     speclist[ii] = NULL;
+530 
+531   // go over each beam model
+532   ii = 0;
+533   while (speclist[ii] != NULL)
+534     {
+535 
+536       //      fprintf(stdout, "modelling 1: %i\n", ii);
+537 
+538       // get the direct object for the actual model spectrum
+539       actdir = get_dirobject_from_list(dirlist, speclist[ii]->objectID);
+540 
+541       // get the beam for the actual model spectrum
+542       actbeam = get_beam_for_beamspec(oblist,nobjects,speclist[ii]);
+543 
+544       //      fprintf(stdout, "modelling 2: %i\n", ii);
+545       psf_offset = get_psf_offset(conf, actbeam);
+546 
+547       //      fprintf(stdout, "modelling 3: %i\n", ii);
+548 
+549       // get the wavelength calibration for the actual model spectrum
+550       wl_calibration = get_calib_function(speclist[ii], actdir, CONF_file, conf);
+      
+551 
+552       // get the sensitivity data for the actual model spectrum
+553       resp = get_throughput_spec(speclist[ii], CONF_file);
+554 
+555       // fill the tracedata structure for the model spectrum
+556       acttrace = compute_tracedata(actbeam,actdir, wl_calibration,speclist[ii]);
+557       //      fprintf(stdout, "modelling 4: %i\n", ii);
+558       if (acttrace->npoints < 1)
+559         {
+560           // release the space for the various structures
+561           //      fprintf(stdout, "modelling 50: %i\n", ii);
+562           free_calib(wl_calibration);
+563           free_spectrum(resp);
+564           free_tracedata(acttrace);
+565       fprintf(stderr, "aXe_PETCONT: skipping object %i beam %c ...", speclist[ii]
+      ->objectID, BEAM(speclist[ii]->beamID));
+566 
+567           ii++;
+568           continue;
+569         }
+570 
+571       //      fprintf(stdout, "modelling 51: %i\n", ii);
+572       // fill the flux information int the tracedata
+573       fill_fluxfrom_SED(actdir, acttrace);
+574       //      fprintf(stderr, "modelling 6: %i\n", ii);
+575 
+576       fprintf(stdout, "aXe_PETCONT: modelling object %i beam %c ...", speclist[ii
+      ]->objectID, BEAM(speclist[ii]->beamID));
+577 
+578       // go over each pixel in the direct object area
+579       for (nx=actdir->ix_min; nx<=actdir->ix_max; nx++)
+580         {
+581           for (ny=actdir->iy_min; ny<=actdir->iy_max; ny++)
+582             {
+583 
+584               //fprintf(stderr, "point %i %i %i <-> %i %i <-> %i \n", nx, ny, act
+      dir->ix_min, actdir->ix_max, actdir->iy_min, actdir->iy_max);
+585               // fill the dpixel structure
+586               dpixel.x = (double)nx;
+587               dpixel.y = (double)ny;
+588 
+589 
+590               // check whether a wavelength-dependent
+591               // emission profile is given
+592               if ((conf->psfcoeffs && conf->psfrange) || psf_offset)
+593                 {
+594                   // fill in the wavelength dependend
+595                   // emission values
+596                   fill_gaussvalues(dpixel, actbeam, actdir, lambda_psf, conf, psf
+      _offset, acttrace);
+597                 }
+598               else
+599                 {
+600                   // do a subsampling over the pixel
+601                   // to get a more appropriate value for the
+602                   // emission val
+603                   sval = get_sub_emodel_value(dpixel, actbeam, actdir->drzscale);
+      
+604                   gsl_vector_set_all (acttrace->gvalue, sval);
+605                 }
+606 
+607               //
+608               fill_pixel_in_speed(actdir, acttrace, dpixel, resp, speclist[ii], w
+      l_calibration);
+609             }
+610         }
+611 
+612       // release the space for the various structures
+613       fprintf(stdout, " Done\n");
+614       free_calib(wl_calibration);
+615       free_spectrum(resp);
+616       free_tracedata(acttrace);
+617 
+618       // enhance the counter
+619       ii++;
+620     }
+621 
+622   // fre the memory in the conf structure
+623   free_aperture_conf(conf);
+624 
+625   // return the list of modelled beams
+626   return speclist;
+627 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_ae7dcf882713246ce40e28942522142a5}{
+\index{spc\_\-model.c@{spc\_\-model.c}!make\_\-gauss\_\-spectra2@{make\_\-gauss\_\-spectra2}}
+\index{make\_\-gauss\_\-spectra2@{make\_\-gauss\_\-spectra2}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{make\_\-gauss\_\-spectra2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beamspec}$\ast$$\ast$ make\_\-gauss\_\-spectra2 ({\bf object} $\ast$$\ast$ {\em oblist}, \/  {\bf dirobject} $\ast$$\ast$ {\em dirlist}, \/  const double {\em lambda\_\-psf}, \/  const {\bf px\_\-point} {\em npixels}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{spc__model_8c_ae7dcf882713246ce40e28942522142a5}
+Function: make\_\-gauss\_\-spectra2 The function creates a spectral model for the beams that are considered in the contamination. The modelled beams are returned as a list.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list as input to select beams \item[{\em dirlist}]-\/ the direct \hyperlink{structobject}{object} list to dimension the models \item[{\em lambda\_\-psf}]-\/ the wavelength the \hyperlink{structobject}{object} psf was determined at \item[{\em npixels}]-\/ the dimensions of the model for the whole image \item[{\em CONF\_\-file}]-\/ the name of the configuration file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+speclist -\/ the list of modelled beams 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+288 {
+289   beamspec       **speclist;
+290   dirobject       *actdir;
+291   aperture_conf   *conf;
+292   calib_function  *wl_calibration;
+293   spectrum        *resp;
+294   beam             actbeam;
+295   tracedata       *acttrace;
+296 
+297   //double eval=0.0;
+298   double psf_offset=0;
+299 
+300   //int nspecs;
+301   //int i=0;
+302   //int j=0;
+303   //int jj=0;
+304   int ii=0;
+305   int nobjects;
+306 
+307   //int kk, ll;
+308   double sval;
+309   double frac_prev, frac;
+310 
+311   int nx, ny;
+312   d_point dpixel;
+313 
+314   // determine the number of objects in the object list
+315   nobjects = object_list_size(oblist);
+316 
+317   // load the configuration file
+318   conf = get_aperture_descriptor (CONF_file);
+319 
+320   // allocate ther list of spectral beams
+321   speclist = alloc_beamlist_from_dirlist(oblist, dirlist, npixels, conf);
+322 
+323   // go over each beam model
+324   ii = 0;
+325   while (speclist[ii] != NULL)
+326     {
+327       // get the direct object for the actual model spectrum
+328       actdir = get_dirobject_from_list(dirlist, speclist[ii]->objectID);
+329 
+330       // get the beam for the actual model spectrum
+331       actbeam = get_beam_for_beamspec(oblist,nobjects,speclist[ii]);
+332 
+333       // get the psf offset values
+334       psf_offset = get_psf_offset(conf, actbeam);
+335 
+336       // get the wavelength calibration for the actual model spectrum
+337       wl_calibration = get_calib_function(speclist[ii], actdir, CONF_file, conf);
+      
+338 
+339       // get the sensitivity data for the actual model spectrum
+340       resp = get_throughput_spec(speclist[ii], CONF_file);
+341 
+342       // fill the tracedata structure for the model spectrum
+343       //acttrace = compute_tracedata(actbeam,actdir, wl_calibration,speclist[ii])
+      ;
+344       acttrace = compute_short_tracedata(conf, actbeam,actdir, wl_calibration,spe
+      clist[ii]);
+345 
+346       if (acttrace->npoints < 1)
+347         {
+348           // release the space for the various structures
+349           free_calib(wl_calibration);
+350           free_spectrum(resp);
+351           free_tracedata(acttrace);
+352 
+353           // give feedback to the screen
+354           fprintf(stderr, "aXe_PETCONT: skipping object %i beam %c ...", speclist
+      [ii]->objectID, BEAM(speclist[ii]->beamID));
+355 
+356           // enhance the spectral beam counter
+357           // and go to the next
+358           ii++;
+359           continue;
+360         }
+361 
+362       // fill the flux information int the tracedata
+363       fill_fluxfrom_SED(actdir, acttrace);
+364 
+365       // give feedback to the screen
+366       fprintf(stdout, "aXe_PETCONT: modelling object %i beam %c ...", speclist[ii
+      ]->objectID, BEAM(speclist[ii]->beamID));
+367 
+368       frac_prev=10.0;
+369       // go over each pixel in the direct object area
+370       for (nx=actdir->ix_min; nx<=actdir->ix_max; nx++)
+371         {
+372           //----------------------------------------------
+373           // compute the percentage that has been computed
+374           // report progress in 10% increments
+375           frac = fmod(100.0*(nx - actdir->ix_min)/(actdir->ix_max - actdir->
+      ix_min),10);
+376           if (frac < frac_prev)
+377           {
+378             fprintf(stdout, " %i ", (int)100.0*(nx - actdir->ix_min)/(actdir->
+      ix_max - actdir->ix_min));
+379             fflush(stdout);
+380           }
+381           frac_prev=frac;
+382           //----------------------------------------------
+383 
+384           for (ny=actdir->iy_min; ny<=actdir->iy_max; ny++)
+385             {
+386               // fill the dpixel structure
+387               dpixel.x = (double)nx;
+388               dpixel.y = (double)ny;
+389 
+390               if (actdir->dirim)
+391                 {
+392                   sval = get_diremission_value(actdir->dirim, dpixel.x - actbeam.
+      refpoint.x, dpixel.y - actbeam.refpoint.y);
+393                   gsl_vector_set_all (acttrace->gvalue, sval);
+394                 }
+395               else
+396                 {
+397                   // check whether a wavelength-dependent
+398                   // emission profile is given
+399                   if ((conf->psfcoeffs && conf->psfrange) || psf_offset)
+400                     {
+401                       // fill in the wavelength dependend
+402                       // emission values
+403                       fill_gaussvalues(dpixel, actbeam, actdir, lambda_psf, conf,
+       psf_offset, acttrace);
+404                     }
+405                   else
+406                     {
+407                       // do a subsampling over the pixel
+408                       // to get a more appropriate value for the
+409                       // emission val
+410                       sval = get_sub_emodel_value(dpixel, actbeam, actdir->
+      drzscale);
+411                       gsl_vector_set_all (acttrace->gvalue, sval);
+412                     }
+413                 }
+414 
+415               // insert the spectrum of this direct object pixel in the beam spec
+      trum
+416               fill_pixel_in_speed(actdir, acttrace, dpixel, resp, speclist[ii], w
+      l_calibration);
+417             }
+418         }
+419 
+420       // release the space for the various structures
+421       fprintf(stdout, " Done\n");
+422       free_calib(wl_calibration);
+423       free_spectrum(resp);
+424       free_tracedata(acttrace);
+425 
+426       // enhance the counter
+427       ii++;
+428     }
+429 
+430   // free the memory in the conf structure
+431   free_aperture_conf(conf);
+432 
+433   // return the list of modelled beams
+434   return speclist;
+435 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_aa210c0aa4d37a6f3914b73a39162301b}{
+\index{spc\_\-model.c@{spc\_\-model.c}!make\_\-model\_\-image@{make\_\-model\_\-image}}
+\index{make\_\-model\_\-image@{make\_\-model\_\-image}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{make\_\-model\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ make\_\-model\_\-image (const {\bf px\_\-point} {\em npixels}, \/  {\bf observation} $\ast$ {\em obs}, \/  {\bf beamspec} $\ast$$\ast$ {\em speclist})}}
+\label{spc__model_8c_aa210c0aa4d37a6f3914b73a39162301b}
+Function: make\_\-model\_\-image Sums up the modeled spectral beams to create a spectral model for the whole image.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em npixels}]-\/ the dimensions of the input grism image \item[{\em speclist}]-\/ the list of modelled beams\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+all\_\-models -\/ the model for the whole image 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1479 {
+1480 
+1481   gsl_matrix *all_models;
+1482 
+1483   double oldval, addval;
+1484 
+1485   int i=0;
+1486   int xact, yact;
+1487   int ix, iy;
+1488 
+1489   // allocate space for the result,
+1490   // set the matrix to 0.0
+1491   //  all_models = gsl_matrix_alloc(npixels.x, npixels.y);
+1492   all_models = obs->grism;
+1493   gsl_matrix_set_all(all_models,0.0);
+1494 
+1495   fprintf (stdout, "\naXe_PETCONT: Summing up the model beam spectra\n");
+1496 
+1497   // go over each beam in the list
+1498    while (speclist[i] != NULL)
+1499      {
+1500 
+1501        fprintf(stdout, "aXe_PETCONT: summing up object %i beam %c ...", speclist[
+      i]->objectID, BEAM(speclist[i]->beamID));
+1502 
+1503        // go over each pixel in the array of the beam model
+1504        for (xact=0; xact < speclist[i]->model->size1; xact++)
+1505          {
+1506            for (yact=0; yact < speclist[i]->model->size2; yact++)
+1507              {
+1508 
+1509                // find the coordinates of the pixels in the whole image model
+1510                ix = speclist[i]->model_ref.x + xact;
+1511                iy = speclist[i]->model_ref.y + yact;
+1512 
+1513                // check for safety reasons whether the coordinates are inside
+1514                if (ix < 0 || iy < 0 || ix > (npixels.x-1) || ix > (npixels.x-1)){
+      
+1515                  fprintf(stdout, "This should not happen!\n");
+1516                }
+1517                else{
+1518 
+1519                  // summ up the pixel
+1520                  addval = gsl_matrix_get(speclist[i]->model, xact, yact);
+1521                  oldval = gsl_matrix_get(all_models, ix, iy);
+1522                  gsl_matrix_set(all_models, ix, iy, oldval+addval);
+1523                }
+1524              }
+1525          }
+1526 
+1527        fprintf(stdout, " Done\n");
+1528 
+1529        // increment the counter
+1530        i++;
+1531      }
+1532 
+1533    // return the model
+1534   return all_models;
+1535 }
+\end{DoxyCode}
+\hypertarget{spc__model_8c_a39fc258229e615e5b82c1f81b8c09bde}{
+\index{spc\_\-model.c@{spc\_\-model.c}!no\_\-diffuse\_\-spectrum@{no\_\-diffuse\_\-spectrum}}
+\index{no\_\-diffuse\_\-spectrum@{no\_\-diffuse\_\-spectrum}!spc_model.c@{spc\_\-model.c}}
+\subsubsection[{no\_\-diffuse\_\-spectrum}]{\setlength{\rightskip}{0pt plus 5cm}int no\_\-diffuse\_\-spectrum (int {\em ix}, \/  int {\em iy}, \/  double {\em cps}, \/  {\bf beamspec} $\ast$ {\em actspec})}}
+\label{spc__model_8c_a39fc258229e615e5b82c1f81b8c09bde}
+Function no\_\-diffuse\_\-spectrum Adds the simulated flux for one pixel exactly into one pixel, using the integer value of the correct position.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ix}]-\/ the integer x-\/position in the \hyperlink{structbeam}{beam} \item[{\em iy}]-\/ the integer y-\/position in the \hyperlink{structbeam}{beam} \item[{\em cps}]-\/ the cps-\/value for one entire pixel \item[{\em actspec}]-\/ the \hyperlink{structbeam}{beam} to model\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+1.0 -\/ return a dummy value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1256 {
+1257   double tmp  = 0.0;
+1258 
+1259   if ( ! (ix < 0 || iy < 0 || ix > (actspec->model->size1-1) || iy > (actspec->
+      model->size2-1)))
+1260   {
+1261     // add the contribution of the actual dx value to the model spectrum
+1262     tmp = gsl_matrix_get(actspec->model, ix, iy);
+1263 
+1264     // set the new value
+1265     gsl_matrix_set(actspec->model, ix, iy, cps + tmp);
+1266   }
+1267 
+1268   // return a dummy
+1269   return 1;
+1270 }
+\end{DoxyCode}

@@ -1,0 +1,79 @@
+\hypertarget{structs__flatfield}{
+\section{s\_\-flatfield Struct Reference}
+\label{structs__flatfield}\index{s\_\-flatfield@{s\_\-flatfield}}
+}
+
+
+{\ttfamily \#include $<$spc\_\-flatfield.h$>$}\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+void($\ast$ \hyperlink{structs__flatfield_a27ed375a08ad88a9a25ab15f1186daba}{func} )(const double lambda, const int x, const int y, PIXEL\_\-T $\ast$const val, PIXEL\_\-T $\ast$const err, const struct \hyperlink{structs__flatfield}{s\_\-flatfield} $\ast$const self)
+\item 
+int \hyperlink{structs__flatfield_a1d7f7b9c4eff24588fe25d35f2a0e3ea}{ll\_\-x}
+\item 
+int \hyperlink{structs__flatfield_affab7067e6e424adb423dc8de163bd5e}{ll\_\-y}
+\item 
+int \hyperlink{structs__flatfield_a06769e5af56e9be88885af9cd2e25dd9}{w}
+\item 
+int \hyperlink{structs__flatfield_a8d217598ba3babf676e72e2d8e1d5068}{h}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\hyperlink{structpolynom__flatfield}{polynom\_flatfield} $\ast$ \hyperlink{structs__flatfield_a15327899ebefeb485896f96b795d846e}{poly}\\
+\>\hyperlink{structmulti__flatfield}{multi\_flatfield} $\ast$ \hyperlink{structs__flatfield_a34eb871ec49e718e1e1b87d5f219c18d}{multi}\\
+\} \hyperlink{structs__flatfield_a8f036c9091ac39aa9d42968bb770af09}{data}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Descriptor of a flatfielding function, including the function to compute the flat field value of a given pixel, the bounding box we handle, and auxillary data (usually a flatfield image) 
+
+\subsection{Field Documentation}
+\hypertarget{structs__flatfield_a8f036c9091ac39aa9d42968bb770af09}{
+\index{s\_\-flatfield@{s\_\-flatfield}!data@{data}}
+\index{data@{data}!s_flatfield@{s\_\-flatfield}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \} 
+   {\bf s\_\-flatfield::data}}}
+\label{structs__flatfield_a8f036c9091ac39aa9d42968bb770af09}
+\hypertarget{structs__flatfield_a27ed375a08ad88a9a25ab15f1186daba}{
+\index{s\_\-flatfield@{s\_\-flatfield}!func@{func}}
+\index{func@{func}!s_flatfield@{s\_\-flatfield}}
+\subsubsection[{func}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf s\_\-flatfield::func})(const double lambda, const int x, const int y, PIXEL\_\-T $\ast$const val, PIXEL\_\-T $\ast$const err, const struct {\bf s\_\-flatfield} $\ast$const self)}}
+\label{structs__flatfield_a27ed375a08ad88a9a25ab15f1186daba}
+\hypertarget{structs__flatfield_a8d217598ba3babf676e72e2d8e1d5068}{
+\index{s\_\-flatfield@{s\_\-flatfield}!h@{h}}
+\index{h@{h}!s_flatfield@{s\_\-flatfield}}
+\subsubsection[{h}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf s\_\-flatfield::h}}}
+\label{structs__flatfield_a8d217598ba3babf676e72e2d8e1d5068}
+\hypertarget{structs__flatfield_a1d7f7b9c4eff24588fe25d35f2a0e3ea}{
+\index{s\_\-flatfield@{s\_\-flatfield}!ll\_\-x@{ll\_\-x}}
+\index{ll\_\-x@{ll\_\-x}!s_flatfield@{s\_\-flatfield}}
+\subsubsection[{ll\_\-x}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf s\_\-flatfield::ll\_\-x}}}
+\label{structs__flatfield_a1d7f7b9c4eff24588fe25d35f2a0e3ea}
+\hypertarget{structs__flatfield_affab7067e6e424adb423dc8de163bd5e}{
+\index{s\_\-flatfield@{s\_\-flatfield}!ll\_\-y@{ll\_\-y}}
+\index{ll\_\-y@{ll\_\-y}!s_flatfield@{s\_\-flatfield}}
+\subsubsection[{ll\_\-y}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf s\_\-flatfield::ll\_\-y}}}
+\label{structs__flatfield_affab7067e6e424adb423dc8de163bd5e}
+\hypertarget{structs__flatfield_a34eb871ec49e718e1e1b87d5f219c18d}{
+\index{s\_\-flatfield@{s\_\-flatfield}!multi@{multi}}
+\index{multi@{multi}!s_flatfield@{s\_\-flatfield}}
+\subsubsection[{multi}]{\setlength{\rightskip}{0pt plus 5cm}{\bf multi\_\-flatfield}$\ast$ {\bf s\_\-flatfield::multi}}}
+\label{structs__flatfield_a34eb871ec49e718e1e1b87d5f219c18d}
+\hypertarget{structs__flatfield_a15327899ebefeb485896f96b795d846e}{
+\index{s\_\-flatfield@{s\_\-flatfield}!poly@{poly}}
+\index{poly@{poly}!s_flatfield@{s\_\-flatfield}}
+\subsubsection[{poly}]{\setlength{\rightskip}{0pt plus 5cm}{\bf polynom\_\-flatfield}$\ast$ {\bf s\_\-flatfield::poly}}}
+\label{structs__flatfield_a15327899ebefeb485896f96b795d846e}
+\hypertarget{structs__flatfield_a06769e5af56e9be88885af9cd2e25dd9}{
+\index{s\_\-flatfield@{s\_\-flatfield}!w@{w}}
+\index{w@{w}!s_flatfield@{s\_\-flatfield}}
+\subsubsection[{w}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf s\_\-flatfield::w}}}
+\label{structs__flatfield_a06769e5af56e9be88885af9cd2e25dd9}
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/\hyperlink{spc__flatfield_8h}{spc\_\-flatfield.h}\end{DoxyCompactItemize}

@@ -1,0 +1,549 @@
+\hypertarget{trace__conf_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/trace\_\-conf.h File Reference}
+\label{trace__conf_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/trace\_\-conf.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/trace\_\-conf.h}}
+}
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include \char`\"{}spc\_\-cfg.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}disp\_\-conf.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtracestruct}{tracestruct}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacetrace__conf}{trace\_\-conf}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{trace__conf_8h_ac1c0c598146acb72870fd2f0a0a2bcc6}{get\_\-beam\_\-trace\_\-norder} (char $\ast$filename, int beamID)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trace__conf_8h_a2f4436bd52e7b4ceac0050ef1cd0ca40}{get\_\-beam\_\-trace\_\-order} (char $\ast$filename, int beamID, int order)
+\item 
+float \hyperlink{trace__conf_8h_a5b3970c8e30b8a8304a514302a6d3921}{get\_\-trace\_\-coeff\_\-at\_\-pos} (char $\ast$filename, int beamID, int order, \hyperlink{structd__point}{d\_\-point} p)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trace__conf_8h_a168419e403a599655bc76b4a91979403}{get\_\-trace\_\-coeffs\_\-at\_\-pos} (char $\ast$filename, int beamID, \hyperlink{structd__point}{d\_\-point} p)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trace__conf_8h_aead378057f951a43c28c4031ca3fd71a}{get\_\-beam\_\-trace\_\-xoff} (char $\ast$filename, int beamID)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{trace__conf_8h_aeea3871e481f563841b276e4c8633be7}{get\_\-beam\_\-trace\_\-yoff} (char $\ast$filename, int beamID)
+\item 
+float \hyperlink{trace__conf_8h_a5d5cc2534badcb1d3cf0ec8baf467e91}{get\_\-trace\_\-xoff\_\-at\_\-pos} (char $\ast$filename, int beamID, \hyperlink{structd__point}{d\_\-point} p)
+\item 
+float \hyperlink{trace__conf_8h_abd49d387b79992f27d56ff30c56d6e40}{get\_\-trace\_\-yoff\_\-at\_\-pos} (char $\ast$filename, int beamID, \hyperlink{structd__point}{d\_\-point} p)
+\item 
+float \hyperlink{trace__conf_8h_a9eed4438755d4ceab064f95250f6218e}{eval\_\-trace\_\-off\_\-at\_\-pos} (gsl\_\-vector $\ast$coeffs, \hyperlink{structd__point}{d\_\-point} p, int beamID)
+\item 
+\hyperlink{structtracestruct}{tracestruct} $\ast$ \hyperlink{trace__conf_8h_af23d39f0c71ce368e456ce5bbdd45a74}{get\_\-tracestruct\_\-at\_\-pos} (char $\ast$filename, int beamID, \hyperlink{structd__point}{d\_\-point} p)
+\item 
+void \hyperlink{trace__conf_8h_a068626ba31aece2b7c13371136cc8fdb}{tracestruct\_\-fprintf} (FILE $\ast$file, \hyperlink{structtracestruct}{tracestruct} $\ast$trace)
+\item 
+void \hyperlink{trace__conf_8h_a4790d4b6ab8f7635efc9ee46d4f6b7c5}{free\_\-tracestruct} (\hyperlink{structtracestruct}{tracestruct} $\ast$trace)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{trace__conf_8h_a9eed4438755d4ceab064f95250f6218e}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!eval\_\-trace\_\-off\_\-at\_\-pos@{eval\_\-trace\_\-off\_\-at\_\-pos}}
+\index{eval\_\-trace\_\-off\_\-at\_\-pos@{eval\_\-trace\_\-off\_\-at\_\-pos}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{eval\_\-trace\_\-off\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float eval\_\-trace\_\-off\_\-at\_\-pos (gsl\_\-vector $\ast$ {\em coeffs}, \/  {\bf d\_\-point} {\em p}, \/  int {\em beamID})}}
+\label{trace__conf_8h_a9eed4438755d4ceab064f95250f6218e}
+The function evaluates the a polynomial given in the input at a specific point, which also is given in the input. The polynomial follows the description of 2D vatriable quantities as given in the aXe manual.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em coeffs}]-\/ the coefficients of the polynomial \item[{\em p}]-\/ the point to evaluate the polynomial \item[{\em beamID}]-\/ beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res -\/ of the polynomial at point p 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+257   {
+258     float n, c, res;
+259     int i, j, k;
+260 
+261     n = 0.5 * (-1.0 + sqrt(1 + 8 * coeffs->size));
+262     if ((floor(n) - n) != 0)
+263       {
+264         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+265         "get_trace_xoff_at_pos: "
+266         "Beam %d in configuration file does not contain a correct number of entri
+      es (i.e. "
+267         "1,3,6,10,15...,n^2/2+n/2", beamID);
+268       }
+269 
+270     i = 0;
+271     res = 0;
+272     for (j = 0; j < n; j++)
+273       {
+274         for (k = 0; k < (j + 1); k++)
+275           {
+276             c = gsl_vector_get(coeffs, i);
+277             res = res + c * pow(p.x, (j - k)) * pow(p.y, k);
+278             i++;
+279           }
+280       }
+281 
+282     return res;
+283   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_a4790d4b6ab8f7635efc9ee46d4f6b7c5}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!free\_\-tracestruct@{free\_\-tracestruct}}
+\index{free\_\-tracestruct@{free\_\-tracestruct}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{free\_\-tracestruct}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-tracestruct ({\bf tracestruct} $\ast$ {\em trace})}}
+\label{trace__conf_8h_a4790d4b6ab8f7635efc9ee46d4f6b7c5}
+
+
+
+\begin{DoxyCode}
+424   {
+425     gsl_vector_free(trace->pol);
+426     if (trace->pol == NULL)
+427       {
+428         fprintf(stderr, "properly set to NULL!");
+429         exit(0);
+430       }
+431     trace = NULL;
+432   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_ac1c0c598146acb72870fd2f0a0a2bcc6}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-beam\_\-trace\_\-norder@{get\_\-beam\_\-trace\_\-norder}}
+\index{get\_\-beam\_\-trace\_\-norder@{get\_\-beam\_\-trace\_\-norder}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-beam\_\-trace\_\-norder}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-beam\_\-trace\_\-norder (char $\ast$ {\em filename}, \/  int {\em beamID})}}
+\label{trace__conf_8h_ac1c0c598146acb72870fd2f0a0a2bcc6}
+Parses a configuration file and searches for DYDX\_\-ORDER\_\-c keywords. Returns the order of the field dependent trace relation for that order. 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+disporder the order of the dispersion relation for the \hyperlink{structbeam}{beam} of interest 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+22   {
+23     char beam[MAXCHAR];
+24     int disporder = -1;
+25     int found = 0;
+26     int i=0;
+27 
+28     struct CfgStrings DispConfig[] =
+29       {
+30         { NULL, NULL },
+31         { NULL, NULL } };
+32     DispConfig[0].name = beam;
+33     sprintf(beam, "DYDX_ORDER_%c", BEAM (beamID));
+34     CfgRead(filename, DispConfig);
+35     if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+36       {
+37         disporder = atoi(DispConfig[0].data);
+38         found = 1;
+39       }
+40     if (!found)
+41       {
+42         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+43         "get_beam_trace_norder: %s was not found in %s.\n",
+44         beam, filename);
+45       }
+46     if (disporder<0)
+47       aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+48       "Trace polynomial must at least have one coefficients (i.e. zeroth order).\
+      n");
+49 
+50     // release memory
+51     i=0;
+52     while (DispConfig[i].name!=NULL)
+53       free(DispConfig[i++].data);
+54 
+55     return disporder;
+56   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_a2f4436bd52e7b4ceac0050ef1cd0ca40}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-beam\_\-trace\_\-order@{get\_\-beam\_\-trace\_\-order}}
+\index{get\_\-beam\_\-trace\_\-order@{get\_\-beam\_\-trace\_\-order}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-beam\_\-trace\_\-order}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-beam\_\-trace\_\-order (char $\ast$ {\em filename}, \/  int {\em beamID}, \/  int {\em order})}}
+\label{trace__conf_8h_a2f4436bd52e7b4ceac0050ef1cd0ca40}
+Parses a configuration file and returns a gsl vector containing the 2D polynomial coefficient allowing one to compute a given trace coefficient anywhere on the detector. 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em order}]order of the coefficient for which the 2D field dependent coefficients are queried.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+v A gsl\_\-vector() containing all of the 2D field dependent polynomial coeffiecient 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+70   {
+71     char beam[MAXCHAR];
+72 
+73     int norder;
+74     int found = 0;
+75     int i=0;
+76 
+77     gsl_vector *v= NULL;
+78     struct CfgStrings DispConfig[] =
+79       {
+80         { NULL, NULL },
+81         { NULL, NULL } };
+82     DispConfig[0].name = beam;
+83     norder = get_beam_disp_norder(filename, beamID);
+84     sprintf(beam, "DYDX_%c_%d", BEAM (beamID), order);
+85     CfgRead(filename, DispConfig);
+86     if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+87       {
+88         v = string_to_gsl_array(DispConfig[0].data);
+89         found = 1;
+90       }
+91 
+92     if (!found)
+93       {
+94         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+95         "get_beam_trace_order: %s was not found in %s.\n",
+96         beam, filename);
+97       }
+98 
+99     // release memory
+100     i=0;
+101     while (DispConfig[i].name!=NULL)
+102       free(DispConfig[i++].data);
+103 
+104     return v;
+105   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_aead378057f951a43c28c4031ca3fd71a}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-beam\_\-trace\_\-xoff@{get\_\-beam\_\-trace\_\-xoff}}
+\index{get\_\-beam\_\-trace\_\-xoff@{get\_\-beam\_\-trace\_\-xoff}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-beam\_\-trace\_\-xoff}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-beam\_\-trace\_\-xoff (char $\ast$ {\em filename}, \/  int {\em beamID})}}
+\label{trace__conf_8h_aead378057f951a43c28c4031ca3fd71a}
+Parses a configuration file and returns a gsl vector containing the 2D polynomial coefficient allowing one to compute direct/grism images x-\/offset trace corection (caused by optics) anywhere on the detector. 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+v A gsl\_\-vector() containing all of the 2D field dependent polynomial coeffiecient 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+160   {
+161     char beam[MAXCHAR];
+162 
+163     int norder;
+164     int found = 0;
+165     int i=0;
+166 
+167     gsl_vector *v= NULL;
+168     struct CfgStrings DispConfig[] =
+169       {
+170         { NULL, NULL },
+171         { NULL, NULL } };
+172     DispConfig[0].name = beam;
+173     norder = get_beam_disp_norder(filename, beamID);
+174     sprintf(beam, "XOFF_%c", BEAM (beamID));
+175     CfgRead(filename, DispConfig);
+176     if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+177       {
+178         v = string_to_gsl_array(DispConfig[0].data);
+179         found = 1;
+180       }
+181 
+182     if (!found)
+183       {
+184         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+185         "get_beam_trace_xoff: %s was not found in %s.\n",
+186         beam, filename);
+187       }
+188 
+189     // release memory
+190     i=0;
+191     while (DispConfig[i].name!=NULL)
+192       free(DispConfig[i++].data);
+193 
+194     return v;
+195   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_aeea3871e481f563841b276e4c8633be7}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-beam\_\-trace\_\-yoff@{get\_\-beam\_\-trace\_\-yoff}}
+\index{get\_\-beam\_\-trace\_\-yoff@{get\_\-beam\_\-trace\_\-yoff}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-beam\_\-trace\_\-yoff}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-beam\_\-trace\_\-yoff (char $\ast$ {\em filename}, \/  int {\em beamID})}}
+\label{trace__conf_8h_aeea3871e481f563841b276e4c8633be7}
+Parses a configuration file and returns a gsl vector containing the 2D polynomial coefficient allowing one to compute direct/grism images y-\/offset corection (caused by optics) anywhere on the detector. 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+v A gsl\_\-vector() containing all of the 2D field dependent polynomial coeffiecient 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+207   {
+208     char beam[MAXCHAR];
+209 
+210     int norder;
+211     int found = 0;
+212     int i=0;
+213     gsl_vector *v= NULL;
+214     struct CfgStrings DispConfig[] =
+215       {
+216         { NULL, NULL },
+217         { NULL, NULL } };
+218     DispConfig[0].name = beam;
+219     norder = get_beam_trace_norder(filename, beamID);
+220     sprintf(beam, "YOFF_%c", BEAM (beamID));
+221     CfgRead(filename, DispConfig);
+222     if ((DispConfig[0].name == beam) && (DispConfig[0].data != NULL))
+223       {
+224         v = string_to_gsl_array(DispConfig[0].data);
+225         found = 1;
+226       }
+227 
+228     if (!found)
+229       {
+230         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+231         "get_beam_trace_yoff: %s was not found in %s.\n",
+232         beam, filename);
+233       }
+234 
+235     // release memory
+236     i=0;
+237     while (DispConfig[i].name!=NULL)
+238       free(DispConfig[i++].data);
+239 
+240     return v;
+241   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_a5b3970c8e30b8a8304a514302a6d3921}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-trace\_\-coeff\_\-at\_\-pos@{get\_\-trace\_\-coeff\_\-at\_\-pos}}
+\index{get\_\-trace\_\-coeff\_\-at\_\-pos@{get\_\-trace\_\-coeff\_\-at\_\-pos}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-trace\_\-coeff\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float get\_\-trace\_\-coeff\_\-at\_\-pos (char $\ast$ {\em filename}, \/  int {\em beamID}, \/  int {\em order}, \/  {\bf d\_\-point} {\em p})}}
+\label{trace__conf_8h_a5b3970c8e30b8a8304a514302a6d3921}
+Parses a configuration file, computes and return the value of the order$^\wedge$th trace polynomial coefficient at a given detector pixel.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em order}]order of the coefficient for which the 2D field dependent \item[{\em p}]A \hyperlink{structd__point}{d\_\-point} \hyperlink{structobject}{object} containing the position to compute the trace coefficient at.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res The value of the order6th coefficient of beamID computed at detector pixel p. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+120   {
+121     gsl_vector *v;
+122     float n, c, res;
+123     int i, j, k;
+124 
+125     v = get_beam_trace_order(filename, beamID, order);
+126     n = 0.5 * (-1.0 + sqrt(1 + 8 * v->size));
+127     if ((floor(n) - n) != 0)
+128       {
+129         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+130         "get_trace_coeff_at_pos: "
+131         "Order %d of Beam %d in %s does not contain a correct number of entries (
+      i.e. "
+132         "1,3,6,10,15...,n^2/2+n/2", order, beamID, filename);
+133       }
+134 
+135     i = 0;
+136     res = 0;
+137     for (j = 0; j < n; j++)
+138       {
+139         for (k = 0; k < (j + 1); k++)
+140           {
+141             c = gsl_vector_get(v, i);
+142             res = res + c * pow(p.x, (j - k)) * pow(p.y, k);
+143             i++;
+144           }
+145       }
+146 
+147     return res;
+148   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_a168419e403a599655bc76b4a91979403}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-trace\_\-coeffs\_\-at\_\-pos@{get\_\-trace\_\-coeffs\_\-at\_\-pos}}
+\index{get\_\-trace\_\-coeffs\_\-at\_\-pos@{get\_\-trace\_\-coeffs\_\-at\_\-pos}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-trace\_\-coeffs\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-trace\_\-coeffs\_\-at\_\-pos (char $\ast$ {\em filename}, \/  int {\em beamID}, \/  {\bf d\_\-point} {\em p})}}
+\label{trace__conf_8h_a168419e403a599655bc76b4a91979403}
+Parse a configuration file and return a gsl array containing all the trace polynomial coefficient computed at a pixel p.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em p}]A \hyperlink{structd__point}{d\_\-point} \hyperlink{structobject}{object} containing the position to compute the dispersion coefficients at.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+v A gsl\_\-vector containing all the polynomial trace coefficients computed at detector pixel p. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+375   {
+376     int norder, i;
+377     gsl_vector *v;
+378     float c;
+379 
+380     norder = get_beam_trace_norder(filename, beamID);
+381 
+382     v = gsl_vector_alloc(norder + 1);
+383     for (i = 0; i < norder + 1; i++)
+384       {
+385         c = get_trace_coeff_at_pos(filename, beamID, i, p);
+386         gsl_vector_set(v, i, c);
+387       }
+388 
+389     return v;
+390   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_a5d5cc2534badcb1d3cf0ec8baf467e91}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-trace\_\-xoff\_\-at\_\-pos@{get\_\-trace\_\-xoff\_\-at\_\-pos}}
+\index{get\_\-trace\_\-xoff\_\-at\_\-pos@{get\_\-trace\_\-xoff\_\-at\_\-pos}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-trace\_\-xoff\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float get\_\-trace\_\-xoff\_\-at\_\-pos (char $\ast$ {\em filename}, \/  int {\em beamID}, \/  {\bf d\_\-point} {\em p})}}
+\label{trace__conf_8h_a5d5cc2534badcb1d3cf0ec8baf467e91}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res The value of the x-\/offset of beamID computed at detector pixel p. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+292   {
+293     gsl_vector *v;
+294     float n, c, res;
+295     int i, j, k;
+296 
+297     v = get_beam_trace_xoff(filename, beamID);
+298     n = 0.5 * (-1.0 + sqrt(1 + 8 * v->size));
+299     if ((floor(n) - n) != 0)
+300       {
+301         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+302         "get_trace_xoff_at_pos: "
+303         "Beam %d in %s does not contain a correct number of entries (i.e. "
+304         "1,3,6,10,15...,n^2/2+n/2", beamID, filename);
+305       }
+306 
+307     i = 0;
+308     res = 0;
+309     for (j = 0; j < n; j++)
+310       {
+311         for (k = 0; k < (j + 1); k++)
+312           {
+313             c = gsl_vector_get(v, i);
+314             res = res + c * pow(p.x, (j - k)) * pow(p.y, k);
+315             i++;
+316           }
+317       }
+318 
+319     return res;
+320   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_abd49d387b79992f27d56ff30c56d6e40}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-trace\_\-yoff\_\-at\_\-pos@{get\_\-trace\_\-yoff\_\-at\_\-pos}}
+\index{get\_\-trace\_\-yoff\_\-at\_\-pos@{get\_\-trace\_\-yoff\_\-at\_\-pos}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-trace\_\-yoff\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}float get\_\-trace\_\-yoff\_\-at\_\-pos (char $\ast$ {\em filename}, \/  int {\em beamID}, \/  {\bf d\_\-point} {\em p})}}
+\label{trace__conf_8h_abd49d387b79992f27d56ff30c56d6e40}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...)\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res The value of the y-\/offset of beamID computed at detector pixel p. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+331   {
+332     gsl_vector *v;
+333     float n, c, res;
+334     int i, j, k;
+335 
+336     v = get_beam_trace_yoff(filename, beamID);
+337     n = 0.5 * (-1.0 + sqrt(1 + 8 * v->size));
+338     if ((floor(n) - n) != 0)
+339       {
+340         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+341         "get_trace_yoff_at_pos: "
+342         "Beam %d in %s does not contain a correct number of entries (i.e. "
+343         "1,3,6,10,15...,n^2/2+n/2", beamID, filename);
+344       }
+345 
+346     i = 0;
+347     res = 0;
+348     for (j = 0; j < n; j++)
+349       {
+350         for (k = 0; k < (j + 1); k++)
+351           {
+352             c = gsl_vector_get(v, i);
+353             res = res + c * pow(p.x, (j - k)) * pow(p.y, k);
+354             i++;
+355           }
+356       }
+357 
+358     return res;
+359   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_af23d39f0c71ce368e456ce5bbdd45a74}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!get\_\-tracestruct\_\-at\_\-pos@{get\_\-tracestruct\_\-at\_\-pos}}
+\index{get\_\-tracestruct\_\-at\_\-pos@{get\_\-tracestruct\_\-at\_\-pos}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{get\_\-tracestruct\_\-at\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf tracestruct}$\ast$ get\_\-tracestruct\_\-at\_\-pos (char $\ast$ {\em filename}, \/  int {\em beamID}, \/  {\bf d\_\-point} {\em p})}}
+\label{trace__conf_8h_af23d39f0c71ce368e456ce5bbdd45a74}
+Generate and returns a trace structure that is computed at the given pixel p detector location. 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]filename of the configuration file \item[{\em beamID}]beamID of the \hyperlink{structbeam}{beam} of interest (A=0, B=1, etc...) \item[{\em p}]A \hyperlink{structd__point}{d\_\-point} \hyperlink{structobject}{object} containing the position to compute the dispersion coefficients at.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res A dispersion structure computed for \hyperlink{structbeam}{beam} beamID at detector pixel p. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+403   {
+404     tracestruct *res;
+405 
+406     res = malloc(sizeof(tracestruct));
+407     if (res == NULL)
+408       {
+409         aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+410         "get_tracestruct_at_pos:"
+411         "Could not allocate tracestruct");
+412       }
+413     res->pol = get_trace_coeffs_at_pos(filename, beamID, p);
+414     res->offset.x = get_trace_xoff_at_pos(filename, beamID, p);
+415     res->offset.y = get_trace_yoff_at_pos(filename, beamID, p);
+416     res->ID = beamID;
+417     res->cpoint.x = p.x;
+418     res->cpoint.y = p.y;
+419     sprintf(res->file, "%s", filename);
+420     return res;
+421   }
+\end{DoxyCode}
+\hypertarget{trace__conf_8h_a068626ba31aece2b7c13371136cc8fdb}{
+\index{trace\_\-conf.h@{trace\_\-conf.h}!tracestruct\_\-fprintf@{tracestruct\_\-fprintf}}
+\index{tracestruct\_\-fprintf@{tracestruct\_\-fprintf}!trace_conf.h@{trace\_\-conf.h}}
+\subsubsection[{tracestruct\_\-fprintf}]{\setlength{\rightskip}{0pt plus 5cm}void tracestruct\_\-fprintf (FILE $\ast$ {\em file}, \/  {\bf tracestruct} $\ast$ {\em trace})}}
+\label{trace__conf_8h_a068626ba31aece2b7c13371136cc8fdb}
+Displays the content of a \hyperlink{structtracestruct}{tracestruct} structure to $\ast$FILE 
+
+
+\begin{DoxyCode}
+438   {
+439     fprintf(file, "Trace ID: %d\n", trace->ID);
+440     fprintf(file, "Trace detector location: %f %f\n", trace->cpoint.x,
+441         trace->cpoint.y);
+442     gsl_vector_fprintf(file, trace->pol, "Trace pol: %f");
+443     fprintf(file, "Trace xoff: %f\n", trace->offset.x);
+444     fprintf(file, "Trace yoff: %f\n", trace->offset.y);
+445     fprintf(file, "Trace file: %s\n", trace->file);
+446   }
+\end{DoxyCode}

@@ -1,0 +1,219 @@
+\hypertarget{spce__pathlength_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-pathlength.c File Reference}
+\label{spce__pathlength_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-pathlength.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-pathlength.c}}
+}
+{\ttfamily \#include \char`\"{}spce\_\-pathlength.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespce__pathlength}{spce\_\-pathlength}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spce__pathlength_8c_a7bf9d1cdc10f8a2187ca87780d335b58}{NUM\_\-INTERPOINTS}~50
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{spce__pathlength_8c_ac07591f8ee52663ed04c2e003b1057dc}{absc\_\-to\_\-pathl\_\-path\_\-len} (const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const func, gsl\_\-vector $\ast$const data)
+\item 
+static double \hyperlink{spce__pathlength_8c_aeddbd5882172ba159b01aaad0644f356}{pathlength\_\-fun} (double x, void $\ast$pars)
+\item 
+static double \hyperlink{spce__pathlength_8c_a17ca4edf614b086bb67c1e2a2dab72c2}{pathlength\_\-integral} (const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const func, const double x0, const double x1)
+\item 
+static int \hyperlink{spce__pathlength_8c_aec8fa7814dd1bf944de62793dc6e98e4}{absc\_\-to\_\-pathl\_\-deriv} (const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const func, gsl\_\-vector $\ast$const data)
+\item 
+static int \hyperlink{spce__pathlength_8c_a43a6cbb6f2e1c9b05020c0af68570e5c}{absc\_\-to\_\-pathl\_\-val\_\-only} (const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const func, gsl\_\-vector $\ast$const data)
+\item 
+int \hyperlink{spce__pathlength_8c_a414f68dbdc28341ce5e57d2af4ab040c}{abscissa\_\-to\_\-pathlength} (const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const func, gsl\_\-vector $\ast$const data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spce__pathlength_8c_a7bf9d1cdc10f8a2187ca87780d335b58}{
+\index{spce\_\-pathlength.c@{spce\_\-pathlength.c}!NUM\_\-INTERPOINTS@{NUM\_\-INTERPOINTS}}
+\index{NUM\_\-INTERPOINTS@{NUM\_\-INTERPOINTS}!spce_pathlength.c@{spce\_\-pathlength.c}}
+\subsubsection[{NUM\_\-INTERPOINTS}]{\setlength{\rightskip}{0pt plus 5cm}\#define NUM\_\-INTERPOINTS~50}}
+\label{spce__pathlength_8c_a7bf9d1cdc10f8a2187ca87780d335b58}
+
+
+\subsection{Function Documentation}
+\hypertarget{spce__pathlength_8c_aec8fa7814dd1bf944de62793dc6e98e4}{
+\index{spce\_\-pathlength.c@{spce\_\-pathlength.c}!absc\_\-to\_\-pathl\_\-deriv@{absc\_\-to\_\-pathl\_\-deriv}}
+\index{absc\_\-to\_\-pathl\_\-deriv@{absc\_\-to\_\-pathl\_\-deriv}!spce_pathlength.c@{spce\_\-pathlength.c}}
+\subsubsection[{absc\_\-to\_\-pathl\_\-deriv}]{\setlength{\rightskip}{0pt plus 5cm}static int absc\_\-to\_\-pathl\_\-deriv (const {\bf trace\_\-func} $\ast$const  {\em func}, \/  gsl\_\-vector $\ast$const  {\em data})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spce__pathlength_8c_aec8fa7814dd1bf944de62793dc6e98e4}
+transforms a list of abscissas to a list of path lengths if the derivative but not the path length is known analytically. The strategy is to compute NUM\_\-INTERPOINTS actual path lengths and the interpolate between them. This should work with sufficient accuracy if the trace function is reasonably smooth.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em func}]the \hyperlink{structspectrum}{spectrum} trace function to use in the transformation \item[{\em data}]the table of abscissas relative to the reference point \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+98 {
+99   int i;
+100   double min_absc = gsl_vector_min (data), max_absc =
+101     gsl_vector_max (data);
+102   double step;
+103   double xvals[NUM_INTERPOINTS], yvals[NUM_INTERPOINTS];
+104   double res;
+105   gsl_spline *spline;
+106   gsl_interp_accel *acc;
+107   
+108   //gsl_interp_factory factory = gsl_interp_factory_cspline_natural;
+109   //gsl_interp_obj *interpolator;
+110   //gsl_interp_accel *accelerator;
+111 
+112 
+113 
+114   /* thresh in a little space left and right to avoid interpolation
+115      disasters at the edges of the interval */
+116   min_absc = min_absc - (max_absc - min_absc) / NUM_INTERPOINTS * 2;
+117   max_absc = max_absc + (max_absc - min_absc) / NUM_INTERPOINTS * 2;
+118   step = (max_absc - min_absc) / NUM_INTERPOINTS;
+119   xvals[0] = min_absc;
+120   yvals[0] = pathlength_integral (func, 0, xvals[0]);
+121   for (i = 1; i < NUM_INTERPOINTS; i++)
+122     {
+123       xvals[i] = min_absc + i * step;
+124       yvals[i] =
+125         yvals[i - 1] + pathlength_integral (func, xvals[i - 1],
+126                                             xvals[i]);
+127     }
+128   
+129   //interpolator = factory.create(xvals, yvals, NUM_INTERPOINTS);
+130   //accelerator = gsl_interp_accel_new();
+131   
+132   acc = gsl_interp_accel_alloc ();
+133   spline = gsl_spline_alloc (gsl_interp_cspline, NUM_INTERPOINTS);
+134   gsl_spline_init (spline, xvals, yvals, NUM_INTERPOINTS);
+135 
+136   for (i = 0; i < data->size; i++)
+137     {
+138       //gsl_interp_eval_impl(interpolator, xvals, yvals, 
+139       //  gsl_vector_get(data, i), accelerator, &res);
+140       res = gsl_spline_eval (spline, gsl_vector_get (data, i), acc);
+141       gsl_vector_set (data, i, res);
+142     }
+143 
+144   gsl_spline_free (spline);
+145   gsl_interp_accel_free (acc);
+146   
+147   return 0;
+148 }
+\end{DoxyCode}
+\hypertarget{spce__pathlength_8c_ac07591f8ee52663ed04c2e003b1057dc}{
+\index{spce\_\-pathlength.c@{spce\_\-pathlength.c}!absc\_\-to\_\-pathl\_\-path\_\-len@{absc\_\-to\_\-pathl\_\-path\_\-len}}
+\index{absc\_\-to\_\-pathl\_\-path\_\-len@{absc\_\-to\_\-pathl\_\-path\_\-len}!spce_pathlength.c@{spce\_\-pathlength.c}}
+\subsubsection[{absc\_\-to\_\-pathl\_\-path\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}static int absc\_\-to\_\-pathl\_\-path\_\-len (const {\bf trace\_\-func} $\ast$const  {\em func}, \/  gsl\_\-vector $\ast$const  {\em data})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spce__pathlength_8c_ac07591f8ee52663ed04c2e003b1057dc}
+transforms a list of abscissas to a list of path lengths if the path length is known analytically.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em func}]the \hyperlink{structspectrum}{spectrum} trace function to use in the transformation \item[{\em data}]the table of abscissas relative to the reference point \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+32 {
+33   int i;
+34 
+35   for (i = 0; i < data->size; i++)
+36     {
+37       gsl_vector_set (data, i,
+38                       func->path_len (gsl_vector_get (data, i),
+39                                       func->data));
+40 
+41     }
+42   return 0;
+43 }
+\end{DoxyCode}
+\hypertarget{spce__pathlength_8c_a43a6cbb6f2e1c9b05020c0af68570e5c}{
+\index{spce\_\-pathlength.c@{spce\_\-pathlength.c}!absc\_\-to\_\-pathl\_\-val\_\-only@{absc\_\-to\_\-pathl\_\-val\_\-only}}
+\index{absc\_\-to\_\-pathl\_\-val\_\-only@{absc\_\-to\_\-pathl\_\-val\_\-only}!spce_pathlength.c@{spce\_\-pathlength.c}}
+\subsubsection[{absc\_\-to\_\-pathl\_\-val\_\-only}]{\setlength{\rightskip}{0pt plus 5cm}static int absc\_\-to\_\-pathl\_\-val\_\-only (const {\bf trace\_\-func} $\ast$const  {\em func}, \/  gsl\_\-vector $\ast$const  {\em data})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spce__pathlength_8c_a43a6cbb6f2e1c9b05020c0af68570e5c}
+transforms a list of abscissas to a list of path lengths if not even the derivative is known.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em func}]the \hyperlink{structspectrum}{spectrum} trace function to use in the transformation \item[{\em data}]the table of abscissas relative to the reference point \end{DoxyParams}
+\begin{Desc}
+\item[\hyperlink{todo__todo000004}{Todo}]pathlength for traces without derivatibes is not implemented \end{Desc}
+
+
+
+\begin{DoxyCode}
+162 {
+163   fprintf (stderr, "Not implemented yet\n");
+164   abort ();
+165   return 0;
+166 }
+\end{DoxyCode}
+\hypertarget{spce__pathlength_8c_a414f68dbdc28341ce5e57d2af4ab040c}{
+\index{spce\_\-pathlength.c@{spce\_\-pathlength.c}!abscissa\_\-to\_\-pathlength@{abscissa\_\-to\_\-pathlength}}
+\index{abscissa\_\-to\_\-pathlength@{abscissa\_\-to\_\-pathlength}!spce_pathlength.c@{spce\_\-pathlength.c}}
+\subsubsection[{abscissa\_\-to\_\-pathlength}]{\setlength{\rightskip}{0pt plus 5cm}int abscissa\_\-to\_\-pathlength (const {\bf trace\_\-func} $\ast$const  {\em func}, \/  gsl\_\-vector $\ast$const  {\em data})}}
+\label{spce__pathlength_8c_a414f68dbdc28341ce5e57d2af4ab040c}
+transforms a list of abscissas to a list of path lengths. This function decides what of the absc\_\-to\_\-pathl\_\-len, absc\_\-to\_\-pathl\_\-deriv, or absc\_\-to\_\-pathl\_\-val\_\-only to use.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em func}]the \hyperlink{structspectrum}{spectrum} trace function to use in the transformation \item[{\em data}]the table of abscissas relative to the reference point \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+180 {
+181   if (func->path_len)
+182     {
+183       return absc_to_pathl_path_len (func, data);
+184     }
+185   if (func->deriv)
+186     {
+187       return absc_to_pathl_deriv (func, data);
+188     }
+189   return absc_to_pathl_val_only (func, data);
+190 }
+\end{DoxyCode}
+\hypertarget{spce__pathlength_8c_aeddbd5882172ba159b01aaad0644f356}{
+\index{spce\_\-pathlength.c@{spce\_\-pathlength.c}!pathlength\_\-fun@{pathlength\_\-fun}}
+\index{pathlength\_\-fun@{pathlength\_\-fun}!spce_pathlength.c@{spce\_\-pathlength.c}}
+\subsubsection[{pathlength\_\-fun}]{\setlength{\rightskip}{0pt plus 5cm}static double pathlength\_\-fun (double {\em x}, \/  void $\ast$ {\em pars})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spce__pathlength_8c_aeddbd5882172ba159b01aaad0644f356}
+
+
+
+\begin{DoxyCode}
+53 {
+54   const trace_func *const func = pars;
+55   double y = func->deriv (x, func->data);
+56   
+57   return sqrt (1 + y * y);
+58 }
+\end{DoxyCode}
+\hypertarget{spce__pathlength_8c_a17ca4edf614b086bb67c1e2a2dab72c2}{
+\index{spce\_\-pathlength.c@{spce\_\-pathlength.c}!pathlength\_\-integral@{pathlength\_\-integral}}
+\index{pathlength\_\-integral@{pathlength\_\-integral}!spce_pathlength.c@{spce\_\-pathlength.c}}
+\subsubsection[{pathlength\_\-integral}]{\setlength{\rightskip}{0pt plus 5cm}static double pathlength\_\-integral (const {\bf trace\_\-func} $\ast$const  {\em func}, \/  const double {\em x0}, \/  const double {\em x1})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spce__pathlength_8c_a17ca4edf614b086bb67c1e2a2dab72c2}
+
+
+
+\begin{DoxyCode}
+72 {
+73   double res, abserr;
+74   size_t neval;
+75   gsl_function f;
+76   
+77   f.function = &pathlength_fun;
+78   f.params = (void *) func;
+79   
+80   gsl_integration_qng (&f, x0, x1, 1e-6, 1e-7, &res, &abserr, &neval);
+81   return res;
+82 }
+\end{DoxyCode}

@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/repos/tips/!svn/ver/221/branches/tips_build/test
+END
+testaxesim.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/tips/!svn/ver/223/branches/tips_build/test/testaxesim.pyc
+END
+test_preintegration.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/223/branches/tips_build/test/test_preintegration.py
+END
+testobservation.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/223/branches/tips_build/test/testobservation.py
+END
+testobservation.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/testobservation.pyc
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/tips/!svn/ver/221/branches/tips_build/test/__init__.py
+END
+__init__.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/tips/!svn/ver/223/branches/tips_build/test/__init__.pyc
+END
+test_Verify.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/tips/!svn/ver/223/branches/tips_build/test/test_Verify.py
+END
+test_fullsystem.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/223/branches/tips_build/test/test_fullsystem.py
+END
+testsky.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/tips/!svn/ver/223/branches/tips_build/test/testsky.py
+END
+testinstrument.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/223/branches/tips_build/test/testinstrument.py
+END
+testsky.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repos/tips/!svn/ver/223/branches/tips_build/test/testsky.pyc
+END
+testinstrument.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/223/branches/tips_build/test/testinstrument.pyc
+END
+test_unit.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/tips/!svn/ver/223/branches/tips_build/test/test_unit.py
+END
+test_integration_pp.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/223/branches/tips_build/test/test_integration_pp.py
+END
+test_integration.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/test_integration.py
+END
+test_unitAxesim.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/223/branches/tips_build/test/test_unitAxesim.py
+END
+testaxesim.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/tips/!svn/ver/223/branches/tips_build/test/testaxesim.py
+END

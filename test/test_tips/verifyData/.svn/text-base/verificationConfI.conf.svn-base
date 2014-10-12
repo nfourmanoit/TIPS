@@ -1,0 +1,50 @@
+INSTRUMENT WFC3
+CAMERA IR
+#
+# MK: simple configuration file to verify 
+#     the simulation software
+#
+SCIENCE_EXT SCI ; Science extension
+DQ_EXT DQ       ; DQ extension
+ERRORS_EXT ERR  ; Error extension
+DQMASK 11775    ; 4096 and 512 taken out
+EXPTIME 560.0
+NPIXX 1014
+NPIXY 1014
+DC 0.1
+QE 0.75
+
+RDNOISE 20.0
+#EXPTIME EXPTIME
+POBJSIZE 1.0
+SMFACTOR 1.0
+
+# should be useless, no?
+#DRZRESOLA  50.0
+#DRZSCALE   0.13
+#DRZLAMB0   1000.0
+#DRZXINI    5.0
+#DRZROOT   aXeWFC3_G141
+
+# First order (BEAM A) *******************
+BEAMA 0 200
+MMAG_EXTRACT_A 30
+MMAG_MARK_A 30
+#
+# Trace description
+#
+DYDX_ORDER_A 0
+DYDX_A_0  0.0E+00
+#
+# X and Y Offsets
+#
+XOFF_A 0.0
+YOFF_A 0.0
+#
+# Dispersion solution
+#
+DISP_ORDER_A 1
+DLDP_A_0 1.0E+04
+DLDP_A_1 5.0E+01
+#
+SENSITIVITY_A constSensI.fits

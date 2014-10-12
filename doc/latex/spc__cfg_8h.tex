@@ -1,0 +1,311 @@
+\hypertarget{spc__cfg_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-cfg.h File Reference}
+\label{spc__cfg_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-cfg.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-cfg.h}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$ctype.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-utils.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structCfgStrings}{CfgStrings}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__back}{spc\_\-back}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__cfg_8h_a7cb4067a69f1bac9fa25877339c97ab8}{LINE\_\-LEN\_\-MAX}~1280
+\item 
+\#define \hyperlink{spc__cfg_8h_ac3146f1e9227301bb4aa518f4d336cee}{BUFFERSIZE}~LINE\_\-LEN\_\-MAX +2
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92}{RetVal} \{ \hyperlink{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92a21066c86e4ff38f28983e14891fcdfd4}{NO\_\-PROBLEMS}, 
+\hyperlink{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92a45574fd1c54a135716f64580be37e408}{ERR\_\-FOPEN}, 
+\hyperlink{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92aaaeafdbf3aecc46864daa3cd829c7e05}{ERR\_\-MEM}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{spc__cfg_8h_a5c6339a8a6dee72ee5aa6ef36833abe7}{CfgRead} (char $\ast$Filename, struct \hyperlink{structCfgStrings}{CfgStrings} $\ast$CfgInfo)
+\item 
+int \hyperlink{spc__cfg_8h_af8d0135b02c0345a6220957992b30e09}{CfgRead\_\-from\_\-array} (char $\ast$$\ast$arr, struct \hyperlink{structCfgStrings}{CfgStrings} $\ast$CfgInfo)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__cfg_8h_ac3146f1e9227301bb4aa518f4d336cee}{
+\index{spc\_\-cfg.h@{spc\_\-cfg.h}!BUFFERSIZE@{BUFFERSIZE}}
+\index{BUFFERSIZE@{BUFFERSIZE}!spc_cfg.h@{spc\_\-cfg.h}}
+\subsubsection[{BUFFERSIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define BUFFERSIZE~LINE\_\-LEN\_\-MAX +2}}
+\label{spc__cfg_8h_ac3146f1e9227301bb4aa518f4d336cee}
+\hypertarget{spc__cfg_8h_a7cb4067a69f1bac9fa25877339c97ab8}{
+\index{spc\_\-cfg.h@{spc\_\-cfg.h}!LINE\_\-LEN\_\-MAX@{LINE\_\-LEN\_\-MAX}}
+\index{LINE\_\-LEN\_\-MAX@{LINE\_\-LEN\_\-MAX}!spc_cfg.h@{spc\_\-cfg.h}}
+\subsubsection[{LINE\_\-LEN\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define LINE\_\-LEN\_\-MAX~1280}}
+\label{spc__cfg_8h_a7cb4067a69f1bac9fa25877339c97ab8}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92}{
+\index{spc\_\-cfg.h@{spc\_\-cfg.h}!RetVal@{RetVal}}
+\index{RetVal@{RetVal}!spc_cfg.h@{spc\_\-cfg.h}}
+\subsubsection[{RetVal}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf RetVal}}}
+\label{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{NO\_\-PROBLEMS@{NO\_\-PROBLEMS}!spc\_\-cfg.h@{spc\_\-cfg.h}}\index{spc\_\-cfg.h@{spc\_\-cfg.h}!NO\_\-PROBLEMS@{NO\_\-PROBLEMS}}\item[{\em 
+\hypertarget{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92a21066c86e4ff38f28983e14891fcdfd4}{
+NO\_\-PROBLEMS}
+\label{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92a21066c86e4ff38f28983e14891fcdfd4}
+}]\index{ERR\_\-FOPEN@{ERR\_\-FOPEN}!spc\_\-cfg.h@{spc\_\-cfg.h}}\index{spc\_\-cfg.h@{spc\_\-cfg.h}!ERR\_\-FOPEN@{ERR\_\-FOPEN}}\item[{\em 
+\hypertarget{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92a45574fd1c54a135716f64580be37e408}{
+ERR\_\-FOPEN}
+\label{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92a45574fd1c54a135716f64580be37e408}
+}]\index{ERR\_\-MEM@{ERR\_\-MEM}!spc\_\-cfg.h@{spc\_\-cfg.h}}\index{spc\_\-cfg.h@{spc\_\-cfg.h}!ERR\_\-MEM@{ERR\_\-MEM}}\item[{\em 
+\hypertarget{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92aaaeafdbf3aecc46864daa3cd829c7e05}{
+ERR\_\-MEM}
+\label{spc__cfg_8h_a98cd80f4bb376e74ad19a8fa85a88d92aaaeafdbf3aecc46864daa3cd829c7e05}
+}]\end{description}
+\end{Desc}
+
+
+
+
+\begin{DoxyCode}
+26 {
+27      NO_PROBLEMS,
+28      ERR_FOPEN, 
+29      ERR_MEM,
+30 };
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__cfg_8h_a5c6339a8a6dee72ee5aa6ef36833abe7}{
+\index{spc\_\-cfg.h@{spc\_\-cfg.h}!CfgRead@{CfgRead}}
+\index{CfgRead@{CfgRead}!spc_cfg.h@{spc\_\-cfg.h}}
+\subsubsection[{CfgRead}]{\setlength{\rightskip}{0pt plus 5cm}int CfgRead (char $\ast$ {\em Filename}, \/  struct {\bf CfgStrings} $\ast$ {\em CfgInfo})}}
+\label{spc__cfg_8h_a5c6339a8a6dee72ee5aa6ef36833abe7}
+Utility function to parse a filename and populate a \hyperlink{structCfgStrings}{CfgStrings} structure
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em Filename}]a pointer to a string containing the name of a configuration file \item[{\em CfgInfo}]a pointer to an existing \hyperlink{structCfgStrings}{CfgStrings} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{structCfgStrings}{CfgStrings} 
+\end{DoxySeeAlso}
+
+
+
+\begin{DoxyCode}
+26 {
+27   static char Buffer[BUFFERSIZE];
+28   char *WorkPtr;
+29   char *CfgName;
+30   char *CfgData;
+31   struct CfgStrings *Cfg;
+32   FILE *CfgFile;
+33   
+34   CfgFile = fopen (Filename, "r");
+35   if (NULL == CfgFile)
+36     {
+37       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Could not open %s!\n",
+38                    Filename); 
+39     }
+40 
+41   //  fprintf(stderr, "%s: %s\n", Filename, CfgInfo->name);
+42 
+43   while (NULL != fgets (Buffer, BUFFERSIZE, CfgFile))
+44     {
+45       // check whether it is a valid
+46       // line, or whether it can be discarded
+47       if (!is_valid_inima_line(Buffer))
+48         continue;
+49       /* clip off optional comment tail indicated by a semi-colon
+50        */
+51       if (NULL != (WorkPtr = strchr (Buffer, ';')))
+52         *WorkPtr = '\0';
+53       else
+54         WorkPtr = Buffer + strlen (Buffer);
+55 
+56       /* clip off trailing and leading white space
+57        */
+58       WorkPtr--;
+59       while (isspace ((int) *WorkPtr) && WorkPtr >= Buffer)
+60         *WorkPtr-- = '\0';
+61       WorkPtr = NULL;
+62 
+63       WorkPtr = Buffer;
+64       while (isspace ((int) *WorkPtr))
+65         WorkPtr++;
+66       if (0 == strlen (WorkPtr))
+67         continue;
+68       
+69       CfgName = strtok (WorkPtr, " =");
+70       
+71       if (NULL != CfgName)
+72         {
+73           /* Condition the name (lower case required),
+74              and strip leading white and a 'late' = from data part.
+75           */
+76           //strlwr( CfgName );
+77           CfgData = strtok (NULL, "");
+78           if (CfgData != NULL)
+79             {
+80               while (isspace ((int) *CfgData))
+81                 CfgData++;
+82               if ('=' == *CfgData)
+83                 CfgData++;
+84               while (isspace ((int) *CfgData))
+85                 CfgData++;
+86             }
+87 
+88           /* look for matching 'name'
+89            */
+90           Cfg = CfgInfo;
+91           while (NULL != Cfg->name
+92                  && 0 != strcmp (Cfg->name, CfgName))
+93             Cfg++;
+94 
+95           /* duplicate the data if the name is found.
+96            */
+97           //      fprintf(stderr, "%s: %s: %s %i\n", Filename, CfgInfo->name, Buf
+      fer, strlen(Buffer));
+98           //      fprintf(stderr, "%s: %s:\n", Cfg->name, CfgData);
+99           if (NULL != Cfg->name)
+100             {
+101               if (NULL == CfgData)
+102                 {
+103                   fclose (CfgFile);
+104                   aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+105                                "Error. No data read for %s. Check format of confi
+      guration file.\n",
+106                                Cfg->name);
+107                 }
+108               Cfg->data = strdup (CfgData);     /* strdup is not ANSI    */
+109               /* memory leaks if Cfg->data */
+110               /* is malloc'ed already      */
+111               
+112             }           /* undetected error on failure should not be a problem  *
+      /
+113                    /* as configuration reading should be done early.       */
+114         }                       /* but test and handle it anyway ...             
+             */
+115     }
+116   fclose (CfgFile);
+117   return NO_PROBLEMS;
+118 }
+\end{DoxyCode}
+\hypertarget{spc__cfg_8h_af8d0135b02c0345a6220957992b30e09}{
+\index{spc\_\-cfg.h@{spc\_\-cfg.h}!CfgRead\_\-from\_\-array@{CfgRead\_\-from\_\-array}}
+\index{CfgRead\_\-from\_\-array@{CfgRead\_\-from\_\-array}!spc_cfg.h@{spc\_\-cfg.h}}
+\subsubsection[{CfgRead\_\-from\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}int CfgRead\_\-from\_\-array (char $\ast$$\ast$ {\em arr}, \/  struct {\bf CfgStrings} $\ast$ {\em CfgInfo})}}
+\label{spc__cfg_8h_af8d0135b02c0345a6220957992b30e09}
+Utility function to parse a NULL terminated array of strings and populate a \hyperlink{structCfgStrings}{CfgStrings} structure
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em Filename}]a pointer to a string containing the name of a confiuration file \item[{\em CfgInfo}]a pointer to an existing \hyperlink{structCfgStrings}{CfgStrings} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{structCfgStrings}{CfgStrings} 
+\end{DoxySeeAlso}
+
+
+
+\begin{DoxyCode}
+133 {
+134   char Buffer[BUFFERSIZE];
+135   char *WorkPtr;
+136   char *CfgName;
+137   char *CfgData;
+138   struct CfgStrings *Cfg;
+139   int i=0;
+140   
+141   while (NULL != arr[i] && strcmp(arr[i],"NULL\0") != 0)
+142     {
+143       sprintf(Buffer,"%s",arr[i]);
+144       /* clip off optional comment tail indicated by a semi-colon
+145        */
+146       if (NULL != (WorkPtr = strchr (Buffer, ';')))
+147         *WorkPtr = '\0';
+148       else
+149         WorkPtr = Buffer + strlen (Buffer);
+150       
+151       /* clip off trailing and leading white space
+152        */
+153       WorkPtr--;
+154       while (isspace ((int) *WorkPtr) && WorkPtr >= Buffer)
+155         *WorkPtr-- = '\0';
+156       WorkPtr = Buffer;
+157       while (isspace ((int) *WorkPtr))
+158         WorkPtr++;
+159       if (0 == strlen (WorkPtr))
+160         continue;
+161       
+162       CfgName = strtok (WorkPtr, " =");
+163       
+164       if (NULL != CfgName)
+165         {
+166           /* Condition the name (lower case required),
+167              and strip leading white and a 'late' = from data part.
+168           */
+169           //strlwr( CfgName );
+170           CfgData = strtok (NULL, "");
+171           if (CfgData != NULL)
+172             {
+173               while (isspace ((int) *CfgData))
+174                 CfgData++;
+175               if ('=' == *CfgData)
+176                 CfgData++;
+177               while (isspace ((int) *CfgData))
+178                 CfgData++;
+179             }
+180           
+181           /* look for matching 'name'
+182            */
+183           Cfg = CfgInfo;
+184           while (NULL != Cfg->name
+185                  && 0 != strcmp (Cfg->name, CfgName))
+186             Cfg++;
+187           
+188           /* duplicate the data if the name is found.
+189            */
+190           if (NULL != Cfg->name)
+191             {
+192               Cfg->data = strdup (CfgData);     /* strdup is not ANSI    */
+193               //              strcpy(Cfg->data,CfgData);        /* strdup is not 
+      ANSI    */
+194               /* memory leaks if Cfg->data */
+195               /* is malloc'ed already      */
+196               if (NULL == Cfg->data)
+197                 {
+198                   aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+199                                "Memory error. No data read");
+200                 }
+201             }           /* undetected error on failure should not be a problem  *
+      /
+202           /* as configuration reading should be done early.       */
+203         }                       /* but test and handle it anyway ...             
+             */
+204       i++;
+205     }
+206   return NO_PROBLEMS;
+207 }
+\end{DoxyCode}

@@ -1,0 +1,1318 @@
+\hypertarget{spc__utils_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-utils.c File Reference}
+\label{spc__utils_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-utils.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-utils.c}}
+}
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-sex.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-utils.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__utils}{spc\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__utils_8c_aab1eccb0a42085507799ff6c5f5b08a9}{NEEDED\_\-GSL\_\-VERSION}~\char`\"{}0.9.1\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{spc__utils_8c_a8e9536e04ecffec6365a655c18070867}{is\_\-valid\_\-entry} (double mag)
+\item 
+int \hyperlink{spc__utils_8c_a975f8bbace187edba3fbb05b9d099046}{get\_\-valid\_\-entries} (const gsl\_\-vector $\ast$magnitudes)
+\item 
+int \hyperlink{spc__utils_8c_ab746bad662c3d633b8ea691cf6fb9bf9}{check\_\-worldcoo\_\-input} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo, const int thsky)
+\item 
+int \hyperlink{spc__utils_8c_a7ff43f642c35a3c47fbef83f1000ff36}{check\_\-imagecoo\_\-input} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo)
+\item 
+void \hyperlink{spc__utils_8c_a1300c5f47fbca9f266e3536034a859e0}{make\_\-GOL\_\-header} (FILE $\ast$fout, const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo, const gsl\_\-vector $\ast$waves, const gsl\_\-vector $\ast$cnums, const \hyperlink{structpx__point}{px\_\-point} backwin\_\-cols, const \hyperlink{structpx__point}{px\_\-point} modinfo\_\-cols)
+\item 
+\hyperlink{structcolinfo}{colinfo} $\ast$ \hyperlink{spc__utils_8c_a47a365ec494841b98f872779b80535b0}{get\_\-sex\_\-col\_\-descr} (char $\ast$filename)
+\item 
+double \hyperlink{spc__utils_8c_ad97d117907a3a7344fae7ecf3f5f7ec5}{get\_\-col\_\-value} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo, const char key\mbox{[}$\,$\mbox{]}, gsl\_\-vector $\ast$v, int fatal)
+\item 
+double \hyperlink{spc__utils_8c_a1720a86f177dc973d965f0bf525ebd3a}{get\_\-col\_\-value2} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo, const char key\mbox{[}$\,$\mbox{]}, gsl\_\-vector $\ast$v, int fatal)
+\item 
+int \hyperlink{spc__utils_8c_a045718d450da547eb37a4413e815d4d8}{line\_\-is\_\-valid} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo, char line\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{spc__utils_8c_a68eb57d69bfda17abe4d99b5f9c27705}{resolve\_\-colname} (const char colname\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{spc__utils_8c_a50e5a8658878acd54ee085583f3964b7}{has\_\-magnitudes} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo)
+\item 
+\hyperlink{structpx__point}{px\_\-point} \hyperlink{spc__utils_8c_a57a488065fd31edc4276c24af0a2fe53}{has\_\-backwindow} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo)
+\item 
+\hyperlink{structpx__point}{px\_\-point} \hyperlink{spc__utils_8c_a77125dc504a3f1905e2f89b0296d37cf}{has\_\-modelinfo} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo)
+\item 
+int \hyperlink{spc__utils_8c_a3d16714a512547070ba425e88c4bb763}{get\_\-magcols} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo, gsl\_\-vector $\ast$wavelength, gsl\_\-vector $\ast$colnums)
+\item 
+void \hyperlink{spc__utils_8c_a35d9db69c2b8f12924f8389532178efd}{get\_\-columname} (const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo, const int colnum, char cname\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{spc__utils_8c_a5c6acd1c34d2de7d9e7d369a6518eb54}{get\_\-columnumber} (const char cname\mbox{[}$\,$\mbox{]}, const \hyperlink{structcolinfo}{colinfo} $\ast$actcatinfo)
+\item 
+int \hyperlink{spc__utils_8c_a9cfaa2da5415e6bde7e7cea924473b41}{get\_\-magauto\_\-col} (const gsl\_\-vector $\ast$wavelength, const gsl\_\-vector $\ast$colnums, const double lambda\_\-mark)
+\item 
+void \hyperlink{spc__utils_8c_a7be51426329dec34067041865bf2d36c}{check\_\-libraries} (void)
+\item 
+void \hyperlink{spc__utils_8c_ab90505406d3960f2f61d6db4c5a9b7cc}{init\_\-search} (const char $\ast$string)
+\item 
+char $\ast$ \hyperlink{spc__utils_8c_a288420ef2c849abe17db4f995aa73325}{strsearch} (const char $\ast$string)
+\item 
+int \hyperlink{spc__utils_8c_a4a82c9b42093bc1e0795ef6441f89c49}{isnum2} (char $\ast$string)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{spc__utils_8c_ae52364129107c1b86e38dd795086046d}{string\_\-to\_\-gsl\_\-array} (char $\ast$str)
+\item 
+char $\ast$ \hyperlink{spc__utils_8c_a8681db0694ab1aa93d402f813cfd520a}{stptok} (const char $\ast$s, char $\ast$tok, size\_\-t toklen, char $\ast$brk)
+\item 
+void \hyperlink{spc__utils_8c_a5173a4942a3d83d368b97ad51aabedb6}{lv1ws} (char $\ast$str)
+\item 
+char $\ast$ \hyperlink{spc__utils_8c_a758cf1ef470ca77056e97ce46e0cd95b}{rmlead} (char $\ast$str)
+\item 
+\hyperlink{structobservation}{observation} $\ast$ \hyperlink{spc__utils_8c_ac89172f10962f24de5d0284500597c64}{load\_\-dummy\_\-observation} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static size\_\-t \hyperlink{spc__utils_8c_a3278fc9538370857ff6034411692abd1}{table} \mbox{[}UCHAR\_\-MAX+1\mbox{]}
+\item 
+static size\_\-t \hyperlink{spc__utils_8c_a7360b55975153b822efc5217b7734e6a}{len}
+\item 
+static char $\ast$ \hyperlink{spc__utils_8c_a9b856709f3a6aa9192b8075a5154cb73}{findme}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__utils_8c_aab1eccb0a42085507799ff6c5f5b08a9}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!NEEDED\_\-GSL\_\-VERSION@{NEEDED\_\-GSL\_\-VERSION}}
+\index{NEEDED\_\-GSL\_\-VERSION@{NEEDED\_\-GSL\_\-VERSION}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{NEEDED\_\-GSL\_\-VERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define NEEDED\_\-GSL\_\-VERSION~\char`\"{}0.9.1\char`\"{}}}
+\label{spc__utils_8c_aab1eccb0a42085507799ff6c5f5b08a9}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__utils_8c_a7ff43f642c35a3c47fbef83f1000ff36}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!check\_\-imagecoo\_\-input@{check\_\-imagecoo\_\-input}}
+\index{check\_\-imagecoo\_\-input@{check\_\-imagecoo\_\-input}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{check\_\-imagecoo\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-imagecoo\_\-input (const {\bf colinfo} $\ast$ {\em actcatinfo})}}
+\label{spc__utils_8c_a7ff43f642c35a3c47fbef83f1000ff36}
+Function: check\_\-imagecoo\_\-input Checks whether the columns for the image coordinates are present in a catalog header. Returns the number of missing columns
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the catalog header ot be examined\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+checksum -\/ the number of missing columns 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+131                                                 {
+132 
+133   int checksum=0;
+134   
+135   // check for each column 
+136   if (!get_columnumber("X_IMAGE", actcatinfo))
+137     checksum++;
+138   if (!get_columnumber("Y_IMAGE", actcatinfo))
+139     checksum++;
+140   if (!get_columnumber("A_IMAGE", actcatinfo))
+141     checksum++;
+142   if (!get_columnumber("B_IMAGE", actcatinfo))
+143     checksum++;
+144   if (!get_columnumber("THETA_IMAGE", actcatinfo))
+145     checksum++;
+146 
+147   // return the number of missing columns
+148   return checksum;
+149 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a7be51426329dec34067041865bf2d36c}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!check\_\-libraries@{check\_\-libraries}}
+\index{check\_\-libraries@{check\_\-libraries}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{check\_\-libraries}]{\setlength{\rightskip}{0pt plus 5cm}void check\_\-libraries (void)}}
+\label{spc__utils_8c_a7be51426329dec34067041865bf2d36c}
+Function: check\_\-libraries A helper function which checks the versin numbers of a few runtime libraries to ensure that the proper versions of libraries are being found. 
+
+
+\begin{DoxyCode}
+784 {
+785   int n;
+786   int major = 0, minor = 0, micro = 0;
+787   int gsl_major_version = 0, gsl_minor_version = 0, gsl_micro_version = 0;
+788   
+789 #define NEEDED_GSL_VERSION "0.9.1"
+790   
+791   n = sscanf (GSL_VERSION, "%d.%d.%d", &major, &minor, &micro);
+792   if (n != 2 && n != 3)
+793     {
+794       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+795                    "check_libraries: %s, bad GSL version string\n",
+796                    GSL_VERSION);
+797     }
+798   n = sscanf (NEEDED_GSL_VERSION, "%d.%d.%d", &gsl_major_version,
+799               &gsl_minor_version, &gsl_micro_version);
+800   if (n != 2 && n != 3)
+801     {
+802       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+803                    "check_libraries: %s, bad NEEEDED GSL version string\n",
+804                    GSL_VERSION);
+805     }
+806   if (((gsl_major_version > major)
+807        || ((gsl_major_version == major) && (gsl_minor_version > minor))
+808        || ((gsl_major_version == major) && (gsl_minor_version == minor)
+809            && (gsl_micro_version >= micro))))
+810     {
+811       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+812                    "check_libraries: Need GSL version %s, loaded version is %s.",
+      
+813                    NEEDED_GSL_VERSION, GSL_VERSION);
+814     }
+815 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_ab746bad662c3d633b8ea691cf6fb9bf9}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!check\_\-worldcoo\_\-input@{check\_\-worldcoo\_\-input}}
+\index{check\_\-worldcoo\_\-input@{check\_\-worldcoo\_\-input}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{check\_\-worldcoo\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-worldcoo\_\-input (const {\bf colinfo} $\ast$ {\em actcatinfo}, \/  const int {\em thsky})}}
+\label{spc__utils_8c_ab746bad662c3d633b8ea691cf6fb9bf9}
+Function: check\_\-worldcoo\_\-input Checks whether the columns for the world coordinates are present in a catalog header. Returns the number of missing columns
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the catalog header ot be examined\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+checksum -\/ the number of missing columns 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+88 {
+89   int checksum=0;
+90 
+91   // check for each column
+92   if (!get_columnumber("NUMBER", actcatinfo))
+93     checksum++;
+94   if (!get_columnumber("X_WORLD", actcatinfo))
+95     checksum++;
+96   if (!get_columnumber("Y_WORLD", actcatinfo))
+97     checksum++;
+98   if (!get_columnumber("A_WORLD", actcatinfo))
+99     checksum++;
+100   if (!get_columnumber("B_WORLD", actcatinfo))
+101     checksum++;
+102 
+103   //  if (thsky)
+104   //    {
+105   //      if (!get_columnumber("THETA_SKY", actcatinfo))
+106   //    checksum++;
+107   //    }
+108   //  else
+109   //    {
+110   if (!get_columnumber("THETA_WORLD", actcatinfo))
+111     checksum++;
+112         //    }
+113 
+114   // return the number of missing columns
+115   return checksum;
+116 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_ad97d117907a3a7344fae7ecf3f5f7ec5}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!get\_\-col\_\-value@{get\_\-col\_\-value}}
+\index{get\_\-col\_\-value@{get\_\-col\_\-value}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{get\_\-col\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-col\_\-value (const {\bf colinfo} $\ast$ {\em actcatinfo}, \/  const char {\em key}\mbox{[}$\,$\mbox{]}, \/  gsl\_\-vector $\ast$ {\em v}, \/  int {\em fatal})}}
+\label{spc__utils_8c_ad97d117907a3a7344fae7ecf3f5f7ec5}
+Function: get\_\-col\_\-value The function identifies the column number for a given column name, and extracts the data value for this column from the vector representation of a catalog line.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the header of the catalog \item[{\em key}]-\/ the column name \item[{\em v}]-\/ a gsl\_\-vector containing the data of a catalog line \item[{\em fatal}]-\/ controls the severity of the error if the column does not exist\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+res -\/ the data value in the column 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+326 {
+327   double res;
+328   int    col;
+329   
+330   // determine the column number for the column name 
+331   col = get_columnumber(key, actcatinfo);
+332   // depending on 'fatal' exit or give back NaN
+333   // if the column does not exist
+334   if ( (fatal!=0) && (col == 0) )
+335     {
+336       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+337                    "%s not found in object catalog", key);
+338     }
+339 
+340   if ( (fatal==0) && (col == 0) )
+341     return GSL_NAN;
+342 
+343   // get the data value from the vector
+344   res = gsl_vector_get (v, col - 1);
+345 
+346   //  return the data value
+347   return res;
+348 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a1720a86f177dc973d965f0bf525ebd3a}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!get\_\-col\_\-value2@{get\_\-col\_\-value2}}
+\index{get\_\-col\_\-value2@{get\_\-col\_\-value2}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{get\_\-col\_\-value2}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-col\_\-value2 (const {\bf colinfo} $\ast$ {\em actcatinfo}, \/  const char {\em key}\mbox{[}$\,$\mbox{]}, \/  gsl\_\-vector $\ast$ {\em v}, \/  int {\em fatal})}}
+\label{spc__utils_8c_a1720a86f177dc973d965f0bf525ebd3a}
+
+
+
+\begin{DoxyCode}
+356 {
+357   double res;
+358   int    col;
+359   
+360   // determine the column number for the column name 
+361   col = get_columnumber(key, actcatinfo);
+362   // depending on 'fatal' exit or give back NaN
+363   // if the column does not exist
+364   if ( (fatal!=0) && (col == 0) )
+365     {
+366       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+367                    "%s not found in object catalog", key);
+368     }
+369 
+370   if ( (fatal==0) && (col == 0) )
+371     return -1000000;
+372 
+373   // get the data value from the vector
+374   res = gsl_vector_get (v, col - 1);
+375 
+376   //  return the data value
+377   return res;
+378 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a35d9db69c2b8f12924f8389532178efd}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!get\_\-columname@{get\_\-columname}}
+\index{get\_\-columname@{get\_\-columname}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{get\_\-columname}]{\setlength{\rightskip}{0pt plus 5cm}void get\_\-columname (const {\bf colinfo} $\ast$ {\em actcatinfo}, \/  const int {\em colnum}, \/  char {\em cname}\mbox{[}$\,$\mbox{]})}}
+\label{spc__utils_8c_a35d9db69c2b8f12924f8389532178efd}
+Function: get\_\-columname The function extracts a specific column name from the header structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the header structure with the column names \item[{\em colnum}]-\/ the column number \item[{\em cname}]-\/ string to store the column name \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+698 {
+699   // copy the column name into the buffer string
+700   strcpy(cname, actcatinfo->columns[colnum-1].name);
+701 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a5c6acd1c34d2de7d9e7d369a6518eb54}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!get\_\-columnumber@{get\_\-columnumber}}
+\index{get\_\-columnumber@{get\_\-columnumber}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{get\_\-columnumber}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-columnumber (const char {\em cname}\mbox{[}$\,$\mbox{]}, \/  const {\bf colinfo} $\ast$ {\em actcatinfo})}}
+\label{spc__utils_8c_a5c6acd1c34d2de7d9e7d369a6518eb54}
+Function: get\_\-columnumber The function searches in the catalog header structure for a column name and returns its column number.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em cname}]-\/ the column name \item[{\em actcatinfo}]-\/ the header structure with the column names\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+cnum -\/ the number of columns with magnitudes 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+717 {
+718   int cnum = 0;
+719   int i;
+720 
+721   // go through all columns
+722   for (i = 0; i < actcatinfo->numcols; i++)
+723     {
+724       // compare each column name against the name 
+725       if (!strcmp(actcatinfo->columns[i].name,cname))
+726         // store the column number
+727         cnum = actcatinfo->columns[i].number;
+728     }
+729   // return the column number
+730   return cnum;
+731 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a9cfaa2da5415e6bde7e7cea924473b41}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!get\_\-magauto\_\-col@{get\_\-magauto\_\-col}}
+\index{get\_\-magauto\_\-col@{get\_\-magauto\_\-col}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{get\_\-magauto\_\-col}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-magauto\_\-col (const gsl\_\-vector $\ast$ {\em wavelength}, \/  const gsl\_\-vector $\ast$ {\em colnums}, \/  const double {\em lambda\_\-mark})}}
+\label{spc__utils_8c_a9cfaa2da5415e6bde7e7cea924473b41}
+Function: get\_\-magauto\_\-col The functions selects the catalog column with the closest wavelength to LAMBDACENTRAL. The column number is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em wavelength}]-\/ vector with the wavelengths of all magnitude columns \item[{\em colnums}]-\/ vector with the column numbers of of all magnitude columns\end{DoxyParams}
+Return: \begin{DoxyReturn}{Returns}
+select -\/ column number of the magnitude closest to lambda\_\-mark 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+749 {
+750   int i =0, select=0;
+751   double minimum = 10E+06;
+752 
+753   // if there is only one magnitude column
+754   if (wavelength->size < 2){
+755     // return the column number of the magnitude column 
+756     return ((int)gsl_vector_get(colnums, 0));
+757   }
+758   else{
+759     // in case there are more magnitude columns, loop over all
+760     for (i=0; i < wavelength->size; i++){
+761       // look whether the difference to LAMBDACENTRAL is 
+762       // smaller then the actual minimum
+763       if (fabs(lambda_mark - gsl_vector_get(wavelength,i)) < minimum)
+764         {
+765           // store the new minimum and its column number
+766           minimum = fabs(lambda_mark - gsl_vector_get(wavelength,i));
+767           select = (int)gsl_vector_get(colnums,i);
+768         }
+769     }
+770   }
+771   // return the column number
+772   return select;
+773 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a3d16714a512547070ba425e88c4bb763}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!get\_\-magcols@{get\_\-magcols}}
+\index{get\_\-magcols@{get\_\-magcols}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{get\_\-magcols}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-magcols (const {\bf colinfo} $\ast$ {\em actcatinfo}, \/  gsl\_\-vector $\ast$ {\em wavelength}, \/  gsl\_\-vector $\ast$ {\em colnums})}}
+\label{spc__utils_8c_a3d16714a512547070ba425e88c4bb763}
+Function: get\_\-magcols The function searches for magnitude coulumns in the header structure, then it extracts the wavelength from column name and stores column number and wavelength in gsl\_\-vectors.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the header structure with the column names \item[{\em wavelength}]-\/ vector with the wavelengths \item[{\em wavelength}]-\/ vector with the column numbers\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+mags -\/ the number of columns with magnitudes 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+607                                                         {
+608 
+609   int mags = 0;
+610   int i= 0, j=0;
+611   int iwlength=0;
+612   int entry = 0;
+613   int idest;
+614 
+615 
+616   for (i = 0; i < actcatinfo->numcols; i++)
+617     {
+618       // look whether the column name is suspicious
+619       if (strstr(actcatinfo->columns[i].name,"MAG_") != NULL)
+620         {
+621           // look whether the column name is "MAG_AUTO"
+622           if (!strcmp(actcatinfo->columns[i].name,"MAG_AUTO"))
+623             {
+624               // store the column number, store wavelength 0.0 to indicate
+625               // that it is column MAG_AUTO
+626               gsl_vector_set (colnums, entry, (double)actcatinfo->columns[i].
+      number);
+627               gsl_vector_set (wavelength, entry++, 0.0);
+628               // increment the number of magnitude columns
+629               mags++;
+630             }
+631           else
+632             {
+633               // look whether it is possible to extract a wavelength
+634               // from the column name
+635               iwlength = resolve_colname(actcatinfo->columns[i].name);
+636               if (iwlength)
+637                 {
+638                   // search for the correct position of the actual column
+639                   // in the set of magnitude columns. the magnitude
+640                   // columns are stored in ascending order 
+641                   idest=0;
+642                   while (iwlength > gsl_vector_get(wavelength, idest) && idest < 
+      entry)
+643                     idest++;
+644                   
+645                   // check whether the correct position is at the end of the
+646                   // magnitude column list
+647                   if (idest == entry)
+648                     {
+649 
+650                       // append the column to the list
+651                       gsl_vector_set (colnums, entry, (double)actcatinfo->
+      columns[i].number);
+652                       gsl_vector_set (wavelength, entry++, (double)iwlength);
+653                     }
+654 
+655                   // in case that the correct position is somewhere in the middle
+      
+656                   else
+657                     {
+658 
+659 
+660                       // move the other columns, starting from the last in the
+661                       // list until the column which is at the correct
+662                       // position of the new column
+663                       for (j=entry; j > idest; j--)
+664                         {
+665                           gsl_vector_set (colnums, j, gsl_vector_get(colnums, j-1
+      ));
+666                           gsl_vector_set (wavelength, j, gsl_vector_get(wavelengt
+      h, j-1));
+667                         } 
+668 
+669                       // put the new column at the correct position
+670                       gsl_vector_set (colnums, idest, (double)actcatinfo->
+      columns[i].number);
+671                       gsl_vector_set (wavelength, idest, (double)iwlength);      
+                                   
+672                       entry++;
+673                     }
+674 
+675                   // increment the number of magnitude columns
+676                   mags++;
+677                 }
+678             }
+679         }
+680     }
+681   // return the number of magnitude columns
+682   return mags;
+683 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a47a365ec494841b98f872779b80535b0}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!get\_\-sex\_\-col\_\-descr@{get\_\-sex\_\-col\_\-descr}}
+\index{get\_\-sex\_\-col\_\-descr@{get\_\-sex\_\-col\_\-descr}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{get\_\-sex\_\-col\_\-descr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf colinfo}$\ast$ get\_\-sex\_\-col\_\-descr (char $\ast$ {\em filename})}}
+\label{spc__utils_8c_a47a365ec494841b98f872779b80535b0}
+Function: get\_\-sex\_\-col\_\-descr The function parses through the catalog and extracts the header information , which mainly are the columnnames plus the associated column numbers. The information is stored and returned in a structure of type 'colinfo'.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the catalog name\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+actinfo -\/ the header structure with the catalog information 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+253 {
+254   FILE    *input;
+255   char     Buffer[MAXCHAR];
+256   int      num=0;
+257   int      count=0;
+258   char    *key;
+259   colinfo *actinfo;
+260      
+261 
+262   // allocate memory for the header structure
+263   actinfo = (colinfo *) malloc (sizeof (colinfo));
+264   if (actinfo == NULL)
+265     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+266                  "get_sex_col_descr: Could not allocate memory.");
+267 
+268   //  allocate memory for the dummy 'key
+269   key = (char *) malloc (MAXCHAR * sizeof (char));
+270   if (key == NULL)
+271     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+272                  "get_sex_col_descr: Could not allocate memory.");
+273 
+274   // open the catalog file
+275   input = fopen (filename, "r");
+276   if (!input)
+277     {
+278       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+279                    "get_sex_col_descr: Could not open %s", filename);
+280     }
+281   
+282   //  go through the catalog file
+283   while (NULL != fgets (Buffer, MAXCHAR, input))
+284     {
+285       // see whether the current line is part of the header
+286       if (Buffer[0] == '#')
+287         {
+288           // read the column number and column name from the header line         
+       
+289           sscanf (Buffer, "# %d %21s", &num, key);
+290 
+291           // store column number and column name in the header structure
+292           strcpy(actinfo->columns[count].name, key);
+293           actinfo->columns[count++].number = num;
+294         }
+295     }
+296   // fill in the number of columns
+297   actinfo->numcols = count;
+298 
+299   // free memory
+300   free (key);
+301   key = NULL;
+302 
+303   // return the header structure
+304   return actinfo;
+305 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a975f8bbace187edba3fbb05b9d099046}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!get\_\-valid\_\-entries@{get\_\-valid\_\-entries}}
+\index{get\_\-valid\_\-entries@{get\_\-valid\_\-entries}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{get\_\-valid\_\-entries}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-valid\_\-entries (const gsl\_\-vector $\ast$ {\em magnitudes})}}
+\label{spc__utils_8c_a975f8bbace187edba3fbb05b9d099046}
+Function: get\_\-valid\_\-entries The routine determines the number of valid magnitudes in a magnitude array.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em magnitudes}]-\/ the vector with magnitude to be checked\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+nvalid -\/ the number of valid magnitudes in the vector 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+56                                                {
+57 
+58   int i=0;
+59   int nvalid = 0;
+60   
+61   // go over each entry in the vector
+62   for (i=0; i < magnitudes->size; i++)
+63     {
+64       // check whether an entry is valid,
+65       // count up 'nvalid' if the entry is valid
+66       if (is_valid_entry(gsl_vector_get(magnitudes, i)))
+67         nvalid++;
+68     }
+69 
+70   // return the number of valid entries
+71   return nvalid;
+72 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a57a488065fd31edc4276c24af0a2fe53}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!has\_\-backwindow@{has\_\-backwindow}}
+\index{has\_\-backwindow@{has\_\-backwindow}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{has\_\-backwindow}]{\setlength{\rightskip}{0pt plus 5cm}{\bf px\_\-point} has\_\-backwindow (const {\bf colinfo} $\ast$ {\em actcatinfo})}}
+\label{spc__utils_8c_a57a488065fd31edc4276c24af0a2fe53}
+Function: has\_\-backwindow The functions searches for columns which describe the apertures around the \hyperlink{structobject}{object} to compute the background. This information is stored in the columns :BACKWIN\_\-UPP and :BACKWIN\_\-LOW
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the structure with the column names\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+hasmags+magauto -\/ the number of columns with magnitudes 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+526 {
+527 
+528   px_point ret;
+529   
+530   ret.x = -1;
+531   ret.y = -1;
+532 
+533   // check the backwindow column
+534   ret.x = get_columnumber("BACKWINDOW", actcatinfo);
+535   ret.y = -1;
+536 
+537   if (!ret.x)
+538     {
+539       ret.x=-1;
+540       ret.y=-1;
+541     }
+542 
+543   // -----------------------------
+544   //
+545   // code for FORS2-MXU
+546   // ret.x = get_columnumber("BACKWIN_UPP", actcatinfo);
+547   // ret.y = get_columnumber("BACKWIN_LOW", actcatinfo);
+548   // if (!ret.x || !ret.y)
+549   //  {
+550   //    ret.x=-1;
+551   //    ret.y=-1;
+552   //  }
+553    
+554   return ret;
+555 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a50e5a8658878acd54ee085583f3964b7}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!has\_\-magnitudes@{has\_\-magnitudes}}
+\index{has\_\-magnitudes@{has\_\-magnitudes}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{has\_\-magnitudes}]{\setlength{\rightskip}{0pt plus 5cm}int has\_\-magnitudes (const {\bf colinfo} $\ast$ {\em actcatinfo})}}
+\label{spc__utils_8c_a50e5a8658878acd54ee085583f3964b7}
+Function: has\_\-magnitudes The functions searches for columns with magnitudes in the set of column names within the catalog header structure
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the structure with the column names\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+hasmags+magauto -\/ the number of columns with magnitudes 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+475                                           {
+476 
+477   int hasmags = 0, magauto=0;
+478   int i= 0;
+479   //int iwlength=0;
+480 
+481   // go over all columns
+482   for (i = 0; i < actcatinfo->numcols; i++)
+483     {
+484       // look whether the column name is suspicious
+485       if (strstr(actcatinfo->columns[i].name,"MAG_") != NULL)
+486         {
+487           // look whether the column name is 'MAG_AUTO'
+488           if (!strcmp(actcatinfo->columns[i].name,"MAG_AUTO"))
+489             {
+490               // increment the counter for mag_auto
+491               magauto++;
+492             }
+493           else
+494             {
+495               // look whether it is possible to extract a wavelength
+496               // from the column name
+497               if (resolve_colname(actcatinfo->columns[i].name))
+498                 hasmags++;
+499               // increment the counter for columns with wavelengths coded
+500             }
+501         }
+502     }
+503   // exit if there is mag_auto plus other magnitude columns
+504   if (magauto && hasmags)
+505     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+506                  "There exist MAG_AUTO plus additional columns with magnitudes!\n
+      ");
+507 
+508   // return the number of magnitude columns
+509   return (hasmags+magauto);
+510 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a77125dc504a3f1905e2f89b0296d37cf}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!has\_\-modelinfo@{has\_\-modelinfo}}
+\index{has\_\-modelinfo@{has\_\-modelinfo}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{has\_\-modelinfo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf px\_\-point} has\_\-modelinfo (const {\bf colinfo} $\ast$ {\em actcatinfo})}}
+\label{spc__utils_8c_a77125dc504a3f1905e2f89b0296d37cf}
+Function: has\_\-modelinfo The function searches for the columns 'MODSPEC' and 'MODIMAGE'. The column numbers are returned. if not found, the column index -\/1 is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the structure with the column names\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ column numbers for \hyperlink{structobject}{object} shape and spectral model 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+571 {
+572 
+573   px_point ret;
+574   
+575   ret.x = -1;
+576   ret.y = -1;
+577 
+578   // check for each column
+579   ret.x = get_columnumber("MODSPEC", actcatinfo);
+580   ret.y = get_columnumber("MODIMAGE", actcatinfo);
+581 
+582   if (!ret.x)
+583     ret.x=-1;
+584   if (!ret.y)
+585     ret.y=-1;
+586 
+587   // return the column numbers
+588   return ret;
+589 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_ab90505406d3960f2f61d6db4c5a9b7cc}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!init\_\-search@{init\_\-search}}
+\index{init\_\-search@{init\_\-search}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{init\_\-search}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-search (const char $\ast$ {\em string})}}
+\label{spc__utils_8c_ab90505406d3960f2f61d6db4c5a9b7cc}
+
+
+
+\begin{DoxyCode}
+841 {
+842   size_t i;
+843   
+844   len = strlen (string);
+845   for (i = 0; i <= UCHAR_MAX; i++)      /* rdg 10/93 */
+846     table[i] = len;
+847   for (i = 0; i < len; i++)
+848     table[(unsigned char) string[i]] = len - i - 1;
+849   findme = (char *) string;
+850 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a8e9536e04ecffec6365a655c18070867}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!is\_\-valid\_\-entry@{is\_\-valid\_\-entry}}
+\index{is\_\-valid\_\-entry@{is\_\-valid\_\-entry}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{is\_\-valid\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}int is\_\-valid\_\-entry (double {\em mag})}}
+\label{spc__utils_8c_a8e9536e04ecffec6365a655c18070867}
+Function: is\_\-valid\_\-entry The routine checks whether a magnitude is valid or not. Returns true/false in case the value is valid/not valid.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em mag}]-\/ the magnitude to be checked\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+valid -\/ 1/0 for valid/non valid magnitude, respectively 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+29                           {
+30 
+31   int valid = 0;
+32 
+33   // Magnitudes must be in the range 0.0 < mag < 90.0.
+34   // Sextractor usually gives the value 99.0 if the flux
+35   // is below zero.
+36   if (mag < 0.0 || mag > 90.0)
+37     valid=0;
+38   else
+39     valid=1;
+40 
+41   return valid;
+42 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a4a82c9b42093bc1e0795ef6441f89c49}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!isnum2@{isnum2}}
+\index{isnum2@{isnum2}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{isnum2}]{\setlength{\rightskip}{0pt plus 5cm}int isnum2 (char $\ast$ {\em string})}}
+\label{spc__utils_8c_a4a82c9b42093bc1e0795ef6441f89c49}
+Function: isnum2 determine if a string is a number
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]a pointer to a string to test\end{DoxyParams}
+Retruns: \begin{DoxyReturn}{Returns}
+1 if string contains a numeric entry, 0 otherwise 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+905 {
+906   int lstr, i, nd;
+907   char cstr, cstr1;
+908   int fpcode;
+909   
+910   /* Return 0 if string is NULL */
+911   if (string == NULL)
+912     return (0);
+913   
+914   lstr = strlen (string);
+915   nd = 0;
+916   fpcode = 1;
+917 
+918   /* Return 0 if string starts with a D or E */
+919   cstr = string[0];
+920   if (cstr == 'D' || cstr == 'd' || cstr == 'E' || cstr == 'e')
+921     {
+922       return (0);
+923     }
+924 
+925   /* Numeric strings contain 0123456789-+ and d or e for exponents */
+926   for (i = 0; i < lstr; i++)
+927     {
+928       cstr = string[i];
+929       if (cstr == '\n')
+930         break;
+931       if (cstr == ' ' && nd == 0)
+932         continue;
+933       if ((cstr < 48 || cstr > 57) && cstr != '+' && cstr != '-'
+934           && cstr != 'D' && cstr != 'd' && cstr != 'E' && cstr != 'e'
+935           && cstr != '.')
+936         return (0);
+937       else if (cstr == '+' || cstr == '-')
+938         {
+939           if (string[i + 1] == '-' || string[i + 1] == '+')
+940             return (0);
+941           else if (i > 0)
+942             {
+943               cstr1 = string[i - 1];
+944               if (cstr1 != 'D' && cstr1 != 'd' && cstr1 != 'E'
+945                   && cstr1 != 'e' && cstr1 != ' ')
+946                 return (0);
+947             }
+948         }
+949       else if (cstr >= 47 && cstr <= 57)
+950         nd++;
+951       if (cstr == '.' || cstr == 'd' || cstr == 'e' || cstr == 'd'
+952           || cstr == 'e')
+953         fpcode = 2;
+954     }
+955   if (nd > 0)
+956     return (fpcode);
+957   else
+958     return (0);
+959 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a045718d450da547eb37a4413e815d4d8}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!line\_\-is\_\-valid@{line\_\-is\_\-valid}}
+\index{line\_\-is\_\-valid@{line\_\-is\_\-valid}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{line\_\-is\_\-valid}]{\setlength{\rightskip}{0pt plus 5cm}int line\_\-is\_\-valid (const {\bf colinfo} $\ast$ {\em actcatinfo}, \/  char {\em line}\mbox{[}$\,$\mbox{]})}}
+\label{spc__utils_8c_a045718d450da547eb37a4413e815d4d8}
+Function: line\_\-is\_\-valid The function checks whether a catalog line is valid. Valid lines have a data entry for each catalog column
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actcatinfo}]-\/ the header of the catalog \item[{\em line}]-\/ line to be examined\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+0/1 -\/ 0 for not valid lines, 1 for a valid line 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+396 {
+397 
+398   gsl_vector *v;
+399 
+400   // transform the line into a vector with the data values
+401   lv1ws (line);
+402   v = string_to_gsl_array (line);
+403 
+404   // an empty vector indicates a non valid line
+405   if (v==NULL) return 0;
+406 
+407   // compare the vector length to the number of columns
+408   // and return '0' for a non valid line if the numbers differ
+409   if ((int)v->size != actcatinfo->numcols)
+410     return 0;
+411 
+412   // return '1' for a valid line
+413   return 1;
+414 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_ac89172f10962f24de5d0284500597c64}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!load\_\-dummy\_\-observation@{load\_\-dummy\_\-observation}}
+\index{load\_\-dummy\_\-observation@{load\_\-dummy\_\-observation}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{load\_\-dummy\_\-observation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf observation}$\ast$ load\_\-dummy\_\-observation ()}}
+\label{spc__utils_8c_ac89172f10962f24de5d0284500597c64}
+Function: load\_\-dummy\_\-observation A function that returns a dummy allocated abservation pointer.
+
+Returns: \begin{DoxyReturn}{Returns}
+obs -\/ pointer to the dummy \hyperlink{structobservation}{observation} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1170 {
+1171      observation *obs;
+1172 
+1173      obs = malloc (sizeof (observation));
+1174      obs->grism = gsl_matrix_alloc (2, 2);
+1175      obs->pixerrs = gsl_matrix_alloc (2, 2);
+1176 
+1177      return obs;
+1178 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a5173a4942a3d83d368b97ad51aabedb6}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!lv1ws@{lv1ws}}
+\index{lv1ws@{lv1ws}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{lv1ws}]{\setlength{\rightskip}{0pt plus 5cm}void lv1ws (char $\ast$ {\em str})}}
+\label{spc__utils_8c_a5173a4942a3d83d368b97ad51aabedb6}
+Function: lv1ws Convert in-\/place all blanks in a string into single space.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]-\/ a pointer to a string. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1097 {
+1098   char *ibuf, *obuf;
+1099   int i, cnt;
+1100   
+1101   if (str)
+1102     {
+1103       ibuf = obuf = str;
+1104       i = cnt = 0;
+1105       
+1106       while (*ibuf)
+1107         {
+1108           if (isspace ((int) *ibuf) && cnt)
+1109             ibuf++;
+1110           else
+1111             {
+1112               if (!isspace ((int) *ibuf))
+1113                 cnt = 0;
+1114               else
+1115                 {
+1116                   *ibuf = ' ';
+1117                   cnt = 1;
+1118                 }
+1119               obuf[i++] = *ibuf++;
+1120             }
+1121         }
+1122       obuf[i] = '\0';
+1123     }
+1124 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a1300c5f47fbca9f266e3536034a859e0}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!make\_\-GOL\_\-header@{make\_\-GOL\_\-header}}
+\index{make\_\-GOL\_\-header@{make\_\-GOL\_\-header}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{make\_\-GOL\_\-header}]{\setlength{\rightskip}{0pt plus 5cm}void make\_\-GOL\_\-header (FILE $\ast$ {\em fout}, \/  const {\bf colinfo} $\ast$ {\em actcatinfo}, \/  const gsl\_\-vector $\ast$ {\em waves}, \/  const gsl\_\-vector $\ast$ {\em cnums}, \/  const {\bf px\_\-point} {\em backwin\_\-cols}, \/  const {\bf px\_\-point} {\em modinfo\_\-cols})}}
+\label{spc__utils_8c_a1300c5f47fbca9f266e3536034a859e0}
+Function: make\_\-GOL\_\-header The function prints the header of a GOL file to an output stream. Besides the standard columns it composes the names for the magnitude columns and also makes the header entries for those columns
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fout}]-\/ the output stream \item[{\em actcatinfo}]-\/ the structure with the header information of the SExtractor catalog \item[{\em waves}]-\/ vector with the wavelengths of magnitude columns \item[{\em cnums}]-\/ vector with the column numbers of magnitude columns \item[{\em backwin\_\-cols}]-\/ vector with the column numbers of background window columns \item[{\em modinfo\_\-cols}]-\/ vector with the column numbers of modelling index numbers \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+172 {
+173 
+174   char str[CATBUFFERSIZE];
+175   char cname[COLNAMELENGTH];
+176   int cbase=1;
+177   int i=0;
+178 
+179   sprintf (str, "#%3i NUMBER       Running object number\n", cbase++);
+180   fputs (str, fout);
+181   sprintf (str, "#%3i X_WORLD      Barycenter position along world x axis     [de
+      g]\n", cbase++);
+182   fputs (str, fout);
+183   sprintf (str, "#%3i Y_WORLD      Barycenter position along world Y axis     [de
+      g]\n", cbase++);
+184   fputs (str, fout);
+185   sprintf (str, "#%3i A_WORLD      Profile RMS along major axis (world units) [de
+      g]\n", cbase++);
+186   fputs (str, fout);
+187   sprintf (str, "#%3i B_WORLD      Profile RMS along minor axis (world units) [de
+      g]\n", cbase++);
+188   fputs (str, fout);
+189   sprintf (str, "#%3i THETA_WORLD  Position angle (CCW/world-x)               [de
+      g]\n", cbase++);
+190   fputs (str, fout);
+191   sprintf (str, "#%3i X_IMAGE      Object position along x                    [pi
+      xel]\n", cbase++);
+192   fputs (str, fout);
+193   sprintf (str, "#%3i Y_IMAGE      Object position along x                    [pi
+      xel]\n", cbase++);
+194   fputs (str, fout);
+195   sprintf (str, "#%3i A_IMAGE      Profile RMS along major axis               [pi
+      xel]\n", cbase++);
+196   fputs (str, fout);
+197   sprintf (str, "#%3i B_IMAGE      Profile RMS along minor axis               [pi
+      xel]\n", cbase++);
+198   fputs (str, fout);
+199   sprintf (str, "#%3i THETA_IMAGE  Position angle (CCW/x)                     [de
+      g]\n", cbase++);
+200   fputs (str, fout);
+201 
+202   if (backwin_cols.x != -1)
+203     {
+204       sprintf (str, "#%3i BACKWINDOW  Upper window for background                
+      [pixel]\n", cbase++);
+205       fputs (str, fout);
+206       // old code for FORS2-MXU
+207       // sprintf (str, "#%3i BACKWIN_LOW  Lower window for background            
+          [pixel]\n", cbase++);
+208       // fputs (str, fout);
+209     }
+210 
+211   if (modinfo_cols.x != -1)
+212     {
+213       sprintf (str, "#%3i MODSPEC      Index for model spectrum                  
+      [pixel]\n", cbase++);
+214       fputs (str, fout);
+215     }
+216   if (modinfo_cols.y != -1)
+217     {
+218       sprintf (str, "#%3i MODIMAGE     Index for the object shape                
+      [pixel]\n", cbase++);
+219       fputs (str, fout);
+220     }
+221 
+222   if ((int)waves->size == 1 && (int)gsl_vector_get (waves, 0) == 0)
+223     {
+224       sprintf (str, "#%3i MAG_AUTO     Kron-like elliptical aperture magnitude   
+       [mag]\n", cbase++);
+225       fputs (str, fout);
+226     }
+227   else
+228     {
+229       for (i=0; i < (int)waves->size; i++){
+230         get_columname(actcatinfo, (int)gsl_vector_get (cnums, i), cname);
+231         sprintf (str, "#%3i %-13sAB-magnitude at wavelength %9i nm    [mag]\n", c
+      base+i, cname, (int)gsl_vector_get (waves, i));
+232         fputs (str, fout);
+233         
+234       }
+235     }
+236 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a68eb57d69bfda17abe4d99b5f9c27705}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!resolve\_\-colname@{resolve\_\-colname}}
+\index{resolve\_\-colname@{resolve\_\-colname}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{resolve\_\-colname}]{\setlength{\rightskip}{0pt plus 5cm}int resolve\_\-colname (const char {\em colname}\mbox{[}$\,$\mbox{]})}}
+\label{spc__utils_8c_a68eb57d69bfda17abe4d99b5f9c27705}
+Function: resolve\_\-colname The function extracts the wavelength from column names. The column names must have the format \char`\"{}MAG\_\-CNNNNNN...C...\char`\"{} with C as character and N as a number.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em colname}]-\/ the column name\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+iwave -\/ the wavelength extracted from the column name 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+429                                      {
+430 
+431   char tmp[COLNAMELENGTH];
+432   char **t_err=NULL;
+433   char *WorkPtr;
+434   char *WorkPtr2;
+435 
+436   int i, len;
+437   //int nmagcols = 0;
+438   int iwave=0;
+439 
+440   // copy everything after 'MAG_C' to tmp
+441   strcpy(tmp, &colname[5]);
+442 
+443   // place pointer at both ends of tmp
+444   WorkPtr = tmp;
+445   WorkPtr2 = tmp+ strlen (tmp);
+446   *WorkPtr2-- = '\0';
+447   len = strlen(tmp);
+448 
+449   // check whether the string is a number,
+450   // and cut away a digit at the end if not
+451   i = 0;
+452   while (i++ < len){
+453     iwave = (int)strtol(WorkPtr,t_err,10);
+454     if (iwave != 0)
+455       break;
+456     *WorkPtr2-- = '\0';
+457   }
+458 
+459   // return the wavelength
+460   return iwave;
+461 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a758cf1ef470ca77056e97ce46e0cd95b}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!rmlead@{rmlead}}
+\index{rmlead@{rmlead}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{rmlead}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ rmlead (char $\ast$ {\em str})}}
+\label{spc__utils_8c_a758cf1ef470ca77056e97ce46e0cd95b}
+
+
+
+\begin{DoxyCode}
+1147 {
+1148   char *obuf;
+1149   
+1150   if (str)
+1151     {
+1152       for (obuf = str; *obuf && isspace ((int) *obuf); ++obuf);
+1153       if (str != obuf)
+1154         strMove (str, obuf);
+1155     }
+1156   return str;
+1157 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a8681db0694ab1aa93d402f813cfd520a}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!stptok@{stptok}}
+\index{stptok@{stptok}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{stptok}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ stptok (const char $\ast$ {\em s}, \/  char $\ast$ {\em tok}, \/  size\_\-t {\em toklen}, \/  char $\ast$ {\em brk})}}
+\label{spc__utils_8c_a8681db0694ab1aa93d402f813cfd520a}
+Function: stptok A function to recursively tokenize an input string.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]a pointer to the input string. \item[{\em tok}]a pointer to the current token in s. \item[{\em toklen}]the length of the tok. \item[{\em brk}]the separator string to use.\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+a new position in the input string. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1057 {
+1058   char *lim, *b;
+1059 
+1060   if (!*s)
+1061     return NULL;
+1062 
+1063   lim = tok + toklen - 1;
+1064   while (*s && tok < lim)
+1065     {
+1066       for (b = brk; *b; b++)
+1067         {
+1068           if (*s == *b)
+1069             {
+1070               *tok = 0;
+1071               for (++s, b = brk; *s && *b; ++b)
+1072                 {
+1073                   if (*s == *b)
+1074                     {
+1075                       ++s;
+1076                       b = brk;
+1077                     }
+1078                 }
+1079               return (char *) s;
+1080             }
+1081         }
+1082       *tok++ = *s++;
+1083     }
+1084   *tok = 0;
+1085   return (char *) s;
+1086 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_ae52364129107c1b86e38dd795086046d}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!string\_\-to\_\-gsl\_\-array@{string\_\-to\_\-gsl\_\-array}}
+\index{string\_\-to\_\-gsl\_\-array@{string\_\-to\_\-gsl\_\-array}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{string\_\-to\_\-gsl\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ string\_\-to\_\-gsl\_\-array (char $\ast$ {\em str})}}
+\label{spc__utils_8c_ae52364129107c1b86e38dd795086046d}
+Function: string\_\-to\_\-gsl\_\-array Parse the content of a string into a float GSL array. Checks each entry to ensure that it is numeric. skip over the non numerical ones. Entries containing \#\#\#,NaN, -\/NaN, +NaN are set to GSL\_\-NAN.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]the pointer to a string containing floats to parse.\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+v -\/ the gslvector with the table row 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+979 {
+980   char *ptr, buf[256];
+981   gsl_vector *v;
+982   int i, n = 0;
+983   
+984 
+985   if (str == NULL)
+986     return NULL;
+987   
+988   ptr = rmlead (str);
+989   lv1ws (ptr);
+990   
+991   /* Find the number of elements */
+992   do
+993     {
+994       ptr = stptok (ptr, buf, sizeof (buf), " ");
+995       if (isnum2 (buf))
+996         n++;
+997       if (!strcmp (buf, "###"))
+998         n++;            /* Allow entries to be ### */
+999       if (!strcmp (buf, "NaN"))
+1000         n++;            /* Allow entries to be ### */
+1001       if (!strcmp (buf, "nan"))
+1002         n++;            /* Allow entries to be ### */
+1003       if (!strcmp (buf, "-NaN"))
+1004         n++;            /* Allow entries to be ### */
+1005       if (!strcmp (buf, "+NaN"))
+1006         n++;            /* Allow entries to be ### */
+1007       
+1008     }
+1009   while (ptr && *ptr);
+1010   
+1011   if (n<1) return NULL;
+1012   
+1013   /* Allocate a vector */
+1014   v = gsl_vector_alloc (n);
+1015   //     gsl_vector_set_zero (v);
+1016   /* Fill the vector */
+1017   ptr = str;
+1018   lv1ws (ptr);
+1019   
+1020   i = 0;
+1021   do
+1022     {
+1023       ptr = stptok (ptr, buf, sizeof (buf), " ");
+1024       if (isnum2 (buf))
+1025         {
+1026           gsl_vector_set (v, i, atof (buf));
+1027           i++;
+1028         }
+1029       if ((!strcmp (buf, "###")) || (!strcmp (buf, "NaN"))
+1030           || (!strcmp (buf, "-NaN")) || (!strcmp (buf, "+NaN"))
+1031           || (!strcmp (buf, "nan")))
+1032         {
+1033           gsl_vector_set (v, i, GSL_NAN);
+1034           i++;
+1035         }
+1036     }
+1037   while (ptr && *ptr);
+1038 
+1039   return v;
+1040 }
+\end{DoxyCode}
+\hypertarget{spc__utils_8c_a288420ef2c849abe17db4f995aa73325}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!strsearch@{strsearch}}
+\index{strsearch@{strsearch}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{strsearch}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strsearch (const char $\ast$ {\em string})}}
+\label{spc__utils_8c_a288420ef2c849abe17db4f995aa73325}
+
+
+
+\begin{DoxyCode}
+864 {
+865   register size_t shift = 0;
+866   register size_t pos = len - 1;
+867   char *here;
+868   size_t limit = strlen (string);
+869 
+870   while (pos < limit)
+871     {
+872       while (pos < limit
+873              && (shift = table[(unsigned char) string[pos]]) > 0)
+874         {
+875           pos += shift;
+876         }
+877       if (0 == shift)
+878         {
+879           if (0 ==
+880               strncmp (findme, here =
+881                        (char *) &string[pos - len + 1], len))
+882             {
+883               return (here);
+884             }
+885           else
+886             pos++;
+887         }
+888     }
+889   return NULL;
+890 }
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{spc__utils_8c_a9b856709f3a6aa9192b8075a5154cb73}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!findme@{findme}}
+\index{findme@{findme}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{findme}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf findme}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__utils_8c_a9b856709f3a6aa9192b8075a5154cb73}
+\hypertarget{spc__utils_8c_a7360b55975153b822efc5217b7734e6a}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!len@{len}}
+\index{len@{len}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{len}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t {\bf len}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__utils_8c_a7360b55975153b822efc5217b7734e6a}
+\hypertarget{spc__utils_8c_a3278fc9538370857ff6034411692abd1}{
+\index{spc\_\-utils.c@{spc\_\-utils.c}!table@{table}}
+\index{table@{table}!spc_utils.c@{spc\_\-utils.c}}
+\subsubsection[{table}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t {\bf table}\mbox{[}UCHAR\_\-MAX+1\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__utils_8c_a3278fc9538370857ff6034411692abd1}

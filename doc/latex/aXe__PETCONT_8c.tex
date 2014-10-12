@@ -1,0 +1,346 @@
+\hypertarget{aXe__PETCONT_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-PETCONT.c File Reference}
+\label{aXe__PETCONT_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-PETCONT.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-PETCONT.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-output.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-model.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aXe__PETCONT_8c_a7a38b874452a6cde6ebee9e98c980eef}{AXE\_\-IMAGE\_\-PATH}~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__PETCONT_8c_a75c154942e560254898bcafaf48bdf3d}{AXE\_\-OUTPUT\_\-PATH}~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__PETCONT_8c_a0b0be957330d9c69fa325ee014ce4dad}{AXE\_\-CONFIG\_\-PATH}~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{aXe__PETCONT_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{aXe__PETCONT_8c_a0b0be957330d9c69fa325ee014ce4dad}{
+\index{aXe\_\-PETCONT.c@{aXe\_\-PETCONT.c}!AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}}
+\index{AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}!aXe_PETCONT.c@{aXe\_\-PETCONT.c}}
+\subsubsection[{AXE\_\-CONFIG\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-CONFIG\_\-PATH~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}}}
+\label{aXe__PETCONT_8c_a0b0be957330d9c69fa325ee014ce4dad}
+\hypertarget{aXe__PETCONT_8c_a7a38b874452a6cde6ebee9e98c980eef}{
+\index{aXe\_\-PETCONT.c@{aXe\_\-PETCONT.c}!AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}}
+\index{AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}!aXe_PETCONT.c@{aXe\_\-PETCONT.c}}
+\subsubsection[{AXE\_\-IMAGE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-IMAGE\_\-PATH~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}}}
+\label{aXe__PETCONT_8c_a7a38b874452a6cde6ebee9e98c980eef}
+\hypertarget{aXe__PETCONT_8c_a75c154942e560254898bcafaf48bdf3d}{
+\index{aXe\_\-PETCONT.c@{aXe\_\-PETCONT.c}!AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}}
+\index{AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}!aXe_PETCONT.c@{aXe\_\-PETCONT.c}}
+\subsubsection[{AXE\_\-OUTPUT\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-OUTPUT\_\-PATH~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}}}
+\label{aXe__PETCONT_8c_a75c154942e560254898bcafaf48bdf3d}
+
+
+\subsection{Function Documentation}
+\hypertarget{aXe__PETCONT_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{aXe\_\-PETCONT.c@{aXe\_\-PETCONT.c}!main@{main}}
+\index{main@{main}!aXe_PETCONT.c@{aXe\_\-PETCONT.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{aXe__PETCONT_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+
+\begin{DoxyCode}
+38 {
+39   char *opt;
+40   char aper_file[MAXCHAR];
+41   char aper_file_path[MAXCHAR];
+42 
+43   char conf_file[MAXCHAR];
+44   char conf_file_path[MAXCHAR];
+45 
+46   char grism_file[MAXCHAR];
+47   char grism_file_path[MAXCHAR];
+48 
+49   char specmod_file[MAXCHAR];
+50   char specmod_file_path[MAXCHAR];
+51 
+52   char objmod_file[MAXCHAR];
+53   char objmod_file_path[MAXCHAR];
+54 
+55   char fcube_file[MAXCHAR];
+56   char fcube_file_path[MAXCHAR];
+57 
+58   char map_file[MAXCHAR];
+59   char map_file_path[MAXCHAR];
+60 
+61   char PET_file[MAXCHAR];
+62   char PET_file_path[MAXCHAR];
+63 
+64   aperture_conf *conf;
+65 
+66   observation *obs;
+67 
+68   int index;
+69   int store_map=0;
+70   int cont_model=0;
+71   double model_scale=0.0;
+72   double lambda_psf=0.0;
+73   int inter_type=1;
+74 
+75   FITScards      *cards;
+76 
+77   if ((argc < 3) || (opt = get_online_option ("help", argc, argv)))
+78     {
+79       fprintf (stdout,
+80                "ST-ECF European Coordinating Facility\n"
+81                "aXe_PETCONT Version %s:\n"
+82                "           Task that populates the CONTAMINATION part of a\n"
+83                "           Pixel Extraction Table (PET). Each pixel is examined\n
+      "
+84                "           and the number of aperture minus 1 in which they\n"
+85                "           appear is written into the PET\n"
+86                "\n"
+87                "Usage:\n"
+88                "      aXe_PETCONT g/prism_filename configuration_filename [option
+      ]\n"
+89                "\n"
+90                "Options:\n"
+91                "      -in_AF=[string] - overwrite the automatically generated nam
+      e\n"
+92                "                        of the input aperture file\n"
+93                "      -cont_map       - write the contamination map into a FITS f
+      ile"
+94                "\n",RELEASE);
+95       exit (1);
+96     }
+97 
+98   fprintf (stdout, "aXe_PETCONT: Starting...\n");
+99 
+100   index = 0;
+101   strcpy (grism_file, argv[++index]);
+102   build_path (AXE_IMAGE_PATH, grism_file, grism_file_path);
+103 
+104   strcpy (conf_file, argv[++index]);
+105   build_path (AXE_CONFIG_PATH, conf_file, conf_file_path);
+106 
+107 
+108   conf = get_aperture_descriptor (conf_file_path);
+109 
+110   /* Determine where the various extensions are in the FITS file */
+111   get_extension_numbers(grism_file_path, conf,conf->optkey1,conf->optval1);
+112 
+113   /* Get or set up the name of the output Aperture File */
+114   if ((opt = get_online_option ("in_AF", argc, argv)))
+115     {
+116       /* get it */
+117       strcpy (aper_file, opt);
+118       strcpy (aper_file_path, opt);
+119     }
+120   else {
+121     /* Build aperture file name */
+122     replace_file_extension (grism_file, aper_file, ".fits",
+123                             ".OAF", conf->science_numext);
+124     build_path (AXE_OUTPUT_PATH, aper_file, aper_file_path);
+125   }
+126 
+127   // check whether a name for the spectral
+128   // models file is given
+129   if ((opt = get_online_option ("model_spectra", argc, argv)))
+130     {
+131       // get and set up the filename
+132       strcpy (specmod_file, opt);
+133       build_path (AXE_IMAGE_PATH, specmod_file, specmod_file_path);
+134     }
+135   else
+136     {
+137       // set the filenames to NULL,
+138       // indicating that they are NOT  used
+139       strcpy (specmod_file, "");
+140       strcpy (specmod_file_path, "");
+141     }
+142 
+143   // determine the contamination model
+144   if ((opt = get_online_option ("cont_model", argc, argv)))
+145     cont_model = atoi(opt);
+146   else
+147     cont_model = 1;
+148 
+149   // check whether the direct emission model was chosen and
+150   // a name for the object models file is given
+151   if (cont_model == 2)
+152     {
+153       if (opt = get_online_option ("model_images", argc, argv))
+154         {
+155           // get and set up the name for the image templates
+156           strcpy (objmod_file, opt);
+157           build_path (AXE_IMAGE_PATH, objmod_file, objmod_file_path);
+158         }
+159       else
+160         {
+161           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+162                        "For the direct image contamination a file with\nobject te
+      mplates must be given!\n");
+163         }
+164     }
+165   else
+166     {
+167       // set the filenames to NULL,
+168       // indicating that they are NOT  used
+169       strcpy (objmod_file, "");
+170       strcpy (objmod_file_path, "");
+171     }
+172 
+173 
+174   // check whether a PET is there
+175   if ((get_online_option ("noPET", argc, argv)))
+176     {
+177       // set the PET filenames to NULL,
+178       // indicating that they are NOT  used
+179       strcpy (PET_file, "");
+180       strcpy (PET_file_path, "");
+181     }
+182       else
+183     {
+184       /* Build object PET file name */
+185       replace_file_extension (grism_file, PET_file, ".fits",
+186                               ".PET.fits", conf->science_numext);
+187       build_path (AXE_OUTPUT_PATH, PET_file, PET_file_path);
+188     }
+189 
+190   /* Build object CONT file name */
+191   replace_file_extension (grism_file, map_file, ".fits",
+192                           ".CONT.fits", conf->science_numext);
+193   build_path (AXE_OUTPUT_PATH, map_file, map_file_path);
+194 
+195   // determine the extend of the gaussian emission model
+196   if ((opt = get_online_option ("model_scale", argc, argv)))
+197     model_scale = atof(opt);
+198   else
+199     model_scale = 3.0;
+200 
+201   // determine the wavelength
+202   // the object extend was determined at
+203   if ((opt = get_online_option ("lambda_psf", argc, argv)))
+204     lambda_psf = atof(opt);
+205   else
+206     lambda_psf = 800.0;
+207 
+208   // determine the interpolation type
+209   if ((opt = get_online_option ("inter_type", argc, argv)))
+210     inter_type = atoi(opt);
+211   else
+212     inter_type = 1;
+213 
+214   // store the contamination map?
+215   if ((get_online_option ("cont_map", argc, argv)))
+216     store_map=1;
+217   else
+218     store_map=0;
+219 
+220 
+221   // give feedback onto the screen:
+222   // report on input and output
+223   // and also on specific parameter
+224   fprintf (stdout, "aXe_PETCONT: Input Aperture file name:            %s\n",
+225            aper_file_path);
+226   if (strlen(PET_file_path) > 0)
+227     fprintf (stdout, "aXe_PETCONT: Input PET file name:                 %s\n",
+228            PET_file_path);
+229   if (store_map)
+230       fprintf (stdout, "aXe_PETCONT: Output CONT file name:               %s\n",
+231                map_file_path);
+232   if (cont_model ==1)
+233     {
+234       fprintf (stdout, "aXe_PETCONT: Computing gaussian contamination\n");
+235       fprintf (stdout, "aXe_PETCONT: Scale factor for the direct image model %f\n
+      ", model_scale);
+236       fprintf (stdout, "aXe_PETCONT: Object parameters determined at %fnm\n", lam
+      bda_psf);
+237       if (strlen(specmod_file_path) > 0)
+238         fprintf (stdout, "aXe_PETCONT: Using spectral models in table: %s\n", spe
+      cmod_file_path);
+239     }
+240   else if (cont_model ==2)
+241     {
+242       fprintf (stdout, "aXe_PETCONT: Computing direct emission object contaminati
+      on.\n");
+243       fprintf (stdout, "aXe_PETCONT: Using direct emission objects in image: %s\n
+      ", objmod_file_path);
+244       if (strlen(specmod_file_path) > 0)
+245         fprintf (stdout, "aXe_PETCONT: Using spectral models in table: %s\n", spe
+      cmod_file_path);
+246     }
+247   else if (cont_model ==3)
+248     {
+249       fprintf (stdout, "aXe_PETCONT: Computing fluxcube contamination.\n");
+250     }
+251   else if (cont_model ==4)
+252     {
+253       fprintf (stdout, "aXe_PETCONT: Computing geometrical contamination.\n");
+254     }
+255   if (cont_model == 1 || cont_model == 3)
+256     {
+257       if (inter_type == 1)
+258         fprintf (stdout, "aXe_PETCONT: Using linear flux interpolation.\n");
+259       else if (inter_type == 2)
+260         fprintf (stdout, "aXe_PETCONT: Using polynomial flux interpolation.\n");
+261       else if (inter_type == 3)
+262         fprintf (stdout, "aXe_PETCONT: Using spline flux interpolation.\n");
+263     }
+264 
+265   fprintf (stdout, "aXe_PETCONT: ");
+266   obs = load_sci_image (grism_file_path, conf->science_numext);
+267 
+268 
+269   if (cont_model == 1 || cont_model == 2)
+270     {
+271       compute_gaussdirim_cont(grism_file_path, aper_file_path, conf_file_path,
+272                               specmod_file_path, objmod_file_path, model_scale, i
+      nter_type,
+273                               lambda_psf, obs, PET_file_path, map_file_path, stor
+      e_map);
+274       //      compute_gauss_cont(grism_file_path, aper_file_path, conf_file_path,
+      
+275       //                         specmod_file_path, model_scale, inter_type,
+276       //                         lambda_psf, obs, PET_file_path, map_file_path, s
+      tore_map);
+277       //      compute_gauss_dirim(grism_file_path, aper_file_path, conf_file_path
+      ,
+278       //                         model_scale, inter_type, lambda_psf, obs, PET_fi
+      le_path, map_file_path,
+279       //                         store_map);
+280     }
+281   else if (cont_model == 3)
+282     {
+283       replace_file_extension (grism_file, fcube_file, ".fits",
+284                               ".FLX.fits", conf->science_numext);
+285       build_path (AXE_IMAGE_PATH, fcube_file, fcube_file_path);
+286 
+287       compute_fcube_cont(grism_file_path, aper_file_path, fcube_file_path,
+288                          conf_file_path, model_scale, inter_type, obs,
+289                          PET_file_path, map_file_path, store_map);
+290 
+291     }
+292   else if (cont_model == 4)
+293     {
+294       compute_geometr_cont(aper_file_path, obs, PET_file_path,
+295                            map_file_path, store_map);
+296     }
+297 
+298   // copy the header from the grism image
+299   // to the contamination image
+300   cards = get_FITS_cards(grism_file_path, conf->science_numext);
+301   put_FITS_cards(map_file_path, 2, cards);
+302   free_FITScards(cards);
+303 
+304   //free_observation(obs);
+305   free_aperture_conf(conf);
+306   fprintf (stdout, "aXe_PETCONT: Done...\n");
+307   exit (0);
+308 }
+\end{DoxyCode}

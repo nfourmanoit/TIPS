@@ -1,0 +1,346 @@
+\hypertarget{spc__wl__calib_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-wl\_\-calib.c File Reference}
+\label{spc__wl__calib_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-wl\_\-calib.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-wl\_\-calib.c}}
+}
+{\ttfamily \#include $<$stdarg.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-nan.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-sys.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}disp\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-wl\_\-calib.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__wl__calib}{spc\_\-wl\_\-calib}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{spc__wl__calib_8c_a83ff02c57744be22fec118377e2e3ec1}{wl\_\-calib} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$const calib)
+\item 
+void \hyperlink{spc__wl__calib_8c_af05589c4fec56188e29a3393ab59718c}{pwise\_\-wl\_\-calib} (const \hyperlink{structglobal__disp}{global\_\-disp} $\ast$gdisp, const \hyperlink{structd__point}{d\_\-point} pixel, const \hyperlink{structbeam}{beam} actbeam, const int for\_\-grism, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$old\_\-calib)
+\item 
+\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{spc__wl__calib_8c_a1aec2ef8a77ebc07e23b90b839fc76f8}{prange\_\-cut} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$in\_\-p, const gsl\_\-vector $\ast$prange, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration)
+\item 
+static double \hyperlink{spc__wl__calib_8c_a6287951537ca08d88e6957c16f86a11b}{grism\_\-calib\_\-func} (const double xi, const int order, const double $\ast$const coeffs)
+\item 
+static double \hyperlink{spc__wl__calib_8c_af404f97b793403794446f817a51ffbba}{prism\_\-calib\_\-func} (const double xi, const int order, const double $\ast$const coeffs)
+\item 
+\hyperlink{structcalib__function}{calib\_\-function} $\ast$ \hyperlink{spc__wl__calib_8c_a99adb944646e98f75c71fa972290f8a3}{create\_\-calib\_\-from\_\-gsl\_\-vector} (const int for\_\-grism, const gsl\_\-vector $\ast$a)
+\item 
+void \hyperlink{spc__wl__calib_8c_ac0c65c345f1f8183331d4b858f5c5b29}{free\_\-calib} (\hyperlink{structcalib__function}{calib\_\-function} $\ast$calib)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__wl__calib_8c_a99adb944646e98f75c71fa972290f8a3}{
+\index{spc\_\-wl\_\-calib.c@{spc\_\-wl\_\-calib.c}!create\_\-calib\_\-from\_\-gsl\_\-vector@{create\_\-calib\_\-from\_\-gsl\_\-vector}}
+\index{create\_\-calib\_\-from\_\-gsl\_\-vector@{create\_\-calib\_\-from\_\-gsl\_\-vector}!spc_wl_calib.c@{spc\_\-wl\_\-calib.c}}
+\subsubsection[{create\_\-calib\_\-from\_\-gsl\_\-vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf calib\_\-function}$\ast$ create\_\-calib\_\-from\_\-gsl\_\-vector (const int {\em for\_\-grism}, \/  const gsl\_\-vector $\ast$ {\em a})}}
+\label{spc__wl__calib_8c_a99adb944646e98f75c71fa972290f8a3}
+Create a prism or grism calibration function, i.e. a function of one of the forms \char`\"{}sum(a\_\-i 1/x$^\wedge$i, i=0..order)\char`\"{} or \char`\"{}sum(a\_\-i x$^\wedge$i, i=0..order)\char`\"{} for transforming pathlength along the trace to lambda.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em for\_\-grism}]if true, a the second form of the calibration function is used (normal polynom), otherwise the first one. \item[{\em order}]order of the polynom \item[{\em a}]a GSL vector of length n containing the n coefficients describing the wavelength calibration polynomial. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+calib an allocated structure containing an allocated array for the coefficients. Free using calib\_\-free. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+249 {
+250   calib_function *calib;
+251   int i, order;
+252 
+253   // set the polynomial order
+254   order = a->size - 1;
+255 
+256   // allocate memory
+257   calib = malloc(sizeof (calib_function));
+258 
+259   // complain if memory
+260   // allocation failed
+261   if (!calib)
+262     aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+263 
+264   // store the order of the
+265   // calibration
+266   calib->order = order;
+267 
+268   // transfer the calibration functions
+269   if (for_grism)
+270     calib->func = &grism_calib_func;
+271   else
+272     calib->func = &prism_calib_func;
+273 
+274   // allocate memory; complain if problems occur
+275   calib->coeffs = malloc ((order + 1) * sizeof (double));
+276   if (!calib->coeffs)
+277     aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+278 
+279   // transfer the coefficients
+280   calib->coeffs[0] = gsl_vector_get (a, 0);
+281   for (i = 1; i <= order; i++)
+282       calib->coeffs[i] = gsl_vector_get (a, i);
+283 
+284   // set the allowed range for
+285   // the trace lengths to NULL
+286   calib->pr_range = NULL;
+287 
+288   // return the calibration
+289   // structure
+290   return calib;
+291 }
+\end{DoxyCode}
+\hypertarget{spc__wl__calib_8c_ac0c65c345f1f8183331d4b858f5c5b29}{
+\index{spc\_\-wl\_\-calib.c@{spc\_\-wl\_\-calib.c}!free\_\-calib@{free\_\-calib}}
+\index{free\_\-calib@{free\_\-calib}!spc_wl_calib.c@{spc\_\-wl\_\-calib.c}}
+\subsubsection[{free\_\-calib}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-calib ({\bf calib\_\-function} $\ast$ {\em calib})}}
+\label{spc__wl__calib_8c_ac0c65c345f1f8183331d4b858f5c5b29}
+Function: free\_\-calib Free a calibration function and its assoicated data.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em calib}]the calibration structure to be freed \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+302 {
+303   free (calib->coeffs);
+304   calib->coeffs = NULL;
+305   if (calib->pr_range != NULL)
+306     {
+307       gsl_vector_free(calib->pr_range);
+308       calib->pr_range = NULL;
+309     }
+310   free (calib);
+311   calib = NULL;
+312 }
+\end{DoxyCode}
+\hypertarget{spc__wl__calib_8c_a6287951537ca08d88e6957c16f86a11b}{
+\index{spc\_\-wl\_\-calib.c@{spc\_\-wl\_\-calib.c}!grism\_\-calib\_\-func@{grism\_\-calib\_\-func}}
+\index{grism\_\-calib\_\-func@{grism\_\-calib\_\-func}!spc_wl_calib.c@{spc\_\-wl\_\-calib.c}}
+\subsubsection[{grism\_\-calib\_\-func}]{\setlength{\rightskip}{0pt plus 5cm}static double grism\_\-calib\_\-func (const double {\em xi}, \/  const int {\em order}, \/  const double $\ast$const  {\em coeffs})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__wl__calib_8c_a6287951537ca08d88e6957c16f86a11b}
+Calibration function for the grism: simple polynomial
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em xi}]the path length of the sample point \item[{\em order}]the order of the polynomial, i.e. the number of coefficients minus one \item[{\em coeffs}]a pointer to order+1 doubles, starting with the zeroth coefficent\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res wavelength at xi 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+193 {
+194   int i;
+195   double res = 0;
+196 
+197   for (i = 0; i <= order; i++)
+198     {
+199       res += coeffs[i] * pow(xi,i*1.0);
+200     }
+201 
+202   return res;
+203 }
+\end{DoxyCode}
+\hypertarget{spc__wl__calib_8c_a1aec2ef8a77ebc07e23b90b839fc76f8}{
+\index{spc\_\-wl\_\-calib.c@{spc\_\-wl\_\-calib.c}!prange\_\-cut@{prange\_\-cut}}
+\index{prange\_\-cut@{prange\_\-cut}!spc_wl_calib.c@{spc\_\-wl\_\-calib.c}}
+\subsubsection[{prange\_\-cut}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ap\_\-pixel}$\ast$ prange\_\-cut ({\bf ap\_\-pixel} $\ast$ {\em in\_\-p}, \/  const gsl\_\-vector $\ast$ {\em prange}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration})}}
+\label{spc__wl__calib_8c_a1aec2ef8a77ebc07e23b90b839fc76f8}
+The function trims down an \hyperlink{structap__pixel}{ap\_\-pixel} table to only allowed values for the trace path length or trace distance. The input \hyperlink{structap__pixel}{ap\_\-pixel} is only changed. Valid entries are moved to the front side, and a new endmark is set after all valid entries
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \hyperlink{structap__pixel}{ap\_\-pixel}}]the input \hyperlink{structap__pixel}{ap\_\-pixel} table \item[{\em prange}]the valid trace range \item[{\em wl\_\-calibration}]the calibration structure, needed to get the first dispersion coefficient\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ret \hyperlink{structap__pixel}{ap\_\-pixel} table output 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+112 {
+113 
+114   //long nelem;
+115   ap_pixel * ret, *cur_ap, *ap_p;
+116   double prel;
+117   double trmin=1.0E+06, trmax=-1.0E6;
+118 
+119   // set all PET list pointers
+120   // to the beginning of the array
+121   ret    = in_p;
+122   cur_ap = in_p;
+123   ap_p   = in_p;
+124 
+125   while (ap_p->p_x != -1)
+126     {
+127       // search for new minimum
+128       // and amximum in tracelength
+129       if (ap_p->xi > trmax)
+130         trmax = ap_p->xi;
+131       if (ap_p->xi < trmin)
+132         trmin = ap_p->xi;
+133 
+134       // compute the tracelength with
+135       // respect to the zeropoint
+136       prel = ap_p->xi - wl_calibration->coeffs[0];
+137 
+138       // check whether the realitive zeropoint is within the allowed range
+139       if (prel > gsl_vector_get(prange,0) && prel < gsl_vector_get(prange,1))
+140         {
+141           // transfer the properties
+142           // of the good pixel to the next
+143           // PET element in the list of good PET's
+144           cur_ap->p_x    = ap_p->p_x;
+145           cur_ap->p_y    = ap_p->p_y;
+146           cur_ap->x      = ap_p->x;
+147           cur_ap->y      = ap_p->y;
+148           cur_ap->dist   = ap_p->dist;
+149           cur_ap->xs     = ap_p->xs;
+150           cur_ap->ys     = ap_p->ys;
+151           cur_ap->dxs    = ap_p->dxs;
+152           cur_ap->xi     = ap_p->xi;
+153           cur_ap->count  = ap_p->count;
+154           cur_ap->error  = ap_p->error;
+155           cur_ap->weight = ap_p->weight;
+156           cur_ap->contam = ap_p->contam;
+157           cur_ap->dq     = ap_p->dq;
+158 
+159           // forward the pointer
+160           // of good pixels
+161           cur_ap++;
+162         }
+163 
+164       // always forward the
+165       // general pointer
+166       ap_p++;
+167     }
+168 
+169   // make a new endmark
+170   cur_ap->p_x = -1;
+171   cur_ap->p_y = -1;
+172   cur_ap->count = -1;
+173 
+174   // return the pointer
+175   return ret;
+176 }
+\end{DoxyCode}
+\hypertarget{spc__wl__calib_8c_af404f97b793403794446f817a51ffbba}{
+\index{spc\_\-wl\_\-calib.c@{spc\_\-wl\_\-calib.c}!prism\_\-calib\_\-func@{prism\_\-calib\_\-func}}
+\index{prism\_\-calib\_\-func@{prism\_\-calib\_\-func}!spc_wl_calib.c@{spc\_\-wl\_\-calib.c}}
+\subsubsection[{prism\_\-calib\_\-func}]{\setlength{\rightskip}{0pt plus 5cm}static double prism\_\-calib\_\-func (const double {\em xi}, \/  const int {\em order}, \/  const double $\ast$const  {\em coeffs})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__wl__calib_8c_af404f97b793403794446f817a51ffbba}
+Calibration function for the prism: reciprocal polynomial in the form: lambda = a1 + a2/(xi-\/a0) + a3/(xi-\/a0)$\ast$$\ast$2 + a4/(xi-\/a0)$\ast$$\ast$3
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em xi}]the path length of the sample point \item[{\em order}]the order of the polynomial, i.e. the number of coefficients minus one \item[{\em coeffs}]a pointer to order+1 doubles, starting with the zeroth coefficent \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+res wavelength at xi 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+220 {
+221   int i;
+222   double res = 0;
+223 
+224   if (xi==0.) return GSL_NAN;
+225   for (i = 0; i <= order-1; i++)
+226     {
+227       //            res += coeffs[i] / pow(xi,i*1.0);
+228       res += coeffs[i+1] / pow((xi-coeffs[0]),i*1.0);
+229     }
+230 
+231   return res;
+232 }
+\end{DoxyCode}
+\hypertarget{spc__wl__calib_8c_af05589c4fec56188e29a3393ab59718c}{
+\index{spc\_\-wl\_\-calib.c@{spc\_\-wl\_\-calib.c}!pwise\_\-wl\_\-calib@{pwise\_\-wl\_\-calib}}
+\index{pwise\_\-wl\_\-calib@{pwise\_\-wl\_\-calib}!spc_wl_calib.c@{spc\_\-wl\_\-calib.c}}
+\subsubsection[{pwise\_\-wl\_\-calib}]{\setlength{\rightskip}{0pt plus 5cm}void pwise\_\-wl\_\-calib (const {\bf global\_\-disp} $\ast$ {\em gdisp}, \/  const {\bf d\_\-point} {\em pixel}, \/  const {\bf beam} {\em actbeam}, \/  const int {\em for\_\-grism}, \/  {\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  const {\bf calib\_\-function} $\ast$ {\em old\_\-calib})}}
+\label{spc__wl__calib_8c_af05589c4fec56188e29a3393ab59718c}
+
+
+
+\begin{DoxyCode}
+55 {
+56 
+57   calib_function *calib;
+58   d_point actpix;
+59 
+60   double l1,l2;
+61   double tmp;
+62   //double tmp2;
+63 
+64   int i=0;
+65 
+66   while (ap_p[i].p_x != -1)
+67     {
+68       // get the current xy-position of the pixel
+69       actpix.x = pixel.x + ap_p[i].dist*cos(actbeam.orient);
+70       actpix.y = pixel.y + ap_p[i].dist*sin(actbeam.orient);
+71 
+72       // create a calibration for that position
+73       calib = create_calib_from_gsl_vector(for_grism, get_calvector_from_gdisp(gd
+      isp, actpix));
+74 
+75       // determine the wavelength value
+76       ap_p[i].lambda = calib->func (ap_p[i].xi, calib->order, calib->coeffs);
+77 
+78       // determine the dlambda value
+79       l1 = calib->func (ap_p[i].xi - .5, calib->order, calib->coeffs);
+80       l2 = calib->func (ap_p[i].xi + .5, calib->order, calib->coeffs);
+81       ap_p[i].dlambda = fabs(l2-l1);
+82 
+83       // determine the trace length
+84       tmp =  old_calib->func (ap_p[i].xi, old_calib->order, old_calib->coeffs);
+85       ap_p[i].xi = ap_p[i].xi + (ap_p[i].lambda - tmp) / ap_p[i].dlambda;
+86 
+87       // free the calibration
+88       // structure
+89       free_calib(calib);
+90 
+91       // enhance the counter
+92       i++;
+93     }
+94 }
+\end{DoxyCode}
+\hypertarget{spc__wl__calib_8c_a83ff02c57744be22fec118377e2e3ec1}{
+\index{spc\_\-wl\_\-calib.c@{spc\_\-wl\_\-calib.c}!wl\_\-calib@{wl\_\-calib}}
+\index{wl\_\-calib@{wl\_\-calib}!spc_wl_calib.c@{spc\_\-wl\_\-calib.c}}
+\subsubsection[{wl\_\-calib}]{\setlength{\rightskip}{0pt plus 5cm}void wl\_\-calib ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  const {\bf calib\_\-function} $\ast$const  {\em calib})}}
+\label{spc__wl__calib_8c_a83ff02c57744be22fec118377e2e3ec1}
+The function performs a wavelength calibration on an allready existing \hyperlink{structap__pixel}{ap\_\-pixel} table. It fills in the lambda and dlambda fields.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]-\/ the \hyperlink{structap__pixel}{ap\_\-pixel} table to work on, with the pathlength field filled out \item[{\em calib}]-\/ the calibration function \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+31 {
+32   double l1,l2;
+33 
+34   while (ap_p->p_x != -1)
+35     {
+36       ap_p->lambda = calib->func (ap_p->xi, calib->order, calib->coeffs);
+37 
+38       l1 = calib->func (ap_p->xi - .5, calib->order, calib->coeffs);
+39       l2 = calib->func (ap_p->xi + .5, calib->order, calib->coeffs);
+40       ap_p->dlambda = fabs(l2-l1);
+41       ap_p++;
+42     }
+43 }
+\end{DoxyCode}

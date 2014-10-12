@@ -1,0 +1,438 @@
+\hypertarget{aXe__grism_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/aXe\_\-grism.h File Reference}
+\label{aXe__grism_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/aXe\_\-grism.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/aXe\_\-grism.h}}
+}
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include \char`\"{}spc\_\-trace\_\-functions.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpx__offset}{px\_\-offset}
+\item 
+struct \hyperlink{structdx__offset}{dx\_\-offset}
+\item 
+struct \hyperlink{structpx__point}{px\_\-point}
+\item 
+struct \hyperlink{structd__point}{d\_\-point}
+\item 
+struct \hyperlink{structobservation}{observation}
+\item 
+struct \hyperlink{structbeam}{beam}
+\item 
+struct \hyperlink{structobject}{object}
+\item 
+struct \hyperlink{structap__pixel}{ap\_\-pixel}
+\item 
+struct \hyperlink{structPET__entry}{PET\_\-entry}
+\item 
+struct \hyperlink{structspc__entry}{spc\_\-entry}
+\item 
+struct \hyperlink{structspectrum}{spectrum}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aXe__grism_8h_a5bd9a30fc22d9a737ee060d41a4ec479}{RELEASE}~\char`\"{} 2.0, September 2009\char`\"{}
+\item 
+\#define \hyperlink{aXe__grism_8h_a6117e17bb3108107676f4486e62d40e5}{gsl\_\-matrix}~gsl\_\-matrix\_\-float
+\item 
+\#define \hyperlink{aXe__grism_8h_acf709ee71c580f1cd65d726ed03200ea}{gsl\_\-matrix\_\-get}~gsl\_\-matrix\_\-float\_\-get
+\item 
+\#define \hyperlink{aXe__grism_8h_a1f386ef5cd5a3b916246c2bee80f083a}{gsl\_\-matrix\_\-set}~gsl\_\-matrix\_\-float\_\-set
+\item 
+\#define \hyperlink{aXe__grism_8h_af6161aeb008a1ffa7d888df6ccbef7cc}{gsl\_\-matrix\_\-set\_\-all}~gsl\_\-matrix\_\-float\_\-set\_\-all
+\item 
+\#define \hyperlink{aXe__grism_8h_a1214ab1bea5fd80474d7a27db0bfb429}{gsl\_\-matrix\_\-alloc}~gsl\_\-matrix\_\-float\_\-alloc
+\item 
+\#define \hyperlink{aXe__grism_8h_a61aa1d37853a90711852146f18d0b85f}{gsl\_\-matrix\_\-free}~gsl\_\-matrix\_\-float\_\-free
+\item 
+\#define \hyperlink{aXe__grism_8h_a4851deed02fcb4cc41640a35a70b08c6}{gsl\_\-matrix\_\-fprintf}~gsl\_\-matrix\_\-float\_\-fprintf
+\item 
+\#define \hyperlink{aXe__grism_8h_a621493bf0b066fb614a23adea0f7a151}{gsl\_\-matrix\_\-add\_\-constant}~gsl\_\-matrix\_\-float\_\-add\_\-constant
+\item 
+\#define \hyperlink{aXe__grism_8h_aed23c3f729d3bcb528cd5396f3d791ce}{gsl\_\-matrix\_\-scale}~gsl\_\-matrix\_\-float\_\-scale
+\item 
+\#define \hyperlink{aXe__grism_8h_a32a8e92c68334bd80ca76f01e87659ae}{gsl\_\-matrix\_\-min}~gsl\_\-matrix\_\-float\_\-min
+\item 
+\#define \hyperlink{aXe__grism_8h_a363a59f4c0508ddec644ec96b3933ace}{gsl\_\-matrix\_\-max}~gsl\_\-matrix\_\-float\_\-max
+\item 
+\#define \hyperlink{aXe__grism_8h_ab4472600f4f77bd72e51d116ed5138ed}{PIXEL\_\-T}~float
+\item 
+\#define \hyperlink{aXe__grism_8h_a4d63039a7367379f6b712ad926163abc}{MAX\_\-BEAMS}~27
+\item 
+\#define \hyperlink{aXe__grism_8h_a7d90dabb6016bb0e09b6ab84087b70a7}{BEAM}(x)~(char)((int)x+65)
+\item 
+\#define \hyperlink{aXe__grism_8h_ac1535592e39e7edf0cafbd5e695ea622}{MAXCHAR}~255
+\item 
+\#define \hyperlink{aXe__grism_8h_a7201066a7f98df69ca8f01d974dcfb53}{DEBUG\_\-FILE}~0x01
+\item 
+\#define \hyperlink{aXe__grism_8h_ad72dbcf6d0153db1b8d8a58001feed83}{DEBUG}~0x0000
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49}{spec\_\-warning} \{ \hyperlink{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49a804f317cffd538ded8ef6f6c65e93c33}{SPC\_\-W\_\-CONTAM}, 
+\hyperlink{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49ab7a635d94a40ae0ed09a4fef6bb36b8c}{SPC\_\-W\_\-BORDER}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{aXe__grism_8h_adb98c62d1001d43ad16b2ce9b69b01d2}{print\_\-ap\_\-pixel\_\-table} (const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p)
+\item 
+\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{aXe__grism_8h_a63705e4ea9da776c8bd40c30b559ba45}{make\_\-spc\_\-table} (\hyperlink{structobject}{object} $\ast$const ob, const int beamorder, int $\ast$const flags)
+\item 
+\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{aXe__grism_8h_a7c99cdc17bd49473a5f045550a5ee600}{make\_\-gps\_\-table} (\hyperlink{structobject}{object} $\ast$const ob, const int beamorder, int $\ast$const flags, int xval, int yval)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{aXe__grism_8h_a7d90dabb6016bb0e09b6ab84087b70a7}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!BEAM@{BEAM}}
+\index{BEAM@{BEAM}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{BEAM}]{\setlength{\rightskip}{0pt plus 5cm}\#define BEAM(x)~(char)((int)x+65)}}
+\label{aXe__grism_8h_a7d90dabb6016bb0e09b6ab84087b70a7}
+\hypertarget{aXe__grism_8h_ad72dbcf6d0153db1b8d8a58001feed83}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!DEBUG@{DEBUG}}
+\index{DEBUG@{DEBUG}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{DEBUG}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEBUG~0x0000}}
+\label{aXe__grism_8h_ad72dbcf6d0153db1b8d8a58001feed83}
+\hypertarget{aXe__grism_8h_a7201066a7f98df69ca8f01d974dcfb53}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!DEBUG\_\-FILE@{DEBUG\_\-FILE}}
+\index{DEBUG\_\-FILE@{DEBUG\_\-FILE}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{DEBUG\_\-FILE}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEBUG\_\-FILE~0x01}}
+\label{aXe__grism_8h_a7201066a7f98df69ca8f01d974dcfb53}
+\hypertarget{aXe__grism_8h_a6117e17bb3108107676f4486e62d40e5}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix@{gsl\_\-matrix}}
+\index{gsl\_\-matrix@{gsl\_\-matrix}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix~gsl\_\-matrix\_\-float}}
+\label{aXe__grism_8h_a6117e17bb3108107676f4486e62d40e5}
+\hypertarget{aXe__grism_8h_a621493bf0b066fb614a23adea0f7a151}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-add\_\-constant@{gsl\_\-matrix\_\-add\_\-constant}}
+\index{gsl\_\-matrix\_\-add\_\-constant@{gsl\_\-matrix\_\-add\_\-constant}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-add\_\-constant}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-add\_\-constant~gsl\_\-matrix\_\-float\_\-add\_\-constant}}
+\label{aXe__grism_8h_a621493bf0b066fb614a23adea0f7a151}
+\hypertarget{aXe__grism_8h_a1214ab1bea5fd80474d7a27db0bfb429}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-alloc@{gsl\_\-matrix\_\-alloc}}
+\index{gsl\_\-matrix\_\-alloc@{gsl\_\-matrix\_\-alloc}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-alloc}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-alloc~gsl\_\-matrix\_\-float\_\-alloc}}
+\label{aXe__grism_8h_a1214ab1bea5fd80474d7a27db0bfb429}
+\hypertarget{aXe__grism_8h_a4851deed02fcb4cc41640a35a70b08c6}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-fprintf@{gsl\_\-matrix\_\-fprintf}}
+\index{gsl\_\-matrix\_\-fprintf@{gsl\_\-matrix\_\-fprintf}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-fprintf}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-fprintf~gsl\_\-matrix\_\-float\_\-fprintf}}
+\label{aXe__grism_8h_a4851deed02fcb4cc41640a35a70b08c6}
+\hypertarget{aXe__grism_8h_a61aa1d37853a90711852146f18d0b85f}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-free@{gsl\_\-matrix\_\-free}}
+\index{gsl\_\-matrix\_\-free@{gsl\_\-matrix\_\-free}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-free~gsl\_\-matrix\_\-float\_\-free}}
+\label{aXe__grism_8h_a61aa1d37853a90711852146f18d0b85f}
+\hypertarget{aXe__grism_8h_acf709ee71c580f1cd65d726ed03200ea}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-get@{gsl\_\-matrix\_\-get}}
+\index{gsl\_\-matrix\_\-get@{gsl\_\-matrix\_\-get}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-get~gsl\_\-matrix\_\-float\_\-get}}
+\label{aXe__grism_8h_acf709ee71c580f1cd65d726ed03200ea}
+\hypertarget{aXe__grism_8h_a363a59f4c0508ddec644ec96b3933ace}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-max@{gsl\_\-matrix\_\-max}}
+\index{gsl\_\-matrix\_\-max@{gsl\_\-matrix\_\-max}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-max}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-max~gsl\_\-matrix\_\-float\_\-max}}
+\label{aXe__grism_8h_a363a59f4c0508ddec644ec96b3933ace}
+\hypertarget{aXe__grism_8h_a32a8e92c68334bd80ca76f01e87659ae}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-min@{gsl\_\-matrix\_\-min}}
+\index{gsl\_\-matrix\_\-min@{gsl\_\-matrix\_\-min}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-min}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-min~gsl\_\-matrix\_\-float\_\-min}}
+\label{aXe__grism_8h_a32a8e92c68334bd80ca76f01e87659ae}
+\hypertarget{aXe__grism_8h_aed23c3f729d3bcb528cd5396f3d791ce}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-scale@{gsl\_\-matrix\_\-scale}}
+\index{gsl\_\-matrix\_\-scale@{gsl\_\-matrix\_\-scale}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-scale}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-scale~gsl\_\-matrix\_\-float\_\-scale}}
+\label{aXe__grism_8h_aed23c3f729d3bcb528cd5396f3d791ce}
+\hypertarget{aXe__grism_8h_a1f386ef5cd5a3b916246c2bee80f083a}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-set@{gsl\_\-matrix\_\-set}}
+\index{gsl\_\-matrix\_\-set@{gsl\_\-matrix\_\-set}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-set~gsl\_\-matrix\_\-float\_\-set}}
+\label{aXe__grism_8h_a1f386ef5cd5a3b916246c2bee80f083a}
+\hypertarget{aXe__grism_8h_af6161aeb008a1ffa7d888df6ccbef7cc}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!gsl\_\-matrix\_\-set\_\-all@{gsl\_\-matrix\_\-set\_\-all}}
+\index{gsl\_\-matrix\_\-set\_\-all@{gsl\_\-matrix\_\-set\_\-all}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{gsl\_\-matrix\_\-set\_\-all}]{\setlength{\rightskip}{0pt plus 5cm}\#define gsl\_\-matrix\_\-set\_\-all~gsl\_\-matrix\_\-float\_\-set\_\-all}}
+\label{aXe__grism_8h_af6161aeb008a1ffa7d888df6ccbef7cc}
+\hypertarget{aXe__grism_8h_a4d63039a7367379f6b712ad926163abc}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!MAX\_\-BEAMS@{MAX\_\-BEAMS}}
+\index{MAX\_\-BEAMS@{MAX\_\-BEAMS}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{MAX\_\-BEAMS}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-BEAMS~27}}
+\label{aXe__grism_8h_a4d63039a7367379f6b712ad926163abc}
+\hypertarget{aXe__grism_8h_ac1535592e39e7edf0cafbd5e695ea622}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!MAXCHAR@{MAXCHAR}}
+\index{MAXCHAR@{MAXCHAR}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{MAXCHAR}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXCHAR~255}}
+\label{aXe__grism_8h_ac1535592e39e7edf0cafbd5e695ea622}
+\hypertarget{aXe__grism_8h_ab4472600f4f77bd72e51d116ed5138ed}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!PIXEL\_\-T@{PIXEL\_\-T}}
+\index{PIXEL\_\-T@{PIXEL\_\-T}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{PIXEL\_\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define PIXEL\_\-T~float}}
+\label{aXe__grism_8h_ab4472600f4f77bd72e51d116ed5138ed}
+\hypertarget{aXe__grism_8h_a5bd9a30fc22d9a737ee060d41a4ec479}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!RELEASE@{RELEASE}}
+\index{RELEASE@{RELEASE}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{RELEASE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RELEASE~\char`\"{} 2.0, September 2009\char`\"{}}}
+\label{aXe__grism_8h_a5bd9a30fc22d9a737ee060d41a4ec479}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!spec\_\-warning@{spec\_\-warning}}
+\index{spec\_\-warning@{spec\_\-warning}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{spec\_\-warning}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf spec\_\-warning}}}
+\label{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49}
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{SPC\_\-W\_\-CONTAM@{SPC\_\-W\_\-CONTAM}!aXe\_\-grism.h@{aXe\_\-grism.h}}\index{aXe\_\-grism.h@{aXe\_\-grism.h}!SPC\_\-W\_\-CONTAM@{SPC\_\-W\_\-CONTAM}}\item[{\em 
+\hypertarget{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49a804f317cffd538ded8ef6f6c65e93c33}{
+SPC\_\-W\_\-CONTAM}
+\label{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49a804f317cffd538ded8ef6f6c65e93c33}
+}]\index{SPC\_\-W\_\-BORDER@{SPC\_\-W\_\-BORDER}!aXe\_\-grism.h@{aXe\_\-grism.h}}\index{aXe\_\-grism.h@{aXe\_\-grism.h}!SPC\_\-W\_\-BORDER@{SPC\_\-W\_\-BORDER}}\item[{\em 
+\hypertarget{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49ab7a635d94a40ae0ed09a4fef6bb36b8c}{
+SPC\_\-W\_\-BORDER}
+\label{aXe__grism_8h_ab270beca374e5418146b4b1d31657b49ab7a635d94a40ae0ed09a4fef6bb36b8c}
+}]\end{description}
+\end{Desc}
+
+
+
+
+\begin{DoxyCode}
+199 {
+200      SPC_W_CONTAM,
+201      SPC_W_BORDER
+202 }
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{aXe__grism_8h_a7c99cdc17bd49473a5f045550a5ee600}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!make\_\-gps\_\-table@{make\_\-gps\_\-table}}
+\index{make\_\-gps\_\-table@{make\_\-gps\_\-table}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{make\_\-gps\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ap\_\-pixel}$\ast$ make\_\-gps\_\-table ({\bf object} $\ast$const  {\em ob}, \/  const int {\em beamorder}, \/  int $\ast$const  {\em flags}, \/  int {\em xval}, \/  int {\em yval})}}
+\label{aXe__grism_8h_a7c99cdc17bd49473a5f045550a5ee600}
+Similar to make\_\-spc\_\-table, it just works only on one spot given in the parameters. 
+
+
+\begin{DoxyCode}
+296 {
+297   int bb_x, bb_y, bb_w, bb_h;
+298   int x, y;
+299   beam *curbeam = ob->beams + beamorder;
+300   double dx, dy;
+301   ap_pixel *table, *cur_ap;
+302   is_in_descriptor iid;
+303   sectionfun sf;
+304   trace_func *tracefun = curbeam->spec_trace;
+305 
+306   quad_to_bbox (curbeam->corners, curbeam->bbox, curbeam->bbox + 1);
+307   bb_x = curbeam->bbox[0].x;
+308   bb_y = curbeam->bbox[0].y;
+309   bb_w = curbeam->bbox[1].x - curbeam->bbox[0].x + 1;
+310   bb_h = curbeam->bbox[1].y - curbeam->bbox[0].y + 1;
+311 
+312   if (sanitycheck (ob))
+313     {
+314       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+315                    "Input data failed sanity check");
+316       return NULL;
+317     }
+318   
+319   if (fill_is_in_descriptor (&iid, curbeam->corners))
+320     return NULL;
+321   
+322   if (fill_in_sectionfun (&sf, curbeam->orient, curbeam))
+323     return NULL;
+324   
+325   if (!
+326       (table =
+327        malloc (2 * sizeof (ap_pixel))))
+328     return NULL;
+329   
+330   /* We have a little coordinate confusion here.  There are three
+331      systems:
+332      (a) the absolute one, rooted in (0,0) of the image.
+333      (b) the relative one, rooted in the reference point and used
+334      when evaluating the spectrum trace.  This one is used
+335      for finding the section points, etc.
+336      (c) one relative to the bounding box; x and y below live in this
+337      system and have to be converted into whatever system is
+338      required.  dx, dy are used for the conversion to (b)
+339   */
+340   dx = bb_x - curbeam->refpoint.x;
+341   dy = bb_y - curbeam->refpoint.y;
+342   x  = xval - bb_x;
+343   y  = yval - bb_y;
+344 
+345   cur_ap = table;
+346 
+347   cur_ap =
+348     handle_one_pixel (x + dx, y + dy, x + bb_x,
+349                       y + bb_y, ob->grism_obs, &sf,
+350                       tracefun, cur_ap);
+351 
+352   cur_ap->p_x = -1;
+353   cur_ap->p_y = -1;
+354   cur_ap->count = -1;
+355   
+356   free_sectionfun (&sf);
+357 
+358   transform_to_pathlen (curbeam->spec_trace, table);
+359 
+360   return table;
+361 }
+\end{DoxyCode}
+\hypertarget{aXe__grism_8h_a63705e4ea9da776c8bd40c30b559ba45}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!make\_\-spc\_\-table@{make\_\-spc\_\-table}}
+\index{make\_\-spc\_\-table@{make\_\-spc\_\-table}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{make\_\-spc\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ap\_\-pixel}$\ast$ make\_\-spc\_\-table ({\bf object} $\ast$const  {\em ob}, \/  const int {\em beamorder}, \/  int $\ast$const  {\em flags})}}
+\label{aXe__grism_8h_a63705e4ea9da776c8bd40c30b559ba45}
+computes a table of aperture pixels, i.e. of tuples containing the source coordinates, the distance to the \hyperlink{structspectrum}{spectrum} trace, the path length along the trace, and the intensity. The end of the table is marked with an ap\_\-pixel-\/$>$x==-\/1. This routine can do subsampling, whereby each pixel is divided into n\_\-sub$\ast$n\_\-sub smaller pixels. If n\_\-sub==1, a special (faster) handling is enabled.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ob}]the \hyperlink{structobject}{object} struct to examine \item[{\em beamorder}]the order of the \hyperlink{structspectrum}{spectrum} to examine \item[{\em flags}]warning flags like in the warning field of the \hyperlink{structspectrum}{spectrum} structure. This has to be passed in initialized. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+177 {
+178   int bb_x, bb_y, bb_w, bb_h;
+179   int x, y;
+180   beam *curbeam = ob->beams + beamorder;
+181   double dx, dy;
+182   ap_pixel *table, *cur_ap;
+183   is_in_descriptor iid;
+184   sectionfun sf;
+185   trace_func *tracefun = curbeam->spec_trace;
+186 
+187   quad_to_bbox (curbeam->corners, curbeam->bbox, curbeam->bbox + 1);
+188   bb_x = curbeam->bbox[0].x;
+189   bb_y = curbeam->bbox[0].y;
+190   bb_w = curbeam->bbox[1].x - curbeam->bbox[0].x + 1;
+191   bb_h = curbeam->bbox[1].y - curbeam->bbox[0].y + 1;
+192   
+193   if (sanitycheck (ob))
+194     {
+195       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+196                    "Input data failed sanity check");
+197       return NULL;
+198     }
+199 
+200   if (fill_is_in_descriptor (&iid, curbeam->corners))
+201     return NULL;
+202   
+203   if (fill_in_sectionfun (&sf, curbeam->orient, curbeam))
+204     return NULL;
+205   
+206   if (!(table =
+207         malloc ((bb_w * bb_h + 1) * sizeof (ap_pixel))))
+208     return NULL;
+209 
+210 
+211   /* We have a little coordinate confusion here.  There are three
+212      systems:
+213      (a) the absolute one, rooted in (0,0) of the image.
+214      (b) the relative one, rooted in the reference point and used
+215      when evaluating the spectrum trace.  This one is used
+216      for finding the section points, etc.
+217      (c) one relative to the bounding box; x and y below live in this
+218      system and have to be converted into whatever system is
+219      required.  dx, dy are used for the conversion to (b)
+220   */
+221   dx = bb_x - curbeam->refpoint.x;
+222   dy = bb_y - curbeam->refpoint.y;
+223   cur_ap = table;
+224   for (y = 0; y <= bb_h; y++)
+225     {
+226       for (x = 0; x < bb_w; x++)
+227         {
+228           if ((bb_x + x < 0) || (bb_y + y < 0)
+229               || (bb_x + x >= ob->grism_obs->grism->size1)
+230               || (bb_y + y >= ob->grism_obs->grism->size2))
+231             {
+232               *flags |= SPC_W_BORDER;
+233               continue;
+234             }
+235 
+236           
+237           // check whether the trace description has
+238           // an order higher than linear
+239           if (curbeam->spec_trace->type > 1)
+240             {
+241               // new criteria based on the true trace distance
+242               // which means the true distance from the section point
+243               if (!tracedist_criteria(x + dx, y + dy, &sf, tracefun, curbeam->
+      width+2.0))
+244                 {
+245                   continue;
+246                 }
+247             }
+248           else
+249             {
+250               // old criteria based on the box model
+251               if (!is_in (bb_x + x, bb_y + y, &iid))
+252                 {
+253                   continue;
+254                 }
+255             }
+256 
+257           if (isnan
+258               (gsl_matrix_get
+259                (ob->grism_obs->grism, bb_x + x, bb_y + y)))
+260             {
+261               continue;
+262             }
+263           //      if (ob->ID == 11 && x + bb_x == 59)
+264             //      fprintf(stdout, "xx: %i, yy: %i: %i\n", x + bb_x, y + bb_y, i
+      s_in (x + bb_x, y + bb_y, &iid));
+265           cur_ap =
+266             handle_one_pixel (x + dx, y + dy, x + bb_x,
+267                               y + bb_y, ob->grism_obs, &sf,
+268                               tracefun, cur_ap);
+269 
+270         }
+271     }
+272 
+273   cur_ap->p_x = -1;
+274   cur_ap->p_y = -1;
+275   cur_ap->count = -1;
+276 
+277   free_sectionfun (&sf);
+278 
+279 
+280   if (transform_to_pathlen (curbeam->spec_trace, table))
+281     {
+282       //   free (table);
+283       //   table = NULL;
+284       //   return NULL;
+285     }
+286   return table;
+287 }
+\end{DoxyCode}
+\hypertarget{aXe__grism_8h_adb98c62d1001d43ad16b2ce9b69b01d2}{
+\index{aXe\_\-grism.h@{aXe\_\-grism.h}!print\_\-ap\_\-pixel\_\-table@{print\_\-ap\_\-pixel\_\-table}}
+\index{print\_\-ap\_\-pixel\_\-table@{print\_\-ap\_\-pixel\_\-table}!aXe_grism.h@{aXe\_\-grism.h}}
+\subsubsection[{print\_\-ap\_\-pixel\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-ap\_\-pixel\_\-table (const {\bf ap\_\-pixel} $\ast$ {\em ap\_\-p})}}
+\label{aXe__grism_8h_adb98c62d1001d43ad16b2ce9b69b01d2}
+
+
+
+\begin{DoxyCode}
+367 {
+368   printf ("# x y pathlen distance lambda count error\n");
+369   while (ap_p->p_x != -1)
+370     {
+371       printf ("%d %d %f %f %f %f %f %f %f %ld\n", ap_p->p_x, ap_p->p_y,
+372               ap_p->x, ap_p->y, ap_p->xi, ap_p->dist, ap_p->lambda,
+373               ap_p->count, ap_p->error, ap_p->dq);
+374       ap_p++;
+375     }
+376 }
+\end{DoxyCode}

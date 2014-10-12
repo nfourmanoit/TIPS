@@ -1,0 +1,139 @@
+\hypertarget{structap__pixel}{
+\section{ap\_\-pixel Struct Reference}
+\label{structap__pixel}\index{ap\_\-pixel@{ap\_\-pixel}}
+}
+
+
+{\ttfamily \#include $<$aXe\_\-grism.h$>$}\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structap__pixel_abca28f0936fbd5a569ad548fb25e5a38}{p\_\-x}
+\item 
+int \hyperlink{structap__pixel_aadf7ee52df3875792fbf13d4d52ed298}{p\_\-y}
+\item 
+double \hyperlink{structap__pixel_a0ce028c33a28f543bd9255324800e9ea}{x}
+\item 
+double \hyperlink{structap__pixel_a1df90884734bfaea8ec545b69d802281}{y}
+\item 
+double \hyperlink{structap__pixel_abd0f197da151fac01c9e4cbd4146f212}{dist}
+\item 
+double \hyperlink{structap__pixel_aa6a80bf7f2a556b5d846bb3b987450ee}{xs}
+\item 
+double \hyperlink{structap__pixel_a54b55a4bbb06f7a9065699d976dae956}{ys}
+\item 
+double \hyperlink{structap__pixel_a92d9e84a233d0a1ad482830b23c5e5ba}{dxs}
+\item 
+double \hyperlink{structap__pixel_aeae2e14e0f53bd1090acb2a8758104a5}{xi}
+\item 
+double \hyperlink{structap__pixel_ac36fd281b7d91081490e41ce07a60501}{lambda}
+\item 
+double \hyperlink{structap__pixel_a8c1c7b5a35a04145fccfc3f84c420cde}{dlambda}
+\item 
+double \hyperlink{structap__pixel_a846018a7e3b143259419bd74e2d9073f}{count}
+\item 
+double \hyperlink{structap__pixel_a34600405e114d4bd366c1d33860aff14}{weight}
+\item 
+double \hyperlink{structap__pixel_a70b0f2e20878570616d81ffac4c15c68}{error}
+\item 
+double \hyperlink{structap__pixel_a2191ef670b1b5c515fda841dda181f62}{contam}
+\item 
+double \hyperlink{structap__pixel_ada106f5981b17786de87cfeb2a7db0d1}{model}
+\item 
+long \hyperlink{structap__pixel_ae86ffac921bd79b2b8e1ee6b2a9b3cd9}{dq}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An aperture pixel, i.e., a pixel within a \hyperlink{structbeam}{beam}. The structure contains the coordinates, the abscissa of the section point between the \hyperlink{structobject}{object} axis and the \hyperlink{structspectrum}{spectrum} trace, the distance between the pixel and the section point along the \hyperlink{structobject}{object} axis, the path length of the section point along the trace, and the photon count for this pixel. A table of these is produced by the make\_\-spc\_\-table function. 
+
+\subsection{Field Documentation}
+\hypertarget{structap__pixel_a2191ef670b1b5c515fda841dda181f62}{
+\index{ap\_\-pixel@{ap\_\-pixel}!contam@{contam}}
+\index{contam@{contam}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{contam}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::contam}}}
+\label{structap__pixel_a2191ef670b1b5c515fda841dda181f62}
+\hypertarget{structap__pixel_a846018a7e3b143259419bd74e2d9073f}{
+\index{ap\_\-pixel@{ap\_\-pixel}!count@{count}}
+\index{count@{count}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::count}}}
+\label{structap__pixel_a846018a7e3b143259419bd74e2d9073f}
+\hypertarget{structap__pixel_abd0f197da151fac01c9e4cbd4146f212}{
+\index{ap\_\-pixel@{ap\_\-pixel}!dist@{dist}}
+\index{dist@{dist}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{dist}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::dist}}}
+\label{structap__pixel_abd0f197da151fac01c9e4cbd4146f212}
+\hypertarget{structap__pixel_a8c1c7b5a35a04145fccfc3f84c420cde}{
+\index{ap\_\-pixel@{ap\_\-pixel}!dlambda@{dlambda}}
+\index{dlambda@{dlambda}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{dlambda}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::dlambda}}}
+\label{structap__pixel_a8c1c7b5a35a04145fccfc3f84c420cde}
+\hypertarget{structap__pixel_ae86ffac921bd79b2b8e1ee6b2a9b3cd9}{
+\index{ap\_\-pixel@{ap\_\-pixel}!dq@{dq}}
+\index{dq@{dq}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{dq}]{\setlength{\rightskip}{0pt plus 5cm}long {\bf ap\_\-pixel::dq}}}
+\label{structap__pixel_ae86ffac921bd79b2b8e1ee6b2a9b3cd9}
+\hypertarget{structap__pixel_a92d9e84a233d0a1ad482830b23c5e5ba}{
+\index{ap\_\-pixel@{ap\_\-pixel}!dxs@{dxs}}
+\index{dxs@{dxs}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{dxs}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::dxs}}}
+\label{structap__pixel_a92d9e84a233d0a1ad482830b23c5e5ba}
+\hypertarget{structap__pixel_a70b0f2e20878570616d81ffac4c15c68}{
+\index{ap\_\-pixel@{ap\_\-pixel}!error@{error}}
+\index{error@{error}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::error}}}
+\label{structap__pixel_a70b0f2e20878570616d81ffac4c15c68}
+\hypertarget{structap__pixel_ac36fd281b7d91081490e41ce07a60501}{
+\index{ap\_\-pixel@{ap\_\-pixel}!lambda@{lambda}}
+\index{lambda@{lambda}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{lambda}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::lambda}}}
+\label{structap__pixel_ac36fd281b7d91081490e41ce07a60501}
+\hypertarget{structap__pixel_ada106f5981b17786de87cfeb2a7db0d1}{
+\index{ap\_\-pixel@{ap\_\-pixel}!model@{model}}
+\index{model@{model}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{model}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::model}}}
+\label{structap__pixel_ada106f5981b17786de87cfeb2a7db0d1}
+\hypertarget{structap__pixel_abca28f0936fbd5a569ad548fb25e5a38}{
+\index{ap\_\-pixel@{ap\_\-pixel}!p\_\-x@{p\_\-x}}
+\index{p\_\-x@{p\_\-x}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{p\_\-x}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf ap\_\-pixel::p\_\-x}}}
+\label{structap__pixel_abca28f0936fbd5a569ad548fb25e5a38}
+\hypertarget{structap__pixel_aadf7ee52df3875792fbf13d4d52ed298}{
+\index{ap\_\-pixel@{ap\_\-pixel}!p\_\-y@{p\_\-y}}
+\index{p\_\-y@{p\_\-y}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{p\_\-y}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf ap\_\-pixel::p\_\-y}}}
+\label{structap__pixel_aadf7ee52df3875792fbf13d4d52ed298}
+\hypertarget{structap__pixel_a34600405e114d4bd366c1d33860aff14}{
+\index{ap\_\-pixel@{ap\_\-pixel}!weight@{weight}}
+\index{weight@{weight}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{weight}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::weight}}}
+\label{structap__pixel_a34600405e114d4bd366c1d33860aff14}
+\hypertarget{structap__pixel_a0ce028c33a28f543bd9255324800e9ea}{
+\index{ap\_\-pixel@{ap\_\-pixel}!x@{x}}
+\index{x@{x}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::x}}}
+\label{structap__pixel_a0ce028c33a28f543bd9255324800e9ea}
+\hypertarget{structap__pixel_aeae2e14e0f53bd1090acb2a8758104a5}{
+\index{ap\_\-pixel@{ap\_\-pixel}!xi@{xi}}
+\index{xi@{xi}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{xi}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::xi}}}
+\label{structap__pixel_aeae2e14e0f53bd1090acb2a8758104a5}
+\hypertarget{structap__pixel_aa6a80bf7f2a556b5d846bb3b987450ee}{
+\index{ap\_\-pixel@{ap\_\-pixel}!xs@{xs}}
+\index{xs@{xs}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{xs}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::xs}}}
+\label{structap__pixel_aa6a80bf7f2a556b5d846bb3b987450ee}
+\hypertarget{structap__pixel_a1df90884734bfaea8ec545b69d802281}{
+\index{ap\_\-pixel@{ap\_\-pixel}!y@{y}}
+\index{y@{y}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::y}}}
+\label{structap__pixel_a1df90884734bfaea8ec545b69d802281}
+\hypertarget{structap__pixel_a54b55a4bbb06f7a9065699d976dae956}{
+\index{ap\_\-pixel@{ap\_\-pixel}!ys@{ys}}
+\index{ys@{ys}!ap_pixel@{ap\_\-pixel}}
+\subsubsection[{ys}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf ap\_\-pixel::ys}}}
+\label{structap__pixel_a54b55a4bbb06f7a9065699d976dae956}
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/\hyperlink{aXe__grism_8h}{aXe\_\-grism.h}\end{DoxyCompactItemize}

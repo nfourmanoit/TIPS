@@ -1,0 +1,233 @@
+\hypertarget{structaperture__conf}{
+\section{aperture\_\-conf Struct Reference}
+\label{structaperture__conf}\index{aperture\_\-conf@{aperture\_\-conf}}
+}
+
+
+{\ttfamily \#include $<$aper\_\-conf.h$>$}\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{structaperture__conf_ae3db63e0164ca5b8c982df9e74fc90d8}{instrument} \mbox{[}MAXCHAR\mbox{]}
+\item 
+char \hyperlink{structaperture__conf_a4301fafaf135241f0c8c778a706bdd58}{camera} \mbox{[}MAXCHAR\mbox{]}
+\item 
+int \hyperlink{structaperture__conf_af53b09fa4f86ff116c002640c3e817d9}{nbeams}
+\item 
+char \hyperlink{structaperture__conf_adde45d5e583dd6566f7ce226a65a70df}{science\_\-ext} \mbox{[}MAXCHAR\mbox{]}
+\item 
+char \hyperlink{structaperture__conf_ad0101712c9f239e671e2b4d7f0b64b50}{errors\_\-ext} \mbox{[}MAXCHAR\mbox{]}
+\item 
+char \hyperlink{structaperture__conf_a66ddf8ad2650f4d22681e58456736c04}{dq\_\-ext} \mbox{[}MAXCHAR\mbox{]}
+\item 
+int \hyperlink{structaperture__conf_abe36ba97113a8ccb1916acdbe5db113f}{science\_\-numext}
+\item 
+int \hyperlink{structaperture__conf_a171e464e2539ae4a988ee7c16202b6f2}{errors\_\-numext}
+\item 
+int \hyperlink{structaperture__conf_ae70427981472e0bcbfbf5726ee9646b1}{dq\_\-numext}
+\item 
+int \hyperlink{structaperture__conf_a17945ab6b730d7298298e077df799f2c}{dqmask}
+\item 
+char \hyperlink{structaperture__conf_ac886e8a7c40edc3ab16593effcf4e7fb}{exptimekey} \mbox{[}MAXCHAR\mbox{]}
+\item 
+char \hyperlink{structaperture__conf_a74a5d41763cd9966b686ba1ff658b80c}{gainkey} \mbox{[}MAXCHAR\mbox{]}
+\item 
+char \hyperlink{structaperture__conf_a730cc39bb91c34d0dfe92977cb2aaf46}{optkey1} \mbox{[}MAXCHAR\mbox{]}
+\item 
+char \hyperlink{structaperture__conf_a6b84a9e8edd79d020ea2e189839d86ba}{optval1} \mbox{[}MAXCHAR\mbox{]}
+\item 
+char \hyperlink{structaperture__conf_a305a2c06c10c326f6d8a861ad4948b9c}{FFname} \mbox{[}MAXCHAR\mbox{]}
+\item 
+char \hyperlink{structaperture__conf_abd4afca5db665d4f5001ce8ba0cf7395}{IPIXfunc} \mbox{[}MAXCHAR\mbox{]}
+\item 
+int \hyperlink{structaperture__conf_a5cdddf8dafb95b7a77458fbdbf74e5b9}{refx}
+\item 
+int \hyperlink{structaperture__conf_ae48467c471e66355a90db41d8ce77bc6}{refy}
+\item 
+\hyperlink{structbeam__conf}{beam\_\-conf} \hyperlink{structaperture__conf_aa1f52d8496707cab4631dc2369d3dec2}{beam} \mbox{[}MAX\_\-BEAMS\mbox{]}
+\item 
+float \hyperlink{structaperture__conf_a0fb034d1b39c351699420312b2c58d76}{drz\_\-resol}
+\item 
+float \hyperlink{structaperture__conf_a8605f6fcd19c18d7b30c7a0a11a80e4b}{drz\_\-scale}
+\item 
+float \hyperlink{structaperture__conf_a6ef4ef7172cdee4e54e27fc5c648a7f2}{drz\_\-lamb0}
+\item 
+float \hyperlink{structaperture__conf_a7d7bf7ed2754c7f93315ae89a783f547}{drz\_\-xstart}
+\item 
+float \hyperlink{structaperture__conf_a7eaf9f74b020a37036f7aa141ed73e4f}{drz\_\-pfrac}
+\item 
+char \hyperlink{structaperture__conf_a0fef1b7eeba1df96f9a5c601baa46558}{drz\_\-kernel} \mbox{[}MAXCHAR\mbox{]}
+\item 
+gsl\_\-vector $\ast$ \hyperlink{structaperture__conf_a904a154040bedf410b669b65791c96e2}{psfcoeffs}
+\item 
+gsl\_\-vector $\ast$ \hyperlink{structaperture__conf_a469dc826e363a3b9e340aa99824e2f30}{psfrange}
+\item 
+float \hyperlink{structaperture__conf_a13683d2e63f2e2ccb4f834dec5b2d0e3}{rdnoise}
+\item 
+double \hyperlink{structaperture__conf_a981e8e9f63a913f1ac34c864ec392024}{pobjsize}
+\item 
+double \hyperlink{structaperture__conf_aca74009eb7d64af0ba7222e9dbb879c1}{smfactor}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The basic description of the dispersed apertures in coordinates relative to the direct \hyperlink{structobject}{object} position. Contains MAX\_\-BEAMS \hyperlink{structbeam__conf}{beam\_\-conf} \begin{DoxySeeAlso}{See also}
+\hyperlink{structbeam__conf}{beam\_\-conf} 
+\end{DoxySeeAlso}
+
+
+\subsection{Field Documentation}
+\hypertarget{structaperture__conf_aa1f52d8496707cab4631dc2369d3dec2}{
+\index{aperture\_\-conf@{aperture\_\-conf}!beam@{beam}}
+\index{beam@{beam}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{beam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beam\_\-conf} {\bf aperture\_\-conf::beam}\mbox{[}MAX\_\-BEAMS\mbox{]}}}
+\label{structaperture__conf_aa1f52d8496707cab4631dc2369d3dec2}
+\hypertarget{structaperture__conf_a4301fafaf135241f0c8c778a706bdd58}{
+\index{aperture\_\-conf@{aperture\_\-conf}!camera@{camera}}
+\index{camera@{camera}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{camera}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::camera}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_a4301fafaf135241f0c8c778a706bdd58}
+\hypertarget{structaperture__conf_a66ddf8ad2650f4d22681e58456736c04}{
+\index{aperture\_\-conf@{aperture\_\-conf}!dq\_\-ext@{dq\_\-ext}}
+\index{dq\_\-ext@{dq\_\-ext}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{dq\_\-ext}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::dq\_\-ext}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_a66ddf8ad2650f4d22681e58456736c04}
+\hypertarget{structaperture__conf_ae70427981472e0bcbfbf5726ee9646b1}{
+\index{aperture\_\-conf@{aperture\_\-conf}!dq\_\-numext@{dq\_\-numext}}
+\index{dq\_\-numext@{dq\_\-numext}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{dq\_\-numext}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf aperture\_\-conf::dq\_\-numext}}}
+\label{structaperture__conf_ae70427981472e0bcbfbf5726ee9646b1}
+\hypertarget{structaperture__conf_a17945ab6b730d7298298e077df799f2c}{
+\index{aperture\_\-conf@{aperture\_\-conf}!dqmask@{dqmask}}
+\index{dqmask@{dqmask}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{dqmask}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf aperture\_\-conf::dqmask}}}
+\label{structaperture__conf_a17945ab6b730d7298298e077df799f2c}
+\hypertarget{structaperture__conf_a0fef1b7eeba1df96f9a5c601baa46558}{
+\index{aperture\_\-conf@{aperture\_\-conf}!drz\_\-kernel@{drz\_\-kernel}}
+\index{drz\_\-kernel@{drz\_\-kernel}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{drz\_\-kernel}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::drz\_\-kernel}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_a0fef1b7eeba1df96f9a5c601baa46558}
+\hypertarget{structaperture__conf_a6ef4ef7172cdee4e54e27fc5c648a7f2}{
+\index{aperture\_\-conf@{aperture\_\-conf}!drz\_\-lamb0@{drz\_\-lamb0}}
+\index{drz\_\-lamb0@{drz\_\-lamb0}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{drz\_\-lamb0}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aperture\_\-conf::drz\_\-lamb0}}}
+\label{structaperture__conf_a6ef4ef7172cdee4e54e27fc5c648a7f2}
+\hypertarget{structaperture__conf_a7eaf9f74b020a37036f7aa141ed73e4f}{
+\index{aperture\_\-conf@{aperture\_\-conf}!drz\_\-pfrac@{drz\_\-pfrac}}
+\index{drz\_\-pfrac@{drz\_\-pfrac}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{drz\_\-pfrac}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aperture\_\-conf::drz\_\-pfrac}}}
+\label{structaperture__conf_a7eaf9f74b020a37036f7aa141ed73e4f}
+\hypertarget{structaperture__conf_a0fb034d1b39c351699420312b2c58d76}{
+\index{aperture\_\-conf@{aperture\_\-conf}!drz\_\-resol@{drz\_\-resol}}
+\index{drz\_\-resol@{drz\_\-resol}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{drz\_\-resol}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aperture\_\-conf::drz\_\-resol}}}
+\label{structaperture__conf_a0fb034d1b39c351699420312b2c58d76}
+\hypertarget{structaperture__conf_a8605f6fcd19c18d7b30c7a0a11a80e4b}{
+\index{aperture\_\-conf@{aperture\_\-conf}!drz\_\-scale@{drz\_\-scale}}
+\index{drz\_\-scale@{drz\_\-scale}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{drz\_\-scale}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aperture\_\-conf::drz\_\-scale}}}
+\label{structaperture__conf_a8605f6fcd19c18d7b30c7a0a11a80e4b}
+\hypertarget{structaperture__conf_a7d7bf7ed2754c7f93315ae89a783f547}{
+\index{aperture\_\-conf@{aperture\_\-conf}!drz\_\-xstart@{drz\_\-xstart}}
+\index{drz\_\-xstart@{drz\_\-xstart}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{drz\_\-xstart}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aperture\_\-conf::drz\_\-xstart}}}
+\label{structaperture__conf_a7d7bf7ed2754c7f93315ae89a783f547}
+\hypertarget{structaperture__conf_ad0101712c9f239e671e2b4d7f0b64b50}{
+\index{aperture\_\-conf@{aperture\_\-conf}!errors\_\-ext@{errors\_\-ext}}
+\index{errors\_\-ext@{errors\_\-ext}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{errors\_\-ext}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::errors\_\-ext}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_ad0101712c9f239e671e2b4d7f0b64b50}
+\hypertarget{structaperture__conf_a171e464e2539ae4a988ee7c16202b6f2}{
+\index{aperture\_\-conf@{aperture\_\-conf}!errors\_\-numext@{errors\_\-numext}}
+\index{errors\_\-numext@{errors\_\-numext}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{errors\_\-numext}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf aperture\_\-conf::errors\_\-numext}}}
+\label{structaperture__conf_a171e464e2539ae4a988ee7c16202b6f2}
+\hypertarget{structaperture__conf_ac886e8a7c40edc3ab16593effcf4e7fb}{
+\index{aperture\_\-conf@{aperture\_\-conf}!exptimekey@{exptimekey}}
+\index{exptimekey@{exptimekey}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{exptimekey}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::exptimekey}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_ac886e8a7c40edc3ab16593effcf4e7fb}
+\hypertarget{structaperture__conf_a305a2c06c10c326f6d8a861ad4948b9c}{
+\index{aperture\_\-conf@{aperture\_\-conf}!FFname@{FFname}}
+\index{FFname@{FFname}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{FFname}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::FFname}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_a305a2c06c10c326f6d8a861ad4948b9c}
+\hypertarget{structaperture__conf_a74a5d41763cd9966b686ba1ff658b80c}{
+\index{aperture\_\-conf@{aperture\_\-conf}!gainkey@{gainkey}}
+\index{gainkey@{gainkey}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{gainkey}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::gainkey}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_a74a5d41763cd9966b686ba1ff658b80c}
+\hypertarget{structaperture__conf_ae3db63e0164ca5b8c982df9e74fc90d8}{
+\index{aperture\_\-conf@{aperture\_\-conf}!instrument@{instrument}}
+\index{instrument@{instrument}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{instrument}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::instrument}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_ae3db63e0164ca5b8c982df9e74fc90d8}
+\hypertarget{structaperture__conf_abd4afca5db665d4f5001ce8ba0cf7395}{
+\index{aperture\_\-conf@{aperture\_\-conf}!IPIXfunc@{IPIXfunc}}
+\index{IPIXfunc@{IPIXfunc}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{IPIXfunc}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::IPIXfunc}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_abd4afca5db665d4f5001ce8ba0cf7395}
+\hypertarget{structaperture__conf_af53b09fa4f86ff116c002640c3e817d9}{
+\index{aperture\_\-conf@{aperture\_\-conf}!nbeams@{nbeams}}
+\index{nbeams@{nbeams}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{nbeams}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf aperture\_\-conf::nbeams}}}
+\label{structaperture__conf_af53b09fa4f86ff116c002640c3e817d9}
+\hypertarget{structaperture__conf_a730cc39bb91c34d0dfe92977cb2aaf46}{
+\index{aperture\_\-conf@{aperture\_\-conf}!optkey1@{optkey1}}
+\index{optkey1@{optkey1}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{optkey1}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::optkey1}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_a730cc39bb91c34d0dfe92977cb2aaf46}
+\hypertarget{structaperture__conf_a6b84a9e8edd79d020ea2e189839d86ba}{
+\index{aperture\_\-conf@{aperture\_\-conf}!optval1@{optval1}}
+\index{optval1@{optval1}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{optval1}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::optval1}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_a6b84a9e8edd79d020ea2e189839d86ba}
+\hypertarget{structaperture__conf_a981e8e9f63a913f1ac34c864ec392024}{
+\index{aperture\_\-conf@{aperture\_\-conf}!pobjsize@{pobjsize}}
+\index{pobjsize@{pobjsize}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{pobjsize}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf aperture\_\-conf::pobjsize}}}
+\label{structaperture__conf_a981e8e9f63a913f1ac34c864ec392024}
+\hypertarget{structaperture__conf_a904a154040bedf410b669b65791c96e2}{
+\index{aperture\_\-conf@{aperture\_\-conf}!psfcoeffs@{psfcoeffs}}
+\index{psfcoeffs@{psfcoeffs}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{psfcoeffs}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ {\bf aperture\_\-conf::psfcoeffs}}}
+\label{structaperture__conf_a904a154040bedf410b669b65791c96e2}
+\hypertarget{structaperture__conf_a469dc826e363a3b9e340aa99824e2f30}{
+\index{aperture\_\-conf@{aperture\_\-conf}!psfrange@{psfrange}}
+\index{psfrange@{psfrange}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{psfrange}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ {\bf aperture\_\-conf::psfrange}}}
+\label{structaperture__conf_a469dc826e363a3b9e340aa99824e2f30}
+\hypertarget{structaperture__conf_a13683d2e63f2e2ccb4f834dec5b2d0e3}{
+\index{aperture\_\-conf@{aperture\_\-conf}!rdnoise@{rdnoise}}
+\index{rdnoise@{rdnoise}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{rdnoise}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf aperture\_\-conf::rdnoise}}}
+\label{structaperture__conf_a13683d2e63f2e2ccb4f834dec5b2d0e3}
+\hypertarget{structaperture__conf_a5cdddf8dafb95b7a77458fbdbf74e5b9}{
+\index{aperture\_\-conf@{aperture\_\-conf}!refx@{refx}}
+\index{refx@{refx}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{refx}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf aperture\_\-conf::refx}}}
+\label{structaperture__conf_a5cdddf8dafb95b7a77458fbdbf74e5b9}
+\hypertarget{structaperture__conf_ae48467c471e66355a90db41d8ce77bc6}{
+\index{aperture\_\-conf@{aperture\_\-conf}!refy@{refy}}
+\index{refy@{refy}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{refy}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf aperture\_\-conf::refy}}}
+\label{structaperture__conf_ae48467c471e66355a90db41d8ce77bc6}
+\hypertarget{structaperture__conf_adde45d5e583dd6566f7ce226a65a70df}{
+\index{aperture\_\-conf@{aperture\_\-conf}!science\_\-ext@{science\_\-ext}}
+\index{science\_\-ext@{science\_\-ext}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{science\_\-ext}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf aperture\_\-conf::science\_\-ext}\mbox{[}MAXCHAR\mbox{]}}}
+\label{structaperture__conf_adde45d5e583dd6566f7ce226a65a70df}
+\hypertarget{structaperture__conf_abe36ba97113a8ccb1916acdbe5db113f}{
+\index{aperture\_\-conf@{aperture\_\-conf}!science\_\-numext@{science\_\-numext}}
+\index{science\_\-numext@{science\_\-numext}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{science\_\-numext}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf aperture\_\-conf::science\_\-numext}}}
+\label{structaperture__conf_abe36ba97113a8ccb1916acdbe5db113f}
+\hypertarget{structaperture__conf_aca74009eb7d64af0ba7222e9dbb879c1}{
+\index{aperture\_\-conf@{aperture\_\-conf}!smfactor@{smfactor}}
+\index{smfactor@{smfactor}!aperture_conf@{aperture\_\-conf}}
+\subsubsection[{smfactor}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf aperture\_\-conf::smfactor}}}
+\label{structaperture__conf_aca74009eb7d64af0ba7222e9dbb879c1}
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/\hyperlink{aper__conf_8h}{aper\_\-conf.h}\end{DoxyCompactItemize}

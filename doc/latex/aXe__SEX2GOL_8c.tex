@@ -1,0 +1,339 @@
+\hypertarget{aXe__SEX2GOL_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-SEX2GOL.c File Reference}
+\label{aXe__SEX2GOL_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-SEX2GOL.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/aXe\_\-SEX2GOL.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-sex.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-CD.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{aXe__SEX2GOL_8c_a7a38b874452a6cde6ebee9e98c980eef}{AXE\_\-IMAGE\_\-PATH}~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__SEX2GOL_8c_a75c154942e560254898bcafaf48bdf3d}{AXE\_\-OUTPUT\_\-PATH}~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}
+\item 
+\#define \hyperlink{aXe__SEX2GOL_8c_a0b0be957330d9c69fa325ee014ce4dad}{AXE\_\-CONFIG\_\-PATH}~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{aXe__SEX2GOL_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{aXe__SEX2GOL_8c_a0b0be957330d9c69fa325ee014ce4dad}{
+\index{aXe\_\-SEX2GOL.c@{aXe\_\-SEX2GOL.c}!AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}}
+\index{AXE\_\-CONFIG\_\-PATH@{AXE\_\-CONFIG\_\-PATH}!aXe_SEX2GOL.c@{aXe\_\-SEX2GOL.c}}
+\subsubsection[{AXE\_\-CONFIG\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-CONFIG\_\-PATH~\char`\"{}AXE\_\-CONFIG\_\-PATH\char`\"{}}}
+\label{aXe__SEX2GOL_8c_a0b0be957330d9c69fa325ee014ce4dad}
+\hypertarget{aXe__SEX2GOL_8c_a7a38b874452a6cde6ebee9e98c980eef}{
+\index{aXe\_\-SEX2GOL.c@{aXe\_\-SEX2GOL.c}!AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}}
+\index{AXE\_\-IMAGE\_\-PATH@{AXE\_\-IMAGE\_\-PATH}!aXe_SEX2GOL.c@{aXe\_\-SEX2GOL.c}}
+\subsubsection[{AXE\_\-IMAGE\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-IMAGE\_\-PATH~\char`\"{}AXE\_\-IMAGE\_\-PATH\char`\"{}}}
+\label{aXe__SEX2GOL_8c_a7a38b874452a6cde6ebee9e98c980eef}
+\hypertarget{aXe__SEX2GOL_8c_a75c154942e560254898bcafaf48bdf3d}{
+\index{aXe\_\-SEX2GOL.c@{aXe\_\-SEX2GOL.c}!AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}}
+\index{AXE\_\-OUTPUT\_\-PATH@{AXE\_\-OUTPUT\_\-PATH}!aXe_SEX2GOL.c@{aXe\_\-SEX2GOL.c}}
+\subsubsection[{AXE\_\-OUTPUT\_\-PATH}]{\setlength{\rightskip}{0pt plus 5cm}\#define AXE\_\-OUTPUT\_\-PATH~\char`\"{}AXE\_\-OUTPUT\_\-PATH\char`\"{}}}
+\label{aXe__SEX2GOL_8c_a75c154942e560254898bcafaf48bdf3d}
+
+
+\subsection{Function Documentation}
+\hypertarget{aXe__SEX2GOL_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{aXe\_\-SEX2GOL.c@{aXe\_\-SEX2GOL.c}!main@{main}}
+\index{main@{main}!aXe_SEX2GOL.c@{aXe\_\-SEX2GOL.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (int {\em argc}, \/  char $\ast$ {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{aXe__SEX2GOL_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+
+\begin{DoxyCode}
+37 {
+38   char *opt;
+39   char direct_image[MAXCHAR];
+40   char direct_image_path[MAXCHAR];
+41   int direct_hdunum;
+42 
+43   char grism_image[MAXCHAR];
+44   char grism_image_path[MAXCHAR];
+45   int grism_hdunum;
+46 
+47   char conf_file[MAXCHAR];
+48   char conf_file_path[MAXCHAR];
+49 
+50   char sex_catalog[MAXCHAR];
+51   char out_sex_catalog[MAXCHAR];
+52   char out_sex_catalog_path[MAXCHAR];
+53 
+54   aperture_conf *conf;
+55 
+56   struct WorldCoor *d_wcs;
+57   struct WorldCoor *g_wcs;
+58 
+59   int nodirim=0;
+60   int distortion=0;
+61 
+62 
+63   if ((argc<3) || (opt = get_online_option ("help", argc, argv)))
+64     {
+65       fprintf (stdout,
+66                "ST-ECF European Coordinating Facility\n"
+67                "aXe_SEX2GOL Version %s: \n"
+68                "             aXe task to create a grism/prism object list based e
+      ither on\n"
+69                "\n"
+70                "             1. a direct image object list, one direct and one gr
+      ism/prism\n"
+71                "                image\n"
+72                "             or \n"
+73                "             2. an object list with world coordinates and one gri
+      sm/prism image\n"
+74                "\n"
+75                "             All images must have valid WCS keywords to determine
+       the \n"
+76                "             position of the objects in image coordinates.\n"
+77                "             The format of the object is that of one produced usi
+      ng Sextractor.\n"
+78                "             Lines starting with a \";\" are ignored.\n"
+79                "\n"
+80                "             Input FITS mages are looked for   in $AXE_IMAGE_PATH
+      .\n"
+81                "             The aXe config file is looked for in $AXE_CONFIG_PAT
+      H.\n"
+82                "             All output is written to             $AXE_OUTPUT_PAT
+      H.\n"
+83                "\n"
+84                "             For 1. the following columns must be present in the 
+      input catalog:\n"
+85                "                NUMBER      Running object number\n"
+86                "                X_IMAGE     Object position along x              
+            [pixel]\n"
+87                "                Y_IMAGE     Object position along y              
+            [pixel]\n"
+88                "                X_WORLD     Barycenter position along world x axi
+      s     [deg]\n"
+89                "                Y_WORLD     Barycenter position along world y axi
+      s     [deg]\n"
+90                "                A_IMAGE     Profile RMS along major axis         
+            [pixel]\n"
+91                "                B_IMAGE     Profile RMS along minor axis         
+            [pixel]\n"
+92                "                THETA_IMAGE Position angle (CCW/x)               
+            [deg]\n"
+93                "                A_WORLD     Profile RMS along major axis (world u
+      nits) [deg]\n"
+94                "                B_WORLD     Profile RMS along minor axis (world u
+      nits) [deg]\n"
+95                "                THETA_WORLD Position angle (CCW/world-x)         
+            [deg]\n"
+96                "                MAG_AUTO    Kron-like elliptical aperture magnitu
+      de    [mag]\n"
+97                "\n"
+98                "             The IMAGE coordinates are recomputed using the world
+       coordinates\n"
+99                "             and the WCS descriptors\n"
+100                "\n"
+101                "             For 2. the following columns must be present in the 
+      input catalog:\n"
+102                "                NUMBER      Running object number\n"
+103                "                X_WORLD     Barycenter position along world x axi
+      s     [deg]\n"
+104                "                Y_WORLD     Barycenter position along world y axi
+      s     [deg]\n"
+105                "                A_WORLD     Profile RMS along major axis (world u
+      nits) [deg]\n"
+106                "                B_WORLD     Profile RMS along minor axis (world u
+      nits) [deg]\n"
+107                "                THETA_WORLD Position angle (CCW/world-x)         
+            [deg]\n"
+108                "             or THETA_SKY   Position angle (CCW, east of north)  
+            [deg]\n"
+109                "                MAG_AUTO    Kron-like elliptical aperture magnitu
+      de    [mag]\n"
+110                "\n"
+111                "             The IMAGE coordinates are only recomputed if the fol
+      lowing columns\n"
+112                "             are NOT present:\n"
+113                "                A_IMAGE     Profile RMS along major axis         
+            [pixel]\n"
+114                "                B_IMAGE     Profile RMS along minor axis         
+            [pixel]\n"
+115                "                THETA_IMAGE Position angle (CCW/x)               
+            [deg]\n"
+116                "                X_IMAGE     Object position along x              
+            [pixel]\n"
+117                "                Y_IMAGE     Object position along y              
+            [pixel]\n"
+118                "\n"
+119                "             The flag '-no_direct_image' switches to option 2.\n"
+      
+120                "\n"
+121                "Usage:\n"
+122                "      aXe_SEX2GOL [direct image filename] [g/prism image filename
+      ] \n"
+123                "                  [aXe config filename] [options]\n"
+124                "\n"
+125                "Options:\n"
+126                "             -no_direct_image    - no direct image is given (as d
+      esribed in 2.)\n"
+127                "             -dir_hdu=[integer]  - overwrites the default direct 
+      image\n"
+128                "                                   extension to look for the CD m
+      atrix.\n"
+129                "             -spec_hdu=[integer] - overwrites the default grism/p
+      rism image\n"
+130                "                                     extension to look for the CD
+       matrix.\n"
+131                "             -in_SEX=[string]    - overwrites the default input o
+      bject\n"
+132                "                                   catalog name\n"
+133                "             -out_SEX=[string]   - overwrites the default output 
+      object \n"
+134                "                                   catalog name\n "
+135                "\n",RELEASE);
+136 
+137       exit (1);
+138     }
+139 
+140   fprintf (stdout, "aXe_SEX2GOL: Starting...\n");
+141   if ((opt = get_online_option ("no_direct_image", argc, argv)))
+142     nodirim = 1;
+143   if ((opt = get_online_option ("distortion", argc, argv)))
+144     distortion = 1;
+145 
+146   if (nodirim){
+147     strcpy (grism_image, argv[1]);
+148     strcpy (conf_file, argv[2]);
+149   } else{
+150     strcpy (direct_image, argv[1]);
+151     strcpy (grism_image, argv[2]);
+152     strcpy (conf_file, argv[3]);
+153   }
+154   if (!nodirim)
+155     build_path (AXE_IMAGE_PATH, direct_image, direct_image_path);
+156   build_path (AXE_IMAGE_PATH, grism_image, grism_image_path);
+157   build_path (AXE_CONFIG_PATH, conf_file, conf_file_path);
+158 
+159      /* Read the configuration file */
+160   conf = get_aperture_descriptor (conf_file_path);
+161 
+162   if (!nodirim){
+163     if ((opt = get_online_option ("dir_hdu", argc, argv)))
+164       {
+165         char str[MAXCHAR];
+166         strcpy(str,opt);
+167         sscanf(str,"%d",&direct_hdunum);
+168       } else {
+169         get_extension_numbers(direct_image_path, conf,conf->optkey1,conf->
+      optval1);
+170         direct_hdunum = conf->science_numext; /* Default */
+171       }
+172   }
+173 
+174   if ((opt = get_online_option ("spec_hdu", argc, argv)))
+175     {
+176       char str[MAXCHAR];
+177       strcpy(str,opt);
+178       sscanf(str,"%d",&grism_hdunum);
+179     } else {
+180       get_extension_numbers(grism_image_path, conf,conf->optkey1,conf->optval1);
+181       grism_hdunum = conf->science_numext; /* Default */
+182     }
+183 
+184 
+185   if ((opt = get_online_option ("in_SEX", argc, argv)))
+186     {
+187       strcpy (sex_catalog, opt);
+188     }
+189   else
+190     {
+191       /* Generate a default catalog name */
+192       if (nodirim)
+193         replace_file_extension (grism_image_path, sex_catalog, ".fits",
+194                                 "_in.cat", grism_hdunum);
+195       else
+196         replace_file_extension (direct_image_path, sex_catalog, ".fits",
+197                                 ".cat", direct_hdunum);
+198     }
+199 
+200   if ((opt = get_online_option ("out_SEX", argc, argv)))
+201     {
+202       strcpy (out_sex_catalog, opt);
+203       strcpy (out_sex_catalog_path, out_sex_catalog);
+204     }
+205   else
+206     {
+207       /* Generate a default output catalog name */
+208       replace_file_extension (grism_image, out_sex_catalog, ".fits",
+209                               ".cat", grism_hdunum);
+210       build_path (AXE_OUTPUT_PATH, out_sex_catalog,
+211                   out_sex_catalog_path);
+212     }
+213 
+214 
+215   // give feedback onto the screen:
+216   // report on input and output
+217   // and also on specific parameter
+218   fprintf (stdout,
+219            "aXe_SEX2GOL: Main configuration file name:   %s\n",
+220            conf_file_path);
+221   if (!nodirim)
+222     {
+223       fprintf (stdout,
+224                "aXe_SEX2GOL: Input direct image file name:   %s\n",
+225                direct_image_path);
+226       fprintf (stdout,
+227                "aXe_SEX2GOL: Direct image extension number:  %d\n",
+228                direct_hdunum);
+229       if (distortion)
+230         fprintf (stdout,"aXe_SEX2GOL: Image distortions are taken into account.\n
+      ");
+231       else
+232         fprintf (stdout,"aXe_SEX2GOL: Image distortions are NOT taken into accoun
+      t.\n");
+233 
+234     }
+235   fprintf (stdout,
+236            "aXe_SEX2GOL: Input g/prism image file name:  %s\n",
+237            grism_image_path);
+238   fprintf (stdout,
+239            "aXe_SEX2GOL: g/prism image extension number: %d\n",
+240            grism_hdunum);
+241   fprintf (stdout,
+242            "aXe_SEX2GOL: Input catalog name:             %s\n",
+243            sex_catalog);
+244   fprintf (stdout,
+245            "aXe_SEX2GOL: Output catalog name:            %s\n",
+246            out_sex_catalog_path);
+247 
+248 
+249   // Load the CD matrices
+250   if (!nodirim)
+251     d_wcs = get_wcs (direct_image_path, direct_hdunum);
+252   g_wcs = get_wcs (grism_image_path, grism_hdunum);
+253   if ( (!nodirim && d_wcs==NULL) || (g_wcs==NULL) )
+254     {
+255       fprintf(stdout,
+256               "aXe_SEX2GOL: No valid WCS information from FITS headers.\n");
+257     }
+258 
+259   /* We allow for the input WCS coordinates to be recomputed using */
+260   /* the d_wcs, then all missing img coordinates are also          */
+261   /* recomputed to keep things consistant. The new WCS coordinates */
+262   /* in the g_wcs are then computed and the information is updated */
+263   if (!nodirim)
+264      catalog_to_wcs (grism_image_path, grism_hdunum, sex_catalog,
+265                     out_sex_catalog_path, d_wcs, g_wcs,distortion,1,1);
+266   else
+267     catalog_to_wcs_nodim (sex_catalog, out_sex_catalog_path, g_wcs,1,1);
+268 
+269   fprintf (stdout, "aXe_SEX2GOL: Done.\n");
+270   exit (0);
+271 }
+\end{DoxyCode}

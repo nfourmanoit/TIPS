@@ -1,0 +1,429 @@
+\hypertarget{spc__extract_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-extract.c File Reference}
+\label{spc__extract_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-extract.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-extract.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$limits.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-roots.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-sect.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-is\_\-in.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-pathlength.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__extract}{spc\_\-extract}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__extract_8c_ad57376dfb2aea29e68fe39f8072f1522}{DEBUG\_\-ME}~0x10
+\item 
+\#define \hyperlink{spc__extract_8c_a74e75242132eaabbc1c512488a135926}{MIN}(x, y)~(((x)$<$(y))?(x):(y))
+\item 
+\#define \hyperlink{spc__extract_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{MAX}(x, y)~(((x)$>$(y))?(x):(y))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{spc__extract_8c_aad006e15b29c227a0a168abac6b15226}{transform\_\-to\_\-pathlen} (const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const func, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$const \hyperlink{spc__utils_8c_a3278fc9538370857ff6034411692abd1}{table})
+\item 
+static \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{spc__extract_8c_a88d32f95bae03951441466d4a53edb86}{handle\_\-one\_\-pixel} (const double x, const double y, const int px, const int py, const \hyperlink{structobservation}{observation} $\ast$const obs, \hyperlink{structsectionfun}{sectionfun} $\ast$const sf, const \hyperlink{structtrace__func}{trace\_\-func} $\ast$const tracefun, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$cur\_\-ap)
+\item 
+static int \hyperlink{spc__extract_8c_a0f8f2b37cc8fdbdbf3201e3e884fbda9}{sanitycheck} (\hyperlink{structobject}{object} $\ast$const ob)
+\item 
+\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{spc__extract_8c_a63705e4ea9da776c8bd40c30b559ba45}{make\_\-spc\_\-table} (\hyperlink{structobject}{object} $\ast$const ob, const int beamorder, int $\ast$const flags)
+\item 
+\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{spc__extract_8c_a7c99cdc17bd49473a5f045550a5ee600}{make\_\-gps\_\-table} (\hyperlink{structobject}{object} $\ast$const ob, const int beamorder, int $\ast$const flags, int xval, int yval)
+\item 
+void \hyperlink{spc__extract_8c_adb98c62d1001d43ad16b2ce9b69b01d2}{print\_\-ap\_\-pixel\_\-table} (const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__extract_8c_ad57376dfb2aea29e68fe39f8072f1522}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!DEBUG\_\-ME@{DEBUG\_\-ME}}
+\index{DEBUG\_\-ME@{DEBUG\_\-ME}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{DEBUG\_\-ME}]{\setlength{\rightskip}{0pt plus 5cm}\#define DEBUG\_\-ME~0x10}}
+\label{spc__extract_8c_ad57376dfb2aea29e68fe39f8072f1522}
+\hypertarget{spc__extract_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!MAX@{MAX}}
+\index{MAX@{MAX}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(x, \/  y)~(((x)$>$(y))?(x):(y))}}
+\label{spc__extract_8c_aacc3ee1a7f283f8ef65cea31f4436a95}
+\hypertarget{spc__extract_8c_a74e75242132eaabbc1c512488a135926}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!MIN@{MIN}}
+\index{MIN@{MIN}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(x, \/  y)~(((x)$<$(y))?(x):(y))}}
+\label{spc__extract_8c_a74e75242132eaabbc1c512488a135926}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__extract_8c_a88d32f95bae03951441466d4a53edb86}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!handle\_\-one\_\-pixel@{handle\_\-one\_\-pixel}}
+\index{handle\_\-one\_\-pixel@{handle\_\-one\_\-pixel}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{handle\_\-one\_\-pixel}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf ap\_\-pixel}$\ast$ handle\_\-one\_\-pixel (const double {\em x}, \/  const double {\em y}, \/  const int {\em px}, \/  const int {\em py}, \/  const {\bf observation} $\ast$const  {\em obs}, \/  {\bf sectionfun} $\ast$const  {\em sf}, \/  const {\bf trace\_\-func} $\ast$const  {\em tracefun}, \/  {\bf ap\_\-pixel} $\ast$ {\em cur\_\-ap})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__extract_8c_a88d32f95bae03951441466d4a53edb86}
+creates an \hyperlink{structap__pixel}{ap\_\-pixel}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]x coordinate of pixel relative to beam's reference point \item[{\em y}]y coordinate of pixel relative to beam's reference point \item[{\em px}]absolute x coordinate of the pixel \item[{\em py}]absolute y coordinate of the pixel \item[{\em ob}]the \hyperlink{structobservation}{observation} to get the pixels from \item[{\em sf}]pointer to \hyperlink{structsectionfun}{sectionfun} structure for this \hyperlink{structbeam}{beam} \item[{\em cur\_\-ap}]a pointer to the next free aperture pixel \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the next free aperture pixel after the new pixels have been added. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+91 {
+92   double res;
+93   double sect_y;
+94   double tmp;
+95   double phi_trace;
+96          
+97   if (find_section_point (sf, x, y, &res))
+98     {
+99       return cur_ap;    /* FIXME: Issue warning here */
+100     }
+101   /* set the extraction weight to 1. */
+102   cur_ap->weight = 1.;
+103   cur_ap->xs = res;
+104   phi_trace = atan (tracefun->deriv (cur_ap->xs, tracefun->data));
+105   cur_ap->dxs = phi_trace;
+106   cur_ap->ys = tracefun->func (cur_ap->xs, tracefun->data);
+107   sect_y = tracefun->func (res, tracefun->data);
+108   tmp = tracefun->func (x, tracefun->data);
+109   
+110   cur_ap->contam = -1.0;
+111   cur_ap->model = 0.0;
+112   cur_ap->p_x = px;
+113   cur_ap->p_y = py;
+114   cur_ap->x = x;
+115   cur_ap->y = y;
+116   cur_ap->dist =
+117     sqrt ((sect_y - y) * (sect_y - y) +
+118           (cur_ap->xs - x) * (cur_ap->xs - x));
+119 
+120   if ( y < tmp ) {
+121     cur_ap->dist = cur_ap->dist * (-1.); /* If pixel is bwlow the trace, dist is 
+      neg. */
+122   }
+123   cur_ap->count = gsl_matrix_get (obs->grism, px, py);
+124   cur_ap->error = gsl_matrix_get (obs->pixerrs, px, py);
+125   if (obs->dq != NULL) cur_ap->dq = (long) gsl_matrix_get (obs->dq, px, py);
+126   else cur_ap->dq = 0;
+127 
+128   cur_ap++;
+129   return cur_ap;
+130 }
+\end{DoxyCode}
+\hypertarget{spc__extract_8c_a7c99cdc17bd49473a5f045550a5ee600}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!make\_\-gps\_\-table@{make\_\-gps\_\-table}}
+\index{make\_\-gps\_\-table@{make\_\-gps\_\-table}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{make\_\-gps\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ap\_\-pixel}$\ast$ make\_\-gps\_\-table ({\bf object} $\ast$const  {\em ob}, \/  const int {\em beamorder}, \/  int $\ast$const  {\em flags}, \/  int {\em xval}, \/  int {\em yval})}}
+\label{spc__extract_8c_a7c99cdc17bd49473a5f045550a5ee600}
+Similar to make\_\-spc\_\-table, it just works only on one spot given in the parameters. 
+
+
+\begin{DoxyCode}
+296 {
+297   int bb_x, bb_y, bb_w, bb_h;
+298   int x, y;
+299   beam *curbeam = ob->beams + beamorder;
+300   double dx, dy;
+301   ap_pixel *table, *cur_ap;
+302   is_in_descriptor iid;
+303   sectionfun sf;
+304   trace_func *tracefun = curbeam->spec_trace;
+305 
+306   quad_to_bbox (curbeam->corners, curbeam->bbox, curbeam->bbox + 1);
+307   bb_x = curbeam->bbox[0].x;
+308   bb_y = curbeam->bbox[0].y;
+309   bb_w = curbeam->bbox[1].x - curbeam->bbox[0].x + 1;
+310   bb_h = curbeam->bbox[1].y - curbeam->bbox[0].y + 1;
+311 
+312   if (sanitycheck (ob))
+313     {
+314       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+315                    "Input data failed sanity check");
+316       return NULL;
+317     }
+318   
+319   if (fill_is_in_descriptor (&iid, curbeam->corners))
+320     return NULL;
+321   
+322   if (fill_in_sectionfun (&sf, curbeam->orient, curbeam))
+323     return NULL;
+324   
+325   if (!
+326       (table =
+327        malloc (2 * sizeof (ap_pixel))))
+328     return NULL;
+329   
+330   /* We have a little coordinate confusion here.  There are three
+331      systems:
+332      (a) the absolute one, rooted in (0,0) of the image.
+333      (b) the relative one, rooted in the reference point and used
+334      when evaluating the spectrum trace.  This one is used
+335      for finding the section points, etc.
+336      (c) one relative to the bounding box; x and y below live in this
+337      system and have to be converted into whatever system is
+338      required.  dx, dy are used for the conversion to (b)
+339   */
+340   dx = bb_x - curbeam->refpoint.x;
+341   dy = bb_y - curbeam->refpoint.y;
+342   x  = xval - bb_x;
+343   y  = yval - bb_y;
+344 
+345   cur_ap = table;
+346 
+347   cur_ap =
+348     handle_one_pixel (x + dx, y + dy, x + bb_x,
+349                       y + bb_y, ob->grism_obs, &sf,
+350                       tracefun, cur_ap);
+351 
+352   cur_ap->p_x = -1;
+353   cur_ap->p_y = -1;
+354   cur_ap->count = -1;
+355   
+356   free_sectionfun (&sf);
+357 
+358   transform_to_pathlen (curbeam->spec_trace, table);
+359 
+360   return table;
+361 }
+\end{DoxyCode}
+\hypertarget{spc__extract_8c_a63705e4ea9da776c8bd40c30b559ba45}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!make\_\-spc\_\-table@{make\_\-spc\_\-table}}
+\index{make\_\-spc\_\-table@{make\_\-spc\_\-table}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{make\_\-spc\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ap\_\-pixel}$\ast$ make\_\-spc\_\-table ({\bf object} $\ast$const  {\em ob}, \/  const int {\em beamorder}, \/  int $\ast$const  {\em flags})}}
+\label{spc__extract_8c_a63705e4ea9da776c8bd40c30b559ba45}
+computes a table of aperture pixels, i.e. of tuples containing the source coordinates, the distance to the \hyperlink{structspectrum}{spectrum} trace, the path length along the trace, and the intensity. The end of the table is marked with an ap\_\-pixel-\/$>$x==-\/1. This routine can do subsampling, whereby each pixel is divided into n\_\-sub$\ast$n\_\-sub smaller pixels. If n\_\-sub==1, a special (faster) handling is enabled.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ob}]the \hyperlink{structobject}{object} struct to examine \item[{\em beamorder}]the order of the \hyperlink{structspectrum}{spectrum} to examine \item[{\em flags}]warning flags like in the warning field of the \hyperlink{structspectrum}{spectrum} structure. This has to be passed in initialized. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+177 {
+178   int bb_x, bb_y, bb_w, bb_h;
+179   int x, y;
+180   beam *curbeam = ob->beams + beamorder;
+181   double dx, dy;
+182   ap_pixel *table, *cur_ap;
+183   is_in_descriptor iid;
+184   sectionfun sf;
+185   trace_func *tracefun = curbeam->spec_trace;
+186 
+187   quad_to_bbox (curbeam->corners, curbeam->bbox, curbeam->bbox + 1);
+188   bb_x = curbeam->bbox[0].x;
+189   bb_y = curbeam->bbox[0].y;
+190   bb_w = curbeam->bbox[1].x - curbeam->bbox[0].x + 1;
+191   bb_h = curbeam->bbox[1].y - curbeam->bbox[0].y + 1;
+192   
+193   if (sanitycheck (ob))
+194     {
+195       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+196                    "Input data failed sanity check");
+197       return NULL;
+198     }
+199 
+200   if (fill_is_in_descriptor (&iid, curbeam->corners))
+201     return NULL;
+202   
+203   if (fill_in_sectionfun (&sf, curbeam->orient, curbeam))
+204     return NULL;
+205   
+206   if (!(table =
+207         malloc ((bb_w * bb_h + 1) * sizeof (ap_pixel))))
+208     return NULL;
+209 
+210 
+211   /* We have a little coordinate confusion here.  There are three
+212      systems:
+213      (a) the absolute one, rooted in (0,0) of the image.
+214      (b) the relative one, rooted in the reference point and used
+215      when evaluating the spectrum trace.  This one is used
+216      for finding the section points, etc.
+217      (c) one relative to the bounding box; x and y below live in this
+218      system and have to be converted into whatever system is
+219      required.  dx, dy are used for the conversion to (b)
+220   */
+221   dx = bb_x - curbeam->refpoint.x;
+222   dy = bb_y - curbeam->refpoint.y;
+223   cur_ap = table;
+224   for (y = 0; y <= bb_h; y++)
+225     {
+226       for (x = 0; x < bb_w; x++)
+227         {
+228           if ((bb_x + x < 0) || (bb_y + y < 0)
+229               || (bb_x + x >= ob->grism_obs->grism->size1)
+230               || (bb_y + y >= ob->grism_obs->grism->size2))
+231             {
+232               *flags |= SPC_W_BORDER;
+233               continue;
+234             }
+235 
+236           
+237           // check whether the trace description has
+238           // an order higher than linear
+239           if (curbeam->spec_trace->type > 1)
+240             {
+241               // new criteria based on the true trace distance
+242               // which means the true distance from the section point
+243               if (!tracedist_criteria(x + dx, y + dy, &sf, tracefun, curbeam->
+      width+2.0))
+244                 {
+245                   continue;
+246                 }
+247             }
+248           else
+249             {
+250               // old criteria based on the box model
+251               if (!is_in (bb_x + x, bb_y + y, &iid))
+252                 {
+253                   continue;
+254                 }
+255             }
+256 
+257           if (isnan
+258               (gsl_matrix_get
+259                (ob->grism_obs->grism, bb_x + x, bb_y + y)))
+260             {
+261               continue;
+262             }
+263           //      if (ob->ID == 11 && x + bb_x == 59)
+264             //      fprintf(stdout, "xx: %i, yy: %i: %i\n", x + bb_x, y + bb_y, i
+      s_in (x + bb_x, y + bb_y, &iid));
+265           cur_ap =
+266             handle_one_pixel (x + dx, y + dy, x + bb_x,
+267                               y + bb_y, ob->grism_obs, &sf,
+268                               tracefun, cur_ap);
+269 
+270         }
+271     }
+272 
+273   cur_ap->p_x = -1;
+274   cur_ap->p_y = -1;
+275   cur_ap->count = -1;
+276 
+277   free_sectionfun (&sf);
+278 
+279 
+280   if (transform_to_pathlen (curbeam->spec_trace, table))
+281     {
+282       //   free (table);
+283       //   table = NULL;
+284       //   return NULL;
+285     }
+286   return table;
+287 }
+\end{DoxyCode}
+\hypertarget{spc__extract_8c_adb98c62d1001d43ad16b2ce9b69b01d2}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!print\_\-ap\_\-pixel\_\-table@{print\_\-ap\_\-pixel\_\-table}}
+\index{print\_\-ap\_\-pixel\_\-table@{print\_\-ap\_\-pixel\_\-table}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{print\_\-ap\_\-pixel\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-ap\_\-pixel\_\-table (const {\bf ap\_\-pixel} $\ast$ {\em ap\_\-p})}}
+\label{spc__extract_8c_adb98c62d1001d43ad16b2ce9b69b01d2}
+
+
+
+\begin{DoxyCode}
+367 {
+368   printf ("# x y pathlen distance lambda count error\n");
+369   while (ap_p->p_x != -1)
+370     {
+371       printf ("%d %d %f %f %f %f %f %f %f %ld\n", ap_p->p_x, ap_p->p_y,
+372               ap_p->x, ap_p->y, ap_p->xi, ap_p->dist, ap_p->lambda,
+373               ap_p->count, ap_p->error, ap_p->dq);
+374       ap_p++;
+375     }
+376 }
+\end{DoxyCode}
+\hypertarget{spc__extract_8c_a0f8f2b37cc8fdbdbf3201e3e884fbda9}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!sanitycheck@{sanitycheck}}
+\index{sanitycheck@{sanitycheck}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{sanitycheck}]{\setlength{\rightskip}{0pt plus 5cm}static int sanitycheck ({\bf object} $\ast$const  {\em ob})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__extract_8c_a0f8f2b37cc8fdbdbf3201e3e884fbda9}
+Does some sanity checks on make\_\-spc\_\-table's input.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ob}]the \hyperlink{structobject}{object} to check \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if everything is ok, -\/1 otherwise 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+141 {
+142   int i;
+143   
+144   for (i = 0; i < ob->nbeams; i++)
+145     {
+146       while (ob->beams[i].orient < 0)
+147         {
+148           ob->beams[i].orient += M_PI;
+149         }
+150       while (ob->beams[i].orient > M_PI)
+151         {
+152           ob->beams[i].orient -= M_PI;
+153         }
+154     }
+155   return 0;
+156 }
+\end{DoxyCode}
+\hypertarget{spc__extract_8c_aad006e15b29c227a0a168abac6b15226}{
+\index{spc\_\-extract.c@{spc\_\-extract.c}!transform\_\-to\_\-pathlen@{transform\_\-to\_\-pathlen}}
+\index{transform\_\-to\_\-pathlen@{transform\_\-to\_\-pathlen}!spc_extract.c@{spc\_\-extract.c}}
+\subsubsection[{transform\_\-to\_\-pathlen}]{\setlength{\rightskip}{0pt plus 5cm}static int transform\_\-to\_\-pathlen (const {\bf trace\_\-func} $\ast$const  {\em func}, \/  {\bf ap\_\-pixel} $\ast$const  {\em table})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__extract_8c_aad006e15b29c227a0a168abac6b15226}
+fill in the path length field (xi in \hyperlink{structap__pixel}{ap\_\-pixel}) from the abscissas (xs in \hyperlink{structap__pixel}{ap\_\-pixel}) (helper function for \hyperlink{namespacespc__extract}{spc\_\-extract}).
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em func}]the \hyperlink{structspectrum}{spectrum} trace to use for the transformation from xs to xi \item[{\em table}]a pointer to the table of aperture pixels, terminated with x=-\/1 \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+39 {
+40   int i, len;
+41   ap_pixel *cur_p = table;
+42   gsl_vector *section_points;
+43   
+44   while (cur_p->p_x != -1)
+45     cur_p++;
+46   len = cur_p - table;
+47   if (len==0) return -1; // exit now if the table is empty
+48   
+49   section_points = gsl_vector_alloc (len);
+50   for (i = 0; i < len; i++)
+51     {
+52       gsl_vector_set (section_points, i, table[i].xs);
+53     }
+54   
+55   if (abscissa_to_pathlength (func, section_points))
+56     {
+57       gsl_vector_free (section_points);
+58       return -1;
+59     }
+60   
+61   for (i = 0; i < len; i++)
+62     {
+63       table[i].xi = gsl_vector_get (section_points, i);
+64     }
+65   
+66   gsl_vector_free (section_points);
+67   
+68   return 0;
+69 }
+\end{DoxyCode}

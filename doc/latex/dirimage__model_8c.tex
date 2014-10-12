@@ -1,0 +1,789 @@
+\hypertarget{dirimage__model_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/dirimage\_\-model.c File Reference}
+\label{dirimage__model_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/dirimage\_\-model.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/dirimage\_\-model.c}}
+}
+{\ttfamily \#include $<$time.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-interp.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-sort\_\-double.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-sort\_\-vector\_\-double.h$>$}\par
+{\ttfamily \#include \char`\"{}inout\_\-aper.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-sect.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-back.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-PET.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-wl\_\-calib.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fringe\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-resp.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-pathlength.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}specmodel\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}model\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-fluxcube.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}dirimage\_\-model.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacedirimage__model}{dirimage\_\-model}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{dirimage__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{MAX}(x, y)~(((x)$>$(y))?(x):(y))
+\item 
+\#define \hyperlink{dirimage__model_8c_a74e75242132eaabbc1c512488a135926}{MIN}(x, y)~(((x)$<$(y))?(x):(y))
+\item 
+\#define \hyperlink{dirimage__model_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{SQR}(x)~((x)$\ast$(x))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{dirimage__model_8c_aa37b4c8ff6adfc45892cc21f774a0881}{compute\_\-dirimage\_\-modelOld} (char dirim\_\-file\mbox{[}$\,$\mbox{]}, char conf\_\-file\mbox{[}$\,$\mbox{]}, char tpass\_\-file\mbox{[}$\,$\mbox{]}, char specmod\_\-file\mbox{[}$\,$\mbox{]}, char objmod\_\-file\mbox{[}$\,$\mbox{]}, char aper\_\-file\mbox{[}$\,$\mbox{]}, const double model\_\-scale, const double tel\_\-area, const double lambda\_\-psf, \hyperlink{structobservation}{observation} $\ast$obs, char map\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{dirimage__model_8c_a3f6b812b097d2c09646b47c7b3beb445}{compute\_\-dirimage\_\-model} (char dirim\_\-file\mbox{[}$\,$\mbox{]}, char conf\_\-file\mbox{[}$\,$\mbox{]}, char tpass\_\-file\mbox{[}$\,$\mbox{]}, char specmod\_\-file\mbox{[}$\,$\mbox{]}, char objmod\_\-file\mbox{[}$\,$\mbox{]}, char aper\_\-file\mbox{[}$\,$\mbox{]}, const double model\_\-scale, const double tel\_\-area, const double lambda\_\-psf, \hyperlink{structobservation}{observation} $\ast$obs, char map\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{dirimage__model_8c_a371e3a170621827e2ec09b3746df0ffb}{make\_\-dirimage\_\-object} (\hyperlink{structobject}{object} $\ast$actobject, \hyperlink{structdirobject}{dirobject} $\ast$actdir, \hyperlink{structinterpolator}{interpolator} $\ast$tpass, gsl\_\-matrix $\ast$dirimage\_\-matrix)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{dirimage__model_8c_a18d35af5ae5d98dcf27d0ef9b47cfdf0}{make\_\-dirimage} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, \hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist, const \hyperlink{structpx__point}{px\_\-point} npixels, const double lambda\_\-psf, \hyperlink{structinterpolator}{interpolator} $\ast$tpass)
+\item 
+double \hyperlink{dirimage__model_8c_a35f00ade0db1ab9b955eb2daa34a1c8f}{get\_\-cps\_\-for\_\-dirobject} (\hyperlink{structinterpolator}{interpolator} $\ast$tpass, \hyperlink{structdirobject}{dirobject} $\ast$actdir)
+\item 
+double \hyperlink{dirimage__model_8c_af910d0984d034fc1377290e01bdaf1a5}{integrate\_\-interpolator} (\hyperlink{structinterpolator}{interpolator} $\ast$combine)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{dirimage__model_8c_af16f00a45c2122acf9e354440470502f}{combine\_\-tpass\_\-SED} (\hyperlink{structinterpolator}{interpolator} $\ast$tpass, \hyperlink{structdirobject}{dirobject} $\ast$actdir)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{dirimage__model_8c_ad920380d8766ba433e531afd159f5ed4}{get\_\-combined\_\-tpass\_\-SED} (gsl\_\-vector $\ast$indep\_\-data, \hyperlink{structinterpolator}{interpolator} $\ast$tpass, \hyperlink{structdirobject}{dirobject} $\ast$actdir)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{dirimage__model_8c_a9ad9a6858c9a87180afb5cddfbdab204}{get\_\-filter\_\-sensitivity} (const char tpass\_\-file\mbox{[}$\,$\mbox{]}, const double tel\_\-area)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{dirimage__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!MAX@{MAX}}
+\index{MAX@{MAX}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(x, \/  y)~(((x)$>$(y))?(x):(y))}}
+\label{dirimage__model_8c_aacc3ee1a7f283f8ef65cea31f4436a95}
+\hypertarget{dirimage__model_8c_a74e75242132eaabbc1c512488a135926}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!MIN@{MIN}}
+\index{MIN@{MIN}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(x, \/  y)~(((x)$<$(y))?(x):(y))}}
+\label{dirimage__model_8c_a74e75242132eaabbc1c512488a135926}
+\hypertarget{dirimage__model_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!SQR@{SQR}}
+\index{SQR@{SQR}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{SQR}]{\setlength{\rightskip}{0pt plus 5cm}\#define SQR(x)~((x)$\ast$(x))}}
+\label{dirimage__model_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}
+
+
+\subsection{Function Documentation}
+\hypertarget{dirimage__model_8c_af16f00a45c2122acf9e354440470502f}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!combine\_\-tpass\_\-SED@{combine\_\-tpass\_\-SED}}
+\index{combine\_\-tpass\_\-SED@{combine\_\-tpass\_\-SED}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{combine\_\-tpass\_\-SED}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ combine\_\-tpass\_\-SED ({\bf interpolator} $\ast$ {\em tpass}, \/  {\bf dirobject} $\ast$ {\em actdir})}}
+\label{dirimage__model_8c_af16f00a45c2122acf9e354440470502f}
+
+
+
+\begin{DoxyCode}
+501 {
+502   interpolator *combine;
+503 
+504   int index=0;
+505   int n_additional=0;
+506   int act_index;
+507 
+508   gsl_vector     *indep_data;
+509   
+510   // go over all SED data points
+511   for (index = 0; index < actdir->SED->npoints; index++)
+512     {
+513       // transform to Angstrom
+514       actdir->SED->wavelength[index] *= 10.0;
+515 
+516       // check whether the independent data point
+517       // falls in the area of the sensitivity
+518       if (actdir->SED->wavelength[index] < tpass->xmax 
+519           && actdir->SED->wavelength[index] >  tpass->xmin)
+520         // enhance the number 
+521         // of additional data points
+522         n_additional += 1;
+523     }
+524 
+525   // allocate memory for the new independent value list
+526   indep_data   = gsl_vector_alloc(tpass->nvals + n_additional);
+527 
+528   // go over all sensitivity data points and fill in
+529   // the independent values
+530   for (index = 0; index < tpass->nvals; index++)
+531     gsl_vector_set(indep_data, index, tpass->xvals[index]);
+532 
+533   // set the counter to the next free index
+534   act_index = tpass->nvals;
+535 
+536   // go over all SED data points
+537   for (index = 0; index < actdir->SED->npoints; index++)
+538     // check whether the independent data point
+539     // falls in the area of the sensitivity
+540     if (actdir->SED->wavelength[index] < tpass->xmax 
+541         && actdir->SED->wavelength[index] >  tpass->xmin)
+542       {
+543         // fill in the additional independent data point
+544         // from the SED
+545         gsl_vector_set(indep_data, act_index, actdir->SED->wavelength[index]);
+546 
+547         // enhance the counter
+548         act_index += 1;
+549       }
+550 
+551   // sort the vector
+552   gsl_sort_vector(indep_data);
+553 
+554 
+555   // compose a new interpolator from the independent values
+556   combine = get_combined_tpass_SED(indep_data, tpass, actdir);
+557 
+558   // release memory in the weight vector 
+559   gsl_vector_free(indep_data); 
+560 
+561   // go over all SED data points
+562   for (index = 0; index < actdir->SED->npoints; index++)
+563     // transform to nm
+564     actdir->SED->wavelength[index] /= 10.0;
+565 
+566   // return the interpolator
+567   return combine;
+568 }
+\end{DoxyCode}
+\hypertarget{dirimage__model_8c_a3f6b812b097d2c09646b47c7b3beb445}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!compute\_\-dirimage\_\-model@{compute\_\-dirimage\_\-model}}
+\index{compute\_\-dirimage\_\-model@{compute\_\-dirimage\_\-model}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{compute\_\-dirimage\_\-model}]{\setlength{\rightskip}{0pt plus 5cm}int compute\_\-dirimage\_\-model (char {\em dirim\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em conf\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em tpass\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em specmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em objmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em aper\_\-file}\mbox{[}$\,$\mbox{]}, \/  const double {\em model\_\-scale}, \/  const double {\em tel\_\-area}, \/  const double {\em lambda\_\-psf}, \/  {\bf observation} $\ast$ {\em obs}, \/  char {\em map\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{dirimage__model_8c_a3f6b812b097d2c09646b47c7b3beb445}
+
+
+
+\begin{DoxyCode}
+123 {
+124         dirobject       *actdir;
+125         object          **oblist;
+126 
+127         fits_access *spectrum_access;
+128         fits_access *modim_access;
+129 
+130         interpolator    *tpass;
+131         gsl_matrix      *dirimage_matrix=NULL;
+132         px_point         npixels;
+133         aperture_conf  *conf=NULL;
+134         gsl_matrix     *drzcoeffs=NULL;
+135 
+136         int nobjects=0;
+137         int i=0;
+138         int j=0;
+139         int beamID;
+140         int max_offs;
+141 
+142         // third block
+143         gsl_vector *x_coeffs;
+144         gsl_vector *y_coeffs;
+145         d_point m_point;
+146 
+147         // load the object list
+148         fprintf (stdout, "aXe_DIRIMAGE: Loading object aperture list...");
+149         oblist = file_to_object_list_seq (aper_file, obs);
+150         fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+151 
+152         // check whether highres spectra are given are available
+153         if (strlen(specmod_file) > 0) {
+154                 // load the spectral models
+155                 fprintf (stdout, "aXe_DISPIMAGE: Loading spectral models...");
+156                 spectrum_access = access_fits_models(specmod_file);
+157                 // report the number of models loaded
+158                 fprintf (stdout,"%d models available.\n", spectrum_access->
+      n_modelHDU);
+159         }
+160         else {
+161                 // or set the struct to NULL
+162                 spectrum_access = NULL;
+163         }
+164 
+165         // check whether direct emission models are available
+166         if (strlen(objmod_file) > 0) {
+167                 // load the image models
+168                 fprintf (stdout, "aXe_DISPIMAGE: Loading direct image models...")
+      ;
+169                 modim_access = access_fits_models(objmod_file);
+170                 objmod_file = NULL;
+171                 fprintf (stdout,"%d images available.\n", modim_access->
+      n_modelHDU);
+172         }
+173         else {
+174                 modim_access = NULL;
+175         }
+176 
+177         // get the sensitivity curve of the total passband
+178         tpass =  get_filter_sensitivity(tpass_file, tel_area);
+179 
+180         // get the image dimensions
+181         npixels = get_npixel(obs);
+182 
+183         // load the configuration file
+184         conf = get_aperture_descriptor (conf_file);
+185 
+186         // load the extension numbers
+187         get_extension_numbers(dirim_file, conf,conf->optkey1,conf->optval1);
+188 
+189         // get the  matrix with the drizzle coefficients
+190         drzcoeffs = get_crossdisp_matrix(dirim_file, conf->science_numext);
+191         if (drzcoeffs->size1 < 2 || !drzcoeffs->size2)
+192                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+193                                 "oblist_to_dirlist:" " Could not get"
+194                                 " the drizzle coefficients in file: %s\n", dirim_
+      file);
+195 
+196         // determine an offset from the PSF_OFFSET
+197         max_offs = (int)ceil(get_max_offset(conf));
+198 
+199         // determine the number of objects in the object list
+200         nobjects = object_list_size(oblist);
+201 
+202         // allocate memory for the image matrix
+203         dirimage_matrix = gsl_matrix_alloc(npixels.x, npixels.y);
+204         gsl_matrix_set_all(dirimage_matrix,0.0);
+205 
+206         // loop over all objects
+207         for (i = 0; i < nobjects; i++){
+208 
+209                 // make sure that there are beams in the object
+210                 if (oblist[i]->nbeams > 0){
+211 
+212                         if (has_aper_dirim(modim_access, oblist[i]))
+213                                 actdir = load_dirobj_img(oblist[i], modim_access)
+      ;
+214                         else
+215                                 // create a dirobject for each object
+216                                 actdir = fill_dirobject(oblist[i], npixels, drzco
+      effs, model_scale, max_offs);
+217 
+218                         // load the spectral values into the dirobject
+219                         load_spectrum(oblist[i], actdir, spectrum_access, 1);
+220 
+221                         // go over each beam defined in the configuration file
+222                         for (beamID=0; beamID < conf->nbeams; beamID++) {
+223 
+224                                 // set the offset values to 0.0
+225                                 actdir->xy_off[beamID].x = 0.0;
+226                                 actdir->xy_off[beamID].y = 0.0;
+227 
+228                                 // determine the coeeficients for the offsets
+229                                 // in x and in y
+230                                 x_coeffs = get_beam_trace_xoff (conf_file, beamID
+      );
+231                                 y_coeffs = get_beam_trace_yoff (conf_file, beamID
+      );
+232 
+233                                 // get the mean direct object position
+234                                 m_point = get_dirobject_meanpos(actdir);
+235 
+236                                 // evaluate the coefficients for the 2D variable 
+      offsets
+237                                 // at the mean position
+238                                 actdir->xy_off[beamID].x = eval_trace_off_at_pos 
+      (x_coeffs, m_point, beamID);
+239                                 actdir->xy_off[beamID].y = eval_trace_off_at_pos 
+      (y_coeffs, m_point, beamID);
+240 
+241                                 // free the vectors for the coefficients
+242                                 gsl_vector_free(x_coeffs);
+243                                 gsl_vector_free(y_coeffs);
+244                         }
+245 
+246                         // add the current direct object to the image
+247                         make_dirimage_object(oblist[i], actdir, tpass, dirimage_m
+      atrix);
+248                 }
+249                 // free the direct object
+250                 free_dirobject (actdir);
+251         }
+252 
+253         // store the contamination image
+254         gsl_to_FITSimage (dirimage_matrix, map_file, 1, NULL);
+255 
+256         // release memory
+257         if (conf!=NULL)
+258                 free_aperture_conf(conf);
+259 
+260         // release the memory for the drizzle matrix
+261         if (drzcoeffs!=NULL)
+262                 gsl_matrix_free(drzcoeffs);
+263 
+264         // check if memory must be released;
+265         // do it if necessary
+266         if (spectrum_access != NULL)
+267                 free_fits_access(spectrum_access);
+268         if (modim_access!=NULL)
+269                 free_fits_access(modim_access);
+270         if (oblist !=NULL)
+271                 free_oblist (oblist);
+272 
+273         // always release these
+274         // objects
+275         gsl_matrix_free(dirimage_matrix);
+276         free_interp(tpass);
+277 
+278         // return always '1'
+279         return 1;
+280 }
+\end{DoxyCode}
+\hypertarget{dirimage__model_8c_aa37b4c8ff6adfc45892cc21f774a0881}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!compute\_\-dirimage\_\-modelOld@{compute\_\-dirimage\_\-modelOld}}
+\index{compute\_\-dirimage\_\-modelOld@{compute\_\-dirimage\_\-modelOld}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{compute\_\-dirimage\_\-modelOld}]{\setlength{\rightskip}{0pt plus 5cm}int compute\_\-dirimage\_\-modelOld (char {\em dirim\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em conf\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em tpass\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em specmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em objmod\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em aper\_\-file}\mbox{[}$\,$\mbox{]}, \/  const double {\em model\_\-scale}, \/  const double {\em tel\_\-area}, \/  const double {\em lambda\_\-psf}, \/  {\bf observation} $\ast$ {\em obs}, \/  char {\em map\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{dirimage__model_8c_aa37b4c8ff6adfc45892cc21f774a0881}
+
+
+
+\begin{DoxyCode}
+45 {
+46   object          **oblist;
+47   dirobject       **dirlist;
+48   spectral_models *spec_mod;
+49   object_models   *obj_mod;
+50 
+51   interpolator    *tpass;
+52 
+53   gsl_matrix *dirimage_matrix=NULL;
+54 
+55   px_point npixels;
+56 
+57   // load the object list
+58   fprintf (stdout, "aXe_DIRIMAGE: Loading object aperture list...");
+59   oblist = file_to_object_list_seq (aper_file, obs);
+60   fprintf (stdout,"%d objects loaded.\n",object_list_size(oblist));
+61 
+62   // check whether highres models
+63   // are given
+64   if (strlen(specmod_file) > 0)
+65     // load the spectral models
+66     spec_mod = load_spectral_models(specmod_file);
+67   else
+68     // or set the struct to NULL
+69     spec_mod = NULL;
+70 
+71   // check whether direct emission models
+72   // are given
+73   if (strlen(objmod_file) > 0)
+74     obj_mod = load_object_models(objmod_file);
+75   else
+76     obj_mod = NULL;
+77 
+78   // get the sensitivity curve of the total passband
+79   tpass =  get_filter_sensitivity(tpass_file, tel_area);
+80 
+81   // get the image dimensions
+82   npixels = get_npixel(obs);
+83 
+84   // create the list of direct objects to be simulated
+85   // the interpolation type is fixed to linear
+86   dirlist = oblist_to_dirlist2(dirim_file, conf_file, npixels, oblist,
+87                                spec_mod, obj_mod, model_scale, 1);
+88 
+89   // determine the XOFF and YOFF values 
+90   // for the various beams
+91   fill_xy_offsets(dirlist, conf_file);
+92 
+93   // create and fill the pixel matrix for the direct images
+94   dirimage_matrix = make_dirimage(oblist, dirlist, npixels, lambda_psf, tpass);
+95 
+96   // store the contamination image
+97   gsl_to_FITSimage (dirimage_matrix, map_file, 1, NULL);
+98 
+99   // check if memory must be released;
+100   // do it if necessary
+101   if (spec_mod != NULL)
+102     free_spectral_models(spec_mod);
+103   if (obj_mod != NULL)
+104     free_object_models(obj_mod);
+105   if (oblist !=NULL)
+106     free_oblist (oblist);
+107 
+108   // always release these
+109   // objects
+110   free_dirlist(dirlist);
+111   gsl_matrix_free(dirimage_matrix);
+112   free_interp(tpass);
+113 
+114   // return always '1'
+115   return 1;
+116 }
+\end{DoxyCode}
+\hypertarget{dirimage__model_8c_ad920380d8766ba433e531afd159f5ed4}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!get\_\-combined\_\-tpass\_\-SED@{get\_\-combined\_\-tpass\_\-SED}}
+\index{get\_\-combined\_\-tpass\_\-SED@{get\_\-combined\_\-tpass\_\-SED}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{get\_\-combined\_\-tpass\_\-SED}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ get\_\-combined\_\-tpass\_\-SED (gsl\_\-vector $\ast$ {\em indep\_\-data}, \/  {\bf interpolator} $\ast$ {\em tpass}, \/  {\bf dirobject} $\ast$ {\em actdir})}}
+\label{dirimage__model_8c_ad920380d8766ba433e531afd159f5ed4}
+
+
+
+\begin{DoxyCode}
+572 {
+573   interpolator *combine;
+574 
+575   gsl_vector_int *indep_weight;
+576 
+577   int n_new=0;
+578   int index;
+579   int act_index;
+580 
+581   double *xvals_new;
+582   double *yvals_new;
+583 
+584   // allocat memory for the weight vector
+585   indep_weight = gsl_vector_int_alloc(indep_data->size);
+586 
+587   // set all the weights
+588   gsl_vector_int_set_all(indep_weight, 1);
+589   
+590   // go over the independent data
+591   for (index = 1; index < indep_data->size; index++)
+592     // check whether the current entry is equal the previous one
+593     if (gsl_vector_get(indep_data, index) ==  gsl_vector_get(indep_data, index-1)
+      )
+594       // set the weight of the current entry to zero
+595       gsl_vector_int_set(indep_weight,index, 0);
+596 
+597 
+598   // initialize the
+599   // final number
+600   n_new = 0;
+601   
+602   // go over the weight array
+603   for (index=0; index < indep_weight->size; index++)
+604     // just count the weights
+605     n_new += gsl_vector_int_get(indep_weight, index);
+606 
+607   // allocate memory for the interpolator data
+608   xvals_new = (double *)malloc(n_new * sizeof(double));
+609   yvals_new = (double *)malloc(n_new * sizeof(double));
+610 
+611   // go over the weight array
+612   act_index=0;
+613   for (index=0; index < indep_weight->size; index++)
+614     // check for weight
+615     if (gsl_vector_int_get(indep_weight, index))
+616       {
+617         // take the independent value from the vector
+618         xvals_new[act_index] = gsl_vector_get(indep_data, index);
+619 
+620         // compute the new dependent value bye multiplying
+621         // the brightness with the sensitivity
+622     yvals_new[act_index] = eval_interp(tpass, xvals_new[act_index])
+623                           * get_flux_from_SED(actdir->SED, xvals_new[act_index]);
+      
+624 
+625         // enhance the counter
+626         act_index++;
+627       }
+628 
+629   // create a new interpolator
+630   combine = create_interp(n_new, TPASS_INTERP_TYPE, xvals_new, yvals_new);
+631 
+632 
+633   // release memory in the weight vector 
+634   gsl_vector_int_free(indep_weight); 
+635 
+636   // return the interpolator
+637   return combine;
+638 }
+\end{DoxyCode}
+\hypertarget{dirimage__model_8c_a35f00ade0db1ab9b955eb2daa34a1c8f}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!get\_\-cps\_\-for\_\-dirobject@{get\_\-cps\_\-for\_\-dirobject}}
+\index{get\_\-cps\_\-for\_\-dirobject@{get\_\-cps\_\-for\_\-dirobject}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{get\_\-cps\_\-for\_\-dirobject}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-cps\_\-for\_\-dirobject ({\bf interpolator} $\ast$ {\em tpass}, \/  {\bf dirobject} $\ast$ {\em actdir})}}
+\label{dirimage__model_8c_a35f00ade0db1ab9b955eb2daa34a1c8f}
+
+
+
+\begin{DoxyCode}
+460 {
+461   interpolator *combine;
+462 
+463   double cps=0.0;
+464 
+465   // create aa new multiplicator
+466   // interpolator
+467   combine = combine_tpass_SED(tpass, actdir);
+468 
+469   // integrate over the interpolator
+470   cps = integrate_interpolator(combine);
+471 
+472   // release memory
+473   free_interp(combine);
+474 
+475   // return the cps value
+476   return cps;
+477 }
+\end{DoxyCode}
+\hypertarget{dirimage__model_8c_a9ad9a6858c9a87180afb5cddfbdab204}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!get\_\-filter\_\-sensitivity@{get\_\-filter\_\-sensitivity}}
+\index{get\_\-filter\_\-sensitivity@{get\_\-filter\_\-sensitivity}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{get\_\-filter\_\-sensitivity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ get\_\-filter\_\-sensitivity (const char {\em tpass\_\-file}\mbox{[}$\,$\mbox{]}, \/  const double {\em tel\_\-area})}}
+\label{dirimage__model_8c_a9ad9a6858c9a87180afb5cddfbdab204}
+
+
+
+\begin{DoxyCode}
+657 {
+658   interpolator    *tpass;
+659 
+660   double h_erg  = 6.6260693E-27;
+661   double c_cm   = 2.99792458E+10;
+662 
+663   double factor = 0.0;
+664 
+665   int index=0;
+666 
+667   fprintf(stdout, "Load Total bandpass table :%s\n", tpass_file);
+668   tpass =  create_interp_ftable(tpass_file, 2,"WAVELENGTH","THROUGHPUT", 
+      TPASS_INTERP_TYPE);
+669 
+670   for (index=0; index < tpass->nvals; index++)
+671     {
+672       // compute the conversion factor
+673       factor = tel_area / (h_erg * c_cm / (1.0E-08 * tpass->xvals[index]));
+674 
+675       // apply the conversion factor
+676       tpass->yvals[index] = tpass->yvals[index] * factor;
+677     }
+678 
+679   // return the filter sensitivity
+680   return tpass;
+681 }
+\end{DoxyCode}
+\hypertarget{dirimage__model_8c_af910d0984d034fc1377290e01bdaf1a5}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!integrate\_\-interpolator@{integrate\_\-interpolator}}
+\index{integrate\_\-interpolator@{integrate\_\-interpolator}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{integrate\_\-interpolator}]{\setlength{\rightskip}{0pt plus 5cm}double integrate\_\-interpolator ({\bf interpolator} $\ast$ {\em combine})}}
+\label{dirimage__model_8c_af910d0984d034fc1377290e01bdaf1a5}
+
+
+
+\begin{DoxyCode}
+482 {
+483   double integral=0.0;
+484 
+485   int index;
+486 
+487   for (index=1; index < combine->nvals-1; index++)
+488     // add the increment
+489     integral +=  combine->yvals[index] * (combine->xvals[index+1] - combine->
+      xvals[index-1]);
+490 
+491   // dont forget the start and end piece
+492   integral +=  combine->yvals[0]                * (combine->xvals[1]             
+         - combine->xvals[0]);
+493   integral +=  combine->yvals[combine->nvals-1] * (combine->xvals[combine->nvals-
+      1] - combine->xvals[combine->nvals-2]);
+494 
+495   // then return the half
+496   return integral/2.0;
+497 }
+\end{DoxyCode}
+\hypertarget{dirimage__model_8c_a18d35af5ae5d98dcf27d0ef9b47cfdf0}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!make\_\-dirimage@{make\_\-dirimage}}
+\index{make\_\-dirimage@{make\_\-dirimage}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{make\_\-dirimage}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ make\_\-dirimage ({\bf object} $\ast$$\ast$ {\em oblist}, \/  {\bf dirobject} $\ast$$\ast$ {\em dirlist}, \/  const {\bf px\_\-point} {\em npixels}, \/  const double {\em lambda\_\-psf}, \/  {\bf interpolator} $\ast$ {\em tpass})}}
+\label{dirimage__model_8c_a18d35af5ae5d98dcf27d0ef9b47cfdf0}
+
+
+
+\begin{DoxyCode}
+360 {
+361   dirobject       *actdir;
+362   beam             actbeam;
+363 
+364   gsl_matrix      *dirimage_matrix;
+365 
+366   double cps        = 0.0;
+367   double sval       = 0.0;
+368   double value      = 0.0;
+369 
+370   int ii=0;
+371   int nx=0;
+372   int ny=0;
+373 
+374   d_point dpixel;
+375 
+376    // allocate memory for the image matrix
+377   dirimage_matrix = gsl_matrix_alloc(npixels.x, npixels.y);
+378   gsl_matrix_set_all(dirimage_matrix,0.0);
+379 
+380   // go over each beam model
+381   ii = 0;
+382   while (oblist[ii] != NULL)
+383     {
+384 
+385       // get the direct object for the actual model spectrum
+386       actdir = get_dirobject_from_list(dirlist, oblist[ii]->ID);
+387 
+388       // get the beam for the actual model spectrum
+389       actbeam = oblist[ii]->beams[0];
+390 
+391       // report onto the screen
+392       fprintf(stdout, "NNNNEW aXe_DIRIMAGE: modelling object %i ...", oblist[ii]-
+      >ID);
+393 
+394       // get the integrated direct image intensity in cps
+395       cps = get_cps_for_dirobject(tpass, actdir);
+396 
+397       // correct the direct image positions for 
+398       // the offset values introduced by building
+399       // the direct image objects around the reference
+400       // position, which is shifted from the true
+401       // direct image position by XOFF and YOFF as
+402       // given in the aXe configuration file
+403       actdir->ix_min -= (int)floor(actdir->xy_off[actbeam.ID].x + 0.5);
+404       actdir->ix_max -= (int)floor(actdir->xy_off[actbeam.ID].x + 0.5);
+405       actdir->iy_min -= (int)floor(actdir->xy_off[actbeam.ID].y + 0.5);
+406       actdir->iy_max -= (int)floor(actdir->xy_off[actbeam.ID].y + 0.5);
+407       actbeam.refpoint.x -= actdir->xy_off[actbeam.ID].x;
+408       actbeam.refpoint.y -= actdir->xy_off[actbeam.ID].y;
+409 
+410       // go over each pixel in the direct object area
+411       for (nx=actdir->ix_min; nx<=actdir->ix_max; nx++)
+412         {
+413           // make sure to be inside the image
+414           if (nx < 0 || nx >=  dirimage_matrix->size1)
+415             // skip column if not
+416             continue;
+417           for (ny=actdir->iy_min; ny<=actdir->iy_max; ny++)
+418             {
+419               // make sure to be inside the image
+420               if (ny < 0 || ny >=  dirimage_matrix->size2)
+421                 // skip element if not
+422                 continue;
+423 
+424               // fill the dpixel structure
+425               dpixel.x = (double)nx;
+426               dpixel.y = (double)ny;
+427 
+428               // check whether there is
+429               // an image template
+430               if (actdir->dirim)
+431                 // get the pixel intensity from the image template
+432                 sval = get_diremission_value(actdir->dirim, dpixel.x - actbeam.
+      refpoint.x, dpixel.y - actbeam.refpoint.y);
+433               else
+434                 // get the Gaussian pixel intensity;
+435                 //
+436                 // do a subsampling over the pixel
+437                 // to get a more appropriate value for the
+438                 // emission val
+439                 sval = get_sub_emodel_value(dpixel, actbeam, actdir->drzscale);
+440               
+441               // compute and set the new pixel values
+442               value = gsl_matrix_get(dirimage_matrix, nx, ny) + sval*cps;
+443               gsl_matrix_set(dirimage_matrix, nx, ny, value);
+444             }
+445         }
+446 
+447       // release the space for the various structures
+448       fprintf(stdout, " Done\n");
+449       ii++;
+450     }
+451 
+452   // return the image matrix
+453   return dirimage_matrix;
+454 }
+\end{DoxyCode}
+\hypertarget{dirimage__model_8c_a371e3a170621827e2ec09b3746df0ffb}{
+\index{dirimage\_\-model.c@{dirimage\_\-model.c}!make\_\-dirimage\_\-object@{make\_\-dirimage\_\-object}}
+\index{make\_\-dirimage\_\-object@{make\_\-dirimage\_\-object}!dirimage_model.c@{dirimage\_\-model.c}}
+\subsubsection[{make\_\-dirimage\_\-object}]{\setlength{\rightskip}{0pt plus 5cm}void make\_\-dirimage\_\-object ({\bf object} $\ast$ {\em actobject}, \/  {\bf dirobject} $\ast$ {\em actdir}, \/  {\bf interpolator} $\ast$ {\em tpass}, \/  gsl\_\-matrix $\ast$ {\em dirimage\_\-matrix})}}
+\label{dirimage__model_8c_a371e3a170621827e2ec09b3746df0ffb}
+
+
+
+\begin{DoxyCode}
+283                                                                                  
+                                 {
+284 
+285         beam  actbeam;
+286         double cps        = 0.0;
+287         double sval       = 0.0;
+288         double value      = 0.0;
+289         int nx=0;
+290         int ny=0;
+291         d_point dpixel;
+292 
+293         // get the beam for the actual model spectrum
+294         actbeam = actobject->beams[0];
+295 
+296         // report onto the screen
+297         fprintf(stdout, "aXe_DIRIMAGE: modelling object %i ...", actobject->ID);
+298 
+299         // get the integrated direct image intensity in cps
+300         cps = get_cps_for_dirobject(tpass, actdir);
+301 
+302         // correct the direct image positions for
+303         // the offset values introduced by building
+304         // the direct image objects around the reference
+305         // position, which is shifted from the true
+306         // direct image position by XOFF and YOFF as
+307         // given in the aXe configuration file
+308         actdir->ix_min -= (int)floor(actdir->xy_off[actbeam.ID].x + 0.5);
+309         actdir->ix_max -= (int)floor(actdir->xy_off[actbeam.ID].x + 0.5);
+310         actdir->iy_min -= (int)floor(actdir->xy_off[actbeam.ID].y + 0.5);
+311         actdir->iy_max -= (int)floor(actdir->xy_off[actbeam.ID].y + 0.5);
+312         actbeam.refpoint.x -= actdir->xy_off[actbeam.ID].x;
+313         actbeam.refpoint.y -= actdir->xy_off[actbeam.ID].y;
+314 
+315         // go over each pixel in the direct object area
+316         for (nx=actdir->ix_min; nx<=actdir->ix_max; nx++)
+317         {
+318                 // make sure to be inside the image
+319                 if (nx < 0 || nx >=  dirimage_matrix->size1)
+320                         // skip column if not
+321                         continue;
+322                 for (ny=actdir->iy_min; ny<=actdir->iy_max; ny++)
+323                 {
+324                         // make sure to be inside the image
+325                         if (ny < 0 || ny >=  dirimage_matrix->size2)
+326                                 // skip element if not
+327                                 continue;
+328 
+329                         // fill the dpixel structure
+330                         dpixel.x = (double)nx;
+331                         dpixel.y = (double)ny;
+332 
+333                         // check whether there is
+334                         // an image template
+335                         if (actdir->dirim)
+336                                 // get the pixel intensity from the image templat
+      e
+337                                 sval = get_diremission_value(actdir->dirim, dpixe
+      l.x - actbeam.refpoint.x, dpixel.y - actbeam.refpoint.y);
+338                         else
+339                                 // get the Gaussian pixel intensity;
+340                                 //
+341                                 // do a subsampling over the pixel
+342                                 // to get a more appropriate value for the
+343                                 // emission val
+344                                 sval = get_sub_emodel_value(dpixel, actbeam, actd
+      ir->drzscale);
+345 
+346                         // compute and set the new pixel values
+347                         value = gsl_matrix_get(dirimage_matrix, nx, ny) + sval*cp
+      s;
+348                         gsl_matrix_set(dirimage_matrix, nx, ny, value);
+349                 }
+350         }
+351 
+352         // release the space for the various structures
+353         fprintf(stdout, " Done\n");
+354 
+355 }
+\end{DoxyCode}

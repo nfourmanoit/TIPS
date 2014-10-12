@@ -1,0 +1,149 @@
+\hypertarget{lm__eval_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/lm\_\-eval.c File Reference}
+\label{lm__eval_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/lm\_\-eval.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/lm\_\-eval.c}}
+}
+{\ttfamily \#include \char`\"{}lmmin.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}lm\_\-eval.h\char`\"{}}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{lm__eval_8c_ad35cf99e2b3c0532b5eef07b77ca40a0}{lm\_\-evaluate\_\-default} (double $\ast$par, int m\_\-dat, double $\ast$fvec, void $\ast$data, int $\ast$info)
+\item 
+void \hyperlink{lm__eval_8c_a2c97f1008d84c0a06e3f0488ee6b9abd}{lm\_\-evaluate\_\-fpar} (double $\ast$par, int m\_\-dat, double $\ast$fvec, void $\ast$data, int $\ast$info)
+\item 
+void \hyperlink{lm__eval_8c_a6d71f7e8440a6262d8db38aaea4e7e7e}{lm\_\-print\_\-default} (int n\_\-par, double $\ast$par, int m\_\-dat, double $\ast$fvec, void $\ast$data, int iflag, int iter, int nfev)
+\item 
+void \hyperlink{lm__eval_8c_abe822fbd5588b67b4e3f053037a86b2f}{lm\_\-print\_\-nothing} (int n\_\-par, double $\ast$par, int m\_\-dat, double $\ast$fvec, void $\ast$data, int iflag, int iter, int nfev)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{lm__eval_8c_ad35cf99e2b3c0532b5eef07b77ca40a0}{
+\index{lm\_\-eval.c@{lm\_\-eval.c}!lm\_\-evaluate\_\-default@{lm\_\-evaluate\_\-default}}
+\index{lm\_\-evaluate\_\-default@{lm\_\-evaluate\_\-default}!lm_eval.c@{lm\_\-eval.c}}
+\subsubsection[{lm\_\-evaluate\_\-default}]{\setlength{\rightskip}{0pt plus 5cm}void lm\_\-evaluate\_\-default (double $\ast$ {\em par}, \/  int {\em m\_\-dat}, \/  double $\ast$ {\em fvec}, \/  void $\ast$ {\em data}, \/  int $\ast$ {\em info})}}
+\label{lm__eval_8c_ad35cf99e2b3c0532b5eef07b77ca40a0}
+
+
+
+\begin{DoxyCode}
+28 {
+29     int i;
+30     lm_data_type *mydata;
+31     mydata = (lm_data_type*)data;
+32 
+33     for (i=0; i<m_dat; i++)
+34             fvec[i] = mydata->user_y[i] 
+35                 - mydata->user_func( mydata->user_t[i], par);
+36 
+37     *info = *info; /* to prevent a 'unused variable' warning */
+38     /* if <parameters drifted away> { *info = -1; } */
+39 }
+\end{DoxyCode}
+\hypertarget{lm__eval_8c_a2c97f1008d84c0a06e3f0488ee6b9abd}{
+\index{lm\_\-eval.c@{lm\_\-eval.c}!lm\_\-evaluate\_\-fpar@{lm\_\-evaluate\_\-fpar}}
+\index{lm\_\-evaluate\_\-fpar@{lm\_\-evaluate\_\-fpar}!lm_eval.c@{lm\_\-eval.c}}
+\subsubsection[{lm\_\-evaluate\_\-fpar}]{\setlength{\rightskip}{0pt plus 5cm}void lm\_\-evaluate\_\-fpar (double $\ast$ {\em par}, \/  int {\em m\_\-dat}, \/  double $\ast$ {\em fvec}, \/  void $\ast$ {\em data}, \/  int $\ast$ {\em info})}}
+\label{lm__eval_8c_a2c97f1008d84c0a06e3f0488ee6b9abd}
+
+
+
+\begin{DoxyCode}
+60 {
+61   int i;
+62   lm_data_fpar_type *mydata;
+63   mydata = (lm_data_fpar_type*)data;
+64 
+65   //fprintf(stderr, "%i 1.: %e, %e, %e: %e\n", m_dat, mydata->fpars[0], mydata->f
+      pars[1],  mydata->fpars[2], par[0]);
+66   for (i=0; i<m_dat; i++)
+67     {
+68       //fprintf(stderr, "do print...%i ", i);
+69       //fprintf(stderr, "indep: %e ", mydata->user_t[i]);
+70       //fprintf(stderr, "value: %e, ", mydata->user_y[i]);
+71       //fprintf(stderr, "func_value: %e \n", mydata->user_func( mydata->user_t[i]
+      , par, mydata->fpars));
+72       
+73 
+74       fvec[i] = mydata->user_y[i] 
+75         - mydata->user_func( mydata->user_t[i], par, mydata->fpars);
+76     
+77     }
+78   //fprintf(stderr, "2.: %e, %e, %e: %e\n", mydata->fpars[0], mydata->fpars[1],  
+      mydata->fpars[2], par[0]);
+79   *info = *info; /* to prevent a 'unused variable' warning */
+80   /* if <parameters drifted away> { *info = -1; } */
+81 }
+\end{DoxyCode}
+\hypertarget{lm__eval_8c_a6d71f7e8440a6262d8db38aaea4e7e7e}{
+\index{lm\_\-eval.c@{lm\_\-eval.c}!lm\_\-print\_\-default@{lm\_\-print\_\-default}}
+\index{lm\_\-print\_\-default@{lm\_\-print\_\-default}!lm_eval.c@{lm\_\-eval.c}}
+\subsubsection[{lm\_\-print\_\-default}]{\setlength{\rightskip}{0pt plus 5cm}void lm\_\-print\_\-default (int {\em n\_\-par}, \/  double $\ast$ {\em par}, \/  int {\em m\_\-dat}, \/  double $\ast$ {\em fvec}, \/  void $\ast$ {\em data}, \/  int {\em iflag}, \/  int {\em iter}, \/  int {\em nfev})}}
+\label{lm__eval_8c_a6d71f7e8440a6262d8db38aaea4e7e7e}
+
+
+
+\begin{DoxyCode}
+86                : for soft control of printout behaviour, add control
+87  *                 variables to the data struct
+88  *       iflag : 0 (init) 1 (outer loop) 2(inner loop) -1(terminated)
+89  *       iter  : outer loop counter
+90  *       nfev  : number of calls to *evaluate
+91  */
+92 {
+93     double f, y, t;
+94     int i;
+95     lm_data_type *mydata;
+96     mydata = (lm_data_type*)data;
+97 
+98     if (iflag==2) {
+99         printf ("trying step in gradient direction\n");
+100     } else if (iflag==1) {
+101         printf ("determining gradient (iteration %d)\n", iter);
+102     } else if (iflag==0) {
+103         printf ("starting minimization\n");
+104     } else if (iflag==-1) {
+105         printf ("terminated after %d evaluations\n", nfev);
+106     }
+107 
+108     printf( "  par: " );
+109     for( i=0; i<n_par; ++i )
+110         printf( " %12g", par[i] );
+111     printf ( " => norm: %12g\n", lm_enorm( m_dat, fvec ) );
+112 
+113     if ( iflag == -1 ) {
+114         printf( "  fitting data as follows:\n" );
+115         for( i=0; i<m_dat; ++i ) {
+116             t = (mydata->user_t)[i];
+117             y = (mydata->user_y)[i];
+118             f = mydata->user_func( t, par );
+119             printf( "    t[%2d]=%12g y=%12g fit=%12g residue=%12g\n",
+120                     i, t, y, f, y-f );
+121         }
+122     }
+123 }
+\end{DoxyCode}
+\hypertarget{lm__eval_8c_abe822fbd5588b67b4e3f053037a86b2f}{
+\index{lm\_\-eval.c@{lm\_\-eval.c}!lm\_\-print\_\-nothing@{lm\_\-print\_\-nothing}}
+\index{lm\_\-print\_\-nothing@{lm\_\-print\_\-nothing}!lm_eval.c@{lm\_\-eval.c}}
+\subsubsection[{lm\_\-print\_\-nothing}]{\setlength{\rightskip}{0pt plus 5cm}void lm\_\-print\_\-nothing (int {\em n\_\-par}, \/  double $\ast$ {\em par}, \/  int {\em m\_\-dat}, \/  double $\ast$ {\em fvec}, \/  void $\ast$ {\em data}, \/  int {\em iflag}, \/  int {\em iter}, \/  int {\em nfev})}}
+\label{lm__eval_8c_abe822fbd5588b67b4e3f053037a86b2f}
+
+
+
+\begin{DoxyCode}
+128                : for soft control of printout behaviour, add control
+129  *                 variables to the data struct
+130  *       iflag : 0 (init) 1 (outer loop) 2(inner loop) -1(terminated)
+131  *       iter  : outer loop counter
+132  *       nfev  : number of calls to *evaluate
+133  */
+134 {
+135     //double f, y, t;
+136     //int i;
+137     lm_data_type *mydata;
+138     mydata = (lm_data_type*)data;
+139 
+140 }
+\end{DoxyCode}

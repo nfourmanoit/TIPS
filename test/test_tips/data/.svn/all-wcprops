@@ -1,0 +1,323 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/repos/tips/!svn/ver/223/branches/tips_build/test/data
+END
+RN_map.fits
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/RN_map.fits
+END
+ext_seaton.dat
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/ext_seaton.dat
+END
+GBLUE_90.0_conf_v0.fits
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/GBLUE_90.0_conf_v0.fits
+END
+thoughtput.dat
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/thoughtput.dat
+END
+DC_map.fits
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/DC_map.fits
+END
+axesim_d1_2PSF.conf
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d1_2PSF.conf
+END
+axesim_d2_2PSF.conf
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d2_2PSF.conf
+END
+GBLUE_0.0_conf_v0.fits
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/GBLUE_0.0_conf_v0.fits
+END
+axesim_d3_2PSF.conf
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d3_2PSF.conf
+END
+axesim_d2_det.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d2_det.conf
+END
+axesim_d4_2PSF.conf
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d4_2PSF.conf
+END
+CMC_test.thm.fits
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/CMC_test.thm.fits
+END
+input_cat_test.dat
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/input_cat_test.dat
+END
+axesim_d4_det.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d4_det.conf
+END
+sensfunc_d11.fits
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/sensfunc_d11.fits
+END
+axesim_d1.conf
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d1.conf
+END
+sensfunc_d21.fits
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/sensfunc_d21.fits
+END
+axesim_d3.conf
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d3.conf
+END
+axesim_d2_cos.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d2_cos.conf
+END
+GRED_90.0_conf_v0.fits
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/GRED_90.0_conf_v0.fits
+END
+axesim_d4_cos.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d4_cos.conf
+END
+axesim_d1_PSF.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d1_PSF.conf
+END
+QE_map.fits
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/QE_map.fits
+END
+axesim_d3_PSF.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d3_PSF.conf
+END
+sensfunc_d1.fits
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/sensfunc_d1.fits
+END
+ext_seaton.fits
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/ext_seaton.fits
+END
+input_cat_test.spc.fits
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/input_cat_test.spc.fits
+END
+input_cat_thumbs.dat
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/input_cat_thumbs.dat
+END
+cosmics_0.fits
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/cosmics_0.fits
+END
+baseline_180713_conf_v1.fits
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/baseline_180713_conf_v1.fits
+END
+noise_spc.fits
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/noise_spc.fits
+END
+CMC_test.axespc.fits
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/CMC_test.axespc.fits
+END
+CMC_test.spc.fits
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/CMC_test.spc.fits
+END
+noise_spc.dat
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/noise_spc.dat
+END
+axesim_d1_det.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d1_det.conf
+END
+axesim_d3_det.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d3_det.conf
+END
+axesim_d1_zero.conf
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d1_zero.conf
+END
+axesim_d2_zero.conf
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d2_zero.conf
+END
+axesim_d2.conf
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d2.conf
+END
+CMC_test_half.fits
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/CMC_test_half.fits
+END
+axesim_d3_zero.conf
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d3_zero.conf
+END
+axesim_d4_zero.conf
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d4_zero.conf
+END
+axesim_d4.conf
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d4.conf
+END
+axesim_d1_cos.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d1_cos.conf
+END
+axesim_d3_cos.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d3_cos.conf
+END
+CMC_test.fits
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/CMC_test.fits
+END
+SB_map.fits
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/SB_map.fits
+END
+axesim_d2_PSF.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d2_PSF.conf
+END
+CMC_test.out
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/CMC_test.out
+END
+axesim_d4_PSF.conf
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/axesim_d4_PSF.conf
+END
+thumbnails.fits
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/thumbnails.fits
+END
+GRED_0.0_conf_v0.fits
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/GRED_0.0_conf_v0.fits
+END
+sensfunc_d2.fits
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/223/branches/tips_build/test/data/sensfunc_d2.fits
+END

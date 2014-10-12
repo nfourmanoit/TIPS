@@ -1,0 +1,616 @@
+\hypertarget{spce__fitting_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-fitting.c File Reference}
+\label{spce__fitting_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-fitting.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-fitting.c}}
+}
+{\ttfamily \#include $<$gsl/gsl\_\-sort.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-statistics.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-fit.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-multifit.h$>$}\par
+{\ttfamily \#include \char`\"{}spce\_\-fitting.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespce__fitting}{spce\_\-fitting}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+gsl\_\-vector $\ast$ \hyperlink{spce__fitting_8c_ac9519d77761919c4c20fe56e7ed429ca}{det\_\-vector\_\-polyN} (int m, const double $\ast$const xs, double $\ast$const ys, double $\ast$const ws, const int n, gsl\_\-vector $\ast$c, gsl\_\-matrix $\ast$cov)
+\item 
+void \hyperlink{spce__fitting_8c_a0a01c4934186cf034e6896b059937e4f}{fill\_\-polyN\_\-interp} (const double $\ast$const xs, double $\ast$const ys, double $\ast$const ws, double $\ast$yi, const int n, gsl\_\-vector $\ast$coeffs, gsl\_\-matrix $\ast$cov, gsl\_\-vector $\ast$interp, const int final)
+\item 
+void \hyperlink{spce__fitting_8c_a621fe9c9c80ba0e0ec7a91bcde5abe7e}{comp\_\-vector\_\-average} (const double $\ast$xs, double $\ast$ys, double $\ast$ws, double $\ast$yi, const int n, const int final)
+\item 
+void \hyperlink{spce__fitting_8c_ad77a41562c50e1fbe924bc44a4df7779}{comp\_\-vector\_\-median} (const double $\ast$xs, double $\ast$ys, double $\ast$ws, double $\ast$yi, const int n, const int final)
+\item 
+void \hyperlink{spce__fitting_8c_afee691c36e9b3fc77fd08f9aee86f1b8}{comp\_\-vector\_\-linear} (const double $\ast$xs, double $\ast$ys, double $\ast$ws, double $\ast$yi, const int n, const int final)
+\item 
+void \hyperlink{spce__fitting_8c_add50c2f8186c3978ef12800257daa954}{comp\_\-vector\_\-polyN} (const int m, const double $\ast$xs, double $\ast$ys, double $\ast$ws, double $\ast$yi, const int n, const int final)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{spce__fitting_8c_a76b487ff0c90fe829ddbec4fae979fb1}{det\_\-vector\_\-linear} (const double $\ast$xs, double $\ast$ys, double $\ast$ws, const int n, const int weight)
+\item 
+void \hyperlink{spce__fitting_8c_a9d5c2d7775f5d8b919e4f58f9b9a2fe6}{fill\_\-linear\_\-interp} (const double $\ast$const xs, double $\ast$const ys, double $\ast$const ws, double $\ast$yi, const int n, gsl\_\-vector $\ast$interp, const int final)
+\item 
+void \hyperlink{spce__fitting_8c_a96100151e39257d0c26f8ab56f3abb3f}{det\_\-vector\_\-average} (const double $\ast$xs, double $\ast$ys, double $\ast$ws, const int n, double $\ast$avg, double $\ast$std)
+\item 
+void \hyperlink{spce__fitting_8c_af4788eabe3f317715d5d267900b3c2e9}{det\_\-vector\_\-median} (const double $\ast$xs, double $\ast$ys, double $\ast$ws, const int n, double $\ast$med, double $\ast$std)
+\item 
+void \hyperlink{spce__fitting_8c_ade8ef529ee293b7527df4e9bced2a535}{fill\_\-const\_\-value} (double $\ast$ys, double $\ast$ws, double $\ast$yi, const int n, double cval, double stdev, const int final)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spce__fitting_8c_a621fe9c9c80ba0e0ec7a91bcde5abe7e}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!comp\_\-vector\_\-average@{comp\_\-vector\_\-average}}
+\index{comp\_\-vector\_\-average@{comp\_\-vector\_\-average}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{comp\_\-vector\_\-average}]{\setlength{\rightskip}{0pt plus 5cm}void comp\_\-vector\_\-average (const double $\ast$ {\em xs}, \/  double $\ast$ {\em ys}, \/  double $\ast$ {\em ws}, \/  double $\ast$ {\em yi}, \/  const int {\em n}, \/  const int {\em final})}}
+\label{spce__fitting_8c_a621fe9c9c80ba0e0ec7a91bcde5abe7e}
+Function: comp\_\-vector\_\-average The function provides the computation of the average of the y-\/values and store that average in temporary or the original y-\/vector.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ absissa \item[{\em ys}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em ws}]-\/ weight in ys\mbox{[}\mbox{]} \item[{\em yi}]-\/ temprary y-\/values \item[{\em n}]-\/ number of points in xs, ys, ws \item[{\em final}]-\/ flagg to store to temp (0) or final (1) vectors \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+237 {
+238   double ave, std;
+239   //int i, m;
+240 
+241   det_vector_average (xs, ys, ws, n, &ave, &std);
+242   fill_const_value(ys, ws, yi, n, ave, std, final);
+243 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_afee691c36e9b3fc77fd08f9aee86f1b8}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!comp\_\-vector\_\-linear@{comp\_\-vector\_\-linear}}
+\index{comp\_\-vector\_\-linear@{comp\_\-vector\_\-linear}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{comp\_\-vector\_\-linear}]{\setlength{\rightskip}{0pt plus 5cm}void comp\_\-vector\_\-linear (const double $\ast$ {\em xs}, \/  double $\ast$ {\em ys}, \/  double $\ast$ {\em ws}, \/  double $\ast$ {\em yi}, \/  const int {\em n}, \/  const int {\em final})}}
+\label{spce__fitting_8c_afee691c36e9b3fc77fd08f9aee86f1b8}
+Function: comp\_\-vector\_\-linear The function fits a linear function to the y-\/values and fills the linear inteprolated values in a temporary vector and, if requested, in the original vector as well.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ absissa \item[{\em ys}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em ws}]-\/ weight in ys\mbox{[}\mbox{]} \item[{\em yi}]-\/ temprary y-\/values \item[{\em n}]-\/ number of points in xs, ys, ws \item[{\em final}]-\/ flagg to store to temp (0) or final (1) vectors \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+286 {
+287   gsl_vector *interp;
+288 
+289   // make a weighted linear fit
+290   interp = det_vector_linear(xs, ys, ws, n, 1);
+291 
+292   // make the interpolations,
+293   // using the linear fit
+294   fill_linear_interp(xs, ys, ws, yi, n, interp, final);
+295 
+296   gsl_vector_free(interp);
+297 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_ad77a41562c50e1fbe924bc44a4df7779}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!comp\_\-vector\_\-median@{comp\_\-vector\_\-median}}
+\index{comp\_\-vector\_\-median@{comp\_\-vector\_\-median}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{comp\_\-vector\_\-median}]{\setlength{\rightskip}{0pt plus 5cm}void comp\_\-vector\_\-median (const double $\ast$ {\em xs}, \/  double $\ast$ {\em ys}, \/  double $\ast$ {\em ws}, \/  double $\ast$ {\em yi}, \/  const int {\em n}, \/  const int {\em final})}}
+\label{spce__fitting_8c_ad77a41562c50e1fbe924bc44a4df7779}
+Function: comp\_\-vector\_\-median The function provides the computation of the median of the y-\/values and store that median in temporary or the original y-\/vector
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ absissa \item[{\em ys}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em ws}]-\/ weight in ys\mbox{[}\mbox{]} \item[{\em yi}]-\/ temprary y-\/values \item[{\em n}]-\/ number of points in xs, ys, ws \item[{\em final}]-\/ flagg to store to temp (0) or final (1) vectors \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+262 {
+263   double med, std;
+264 
+265   det_vector_median (xs, ys, ws, n, &med, &std);
+266   fill_const_value(ys, ws, yi, n, med, std, final);
+267 
+268 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_add50c2f8186c3978ef12800257daa954}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!comp\_\-vector\_\-polyN@{comp\_\-vector\_\-polyN}}
+\index{comp\_\-vector\_\-polyN@{comp\_\-vector\_\-polyN}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{comp\_\-vector\_\-polyN}]{\setlength{\rightskip}{0pt plus 5cm}void comp\_\-vector\_\-polyN (const int {\em m}, \/  const double $\ast$ {\em xs}, \/  double $\ast$ {\em ys}, \/  double $\ast$ {\em ws}, \/  double $\ast$ {\em yi}, \/  const int {\em n}, \/  const int {\em final})}}
+\label{spce__fitting_8c_add50c2f8186c3978ef12800257daa954}
+Function: comp\_\-vector\_\-polyN The function fits a polynomial function to the y-\/values and fills the evaluated polynomial values in a temporary vector and, if requested, in the original vector as well.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ absissa \item[{\em ys}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em ws}]-\/ weight in ys\mbox{[}\mbox{]} \item[{\em yi}]-\/ temprary y-\/values \item[{\em n}]-\/ number of points in xs, ys, ws \item[{\em final}]-\/ flagg to store to temp (0) or final (1) vectors \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+315 {
+316   gsl_vector *interp, *coeffs;
+317   gsl_matrix *cov;
+318 
+319   coeffs = gsl_vector_alloc(m);
+320   cov = gsl_matrix_alloc(m,m);
+321 
+322   interp = det_vector_polyN (m, xs, ys, ws, n, coeffs, cov);
+323   fill_polyN_interp(xs, ys, ws, yi, n, coeffs, cov, interp, final);
+324 
+325   gsl_vector_free(interp);
+326   gsl_vector_free(coeffs);
+327   gsl_matrix_free(cov);
+328 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_a96100151e39257d0c26f8ab56f3abb3f}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!det\_\-vector\_\-average@{det\_\-vector\_\-average}}
+\index{det\_\-vector\_\-average@{det\_\-vector\_\-average}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{det\_\-vector\_\-average}]{\setlength{\rightskip}{0pt plus 5cm}void det\_\-vector\_\-average (const double $\ast$ {\em xs}, \/  double $\ast$ {\em ys}, \/  double $\ast$ {\em ws}, \/  const int {\em n}, \/  double $\ast$ {\em avg}, \/  double $\ast$ {\em std})}}
+\label{spce__fitting_8c_a96100151e39257d0c26f8ab56f3abb3f}
+Function: det\_\-vector\_\-average The function computes the average and the standard deviation from the values in a vector
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ absissa \item[{\em ys}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em ws}]-\/ weight in ys\mbox{[}\mbox{]} \item[{\em n}]-\/ number of points in xs, ys, ws \item[{\em avg}]-\/ the average \item[{\em std}]-\/ the standard deviation \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+503 {
+504   double *tmp, sum = 0.0;
+505   int nn = 0;
+506   int j;
+507 
+508   // count the number of
+509   // interpolation points
+510   nn = 0;
+511   for (j = 0; j < n; j++)
+512     {
+513       if (ws[j] != 0.0)
+514         nn++;
+515     }
+516 
+517   // allocate a tmp-array
+518   tmp = malloc (nn * sizeof (double));
+519 
+520   // sum up all values in the
+521   // interpolation points,
+522   // and transfer the values to the 
+523   // tmp-array
+524   nn = 0;
+525   for (j = 0; j < n; j++)
+526     {
+527       if (ws[j] != 0.0)
+528         {
+529           sum += ys[j];
+530           tmp[nn] = ys[j];
+531           nn++;
+532         }
+533     }
+534 
+535   // compute the average
+536   if (nn > 0)
+537     *avg = sum / (double)nn;
+538 
+539   // compute the standard deviation
+540   *std = gsl_stats_sd (tmp, 1, nn);
+541 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_a76b487ff0c90fe829ddbec4fae979fb1}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!det\_\-vector\_\-linear@{det\_\-vector\_\-linear}}
+\index{det\_\-vector\_\-linear@{det\_\-vector\_\-linear}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{det\_\-vector\_\-linear}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ det\_\-vector\_\-linear (const double $\ast$ {\em xs}, \/  double $\ast$ {\em ys}, \/  double $\ast$ {\em ws}, \/  const int {\em n}, \/  const int {\em weight})}}
+\label{spce__fitting_8c_a76b487ff0c90fe829ddbec4fae979fb1}
+Function: det\_\-vector\_\-linear Performs a linear fit of the xs, ys, and ws arrays. Ignores NaN values. Fitted values are returned in ys and errors in ws.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ absissa \item[{\em ys}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em ws}]-\/ error in ys\mbox{[}\mbox{]} \item[{\em n}]-\/ number of points in xs, ys, ws \item[{\em weight}]-\/ make weighted fit (=1) or not (=0)\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ the covariance values 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+349 {
+350   int i, m;
+351   double c0, c1, cov00, cov01, cov11, chisq;
+352   double *xx, *yy, *ww, *tmp, *xmp;
+353   double median, xean;
+354   //double xf, yf, yf_err;
+355 
+356   gsl_vector *ret;
+357 
+358   ret = gsl_vector_alloc(10);
+359 
+360   // allocate space for temporary vectors 
+361   tmp = (double *) malloc (n * sizeof (double));
+362   xmp = (double *) malloc (n * sizeof (double));
+363 
+364   // fill the temporary vectors 
+365   // with background values and weights
+366   m = 0;
+367   for (i = 0; i < n; i++)
+368     {
+369       if (ws[i] > 0.0)
+370         {
+371           //      tmp[m] = ws[i];
+372           tmp[m] = 1.0/(ws[i]*ws[i]);
+373           xmp[m] = xs[i];
+374           m++;
+375         }
+376     }
+377 
+378 
+379   // determine the median weight which
+380   // is used for all data
+381   gsl_sort( tmp, 1, m);
+382   median = gsl_stats_median_from_sorted_data(tmp, 1, m);
+383 
+384   // determine the mean in the independent variable
+385   xean = gsl_stats_mean (xmp, 1, m);
+386 
+387   // allocate more temporary vectors
+388   xx = (double *) malloc (m * sizeof (double));
+389   yy = (double *) malloc (m * sizeof (double));
+390   ww = (double *) malloc (m * sizeof (double));
+391 
+392   // fill the temporary vectors with
+393   // background independent/dependent variables
+394   // plus the weight
+395   m = 0;
+396   for (i = 0; i < n; i++)
+397     {
+398       if (ws[i] > 0.0)
+399         {
+400          xx[m] = xs[i]-xean;
+401          yy[m] = ys[i];
+402          ww[m] = median;
+403          m++;
+404         }
+405     }
+406 
+407   // check for weighted fit
+408   if (weight)
+409     // doe the linear fit
+410     gsl_fit_wlinear (xx, 1, ww, 1, yy, 1, m, &c0, &c1, &cov00,
+411                      &cov01, &cov11, &chisq);
+412   else
+413     // does the linear fit
+414     gsl_fit_linear (xx, 1, yy, 1, m, &c0, &c1, &cov00,
+415                     &cov01, &cov11, &chisq);
+416 
+417 
+418   gsl_vector_set(ret, 0, xean);
+419   gsl_vector_set(ret, 1, c0);
+420   gsl_vector_set(ret, 2, c1);
+421   gsl_vector_set(ret, 3, cov00);
+422   gsl_vector_set(ret, 4, cov01);
+423   gsl_vector_set(ret, 5, cov11);
+424   gsl_vector_set(ret, 6, chisq);
+425 
+426 
+427   // free the arrays
+428   free(tmp);
+429   free(xmp);
+430   free(xx);
+431   free(yy);
+432   free(ww);
+433 
+434   return ret;
+435 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_af4788eabe3f317715d5d267900b3c2e9}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!det\_\-vector\_\-median@{det\_\-vector\_\-median}}
+\index{det\_\-vector\_\-median@{det\_\-vector\_\-median}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{det\_\-vector\_\-median}]{\setlength{\rightskip}{0pt plus 5cm}void det\_\-vector\_\-median (const double $\ast$ {\em xs}, \/  double $\ast$ {\em ys}, \/  double $\ast$ {\em ws}, \/  const int {\em n}, \/  double $\ast$ {\em med}, \/  double $\ast$ {\em std})}}
+\label{spce__fitting_8c_af4788eabe3f317715d5d267900b3c2e9}
+Function: det\_\-vector\_\-median The function computes the median and the standard deviation from the values in a vector
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ absissa \item[{\em ys}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em ws}]-\/ weight in ys\mbox{[}\mbox{]} \item[{\em n}]-\/ number of points in xs, ys, ws \item[{\em med}]-\/ the median \item[{\em std}]-\/ the standard deviation \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+558 {
+559   double *tmp;
+560   int nn = 0;
+561   int j;
+562 
+563   // count the number of
+564   // interpolation points
+565   for (j = 0; j < n; j++)
+566     {
+567       if (ws[j] != 0.0)
+568           nn++;
+569     }
+570 
+571   // allocate a tmp-array
+572   tmp = malloc (nn * sizeof (double));
+573 
+574   // transfer the values of the interpolation
+575   // points to the tmp-array
+576   nn = 0;
+577   for (j = 0; j < n; j++)
+578     {
+579       if (ws[j] != 0.0)
+580         {
+581           tmp[nn] = ys[j];
+582           nn++;
+583         }
+584     }
+585 
+586   // sort the tmp array
+587   gsl_sort (tmp, 1, nn);
+588 
+589   // compute the median
+590   *med = gsl_stats_median_from_sorted_data (tmp, 1, nn);
+591 
+592   // compute the standard deviation
+593   *std = gsl_stats_sd (tmp, 1, nn);
+594 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_ac9519d77761919c4c20fe56e7ed429ca}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!det\_\-vector\_\-polyN@{det\_\-vector\_\-polyN}}
+\index{det\_\-vector\_\-polyN@{det\_\-vector\_\-polyN}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{det\_\-vector\_\-polyN}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ det\_\-vector\_\-polyN (int {\em m}, \/  const double $\ast$const  {\em xs}, \/  double $\ast$const  {\em ys}, \/  double $\ast$const  {\em ws}, \/  const int {\em n}, \/  gsl\_\-vector $\ast$ {\em c}, \/  gsl\_\-matrix $\ast$ {\em cov})}}
+\label{spce__fitting_8c_ac9519d77761919c4c20fe56e7ed429ca}
+Function: det\_\-vector\_\-polyN A function using GSL fitting functions to fit a set x,y,w of n elements such that an Nth degree polynomial is fitted to the x and y vectors using the weights w. This function avoids NaN values in ys AND elements with an associated weight that is zero.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]-\/ order of the fit \item[{\em xs}]-\/ double vector containing the x values \item[{\em ys}]-\/ double vector containing the y values \item[{\em ws}]-\/ double vector containing the weights associated with ys \item[{\em n}]-\/ number of points in xs,ys, and ws (must be greater than m!) \item[{\em c}]-\/ the vector with the fitted coefficients \item[{\em cov}]-\/ the covariance matrix\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+interp -\/ vector with additional fitting information 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+44 {
+45   int i, j, nn, ii;
+46   double chisq;
+47   gsl_matrix *X;
+48   gsl_vector *y, *w;
+49   
+50   double *tmp, *xmp;
+51   double median, xean;
+52   //double xf, yf, yf_err, sq_yf_err;
+53 
+54   gsl_vector *interp;
+55 
+56   // allocate the return vector
+57   interp = gsl_vector_alloc(5);
+58 
+59   // allocate temporary vectors
+60   tmp = (double *) malloc (n * sizeof (double));
+61   xmp = (double *) malloc (n * sizeof (double));
+62 
+63 
+64   // fill weights and independent values
+65   // for the background pixels into the arrays
+66   nn = 0;
+67   for (i = 0; i < n; i++)
+68     {
+69       if (ws[i] > 0.0)
+70         {
+71           //      tmp[nn] = ws[i];
+72           tmp[nn] = 1.0/(ws[i]*ws[i]);
+73           xmp[nn] = xs[i];
+74           nn++;
+75         }
+76     }
+77 
+78   // compute the median weight
+79   // to be used for all pixels
+80   gsl_sort( tmp, 1, m);
+81   median = gsl_stats_median_from_sorted_data(tmp, 1, nn);
+82 
+83   // determine the anchor point in the
+84   // independent variable
+85   xean = gsl_stats_mean (xmp, 1, nn);
+86 
+87   // check whether the desired
+88   // intepolation degree is feasible
+89   if (nn < m)
+90     {
+91       aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+92                    "Not enough points (%d)  found to perform the %d order fit. Do
+      ing %d order instead.\n",
+93                    nn, m, nn);
+94       m = nn;
+95     }
+96 
+97   // allocate more temporary space
+98   X = gsl_matrix_alloc (nn, m); 
+99   y = gsl_vector_alloc (nn);
+100   w = gsl_vector_alloc (nn);
+101   //  c = gsl_vector_alloc (m);
+102   //  cov = gsl_matrix_alloc (m, m);
+103   
+104   // transfer independent/dependent and weight
+105   // values from the background pixels to the
+106   // temporary arrays
+107   ii = 0;
+108   for (i = 0; i < n; i++)
+109     {
+110       if (ws[i] > 0.0)
+111         {
+112           // shift the x-values
+113           // and store them in the matrix
+114           for (j = 0; j < m; j++)
+115             {
+116               gsl_matrix_set (X, ii, j, pow (xs[i] - xean, j));
+117             }
+118           gsl_vector_set (y, ii, ys[i]);
+119           gsl_vector_set (w, ii, median);
+120           ii++;
+121         }
+122       
+123     }
+124 
+125   // allocate space and do the fit; release the space
+126   gsl_multifit_linear_workspace *work = gsl_multifit_linear_alloc (nn, m);
+127   gsl_multifit_wlinear (X, w, y, c, cov, &chisq, work);
+128   gsl_multifit_linear_free (work);
+129 
+130 
+131   // release memory
+132   gsl_matrix_free (X); 
+133   gsl_vector_free (y);
+134   gsl_vector_free (w);
+135 
+136   // free the tmp-arrays
+137   free(tmp);
+138   free(xmp);
+139 
+140   // fill the mean x-value
+141   // and the order into the return vector
+142   gsl_vector_set(interp, 0, xean);
+143   gsl_vector_set(interp, 1, (double)m);
+144   
+145 
+146   return interp;
+147 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_ade8ef529ee293b7527df4e9bced2a535}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!fill\_\-const\_\-value@{fill\_\-const\_\-value}}
+\index{fill\_\-const\_\-value@{fill\_\-const\_\-value}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{fill\_\-const\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-const\_\-value (double $\ast$ {\em ys}, \/  double $\ast$ {\em ws}, \/  double $\ast$ {\em yi}, \/  const int {\em n}, \/  double {\em cval}, \/  double {\em stdev}, \/  const int {\em final})}}
+\label{spce__fitting_8c_ade8ef529ee293b7527df4e9bced2a535}
+Function:fill\_\-const\_\-value The function fills two constant values into up to three vectors.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ys}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em ws}]-\/ weight in ys\mbox{[}\mbox{]} \item[{\em yi}]-\/ value at xs\mbox{[}\mbox{]} \item[{\em n}]-\/ number of points in xs, ys, ws \item[{\em cval}]-\/ number of points in xs, ys, ws \item[{\em stdev}]-\/ number of points in xs, ys, ws \item[{\em final}]-\/ flagg which indicates which vectors to fill \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+612 {
+613 
+614   int j;
+615   int m=0;
+616 
+617   // fill the constant value and the stdev
+618   // in the whole value and error
+619   // arrays, respectively
+620   for (j = 0; j < n; j++)
+621     {
+622       yi[j] = cval;
+623 
+624       if (final && ws[j] == 0.0)
+625         {
+626           ys[j] = cval;
+627           ws[j] = stdev;
+628           m++;
+629         }
+630     }
+631 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_a9d5c2d7775f5d8b919e4f58f9b9a2fe6}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!fill\_\-linear\_\-interp@{fill\_\-linear\_\-interp}}
+\index{fill\_\-linear\_\-interp@{fill\_\-linear\_\-interp}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{fill\_\-linear\_\-interp}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-linear\_\-interp (const double $\ast$const  {\em xs}, \/  double $\ast$const  {\em ys}, \/  double $\ast$const  {\em ws}, \/  double $\ast$ {\em yi}, \/  const int {\em n}, \/  gsl\_\-vector $\ast$ {\em interp}, \/  const int {\em final})}}
+\label{spce__fitting_8c_a9d5c2d7775f5d8b919e4f58f9b9a2fe6}
+Function: fill\_\-linear\_\-interp The function computes and stores linear interpolated values in one or several output vectors.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ double vector containing the x values \item[{\em ys}]-\/ double vector containing the y values \item[{\em ws}]-\/ double vector containing the weights associated with ys \item[{\em yi}]-\/ double vector containing the intermediate y-\/values \item[{\em n}]-\/ number of points in xs,ys, and ws (must be greater than m!) \item[{\em interp}]-\/ vector with the fitted values \item[{\em final}]-\/ flagg to indicate final fit and therefore a replacement \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+456 {
+457   double c0, c1, cov00, cov01, cov11, xean;
+458   double xf, yf, yf_err;
+459   int i;
+460 
+461   xean  = gsl_vector_get(interp, 0);
+462   c0    = gsl_vector_get(interp, 1);
+463   c1    = gsl_vector_get(interp, 2);
+464   cov00 = gsl_vector_get(interp, 3);
+465   cov01 = gsl_vector_get(interp, 4);
+466   cov11 = gsl_vector_get(interp, 5);
+467 
+468   // determine the interpolated values
+469   // and store them in the input arrays
+470   for (i = 0; i < n; i++)
+471     {
+472 
+473       xf = xs[i]-xean;
+474       gsl_fit_linear_est (xf, c0, c1, cov00, cov01, cov11, &yf, &yf_err);
+475       yi[i] = yf;
+476 
+477       // for object pixels,
+478       // fill in the interpolated values
+479       if (final && ws[i] == 0.0)
+480         {
+481           ys[i] = yf;
+482           ws[i] = yf_err;
+483         }
+484     }
+485 }
+\end{DoxyCode}
+\hypertarget{spce__fitting_8c_a0a01c4934186cf034e6896b059937e4f}{
+\index{spce\_\-fitting.c@{spce\_\-fitting.c}!fill\_\-polyN\_\-interp@{fill\_\-polyN\_\-interp}}
+\index{fill\_\-polyN\_\-interp@{fill\_\-polyN\_\-interp}!spce_fitting.c@{spce\_\-fitting.c}}
+\subsubsection[{fill\_\-polyN\_\-interp}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-polyN\_\-interp (const double $\ast$const  {\em xs}, \/  double $\ast$const  {\em ys}, \/  double $\ast$const  {\em ws}, \/  double $\ast$ {\em yi}, \/  const int {\em n}, \/  gsl\_\-vector $\ast$ {\em coeffs}, \/  gsl\_\-matrix $\ast$ {\em cov}, \/  gsl\_\-vector $\ast$ {\em interp}, \/  const int {\em final})}}
+\label{spce__fitting_8c_a0a01c4934186cf034e6896b059937e4f}
+Function: fill\_\-polyN\_\-interp Evaluates a polynomial of any order and fills the result plus the error, compute using the covariance matrix, in vectors.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em xs}]-\/ double vector containing the x values \item[{\em ys}]-\/ double vector containing the y values \item[{\em yi}]-\/ double vector containing the intermediate y-\/values \item[{\em ws}]-\/ double vector containing the weights associated with ys \item[{\em n}]-\/ number of points in xs,ys, and ws (must be greater than m!) \item[{\em c}]-\/ the vector with the fitted coefficients \item[{\em cov}]-\/ the covariance matrix \item[{\em interp}]-\/ additional fitting ifnormation \item[{\em final}]-\/ flagg to indicate final fit and therefore a replacement \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+172 {
+173   int i, j, m;
+174   double xf, yf, sq_yf_err, yf_err;
+175   double xean;
+176 
+177   // get the mean x-value and
+178   // polynomial order from the vector
+179   xean = gsl_vector_get(interp, 0);
+180   m    = (int)gsl_vector_get(interp, 1);
+181 
+182   // put the interpolated values
+183   // for object pixels back into the
+184   // inut arrays
+185   for (i = 0; i < n; i++)
+186     {
+187 
+188       // compute and store interpolated
+189       // values an corresponding error
+190       xf = xs[i]-xean;
+191       yf = 0.0;
+192       yf_err = 0.0;
+193       sq_yf_err = 0.0;
+194       
+195       // compute the polynimials
+196       for (j = 0; j < m; j++)
+197         {
+198           // first compute the y-value
+199           yf += gsl_vector_get(coeffs,j)*pow (xf, j);
+200 
+201           // compute the associated error
+202           sq_yf_err += gsl_matrix_get(cov,j,j) * pow (xf, j) * pow (xf, j);
+203         }
+204 
+205       // put the intepolated value in the intermediate vector
+206       yi[i] = yf;
+207 
+208       // if requested, fill the interpolated values
+209       // into the origina; arrays
+210       if (final && ws[i] == 0.0)
+211         {
+212           ys[i] = yf;
+213           ws[i] = sqrt(sq_yf_err);
+214         }
+215     }
+216 }
+\end{DoxyCode}

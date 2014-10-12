@@ -1,0 +1,1317 @@
+\hypertarget{spce__PET_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-PET.c File Reference}
+\label{spce__PET_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-PET.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spce\_\-PET.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$fitsio.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-PET.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespce__PET}{spce\_\-PET}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spce__PET_8c_abdac9295cdcba5540d9db237dd600fae}{NPETCOL}~19
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{spce__PET_8c_a662ebc91d6b192c95dd30faccfa219b8}{alloc\_\-aperture\_\-table} (long N)
+\item 
+void \hyperlink{spce__PET_8c_aba2432c779622ed1f25b8bedc33d0edd}{create\_\-PET} (char filename\mbox{[}$\,$\mbox{]}, int overwrite)
+\item 
+fitsfile $\ast$ \hyperlink{spce__PET_8c_a5fbf571f08a9c112ad16a78e64640dbd}{create\_\-PET\_\-opened} (char filename\mbox{[}$\,$\mbox{]}, int overwrite)
+\item 
+long \hyperlink{spce__PET_8c_a06eca146da672b8af571473b46ac3d96}{PET\_\-count\_\-elements} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p)
+\item 
+int \hyperlink{spce__PET_8c_af676b8f8c3e70c2d3ac89c7df88a60eb}{get\_\-PET\_\-colnum} (fitsfile $\ast$input, char colname\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{spce__PET_8c_a4082a46c2f846c9f3c65aa81e2c5679f}{add\_\-ALL\_\-to\_\-PET} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, char ID\mbox{[}$\,$\mbox{]}, fitsfile $\ast$input, int update)
+\item 
+\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ \hyperlink{spce__PET_8c_a6d9546246608829c70349f2d8ca69543}{get\_\-ALL\_\-from\_\-next\_\-in\_\-PET} (fitsfile $\ast$input, int $\ast$aperID, int $\ast$beamID)
+\item 
+void \hyperlink{spce__PET_8c_a33f7fdbf64995ee7eee83e9bb3096528}{fprintf\_\-ap\_\-pixel} (FILE $\ast$output, \hyperlink{structap__pixel}{ap\_\-pixel} ap)
+\item 
+void \hyperlink{spce__PET_8c_ab7f9887219fc613189b69bca10169e00}{fprintf\_\-ap\_\-pixel\_\-list} (FILE $\ast$output, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spce__PET_8c_abdac9295cdcba5540d9db237dd600fae}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!NPETCOL@{NPETCOL}}
+\index{NPETCOL@{NPETCOL}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{NPETCOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define NPETCOL~19}}
+\label{spce__PET_8c_abdac9295cdcba5540d9db237dd600fae}
+
+
+\subsection{Function Documentation}
+\hypertarget{spce__PET_8c_a4082a46c2f846c9f3c65aa81e2c5679f}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!add\_\-ALL\_\-to\_\-PET@{add\_\-ALL\_\-to\_\-PET}}
+\index{add\_\-ALL\_\-to\_\-PET@{add\_\-ALL\_\-to\_\-PET}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{add\_\-ALL\_\-to\_\-PET}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-ALL\_\-to\_\-PET ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  char {\em ID}\mbox{[}$\,$\mbox{]}, \/  fitsfile $\ast$ {\em input}, \/  int {\em update})}}
+\label{spce__PET_8c_a4082a46c2f846c9f3c65aa81e2c5679f}
+Function: add\_\-ALL\_\-to\_\-PET This function populate a BINARY table with the ALL the content of an \hyperlink{structap__pixel}{ap\_\-pixel} structure. This function is meant to be use when one wishes to keep adding new extension to a multi-\/extension file. It need to be passed a fitsfile pointer pointing to an opened FITS file. A new FITS binary table extension is appended, populated with the content od the ap\_\-p table and the fitsfile pointer pointing to this new extenstion is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]-\/ An existing \hyperlink{structap__pixel}{ap\_\-pixel} structure \item[{\em ID}]-\/ the name to assign to this row \item[{\em input}]-\/ a pointer to an opened FITS file \item[{\em update}]-\/ if set, then an existing table is updated, a new one is appended otheerwise \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+211 {
+212   int f_status = 0;
+213   long N = 0;
+214   int colnum;
+215   char colname[FLEN_KEYWORD];
+216   int index = -1;
+217   int hdunum;
+218 
+219   struct Col_Descr FITSData[] = {
+220     {"ID", "60A", NULL},
+221     {"N", "J1", NULL},
+222     {"P_X", "XXXJ1", "PIXEL"},
+223     {"P_Y", "XXXJ1", "PIXEL"},
+224     {"X", "XXXE1", "PIXEL"},
+225     {"Y", "XXXE1", "PIXEL"},
+226     {"DIST", "XXXE1", "PIXEL"},
+227     {"XS", "XXXE1", "PIXEL"},
+228     {"YS", "XXXE1", "PIXEL"},
+229     {"DXS", "XXXE1", "PIXEL"},
+230     {"XI", "XXXE1", "PIXEL"},
+231     {"LAMBDA", "XXXE1", "ANGSTOM"},
+232     {"DLAMBDA", "XXXE1", "ANGSTOM"},
+233     {"COUNT", "XXXE1", NULL},
+234     {"ERROR", "XXXE1", NULL},
+235     {"WEIGHT", "XXXE1", NULL},
+236     {"CONTAM", "XXXE1", NULL},
+237     {"MODEL", "XXXE1", NULL},
+238     {"DQ", "XXXI1", NULL}
+239   };
+240 
+241 
+242   N = PET_count_elements (ap_p);
+243 
+244   { /* Begin column set up */
+245     char *ttype[NPETCOL], *tform[NPETCOL], *tunit[NPETCOL];
+246     int i;
+247     
+248     /* Prepare column description */
+249     for (i = 0; i < NPETCOL; i++)
+250       {
+251         ttype[i] = (char *) malloc (FLEN_KEYWORD * sizeof (char));
+252         if (ttype[i] == NULL)
+253           {
+254             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+255                          "add_ALL_to_PET: Memory allocation failed,");
+256           }
+257         tform[i] = (char *) malloc (FLEN_KEYWORD * sizeof (char));
+258         if (tform[i] == NULL)
+259           {
+260             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+261                          "add_ALL_to_PET: Memory allocation failed,");
+262           }
+263         tunit[i] = (char *) malloc (FLEN_KEYWORD * sizeof (char));
+264         if (tunit[i] == NULL)
+265           {
+266             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+267                          "add_ALL_to_PET: Memory allocation failed,");
+268           }
+269         if (FITSData[i].ttype != NULL)
+270           sprintf (ttype[i], "%s", FITSData[i].ttype);
+271         if (FITSData[i].tform != NULL)
+272           {
+273             if (!strncmp ("XXX", FITSData[i].tform, 3))
+274               sprintf (tform[i], "%ld%s", N,FITSData[i].tform + 3);
+275                 else
+276                   sprintf (tform[i], "%s", FITSData[i].tform);
+277           }
+278         if (FITSData[i].tunit != NULL)
+279           sprintf (tunit[i], "%s", FITSData[i].tunit);
+280         else
+281           sprintf (tunit[i], "%s", " ");
+282       }
+283     if (!update) 
+284       {
+285         fits_create_tbl (input, BINARY_TBL, 0, NPETCOL, ttype, tform, tunit, ID, 
+      &f_status);
+286         if (f_status)
+287           {
+288             ffrprt (stderr, f_status);
+289             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+290                          "add_ALL_to_PET: Could not create new binary table HDU i
+      n PET");
+291           }
+292       }
+293     /* Clean up */
+294     for (i = 0; i < NPETCOL; i++)
+295       {
+296         free (tunit[i]);
+297         tunit[i] = NULL;
+298         free (ttype[i]);
+299         ttype[i] = NULL;
+300         free (tform[i]);
+301         tform[i] = NULL;
+302       }
+303     /* Get current HDU number */
+304     fits_get_hdu_num (input, &hdunum);
+305   } /* End column set up */
+306 
+307 
+308   { /* Begin write ID field */
+309     char **array;
+310     int colnum;
+311     array = malloc (sizeof (char *));
+312     if (array == NULL)
+313       {
+314         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+315                      "add_ALL_to_PET: Out of memory");
+316       }
+317     array[0] = malloc (60 * sizeof (char));
+318     if (array[0] == NULL)
+319       {
+320         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+321                      "add_ALL_to_PET: Out of memory");
+322       }
+323     sprintf (array[0], "%s", ID);
+324     colnum = get_PET_colnum (input, "ID");
+325     fits_write_col (input, TSTRING, colnum, 1, 1, 1, array, &f_status);
+326     if (f_status) {
+327       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+328                    "add_ALL_to_PET: Error writing ID field in PET");
+329     }
+330     free (array[0]);
+331     array[0] = NULL;
+332     free (array);
+333     array = NULL;
+334   } /* End write ID field */
+335   
+336   { /* Begin writing number of elements/row in table */
+337     colnum = get_PET_colnum (input, "N");
+338     
+339     fits_write_col (input, TLONG, colnum, 1, 1, 1, &N, &f_status);
+340     if (f_status)
+341       {
+342         ffrprt (stderr, f_status);
+343         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+344                      "add_N_to_PET: Could not write N to PET");
+345       }
+346     
+347   }
+348   /* If there are no elements in the table to write then exit now */
+349   if (N==0) return;      
+350   
+351      
+352   { /* Begin writing P_X and P_Y */
+353     int *array_px, *array_py;
+354     int i;
+355     ap_pixel *pt;
+356 
+357     array_px = malloc (N * sizeof (int));
+358     if (array_px == NULL)
+359       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+360                    "add_ALL_to_PET: Out of memory");
+361 
+362     array_py = malloc (N * sizeof (int));
+363     if (array_py == NULL)
+364       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+365                    "add_ALL_to_PET: Out of memory");
+366     
+367     pt = ap_p;
+368     for (i = 0; i < N; i++)
+369       {
+370         array_px[i] = pt->p_x;
+371         array_py[i] = pt->p_y;
+372         
+373         pt++;
+374       }
+375     colnum = get_PET_colnum (input, "P_X");
+376     index = 1;
+377     
+378     fits_write_col (input, TINT, colnum, index, 1, N, array_px, &f_status);
+379     if (f_status)
+380       {
+381         ffrprt (stderr, f_status);
+382         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+383                      "add_ALL_to_PET: Could not write P_X to row %d, column %s (%
+      d) in PET"
+384                      , index, colname, colnum);
+385       }
+386     colnum = get_PET_colnum (input, "P_Y");
+387 
+388     fits_write_col (input, TINT, colnum, index, 1, N, array_py,&f_status);
+389     if (f_status)
+390       {
+391         ffrprt (stderr, f_status);
+392         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+393                      "add_ALL_to_PET: Could not write P_Y to row %d, collumn %s (
+      %d) in PET"
+394                      ,index, colname, colnum);
+395       }
+396     
+397     free (array_px);
+398     array_px = NULL;
+399     free (array_py);
+400     array_py = NULL;
+401     
+402   }
+403   
+404   { /* Begin writing WEIGHT */
+405     double *array_weight;
+406     int i;
+407     ap_pixel *pt;
+408     
+409     array_weight = malloc (N * sizeof (double));
+410     if (array_weight == NULL)
+411       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+412                    "add_ALL_to_PET: Out of memory");
+413     
+414     
+415     pt = ap_p;
+416     for (i = 0; i < N; i++)
+417       {
+418         array_weight[i] = pt->weight;
+419         pt++;
+420       }
+421     colnum = get_PET_colnum (input, "WEIGHT");
+422     index = 1;
+423       
+424     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_weight, &f_status)
+      ;
+425     if (f_status)
+426       {
+427         for (i = 0; i < N; i++)
+428           {
+429             fprintf (stdout, "your weight is: %f ",array_weight[i]);
+430           }
+431         ffrprt (stderr, f_status);
+432         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+433                      "add_ALL_to_PET: Could not write WEIGHT to row %d, column %s
+       (%d) in PET"
+434                      , index, colname, colnum);
+435       }
+436     
+437     free (array_weight);
+438     array_weight = NULL;
+439   }
+440   
+441   /* Writing X, Y */
+442   {
+443     double *array_x, *array_y;
+444     int i;
+445     ap_pixel *pt;
+446     array_x = malloc (N * sizeof (double));
+447     if (array_x == NULL)
+448       {
+449         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+450                      "add_ALL_to_PET: Out of memory");
+451       }
+452     array_y = malloc (N * sizeof (double));
+453     if (array_y == NULL)
+454       {
+455         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+456                      "add_ALL_to_PET: Out of memory");
+457       }
+458     pt = ap_p;
+459     for (i = 0; i < N; i++)
+460       {
+461         array_x[i] = pt->x;
+462         array_y[i] = pt->y;
+463         pt++;
+464       }
+465     colnum = get_PET_colnum (input, "X");
+466     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_x,
+467                     &f_status);
+468     if (f_status)
+469       {
+470         ffrprt (stderr, f_status);
+471         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+472                      "add_ALL_to_PET: "
+473                      "Could not write X to row %d, collumn %s (%d) in PET"
+474                      , index, colname, colnum);
+475       }
+476     colnum = get_PET_colnum (input, "Y");
+477     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_y,
+478                     &f_status);
+479     if (f_status)
+480       {
+481         ffrprt (stderr, f_status);
+482         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+483                      "add_ALL_to_PET: "
+484                      "Could not write Y to row %d, collumn %s (%d) in PET"
+485                      , index, colname, colnum);
+486       }
+487 
+488     free (array_x);
+489     array_x = NULL;
+490     free (array_y);
+491     array_y = NULL;
+492   }
+493 
+494   /* Writing ,DIST, DXS, XS, YS, XI */
+495   {
+496     double *array_xs, *array_ys, *array_dxs, *array_xi, *array_dist;
+497     int i;
+498     ap_pixel *pt;
+499     array_xs = malloc (N * sizeof (double));
+500     if (array_xs == NULL)
+501       {
+502         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+503                      "add_ALL_to_PET: Out of memory");
+504       }
+505     array_ys = malloc (N * sizeof (double));
+506     if (array_ys == NULL)
+507       {
+508         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+509                      "add_ALL_to_PET: Out of memory");
+510       }  
+511     array_dxs = malloc (N * sizeof (double));
+512     if (array_dxs == NULL)
+513       {
+514         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+515                      "add_ALL_to_PET: Out of memory");
+516       }     
+517     array_xi = malloc (N * sizeof (double));
+518     if (array_xi == NULL)
+519       {
+520         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+521                      "add_ALL_to_PET: Out of memory");
+522       }
+523     array_dist = malloc (N * sizeof (double));
+524     if (array_dist == NULL)
+525       {
+526         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+527                      "add_ALL_to_PET: Out of memory");
+528       }
+529     
+530     pt = ap_p;
+531     for (i = 0; i < N; i++)
+532       {
+533         array_xs[i] = pt->xs;
+534         array_ys[i] = pt->ys;
+535         array_dxs[i] = pt->dxs;
+536         array_xi[i] = pt->xi;
+537         array_dist[i] = pt->dist;
+538         pt++;
+539       }
+540     colnum = get_PET_colnum (input, "XS");
+541     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_xs,
+542                     &f_status);
+543     if (f_status)
+544       {
+545         ffrprt (stderr, f_status);
+546         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+547                      "add_ALL_to_PET: "
+548                      "Could not write XS to row %d, collumn %s (%d) in PET",
+549                      index, colname, colnum);
+550       }
+551     colnum = get_PET_colnum (input, "YS");
+552     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_ys,
+553                     &f_status);
+554     if (f_status)
+555       {
+556         ffrprt (stderr, f_status);
+557         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+558                      "add_ALL_to_PET: "
+559                      "Could not write YS to row %d, collumn %s (%d) in PET",
+560                      index, colname, colnum);
+561       }  
+562     colnum = get_PET_colnum (input, "DXS");
+563     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_dxs,
+564                     &f_status);
+565     if (f_status)
+566       {
+567         ffrprt (stderr, f_status);
+568         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+569                      "add_ALL_to_PET: "
+570                      "Could not write DXS to row %d, collumn %s (%d) in PET",
+571                      index, colname, colnum);
+572       }     
+573     colnum = get_PET_colnum (input, "XI");
+574     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_xi,
+575                     &f_status);
+576     if (f_status)
+577       {
+578         ffrprt (stderr, f_status);
+579         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+580                      "add_ALL_to_PET: "
+581                      "Could not write XI to row %d, collumn %s (%d) in PET",
+582                      index, colname, colnum);
+583       }
+584     colnum = get_PET_colnum (input, "DIST");
+585     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_dist,
+586                     &f_status);
+587     if (f_status)
+588       {
+589         ffrprt (stderr, f_status);
+590         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+591                      "add_ALL_to_PET: "
+592                      "Could not write DIST to row %d, collumn %s (%d) in PET ",
+593                      index, colname, colnum);
+594       }
+595     
+596     free (array_xs);
+597     array_xs = NULL;
+598     free (array_ys);
+599     array_ys = NULL;
+600     free (array_dxs);
+601     array_dxs = NULL;
+602     free (array_xi);
+603     array_xi = NULL;
+604     free (array_dist);
+605     array_dist = NULL;
+606   }
+607 
+608   /* Writing LAMBDA */
+609   {
+610     double *array_lambda;
+611     int i;
+612     ap_pixel *pt;
+613     array_lambda = malloc (N * sizeof (double));
+614     if (array_lambda == NULL)
+615       {
+616         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+617                      "add_ALL_to_PET: Out of memory");
+618       }
+619     pt = ap_p;
+620     for (i = 0; i < N; i++)
+621       {
+622         array_lambda[i] = pt->lambda;
+623         pt++;
+624       }
+625     colnum = get_PET_colnum (input, "LAMBDA");
+626     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_lambda,
+627                     &f_status);
+628     if (f_status)
+629       {
+630         ffrprt (stderr, f_status);
+631         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+632                      "add_ALL_to_PET: "
+633                      " Could not write LAMBDA to row %d, collumn %s (%d) in PET "
+      ,
+634                      index, colname, colnum);
+635       }
+636     pt = ap_p;
+637     for (i = 0; i < N; i++)
+638       {
+639         array_lambda[i] = pt->dlambda;
+640         pt++;
+641       }
+642     colnum = get_PET_colnum (input, "DLAMBDA");
+643     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_lambda,
+644                     &f_status);
+645     if (f_status)
+646       {
+647         ffrprt (stderr, f_status);
+648         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+649                      "add_ALL_to_PET: "
+650                      " Could not write DLAMBDA to row %d, collumn %s (%d) in PET"
+      ,
+651                      index, colname, colnum);
+652       }
+653     free (array_lambda);
+654     array_lambda = NULL;
+655   }
+656   
+657   /* Writing CONTAM, MODEL */
+658   {
+659     double *array_contam, *array_model;
+660     int i;
+661     ap_pixel *pt;
+662 
+663     // alloc space for CONTAM
+664     array_contam = malloc (N * sizeof (double));
+665     if (array_contam == NULL)
+666       {
+667         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+668                      "add_ALL_to_PET: Out of memory");
+669       }
+670 
+671     // alloc space for MODEL
+672     array_model = malloc (N * sizeof (double));
+673     if (array_contam == NULL)
+674       {
+675         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+676                      "add_ALL_to_PET: Out of memory");
+677       }
+678 
+679     // transfer the data from the PET to the vector
+680     pt = ap_p;
+681     for (i = 0; i < N; i++)
+682       {
+683         array_contam[i] = pt->contam;
+684         array_model[i] = pt->model;
+685         pt++;
+686       }
+687 
+688     // store the CONTAM column
+689     colnum = get_PET_colnum (input, "CONTAM");
+690     //    fprintf (stdout, "contam column no: %i\n", colnum);
+691     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_contam,
+692                     &f_status);
+693     if (f_status)
+694       {
+695         ffrprt (stderr, f_status);
+696         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+697                      "add_ALL_to_PET: "
+698                      " Could not write CONTAM to row %d, collumn %s (%d) in PET "
+      ,
+699                      index, colname, colnum);
+700       }
+701     free (array_contam);
+702     array_contam = NULL;
+703 
+704     // store the MODEL column
+705     colnum = get_PET_colnum (input, "MODEL");
+706     //    fprintf (stdout, "model column no: %i\n", colnum);
+707     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_model,
+708                     &f_status);
+709     if (f_status)
+710       {
+711         ffrprt (stderr, f_status);
+712         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+713                      "add_ALL_to_PET: "
+714                      " Could not write MODEL to row %d, collumn %s (%d) in PET ",
+      
+715                      index, colname, colnum);
+716       }
+717     free (array_model);
+718     array_model = NULL;
+719   }
+720   
+721   /* Writing DQ */
+722   {
+723     int *array_dq;
+724     int i;
+725     ap_pixel *pt;
+726     array_dq = malloc (N * sizeof (int));
+727     if (array_dq == NULL)
+728       {
+729         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+730                      "add_ALL_to_PET: Out of memory");
+731       }
+732     pt = ap_p;
+733     for (i = 0; i < N; i++)
+734       {
+735         array_dq[i] = pt->dq;
+736         pt++;
+737       }
+738     colnum = get_PET_colnum (input, "DQ");
+739     //    fprintf (stdout, "DQ column no: %i\n", colnum);
+740     fits_write_col (input, TINT, colnum, index, 1, N, array_dq,
+741                     &f_status);
+742     if (f_status)
+743       {
+744         ffrprt (stderr, f_status);
+745         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+746                      "add_ALL_to_PET: "
+747                      " Could not write DQ to row %d, collumn %s (%d) in PET ",
+748                      index, colname, colnum);
+749       }
+750     free (array_dq);
+751     array_dq = NULL;
+752   }
+753   
+754 
+755   /* Writing COUNT, ERROR */
+756   {
+757     double *array_error, *array_count;
+758     int i;
+759     ap_pixel *pt;
+760     array_error = malloc (N * sizeof (double));
+761     if (array_error == NULL)
+762       {
+763         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+764                      "add_ALL_to_PET: Out of memory");
+765       }
+766     array_count = malloc (N * sizeof (double));
+767     if (array_count == NULL)
+768       {
+769         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+770                      "add_ALL_to_PET: Out of memory");
+771       }
+772     pt = ap_p;
+773     for (i = 0; i < N; i++)
+774       {
+775         array_count[i] = pt->count;
+776         array_error[i] = pt->error;
+777         pt++;
+778       }
+779     
+780     colnum = get_PET_colnum (input, "COUNT");
+781     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_count,
+782                     &f_status);
+783     if (f_status)
+784       {
+785         ffrprt (stderr, f_status);
+786         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+787                      "add_ALL_to_PET: "
+788                      "Could not write COUNT to row %d, collumn %s (%d) in PET",
+789                      index, colname, colnum);
+790       }
+791     colnum = get_PET_colnum (input, "ERROR");
+792     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_error,
+793                     &f_status);
+794     if (f_status)
+795       {
+796         ffrprt (stderr, f_status);
+797         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+798                      "add_ALL_to_PET: "
+799                      "Could not write ERROR to row %d, collumn %s (%d) in PET",
+800                      index, colname, colnum);
+801       }
+802     
+803     free (array_count);
+804     array_count = NULL;
+805     free (array_error);
+806     array_error = NULL;
+807   }
+808 }
+\end{DoxyCode}
+\hypertarget{spce__PET_8c_a662ebc91d6b192c95dd30faccfa219b8}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!alloc\_\-aperture\_\-table@{alloc\_\-aperture\_\-table}}
+\index{alloc\_\-aperture\_\-table@{alloc\_\-aperture\_\-table}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{alloc\_\-aperture\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ap\_\-pixel}$\ast$ alloc\_\-aperture\_\-table (long {\em N})}}
+\label{spce__PET_8c_a662ebc91d6b192c95dd30faccfa219b8}
+Allocate and return a new \hyperlink{structap__pixel}{ap\_\-pixel} structure with enough room for N elements
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em N}]number of element \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a newly allocated \hyperlink{structap__pixel}{ap\_\-pixel} structure 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{structap__pixel}{ap\_\-pixel} 
+\end{DoxySeeAlso}
+
+
+
+\begin{DoxyCode}
+37 {
+38   ap_pixel *table;
+39   table = (ap_pixel *) malloc ((N + 1) * sizeof (ap_pixel));
+40   if (table == NULL)
+41     {
+42       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+43                    "alloc_aperture_table:" " Could not allocate"
+44                    " memory for aperture table of size %ld", N);
+45     }
+46   return table;
+47 }
+\end{DoxyCode}
+\hypertarget{spce__PET_8c_aba2432c779622ed1f25b8bedc33d0edd}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!create\_\-PET@{create\_\-PET}}
+\index{create\_\-PET@{create\_\-PET}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{create\_\-PET}]{\setlength{\rightskip}{0pt plus 5cm}void create\_\-PET (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em overwrite})}}
+\label{spce__PET_8c_aba2432c779622ed1f25b8bedc33d0edd}
+A function that creates a FITS file containing an empty primary header
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]The name of the file to open \item[{\em overwrite}]If set to 1, then any exisiting file is deleted. Nothing is done otherwise. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+56 {
+57   fitsfile *output;
+58   int f_status = 0;
+59 
+60   // Try to open the file
+61   {
+62     FILE *in_file;
+63     in_file = fopen (filename, "r");
+64     if ((overwrite == 1) && (in_file != NULL))
+65       {
+66         //aXe_message (aXe_M_WARN3, __FILE__, __LINE__,
+67         //            "create_MEPET: File %s "
+68         //            "exits. Overwriting it.", filename);
+69         fclose (in_file);
+70         unlink (filename);
+71       }
+72     if ((overwrite != 1) && (in_file != NULL))
+73       {
+74         fclose (in_file);
+75         return;
+76       }
+77   }
+78   // Open the file for creating/appending
+79   fits_create_file (&output, filename, &f_status);
+80   if (f_status)
+81     {
+82       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+83                    "create_MEPET: Could not open" " file: %s",
+84                    filename);
+85     }
+86 
+87   // Create empty HDU
+88   {
+89     int naxis = 0;
+90     long naxes[2];
+91     ffiimg (output, 16, naxis, naxes, &f_status);
+92   }
+93   fits_close_file (output, &f_status);
+94 }
+\end{DoxyCode}
+\hypertarget{spce__PET_8c_a5fbf571f08a9c112ad16a78e64640dbd}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!create\_\-PET\_\-opened@{create\_\-PET\_\-opened}}
+\index{create\_\-PET\_\-opened@{create\_\-PET\_\-opened}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{create\_\-PET\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}fitsfile$\ast$ create\_\-PET\_\-opened (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em overwrite})}}
+\label{spce__PET_8c_a5fbf571f08a9c112ad16a78e64640dbd}
+A function that creates a FITS file containing an empty primary header and returns a fitsfile pointer to it 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]The name of the file to open \item[{\em overwrite}]If set to 1, then any exisiting file is deleted. Nothing is done otherwise. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+102 {
+103   fitsfile *output;
+104   int f_status = 0;
+105 
+106   // Try to open the file
+107   {
+108     FILE *in_file;
+109     in_file = fopen (filename, "r");
+110     if ((overwrite == 1) && (in_file != NULL))
+111       {
+112         //aXe_message (aXe_M_WARN3, __FILE__, __LINE__,
+113         //            "create_MEPET: File %s "
+114         //            "exits. Overwriting it.", filename);
+115         fclose (in_file);
+116         unlink (filename);
+117       }
+118     if ((overwrite != 1) && (in_file != NULL))
+119       {
+120         fclose (in_file);
+121         return NULL;
+122       }
+123   }
+124   // Open the file for creating/appending
+125   fits_create_file (&output, filename, &f_status);
+126   if (f_status)
+127     {
+128       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+129                    "create_MEPET: Could not open" " file: %s",
+130                    filename);
+131     }
+132   
+133   // Create empty HDU
+134   {
+135     int naxis = 0;
+136     long naxes[2];
+137     ffiimg (output, 16, naxis, naxes, &f_status);
+138   }
+139   
+140   return output;
+141 }
+\end{DoxyCode}
+\hypertarget{spce__PET_8c_a33f7fdbf64995ee7eee83e9bb3096528}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!fprintf\_\-ap\_\-pixel@{fprintf\_\-ap\_\-pixel}}
+\index{fprintf\_\-ap\_\-pixel@{fprintf\_\-ap\_\-pixel}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{fprintf\_\-ap\_\-pixel}]{\setlength{\rightskip}{0pt plus 5cm}void fprintf\_\-ap\_\-pixel (FILE $\ast$ {\em output}, \/  {\bf ap\_\-pixel} {\em ap})}}
+\label{spce__PET_8c_a33f7fdbf64995ee7eee83e9bb3096528}
+Funtion to display the content of an \hyperlink{structap__pixel}{ap\_\-pixel} structure
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em output}]a pointer to a stream \item[{\em ap}]an \hyperlink{structap__pixel}{ap\_\-pixel} \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1200 {
+1201   fprintf (output, "p_x,p_y: %d %d\n", ap.p_x, ap.p_y);
+1202   fprintf (output, "x,y: %f %f\n", ap.x, ap.y);
+1203   fprintf (output, "dist: %f xs: %f ys: %f dxs: %f xi: %f \n", ap.dist, ap.xs, ap
+      .ys, ap.dxs, ap.xi);
+1204   fprintf (output, "lambda: %f dlambda: %f\n", ap.lambda, ap.dlambda);
+1205   fprintf (output, "count: %f error: %f weight: %f\n", ap.count, ap.error, ap.
+      weight);
+1206   fprintf (output, "contam: %f\n",ap.contam);
+1207   fprintf (output, "DQ: %ld\n",ap.dq);
+1208 }
+\end{DoxyCode}
+\hypertarget{spce__PET_8c_ab7f9887219fc613189b69bca10169e00}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!fprintf\_\-ap\_\-pixel\_\-list@{fprintf\_\-ap\_\-pixel\_\-list}}
+\index{fprintf\_\-ap\_\-pixel\_\-list@{fprintf\_\-ap\_\-pixel\_\-list}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{fprintf\_\-ap\_\-pixel\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}void fprintf\_\-ap\_\-pixel\_\-list (FILE $\ast$ {\em output}, \/  {\bf ap\_\-pixel} $\ast$ {\em ap})}}
+\label{spce__PET_8c_ab7f9887219fc613189b69bca10169e00}
+Function to display the content of an \hyperlink{structap__pixel}{ap\_\-pixel} list
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em output}]a pointer to a stream \item[{\em ap}]a pointer to a list of ap\_\-pixels \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1219 {
+1220   int i = 0;
+1221   
+1222   while (ap[i].p_x != -1)
+1223     {
+1224       fprintf_ap_pixel (output, ap[i]);
+1225       i++;
+1226     }
+1227 }
+\end{DoxyCode}
+\hypertarget{spce__PET_8c_a6d9546246608829c70349f2d8ca69543}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!get\_\-ALL\_\-from\_\-next\_\-in\_\-PET@{get\_\-ALL\_\-from\_\-next\_\-in\_\-PET}}
+\index{get\_\-ALL\_\-from\_\-next\_\-in\_\-PET@{get\_\-ALL\_\-from\_\-next\_\-in\_\-PET}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{get\_\-ALL\_\-from\_\-next\_\-in\_\-PET}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ap\_\-pixel}$\ast$ get\_\-ALL\_\-from\_\-next\_\-in\_\-PET (fitsfile $\ast$ {\em input}, \/  int $\ast$ {\em aperID}, \/  int $\ast$ {\em beamID})}}
+\label{spce__PET_8c_a6d9546246608829c70349f2d8ca69543}
+
+
+
+\begin{DoxyCode}
+814 {
+815   int f_status = 0, hdutype;
+816   long N;
+817   int colnum;
+818   int anynull;
+819   void *nullval = NULL;
+820   ap_pixel *ap_p;
+821 
+822   fits_movrel_hdu (input, 1, &hdutype, &f_status);
+823   if (f_status) 
+824     {
+825       *aperID = -1;
+826       *beamID = -1;
+827         return NULL;
+828     }
+829 
+830     /* reading the aperture ID header keyword - OBJECTID */
+831   {
+832     long tmp;
+833     char comment[FLEN_COMMENT];
+834     fits_read_key_lng (input, "OBJECTID", &tmp, comment, &f_status);
+835     if (f_status)
+836       {
+837         ffrprt (stderr, f_status);
+838         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+839                      "get_ALL_from_next_in_PET: Error getting index keyword OBJEC
+      TID");
+840       }
+841     *aperID = (int)tmp;
+842     fits_read_key_lng (input, "BEAMID", &tmp, comment, &f_status);
+843     if (f_status)
+844       {
+845         ffrprt (stderr, f_status);
+846         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+847                      "get_ALL_from_next_in_PET: Error getting index keyword OBJEC
+      TID");
+848       }
+849     *beamID = (int)tmp;
+850     
+851   }
+852   
+853   
+854   colnum = get_PET_colnum (input, "N");
+855   fits_read_col (input, TLONG, colnum, 1, 1, 1, &nullval, &N, &anynull,
+856                  &f_status);
+857   if (N==0) return NULL;
+858   ap_p = alloc_aperture_table (N);
+859   
+860   
+861   /* Reading P_X and P_Y */
+862   {
+863     int *array_px, *array_py;
+864     int i;
+865     ap_pixel *pt;
+866     
+867     array_px = (void *) malloc (N * sizeof (int));
+868     if (array_px == NULL)
+869       {
+870         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+871                      "get_PX_PY_from_MPET:" " Out of memory");
+872       }
+873     array_py = (void *) malloc (N * sizeof (int));
+874     if (array_py == NULL)
+875       {
+876         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+877                      "get_PX_PY_from_MPET: " " Out of memory");
+878       }
+879     colnum = get_PET_colnum (input, "P_X");
+880     fits_read_col (input, TINT, colnum, 1, 1, N, NULL, array_px,
+881                    &anynull, &f_status);
+882     colnum = get_PET_colnum (input, "P_Y");
+883     fits_read_col (input, TINT, colnum, 1, 1, N, NULL, array_py,
+884                    &anynull, &f_status);
+885     
+886     pt = ap_p;
+887     for (i = 0; i < N; i++)
+888       {
+889         pt->p_x = array_px[i];
+890         pt->p_y = array_py[i];
+891         pt++;
+892       }
+893     pt->p_x = -1;
+894     pt->p_y = -1;
+895     free (array_px);
+896     array_px = NULL;
+897     free (array_py);
+898     array_py = NULL;
+899   }
+900      
+901      
+902   /* Reading WEIGHT */
+903   {
+904     float *array_weight;
+905     int i;
+906     ap_pixel *pt;
+907     
+908     array_weight = (void *) malloc (N * sizeof (float));
+909     if (array_weight == NULL)
+910       {
+911         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+912                      "get_PX_PY_from_MPET:" " Out of memory");
+913       }
+914     
+915     colnum = get_PET_colnum (input, "WEIGHT");
+916     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_weight,
+917                    &anynull, &f_status);
+918     
+919     pt = ap_p;
+920     for (i = 0; i < N; i++)
+921       {
+922         pt->weight = array_weight[i];
+923         pt++;
+924       }
+925     
+926     free (array_weight);
+927     array_weight = NULL;
+928     
+929   }
+930   
+931   /* Reading X and Y */
+932   {
+933     float *array_x, *array_y;
+934     int i;
+935     ap_pixel *pt;
+936     
+937     array_x = (void *) malloc (N * sizeof (float));
+938     if (array_x == NULL)
+939       {
+940         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+941                      "get_X_Y_from_MEPET: " " Out of memory");
+942       }
+943     array_y = (void *) malloc (N * sizeof (float));
+944     if (array_y == NULL)
+945       {
+946         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+947                      "get_X_Y_from_MEPET: " " Out of memory");
+948       }
+949     colnum = get_PET_colnum (input, "X");
+950     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_x,
+951                    &anynull, &f_status);
+952     colnum = get_PET_colnum (input, "Y");
+953     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_y,
+954                    &anynull, &f_status);
+955     
+956     pt = ap_p;
+957     for (i = 0; i < N; i++)
+958       {
+959         pt->x = array_x[i];
+960         pt->y = array_y[i];
+961         pt++;
+962       }
+963 
+964     free (array_x);
+965     array_x = NULL;
+966     free (array_y);
+967     array_y = NULL;
+968   }
+969      
+970   /* Reading XS, YS, DXS, XI and DIST */
+971   {
+972     float *array_xs, *array_ys, *array_dxs, *array_xi, *array_dist;
+973     int i;
+974     ap_pixel *pt;
+975 
+976     array_xi = (void *) malloc (N * sizeof (float));
+977     if (array_xi == NULL)
+978       {
+979         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+980                      "get_XI_XS_DIST_from_MEPET:" "Out of memory");
+981       }
+982     array_xs = (void *) malloc (N * sizeof (float));
+983     if (array_xs == NULL)
+984       {
+985         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+986                      "get_XI_XS_DIST_from_MEPET:" " Out of memory");
+987       }
+988     array_ys = (void *) malloc (N * sizeof (float));
+989     if (array_ys == NULL)
+990       {
+991         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+992                      "get_XI_XS_DIST_from_MEPET:" " Out of memory");
+993       }  
+994     array_dxs = (void *) malloc (N * sizeof (float));
+995     if (array_dxs == NULL)
+996       {
+997         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+998                      "get_XI_XS_DIST_from_MEPET:" " Out of memory");
+999       }
+1000     array_dist = (void *) malloc (N * sizeof (float));
+1001     if (array_dist == NULL)
+1002       {
+1003         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1004                      "get_XI_XS_DIST_from_MEPET:" " Out of memory");
+1005       }
+1006     colnum = get_PET_colnum (input, "XI");
+1007     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_xi,
+1008                    &anynull, &f_status);
+1009     colnum = get_PET_colnum (input, "XS");
+1010     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_xs,
+1011                    &anynull, &f_status);
+1012     colnum = get_PET_colnum (input, "YS");
+1013     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_ys,
+1014                    &anynull, &f_status);         
+1015     colnum = get_PET_colnum (input, "DXS");
+1016     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_dxs,
+1017                    &anynull, &f_status);         
+1018     colnum = get_PET_colnum (input, "DIST");
+1019     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_dist,
+1020                    &anynull, &f_status);
+1021     
+1022     pt = ap_p;
+1023     for (i = 0; i < N; i++)
+1024       {
+1025         pt->xi = array_xi[i];
+1026         pt->xs = array_xs[i];
+1027         pt->ys = array_ys[i];
+1028         pt->dxs = array_dxs[i];
+1029         pt->dist = array_dist[i];
+1030         pt++;
+1031       }
+1032     
+1033     free (array_xi);
+1034     array_xi = NULL;
+1035     free (array_xs);
+1036     array_xs = NULL;
+1037     free (array_ys);
+1038     array_ys = NULL;
+1039     free (array_dxs);
+1040     array_dxs = NULL;
+1041     free (array_dist);
+1042     array_dist = NULL;
+1043   }
+1044 
+1045   /* Reading LAMBDA */
+1046   {
+1047     float *array_lambda;
+1048     int i;
+1049     ap_pixel *pt;
+1050     
+1051     array_lambda = (void *) malloc (N * sizeof (float));
+1052     if (array_lambda == NULL)
+1053       {
+1054         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1055                      "get_LAMBDA_from_MEPET:" " Out of memory");
+1056       }
+1057     colnum = get_PET_colnum (input, "LAMBDA");
+1058     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_lambda,
+1059                    &anynull, &f_status);
+1060     
+1061     pt = ap_p;
+1062     for (i = 0; i < N; i++)
+1063       {
+1064         pt->lambda = array_lambda[i];
+1065         pt++;
+1066       }
+1067     colnum = get_PET_colnum (input, "DLAMBDA");
+1068     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_lambda,
+1069                    &anynull, &f_status);
+1070     
+1071     pt = ap_p;
+1072     for (i = 0; i < N; i++)
+1073       {
+1074         pt->dlambda = array_lambda[i];
+1075         pt++;
+1076       }
+1077     free (array_lambda);
+1078     array_lambda = NULL;
+1079   }
+1080 
+1081   /* Reading CONTAM  and MODEL */
+1082   {
+1083     double *array_contam, *array_model;
+1084     int i;
+1085     ap_pixel *pt;
+1086     
+1087     array_contam = (void *) malloc (N * sizeof (double));
+1088     if (array_contam == NULL)
+1089       {
+1090         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1091                      "get_LAMBDA_from_MEPET:" " Out of memory");
+1092       }
+1093     colnum = get_PET_colnum (input, "CONTAM");
+1094     fits_read_col (input, TDOUBLE, colnum, 1, 1, N, NULL, array_contam,
+1095                    &anynull, &f_status);
+1096 
+1097     array_model = (void *) malloc (N * sizeof (double));
+1098     if (array_model == NULL)
+1099       {
+1100         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1101                      "get_LAMBDA_from_MEPET:" " Out of memory");
+1102       }
+1103     colnum = get_PET_colnum (input, "MODEL");
+1104     fits_read_col (input, TDOUBLE, colnum, 1, 1, N, NULL, array_model,
+1105                    &anynull, &f_status);
+1106     
+1107     pt = ap_p;
+1108     for (i = 0; i < N; i++)
+1109       {
+1110         pt->contam = array_contam[i];
+1111         pt->model  = array_model[i];
+1112         pt++;
+1113       }
+1114     
+1115     free (array_contam);
+1116     array_contam = NULL;
+1117     free (array_model);
+1118     array_model = NULL;
+1119   }
+1120   
+1121   /* Reading DQ */
+1122   {
+1123     int *array_dq;
+1124     int i;
+1125     ap_pixel *pt;
+1126 
+1127     array_dq = (void *) malloc (N * sizeof (int));
+1128     if (array_dq == NULL)
+1129       {
+1130         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1131                      "get_LAMBDA_from_MEPET:" " Out of memory");
+1132       }
+1133     colnum = get_PET_colnum (input, "DQ");
+1134     fits_read_col (input, TINT, colnum, 1, 1, N, NULL, array_dq,
+1135                    &anynull, &f_status);
+1136     
+1137     pt = ap_p;
+1138     for (i = 0; i < N; i++)
+1139       {
+1140         pt->dq = array_dq[i];
+1141         pt++;
+1142       }
+1143     
+1144     free (array_dq);
+1145     array_dq = NULL;
+1146   }
+1147   
+1148 
+1149   /* Reading COUNT and ERROR */
+1150   {
+1151     float *array_count, *array_error;
+1152     int i;
+1153     ap_pixel *pt;
+1154 
+1155     array_count = (void *) malloc (N * sizeof (float));
+1156     if (array_count == NULL)
+1157       {
+1158         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1159                      "Get_COUNT_ERROR_To_Pet:" " Out of memory");
+1160       }
+1161     array_error = (void *) malloc (N * sizeof (float));
+1162     if (array_error == NULL)
+1163       {
+1164         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1165                      "Get_COUNT_ERROR_To_Pet:" " Out of memory");
+1166       }
+1167     
+1168     colnum = get_PET_colnum (input, "COUNT");
+1169     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_count,
+1170                    &anynull, &f_status);
+1171     colnum = get_PET_colnum (input, "ERROR");
+1172     fits_read_col (input, TFLOAT, colnum, 1, 1, N, NULL, array_error,
+1173                    &anynull, &f_status);
+1174     
+1175     pt = ap_p;
+1176     for (i = 0; i < N; i++)
+1177       {
+1178         pt->count = array_count[i];
+1179         pt->error = array_error[i];
+1180         pt++;
+1181       }
+1182 
+1183     free (array_count);
+1184     array_count = NULL;
+1185     free (array_error);
+1186     array_error = NULL;
+1187   }
+1188   return ap_p;
+1189 }
+\end{DoxyCode}
+\hypertarget{spce__PET_8c_af676b8f8c3e70c2d3ac89c7df88a60eb}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!get\_\-PET\_\-colnum@{get\_\-PET\_\-colnum}}
+\index{get\_\-PET\_\-colnum@{get\_\-PET\_\-colnum}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{get\_\-PET\_\-colnum}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-PET\_\-colnum (fitsfile $\ast$ {\em input}, \/  char {\em colname}\mbox{[}$\,$\mbox{]})}}
+\label{spce__PET_8c_af676b8f8c3e70c2d3ac89c7df88a60eb}
+A helper function which returns the collumn number of the column matching a given name. Function fails if collumn is not found.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em input}]A pointer to an opened FITS binary table \item[{\em colname}]The name of the desired column \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of the column. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+178 {
+179   int colnum, f_status = 0;
+180   
+181   fits_get_colnum (input, CASEINSEN, colname, &colnum, &f_status);
+182   if (f_status)
+183     {
+184       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+185                    "get_PET_colnum: Could not find collumn %s ",
+186                    colname);
+187     }
+188   
+189   return colnum;
+190 }
+\end{DoxyCode}
+\hypertarget{spce__PET_8c_a06eca146da672b8af571473b46ac3d96}{
+\index{spce\_\-PET.c@{spce\_\-PET.c}!PET\_\-count\_\-elements@{PET\_\-count\_\-elements}}
+\index{PET\_\-count\_\-elements@{PET\_\-count\_\-elements}!spce_PET.c@{spce\_\-PET.c}}
+\subsubsection[{PET\_\-count\_\-elements}]{\setlength{\rightskip}{0pt plus 5cm}long PET\_\-count\_\-elements ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p})}}
+\label{spce__PET_8c_a06eca146da672b8af571473b46ac3d96}
+A helper function that returns the number of elements in an ap\_\-p structure
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]A pointer to an existing \hyperlink{structap__pixel}{ap\_\-pixel} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of elements 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+153 {
+154      long N;
+155 
+156      //  Count number of pixels 
+157      N = 0;
+158      while (ap_p->p_x != -1)
+159        {
+160             ap_p++;
+161             N++;
+162        }
+163 
+164 
+165      return N;
+166 }
+\end{DoxyCode}

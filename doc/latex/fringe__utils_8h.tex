@@ -1,0 +1,693 @@
+\hypertarget{fringe__utils_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/fringe\_\-utils.h File Reference}
+\label{fringe__utils_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/fringe\_\-utils.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/fringe\_\-utils.h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpixel__tput}{pixel\_\-tput}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacefringe__utils}{fringe\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fringe__utils_8h_a0402175e645c022e7a90b0bbd64547a2}{fringe\_\-correct\_\-PET} (const \hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf, const \hyperlink{structbeam}{beam} act\_\-beam, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$obj\_\-pet, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$bck\_\-pet)
+\item 
+gsl\_\-vector $\ast$$\ast$ \hyperlink{fringe__utils_8h_af355623cf6639eebf7762b3586e7fd30}{evaluate\_\-pixel\_\-throughput} (const \hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf, const \hyperlink{structbeam}{beam} act\_\-beam, const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$obj\_\-pix)
+\item 
+gsl\_\-vector $\ast$$\ast$ \hyperlink{fringe__utils_8h_a00c596a71399f5efbfba60c5afd12a14}{get\_\-gauss\_\-throughput} (const \hyperlink{structfringe__conf}{fringe\_\-conf} $\ast$fconf, const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$obj\_\-pix, const double fwhm)
+\item 
+\hyperlink{structinterpolator}{interpolator} $\ast$ \hyperlink{fringe__utils_8h_a5cc6f161f0e2a24a14a40e0ccc11d7b5}{create\_\-interp\_\-tput} (const \hyperlink{structpixel__tput}{pixel\_\-tput} $\ast$p\_\-tput)
+\item 
+void \hyperlink{fringe__utils_8h_a1f78b41444483fcce4645f0604c6228e}{compute\_\-pixel\_\-tput} (const \hyperlink{structbeam}{beam} act\_\-beam, const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$obj\_\-pix, \hyperlink{structpixel__tput}{pixel\_\-tput} $\ast$p\_\-tput)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{fringe__utils_8h_a900ec9c280d1f89d01b43fb28d2db9b3}{compute\_\-tput\_\-angles} (const \hyperlink{structbeam}{beam} act\_\-beam, const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$act\_\-pet)
+\item 
+\hyperlink{structpixel__tput}{pixel\_\-tput} $\ast$ \hyperlink{fringe__utils_8h_a2771bb1bda09da356c808194651cff4c}{alloc\_\-pixel\_\-tput} ()
+\item 
+void \hyperlink{fringe__utils_8h_a99e32a5f7e3cdc9a250e41c83b4b0cc2}{print\_\-pixel\_\-tput} (\hyperlink{structpixel__tput}{pixel\_\-tput} $\ast$p\_\-tput)
+\item 
+void \hyperlink{fringe__utils_8h_a5e1ffec6cdcba89f4d0ccc7d68a7ba2e}{free\_\-pixel\_\-tput} (\hyperlink{structpixel__tput}{pixel\_\-tput} $\ast$p\_\-tput)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{fringe__utils_8h_a2771bb1bda09da356c808194651cff4c}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!alloc\_\-pixel\_\-tput@{alloc\_\-pixel\_\-tput}}
+\index{alloc\_\-pixel\_\-tput@{alloc\_\-pixel\_\-tput}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{alloc\_\-pixel\_\-tput}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pixel\_\-tput}$\ast$ alloc\_\-pixel\_\-tput ()}}
+\label{fringe__utils_8h_a2771bb1bda09da356c808194651cff4c}
+Function: alloc\_\-pixel\_\-tput The function allocates and returns memory for a pixel throughput function
+
+Returns: \begin{DoxyReturn}{Returns}
+p\_\-tput -\/the new allocated pixel throughput structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+621 {
+622   pixel_tput *p_tput;
+623 
+624   // allcoate the pointer
+625   p_tput = (pixel_tput *) malloc(sizeof(pixel_tput));
+626 
+627   // allocate the vector in the structure
+628   p_tput->lambda_values = gsl_vector_alloc(4);
+629 
+630   // return the structure
+631   return p_tput;
+632 }
+\end{DoxyCode}
+\hypertarget{fringe__utils_8h_a1f78b41444483fcce4645f0604c6228e}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!compute\_\-pixel\_\-tput@{compute\_\-pixel\_\-tput}}
+\index{compute\_\-pixel\_\-tput@{compute\_\-pixel\_\-tput}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{compute\_\-pixel\_\-tput}]{\setlength{\rightskip}{0pt plus 5cm}void compute\_\-pixel\_\-tput (const {\bf beam} {\em act\_\-beam}, \/  const {\bf ap\_\-pixel} $\ast$ {\em obj\_\-pix}, \/  {\bf pixel\_\-tput} $\ast$ {\em p\_\-tput})}}
+\label{fringe__utils_8h_a1f78b41444483fcce4645f0604c6228e}
+Function: compute\_\-pixel\_\-tput The function computes all relevant data to characterize the pixel throughput function for an individual PET pixel. The information is written into a pixel throughput structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em act\_\-beam}]-\/ the \hyperlink{structbeam}{beam} aperture \item[{\em obj\_\-pix}]-\/ the PET pixel \item[{\em p\_\-tput}]-\/ the pixel throughput structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+514 {
+515   d_point angles;
+516 
+517   double theta_2a;
+518   double theta_3a;
+519 
+520   double theta_1b;
+521   double theta_2b;
+522 
+523   double sin_theta_2a;
+524   double sin_theta_3a;
+525 
+526   double sin_theta_1b;
+527   double cos_theta_1b;
+528   double sin_theta_2b;
+529 
+530   double dist1;
+531   double dist2;
+532 
+533   // compute the anngles alpha and beta
+534   angles = compute_tput_angles(act_beam, obj_pix);
+535 
+536   // the computation of p_min-p3 in the
+537   // design document
+538   theta_1b = M_PI_2 + angles.x - angles.y;
+539   theta_2b = angles.y;
+540 
+541   // compute the sin's and cos's neede
+542   sin_theta_1b = sin(theta_1b);
+543   cos_theta_1b = cos(theta_1b);
+544   sin_theta_2b = sin(theta_2b);
+545 
+546   // compute one delta
+547   dist2 = obj_pix->dlambda * sin_theta_1b / sin_theta_2b;
+548 
+549   // the computation of p_h-p0 in the
+550   // design document
+551   theta_2a = M_PI - angles.y;
+552   theta_3a = angles.y - angles.x - M_PI_4;
+553 
+554   // next line due to sin(angle) = sin(180-angle)
+555   sin_theta_2a = sin_theta_2b;
+556   sin_theta_3a = sin(theta_3a);
+557 
+558   // compute the second delta 
+559   dist1 = obj_pix->dlambda * M_SQRT1_2 * sin_theta_3a / sin_theta_2a;
+560 
+561   // determine the maximum throughput
+562   p_tput->tp_max = 1.0/MAX(fabs(sin_theta_1b), fabs(cos_theta_1b));
+563 
+564   // put together the distances, using
+565   // the deltas and the dispersion
+566   gsl_vector_set(p_tput->lambda_values, 0, obj_pix->lambda - dist1 - dist2);
+567   gsl_vector_set(p_tput->lambda_values, 1, obj_pix->lambda - dist1);
+568   gsl_vector_set(p_tput->lambda_values, 2, obj_pix->lambda + dist1);
+569   gsl_vector_set(p_tput->lambda_values, 3, obj_pix->lambda + dist1 + dist2);
+570 
+571   // sort the distances
+572   gsl_sort_vector(p_tput->lambda_values);
+573 }
+\end{DoxyCode}
+\hypertarget{fringe__utils_8h_a900ec9c280d1f89d01b43fb28d2db9b3}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!compute\_\-tput\_\-angles@{compute\_\-tput\_\-angles}}
+\index{compute\_\-tput\_\-angles@{compute\_\-tput\_\-angles}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{compute\_\-tput\_\-angles}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} compute\_\-tput\_\-angles (const {\bf beam} {\em act\_\-beam}, \/  const {\bf ap\_\-pixel} $\ast$ {\em act\_\-pet})}}
+\label{fringe__utils_8h_a900ec9c280d1f89d01b43fb28d2db9b3}
+Function: compute\_\-tput\_\-angles The function computes the angles which characterize a pixel in the lambda-\/cross dispersion plane. In detail this is the angle between the lambda-\/axis and the x-\/axis, and the angle between the lambda abd the cross dispersion axis. The two angles are computed from the basic pixel and \hyperlink{structbeam}{beam} data.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em act\_\-beam}]-\/ the \hyperlink{structbeam}{beam} aperture \item[{\em act\_\-pet}]-\/ the PET pixel\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+angles -\/ the relevant pixel angles 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+596 {
+597   d_point angles;
+598 
+599   // compute the angle 'alpha' between lambda-axis and
+600   // x-axis
+601   angles.x = -atan2(act_beam.spec_trace->deriv(act_pet->xi,
+602                                                act_beam.spec_trace->data),1.0);
+603   // compute the angle beta between lambda and cross dispersion axis
+604   angles.y = act_beam.orient + angles.x;
+605 
+606   // return the two angles
+607   return angles;
+608 }
+\end{DoxyCode}
+\hypertarget{fringe__utils_8h_a5cc6f161f0e2a24a14a40e0ccc11d7b5}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!create\_\-interp\_\-tput@{create\_\-interp\_\-tput}}
+\index{create\_\-interp\_\-tput@{create\_\-interp\_\-tput}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{create\_\-interp\_\-tput}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interpolator}$\ast$ create\_\-interp\_\-tput (const {\bf pixel\_\-tput} $\ast$ {\em p\_\-tput})}}
+\label{fringe__utils_8h_a5cc6f161f0e2a24a14a40e0ccc11d7b5}
+Function: create\_\-interp\_\-tput The function creates and returns an \hyperlink{structinterpolator}{interpolator} for a pixel throughput function. The \hyperlink{structinterpolator}{interpolator} structure is allocated, data is filled in and finally initialized.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em p\_\-tput}]-\/ the pixel throughput structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+interp -\/ the new \hyperlink{structinterpolator}{interpolator} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+459 {
+460   interpolator *interp;
+461 
+462   double *xvals;
+463   double *yvals;
+464 
+465   // allocate memory for the independent values 
+466   xvals = (double *) malloc(4 * sizeof(double));
+467   if (!xvals) { 
+468     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+469                  "Memory allocation failed");
+470   }
+471 
+472   // allocate memory for the dependent values 
+473   yvals = (double *) malloc(4 * sizeof(double));
+474   if (!yvals) {
+475     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+476                  "Memory allocation failed");
+477   }
+478 
+479   // set the independent vector values 
+480   xvals[0] = gsl_vector_get(p_tput->lambda_values, 0);
+481   xvals[1] = gsl_vector_get(p_tput->lambda_values, 1);
+482   xvals[2] = gsl_vector_get(p_tput->lambda_values, 2);
+483   xvals[3] = gsl_vector_get(p_tput->lambda_values, 3);
+484 
+485   // set the dependent vector values
+486   yvals[0] = 0.0;
+487   yvals[1] = p_tput->tp_max;
+488   yvals[2] = p_tput->tp_max;
+489   yvals[3] = 0.0;
+490 
+491 
+492   // create the interpolator
+493   interp = create_interp(4, FILTER_INTERP_TYPE, xvals, yvals);
+494 
+495   // return the interpolator
+496   return interp;
+497 }
+\end{DoxyCode}
+\hypertarget{fringe__utils_8h_af355623cf6639eebf7762b3586e7fd30}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!evaluate\_\-pixel\_\-throughput@{evaluate\_\-pixel\_\-throughput}}
+\index{evaluate\_\-pixel\_\-throughput@{evaluate\_\-pixel\_\-throughput}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{evaluate\_\-pixel\_\-throughput}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$$\ast$ evaluate\_\-pixel\_\-throughput (const {\bf fringe\_\-conf} $\ast$ {\em fconf}, \/  const {\bf beam} {\em act\_\-beam}, \/  const {\bf ap\_\-pixel} $\ast$ {\em obj\_\-pix})}}
+\label{fringe__utils_8h_af355623cf6639eebf7762b3586e7fd30}
+Function: evaluate\_\-pixel\_\-throughput Computes the wavelength and filter throughputs for a PET pixel.
+
+The function computes and returns two vector, one with wavelength steps and the second with the pixel throughputs at those wavelengths. This data is computed to a single PET pixel according to the settings in the fringe configuration file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fconf}]-\/ the fringe configuration file \item[{\em act\_\-beam}]-\/ the \hyperlink{structbeam}{beam} aperture \item[{\em obj\_\-pix}]-\/ the PET pixel\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+double\_\-vector -\/ the wavelength and filter throughput steps 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+207 {
+208   pixel_tput *p_tput ;
+209 
+210   gsl_vector **double_vector;
+211   gsl_vector *lambda_values;
+212   gsl_vector *through_values;
+213 
+214   interpolator *interp;
+215 
+216   double stepsize;
+217   double lambda_act;
+218   double through_act;
+219   double through_tot;
+220 
+221   double abs_min;
+222   double abs_max;
+223 
+224   int index;
+225 
+226   // allocate the pixel throughput structure
+227   p_tput = alloc_pixel_tput();
+228 
+229   // allocate the space for the vectors
+230   lambda_values  = gsl_vector_alloc(fconf->num_steps + 1);
+231   through_values = gsl_vector_alloc(fconf->num_steps + 1);
+232 
+233   // allocate space for the return vector
+234   double_vector  = (gsl_vector **)malloc(2*sizeof (gsl_vector *));
+235 
+236   compute_pixel_tput(act_beam, obj_pix, p_tput);
+237 #ifdef DEBUGFCONF
+238   print_pixel_tput(p_tput);
+239 #endif
+240   // convert the pixel throughput information
+241   // into an interplator 
+242   interp = create_interp_tput(p_tput);
+243 
+244   abs_min = MAX(interp->xmin, gsl_vector_get(fconf->fringe_range, 0));
+245   abs_max = MIN(interp->xmax, gsl_vector_get(fconf->fringe_range, 1));
+246   
+247   // compute the steps in wavelength
+248   stepsize = (abs_max - abs_min)/(double)fconf->num_steps;
+249 
+250   // set the lower wavelength end
+251   lambda_act = abs_min;
+252 
+253   // loop over the wavelength
+254   through_tot = 0.0;
+255   for (index=0; index < fconf->num_steps; index++)
+256     {
+257       // set the wavelength value
+258       gsl_vector_set(lambda_values, index, lambda_act);
+259 
+260       // compute the throughput
+261       through_act = eval_interp(interp, lambda_act);
+262 
+263       // compute the total throughput
+264       through_tot += through_act;
+265 
+266       // set the thoughput value
+267       gsl_vector_set(through_values, index, through_act);
+268 
+269       lambda_act +=  stepsize;
+270     }
+271 
+272   // treat the last step separately, avoiding
+273   // to leave the allowed interpolation range
+274   // due to rounding errors 
+275   gsl_vector_set(lambda_values, fconf->num_steps, abs_max);
+276   through_act = eval_interp(interp, abs_max);
+277   through_tot += through_act;
+278   gsl_vector_set(through_values, fconf->num_steps, through_act);
+279 
+280   for (index=0; index < through_values->size; index++)
+281     {
+282       // normalize the filter throughput values
+283       gsl_vector_set(through_values, index,
+284                      gsl_vector_get(through_values, index)/through_tot);
+285 
+286       // convert the wavelength from AA to micron
+287       gsl_vector_set(lambda_values, index,
+288                      gsl_vector_get(lambda_values, index)*1.0e-04);
+289     }
+290 #ifdef DEBUGFCONF
+291   through_tot = 0.0;
+292   for (index=0; index < through_values->size; index++)
+293     {
+294       fprintf(stderr, "Wavelength: %f, Throughput: %f\n",
+295               gsl_vector_get(lambda_values, index),
+296               gsl_vector_get(through_values, index));
+297       through_tot += gsl_vector_get(through_values, index);
+298     }
+299   fprintf(stderr, "Total throughput: %f\n", through_tot);
+300 #endif
+301   
+302   // build up the output array
+303   double_vector[0] = lambda_values;
+304   double_vector[1] = through_values;
+305 
+306   
+307   // free the memory of the interpolator
+308   free_interp(interp);
+309 
+310   // free the memory of the pixel throughput
+311   free_pixel_tput(p_tput);
+312 
+313   // return the two gsl vectors
+314   return double_vector;
+315 }
+\end{DoxyCode}
+\hypertarget{fringe__utils_8h_a5e1ffec6cdcba89f4d0ccc7d68a7ba2e}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!free\_\-pixel\_\-tput@{free\_\-pixel\_\-tput}}
+\index{free\_\-pixel\_\-tput@{free\_\-pixel\_\-tput}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{free\_\-pixel\_\-tput}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-pixel\_\-tput ({\bf pixel\_\-tput} $\ast$ {\em p\_\-tput})}}
+\label{fringe__utils_8h_a5e1ffec6cdcba89f4d0ccc7d68a7ba2e}
+Function: free\_\-pixel\_\-tput The function releases the memory allocated in a pixel throughput function.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em p\_\-tput}]-\/ the pixel throughput structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+664 {
+665   // free the gsl-vector
+666   gsl_vector_free(p_tput->lambda_values);
+667 
+668   // free everything
+669   free(p_tput);
+670 
+671   // set it to NULL
+672   p_tput = NULL;
+673 }
+\end{DoxyCode}
+\hypertarget{fringe__utils_8h_a0402175e645c022e7a90b0bbd64547a2}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!fringe\_\-correct\_\-PET@{fringe\_\-correct\_\-PET}}
+\index{fringe\_\-correct\_\-PET@{fringe\_\-correct\_\-PET}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{fringe\_\-correct\_\-PET}]{\setlength{\rightskip}{0pt plus 5cm}void fringe\_\-correct\_\-PET (const {\bf fringe\_\-conf} $\ast$ {\em fconf}, \/  const {\bf beam} {\em act\_\-beam}, \/  {\bf ap\_\-pixel} $\ast$ {\em obj\_\-pet}, \/  {\bf ap\_\-pixel} $\ast$ {\em bck\_\-pet})}}
+\label{fringe__utils_8h_a0402175e645c022e7a90b0bbd64547a2}
+Function: fringe\_\-correct\_\-PET Performs fringe corrections to PET pixel lists
+
+The main function to compute and perform the fringe correction to a list of PET pixels. for every pixel in the PET list the pixel throughput function is computed, and the relevant information from the fringing model is extracted. Then the fringe amplitude is computed and the count value of the pixel is corrected. Also the PET pixel list is simultaneously parsed and corrected for the fringing.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fconf}]-\/ the fringe configuration file \item[{\em act\_\-beam}]-\/ the \hyperlink{structbeam}{beam} aperture \item[{\em obj\_\-pet}]-\/ the PET pixel \item[{\em bck\_\-pet}]-\/ the PET pixel \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+46 {
+47   ap_pixel *obj_pix=NULL;
+48   ap_pixel *bck_pix=NULL;
+49 
+50   //d_point angles;
+51   pixel_tput *p_tput ;
+52   gsl_vector **tput_vectors=NULL;
+53 
+54   //int ii=0;
+55   //int jj=0;
+56   int index;
+57   int pix_index;
+58 
+59   double lambda_mean;
+60   double pixel_ampl;
+61   double fringe_factor;
+62   double fringe_tot;
+63 
+64   optical_property *optprops;
+65 
+66   // allocate the pixel throughput structure
+67   p_tput = alloc_pixel_tput();
+68 
+69   // allocate memory for the optical property structure  
+70   optprops = alloc_optprops_list(fconf);
+71 
+72   // compute the mean wavelength
+73   lambda_mean = (gsl_vector_get(fconf->fringe_range, 0) +
+74     (gsl_vector_get(fconf->fringe_range, 1)
+75      - gsl_vector_get(fconf->fringe_range, 0))/2.0)/1.0e+04;
+76 
+77   // initialize some values in the optical property list
+78   init_optprops_list(fconf, lambda_mean, optprops);
+79 
+80   // initialize the PET pixel storages
+81   obj_pix = obj_pet;
+82   bck_pix = bck_pet;
+83 
+84   fringe_tot = 0.0;
+85   pix_index = 0;
+86   // go over the whole PET list
+87   while (obj_pix->p_x != -1)
+88     {
+89       // check whether the pixel has to be fringe corrected
+90       // at all, based on boundaries given in the configuration
+91       if ( obj_pix->lambda < gsl_vector_get(fconf->fringe_range, 0)
+92            || obj_pix->lambda > gsl_vector_get(fconf->fringe_range, 1)
+93            || obj_pix->dlambda > fconf->max_dispersion)
+94         {
+95 
+96           // count up the object PET 
+97           obj_pix++;
+98 
+99           // count up the background PET
+100           if (bck_pet)
+101             bck_pix++;
+102       
+103           // jump to the next PET pixel
+104           continue;
+105         }
+106 
+107       // determine the filter throughput values
+108       //      tput_vectors = evaluate_pixel_throughput(fconf, act_beam, obj_pix);
+      
+109       // for the ISR with the WFC value
+110       tput_vectors = get_gauss_throughput(fconf, obj_pix, 80.0);
+111 
+112       // fill the optical thickness of the layers
+113       // into the structure
+114       fill_optprops_thickness(fconf->opt_layers, obj_pix->p_x,
+115                               obj_pix->p_y, optprops);
+116 
+117       pixel_ampl = 0.0;
+118       for (index=0; index < tput_vectors[0]->size; index++)
+119         {
+120           // fill all information in the optical
+121           // property list
+122           fill_optprops_all(fconf->opt_layers,
+123                             gsl_vector_get(tput_vectors[0],index),
+124                             optprops);
+125           
+126           // compute and add the contribution at a wavelength
+127           pixel_ampl += gsl_vector_get(tput_vectors[1],index)*
+128             fringe_contrib_single(optprops, fconf);
+129         }
+130 
+131       //put together the fringe correction factor
+132       fringe_factor = fconf->fringe_amp * pixel_ampl + 1.0;
+133 #ifdef DEBUGFCONF
+134       fprintf(stderr, "Wavelength: %f, dispersion: %f, fringe factor: %f, (x,y): 
+      (%i, %i)\n", 
+135               obj_pix->lambda, obj_pix->dlambda, fringe_factor, obj_pix->p_x, obj
+      _pix->p_y);
+136 #endif
+137 
+138       // correct the object PET
+139       obj_pix->count /= fringe_factor;
+140       //obj_pix->count = fringe_factor;
+141       //fprintf(stdout, "%e ",obj_pix->count); 
+142 
+143       fringe_tot += fringe_factor;
+144       pix_index++;
+145 
+146 
+147       // treat the background PET pixel
+148       if (bck_pet)
+149         {
+150           if (bck_pix->p_x != obj_pix->p_x || bck_pix->p_y != obj_pix->p_y)
+151             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+152                          "aXe_FRINGECORR: The sequence of pixels\n"
+153                          "in the object PET and background PET differs.\n"
+154                          "Something must be wrong!\n");
+155 
+156           // correct also the background PET
+157           bck_pix->count /= fringe_factor;
+158 
+159           // count up the background PET
+160           bck_pix++;
+161         }
+162 
+163       // count up the object PET
+164       obj_pix++;
+165       //      obj_pix->p_x = -1;
+166     }
+167 
+168   //  if (pix_index)
+169   //    fprintf(stdout,"Mean fringe factor: %f\n", fringe_tot/(double)pix_index);
+      
+170 
+171   if (tput_vectors)
+172     {
+173       // release the memory in the vectors
+174       gsl_vector_free(tput_vectors[0]);
+175       gsl_vector_free(tput_vectors[1]);
+176       free(tput_vectors);
+177     }
+178 
+179   // free the optical property structure
+180   free_optprops_list(optprops);
+181 
+182   // free the memory
+183   free_pixel_tput(p_tput);
+184 }
+\end{DoxyCode}
+\hypertarget{fringe__utils_8h_a00c596a71399f5efbfba60c5afd12a14}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!get\_\-gauss\_\-throughput@{get\_\-gauss\_\-throughput}}
+\index{get\_\-gauss\_\-throughput@{get\_\-gauss\_\-throughput}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{get\_\-gauss\_\-throughput}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$$\ast$ get\_\-gauss\_\-throughput (const {\bf fringe\_\-conf} $\ast$ {\em fconf}, \/  const {\bf ap\_\-pixel} $\ast$ {\em obj\_\-pix}, \/  const double {\em fwhm})}}
+\label{fringe__utils_8h_a00c596a71399f5efbfba60c5afd12a14}
+Function: get\_\-gauss\_\-throughput
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em fconf}]-\/ the fringe configuration file \item[{\em act\_\-beam}]-\/ the \hyperlink{structbeam}{beam} aperture \item[{\em obj\_\-pix}]-\/ the PET pixel\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+double\_\-vector -\/ the wavelength and filter throughput steps 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+332 {
+333   pixel_tput *p_tput ;
+334 
+335   gsl_vector **double_vector;
+336   gsl_vector *lambda_values;
+337   gsl_vector *through_values;
+338 
+339   //interpolator *interp;
+340 
+341   double stepsize;
+342   double lambda_act;
+343   double through_act;
+344   double through_tot;
+345 
+346   double abs_min;
+347   double abs_max;
+348 
+349   double sigma;
+350   double arg;
+351   
+352   int index;
+353 
+354   // convert the FWHM into sigma
+355   sigma = fwhm / 2.35482;
+356 
+357   // allocate the pixel throughput structure
+358   p_tput = alloc_pixel_tput();
+359 
+360   // allocate the space for the vectors
+361   lambda_values  = gsl_vector_alloc(fconf->num_steps + 1);
+362   through_values = gsl_vector_alloc(fconf->num_steps + 1);
+363 
+364   // allocate space for the return vector
+365   double_vector  = (gsl_vector **)malloc(2*sizeof (gsl_vector *));
+366 
+367   // compute the minimum and maximum wavelength
+368   abs_min = MAX(obj_pix->lambda - 2.5 * fwhm,
+369                 gsl_vector_get(fconf->fringe_range, 0));
+370   abs_max = MIN(obj_pix->lambda + 2.5 * fwhm,
+371                 gsl_vector_get(fconf->fringe_range, 1));
+372 
+373   // compute the steps in wavelength
+374   stepsize = (abs_max - abs_min)/(double)fconf->num_steps;
+375 
+376   // set the lower wavelength end
+377   lambda_act = abs_min;
+378 
+379   // loop over the wavelength
+380   through_tot = 0.0;
+381   for (index=0; index < fconf->num_steps; index++)
+382     {
+383       // set the wavelength value
+384       gsl_vector_set(lambda_values, index, lambda_act);
+385 
+386       // z=(coord-g(2))/g(3)
+387       // sumgauss=sumgauss+DBLE(g(1)*EXP(-0.5*z**2))
+388       arg = (lambda_act - obj_pix->lambda) / sigma;
+389 
+390       // compute the throughput
+391       through_act = exp(-0.5*arg*arg);
+392 
+393       // compute the total throughput
+394       through_tot += through_act;
+395 
+396       // set the thoughput value
+397       gsl_vector_set(through_values, index, through_act);
+398 
+399       // increment the wavelength
+400       lambda_act += stepsize;
+401     }
+402 
+403   // treat the last step separately, avoiding
+404   // to leave the allowed interpolation range
+405   // due to rounding errors 
+406   gsl_vector_set(lambda_values, fconf->num_steps, abs_max);
+407   arg = (abs_max - obj_pix->lambda) / sigma;
+408   through_act = exp(-0.5*arg*arg);
+409   through_tot += through_act;
+410   gsl_vector_set(through_values, fconf->num_steps, through_act);
+411 
+412 
+413   for (index=0; index < through_values->size; index++)
+414     {
+415       // normalize the filter throughput values
+416       gsl_vector_set(through_values, index,
+417                      gsl_vector_get(through_values, index)/through_tot);
+418 
+419       // convert the wavelength from AA to micron
+420       gsl_vector_set(lambda_values, index,
+421                      gsl_vector_get(lambda_values, index)*1.0e-04);
+422     }
+423 
+424 #ifdef DEBUGFCONF
+425   through_tot = 0.0;
+426   for (index=0; index < through_values->size; index++)
+427     {
+428       fprintf(stderr, "Wavelength: %f, Throughput: %f\n",
+429               gsl_vector_get(lambda_values, index),
+430               gsl_vector_get(through_values, index));
+431       through_tot += gsl_vector_get(through_values, index);
+432     }
+433   fprintf(stderr, "Total throughput: %f\n", through_tot);
+434 #endif
+435 
+436   // build up the output array
+437   double_vector[0] = lambda_values;
+438   double_vector[1] = through_values;
+439 
+440   return double_vector;
+441 }
+\end{DoxyCode}
+\hypertarget{fringe__utils_8h_a99e32a5f7e3cdc9a250e41c83b4b0cc2}{
+\index{fringe\_\-utils.h@{fringe\_\-utils.h}!print\_\-pixel\_\-tput@{print\_\-pixel\_\-tput}}
+\index{print\_\-pixel\_\-tput@{print\_\-pixel\_\-tput}!fringe_utils.h@{fringe\_\-utils.h}}
+\subsubsection[{print\_\-pixel\_\-tput}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-pixel\_\-tput ({\bf pixel\_\-tput} $\ast$ {\em p\_\-tput})}}
+\label{fringe__utils_8h_a99e32a5f7e3cdc9a250e41c83b4b0cc2}
+Function: print\_\-pixel\_\-tput The function prints the content of a pixel throughput structure onto the screen.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em p\_\-tput}]-\/ the pixel throughput structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+644 {
+645   fprintf(stdout, "l_min: %f, l_1: %f, l_2: %f, l_max: %f; tp_max: %f\n\n",
+646           gsl_vector_get(p_tput->lambda_values,0),
+647           gsl_vector_get(p_tput->lambda_values,1),
+648           gsl_vector_get(p_tput->lambda_values,2),
+649           gsl_vector_get(p_tput->lambda_values,3),
+650           p_tput->tp_max);
+651 }
+\end{DoxyCode}

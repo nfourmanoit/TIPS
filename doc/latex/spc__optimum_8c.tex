@@ -1,0 +1,711 @@
+\hypertarget{spc__optimum_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-optimum.c File Reference}
+\label{spc__optimum_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-optimum.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-optimum.c}}
+}
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include \char`\"{}spc\_\-trace\_\-functions.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-spc.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-driz.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-output.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-optimum.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespce__binning}{spce\_\-binning}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__optimum_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{SQR}(x)~((x)$\ast$(x))
+\item 
+\#define \hyperlink{spc__optimum_8c_a74e75242132eaabbc1c512488a135926}{MIN}(x, y)~(((x)$<$(y))?(x):(y))
+\item 
+\#define \hyperlink{spc__optimum_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{MAX}(x, y)~(((x)$>$(y))?(x):(y))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structdrzstamp}{drzstamp} $\ast$ \hyperlink{spc__optimum_8c_a4da3f4712620de5171d7a0daa5f0bf61}{compute\_\-modvar} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, const \hyperlink{structbeam}{beam} actbeam, const \hyperlink{structdrzstamp__dim}{drzstamp\_\-dim} dimension)
+\item 
+void \hyperlink{spc__optimum_8c_aa3e8e6e9854df4de96ee44cbacfad4a8}{shift\_\-tracelength} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, const double xi\_\-shift)
+\item 
+void \hyperlink{spc__optimum_8c_a1f6715d47ee4f6ff176974c14dc6401c}{prepare\_\-inv\_\-variance} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$bg\_\-p, const int dobck, const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, const double exptime, const double sky\_\-cps, const double xi\_\-shift)
+\item 
+void \hyperlink{spc__optimum_8c_a507edca311317b7c885a40aff09a4e34}{compute\_\-object\_\-ivar} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, const double rdnoise, const double exptime, const double sky\_\-cps)
+\item 
+void \hyperlink{spc__optimum_8c_aa900417c8629b95d35d362ca481c5483}{compute\_\-total\_\-ivar} (\hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$bg\_\-p, const double rdnoise, const double exptime, const double sky\_\-cps)
+\item 
+\hyperlink{structdrzstamp}{drzstamp} $\ast$ \hyperlink{spc__optimum_8c_a1eb0bd08ffa79cfb7f96ebffcb3325c7}{alloc\_\-drzstamp} (const \hyperlink{structdrzstamp__dim}{drzstamp\_\-dim} dimension)
+\item 
+\hyperlink{structdrzstamp__dim}{drzstamp\_\-dim} \hyperlink{spc__optimum_8c_a1dc967d6de4c0d294342ef5124da686e}{get\_\-all\_\-dims} (const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$bg\_\-p, const \hyperlink{structbeam}{beam} actbeam, const int dobck)
+\item 
+\hyperlink{structdrzstamp__dim}{drzstamp\_\-dim} \hyperlink{spc__optimum_8c_a925a44a925643f7770807b6352ae5109}{get\_\-resample\_\-dims} (const \hyperlink{structap__pixel}{ap\_\-pixel} $\ast$ap\_\-p, const \hyperlink{structbeam}{beam} actbeam)
+\item 
+\hyperlink{structdrzstamp__dim}{drzstamp\_\-dim} \hyperlink{spc__optimum_8c_a48973ed3e4aa7384e047f4d75ee06582}{get\_\-default\_\-dim} ()
+\item 
+\hyperlink{structdrzstamp}{drzstamp} $\ast$ \hyperlink{spc__optimum_8c_aef1186ac7f985de47fe8cd962a4381b8}{get\_\-default\_\-modvar} ()
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{spc__optimum_8c_a6f7e58438e5ed0d86dcaa2f170db30c9}{get\_\-default\_\-weight} ()
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{spc__optimum_8c_a670955b1949d9ed6a54528c55b2d7bfe}{comp\_\-allweight} (\hyperlink{structdrzstamp}{drzstamp} $\ast$modvar)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__optimum_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!MAX@{MAX}}
+\index{MAX@{MAX}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(x, \/  y)~(((x)$>$(y))?(x):(y))}}
+\label{spc__optimum_8c_aacc3ee1a7f283f8ef65cea31f4436a95}
+\hypertarget{spc__optimum_8c_a74e75242132eaabbc1c512488a135926}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!MIN@{MIN}}
+\index{MIN@{MIN}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(x, \/  y)~(((x)$<$(y))?(x):(y))}}
+\label{spc__optimum_8c_a74e75242132eaabbc1c512488a135926}
+\hypertarget{spc__optimum_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!SQR@{SQR}}
+\index{SQR@{SQR}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{SQR}]{\setlength{\rightskip}{0pt plus 5cm}\#define SQR(x)~((x)$\ast$(x))}}
+\label{spc__optimum_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__optimum_8c_a1eb0bd08ffa79cfb7f96ebffcb3325c7}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!alloc\_\-drzstamp@{alloc\_\-drzstamp}}
+\index{alloc\_\-drzstamp@{alloc\_\-drzstamp}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{alloc\_\-drzstamp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf drzstamp}$\ast$ alloc\_\-drzstamp (const {\bf drzstamp\_\-dim} {\em dimension})}}
+\label{spc__optimum_8c_a1eb0bd08ffa79cfb7f96ebffcb3325c7}
+Function: alloc\_\-drzstamp Allocates memory for a drizzle stamp structure according the the dimension specified in the input.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em dimension}]-\/ the dimesions to allocate\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ the drizzle stamp image allocated 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+351 {
+352   drzstamp   *ret;
+353   gsl_matrix *counts;
+354   gsl_matrix *weight;
+355 
+356   ret = (drzstamp *) malloc(sizeof(drzstamp));
+357 
+358   /* Allocate the stamp matrix*/
+359   /* Fill stamp with NaN values */
+360   counts = gsl_matrix_alloc(dimension.xsize,dimension.ysize);
+361   //  gsl_matrix_set_all(counts, GSL_NAN);
+362   gsl_matrix_set_all(counts, 0.0);
+363 
+364   /* Allocate the weight matrix*/
+365   /* Fill weight with 0.0 values */
+366   weight = gsl_matrix_alloc(dimension.xsize,dimension.ysize);
+367   gsl_matrix_set_all(weight, 0.0);
+368 
+369   // fill the output structure
+370   ret->counts = counts;
+371   ret->weight = weight;
+372 
+373   // return the allocated structure
+374   return ret;
+375 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_a670955b1949d9ed6a54528c55b2d7bfe}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!comp\_\-allweight@{comp\_\-allweight}}
+\index{comp\_\-allweight@{comp\_\-allweight}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{comp\_\-allweight}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ comp\_\-allweight ({\bf drzstamp} $\ast$ {\em modvar})}}
+\label{spc__optimum_8c_a670955b1949d9ed6a54528c55b2d7bfe}
+
+
+
+\begin{DoxyCode}
+601 {
+602   gsl_matrix *weight;
+603 
+604   double mod_sum, weight_sum;
+605   double contr, norm, allweight;
+606   double mod_val;
+607   //double var_val;
+608   double act_weight=0;
+609 
+610   //int beamInt = 0;
+611   int i, j;
+612 
+613   // allocate the weight matrix and set the default
+614   weight = gsl_matrix_alloc(modvar->counts->size1, modvar->counts->size2);
+615   gsl_matrix_set_all(weight, 1000.0);
+616 
+617   //* go over all columns
+618   for (i=0; i < modvar->counts->size1; i++)
+619     {
+620       mod_sum = 0.0;
+621       contr = 0.0;
+622       allweight = 0.0;
+623       weight_sum=0.0;
+624 
+625       // determine for each column the total model counts
+626       // and the number of pixels with non-zero model_counts
+627       for (j=0; j < modvar->counts->size2; j++)
+628         {
+629           mod_sum = mod_sum + gsl_matrix_get(modvar->counts, i, j);
+630           contr = contr + 1.0;
+631         }
+632 
+633       // check whether the column has model values.
+634       // normalize the model values and compute
+635       // optimal weights if yes.
+636       if (mod_sum > 0.0)
+637         {
+638           //* determine the mean model value
+639           //      norm = mod_sum / contr;
+640           norm = mod_sum;
+641 
+642           // go over each row
+643           for (j=0; j < modvar->counts->size2; j++)
+644             {
+645               // normalize the model counts
+646               mod_val = gsl_matrix_get(modvar->counts, i, j)/norm;
+647 
+648               // store the normalized model counts
+649               gsl_matrix_set(modvar->counts, i, j, mod_val);
+650 
+651               // add up the normalization value for the optimal weights
+652               weight_sum = weight_sum
+653                 + mod_val*mod_val*gsl_matrix_get(modvar->weight, i, j);
+654             }
+655 
+656           // finally compute and write the weights:
+657           // go over each pixel
+658           for (j=0; j < modvar->counts->size2; j++)
+659             {
+660               if (gsl_matrix_get(modvar->counts, i, j) > 0.0 )
+661                 {
+662                   // compute and set the individual pixel weight
+663                   act_weight = gsl_matrix_get(modvar->counts,i,j)
+664                     *gsl_matrix_get(modvar->weight,i,j)/weight_sum;
+665                   //              gsl_matrix_set(weight,i,j,gsl_matrix_get(modvar
+      ->counts,i,j)
+666                   //             *gsl_matrix_get(modvar->weight,i,j)/weight_sum);
+      
+667                   gsl_matrix_set(weight, i, j, act_weight);
+668                   allweight = allweight + gsl_matrix_get(weight, i, j);
+669                 }
+670               else
+671                 {
+672                   // set the default value if no model value is zero
+673                   gsl_matrix_set(weight, i, j,0.0);
+674                 }
+675             }
+676         }
+677       // if the column does not have model values at all:
+678       else
+679         {
+680           // go over each row
+681           for (j=0; j < modvar->counts->size2; j++)
+682             {
+683               // set the inside default value
+684               gsl_matrix_set(weight, i,j,1.0);
+685               allweight = allweight + gsl_matrix_get(modvar->counts, i, j);
+686 
+687             }
+688         }
+689     }
+690 
+691   // return the weight matrix
+692   return weight;
+693 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_a4da3f4712620de5171d7a0daa5f0bf61}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!compute\_\-modvar@{compute\_\-modvar}}
+\index{compute\_\-modvar@{compute\_\-modvar}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{compute\_\-modvar}]{\setlength{\rightskip}{0pt plus 5cm}{\bf drzstamp}$\ast$ compute\_\-modvar ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  const {\bf beam} {\em actbeam}, \/  const {\bf drzstamp\_\-dim} {\em dimension})}}
+\label{spc__optimum_8c_a4da3f4712620de5171d7a0daa5f0bf61}
+Function: compute\_\-modvar
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]-\/ the PET table \item[{\em actbeam}]-\/ \hyperlink{structbeam}{beam} to compute the modvar structure for \item[{\em dimension}]-\/ dimenasion of the images \item[{\em modvar}]-\/ the structure to fill \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+66 {
+67   ap_pixel *cur_p;
+68   ap_pixel *tmp_p;
+69 
+70   quadrangle quad;
+71 
+72   double jacob;
+73 
+74   int jcen, icen;
+75   int jupp, iupp;
+76   int jlow, ilow;
+77 
+78   int ii, jj;
+79   int stpi, stpj;
+80 
+81   double maxarr, arr;
+82   //int iim, jjm;
+83   double value, allweig, weig;
+84   double stpc;
+85   double totweight;
+86   drzstamp *modvar;
+87 
+88   // allocate memory for the result structure
+89   modvar = alloc_drzstamp(dimension);
+90 
+91   // allocate memory
+92   tmp_p = (ap_pixel *) malloc(sizeof(ap_pixel));
+93 
+94   // go over each pixel
+95   for (cur_p = ap_p; cur_p->p_x != -1; cur_p++)
+96     {
+97       // Skip this pixel if it was not actually used
+98       if (fabs(cur_p->dist)>actbeam.width+0.5)
+99         continue;
+100 
+101       // transfer values to the temporary pixel
+102       tmp_p->lambda  = cur_p->xi;
+103       tmp_p->dist    = cur_p->dist;
+104       tmp_p->dxs     = cur_p->dxs;
+105       tmp_p->dlambda = 1.0;
+106 
+107       // create the quadrangle for the current pixel
+108       quad = get_quad_from_pixel(tmp_p, actbeam.orient, dimension);
+109 
+110 
+111       // get the jacobian (well, easy here)
+112       // the term "cos(cur_p->dxs)" must be there
+113       // to correct the enlargement necessary
+114       // to cover the whole lambda-crossdispersion area!
+115       // NOT COMPLETELY understood
+116       jacob = cos(cur_p->dxs);
+117 
+118       // get the central pixel (icen, jcen) of the current PET-pixel
+119       icen = (int) floor(cur_p->xi   - dimension.xstart+.5);
+120       jcen = (int) floor(cur_p->dist - dimension.ystart+.5);
+121 
+122       // get the uper and lower extend of the quadrangle in x
+123       iupp = (int)floor(quad.xmax - (double)icen + 0.5)+1;
+124       ilow = (int)floor(quad.xmin - (double)icen + 0.5);
+125 
+126       // get the uper and lower extend of the quadrangle in x
+127       jupp = (int)floor(quad.ymax - (double)jcen + 0.5)+1;
+128       jlow = (int)floor(quad.ymin - (double)jcen + 0.5);
+129 
+130       maxarr=0.0;
+131       totweight = 0.0;
+132       // go over the extend in x
+133       for (ii=ilow;ii<iupp;ii++)
+134         {
+135           // go over the extend in x
+136           for (jj=jlow;jj<jupp;jj++)
+137             {
+138 
+139               // get the coordinates of the current output pixel
+140               stpi = icen+ii;
+141               stpj = jcen+jj;
+142 
+143               // check whether the current output pixel is within
+144               // the stamp image; continue if not
+145               if ((stpi>=dimension.xsize)||(stpi<0)
+146                   ||(stpj>=dimension.ysize)||(stpj<0))
+147                 continue;
+148 
+149               // get the area which falls onto the current output pixel
+150               arr = boxer(stpi,stpj,quad.x,quad.y);
+151 
+152               if (arr > 0.0)
+153                 {
+154                   // get the already existing counts and weights
+155                   stpc = gsl_matrix_get(modvar->counts,stpi,stpj);
+156                   weig = gsl_matrix_get(modvar->weight,stpi,stpj);
+157 
+158                   // compute the new, total weight of the current output pixel
+159                   allweig = weig + arr*cur_p->weight;
+160 
+161                   // do a weighted sum of the count value at the current
+162                   // output pixel
+163                   value = (stpc*weig + arr*cur_p->model*cur_p->weight*jacob)
+164                     / (allweig);
+165 
+166                   // store the new count value and the new weight
+167                   gsl_matrix_set(modvar->counts,stpi,stpj,value);
+168                   gsl_matrix_set(modvar->weight,stpi,stpj,allweig);
+169                 }
+170             }
+171         }
+172     }
+173 
+174   // freep the temporary PET pixel
+175   free(tmp_p);
+176 
+177   // return the result
+178   return modvar;
+179 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_a507edca311317b7c885a40aff09a4e34}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!compute\_\-object\_\-ivar@{compute\_\-object\_\-ivar}}
+\index{compute\_\-object\_\-ivar@{compute\_\-object\_\-ivar}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{compute\_\-object\_\-ivar}]{\setlength{\rightskip}{0pt plus 5cm}void compute\_\-object\_\-ivar ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  const double {\em rdnoise}, \/  const double {\em exptime}, \/  const double {\em sky\_\-cps})}}
+\label{spc__optimum_8c_a507edca311317b7c885a40aff09a4e34}
+Function: compute\_\-model\_\-ivar The function computes for each PET pixel the associated inverse variance value. The input for variance and inverse variance are the model value, the contamination value, the constant sky background value and the readnoise. The computed inverse variance value is stored in the weight entry of the PET. The function also offers the possibility to shift the trace distance by a fixed amount.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]-\/ the PET table \item[{\em rdnoise}]-\/ the readnoise value \item[{\em exptime}]-\/ the exposure time \item[{\em sky\_\-cps}]-\/ the sky background \item[{\em xi\_\-shift}]-\/ shift in trace distance \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+257 {
+258   double variance;
+259   double sqr_rdnoise;
+260   double sqr_exptime;
+261   ap_pixel *cur_p;
+262 
+263   // square the readnoise
+264   sqr_rdnoise = rdnoise*rdnoise;
+265 
+266   // square the exposure time
+267   sqr_exptime = exptime*exptime;
+268 
+269   // go over each PET pixel
+270   for (cur_p = ap_p; cur_p->p_x != -1; cur_p++)
+271     {
+272         // compute the variance
+273         variance = ((cur_p->model + cur_p->contam + sky_cps) * exptime
+274                     + sqr_rdnoise) / sqr_exptime;
+275 
+276       // store the inverse variance
+277       cur_p->weight = 1.0/variance;
+278     }
+279 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_aa900417c8629b95d35d362ca481c5483}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!compute\_\-total\_\-ivar@{compute\_\-total\_\-ivar}}
+\index{compute\_\-total\_\-ivar@{compute\_\-total\_\-ivar}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{compute\_\-total\_\-ivar}]{\setlength{\rightskip}{0pt plus 5cm}void compute\_\-total\_\-ivar ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  const {\bf ap\_\-pixel} $\ast$ {\em bg\_\-p}, \/  const double {\em rdnoise}, \/  const double {\em exptime}, \/  const double {\em sky\_\-cps})}}
+\label{spc__optimum_8c_aa900417c8629b95d35d362ca481c5483}
+Function: compute\_\-value\_\-ivar The function computes for each PET pixel the associated inverse variance value. The input to derive the variance is the count value and the readnoise. The computed inverse variance value is stored in the weight entry of the PET. The function also offers the possibility to shift the trace distance by a fixed amount.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]-\/ the PET table \item[{\em rdnoise}]-\/ the readnoise value \item[{\em exptime}]-\/ the exposure time \item[{\em sky\_\-cps}]-\/ the sky background \item[{\em xi\_\-shift}]-\/ shift in trace distance \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+302 {
+303   double variance;
+304   double sqr_rdnoise;
+305   double sqr_exptime;
+306 
+307   ap_pixel *cur_p;
+308   const ap_pixel *bac_p;
+309 
+310   // square the readnoise
+311   sqr_rdnoise = rdnoise*rdnoise;
+312 
+313   // square the exposure time
+314   sqr_exptime = exptime*exptime;
+315 
+316   // go over each PET pixel
+317   bac_p = bg_p;
+318   for (cur_p = ap_p; cur_p->p_x != -1; cur_p++)
+319     {
+320       // check that the foreground and background
+321       // PET element describe the same pixel
+322       if (bac_p->x != cur_p->x || bac_p->y != cur_p->y)
+323         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+324                      "aXe_PET2SPC: Background PET and Object PET "
+325                      "have different pixel orders in PET's.\n");
+326       else
+327       // compute the variance
+328       variance = ((cur_p->count + bac_p->count + sky_cps) * exptime + sqr_rdnoise
+      ) / sqr_exptime;
+329 
+330       // store the inverse variance
+331       cur_p->weight = 1.0/variance;
+332 
+333       // increase the background pointer
+334       bac_p++;
+335     }
+336 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_a1dc967d6de4c0d294342ef5124da686e}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!get\_\-all\_\-dims@{get\_\-all\_\-dims}}
+\index{get\_\-all\_\-dims@{get\_\-all\_\-dims}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{get\_\-all\_\-dims}]{\setlength{\rightskip}{0pt plus 5cm}{\bf drzstamp\_\-dim} get\_\-all\_\-dims (const {\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  const {\bf ap\_\-pixel} $\ast$ {\em bg\_\-p}, \/  const {\bf beam} {\em actbeam}, \/  const int {\em dobck})}}
+\label{spc__optimum_8c_a1dc967d6de4c0d294342ef5124da686e}
+Function: get\_\-all\_\-dims The function derives the dimensional information on the foreground and, if available, on the background PET. The dimensions are compared, and in case of inequality an error is thrown. If the dimensions are equal, one of them is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]-\/ the table of aperture pixels \item[{\em bg\_\-p}]-\/ the table of background pixels \item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to compute the dimensions for \item[{\em dobck}]-\/ integer indicating background subtraction\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ the dimension structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+398 {
+399   drzstamp_dim ret;
+400   drzstamp_dim bck;
+401 
+402   // get the aperture PET diemnsion
+403   ret = get_resample_dims(ap_p, actbeam);
+404 
+405   if (dobck)
+406     {
+407       // get the background PET dimension
+408       bck = get_resample_dims(bg_p, actbeam);
+409 
+410       // check whether the two dimensions
+411       // are equal, throw an error if not
+412       if (ret.resolution != bck.resolution
+413           || ret.xstart  != bck.xstart
+414           || ret.ystart  != bck.ystart
+415           || ret.xsize   != bck.xsize
+416           || ret.ysize   != bck.ysize)
+417         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+418                      "aXe_PET2SPC: Background PET and Object PET "
+419                      "do not have the same dimension.\n");
+420     }
+421 
+422   // return one of the dimensional infos
+423   return ret;
+424 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_a48973ed3e4aa7384e047f4d75ee06582}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!get\_\-default\_\-dim@{get\_\-default\_\-dim}}
+\index{get\_\-default\_\-dim@{get\_\-default\_\-dim}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{get\_\-default\_\-dim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf drzstamp\_\-dim} get\_\-default\_\-dim ()}}
+\label{spc__optimum_8c_a48973ed3e4aa7384e047f4d75ee06582}
+Function: get\_\-default\_\-dim The function creates and returns the default dimension structure. The dewfault dimension structure contains a 0.0 in all fields.
+
+Returns: \begin{DoxyReturn}{Returns}
+res -\/ the dimension structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+523 {
+524   drzstamp_dim ret;
+525 
+526   // just set everything to zero
+527   ret.resolution=0.0;
+528   ret.xstart = 0;
+529   ret.ystart = 0;
+530   ret.xsize  = 0;
+531   ret.ysize  = 0;
+532 
+533   // return the result
+534   return ret;
+535 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_aef1186ac7f985de47fe8cd962a4381b8}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!get\_\-default\_\-modvar@{get\_\-default\_\-modvar}}
+\index{get\_\-default\_\-modvar@{get\_\-default\_\-modvar}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{get\_\-default\_\-modvar}]{\setlength{\rightskip}{0pt plus 5cm}{\bf drzstamp}$\ast$ get\_\-default\_\-modvar ()}}
+\label{spc__optimum_8c_aef1186ac7f985de47fe8cd962a4381b8}
+Function: get\_\-default\_\-modvar The function computes the default drizzle stamp structure, which in this case is used for tha calculation of the resampled variance and profile image.
+
+Returns: \begin{DoxyReturn}{Returns}
+res -\/ the resulting \hyperlink{structdrzstamp}{drzstamp} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+549 {
+550   gsl_matrix *counts;
+551   gsl_matrix *weight;
+552   drzstamp *res;
+553 
+554   res = (drzstamp *) malloc(sizeof(drzstamp));
+555 
+556   /* Create a dummy stamp image */
+557   counts = gsl_matrix_alloc(10,10);
+558   weight = gsl_matrix_alloc(10,10);
+559   /* Fill stamp with 0.0 values */
+560   gsl_matrix_set_all(counts, 0.0);
+561   gsl_matrix_set_all(weight, 0.0);
+562 
+563   // fill the output
+564   res->counts = counts;
+565   res->weight = weight;
+566 
+567   // return the output
+568   return res;
+569 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_a6f7e58438e5ed0d86dcaa2f170db30c9}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!get\_\-default\_\-weight@{get\_\-default\_\-weight}}
+\index{get\_\-default\_\-weight@{get\_\-default\_\-weight}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{get\_\-default\_\-weight}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ get\_\-default\_\-weight ()}}
+\label{spc__optimum_8c_a6f7e58438e5ed0d86dcaa2f170db30c9}
+
+
+
+\begin{DoxyCode}
+573 {
+574   gsl_matrix *res;
+575 
+576   res = gsl_matrix_alloc(10,10);
+577   gsl_matrix_set_all(res, 0.0);
+578 
+579   // return the output
+580   return res;
+581 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_a925a44a925643f7770807b6352ae5109}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!get\_\-resample\_\-dims@{get\_\-resample\_\-dims}}
+\index{get\_\-resample\_\-dims@{get\_\-resample\_\-dims}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{get\_\-resample\_\-dims}]{\setlength{\rightskip}{0pt plus 5cm}{\bf drzstamp\_\-dim} get\_\-resample\_\-dims (const {\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  const {\bf beam} {\em actbeam})}}
+\label{spc__optimum_8c_a925a44a925643f7770807b6352ae5109}
+Function: get\_\-resample\_\-dims The function parses through a PET table and determines the dimension of the image in the coordinates trace distance -\/ cross-\/dispersion direction. Those dimensions are stored in a special structure and returned to the calling routine.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]-\/ the table of aperture pixels \item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to compute the dimensions for\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ the dimension structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+444 {
+445   drzstamp_dim ret;
+446 
+447   const ap_pixel *cur_p;
+448 
+449   int i_xint, i_dist;
+450   int imin_xint=0, imin_dist=0;
+451   int imax_xint=0, imax_dist=0;
+452 
+453   int npixel = 0;
+454 
+455   // immediately return empty PET's
+456   if (ap_p==NULL)
+457     return get_default_dim();
+458 
+459   // set the tmp pixel to the table start
+460   cur_p = ap_p;
+461 
+462   // initialize some relevant numbers
+463   // based on the first pixel
+464   i_xint = floor(cur_p->xi   + 0.5);
+465   i_dist = floor(cur_p->dist + 0.5);
+466   imin_xint = i_xint;
+467   imax_xint = i_xint;
+468   imin_dist = i_dist;
+469   imax_dist = i_dist;
+470 
+471   // go over all pixels, check
+472   // for new MIN's ans MAX's
+473   for (cur_p = ap_p; cur_p->p_x != -1; cur_p++)
+474     {
+475       // Skip the pixel if it was not actually used
+476       if (fabs(cur_p->dist)>actbeam.width+.5)
+477         continue;
+478 
+479       // compute the rounded value in (x,y)
+480       i_xint = floor(cur_p->xi   + 0.5);
+481       i_dist = floor(cur_p->dist + 0.5);
+482 
+483       // check for extrema in x
+484       imin_xint = MIN(imin_xint, i_xint);
+485       imax_xint = MAX(imax_xint, i_xint);
+486 
+487       // check for extrema in y
+488       imin_dist = MIN(imin_dist, i_dist);
+489       imax_dist = MAX(imax_dist, i_dist);
+490 
+491       // enhance the pixel counter
+492       npixel++;
+493     }
+494 
+495 
+496   // in case there were no valid pixels,
+497   // return a dummy structure
+498   if (!npixel)
+499     return get_default_dim();
+500 
+501   // fill the structure with the correct values
+502   ret.resolution = 1.0;
+503   ret.xstart     = imin_xint - NSPARE_PIX;
+504   ret.ystart     = imin_dist - NSPARE_PIX;
+505   ret.xsize      = imax_xint - imin_xint + 2 * NSPARE_PIX;
+506   ret.ysize      = imax_dist - imin_dist + 2 * NSPARE_PIX;
+507 
+508   // return the structure
+509   return ret;
+510 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_a1f6715d47ee4f6ff176974c14dc6401c}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!prepare\_\-inv\_\-variance@{prepare\_\-inv\_\-variance}}
+\index{prepare\_\-inv\_\-variance@{prepare\_\-inv\_\-variance}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{prepare\_\-inv\_\-variance}]{\setlength{\rightskip}{0pt plus 5cm}void prepare\_\-inv\_\-variance ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  {\bf ap\_\-pixel} $\ast$ {\em bg\_\-p}, \/  const int {\em dobck}, \/  const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  const double {\em exptime}, \/  const double {\em sky\_\-cps}, \/  const double {\em xi\_\-shift})}}
+\label{spc__optimum_8c_a1f6715d47ee4f6ff176974c14dc6401c}
+Function: prepare\_\-inv\_\-variance The function prepares the inverse model variances for a data set containing an \hyperlink{structobject}{object} and a background PET. This is done in subroutines which compute the theoretical inverse pixel variance following different methods for the \hyperlink{structobject}{object} and the background PET.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em ap\_\-p}]-\/ the \hyperlink{structobject}{object} PET table \item[{\em bg\_\-p}]-\/ the background PET table \item[{\em dobck}]-\/ integer indicating background subtraction \item[{\em conf}]-\/ the configuration structure \item[{\em exptime}]-\/ the exposure time \item[{\em sky\_\-cps}]-\/ the sky background \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+214 {
+215 
+216   if (dobck)
+217     {
+218       // shift both, the object and the background PET
+219       shift_tracelength(ap_p, xi_shift);
+220       shift_tracelength(bg_p, xi_shift);
+221 
+222       // compute the inverse variance for the object + background PET
+223       compute_total_ivar(bg_p, bg_p, conf->rdnoise, exptime, sky_cps);
+224     }
+225   else
+226     {
+227       // shift both, the object PET
+228       shift_tracelength(ap_p, xi_shift);
+229 
+230       // compute the inverse variance for the object PET
+231       compute_object_ivar(ap_p, conf->rdnoise, exptime, sky_cps);
+232     }
+233 }
+\end{DoxyCode}
+\hypertarget{spc__optimum_8c_aa3e8e6e9854df4de96ee44cbacfad4a8}{
+\index{spc\_\-optimum.c@{spc\_\-optimum.c}!shift\_\-tracelength@{shift\_\-tracelength}}
+\index{shift\_\-tracelength@{shift\_\-tracelength}!spc_optimum.c@{spc\_\-optimum.c}}
+\subsubsection[{shift\_\-tracelength}]{\setlength{\rightskip}{0pt plus 5cm}void shift\_\-tracelength ({\bf ap\_\-pixel} $\ast$ {\em ap\_\-p}, \/  const double {\em xi\_\-shift})}}
+\label{spc__optimum_8c_aa3e8e6e9854df4de96ee44cbacfad4a8}
+
+
+
+\begin{DoxyCode}
+183 {
+184   ap_pixel *cur_p;
+185 
+186   // go over each PET pixel
+187   for (cur_p = ap_p; cur_p->p_x != -1; cur_p++)
+188     {
+189       // apply a shift in trace distance
+190       cur_p->xi += xi_shift;
+191     }
+192 }
+\end{DoxyCode}

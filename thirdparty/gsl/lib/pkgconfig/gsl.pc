@@ -1,0 +1,11 @@
+prefix=/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/thirdparty/gsl
+exec_prefix=/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/thirdparty/gsl
+libdir=/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/thirdparty/gsl/lib
+includedir=/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/thirdparty/gsl/include
+GSL_CBLAS_LIB=-lgslcblas
+
+Name: GSL
+Description: GNU Scientific Library
+Version: 1.16+
+Libs: -L/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/thirdparty/gsl/lib -lgsl ${GSL_CBLAS_LIB} -lm -lm 
+Cflags: -I/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips_build/thirdparty/gsl/include

@@ -1,0 +1,617 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim
+END
+spce_binning.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_binning.c
+END
+fringe_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/fringe_utils.h
+END
+spce_binning.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_binning.h
+END
+drizzle_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/drizzle_utils.c
+END
+disp_conf.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/disp_conf.c
+END
+inout_aper.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/inout_aper.c
+END
+spc_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_utils.c
+END
+drizzle_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/drizzle_utils.h
+END
+trfit_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/trfit_utils.c
+END
+aXe_errors.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_errors.c
+END
+aXe_PETCONT.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_PETCONT.c
+END
+disp_conf.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/disp_conf.h
+END
+inout_aper.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/inout_aper.h
+END
+spc_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_utils.h
+END
+spce_is_in.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_is_in.c
+END
+trfit_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/trfit_utils.h
+END
+aXe_errors.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_errors.h
+END
+ipixcorr_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/ipixcorr_utils.c
+END
+spce_is_in.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_is_in.h
+END
+spc_fluxcube.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_fluxcube.c
+END
+aper_check.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aper_check.c
+END
+ipixcorr_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/ipixcorr_utils.h
+END
+spc_fluxcube.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_fluxcube.h
+END
+aper_check.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aper_check.h
+END
+spc_spc.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_spc.c
+END
+specmodel_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/specmodel_utils.c
+END
+spc_CD.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_CD.c
+END
+spc_spc.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_spc.h
+END
+aXe_DISPIMAGE.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_DISPIMAGE.c
+END
+spc_flatfield.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_flatfield.c
+END
+specmodel_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/specmodel_utils.h
+END
+spc_CD.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_CD.h
+END
+dirimage_model.c
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/dirimage_model.c
+END
+spc_flatfield.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_flatfield.h
+END
+aXe_STAMPS.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_STAMPS.c
+END
+dirimage_model.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/dirimage_model.h
+END
+aXe_GOL2AF.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_GOL2AF.c
+END
+spce_pathlength.c
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_pathlength.c
+END
+spce_output.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_output.c
+END
+spce_pathlength.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_pathlength.h
+END
+inima_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/inima_utils.c
+END
+spce_output.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_output.h
+END
+aXe_SEX2GOL.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_SEX2GOL.c
+END
+spc_wl_calib.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_wl_calib.c
+END
+inima_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/inima_utils.h
+END
+aXe_grism.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_grism.h
+END
+spc_wl_calib.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_wl_calib.h
+END
+spc_trace_functions.c
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_trace_functions.c
+END
+spc_trace_functions.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_trace_functions.h
+END
+spce_PET.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_PET.c
+END
+trace_conf.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/trace_conf.c
+END
+spc_sex.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_sex.c
+END
+spc_cfg.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_cfg.c
+END
+spce_PET.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_PET.h
+END
+trace_conf.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/trace_conf.h
+END
+spc_sex.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_sex.h
+END
+spc_cfg.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_cfg.h
+END
+nicback_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/nicback_utils.c
+END
+spc_driz.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_driz.c
+END
+aXe_PET2SPC.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_PET2SPC.c
+END
+spce_fitting.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_fitting.c
+END
+spc_resp.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_resp.c
+END
+aXe_DIRIMAGE.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_DIRIMAGE.c
+END
+disp_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/disp_utils.c
+END
+fringe_conf.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/fringe_conf.c
+END
+lm_eval.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/lm_eval.c
+END
+nicback_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/nicback_utils.h
+END
+model_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/model_utils.c
+END
+spc_driz.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_driz.h
+END
+spce_fitting.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_fitting.h
+END
+spc_resp.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_resp.h
+END
+disp_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/disp_utils.h
+END
+fringe_conf.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/fringe_conf.h
+END
+lm_eval.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/lm_eval.h
+END
+model_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/model_utils.h
+END
+crossdisp_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/crossdisp_utils.c
+END
+fringe_model.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/fringe_model.c
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/CMakeLists.txt
+END
+aper_conf.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aper_conf.c
+END
+aXe_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_utils.c
+END
+crossdisp_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/crossdisp_utils.h
+END
+fringe_model.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/fringe_model.h
+END
+spc_optimum.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_optimum.c
+END
+aper_conf.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aper_conf.h
+END
+aXe_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_utils.h
+END
+spc_optimum.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_optimum.h
+END
+spc_back.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_back.c
+END
+spc_model.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_model.c
+END
+spce_sect.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_sect.c
+END
+spc_back.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_back.h
+END
+drz2pet_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/drz2pet_utils.c
+END
+spc_model.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_model.h
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/README
+END
+lmmin.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/lmmin.c
+END
+spce_sect.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spce_sect.h
+END
+aXe_AF2PET.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/aXe_AF2PET.c
+END
+drz2pet_utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/drz2pet_utils.h
+END
+spc_extract.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_extract.c
+END
+lmmin.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/lmmin.h
+END
+spc_FITScards.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_FITScards.c
+END
+fringe_utils.c
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/fringe_utils.c
+END
+spc_FITScards.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/tips/!svn/ver/221/branches/tips_build/src/axesim/spc_FITScards.h
+END

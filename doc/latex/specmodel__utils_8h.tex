@@ -1,0 +1,1093 @@
+\hypertarget{specmodel__utils_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/specmodel\_\-utils.h File Reference}
+\label{specmodel__utils_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/specmodel\_\-utils.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/specmodel\_\-utils.h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structenergy__distrib}{energy\_\-distrib}
+\item 
+struct \hyperlink{structspectral__models}{spectral\_\-models}
+\item 
+struct \hyperlink{structfits__access}{fits\_\-access}
+\item 
+struct \hyperlink{structdirim__emission}{dirim\_\-emission}
+\item 
+struct \hyperlink{structobject__models}{object\_\-models}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespecmodelutils}{specmodelutils}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{specmodel__utils_8h_a00b4bcd06b2bd05ba6cfe10a4824fdd8}{SMODEL\_\-INTERP\_\-TYPE}~gsl\_\-interp\_\-linear
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structobject__models}{object\_\-models} $\ast$ \hyperlink{specmodel__utils_8h_a2683e0be35d7cfb48bb1950f84989643}{load\_\-object\_\-models} (const char object\_\-models\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structdirim__emission}{dirim\_\-emission} $\ast$$\ast$ \hyperlink{specmodel__utils_8h_af1be6583f4bbd24bf2c1b5af04645115}{load\_\-diremission\_\-list} (const char object\_\-models\_\-file\mbox{[}$\,$\mbox{]}, const int n\_\-models)
+\item 
+\hyperlink{structdirim__emission}{dirim\_\-emission} $\ast$ \hyperlink{specmodel__utils_8h_ae8d1f697cbeaf3c34e79b7728ca162c8}{load\_\-diremission} (const char object\_\-models\_\-file\mbox{[}$\,$\mbox{]}, const int n\_\-extension)
+\item 
+void \hyperlink{specmodel__utils_8h_ae180cf6fd252d1eae9ddd146f288f9b5}{free\_\-object\_\-models} (\hyperlink{structobject__models}{object\_\-models} $\ast$objmodels)
+\item 
+void \hyperlink{specmodel__utils_8h_a78ace28fa324d880ddc10324be32d053}{free\_\-dirim\_\-emission} (\hyperlink{structdirim__emission}{dirim\_\-emission} $\ast$diremission)
+\item 
+void \hyperlink{specmodel__utils_8h_a226591d5386a294bc4444add1a349bb3}{print\_\-object\_\-models} (const \hyperlink{structobject__models}{object\_\-models} $\ast$objmodels)
+\item 
+void \hyperlink{specmodel__utils_8h_a950dcbfa64fcf4397250929956649318}{print\_\-dirim\_\-emission} (const \hyperlink{structdirim__emission}{dirim\_\-emission} $\ast$diremission)
+\item 
+\hyperlink{structdirim__emission}{dirim\_\-emission} $\ast$ \hyperlink{specmodel__utils_8h_a152c924fc73a4302519e7407c958ef2e}{get\_\-dirim\_\-emission} (const \hyperlink{structobject__models}{object\_\-models} $\ast$objmodels, const int objspec)
+\item 
+int \hyperlink{specmodel__utils_8h_a2257600178b2705e1c92f6e45bf249a8}{has\_\-aperture\_\-dirim} (const \hyperlink{structobject__models}{object\_\-models} $\ast$objmodels, const \hyperlink{structobject}{object} $\ast$actobject)
+\item 
+double \hyperlink{specmodel__utils_8h_a90e8278f78014bbbaa595341f92cedb5}{get\_\-diremission\_\-value} (const \hyperlink{structdirim__emission}{dirim\_\-emission} $\ast$diremission, const double xpos, const double ypos)
+\item 
+double \hyperlink{specmodel__utils_8h_ae8cf51d73f2a4500a1ab657ac2563245}{bilin\_\-interp\_\-matrix} (const gsl\_\-matrix $\ast$modimage, const double x, const double y)
+\item 
+\hyperlink{structspectral__models}{spectral\_\-models} $\ast$ \hyperlink{specmodel__utils_8h_a815d1f785501fd2a9cc3f33a6a95c34d}{load\_\-spectral\_\-models} (const char spectral\_\-models\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structfits__access}{fits\_\-access} $\ast$ \hyperlink{specmodel__utils_8h_a5fd3ec3fb04fbdc2e1ce7ed627dbfc48}{access\_\-fits\_\-models} (const char fits\_\-models\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{specmodel__utils_8h_a72d7c5f0cb45632c1f130a2a60c196e0}{print\_\-spectral\_\-models} (const \hyperlink{structspectral__models}{spectral\_\-models} $\ast$smodels)
+\item 
+\hyperlink{structenergy__distrib}{energy\_\-distrib} $\ast$$\ast$ \hyperlink{specmodel__utils_8h_af32683a60bb4033ebb23eff38ca207fb}{load\_\-SED\_\-list} (const char spectral\_\-models\_\-file\mbox{[}$\,$\mbox{]}, const int n\_\-models)
+\item 
+\hyperlink{structenergy__distrib}{energy\_\-distrib} $\ast$ \hyperlink{specmodel__utils_8h_a5abd5876b6dbdab673e829168c3767fd}{load\_\-SED\_\-from\_\-fitsext} (const char spectral\_\-models\_\-file\mbox{[}$\,$\mbox{]}, fitsfile $\ast$s\_\-models)
+\item 
+int \hyperlink{specmodel__utils_8h_a9d5d7796fd3bc959d9ae8e6fda0939c8}{get\_\-num\_\-extensions} (const char spectral\_\-models\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{specmodel__utils_8h_aacf21452ac18d26013430240df196892}{free\_\-spectral\_\-models} (\hyperlink{structspectral__models}{spectral\_\-models} $\ast$smodels)
+\item 
+void \hyperlink{specmodel__utils_8h_a05bec4559d0ac39512725211cee1d2ff}{free\_\-fits\_\-access} (\hyperlink{structfits__access}{fits\_\-access} $\ast$m\_\-access)
+\item 
+void \hyperlink{specmodel__utils_8h_a3d7637e47bfd6e48404a6442cab35751}{free\_\-specmodels\_\-SEDs} (\hyperlink{structspectral__models}{spectral\_\-models} $\ast$smodels)
+\item 
+\hyperlink{structenergy__distrib}{energy\_\-distrib} $\ast$ \hyperlink{specmodel__utils_8h_a234518e70caa6622e95b73820fd03aa6}{get\_\-model\_\-sed} (const \hyperlink{structspectral__models}{spectral\_\-models} $\ast$spec\_\-mod, const int modspec)
+\item 
+\hyperlink{structenergy__distrib}{energy\_\-distrib} $\ast$ \hyperlink{specmodel__utils_8h_ab0006ea759b7141dcec257eba61910e2}{load\_\-model\_\-sed} (\hyperlink{structfits__access}{fits\_\-access} $\ast$m\_\-access, const int modspec)
+\item 
+void \hyperlink{specmodel__utils_8h_a90fff582cc9236b1457b8c9b757420a3}{move\_\-in\_\-fits} (\hyperlink{structfits__access}{fits\_\-access} $\ast$m\_\-access, const int targetHDU)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{specmodel__utils_8h_a00b4bcd06b2bd05ba6cfe10a4824fdd8}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!SMODEL\_\-INTERP\_\-TYPE@{SMODEL\_\-INTERP\_\-TYPE}}
+\index{SMODEL\_\-INTERP\_\-TYPE@{SMODEL\_\-INTERP\_\-TYPE}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{SMODEL\_\-INTERP\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define SMODEL\_\-INTERP\_\-TYPE~gsl\_\-interp\_\-linear}}
+\label{specmodel__utils_8h_a00b4bcd06b2bd05ba6cfe10a4824fdd8}
+
+
+\subsection{Function Documentation}
+\hypertarget{specmodel__utils_8h_a5fd3ec3fb04fbdc2e1ce7ed627dbfc48}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!access\_\-fits\_\-models@{access\_\-fits\_\-models}}
+\index{access\_\-fits\_\-models@{access\_\-fits\_\-models}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{access\_\-fits\_\-models}]{\setlength{\rightskip}{0pt plus 5cm}{\bf fits\_\-access}$\ast$ access\_\-fits\_\-models (const char {\em fits\_\-models\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{specmodel__utils_8h_a5fd3ec3fb04fbdc2e1ce7ed627dbfc48}
+Function: access\_\-fits\_\-models
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spectral\_\-models\_\-file}]-\/ pathname to the spectral models file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+model\_\-map -\/ the map of the models 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+480 {
+481   int f_status=0;
+482   //int n_models=0;
+483   fits_access * m_access;
+484 
+485   // allocate space for the spectral models structure
+486   m_access = (fits_access *)malloc(sizeof(fits_access));
+487 
+488   // copy the file name to the struct
+489   strcpy(m_access->fits_file, fits_models_file);
+490 
+491   // open the fits file
+492   // report any error
+493   fits_open_file (&m_access->fits_ptr, fits_models_file, READONLY, &f_status);
+494   if (f_status)
+495     {
+496       ffrprt (stderr, f_status);
+497       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+498                    "aXe_DISPIMAGE: " "Could not open file: %s",
+499                    fits_models_file);
+500     }
+501 
+502   // get the number of models
+503   m_access->n_modelHDU =  get_num_extensions(fits_models_file);
+504   m_access->act_hdu =  -1;
+505 
+506   // return the structure
+507   return m_access;
+508 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_ae8cf51d73f2a4500a1ab657ac2563245}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!bilin\_\-interp\_\-matrix@{bilin\_\-interp\_\-matrix}}
+\index{bilin\_\-interp\_\-matrix@{bilin\_\-interp\_\-matrix}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{bilin\_\-interp\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}double bilin\_\-interp\_\-matrix (const gsl\_\-matrix $\ast$ {\em modimage}, \/  const double {\em x}, \/  const double {\em y})}}
+\label{specmodel__utils_8h_ae8cf51d73f2a4500a1ab657ac2563245}
+Function: bilin\_\-interp\_\-matrix The function computes and returns the bilinear interpolated value of a given matrix at a given coordinate position. The algorithm was taken from the numerical recipes.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em modimage}]-\/ the direct emission model \item[{\em x}]-\/ the x-\/position \item[{\em y}]-\/ the y-\/position\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+value -\/ the interpolated value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+393 {
+394   int x_lower;
+395   int y_lower;
+396 
+397   double v1, v2, v3, v4;
+398   double t, u;
+399   
+400   double value;
+401 
+402   // get the indices of the 'lower'
+403   // pixel corner 
+404   x_lower = (int) x;
+405   y_lower = (int) y;
+406 
+407   // check whether a pixel center is directly hit
+408   if (fabs((float)x_lower-x) < 1.0e-06 && fabs((float)y_lower-y) < 1.0e-06)
+409     {
+410       // give the full pixel value
+411       value =  gsl_matrix_get(modimage, x_lower  , y_lower  );
+412     }
+413   else
+414     {
+415       // extract the matrix values at the corners surrounding
+416       // the requested interpolation position
+417       v1 = gsl_matrix_get(modimage, x_lower  , y_lower  );
+418       v2 = gsl_matrix_get(modimage, x_lower+1, y_lower  );
+419       v3 = gsl_matrix_get(modimage, x_lower+1, y_lower+1);
+420       v4 = gsl_matrix_get(modimage, x_lower  , y_lower+1);
+421       
+422       // compute the pixel offset
+423       // from the lower corner
+424       t = x - (float)x_lower;
+425       u = y - (float)y_lower;
+426 
+427       // compute the bi-linear interpolated value
+428       // (algorithm taken from 'Numerical Recipes'
+429       value = (1-t)*(1-u)*v1 + t*(1-u)*v2 + t*u*v3 + (1-t)*u*v4;
+430     }
+431 
+432   // return the interpolated value
+433   return value;
+434 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a78ace28fa324d880ddc10324be32d053}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!free\_\-dirim\_\-emission@{free\_\-dirim\_\-emission}}
+\index{free\_\-dirim\_\-emission@{free\_\-dirim\_\-emission}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{free\_\-dirim\_\-emission}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-dirim\_\-emission ({\bf dirim\_\-emission} $\ast$ {\em diremission})}}
+\label{specmodel__utils_8h_a78ace28fa324d880ddc10324be32d053}
+Function: free\_\-dirim\_\-emission The function frees all memory allocated in a direct emission \hyperlink{structobject}{object}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em diremission}]-\/ the direct emission model to free\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+180 {
+181   // free the matrix with the direct emission
+182   gsl_matrix_free(diremission->modimage);
+183 
+184   // free the whole structure
+185   free(diremission);
+186 
+187   // set the struct to NULL
+188   diremission = NULL;
+189 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a05bec4559d0ac39512725211cee1d2ff}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!free\_\-fits\_\-access@{free\_\-fits\_\-access}}
+\index{free\_\-fits\_\-access@{free\_\-fits\_\-access}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{free\_\-fits\_\-access}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-fits\_\-access ({\bf fits\_\-access} $\ast$ {\em m\_\-access})}}
+\label{specmodel__utils_8h_a05bec4559d0ac39512725211cee1d2ff}
+Function: free\_\-model\_\-access Releases the memory allocated in a model access structure
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em m\_\-access}]-\/ the model access structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+805 {
+806         int f_status=0;
+807 
+808         // close the fits file
+809         fits_close_file (m_access->fits_ptr, &f_status);
+810         if (f_status)
+811         {
+812                 ffrprt (stderr, f_status);
+813                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+814                                 "aXe_DISPIMAGE: " "Could not close file: %s",
+815                                 m_access->fits_file);
+816         }
+817 
+818         // free the structure
+819         free(m_access);
+820         m_access = NULL;
+821 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_ae180cf6fd252d1eae9ddd146f288f9b5}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!free\_\-object\_\-models@{free\_\-object\_\-models}}
+\index{free\_\-object\_\-models@{free\_\-object\_\-models}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{free\_\-object\_\-models}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-object\_\-models ({\bf object\_\-models} $\ast$ {\em objmodels})}}
+\label{specmodel__utils_8h_ae180cf6fd252d1eae9ddd146f288f9b5}
+Function: free\_\-object\_\-models The function frees all memory allocated in a \hyperlink{structobject}{object} model structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em objmodels}]-\/ the \hyperlink{structobject}{object} model structure to free\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+149 {
+150   int iii;
+151 
+152   // go over each model
+153   for (iii=0; iii < objmodels->n_models; iii++)
+154     {
+155       // free every model separately
+156       free_dirim_emission(objmodels->obj_list[iii]);
+157     }
+158 
+159   // free the rest
+160   free(objmodels->obj_list);
+161   free(objmodels);
+162 
+163   // set the structure to null
+164   objmodels = NULL;
+165 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a3d7637e47bfd6e48404a6442cab35751}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!free\_\-specmodels\_\-SEDs@{free\_\-specmodels\_\-SEDs}}
+\index{free\_\-specmodels\_\-SEDs@{free\_\-specmodels\_\-SEDs}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{free\_\-specmodels\_\-SEDs}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-specmodels\_\-SEDs ({\bf spectral\_\-models} $\ast$ {\em smodels})}}
+\label{specmodel__utils_8h_a3d7637e47bfd6e48404a6442cab35751}
+\hypertarget{specmodel__utils_8h_aacf21452ac18d26013430240df196892}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!free\_\-spectral\_\-models@{free\_\-spectral\_\-models}}
+\index{free\_\-spectral\_\-models@{free\_\-spectral\_\-models}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{free\_\-spectral\_\-models}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-spectral\_\-models ({\bf spectral\_\-models} $\ast$ {\em smodels})}}
+\label{specmodel__utils_8h_aacf21452ac18d26013430240df196892}
+Function: free\_\-spectral\_\-models Releases the memory allocated in a spectral models structure
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em smodels}]-\/ the spectral models structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+772 {
+773   int i=0;
+774 
+775   // go over all energy distributions
+776   for (i=0; i < smodels->n_models; i++)
+777     {
+778       // free the energy distribution
+779       free_enerdist(smodels->SEDlist[i]);
+780       smodels->SEDlist[i] = NULL;
+781     }
+782   
+783   // free the SED list
+784   free(smodels->SEDlist);
+785   smodels->SEDlist = NULL;
+786   
+787   // free the structure
+788   free(smodels);
+789   smodels = NULL;
+790 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a90e8278f78014bbbaa595341f92cedb5}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!get\_\-diremission\_\-value@{get\_\-diremission\_\-value}}
+\index{get\_\-diremission\_\-value@{get\_\-diremission\_\-value}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{get\_\-diremission\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-diremission\_\-value (const {\bf dirim\_\-emission} $\ast$ {\em diremission}, \/  const double {\em xpos}, \/  const double {\em ypos})}}
+\label{specmodel__utils_8h_a90e8278f78014bbbaa595341f92cedb5}
+Function: get\_\-diremission\_\-value The function computes the direct emission value for a given direct emission \hyperlink{structobject}{object} and coordinates. The coordinates are given in x-\/ and y-\/position with respect to the mean position of the direct emission \hyperlink{structobject}{object}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em diremission}]-\/ the direct emission model \item[{\em xpos}]-\/ the relative x-\/position \item[{\em ypos}]-\/ the relative y-\/position\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+value -\/ the emission value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+343 {
+344   double x_abs;
+345   double y_abs;
+346 
+347   double value=0.0;
+348 
+349   // compute the absolute positions
+350   // in the coordinate system
+351   // of the matrix
+352   x_abs = xpos + diremission->xmean;
+353   y_abs = ypos + diremission->ymean;
+354 
+355   //fprintf(stderr, " from x,y= % e,% e ",  x_abs, y_abs);
+356 
+357   // check whether the position
+358   // is outside the matrix
+359   if (x_abs < 0.0 || y_abs < 0.0
+360       || x_abs >= (float)(diremission->dim_x-1) || y_abs >= (float)(diremission->
+      dim_y-1))
+361     // assign 0.0
+362     {  
+363       //fprintf(stderr, "FIX %i,%i  % e,% e ", (int)x_abs, (int)y_abs, x_abs, y_a
+      bs);
+364       value = 0.0;
+365       //fprintf(stdout, "NI \n",  x_abs, y_abs);
+366     }
+367   else
+368     {  //  fprintf(stdout, "from x,y= %e,%e",  x_abs, y_abs);
+369     // assign the bilinear interpolated value
+370       value = bilin_interp_matrix(diremission->modimage, x_abs, y_abs);
+371       //fprintf(stdout, "IN \n",  x_abs, y_abs);
+372     }
+373   // return the value
+374   return value;
+375 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a152c924fc73a4302519e7407c958ef2e}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!get\_\-dirim\_\-emission@{get\_\-dirim\_\-emission}}
+\index{get\_\-dirim\_\-emission@{get\_\-dirim\_\-emission}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{get\_\-dirim\_\-emission}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirim\_\-emission}$\ast$ get\_\-dirim\_\-emission (const {\bf object\_\-models} $\ast$ {\em objmodels}, \/  const int {\em objspec})}}
+\label{specmodel__utils_8h_a152c924fc73a4302519e7407c958ef2e}
+Function: get\_\-dirim\_\-emission The function returns from a direct \hyperlink{structobject}{object} model the direct emission \hyperlink{structobject}{object} addressed by the index. The function translates from the \hyperlink{structobject}{object} index, which is in \mbox{[}1, n\_\-model\mbox{]} to the structure index in \mbox{[}0, n\_\-model-\/1\mbox{]}
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em objmodels}]-\/ the \hyperlink{structobject}{object} model structure \item[{\em objspec}]-\/ the 'index' of the desired direct emission model\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+dirim -\/ the desired direct emission model 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+248 {
+249   dirim_emission *dirim;
+250 
+251   if (objspec >  objmodels->n_models || objspec < 1)
+252     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+253                  "aXe_PETCONT: " "Direct emission model number %i does NOT exist!
+      ",
+254                  objspec);
+255 
+256   // extract the desired SED
+257   dirim = objmodels->obj_list[objspec-1];
+258 
+259   // return the SED
+260   return dirim;
+261 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a234518e70caa6622e95b73820fd03aa6}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!get\_\-model\_\-sed@{get\_\-model\_\-sed}}
+\index{get\_\-model\_\-sed@{get\_\-model\_\-sed}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{get\_\-model\_\-sed}]{\setlength{\rightskip}{0pt plus 5cm}{\bf energy\_\-distrib}$\ast$ get\_\-model\_\-sed (const {\bf spectral\_\-models} $\ast$ {\em spec\_\-mod}, \/  const int {\em modspec})}}
+\label{specmodel__utils_8h_a234518e70caa6622e95b73820fd03aa6}
+Function: get\_\-model\_\-sed Extracts and returns the desired model \hyperlink{structspectrum}{spectrum} from th model structure. Translates from the \hyperlink{structobject}{object} index \mbox{[}1, n\_\-models\mbox{]} to the spectral model structure index \mbox{[}0, n\_\-model-\/1\mbox{]}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em \hyperlink{structspectral__models}{spectral\_\-models}}]-\/ the spectral models structure \item[{\em modspec}]-\/ the index of the desired SED\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+839 {
+840   energy_distrib *sed;
+841 
+842   if (modspec >  spec_mod->n_models)
+843     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+844                  "aXe_PETCONT: " "Model number %i does NOT exist!",
+845                  modspec);
+846 
+847   // extract the desired SED
+848   sed = spec_mod->SEDlist[modspec-1];
+849 
+850   // return the SED
+851   return sed;
+852 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a9d5d7796fd3bc959d9ae8e6fda0939c8}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!get\_\-num\_\-extensions@{get\_\-num\_\-extensions}}
+\index{get\_\-num\_\-extensions@{get\_\-num\_\-extensions}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{get\_\-num\_\-extensions}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-num\_\-extensions (const char {\em spectral\_\-models\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{specmodel__utils_8h_a9d5d7796fd3bc959d9ae8e6fda0939c8}
+Function: get\_\-num\_\-extensions The function determines the number of extensions in the fits file. Here the primary extension does not count.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spectral\_\-models\_\-file}]-\/ pathname to the spectral models file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+n\_\-models -\/ the number of spectral models 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+717 {
+718   int n_ext=0;
+719   int n_models=0;
+720   //int i;
+721   int f_status=0;
+722 
+723 
+724   fitsfile *s_models;
+725 
+726   // open the fits file
+727   // report any error
+728   fits_open_file (&s_models, spectral_models_file, READONLY, &f_status);
+729   if (f_status)
+730     {
+731       ffrprt (stderr, f_status);
+732       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+733                    "aXe_DISPIMAGE: " "Could not open file: %s",
+734                    spectral_models_file);
+735     }
+736 
+737   // do until a fits error occurs
+738   while (!f_status)
+739     {
+740       // move one extension forward
+741       fits_movrel_hdu (s_models, 1, NULL, &f_status);
+742 
+743       // count up
+744       n_ext++;
+745     }
+746   
+747   // close the fits file
+748   fits_close_file (s_models, &f_status);
+749 
+750   // the zeroth extension
+751   // does nnot count!!
+752   n_models = n_ext - 1;
+753   
+754   // return the 
+755   return n_models;
+756 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a2257600178b2705e1c92f6e45bf249a8}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!has\_\-aperture\_\-dirim@{has\_\-aperture\_\-dirim}}
+\index{has\_\-aperture\_\-dirim@{has\_\-aperture\_\-dirim}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{has\_\-aperture\_\-dirim}]{\setlength{\rightskip}{0pt plus 5cm}int has\_\-aperture\_\-dirim (const {\bf object\_\-models} $\ast$ {\em objmodels}, \/  const {\bf object} $\ast$ {\em actobject})}}
+\label{specmodel__utils_8h_a2257600178b2705e1c92f6e45bf249a8}
+Function: has\_\-aperture\_\-dirim The function checks whether an \hyperlink{structobject}{object} has an associated direct emission structure or not. The corresponding boolean integer value is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em objmodels}]-\/ the \hyperlink{structobject}{object} models structure \item[{\em actobject}]-\/ the \hyperlink{structobject}{object} structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+has\_\-dirim -\/ boolean whether direct emission exists (=1) or not (=0) 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+277 {
+278   int has_dirim=0;
+279 
+280   // check whether the direct emission model
+281   // structure is defined
+282   if (objmodels)
+283     // check whether the object has beams
+284     if (actobject->nbeams > 0)
+285       // check whether the direct emission number makes sense
+286       if (actobject->beams[0].modimage > 0) //&& actobject->beams[0].modimage <= 
+      objmodels->n_models)
+287         // report an existing direct emission
+288         has_dirim = 1;
+289   
+290   // return the result
+291   return has_dirim;
+292 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_ae8d1f697cbeaf3c34e79b7728ca162c8}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!load\_\-diremission@{load\_\-diremission}}
+\index{load\_\-diremission@{load\_\-diremission}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{load\_\-diremission}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirim\_\-emission}$\ast$ load\_\-diremission (const char {\em object\_\-models\_\-file}\mbox{[}$\,$\mbox{]}, \/  const int {\em ext\_\-num})}}
+\label{specmodel__utils_8h_ae8d1f697cbeaf3c34e79b7728ca162c8}
+Function: load\_\-diremission The function loads one extension of a multi-\/extension fits file with emission model and creates a single direct emission \hyperlink{structobject}{object}. This \hyperlink{structobject}{object} is eventually returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em object\_\-models\_\-file}]-\/ the file with the \hyperlink{structobject}{object} model data \item[{\em ext\_\-num}]-\/ the extension number to load\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+diremission -\/ a direct emission model 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+115 {
+116   dirim_emission *diremission;
+117 
+118   // allocate memory for the structure
+119   diremission = (dirim_emission *) malloc(sizeof(dirim_emission));
+120 
+121   // load the image in the gsl
+122   diremission->modimage = FITSimage_to_gsl(object_models_file, ext_num, 1);
+123 
+124   // transfer the image dimension
+125   diremission->dim_x = (int)diremission->modimage->size1;
+126   diremission->dim_y = (int)diremission->modimage->size2;
+127 
+128   // compute and store the mean image coordinates
+129   diremission->xmean = (float)(diremission->dim_x-1) / 2.0;
+130   diremission->ymean = (float)(diremission->dim_y-1) / 2.0;
+131 
+132   // return the structure
+133   return diremission;
+134 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_af1be6583f4bbd24bf2c1b5af04645115}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!load\_\-diremission\_\-list@{load\_\-diremission\_\-list}}
+\index{load\_\-diremission\_\-list@{load\_\-diremission\_\-list}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{load\_\-diremission\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirim\_\-emission}$\ast$$\ast$ load\_\-diremission\_\-list (const char {\em object\_\-models\_\-file}\mbox{[}$\,$\mbox{]}, \/  const int {\em n\_\-models})}}
+\label{specmodel__utils_8h_af1be6583f4bbd24bf2c1b5af04645115}
+Function: load\_\-diremission\_\-list The function loads all the direct emission models given in a multi-\/extension fits file and creates a list of direct emission models. This list is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em object\_\-models\_\-file}]-\/ the file with the \hyperlink{structobject}{object} model data \item[{\em n\_\-models}]-\/ the number of \hyperlink{structobject}{object} models in the file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+obj\_\-list -\/ the list of direct emission models 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+78 {
+79   int i=0;
+80 
+81   dirim_emission **obj_list;
+82 
+83   // allocate space for the SED list
+84   obj_list = (dirim_emission **)malloc(n_models * sizeof(dirim_emission *));
+85 
+86   // go over the nuymber of models
+87   for (i=0; i < n_models; i++)
+88     {
+89       // load one model
+90       // the 'i + 2' is necessary due to the
+91       // different counting in cfitsio 
+92       obj_list[i] =  load_diremission(object_models_file, i+2);
+93     }
+94 
+95   // return the loaded structure
+96   return obj_list;
+97 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_ab0006ea759b7141dcec257eba61910e2}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!load\_\-model\_\-sed@{load\_\-model\_\-sed}}
+\index{load\_\-model\_\-sed@{load\_\-model\_\-sed}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{load\_\-model\_\-sed}]{\setlength{\rightskip}{0pt plus 5cm}{\bf energy\_\-distrib}$\ast$ load\_\-model\_\-sed ({\bf fits\_\-access} $\ast$ {\em m\_\-access}, \/  const int {\em modspec})}}
+\label{specmodel__utils_8h_ab0006ea759b7141dcec257eba61910e2}
+Function: load\_\-model\_\-sed Loads and returns the desired model \hyperlink{structspectrum}{spectrum} from the spectral model table. Translates from the \hyperlink{structobject}{object} index \mbox{[}1, n\_\-models\mbox{]} to the fits table index \mbox{[}2, n\_\-model+1\mbox{]} (taking into account the primary extension)
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em m\_\-access}]-\/ the model access structure \item[{\em modspec}]-\/ the index of the desired SED\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+869 {
+870         int nrel;
+871         int hdutype;
+872         int f_status=0;
+873 
+874         energy_distrib *sed;
+875 
+876         move_in_fits(m_access, modspec);
+877         /*
+878         // make sure the SED does exist
+879         if (modspec < 0 || modspec >  m_access->n_modelHDU)
+880                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+881                                 "aXe_DISPIMAGE: " "Model number %i does NOT exist
+      !",
+882                                 modspec);
+883 
+884         // if accessing the first time
+885         // we go to an absolute position
+886         if (m_access->act_hdu <0){
+887                 // move to the absolute HDU positions
+888                 fits_movabs_hdu(m_access->fits_ptr, modspec+1, &hdutype, &f_statu
+      s);
+889                 if (f_status) {
+890                         ffrprt (stderr, f_status);
+891                         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+892                                         "aXe_DISPIMAGE: " "Could not move to HDU 
+      %d in file: %s!",modspec+1, m_access->fits_file);
+893                     }
+894                 //fprintf (stdout,"In file: %s moving to HDU: %d.\n", m_access->f
+      its_file, m_access->act_hdu);
+895         }
+896         // move relative to the current position
+897         else{
+898                 // compute the relative move and jump there
+899                 nrel=modspec+1-m_access->act_hdu;
+900                 fits_movrel_hdu(m_access->fits_ptr, nrel,  &hdutype, &f_status);
+901                 if (f_status) {
+902                         ffrprt (stderr, f_status);
+903                         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+904                                         "aXe_DISPIMAGE: " "Could not move %d HDU'
+      s in file: %s!", nrel, m_access->fits_file);
+905                     }
+906                 //fprintf (stdout,"In file: %s moved relative: %d.\n",m_access->f
+      its_file, nrel);
+907         }
+908         // update the current HDU number
+909         m_access->act_hdu=modspec+1;
+910         */
+911 
+912     // load the energy distribution
+913         sed = load_SED_from_fitsext(m_access->fits_file, m_access->fits_ptr);
+914 
+915         // return the SED
+916         return sed;
+917 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a2683e0be35d7cfb48bb1950f84989643}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!load\_\-object\_\-models@{load\_\-object\_\-models}}
+\index{load\_\-object\_\-models@{load\_\-object\_\-models}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{load\_\-object\_\-models}]{\setlength{\rightskip}{0pt plus 5cm}{\bf object\_\-models}$\ast$ load\_\-object\_\-models (const char {\em object\_\-models\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{specmodel__utils_8h_a2683e0be35d7cfb48bb1950f84989643}
+Function: load\_\-object\_\-models The function loads all direct emission models stored in a mulit-\/extension fits image into a corresponding \hyperlink{structobject}{object} model structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em object\_\-models\_\-file}]-\/ the file with the \hyperlink{structobject}{object} model data\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+objmodels -\/ the \hyperlink{structobject}{object} model structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+35  {
+36   object_models *objmodels;
+37 
+38   int n_extent=0;
+39 
+40   // give feedback to the user
+41   fprintf (stdout, "aXe_PETCONT: Loading object models...", object_models_file);
+42 
+43   // allocate space for the direct emission structure
+44   objmodels = (object_models *)malloc(sizeof(object_models));
+45 
+46   // get the number of models
+47   n_extent = get_num_extensions(object_models_file);
+48 
+49   // load the list with the individual direct emission
+50   objmodels->obj_list = load_diremission_list(object_models_file, n_extent);
+51 
+52   // store the number of direct emission images
+53   objmodels->n_models =  n_extent;
+54 
+55   // report the number of models loaded
+56   fprintf (stdout,"%d models loaded.\n", objmodels->n_models);
+57 
+58   // return the list structure
+59   return objmodels;
+60 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a5abd5876b6dbdab673e829168c3767fd}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!load\_\-SED\_\-from\_\-fitsext@{load\_\-SED\_\-from\_\-fitsext}}
+\index{load\_\-SED\_\-from\_\-fitsext@{load\_\-SED\_\-from\_\-fitsext}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{load\_\-SED\_\-from\_\-fitsext}]{\setlength{\rightskip}{0pt plus 5cm}{\bf energy\_\-distrib}$\ast$ load\_\-SED\_\-from\_\-fitsext (const char {\em spectral\_\-models\_\-file}\mbox{[}$\,$\mbox{]}, \/  fitsfile $\ast$ {\em s\_\-models})}}
+\label{specmodel__utils_8h_a5abd5876b6dbdab673e829168c3767fd}
+Function: load\_\-SED\_\-from\_\-fitsext The function creates a energy distribution from the data stored in a fits file extension. The data must be stored in the columns \char`\"{}wavelength\char`\"{} and \char`\"{}flux\char`\"{}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spectral\_\-models\_\-file}]-\/ pathname to the spectral models file \item[{\em s\_\-models}]-\/ pointer to the fits file extension\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+sed -\/ the energy distribution created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+606 {
+607   int f_status=0;
+608   int anynul;
+609   long nrows=0;
+610   int colnum1;
+611   int colnum2;
+612   
+613   energy_distrib *sed=NULL;
+614   double *sed_wavs;
+615   double *sed_flux;
+616 
+617   // allocate memory for the energy distribution
+618   sed = (energy_distrib *) malloc(sizeof(energy_distrib));
+619 
+620   // get number of rows
+621   fits_get_num_rows (s_models, &nrows, &f_status);
+622   if (f_status) {
+623     ffrprt (stderr, f_status);
+624     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+625                  "load_SED_from_fitsext: "
+626                  "Could not determine the number of rows in"
+627                  " table %s",spectral_models_file);
+628   }
+629 
+630   // allocate memory for the data
+631   sed_wavs = (double *) malloc(nrows*sizeof(double));
+632   if (!sed_wavs) { 
+633     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+634                  "Memory allocation failed");
+635   }
+636   sed_flux = (double *) malloc(nrows*sizeof(double));
+637   if (!sed_flux) {
+638     aXe_message (aXe_M_ERROR, __FILE__, __LINE__,
+639                  "Memory allocation failed");
+640   }
+641 
+642   // get the column number for the wavelength
+643   fits_get_colnum (s_models, CASEINSEN, "WAV_NM", &colnum1, &f_status);
+644   if (f_status)
+645     {
+646       ffrprt (stderr, f_status);
+647       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+648                    "create_interp_ftable: "
+649                    "Could not determine column %s in "
+650                    " table %s", "WAV_NM", spectral_models_file);
+651     }
+652   // read the wavelength
+653   fits_read_col (s_models, TDOUBLE, colnum1, 1, 1, nrows, NULL, sed_wavs,
+654                     &anynul, &f_status);
+655   if (f_status)
+656     {
+657       ffrprt (stderr, f_status);
+658       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+659                    "load_SED_from_fitsext: "
+660                    "Could not read content of WAVELENGTH column "
+661                    " from BINARY table %s", spectral_models_file);
+662     }
+663 
+664   // get the column number for the flux
+665   fits_get_colnum (s_models, CASEINSEN, "FLUX", &colnum2, &f_status);
+666   if (f_status)
+667     {
+668       ffrprt (stderr, f_status);
+669       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+670                    "create_interp_ftable: "
+671                    "Could not determine column %s in "
+672                    " table %s", "FLUX", spectral_models_file);
+673     }
+674   // read the flux column 
+675   fits_read_col (s_models, TDOUBLE, colnum2, 1, 1, nrows, NULL, sed_flux,
+676                     &anynul, &f_status);
+677   if (f_status)
+678     {
+679       ffrprt (stderr, f_status);
+680       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+681                    "load_SED_from_fitsext: "
+682                    "Could not read content of FLUX column "
+683                    " from BINARY table %s", spectral_models_file);
+684     }
+685 
+686   // transfer the vector and length information
+687   // to the SED object
+688   sed->npoints    = nrows;
+689   sed->wavelength = sed_wavs ;
+690   sed->flux       = sed_flux;
+691 
+692   // allocate some structures for the interpolator
+693   sed->interp     = gsl_interp_alloc (SMODEL_INTERP_TYPE, (size_t)sed->npoints );
+      
+694   sed->accel      = gsl_interp_accel_alloc ();
+695 
+696   // initialize the iterpolator
+697   gsl_interp_init (sed->interp, sed->wavelength, sed->flux, (size_t)sed->npoints)
+      ;
+698 
+699   // return the energy distribution
+700   return sed;
+701 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_af32683a60bb4033ebb23eff38ca207fb}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!load\_\-SED\_\-list@{load\_\-SED\_\-list}}
+\index{load\_\-SED\_\-list@{load\_\-SED\_\-list}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{load\_\-SED\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf energy\_\-distrib}$\ast$$\ast$ load\_\-SED\_\-list (const char {\em spectral\_\-models\_\-file}\mbox{[}$\,$\mbox{]}, \/  const int {\em n\_\-models})}}
+\label{specmodel__utils_8h_af32683a60bb4033ebb23eff38ca207fb}
+Function: load\_\-SED\_\-list The function creates a list of energy distributions from data stored in several extensions of a fits file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spectral\_\-models\_\-file}]-\/ pathname to the spectral models file \item[{\em n\_\-models}]-\/ the number of spectral models in the file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+SEDlist -\/ the list of energy distributions 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+552 {
+553   int i;
+554   int f_status=0;
+555   int hdutype;
+556   energy_distrib **SEDlist;
+557   fitsfile *s_models;
+558 
+559   // allocate space for the SED list
+560   SEDlist = (energy_distrib **)malloc(n_models * sizeof(energy_distrib *));
+561 
+562   // open the fits file
+563   // report any error
+564   fits_open_file (&s_models, spectral_models_file, READONLY, &f_status);
+565   if (f_status)
+566     {
+567       ffrprt (stderr, f_status);
+568       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+569                    "aXe_PETCONT: " "Could not open file: %s",
+570                    spectral_models_file);
+571     }
+572   
+573   // go over all extensions
+574   for (i=0; i < n_models; i++)
+575     {
+576       // move to the right extension
+577       fits_movabs_hdu (s_models, i+2, &hdutype, &f_status);
+578 
+579       // load the energy distribution
+580       SEDlist[i] = load_SED_from_fitsext(spectral_models_file, s_models);
+581     }
+582 
+583   // close the fits file
+584   fits_close_file (s_models, &f_status);
+585 
+586   // return the SED list
+587   return SEDlist;
+588 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a815d1f785501fd2a9cc3f33a6a95c34d}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!load\_\-spectral\_\-models@{load\_\-spectral\_\-models}}
+\index{load\_\-spectral\_\-models@{load\_\-spectral\_\-models}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{load\_\-spectral\_\-models}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectral\_\-models}$\ast$ load\_\-spectral\_\-models (const char {\em spectral\_\-models\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{specmodel__utils_8h_a815d1f785501fd2a9cc3f33a6a95c34d}
+Function: load\_\-spectral\_\-models The function file a spectral models structure with models extracted from a fits file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spectral\_\-models\_\-file}]-\/ pathname to the spectral models file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+smodels -\/ the \hyperlink{structtracedata}{tracedata} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+450 {
+451   int n_models=0;
+452   spectral_models *smodels;
+453 
+454   // allocate space for the spectral models structure
+455   smodels = (spectral_models *)malloc(sizeof(spectral_models));
+456 
+457   // get the number of models
+458   n_models = get_num_extensions(spectral_models_file);
+459 
+460   // allocate space for the models
+461   //smodels->SEDlist = (energy_distrib **)malloc(n_models * sizeof(energy_distrib
+       *));
+462   smodels->SEDlist = load_SED_list(spectral_models_file, n_models);
+463   smodels->n_models =  n_models;
+464 
+465   // return the structure
+466   return smodels;
+467 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a90fff582cc9236b1457b8c9b757420a3}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!move\_\-in\_\-fits@{move\_\-in\_\-fits}}
+\index{move\_\-in\_\-fits@{move\_\-in\_\-fits}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{move\_\-in\_\-fits}]{\setlength{\rightskip}{0pt plus 5cm}void move\_\-in\_\-fits ({\bf fits\_\-access} $\ast$ {\em m\_\-access}, \/  const int {\em targetHDU})}}
+\label{specmodel__utils_8h_a90fff582cc9236b1457b8c9b757420a3}
+Function: move\_\-in\_\-fits Loads and returns the desired model \hyperlink{structspectrum}{spectrum} from the spectral model table. Translates from the \hyperlink{structobject}{object} index \mbox{[}1, n\_\-models\mbox{]} to the fits table index \mbox{[}2, n\_\-model+1\mbox{]} (taking into account the primary extension)
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em m\_\-access}]-\/ the model access structure \item[{\em targetHDU}]-\/ index of the target HDU\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+934 {
+935         int nrel;
+936         int hdutype;
+937         int f_status=0;
+938 
+939         // make sure the SED does exist
+940         if (targetHDU < 0 || targetHDU >  m_access->n_modelHDU)
+941                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+942                                 "aXe_DISPIMAGE: " "Can not move to HDU %i!",
+943                                 targetHDU);
+944 
+945         // if accessing the first time
+946         // we go to an absolute position
+947         if (m_access->act_hdu <0){
+948                 // move to the absolute HDU positions
+949                 fits_movabs_hdu(m_access->fits_ptr, targetHDU+1, &hdutype, &f_sta
+      tus);
+950                 if (f_status) {
+951                         ffrprt (stderr, f_status);
+952                         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+953                                         "aXe_DISPIMAGE: " "Could not move to HDU 
+      %d in file: %s!",targetHDU+1, m_access->fits_file);
+954                     }
+955                 //fprintf (stdout,"In file: %s moving to HDU: %d.\n", m_access->f
+      its_file, m_access->act_hdu);
+956         }
+957         // move relative to the current position
+958         else{
+959                 // compute the relative move and jump there
+960                 nrel=targetHDU+1-m_access->act_hdu;
+961                 fits_movrel_hdu(m_access->fits_ptr, nrel,  &hdutype, &f_status);
+962                 if (f_status) {
+963                         ffrprt (stderr, f_status);
+964                         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+965                                         "aXe_DISPIMAGE: " "Could not move %d HDU'
+      s in file: %s!", nrel, m_access->fits_file);
+966                     }
+967                 //fprintf (stdout,"In file: %s moved relative: %d.\n",m_access->f
+      its_file, nrel);
+968         }
+969         // update the current HDU number
+970         m_access->act_hdu=targetHDU+1;
+971 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a950dcbfa64fcf4397250929956649318}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!print\_\-dirim\_\-emission@{print\_\-dirim\_\-emission}}
+\index{print\_\-dirim\_\-emission@{print\_\-dirim\_\-emission}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{print\_\-dirim\_\-emission}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-dirim\_\-emission (const {\bf dirim\_\-emission} $\ast$ {\em diremission})}}
+\label{specmodel__utils_8h_a950dcbfa64fcf4397250929956649318}
+Function: print\_\-dirim\_\-emission The function prints a direct emission \hyperlink{structobject}{object}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em diremission}]-\/ the direct emission model to print\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+227 {
+228   fprintf(stdout, "dim_x: %i, dim_y: %i\n", diremission->dim_x, diremission->
+      dim_y);
+229   fprintf(stdout, "xmean: %f, ymean: %f\n", diremission->xmean, diremission->
+      ymean);
+230 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a226591d5386a294bc4444add1a349bb3}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!print\_\-object\_\-models@{print\_\-object\_\-models}}
+\index{print\_\-object\_\-models@{print\_\-object\_\-models}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{print\_\-object\_\-models}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-object\_\-models (const {\bf object\_\-models} $\ast$ {\em objmodels})}}
+\label{specmodel__utils_8h_a226591d5386a294bc4444add1a349bb3}
+Function: print\_\-object\_\-models The function prints a direct \hyperlink{structobject}{object} model structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em objmodels}]-\/ the \hyperlink{structobject}{object} model structure to 'print'\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+203 {
+204   int i;
+205   
+206   // go over each model
+207   for (i=0; i < objmodels->n_models; i++)
+208     {
+209       // print each model
+210       fprintf(stdout, "Model No.: %i\n", i);
+211       print_dirim_emission(objmodels->obj_list[i]);
+212     }
+213 }
+\end{DoxyCode}
+\hypertarget{specmodel__utils_8h_a72d7c5f0cb45632c1f130a2a60c196e0}{
+\index{specmodel\_\-utils.h@{specmodel\_\-utils.h}!print\_\-spectral\_\-models@{print\_\-spectral\_\-models}}
+\index{print\_\-spectral\_\-models@{print\_\-spectral\_\-models}!specmodel_utils.h@{specmodel\_\-utils.h}}
+\subsubsection[{print\_\-spectral\_\-models}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-spectral\_\-models (const {\bf spectral\_\-models} $\ast$ {\em smodels})}}
+\label{specmodel__utils_8h_a72d7c5f0cb45632c1f130a2a60c196e0}
+Function: print\_\-spectral\_\-models The function prints the content of a spectral models structure onto the screen
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em smodels}]-\/ the spectral models structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+523 {
+524   int i=0;
+525   int n=0;
+526 
+527   for (i=0; i < smodels->n_models; i++)
+528     {
+529       // print the model number
+530       fprintf(stdout,"Model number: %i\n", i);
+531 
+532       // print the model data
+533       for (n=0; n < smodels->SEDlist[i]->npoints; n++)
+534         fprintf(stdout,"%i Wavelength: %e, Flux: %e\n", n, smodels->SEDlist[i]->
+      wavelength[n], smodels->SEDlist[i]->flux[n]);
+535     }
+536 }
+\end{DoxyCode}

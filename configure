@@ -1,0 +1,12 @@
+#! /bin/bash
+
+
+# CMake wrapper (in place of autoconf)
+(cd build >/dev/null 2>&1 && cmake .. "$@")
+
+# CMake wrapper (in place of automake)
+ makefile="Makefile"
+if [ -f "$makefile" ] ; then
+(rm -f "$makefile")
+fi       
+echo -e '# CMake Wrapper Makefile\n\nSHELL := /bin/bash\nRM    := rm -rf\n\nall: ./build/Makefile\n\t@ $(MAKE) -C build\n\n./build/Makefile:\n\t@ (cd build >/dev/null 2>&1 && cmake ..)\n\ndistclean:\n\t@- (cd build >/dev/null 2>&1 && cmake .. >/dev/null 2>&1)\n\t@- $(MAKE) -C build clean || true\n\t@- $(RM) ./build/*\n\t@- $(RM) ./doc/*\n\t@- $(RM) ./*~\n\t@- $(RM) ./Makefile\n\nifeq ($(findstring distclean,$(MAKECMDGOALS)),)\n    $(MAKECMDGOALS): ./build/Makefile\n\t@ $(MAKE) -C build $(MAKECMDGOALS)\nendif\n' >> "$makefile"

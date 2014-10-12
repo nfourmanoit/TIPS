@@ -1,0 +1,580 @@
+\hypertarget{spc__flatfield_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-flatfield.c File Reference}
+\label{spc__flatfield_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-flatfield.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/spc\_\-flatfield.c}}
+}
+{\ttfamily \#include \char`\"{}spc\_\-flatfield.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__flatfield}{spc\_\-flatfield}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__flatfield_8c_ab649f643965f102de18156563d7e4485}{MAX\_\-FLATS}~10
+\item 
+\#define \hyperlink{spc__flatfield_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{SQR}(x)~((x)$\ast$(x))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{spc__flatfield_8c_ae2aa85ce31eaebd4dc92e346ec6c4a6c}{simulate\_\-flatfield} (\hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$const flat, double stdev)
+\item 
+\hyperlink{structpoly__cube__flatfield}{poly\_\-cube\_\-flatfield} $\ast$ \hyperlink{spc__flatfield_8c_a83750e7a1e9eaf61ee280a730786f115}{load\_\-flat\_\-poly\_\-cube} (char $\ast$fname)
+\item 
+double \hyperlink{spc__flatfield_8c_a453e895ac1865f71f8b5126a0bcfb519}{poly\_\-cube\_\-flatfield\_\-lambda} (const double lambda, const int x, const int y, \hyperlink{structpoly__cube__flatfield}{poly\_\-cube\_\-flatfield} $\ast$poly\_\-cube)
+\item 
+void \hyperlink{spc__flatfield_8c_ace74cc16d90b32b8af96da0408dc3c73}{free\_\-flat\_\-poly\_\-cube} (\hyperlink{structpoly__cube__flatfield}{poly\_\-cube\_\-flatfield} $\ast$poly\_\-cube)
+\item 
+static void \hyperlink{spc__flatfield_8c_a227e9ce54a81906562b5e061fb17ddc5}{flat\_\-poly\_\-func} (const double lambda, const int x, const int y, PIXEL\_\-T $\ast$const val, PIXEL\_\-T $\ast$const err, const \hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$const flat)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{spc__flatfield_8c_a1a2a238a4168103d4c9db69848e6fdd7}{load\_\-flatfield} (\hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$const flat, const char $\ast$const flat\_\-name)
+\item 
+gsl\_\-matrix $\ast$ \hyperlink{spc__flatfield_8c_a0229b077b2df672da892c786e598710f}{load\_\-flatfield\_\-errors} (\hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$const ff, const char $\ast$const flat\_\-name)
+\item 
+\hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$ \hyperlink{spc__flatfield_8c_a61ceaeabc2a6965c33467d72546bd725}{make\_\-poly\_\-flatfield} (const \hyperlink{structbeam}{beam} $\ast$const curbeam, const char $\ast$const flat\_\-name, const int order, const double coeffs\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{spc__flatfield_8c_a03bd2122ca164d01776dbba8f479b72a}{free\_\-poly\_\-flatfield} (\hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$flat)
+\item 
+static void \hyperlink{spc__flatfield_8c_ad05bdab9660f9325c11b117b254d42e1}{flat\_\-multi\_\-func} (const double lambda, const int x, const int y, PIXEL\_\-T $\ast$const val, PIXEL\_\-T $\ast$const err, const \hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$const flat)
+\item 
+\hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$ \hyperlink{spc__flatfield_8c_a51dc63c9e14b10df5c589cbf97eedd20}{make\_\-multi\_\-flatfield} (const \hyperlink{structbeam}{beam} $\ast$const curbeam, const int num\_\-flats, const double lambda, const char $\ast$const flat\_\-name,...)
+\item 
+void \hyperlink{spc__flatfield_8c_acac9d4bc28ad40bd261f407ea697811e}{free\_\-multi\_\-flatfield} (\hyperlink{structs__flatfield}{flatfield\_\-d} $\ast$flat)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__flatfield_8c_ab649f643965f102de18156563d7e4485}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!MAX\_\-FLATS@{MAX\_\-FLATS}}
+\index{MAX\_\-FLATS@{MAX\_\-FLATS}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{MAX\_\-FLATS}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-FLATS~10}}
+\label{spc__flatfield_8c_ab649f643965f102de18156563d7e4485}
+\hypertarget{spc__flatfield_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!SQR@{SQR}}
+\index{SQR@{SQR}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{SQR}]{\setlength{\rightskip}{0pt plus 5cm}\#define SQR(x)~((x)$\ast$(x))}}
+\label{spc__flatfield_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__flatfield_8c_ad05bdab9660f9325c11b117b254d42e1}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!flat\_\-multi\_\-func@{flat\_\-multi\_\-func}}
+\index{flat\_\-multi\_\-func@{flat\_\-multi\_\-func}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{flat\_\-multi\_\-func}]{\setlength{\rightskip}{0pt plus 5cm}static void flat\_\-multi\_\-func (const double {\em lambda}, \/  const int {\em x}, \/  const int {\em y}, \/  PIXEL\_\-T $\ast$const  {\em val}, \/  PIXEL\_\-T $\ast$const  {\em err}, \/  const {\bf flatfield\_\-d} $\ast$const  {\em flat})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__flatfield_8c_ad05bdab9660f9325c11b117b254d42e1}
+computes the relative efficiency of a pixel from a set of flatfields at various lambdas.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em lambda}]the wave length to assume \item[{\em x}]x coordinate of the pixel in question relative to the origin of the entire image \item[{\em y}]ditto for y \item[{\em flat}]pointer to the flatfielding structure containing information for the aperture \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+relative efficiency for (x,y) 
+\end{DoxyReturn}
+\begin{Desc}
+\item[\hyperlink{todo__todo000003}{Todo}]check if the interpolation is good at the borders of the lambda range \end{Desc}
+
+
+
+\begin{DoxyCode}
+356 {
+357   int i;
+358   double xvals[MAX_FLATS], yvals[MAX_FLATS];
+359   //gsl_interp_factory factory = gsl_interp_factory_cspline_natural;
+360   //gsl_interp_obj *interpolator;
+361   //gsl_interp_accel *accelerator;
+362   gsl_interp_accel *acc;
+363   gsl_spline *spline;
+364   double d_val;
+365   
+366   for (i = 0; i < flat->data.multi->num_flats; i++)
+367     {
+368       xvals[i] = flat->data.multi->lambdas[i];
+369       yvals[i] =
+370         gsl_matrix_get (flat->data.multi->flatfields[i],
+371                         x - flat->ll_x, y - flat->ll_y);
+372     }
+373   //interpolator = factory.create(xvals, yvals, flat->data.multi->num_flats); 
+374   //accelerator = gsl_interp_accel_new();
+375   //gsl_interp_eval_impl(interpolator, xvals, yvals, 
+376   //  lambda, accelerator, &d_val);
+377 
+378   acc = gsl_interp_accel_alloc ();
+379   spline =
+380     gsl_spline_alloc (gsl_interp_cspline, flat->data.multi->num_flats);
+381   gsl_spline_init (spline, xvals, yvals, flat->data.multi->num_flats);
+382   d_val = gsl_spline_eval (spline, lambda, acc);
+383   
+384   *val = (PIXEL_T) d_val;
+385   *err = 0;
+386 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_a227e9ce54a81906562b5e061fb17ddc5}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!flat\_\-poly\_\-func@{flat\_\-poly\_\-func}}
+\index{flat\_\-poly\_\-func@{flat\_\-poly\_\-func}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{flat\_\-poly\_\-func}]{\setlength{\rightskip}{0pt plus 5cm}static void flat\_\-poly\_\-func (const double {\em lambda}, \/  const int {\em x}, \/  const int {\em y}, \/  PIXEL\_\-T $\ast$const  {\em val}, \/  PIXEL\_\-T $\ast$const  {\em err}, \/  const {\bf flatfield\_\-d} $\ast$const  {\em flat})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{spc__flatfield_8c_a227e9ce54a81906562b5e061fb17ddc5}
+computes the relative efficiency of a pixel from a base flat field and a polynomial describing the wavelength dependence of the efficiency.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em lambda}]the wave length to assume \item[{\em x}]x coordinate of the pixel in question relative to the origin of the entire image \item[{\em y}]ditto for y \item[{\em flat}]pointer to the flatfielding structure containing information for the ture \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+relative efficiency for (x,y) 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+164 {
+165   int i;
+166   double *coeffs = flat->data.poly->poly_coeffs;
+167   double res = 0;
+168   
+169   for (i = flat->data.poly->poly_order; i > 0; i--)
+170     {
+171       res += coeffs[i];
+172       res *= lambda;
+173     }
+174   res += coeffs[0];
+175   //fprintf(stderr,"poly: %f %f\n",res,gsl_matrix_get(flat->data.poly->flatfield,
+      
+176   //  x-flat->ll_x, y-flat->ll_y));
+177   
+178   *val =
+179     res * gsl_matrix_get (flat->data.poly->flatfield, x - flat->ll_x,
+180                                 y - flat->ll_y);
+181   if (flat->data.poly->errors)
+182     {
+183       *err =
+184         gsl_matrix_get (flat->data.poly->errors, x - flat->ll_x,
+185                         y - flat->ll_y);
+186     }
+187   else
+188     {
+189       *err = 0;
+190     }
+191 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_ace74cc16d90b32b8af96da0408dc3c73}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!free\_\-flat\_\-poly\_\-cube@{free\_\-flat\_\-poly\_\-cube}}
+\index{free\_\-flat\_\-poly\_\-cube@{free\_\-flat\_\-poly\_\-cube}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{free\_\-flat\_\-poly\_\-cube}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-flat\_\-poly\_\-cube ({\bf poly\_\-cube\_\-flatfield} $\ast$ {\em poly\_\-cube})}}
+\label{spc__flatfield_8c_ace74cc16d90b32b8af96da0408dc3c73}
+Completely frees up the space allocated to a gsl\_\-matrix 
+\begin{DoxyParams}{Parameters}
+\item[{\em poly\_\-cube}]a pointer to a \hyperlink{structpoly__cube__flatfield}{poly\_\-cube\_\-flatfield} structure \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+134 {
+135   int i=0;
+136   
+137   if (poly_cube!=NULL) {
+138     for (i=0;i<poly_cube->poly_order;i++)
+139       gsl_matrix_free(poly_cube->coeffs[i]);
+140     free(poly_cube->coeffs);
+141     if (poly_cube) free(poly_cube);
+142     poly_cube=NULL;
+143   }
+144 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_acac9d4bc28ad40bd261f407ea697811e}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!free\_\-multi\_\-flatfield@{free\_\-multi\_\-flatfield}}
+\index{free\_\-multi\_\-flatfield@{free\_\-multi\_\-flatfield}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{free\_\-multi\_\-flatfield}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-multi\_\-flatfield ({\bf flatfield\_\-d} $\ast$ {\em flat})}}
+\label{spc__flatfield_8c_acac9d4bc28ad40bd261f407ea697811e}
+frees a flatfield consisting of multiple images and its assoicated data structures
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em flat}]the flatfield to free \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+472 {
+473   int i;
+474 
+475   for (i = 0; i < flat->data.multi->num_flats; i++)
+476     {
+477       gsl_matrix_free (flat->data.multi->flatfields[i]);
+478       if (flat->data.multi->errors[i])
+479         {
+480           gsl_matrix_free (flat->data.multi->errors[i]);
+481         }
+482     }
+483   free (flat->data.multi->flatfields);
+484   flat->data.multi->flatfields = NULL;
+485   free (flat->data.multi->errors);
+486   flat->data.multi->errors = NULL;
+487   free (flat->data.multi->lambdas);
+488   flat->data.multi->lambdas = NULL;
+489   free (flat->data.multi);
+490   flat->data.multi = NULL;
+491   free (flat);
+492   flat = NULL;
+493 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_a03bd2122ca164d01776dbba8f479b72a}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!free\_\-poly\_\-flatfield@{free\_\-poly\_\-flatfield}}
+\index{free\_\-poly\_\-flatfield@{free\_\-poly\_\-flatfield}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{free\_\-poly\_\-flatfield}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-poly\_\-flatfield ({\bf flatfield\_\-d} $\ast$ {\em flat})}}
+\label{spc__flatfield_8c_a03bd2122ca164d01776dbba8f479b72a}
+frees a polynom flatfield and its assoicated data structures
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em flat}]the flatfield to free \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+324 {
+325   gsl_matrix_free (flat->data.poly->flatfield);
+326   if (flat->data.poly->errors)
+327     {
+328       gsl_matrix_free (flat->data.poly->errors);
+329     }
+330   free (flat->data.poly->poly_coeffs);
+331   flat->data.poly->poly_coeffs = NULL;
+332   free (flat->data.poly);
+333   flat->data.poly = NULL;
+334   free (flat);
+335   flat = NULL;
+336 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_a83750e7a1e9eaf61ee280a730786f115}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!load\_\-flat\_\-poly\_\-cube@{load\_\-flat\_\-poly\_\-cube}}
+\index{load\_\-flat\_\-poly\_\-cube@{load\_\-flat\_\-poly\_\-cube}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{load\_\-flat\_\-poly\_\-cube}]{\setlength{\rightskip}{0pt plus 5cm}{\bf poly\_\-cube\_\-flatfield}$\ast$ load\_\-flat\_\-poly\_\-cube (char $\ast$ {\em fname})}}
+\label{spc__flatfield_8c_a83750e7a1e9eaf61ee280a730786f115}
+Load and return a gsl cube whose planes (z-\/direction) contain the coefficients of a polynomial of the form ff(i,j,lambda) = a0+a1$\ast$lambda+...
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fname}]the name of a flat cube to read and load\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a NULL terminated array of gsl\_\-matrix 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+51 {
+52   int i;
+53   int order = 0;
+54   poly_cube_flatfield *poly_cube;
+55     
+56   /* Getting the number of extension sin the file */
+57   order = FITSextnum(fname);
+58     
+59   /* Allocating the memory */
+60   poly_cube = (poly_cube_flatfield *) malloc(sizeof(poly_cube_flatfield));
+61   poly_cube->poly_order = order;
+62   poly_cube->coeffs = (gsl_matrix **) malloc(poly_cube->poly_order * sizeof(
+      gsl_matrix *));
+63   
+64   /* Load the FF coefficients, on eplane at a time */
+65   for (i=0;i<poly_cube->poly_order;i++)  
+66     {
+67       poly_cube->coeffs[i] = FITSimage_to_gsl (fname, i+1, 1);
+68     }
+69   /* Load the minimum and maximum wavelengths this cube applies to */
+70   poly_cube->wmin = get_float_from_keyword(fname, 1, "WMIN");
+71   poly_cube->wmax = get_float_from_keyword(fname, 1, "WMAX");
+72   
+73   return poly_cube;
+74 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_a1a2a238a4168103d4c9db69848e6fdd7}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!load\_\-flatfield@{load\_\-flatfield}}
+\index{load\_\-flatfield@{load\_\-flatfield}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{load\_\-flatfield}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ load\_\-flatfield ({\bf flatfield\_\-d} $\ast$const  {\em flat}, \/  const char $\ast$const  {\em flat\_\-name})}}
+\label{spc__flatfield_8c_a1a2a238a4168103d4c9db69848e6fdd7}
+loads (a part) of a flatfield file
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em flat}]a pointer to the flatfield descriptor \item[{\em flat\_\-name}]the name of the file containing the flat field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a gsl\_\-matrix containing the relative efficiencies for each pixel in the bbox defined in flat 
+\end{DoxyReturn}
+\begin{Desc}
+\item[\hyperlink{todo__todo000001}{Todo}]do real fits io \end{Desc}
+
+
+
+\begin{DoxyCode}
+205 {
+206   gsl_matrix *flat_pixels;
+207   
+208   if (!flat_name)
+209     {
+210       flat_pixels = simulate_flatfield (flat, 0.);
+211     }
+212   else
+213     {
+214       flat_pixels = NULL;
+215       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+216                    "FITS loading for flatfields not yet implemented");
+217     }
+218   return flat_pixels;
+219 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_a0229b077b2df672da892c786e598710f}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!load\_\-flatfield\_\-errors@{load\_\-flatfield\_\-errors}}
+\index{load\_\-flatfield\_\-errors@{load\_\-flatfield\_\-errors}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{load\_\-flatfield\_\-errors}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ load\_\-flatfield\_\-errors ({\bf flatfield\_\-d} $\ast$const  {\em ff}, \/  const char $\ast$const  {\em flat\_\-name})}}
+\label{spc__flatfield_8c_a0229b077b2df672da892c786e598710f}
+loads (a part) of the error extension from a flatfield file
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em flat}]a pointer to the flatfield function containing the bounding box \item[{\em flat\_\-name}]the name of the file containing the flat field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a gsl\_\-matrix containing the relative efficiencies for each pixel in the bbox defined in flat 
+\end{DoxyReturn}
+\begin{Desc}
+\item[\hyperlink{todo__todo000002}{Todo}]do real fits io \end{Desc}
+
+
+
+\begin{DoxyCode}
+234 {
+235   gsl_matrix *err_pixels;
+236   
+237   if (!flat_name)
+238     {
+239       int i, j;
+240       
+241       err_pixels =
+242         gsl_matrix_alloc (ff->data.poly->flatfield->size1,
+243                           ff->data.poly->flatfield->size2);
+244       for (i = 0; i < err_pixels->size1; i++)
+245         {
+246           for (j = 0; j < err_pixels->size2; j++)
+247             {
+248               //gsl_matrix_set(err_pixels, i, j, 
+249               //  1-gsl_matrix_get(ff->data.poly->flatfield, i, j));
+250               gsl_matrix_set (err_pixels, i, j, .01);
+251             }
+252         }
+253     }
+254   else
+255     {
+256       err_pixels = NULL;
+257       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+258                    "FITS loading for flatfields not yet implemented");
+259     }
+260   return err_pixels;
+261 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_a51dc63c9e14b10df5c589cbf97eedd20}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!make\_\-multi\_\-flatfield@{make\_\-multi\_\-flatfield}}
+\index{make\_\-multi\_\-flatfield@{make\_\-multi\_\-flatfield}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{make\_\-multi\_\-flatfield}]{\setlength{\rightskip}{0pt plus 5cm}{\bf flatfield\_\-d}$\ast$ make\_\-multi\_\-flatfield (const {\bf beam} $\ast$const  {\em curbeam}, \/  const int {\em num\_\-flats}, \/  const double {\em lambda}, \/  const char $\ast$const  {\em flat\_\-name}, \/   {\em ...})}}
+\label{spc__flatfield_8c_a51dc63c9e14b10df5c589cbf97eedd20}
+creates a descriptor for a flatfield with multiple flatfields at various wavelengths
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em curbeam}]the \hyperlink{structbeam}{beam} to create the flatfield for, with the bbox filled out (e.g., after \hyperlink{namespacespc__extract}{spc\_\-extract} has run) \item[{\em num\_\-flats}]the number of (lambda,flatfield) pairs \item[{\em lambda}](and the next num\_\-flats odd parameters) the wave length of the following flat field \item[{\em flat\_\-name}](and the next num\_\-flats even parameters) name of the flat field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an allocated flatfield descriptor 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+405 {
+406   flatfield_d *ff = malloc (sizeof (flatfield_d));
+407   va_list args;
+408   int i;
+409   
+410   if (num_flats < 3)
+411     {
+412       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+413                    "Number of flats must be" " larger than 3.");
+414     }
+415   if (num_flats > MAX_FLATS)
+416     {
+417       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+418                    "Too many flatfields." " Increase MAX_FLATS in "
+419                    __FILE__ " and recompile me.");
+420     }
+421   
+422   if (!ff)
+423     {
+424       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+425     }
+426   ff->ll_x = curbeam->bbox[0].x;
+427   ff->ll_y = curbeam->bbox[0].y;
+428   ff->w = curbeam->bbox[1].x - curbeam->bbox[0].x + 1;
+429   ff->h = curbeam->bbox[1].y - curbeam->bbox[0].y + 1;
+430   ff->func = flat_multi_func;
+431   
+432   ff->data.multi = malloc (sizeof (multi_flatfield));
+433   if (!ff->data.multi)
+434     {
+435       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+436     }
+437   ff->data.multi->num_flats = num_flats;
+438   ff->data.multi->errors = malloc (sizeof (gsl_matrix *) * num_flats);
+439   ff->data.multi->flatfields = malloc (sizeof (gsl_matrix *) * num_flats);
+440   ff->data.multi->lambdas = malloc (sizeof (double) * num_flats);
+441   if ((!ff->data.multi->errors) || (!ff->data.multi->flatfields)
+442       || (!ff->data.multi->lambdas))
+443     {
+444       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+445     }
+446   
+447   ff->data.multi->lambdas[0] = lambda;
+448   ff->data.multi->flatfields[0] = load_flatfield (ff, flat_name);
+449   ff->data.multi->errors[0] = NULL;
+450   va_start (args, flat_name);
+451   for (i = 1; i < num_flats; i++)
+452     {
+453       ff->data.multi->lambdas[i] = va_arg (args, double);
+454       ff->data.multi->flatfields[i] =
+455         load_flatfield (ff, va_arg (args, char *));
+456       ff->data.multi->errors[i] = NULL;
+457     }
+458   va_end (args);
+459   
+460   return ff;
+461 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_a61ceaeabc2a6965c33467d72546bd725}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!make\_\-poly\_\-flatfield@{make\_\-poly\_\-flatfield}}
+\index{make\_\-poly\_\-flatfield@{make\_\-poly\_\-flatfield}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{make\_\-poly\_\-flatfield}]{\setlength{\rightskip}{0pt plus 5cm}{\bf flatfield\_\-d}$\ast$ make\_\-poly\_\-flatfield (const {\bf beam} $\ast$const  {\em curbeam}, \/  const char $\ast$const  {\em flat\_\-name}, \/  const int {\em order}, \/  const double {\em coeffs}\mbox{[}$\,$\mbox{]})}}
+\label{spc__flatfield_8c_a61ceaeabc2a6965c33467d72546bd725}
+creates a descriptor for a flatfield with a single flat field and a polynomial wave length dependence, such that the efficiency at wavelength lambda is flat(x,y)$\ast$poly(lambda).
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em curbeam}]the \hyperlink{structbeam}{beam} to create the flatfield for, with the bbox filled out (e.g., after \hyperlink{namespacespc__extract}{spc\_\-extract} has run) \item[{\em flat\_\-name}]name of a flat field file \item[{\em order}]the order of the polynomial \item[{\em coeffs}]the coefficients of the polynomial (contains order+1 doubles) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an allocated flatfield descriptor 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+279 {
+280   flatfield_d *const ff = malloc (sizeof (flatfield_d));
+281   int i;
+282   
+283   if (!ff)
+284     {
+285       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+286     }
+287   
+288   ff->data.poly = malloc (sizeof (polynom_flatfield));
+289   if (!ff->data.poly)
+290     {
+291       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+292     }
+293   ff->data.poly->poly_order = order;
+294   ff->data.poly->poly_coeffs = malloc ((order + 1) * sizeof (double));
+295   if (!ff->data.poly->poly_coeffs)
+296     {
+297       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+298     }
+299   
+300   for (i = 0; i <= order; i++)
+301     {
+302       ff->data.poly->poly_coeffs[i] = coeffs[i];
+303     }
+304   ff->func = flat_poly_func;
+305   
+306   ff->ll_x = curbeam->bbox[0].x;
+307   ff->ll_y = curbeam->bbox[0].y;
+308   ff->w = curbeam->bbox[1].x - curbeam->bbox[0].x + 1;
+309   ff->h = curbeam->bbox[1].y - curbeam->bbox[0].y + 1;
+310   ff->data.poly->flatfield = load_flatfield (ff, flat_name);
+311   ff->data.poly->errors = load_flatfield_errors (ff, flat_name);
+312   
+313   return ff;
+314 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_a453e895ac1865f71f8b5126a0bcfb519}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!poly\_\-cube\_\-flatfield\_\-lambda@{poly\_\-cube\_\-flatfield\_\-lambda}}
+\index{poly\_\-cube\_\-flatfield\_\-lambda@{poly\_\-cube\_\-flatfield\_\-lambda}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{poly\_\-cube\_\-flatfield\_\-lambda}]{\setlength{\rightskip}{0pt plus 5cm}double poly\_\-cube\_\-flatfield\_\-lambda (const double {\em lambda}, \/  const int {\em x}, \/  const int {\em y}, \/  {\bf poly\_\-cube\_\-flatfield} $\ast$ {\em poly\_\-cube})}}
+\label{spc__flatfield_8c_a453e895ac1865f71f8b5126a0bcfb519}
+Evaluates and return the flatfielding value of pixel coordinates x,y and at wavelength lambda, using the field dependent polynomial description contained in a \hyperlink{structpoly__cube__flatfield}{poly\_\-cube\_\-flatfield} structure. Uses abs(lambda) for cosmetic reasons. If the sampled wavelength falls outside of the wmin$<$w$<$wmax range, then a warning is issued and no flat-\/field coefficient is computed, and 1.0 is returned \mbox{[}new version now returns the FF value at the closest known wavelength\mbox{]} 
+\begin{DoxyParams}{Parameters}
+\item[{\em lambda}]the wavelength \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+92 {
+93   int i;
+94   double ff=0.0;
+95   double w; /* nomalized wavelength */
+96 
+97     
+98   /* if ( (lambda>poly_cube->wmax) || (lambda<poly_cube->wmin) )
+99      {
+100      aXe_message (aXe_M_WARN4, __FILE__, __LINE__, "Sampled wavelengh (%f)"
+101      " is outside of FF cube (%f < ww < %f). Returning 1.0\n",lambda,poly_cube->w
+      min,poly_cube->wmax);
+102      w = 1.0;
+103      for (i=0;i<poly_cube->poly_order;i++) 
+104      {
+105      ff = ff + gsl_matrix_get(poly_cube->coeffs[i],x,y)*pow(w,i);
+106      }
+107      return ff;
+108      }*/
+109     
+110   w = (fabs(lambda) - poly_cube->wmin)/(poly_cube->wmax-poly_cube->wmin);
+111 
+112   if (lambda<poly_cube->wmin)
+113     {
+114       w = .0;
+115     }        
+116   if (lambda>poly_cube->wmax)
+117     {
+118       w = 1.0;
+119     }    
+120   
+121   for (i=0;i<poly_cube->poly_order;i++) 
+122     {
+123       ff = ff + gsl_matrix_get(poly_cube->coeffs[i],x,y)*pow(w,i);
+124     }
+125   return ff;
+126 }
+\end{DoxyCode}
+\hypertarget{spc__flatfield_8c_ae2aa85ce31eaebd4dc92e346ec6c4a6c}{
+\index{spc\_\-flatfield.c@{spc\_\-flatfield.c}!simulate\_\-flatfield@{simulate\_\-flatfield}}
+\index{simulate\_\-flatfield@{simulate\_\-flatfield}!spc_flatfield.c@{spc\_\-flatfield.c}}
+\subsubsection[{simulate\_\-flatfield}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-matrix$\ast$ simulate\_\-flatfield ({\bf flatfield\_\-d} $\ast$const  {\em flat}, \/  double {\em stdev})}}
+\label{spc__flatfield_8c_ae2aa85ce31eaebd4dc92e346ec6c4a6c}
+Creates a simulation of a flat field using random numbers. Use only for debugging. 
+
+
+\begin{DoxyCode}
+22 {
+23   int i, j;
+24   gsl_matrix *flat_pixels;
+25   
+26   gsl_rng *r = gsl_rng_alloc (gsl_rng_ran0);
+27   
+28   flat_pixels = gsl_matrix_alloc (flat->w, flat->h);
+29   for (i = 0; i < flat_pixels->size1; i++)
+30     {
+31       for (j = 0; j < flat_pixels->size2; j++)
+32         {
+33           gsl_matrix_set (flat_pixels, i, j,
+34                           1. + gsl_ran_gaussian (r, stdev));
+35         }
+36     }
+37   gsl_rng_free (r);
+38   
+39   return flat_pixels;
+40 }
+\end{DoxyCode}

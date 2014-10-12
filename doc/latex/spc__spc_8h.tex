@@ -1,0 +1,1714 @@
+\hypertarget{spc__spc_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-spc.h File Reference}
+\label{spc__spc_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-spc.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-spc.h}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include $<$fitsio.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-nan.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-sys.h$>$}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__spc}{spc\_\-spc}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{spc__spc_8h_af61a1a0b448a3583ed18f5a34076b974}{SPCTOL}~1.0e-\/5
+\item 
+\#define \hyperlink{spc__spc_8h_a7501ed6347cdbad890d6a0f2fc9a92ea}{RESP\_\-FUNC\_\-INTERP\_\-TYPE}~gsl\_\-interp\_\-linear
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{spc__spc_8h_a2b7693a22a9e1b6d287465b8bff189de}{allocate\_\-spectrum} (const int numbin)
+\item 
+void \hyperlink{spc__spc_8h_a5be6cea9695b1d36f979acac98009ff3}{free\_\-spectrum} (\hyperlink{structspectrum}{spectrum} $\ast$const spec)
+\item 
+void \hyperlink{spc__spc_8h_acae5c3e717ae1e9e19c97e6a688efae5}{fprintf\_\-spectrum} (FILE $\ast$output, const \hyperlink{structspectrum}{spectrum} $\ast$const sp)
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{spc__spc_8h_a9792a9c98d3cfae195b45055127a7af7}{subtract\_\-spectra} (\hyperlink{structspectrum}{spectrum} $\ast$a, \hyperlink{structspectrum}{spectrum} $\ast$b)
+\item 
+int \hyperlink{spc__spc_8h_abb978bc00496ea18cc7590c587133887}{get\_\-ID\_\-index\_\-to\_\-SPC} (char filename\mbox{[}$\,$\mbox{]}, char ID\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{spc__spc_8h_ab5f7914ef2b01f1f93a2f8ac400eeb7a}{add\_\-ID\_\-index\_\-to\_\-SPC} (char filename\mbox{[}$\,$\mbox{]}, char ID\mbox{[}$\,$\mbox{]}, int hdunum)
+\item 
+int \hyperlink{spc__spc_8h_ad938fc5086cc4fa9525e78360ad965af}{add\_\-ID\_\-to\_\-SPC} (char filename\mbox{[}$\,$\mbox{]}, int N, char ID\mbox{[}$\,$\mbox{]})
+\item 
+int \hyperlink{spc__spc_8h_aa9de3dbaee823cf4223edf572b5d95ae}{find\_\-ID\_\-in\_\-SPC} (char filename\mbox{[}$\,$\mbox{]}, char ID\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{spc__spc_8h_a04113a68250979dcf9b17544cf8edb33}{create\_\-SPC} (char filename\mbox{[}$\,$\mbox{]}, int overwrite)
+\item 
+int \hyperlink{spc__spc_8h_a4a3cfebfb9e8d0b9e17e8f87ab3a59e2}{get\_\-SPC\_\-colnum} (fitsfile $\ast$input, char colname\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{spc__spc_8h_afa47cc3a687d35d546ceec87d0f14f06}{add\_\-spectra\_\-to\_\-SPC} (char filename\mbox{[}$\,$\mbox{]}, \hyperlink{structspectrum}{spectrum} $\ast$obj\_\-spec, \hyperlink{structspectrum}{spectrum} $\ast$bck\_\-spec, \hyperlink{structspectrum}{spectrum} $\ast$sobj\_\-spec, int aperID, int beamID)
+\item 
+void \hyperlink{spc__spc_8h_af79a706e87b64ac8e177b70798e3b57e}{add\_\-data\_\-to\_\-SPC} (\hyperlink{structspectrum}{spectrum} $\ast$spec, char countcolname\mbox{[}$\,$\mbox{]}, char errorcolname\mbox{[}$\,$\mbox{]}, char weightcolname\mbox{[}$\,$\mbox{]}, char ID\mbox{[}$\,$\mbox{]}, char filename\mbox{[}$\,$\mbox{]}, int hdunum, long N)
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{spc__spc_8h_a3b09e9e958c00c75f26933bac7d0ffe8}{trim\_\-spectrum} (\hyperlink{structspectrum}{spectrum} $\ast$spc)
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{spc__spc_8h_ad92b28f006b157c32fd16f9cdb7b2c82}{empty\_\-counts\_\-spectrum\_\-copy} (\hyperlink{structspectrum}{spectrum} $\ast$a)
+\item 
+void \hyperlink{spc__spc_8h_a5985d31d3be091b7b8e151f940914392}{add\_\-ID\_\-to\_\-SPC\_\-opened} (fitsfile $\ast$output, int N, char ID\mbox{[}$\,$\mbox{]})
+\item 
+void \hyperlink{spc__spc_8h_ad5f7a3bb4b3128c780fbf22b97dfda64}{add\_\-spectra\_\-to\_\-SPC\_\-opened} (fitsfile $\ast$input, \hyperlink{structspectrum}{spectrum} $\ast$obj\_\-spec, \hyperlink{structspectrum}{spectrum} $\ast$bck\_\-spec, \hyperlink{structspectrum}{spectrum} $\ast$sobj\_\-spec, int aperID, int beamID)
+\item 
+void \hyperlink{spc__spc_8h_a0d937250aad5dea3bcebe04d66bbfa90}{add\_\-data\_\-to\_\-SPC\_\-opened} (\hyperlink{structspectrum}{spectrum} $\ast$spec, char countcolname\mbox{[}$\,$\mbox{]}, char errorcolname\mbox{[}$\,$\mbox{]}, char weightcolname\mbox{[}$\,$\mbox{]}, char ID\mbox{[}$\,$\mbox{]}, fitsfile $\ast$input, long N)
+\item 
+fitsfile $\ast$ \hyperlink{spc__spc_8h_a2d1c885838e3b2bd9f1fdb2f62cbceae}{create\_\-SPC\_\-opened} (char filename\mbox{[}$\,$\mbox{]}, int overwrite)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{spc__spc_8h_a7501ed6347cdbad890d6a0f2fc9a92ea}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!RESP\_\-FUNC\_\-INTERP\_\-TYPE@{RESP\_\-FUNC\_\-INTERP\_\-TYPE}}
+\index{RESP\_\-FUNC\_\-INTERP\_\-TYPE@{RESP\_\-FUNC\_\-INTERP\_\-TYPE}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{RESP\_\-FUNC\_\-INTERP\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define RESP\_\-FUNC\_\-INTERP\_\-TYPE~gsl\_\-interp\_\-linear}}
+\label{spc__spc_8h_a7501ed6347cdbad890d6a0f2fc9a92ea}
+\hypertarget{spc__spc_8h_af61a1a0b448a3583ed18f5a34076b974}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!SPCTOL@{SPCTOL}}
+\index{SPCTOL@{SPCTOL}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{SPCTOL}]{\setlength{\rightskip}{0pt plus 5cm}\#define SPCTOL~1.0e-\/5}}
+\label{spc__spc_8h_af61a1a0b448a3583ed18f5a34076b974}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__spc_8h_af79a706e87b64ac8e177b70798e3b57e}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!add\_\-data\_\-to\_\-SPC@{add\_\-data\_\-to\_\-SPC}}
+\index{add\_\-data\_\-to\_\-SPC@{add\_\-data\_\-to\_\-SPC}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{add\_\-data\_\-to\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-data\_\-to\_\-SPC ({\bf spectrum} $\ast$ {\em spec}, \/  char {\em countcolname}\mbox{[}$\,$\mbox{]}, \/  char {\em errorcolname}\mbox{[}$\,$\mbox{]}, \/  char {\em weightcolname}\mbox{[}$\,$\mbox{]}, \/  char {\em ID}\mbox{[}$\,$\mbox{]}, \/  char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em hdunum}, \/  long {\em N})}}
+\label{spc__spc_8h_af79a706e87b64ac8e177b70798e3b57e}
+Function: add\_\-data\_\-to\_\-SPC Function to add a specific \hyperlink{structspectrum}{spectrum} structure into specifically named columns of an existing SPC FITS file. If a column name is set to NULL then that particular data column is not written to the file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spec}]-\/ a pointer to an existing \hyperlink{structspectrum}{spectrum} structure \item[{\em coutncolname}]-\/ the name of the column to write spec.counts into \item[{\em errorcolname}]-\/ the name of the column to write spec.errors into \item[{\em weightcolname}]-\/ the name of the column to write spec.weights into \item[{\em ID}]-\/ the aperture/beam ID of this \hyperlink{structspectrum}{spectrum} \item[{\em filename}]-\/ the name of an existing SPC FITS table \item[{\em hdunum}]-\/ the number of the extension in the SPC FITS file to write the data to \item[{\em N}]-\/ the number of elements of the \hyperlink{structspectrum}{spectrum} to write to the table \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+948 {
+949   fitsfile *input;
+950   int f_status = 0, hdutype;
+951   int colnum;
+952   char colname[FLEN_KEYWORD];
+953   int index = -1;
+954 
+955   //#define DEBUGSPC
+956   //  Open the file for creating/appending
+957   fits_open_file (&input, filename, READWRITE, &f_status);
+958   if (f_status)
+959     {
+960       ffrprt (stderr, f_status);
+961       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+962                    "add_data_to_SPC: " "Could not open file:",
+963                    filename);
+964     }
+965   fits_movabs_hdu (input, hdunum, &hdutype, &f_status);
+966   if (f_status)
+967     {
+968       ffrprt (stderr, f_status);
+969       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+970                    "add_data_to_SPC: "
+971                    "Could not read extention %d from file: %s", hdunum,
+972                    filename);
+973     }
+974   if (hdutype != 2)
+975     {
+976       ffrprt (stderr, f_status);
+977       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+978                    "add_data_to_SPC: "
+979                    "Extension %i of %s is not a BINARY table", hdunum,
+980                    filename);
+981     }
+982 
+983   /* Row number containing the desired ID */
+984   index = 1;
+985 
+986   /* If there are no elements in the table to write then exit now */
+987   if (N==0) {
+988     fits_close_file (input, &f_status);
+989     if (f_status)
+990       {
+991         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+992                      "Error closing file: %s ", filename);
+993       }
+994     return;      
+995   }
+996 
+997   /* Writing count, error, weight, lambda, contam, dq */
+998   {
+999     double *array_error, *array_count, *array_weight, *array_lambda;
+1000     double *array_flux, *array_ferror, *array_contam;
+1001     int *array_dq;
+1002     int i;
+1003     spc_entry *pt = NULL;
+1004     
+1005     array_error = malloc (N * sizeof (double));
+1006     if (array_error == NULL)
+1007       {
+1008         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1009                      "add_data_to_SPC: Out of memory");
+1010       }
+1011     array_count = malloc (N * sizeof (double));
+1012     if (array_count == NULL)
+1013       {
+1014         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1015                      "add_data_to_SPC: Out of memory");
+1016       }
+1017     array_weight = malloc (N * sizeof (double));
+1018     if (array_weight == NULL)
+1019       {
+1020         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1021                      "add_data_to_SPC: Out of memory");
+1022       }
+1023     array_lambda = malloc (N * sizeof (double));
+1024     if (array_lambda == NULL)
+1025       {
+1026         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1027                      "add_data_to_SPC: Out of memory");
+1028       }
+1029     array_flux = malloc (N * sizeof (double));
+1030     if (array_flux == NULL)
+1031       {
+1032         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1033                      "add_data_to_SPC: Out of memory");
+1034       }
+1035     array_ferror = malloc (N * sizeof (double));
+1036     if (array_ferror == NULL)
+1037       {
+1038         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1039                      "add_data_to_SPC: Out of memory");
+1040       }
+1041     array_contam = malloc (N * sizeof (double));
+1042     if (array_contam == NULL)
+1043       {
+1044         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1045                      "add_data_to_SPC: Out of memory");
+1046       }
+1047     array_dq = malloc (N * sizeof (int));
+1048     if (array_dq == NULL)
+1049       {
+1050         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1051                      "add_data_to_SPC: Out of memory");
+1052       }
+1053     if (spec != NULL)
+1054       pt = spec->spec;
+1055     for (i = 0; i < N; i++)
+1056       {
+1057         if (spec != NULL)
+1058           {
+1059             array_lambda[i] = pt->lambda_mean;
+1060             array_count[i] = pt->count;
+1061             array_error[i] = pt->error;
+1062             array_weight[i] = pt->weight;
+1063             array_flux[i] = pt->flux;
+1064             array_ferror[i] = pt->ferror;
+1065             array_contam[i] = pt->contam;
+1066             array_dq[i] = pt->dq;
+1067           }
+1068         else
+1069           {
+1070             array_lambda[i] = GSL_NAN;
+1071             array_count[i] = GSL_NAN;
+1072             array_error[i] = GSL_NAN;
+1073             array_weight[i] = GSL_NAN;
+1074             array_flux[i] = GSL_NAN;
+1075             array_ferror[i] = GSL_NAN;
+1076             array_contam[i] = -1.0;
+1077             array_dq[i] = 0;
+1078           }
+1079         pt++;
+1080       }
+1081 
+1082     colnum = get_SPC_colnum (input, "LAMBDA");
+1083     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_lambda,
+1084                     &f_status);
+1085     if (f_status)
+1086       {
+1087         ffrprt (stderr, f_status);
+1088         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1089                      "add_data_to_SPC: "
+1090                      "Could not write to row %d, collumn %s (%d) in file %s ",
+1091                      index, "LAMBDA", colnum, filename);
+1092       }
+1093     
+1094     colnum = get_SPC_colnum (input, "FLUX");
+1095     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_flux,
+1096                     &f_status);
+1097     if (f_status)
+1098       {
+1099         ffrprt (stderr, f_status);
+1100         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1101                      "add_data_to_SPC: "
+1102                      "Could not write to row %d, collumn %s (%d) in file %s ",
+1103                      index, "FLUX", colnum, filename);
+1104       }
+1105     
+1106     colnum = get_SPC_colnum (input, "FERROR");
+1107     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_ferror,
+1108                     &f_status);
+1109     if (f_status)
+1110       {
+1111         ffrprt (stderr, f_status);
+1112         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1113                      "add_data_to_SPC: "
+1114                      "Could not write to row %d, collumn %s (%d) in file %s ",
+1115                      index, "FERROR", colnum, filename);
+1116       }
+1117     
+1118     colnum = get_SPC_colnum (input, "CONTAM");
+1119     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_contam,
+1120                     &f_status);
+1121     if (f_status)
+1122       {
+1123         ffrprt (stderr, f_status);
+1124         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1125                      "add_data_to_SPC: "
+1126                      "Could not write to row %d, collumn %s (%d) in file %s ",
+1127                      index, "CONTAM", colnum, filename);
+1128       }
+1129     
+1130     colnum = get_SPC_colnum (input, "DQ");
+1131     fits_write_col (input, TINT, colnum, index, 1, N, array_dq,
+1132                     &f_status);
+1133     if (f_status)
+1134       {
+1135         ffrprt (stderr, f_status);
+1136         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1137                      "add_data_to_SPC: "
+1138                      "Could not write to row %d, collumn %s (%d) in file %s ",
+1139                      index, "DQ", colnum, filename);
+1140       }
+1141 
+1142     /* Write the spec.counts data if the name of the column is defined */
+1143     if (countcolname != NULL)
+1144       {
+1145         colnum = get_SPC_colnum (input, countcolname);
+1146         fits_write_col (input, TDOUBLE, colnum, index, 1, N,
+1147                         array_count, &f_status);
+1148         if (f_status)
+1149           {
+1150             ffrprt (stderr, f_status);
+1151             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1152                          "add_data_to_SPC: "
+1153                          "Could not write to row %d, collumn %s (%d) in file"
+1154                          " %s ", index, countcolname, colnum,
+1155                          filename);
+1156           }
+1157       }
+1158 
+1159     /* Write the spec.errors data if the name of the column is defined */
+1160     if (errorcolname != NULL)
+1161       {
+1162         colnum = get_SPC_colnum (input, errorcolname);
+1163         fits_write_col (input, TDOUBLE, colnum, index, 1, N,
+1164                         array_error, &f_status);
+1165         if (f_status)
+1166           {
+1167             ffrprt (stderr, f_status);
+1168             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1169                          "add_data_to_SPC: "
+1170                          "Could not write %s to row %d, collumn %s (%d) in file"
+1171                          " %s ", errorcolname, index, colname,
+1172                          colnum, filename);
+1173           }
+1174       }
+1175     
+1176     /* Write the spec.weights data if the name of the column is defined */
+1177     if (weightcolname != NULL)
+1178       {
+1179         colnum = get_SPC_colnum (input, weightcolname);
+1180         fits_write_col (input, TDOUBLE, colnum, index, 1, N,
+1181                         array_weight, &f_status);
+1182         if (f_status)
+1183           {
+1184             ffrprt (stderr, f_status);
+1185             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1186                          "add_data_to_SPC: "
+1187                          "Could not write %s to row %d, collumn %s (%d) in file"
+1188                          " %s ", weightcolname, index, colname,
+1189                          colnum, filename);
+1190           }
+1191       }
+1192 
+1193 
+1194     free (array_count);
+1195     array_count = NULL;
+1196     free (array_error);
+1197     array_error = NULL;
+1198     free (array_weight);
+1199     array_weight = NULL;
+1200     free (array_lambda);
+1201     array_lambda = NULL;
+1202     free (array_flux);
+1203     array_flux = NULL;
+1204     free (array_ferror);
+1205     array_ferror = NULL;
+1206     free (array_contam);
+1207     array_contam = NULL;
+1208     free (array_dq);
+1209     array_dq = NULL;
+1210      }
+1211 
+1212   fits_close_file (input, &f_status);
+1213   if (f_status)
+1214     {
+1215       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1216                    "add_data_to_SPC: " "Error closing file: %s ",
+1217                    filename);
+1218     }
+1219 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a0d937250aad5dea3bcebe04d66bbfa90}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!add\_\-data\_\-to\_\-SPC\_\-opened@{add\_\-data\_\-to\_\-SPC\_\-opened}}
+\index{add\_\-data\_\-to\_\-SPC\_\-opened@{add\_\-data\_\-to\_\-SPC\_\-opened}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{add\_\-data\_\-to\_\-SPC\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-data\_\-to\_\-SPC\_\-opened ({\bf spectrum} $\ast$ {\em spec}, \/  char {\em countcolname}\mbox{[}$\,$\mbox{]}, \/  char {\em errorcolname}\mbox{[}$\,$\mbox{]}, \/  char {\em weightcolname}\mbox{[}$\,$\mbox{]}, \/  char {\em ID}\mbox{[}$\,$\mbox{]}, \/  fitsfile $\ast$ {\em input}, \/  long {\em N})}}
+\label{spc__spc_8h_a0d937250aad5dea3bcebe04d66bbfa90}
+Function: add\_\-data\_\-to\_\-SPC\_\-opened Function to add a specific \hyperlink{structspectrum}{spectrum} structure into specifically named columns of an existing opened SPC FITS file. If a column name is set to NULL then that particular data column is not written to the file.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em spec}]-\/ a pointer to an existing \hyperlink{structspectrum}{spectrum} structure \item[{\em coutncolname}]-\/ the name of the column to write spec.counts into \item[{\em errorcolname}]-\/ the name of the column to write spec.errors into \item[{\em weightcolname}]-\/ the name of the column to write spec.weights into \item[{\em ID}]-\/ the aperture/beam ID of this \hyperlink{structspectrum}{spectrum} \item[{\em input}]-\/ a pointer to an opened FITS file and HDU \item[{\em N}]-\/ the number of elements of the \hyperlink{structspectrum}{spectrum} to write to the table \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1310 {
+1311   int f_status = 0;
+1312   int colnum;
+1313   char colname[FLEN_KEYWORD];
+1314   int index = -1;
+1315   
+1316 
+1317   /* Row number containing the desired ID */
+1318   index = 1;
+1319   
+1320   /* If there are no elements in the table to write then exit now */
+1321   if (N==0)  return;     
+1322   
+1323   /* Writing count, error, weight, lambda */
+1324   {
+1325     double *array_error, *array_count, *array_weight, *array_lambda;
+1326     double *array_flux, *array_ferror, *array_contam, *array_dlambda;
+1327     int *array_dq;
+1328     int i;
+1329     spc_entry *pt = NULL;
+1330     
+1331     array_error = malloc (N * sizeof (double));
+1332     if (array_error == NULL)
+1333       {
+1334         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1335                      "add_data_to_SPC: Out of memory");
+1336       }
+1337     array_count = malloc (N * sizeof (double));
+1338     if (array_count == NULL)
+1339       {
+1340         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1341                      "add_data_to_SPC: Out of memory");
+1342       }
+1343     array_weight = malloc (N * sizeof (double));
+1344     if (array_weight == NULL)
+1345       {
+1346         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1347                      "add_data_to_SPC: Out of memory");
+1348       }
+1349     array_lambda = malloc (N * sizeof (double));
+1350     if (array_lambda == NULL)
+1351       {
+1352         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1353                      "add_data_to_SPC: Out of memory");
+1354       }
+1355     array_flux = malloc (N * sizeof (double));
+1356     if (array_flux == NULL)
+1357       {
+1358         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1359                      "add_data_to_SPC: Out of memory");
+1360       }
+1361     array_ferror = malloc (N * sizeof (double));
+1362     if (array_ferror == NULL)
+1363       {
+1364         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1365                      "add_data_to_SPC: Out of memory");
+1366       }
+1367     array_contam = malloc (N * sizeof (double));
+1368     if (array_contam == NULL)
+1369       {
+1370         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1371                      "add_data_to_SPC: Out of memory");
+1372       }
+1373     array_dlambda = malloc (N * sizeof (double));
+1374     if (array_dlambda == NULL)
+1375       {
+1376         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1377                      "add_data_to_SPC: Out of memory");
+1378       }
+1379     array_dq = malloc (N * sizeof (int));
+1380     if (array_dq == NULL)
+1381       {
+1382         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1383                      "add_data_to_SPC: Out of memory");
+1384       }
+1385     
+1386     if (spec != NULL)
+1387       pt = spec->spec;
+1388     for (i = 0; i < N; i++)
+1389       {
+1390         if (spec != NULL)
+1391           {
+1392             array_lambda[i] = pt->lambda_mean;
+1393             array_count[i] = pt->count;
+1394             array_error[i] = pt->error;
+1395             array_weight[i] = pt->weight;
+1396             array_flux[i] = pt->flux;
+1397             array_ferror[i] = pt->ferror;
+1398             array_contam[i] = pt->contam;
+1399             array_dlambda[i] = pt->dlambda;
+1400             array_dq[i] = (int) pt->dq;
+1401           }
+1402         else
+1403           {
+1404             array_lambda[i] = GSL_NAN;
+1405             array_count[i] = GSL_NAN;
+1406             array_error[i] = GSL_NAN;
+1407             array_weight[i] = GSL_NAN;
+1408             array_flux[i] = GSL_NAN;
+1409             array_ferror[i] = GSL_NAN;
+1410             array_contam[i] = -1.0;
+1411             array_dlambda[i] = GSL_NAN;
+1412             array_dq[i] = (int) 0;
+1413           }
+1414         
+1415         pt++;
+1416       }
+1417     
+1418     colnum = get_SPC_colnum (input, "LAMBDA");
+1419     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_lambda,
+1420                     &f_status);
+1421     if (f_status)
+1422       {
+1423         ffrprt (stderr, f_status);
+1424         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1425                      "add_data_to_SPC: "
+1426                      "Could not write to row %d, collumn %s (%d) in SPC file ",
+1427                      index, "LAMBDA", colnum);
+1428       }
+1429        
+1430     colnum = get_SPC_colnum (input, "FLUX");
+1431     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_flux,
+1432                     &f_status);
+1433     if (f_status)
+1434       {
+1435         ffrprt (stderr, f_status);
+1436         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1437                      "add_data_to_SPC: "
+1438                      "Could not write to row %d, collumn %s (%d) in SPC file ",
+1439                      index, "FLUX", colnum);
+1440       }
+1441        
+1442     colnum = get_SPC_colnum (input, "FERROR");
+1443     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_ferror,
+1444                     &f_status);
+1445     if (f_status)
+1446       {
+1447         ffrprt (stderr, f_status);
+1448         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1449                      "add_data_to_SPC: "
+1450                      "Could not write to row %d, collumn %s (%d) in SPC file ",
+1451                      index, "FERROR", colnum);
+1452       }
+1453     
+1454     colnum = get_SPC_colnum (input, "CONTAM");
+1455     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_contam,
+1456                     &f_status);
+1457     if (f_status)
+1458       {
+1459         ffrprt (stderr, f_status);
+1460         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1461                      "add_data_to_SPC: "
+1462                      "Could not write to row %d, collumn %s (%d) in SPC file ",
+1463                      index, "CONTAM", colnum);
+1464       }
+1465        
+1466 
+1467     // NEW for dlambda column 
+1468     colnum = get_SPC_colnum (input, "DLAMBDA");
+1469     fits_write_col (input, TDOUBLE, colnum, index, 1, N, array_dlambda,
+1470                     &f_status);
+1471     if (f_status)
+1472       {
+1473         ffrprt (stderr, f_status);
+1474         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1475                      "add_data_to_SPC: "
+1476                      "Could not write to row %d, collumn %s (%d) in SPC file ",
+1477                      index, "DLAMBDA", colnum);
+1478       }
+1479        
+1480     colnum = get_SPC_colnum (input, "DQ");
+1481     fits_write_col (input, TINT, colnum, index, 1, N, array_dq,
+1482                     &f_status);
+1483     if (f_status)
+1484       {
+1485         ffrprt (stderr, f_status);
+1486         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1487                      "add_data_to_SPC: "
+1488                      "Could not write to row %d, collumn %s (%d) in SPC file ",
+1489                      index, "DQ", colnum);
+1490       }
+1491        
+1492     /* Write the spec.counts data if the name of the column is defined */
+1493     if (countcolname != NULL)
+1494       {
+1495         colnum = get_SPC_colnum (input, countcolname);
+1496         fits_write_col (input, TDOUBLE, colnum, index, 1, N,
+1497                         array_count, &f_status);
+1498         if (f_status)
+1499           {
+1500             ffrprt (stderr, f_status);
+1501             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1502                          "add_data_to_SPC: "
+1503                          "Could not write to row %d, collumn %s (%d) in SPC file"
+      
+1504                          " %s ", index, countcolname, colnum);                           
+          
+1505           }
+1506       }
+1507     
+1508     /* Write the spec.errors data if the name of the column is defined */
+1509     if (errorcolname != NULL)
+1510       {
+1511         colnum = get_SPC_colnum (input, errorcolname);
+1512         fits_write_col (input, TDOUBLE, colnum, index, 1, N,
+1513                         array_error, &f_status);
+1514         if (f_status)
+1515           {
+1516             ffrprt (stderr, f_status);
+1517             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1518                          "add_data_to_SPC: "
+1519                          "Could not write %s to row %d, collumn %s (%d) in  SPC f
+      ile"
+1520                          , errorcolname, index, colname,
+1521                          colnum);
+1522           }
+1523       }
+1524        
+1525     /* Write the spec.weights data if the name of the column is defined */
+1526     if (weightcolname != NULL)
+1527       {
+1528         colnum = get_SPC_colnum (input, weightcolname);
+1529         fits_write_col (input, TDOUBLE, colnum, index, 1, N,
+1530                         array_weight, &f_status);
+1531         if (f_status)
+1532           {
+1533             ffrprt (stderr, f_status);
+1534             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1535                          "add_data_to_SPC: "
+1536                          "Could not write %s to row %d, collumn %s (%d) in SPC fi
+      le"
+1537                          , weightcolname, index, colname,
+1538                          colnum);
+1539           }
+1540       }
+1541 
+1542 
+1543     free (array_count);
+1544     array_count = NULL;
+1545     free (array_error);
+1546     array_error = NULL;
+1547     free (array_weight);
+1548     array_weight = NULL;
+1549     free (array_lambda);
+1550     array_lambda = NULL;
+1551     free (array_flux);
+1552     array_flux = NULL;
+1553     free (array_ferror);
+1554     array_ferror = NULL;
+1555     free (array_contam);
+1556     array_contam = NULL;
+1557     free (array_dlambda);
+1558     array_dlambda = NULL;    
+1559     free (array_dq);
+1560     array_dq = NULL;
+1561   }
+1562 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_ab5f7914ef2b01f1f93a2f8ac400eeb7a}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!add\_\-ID\_\-index\_\-to\_\-SPC@{add\_\-ID\_\-index\_\-to\_\-SPC}}
+\index{add\_\-ID\_\-index\_\-to\_\-SPC@{add\_\-ID\_\-index\_\-to\_\-SPC}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{add\_\-ID\_\-index\_\-to\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-ID\_\-index\_\-to\_\-SPC (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  char {\em ID}\mbox{[}$\,$\mbox{]}, \/  int {\em hdunum})}}
+\label{spc__spc_8h_ab5f7914ef2b01f1f93a2f8ac400eeb7a}
+Function: add\_\-ID\_\-index\_\-to\_\-SPC Add an HDU index keyword for \hyperlink{structbeam}{beam} IDdc into the first HDU of the FITS file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ a pointer to an array containing the name of an existing FITS file. \item[{\em ID}]-\/ a pointer to a char array containing the \hyperlink{structbeam}{beam} ID in the form \char`\"{}ID\%d\%c\char`\"{}. \item[{\em hdunum}]-\/ the index of the HDU containing this \hyperlink{structbeam}{beam}. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+681 {
+682   fitsfile *input;
+683   int f_status = 0, hdutype;
+684   char comment[FLEN_COMMENT];
+685 
+686   //  Open the file for creating/appending
+687   fits_open_file (&input, filename, READWRITE, &f_status);
+688   if (f_status)
+689     {
+690       ffrprt (stderr, f_status);
+691       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+692                    "add_ID_index_to_SPC: Could not open" " file:",
+693                    filename);
+694     }
+695   /* Move to first hdu */
+696   fits_movabs_hdu (input, 1, &hdutype, &f_status);
+697   if (f_status)
+698     {
+699       ffrprt (stderr, f_status);
+700       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+701                    "add_ID_index_to_SPC: "
+702                    "Could not read extention %d from file: %s", hdunum,
+703                    filename);
+704     }
+705   sprintf (comment, "HDU number for beam");
+706 
+707   fits_write_key_lng (input, ID, (long) hdunum, comment, &f_status);
+708   if (f_status)
+709     {
+710       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+711                    "add_ID_index_to_SPC: Error adding index keyword %s ",
+712                    ID);
+713     }
+714 
+715   fits_close_file (input, &f_status);
+716   if (f_status)
+717     {
+718       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+719                    "add_ID_index_to_SPC: Error closing file: %s ",
+720                    filename);
+721     }
+722 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_ad938fc5086cc4fa9525e78360ad965af}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!add\_\-ID\_\-to\_\-SPC@{add\_\-ID\_\-to\_\-SPC}}
+\index{add\_\-ID\_\-to\_\-SPC@{add\_\-ID\_\-to\_\-SPC}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{add\_\-ID\_\-to\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}int add\_\-ID\_\-to\_\-SPC (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em N}, \/  char {\em ID}\mbox{[}$\,$\mbox{]})}}
+\label{spc__spc_8h_ad938fc5086cc4fa9525e78360ad965af}
+Function: add\_\-ID\_\-to\_\-SPC A function that add a binary table extension to an existing SPC FITS file. The table is appended to the FITS file. No check is performed to ensure that the named extension does not exist already. This function is meant to initialize a FITS binary table which will be used to store the content of an \hyperlink{structspectrum}{spectrum} structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ The name of the file to open \item[{\em N}]-\/ The size of the vectors in this table (i.e. number of pixels in the \hyperlink{structap__pixel}{ap\_\-pixel} structure). \item[{\em extname}]-\/ The name to give to this extension\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+hdunum -\/ the number of the HDU that was just created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+614 {
+615  
+616   fitsfile *output;
+617   int f_status = 0;
+618   int hdunum = 0, hdutype;
+619 
+620   //  Open the file for creating/appending
+621   fits_open_file (&output, filename, READWRITE, &f_status);
+622   if (f_status)
+623     {
+624       ffrprt (stderr, f_status);
+625       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+626                    "add_new_to_SPC: Could not open" " file: %s",
+627                    filename);
+628     }
+629   fits_get_num_hdus (output, &hdunum, &f_status);
+630   if (f_status)
+631     {
+632       ffrprt (stderr, f_status);
+633       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+634                    "add_new_to_SPC: Could not get"
+635                    " number of HDU from:", filename);
+636     }
+637   /* Move to last HDU */
+638   fits_movabs_hdu (output, hdunum, &hdutype, &f_status);
+639   if (f_status)
+640     {
+641       ffrprt (stderr, f_status);
+642       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+643                    "add_new_to_SPC: Could not mov"
+644                    " to HDU number %d in file: %s", hdunum, filename);
+645     }
+646   /* Get current HDU number */
+647   fits_get_hdu_num (output, &hdunum);
+648   if (f_status)
+649     {
+650       ffrprt (stderr, f_status);
+651       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+652                    "add_new_to_SPC: Could not get"
+653                    " current HDU number from file: %s", filename);
+654     }
+655   
+656   add_ID_to_SPC_opened (output, N, ID);
+657   
+658   
+659   fits_close_file (output, &f_status);
+660   if (f_status)
+661     {
+662       ffrprt (stderr, f_status);
+663       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+664                    "add_new_to_SPC: Could not" " close file: %s",
+665                    filename);
+666     }
+667   return hdunum;
+668 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a5985d31d3be091b7b8e151f940914392}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!add\_\-ID\_\-to\_\-SPC\_\-opened@{add\_\-ID\_\-to\_\-SPC\_\-opened}}
+\index{add\_\-ID\_\-to\_\-SPC\_\-opened@{add\_\-ID\_\-to\_\-SPC\_\-opened}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{add\_\-ID\_\-to\_\-SPC\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-ID\_\-to\_\-SPC\_\-opened (fitsfile $\ast$ {\em output}, \/  int {\em N}, \/  char {\em ID}\mbox{[}$\,$\mbox{]})}}
+\label{spc__spc_8h_a5985d31d3be091b7b8e151f940914392}
+
+
+
+\begin{DoxyCode}
+454 {
+455   /*   struct Col_Descr SPCData[SPCCOL] = {
+456        {"ID", "60A", NULL},
+457        {"N", "I1", NULL},
+458        {"LAMBDA", "XXXE1", "ANGSTROM"},
+459        {"TCOUNT", "XXXE1", "COUNT"},
+460        {"BCOUNT", "XXXE1", "COUNT"},
+461        {"COUNT", "XXXE1", "COUNT"},
+462        {"TERROR", "XXXE1", "COUNT"},
+463        {"BERROR", "XXXE1", "COUNT"},
+464        {"ERROR", "XXXE1", "COUNT"},
+465        {"FLUX", "XXXE1", "PHYSICAL UNITS"},
+466        {"FERROR", "XXXE1", "PHYSICAL UNITS"},
+467        {"WEIGHT", "XXXE1", "PIXEL"},
+468        {"CONTAM", "XXXI1", "FLAG"}
+469        };
+470 */
+471   struct Col_Descr SPCData[SPCCOL] = {
+472     {"ID", "60A", NULL},
+473     {"N", "I1", NULL},
+474     {"LAMBDA", "E1", "ANGSTROM"},
+475     {"TCOUNT", "E1", "COUNT"},
+476     {"BCOUNT", "E1", "COUNT"},
+477     {"COUNT", "E1", "COUNT"},
+478     {"TERROR", "E1", "COUNT"},
+479     {"BERROR", "E1", "COUNT"},
+480     {"ERROR", "E1", "COUNT"},
+481     {"FLUX", "E1", "PHYSICAL UNITS"},
+482     {"FERROR", "E1", "PHYSICAL UNITS"},
+483     {"WEIGHT", "E1", "PIXEL"},
+484     {"CONTAM", "E1", "FLAG"},
+485     // new for dlambda column
+486     {"DLAMBDA", "E1", "ANGSTROM"},
+487     {"DQ","I1","DQ"}};
+488   
+489      
+490   int f_status = 0;
+491   {
+492     char *ttype[SPCCOL], *tform[SPCCOL], *tunit[SPCCOL];
+493     
+494     int i;
+495     
+496     /* Prepare column description */
+497     for (i = 0; i < SPCCOL; i++)
+498       {
+499         ttype[i] = (char *) malloc (FLEN_KEYWORD * sizeof (char));
+500         if (ttype[i] == NULL)
+501           {
+502             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+503                          "intadd_ID_to_SPC_opened: "
+504                          "Memory allocation failed,");
+505           }
+506         tform[i] = (char *) malloc (FLEN_KEYWORD * sizeof (char));
+507         if (tform[i] == NULL)
+508           {
+509             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+510                          "intadd_ID_to_SPC_opened: "
+511                          "Memory allocation failed,");
+512           }
+513         tunit[i] = (char *) malloc (FLEN_KEYWORD * sizeof (char));
+514         if (tunit[i] == NULL)
+515           {
+516             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+517                          "intadd_ID_to_SPC_opened: "
+518                          "Memory allocation failed,");
+519           }
+520         if (SPCData[i].ttype != NULL)
+521           sprintf (ttype[i], "%s", SPCData[i].ttype);
+522         if (SPCData[i].tform != NULL)
+523           {
+524             if (!strncmp ("XXX", SPCData[i].tform, 3))
+525               {
+526                 sprintf (tform[i], "%d%s", N,
+527                          SPCData[i].tform + 3);
+528               }
+529             else
+530               {
+531                 sprintf (tform[i], "%s", SPCData[i].tform);
+532               }
+533           }
+534         if (SPCData[i].tunit != NULL)
+535           sprintf (tunit[i], "%s", SPCData[i].tunit);
+536         else
+537           sprintf (tunit[i], "%s", " ");
+538       }
+539     
+540     fits_create_tbl (output, BINARY_TBL, 0, SPCCOL, ttype, tform, tunit,
+541                      ID, &f_status);
+542     if (f_status)
+543       {
+544         ffrprt (stderr, f_status);
+545         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+546                      "intadd_ID_to_SPC_opened: Could not create"
+547                      " new binary table HDU in SPC file");
+548       }
+549     
+550     /* Clean up */
+551     for (i = 0; i < SPCCOL; i++)
+552       {
+553         free (tunit[i]);
+554         tunit[i] = NULL;
+555         free (ttype[i]);
+556         ttype[i] = NULL;
+557         free (tform[i]);
+558         tform[i] = NULL;
+559       }
+560     
+561     {
+562       char **array;
+563       int colnum;
+564       array = malloc (sizeof (char *));
+565       if (array == NULL)
+566         {
+567           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+568                        "add_new_to_SPC: Out of memory");
+569         }
+570       array[0] = malloc (60 * sizeof (char));
+571       if (array[0] == NULL)
+572         {
+573           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+574                        "add_net_to_SPC: Out of memory");
+575         }
+576       sprintf (array[0], "%s", ID);
+577       colnum = get_SPC_colnum (output, "ID");
+578       fits_write_col (output, TSTRING, colnum, 1, 1, 1, array,
+579                       &f_status);
+580       free (array[0]);
+581       array[0] = NULL;
+582       free (array);
+583       array = NULL;
+584       
+585       if (f_status)
+586         {
+587           ffrprt (stderr, f_status);
+588           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+589                        "add_new_to_SPC: "
+590                        "Could not write ID to row %d ,collumn %s (%d) in "
+591                        "SPC file ", 1, "ID", colnum);
+592         } 
+593     }
+594   } 
+595 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_afa47cc3a687d35d546ceec87d0f14f06}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!add\_\-spectra\_\-to\_\-SPC@{add\_\-spectra\_\-to\_\-SPC}}
+\index{add\_\-spectra\_\-to\_\-SPC@{add\_\-spectra\_\-to\_\-SPC}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{add\_\-spectra\_\-to\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-spectra\_\-to\_\-SPC (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  {\bf spectrum} $\ast$ {\em obj\_\-spec}, \/  {\bf spectrum} $\ast$ {\em bck\_\-spec}, \/  {\bf spectrum} $\ast$ {\em sobj\_\-spec}, \/  int {\em aperID}, \/  int {\em beamID})}}
+\label{spc__spc_8h_afa47cc3a687d35d546ceec87d0f14f06}
+Function: add\_\-spectra\_\-to\_\-SPC Function to add a new entry into a SPC file. This function takes three spectra, one containing the \hyperlink{structobject}{object}, one containing the background, and the last one containing the \hyperlink{structobject}{object} subtracted background and add the information to the appropriate (i.e. create a new one or update an existing one) extension binary table.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ a pointer to a string containing the name of the PET file to write to/ \item[{\em obj\_\-spec}]-\/ a pointer to a \hyperlink{structspectrum}{spectrum} structure containing the object+background 1D binned \hyperlink{structspectrum}{spectrum} \item[{\em bck\_\-spec}]-\/ a pointer to a \hyperlink{structspectrum}{spectrum} structure containing the background 1D binned \hyperlink{structspectrum}{spectrum} \item[{\em sobj\_\-spec}]-\/ a pointer to a \hyperlink{structspectrum}{spectrum} structure containing the \hyperlink{structobject}{object} 1D binned \hyperlink{structspectrum}{spectrum} \item[{\em aperID}]-\/ the numeric aperture ID of this table. \item[{\em beamID}]-\/ the numeric \hyperlink{structbeam}{beam} ID of this table. \end{DoxyParams}
+
+
+NEED TO LOOK IN HDU 1 FOR KEY IDDD
+
+IF FAIL THEN DO FOLLOWING LINE
+
+NEED TO ADD KEYWORK IDDD IN HDU 0 WITH HDUNUM AS VALUE 
+
+
+\begin{DoxyCode}
+844 {
+845      int hdunum;
+846      char ID[60], IDindex[60];
+847      int spec_len;
+848 
+849      create_SPC (filename, 0);
+850 
+851      sprintf (ID, "BEAM_%d%c", aperID, BEAM (beamID));
+852      sprintf (IDindex, "%s", ID);
+853 
+854      if (bck_spec != NULL)
+855        {
+856             /* Check that it has the proper length */
+857             if (obj_spec->spec_len != bck_spec->spec_len)
+858               {
+859                    aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+860                                 "add_spectra_to_SPC: Total and Background spectra
+      "
+861                                 " do not have the same lengths!: %d vs. %d\n",
+862                                 obj_spec->spec_len, bck_spec->spec_len);
+863               }
+864        }
+865 
+866      if (sobj_spec != NULL)
+867        {
+868             /* Check that it has the proper length */
+869             if (obj_spec->spec_len != sobj_spec->spec_len)
+870               {
+871                    aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+872                                 "add_spectra_to_SPC: Total and Object spectra"
+873                                 " do not have the same lengths!: %d vs. %d\n",
+874                                 obj_spec->spec_len, sobj_spec->spec_len);
+875               }
+876        }
+877 
+878     if (obj_spec!=NULL) {
+879         spec_len = obj_spec->spec_len;
+880     }
+881     else {
+882         spec_len = 0;
+883     }
+884     
+885 #ifdef DEBUGSPC
+886      fprintf (stderr, "Looking for ID:%s in SPC...", ID);
+887 #endif
+888 
+889 
+891      hdunum = get_ID_index_to_SPC (filename, IDindex);
+893      if (hdunum == -1)
+894        {
+895             hdunum = find_ID_in_SPC (filename, ID);
+896        }
+897 
+898 #ifdef DEBUGSPC
+899      fprintf (stderr, "Found at HDU: %d. ", hdunum);
+900 #endif
+901 
+902 
+903      if (hdunum == -1)
+904        {
+905             hdunum = add_ID_to_SPC (filename, spec_len, ID);
+907             add_ID_index_to_SPC (filename, IDindex, hdunum);
+908        }
+909 
+910 
+911 #ifdef DEBUGSPC
+912      fprintf (stderr, "Done.\n");
+913 #endif
+914      // Write data into HDU HERE!
+915      add_data_to_SPC (bck_spec, "BCOUNT", "BERROR", "WEIGHT", ID, filename,
+916                       hdunum, spec_len);
+917 
+918      add_data_to_SPC (obj_spec, "TCOUNT", "TERROR", "WEIGHT", ID, filename,
+919                       hdunum, spec_len);
+920 
+921      /* warning, if sobj_spec does not contain a valiv lambda and
+922         weight values, then these still get written... */
+923      add_data_to_SPC (sobj_spec, "COUNT", "ERROR", "WEIGHT", ID, filename,
+924                       hdunum, spec_len);
+925 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_ad5f7a3bb4b3128c780fbf22b97dfda64}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!add\_\-spectra\_\-to\_\-SPC\_\-opened@{add\_\-spectra\_\-to\_\-SPC\_\-opened}}
+\index{add\_\-spectra\_\-to\_\-SPC\_\-opened@{add\_\-spectra\_\-to\_\-SPC\_\-opened}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{add\_\-spectra\_\-to\_\-SPC\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}void add\_\-spectra\_\-to\_\-SPC\_\-opened (fitsfile $\ast$ {\em input}, \/  {\bf spectrum} $\ast$ {\em obj\_\-spec}, \/  {\bf spectrum} $\ast$ {\em bck\_\-spec}, \/  {\bf spectrum} $\ast$ {\em sobj\_\-spec}, \/  int {\em aperID}, \/  int {\em beamID})}}
+\label{spc__spc_8h_ad5f7a3bb4b3128c780fbf22b97dfda64}
+Function: add\_\-spectra\_\-to\_\-SPC\_\-opened Function to add a new entry into a SPC file. This function takes three spectra, one containing the \hyperlink{structobject}{object}, one containing the background, and the last one containing the \hyperlink{structobject}{object} subtracted background and add the information to the appropriate (i.e. create a new one or update an existing one) extension binary table.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]a pointer to a string containing the name of the PET file to write to/ \item[{\em obj\_\-spec}]a pointer to a \hyperlink{structspectrum}{spectrum} structure containing the object+background 1D binned \hyperlink{structspectrum}{spectrum} \item[{\em bck\_\-spec}]a pointer to a \hyperlink{structspectrum}{spectrum} structure containing the background 1D binned \hyperlink{structspectrum}{spectrum} \item[{\em sobj\_\-spec}]a pointer to a \hyperlink{structspectrum}{spectrum} structure containing the \hyperlink{structobject}{object} 1D binned \hyperlink{structspectrum}{spectrum} \item[{\em aperID}]the numeric aperture ID of this table. \item[{\em beamID}]the numeric \hyperlink{structbeam}{beam} ID of this table. \end{DoxyParams}
+
+
+NEED TO ADD KEYWORK IDDD IN HDU 0 WITH HDUNUM AS VALUE 
+
+
+\begin{DoxyCode}
+1242 {
+1243   char ID[60], IDindex[60];
+1244   int spec_len;
+1245   
+1246   sprintf (ID, "BEAM_%d%c", aperID, BEAM (beamID));
+1247   sprintf (IDindex, "%s", ID);
+1248   
+1249   if (bck_spec != NULL)
+1250     {
+1251       /* Check that it has the proper length */
+1252       if (obj_spec->spec_len != bck_spec->spec_len)
+1253         {
+1254           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1255                        "add_spectra_to_SPC: Total and Background spectra"
+1256                        " do not have the same lengths!: %d vs. %d\n",
+1257                        obj_spec->spec_len, bck_spec->spec_len);
+1258         }
+1259     }
+1260 
+1261   if (sobj_spec != NULL)
+1262     {
+1263       /* Check that it has the proper length */
+1264       if (obj_spec->spec_len != sobj_spec->spec_len)
+1265         {
+1266           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1267                        "add_spectra_to_SPC: Total and Object spectra"
+1268                        " do not have the same lengths!: %d vs. %d\n",
+1269                        obj_spec->spec_len, sobj_spec->spec_len);
+1270         }
+1271     }
+1272   
+1273   if (obj_spec!=NULL) 
+1274     spec_len = obj_spec->spec_len;
+1275   else 
+1276     spec_len = 0;
+1277    
+1278   add_ID_to_SPC_opened (input, spec_len, ID);
+1280   //  add_ID_index_to_SPC (filename, IDindex, hdunum);
+1281   
+1282   // Write data into HDU HERE!
+1283   add_data_to_SPC_opened (bck_spec, "BCOUNT", "BERROR", "WEIGHT", ID, input, spec
+      _len);
+1284   
+1285   add_data_to_SPC_opened (obj_spec, "TCOUNT", "TERROR", "WEIGHT", ID, input, spec
+      _len);
+1286   
+1287   /* warning, if sobj_spec does not contain a valiv lambda and
+1288      weight values, then these still get written... */
+1289   add_data_to_SPC_opened (sobj_spec, "COUNT", "ERROR", "WEIGHT", ID, input, spec_
+      len);
+1290 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a2b7693a22a9e1b6d287465b8bff189de}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!allocate\_\-spectrum@{allocate\_\-spectrum}}
+\index{allocate\_\-spectrum@{allocate\_\-spectrum}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{allocate\_\-spectrum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ allocate\_\-spectrum (const int {\em numbin})}}
+\label{spc__spc_8h_a2b7693a22a9e1b6d287465b8bff189de}
+Function: allocate\_\-spectrum allocates and initializes a \hyperlink{structspectrum}{spectrum} and its subordinate data structures (this is usually called by binning routines, so I've declared it static)
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em numbin}]-\/ number of \hyperlink{structspectrum}{spectrum} data points\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+sp -\/ the allocated \hyperlink{structspectrum}{spectrum} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+28 {
+29   spectrum *sp;
+30   int i;
+31   
+32   sp = malloc (sizeof (spectrum));
+33   if (!sp)
+34     {
+35       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+36     }
+37   sp->spec_len = numbin;
+38   sp->warning = 0;
+39   sp->spec = malloc (numbin * sizeof (spc_entry));
+40   if (!sp->spec)
+41     {
+42       aXe_message (aXe_M_FATAL, __FILE__, __LINE__, "Out of memory");
+43     }
+44   for (i = 0; i < sp->spec_len; i++)
+45     {
+46       sp->spec[i].count = 0.;
+47       sp->spec[i].lambda_min = +1e38;
+48       sp->spec[i].lambda_max = -1e38;
+49       sp->spec[i].lambda_mean = GSL_NAN;
+50       sp->spec[i].error = 0.;
+51       sp->spec[i].flux = 0.;
+52       sp->spec[i].ferror = 0.;
+53       sp->spec[i].contam = -1.0;
+54       sp->spec[i].dq = 0;
+55       
+56     }
+57 
+58   
+59   return sp;
+60 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a04113a68250979dcf9b17544cf8edb33}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!create\_\-SPC@{create\_\-SPC}}
+\index{create\_\-SPC@{create\_\-SPC}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{create\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}void create\_\-SPC (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em overwrite})}}
+\label{spc__spc_8h_a04113a68250979dcf9b17544cf8edb33}
+Function: create\_\-SPC A function that creates a FITS file containing an empty primary header
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the file to open \item[{\em overwrite}]-\/ if set to 1, then any exisiting file is deleted. Nothing is done otherwise. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+251 {
+252      fitsfile *output;
+253      int f_status = 0;
+254 
+255      // Try to open the file
+256      {
+257           FILE *in_file;
+258           in_file = fopen (filename, "r");
+259           if ((overwrite == 1) && (in_file != NULL))
+260             {
+261                  //aXe_message (aXe_M_WARN3, __FILE__, __LINE__,
+262                 //            "create_SPC: File %s "
+263                 //            "exits. Overwriting it.", filename);
+264                  fclose (in_file);
+265                  unlink (filename);
+266             }
+267           if ((overwrite != 1) && (in_file != NULL))
+268             {
+269                  fclose (in_file);
+270                  return;
+271             }
+272      }
+273      // Open the file for creating/appending
+274      //fprintf(stderr,"Creating file %s\n",filename);
+275      fits_create_file (&output, filename, &f_status);
+276      if (f_status)
+277        {
+278             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+279                          "create_SPC: Could not open" " file: %s", filename);
+280        }
+281 
+282      // Create empty HDU
+283      {
+284           int naxis = 0;
+285           long naxes[2];
+286           ffiimg (output, 16, naxis, naxes, &f_status);
+287           if (f_status)
+288             {
+289                  aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+290                               "create_SPC: Error creating "
+291                               " empty first HDU in: %s", filename);
+292             }
+293      }
+294 
+295      fits_close_file (output, &f_status);
+296      if (f_status)
+297        {
+298             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+299                          "create_SPC: Could not" " close file: %s", filename);
+300        }
+301 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a2d1c885838e3b2bd9f1fdb2f62cbceae}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!create\_\-SPC\_\-opened@{create\_\-SPC\_\-opened}}
+\index{create\_\-SPC\_\-opened@{create\_\-SPC\_\-opened}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{create\_\-SPC\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}fitsfile$\ast$ create\_\-SPC\_\-opened (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  int {\em overwrite})}}
+\label{spc__spc_8h_a2d1c885838e3b2bd9f1fdb2f62cbceae}
+Function: create\_\-SPC\_\-opened A function that creates a FITS file containing an empty primary header
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ The name of the file to open \item[{\em overwrite}]-\/ If set to 1, then any exisiting file is deleted. Nothing is done otherwise.\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+output -\/ pointer to the opened fits-\/file 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+315 {
+316   fitsfile *output;
+317   int f_status = 0;
+318 
+319   // Try to open the file
+320   {
+321     FILE *in_file;
+322     in_file = fopen (filename, "r");
+323     if ((overwrite == 1) && (in_file != NULL))
+324       {
+325         //aXe_message (aXe_M_WARN3, __FILE__, __LINE__,
+326         //            "create_SPC: File %s "
+327         //            "exits. Overwriting it.", filename);
+328         fclose (in_file);
+329         unlink (filename);
+330       }
+331     if ((overwrite != 1) && (in_file != NULL))
+332       {
+333         fits_open_file (&output, filename, READONLY, &f_status);
+334         if (f_status)
+335           {
+336             ffrprt (stderr, f_status);
+337             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+338                          "create_SPC_opened: Could not open SPC file: %s",
+339                          filename);
+340           }
+341         return output;
+342       }
+343   }
+344   // Open the file for creating/appending
+345   //fprintf(stderr,"Creating file %s\n",filename);
+346   fits_create_file (&output, filename, &f_status);
+347   if (f_status)
+348     {
+349       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+350                    "create_SPC: Could not open" " file: %s", filename);
+351     }
+352   
+353   // Create empty HDU
+354   {
+355     int naxis = 0;
+356     long naxes[2];
+357     ffiimg (output, 16, naxis, naxes, &f_status);
+358     if (f_status)
+359       {
+360         aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+361                      "create_SPC: Error creating "
+362                      " empty first HDU in: %s", filename);
+363       }
+364   }
+365 
+366   return output;
+367 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_ad92b28f006b157c32fd16f9cdb7b2c82}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!empty\_\-counts\_\-spectrum\_\-copy@{empty\_\-counts\_\-spectrum\_\-copy}}
+\index{empty\_\-counts\_\-spectrum\_\-copy@{empty\_\-counts\_\-spectrum\_\-copy}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{empty\_\-counts\_\-spectrum\_\-copy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ empty\_\-counts\_\-spectrum\_\-copy ({\bf spectrum} $\ast$ {\em a})}}
+\label{spc__spc_8h_ad92b28f006b157c32fd16f9cdb7b2c82}
+Function: empty\_\-counts\_\-spectrum\_\-copy Allocate and create an empty \hyperlink{structspectrum}{spectrum} on the basis of a template \hyperlink{structspectrum}{spectrum}
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]-\/ the input \hyperlink{structspectrum}{spectrum}\end{DoxyParams}
+Returns: 
+\begin{DoxyParams}{Parameters}
+\item[{\em res}]-\/ the subtracted \hyperlink{structspectrum}{spectrum} \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+213 {
+214   int i;
+215   spectrum *res;
+216   
+217   if (a==NULL) return NULL;
+218   
+219   /* Allocate new spectrum */
+220   res = allocate_spectrum (a->spec_len);
+221   
+222   /* All the counts and flux are set to zero, rest is */
+223   /* identical to the original spectrum */
+224   for (i = 0; i < a->spec_len; i++)
+225     {
+226       res->spec[i].lambda_mean = a->spec[i].lambda_mean;
+227       res->spec[i].dlambda = a->spec[i].dlambda;
+228       res->spec[i].count = 0.0;
+229       res->spec[i].error = 0.0;
+230       res->spec[i].flux = 0.0;
+231       res->spec[i].ferror = 0.0;
+232       res->spec[i].weight = a->spec[i].weight;
+233       res->spec[i].lambda_max = a->spec[i].lambda_max;
+234       res->spec[i].lambda_min = a->spec[i].lambda_min;
+235     }
+236   
+237   return res;
+238 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_aa9de3dbaee823cf4223edf572b5d95ae}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!find\_\-ID\_\-in\_\-SPC@{find\_\-ID\_\-in\_\-SPC}}
+\index{find\_\-ID\_\-in\_\-SPC@{find\_\-ID\_\-in\_\-SPC}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{find\_\-ID\_\-in\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}int find\_\-ID\_\-in\_\-SPC (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  char {\em ID}\mbox{[}$\,$\mbox{]})}}
+\label{spc__spc_8h_aa9de3dbaee823cf4223edf572b5d95ae}
+Function: find\_\-ID\_\-in\_\-SPC A function to return the number of the HDU which has a givenextname.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ the name of the file to open \item[{\em ID}]-\/ a string containing the ID to match\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+-\/ the number of the HDU with matching ID. Returns -\/1 if none is found. A warning is issued. 
+\end{DoxyReturn}
+
+
+NEED TO LOOK IN HDU 1 FOR KEY IDDD
+
+IF FOUND EXIT NOW 
+
+
+\begin{DoxyCode}
+383 {
+384   fitsfile *output;
+385   int f_status = 0;
+386   int hdunum = 0;
+387   char IDindex[60];
+388 
+390   sprintf (IDindex, "ID%s", ID);
+391   hdunum = get_ID_index_to_SPC (filename, IDindex);
+393   if (hdunum != -1)
+394     {
+395       return hdunum;
+396     }
+397   
+398   
+399   //  Open the file for creating/appending
+400   fits_open_file (&output, filename, READONLY, &f_status);
+401   if (f_status)
+402     {
+403       ffrprt (stderr, f_status);
+404       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+405                    "find_ID_in_SPC: Could not open" " file: %s",
+406                    filename);
+407     }
+408   // Move to the HDU which has the desired extname
+409   fits_movnam_hdu (output, BINARY_TBL, ID, 0, &f_status);
+410   if (f_status)
+411     {
+412       fits_close_file (output, &f_status);
+413       return -1;
+414     }
+415   
+416   /* Get current HDU number */
+417   fits_get_hdu_num (output, &hdunum);
+418   if (f_status)
+419     {
+420       ffrprt (stderr, f_status);
+421       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+422                    "find_ID_in_SPC: Could not get"
+423                    " current HDU number from file: %s", filename);
+424     }
+425   fits_close_file (output, &f_status);
+426   if (f_status)
+427     {
+428       ffrprt (stderr, f_status);
+429       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+430                    "find_ID_in_SPO: Could not" " close file: %s",
+431                    filename);
+432     }
+433   return hdunum;
+434 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_acae5c3e717ae1e9e19c97e6a688efae5}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!fprintf\_\-spectrum@{fprintf\_\-spectrum}}
+\index{fprintf\_\-spectrum@{fprintf\_\-spectrum}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{fprintf\_\-spectrum}]{\setlength{\rightskip}{0pt plus 5cm}void fprintf\_\-spectrum (FILE $\ast$ {\em output}, \/  const {\bf spectrum} $\ast$const  {\em sp})}}
+\label{spc__spc_8h_acae5c3e717ae1e9e19c97e6a688efae5}
+Function: fprintf\_\-spectrum Function to display the content of a \hyperlink{structspectrum}{spectrum}
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em output}]-\/ a pointer to a stream \item[{\em sp}]-\/ a pointer to a \hyperlink{structspectrum}{spectrum} \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+90 {
+91   int i;
+92   double sum = 0;
+93   
+94   fprintf(output,"# "
+95           "lambda_mean count error weight i lambda_max "
+96           "lambda_min delta_lambda flux ferror\n");
+97   for (i = 0; i < sp->spec_len; i++)
+98     {
+99       if (isnan (sp->spec[i].lambda_mean))
+100         {
+101           //  continue;
+102         }
+103       fprintf (output, "%g %g %g %g %i %g %g %g %g %g\n",
+104                sp->spec[i].lambda_mean, sp->spec[i].count,
+105                sp->spec[i].error, sp->spec[i].weight, i,
+106                sp->spec[i].lambda_max, sp->spec[i].lambda_min,
+107                sp->spec[i].lambda_max - sp->spec[i].lambda_min,
+108                sp->spec[i].flux, sp->spec[i].ferror);
+109       
+110       sum += sp->spec[i].count;
+111     }
+112   fprintf (output, "#Spectrum sum: %f\n", sum);
+113 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a5be6cea9695b1d36f979acac98009ff3}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!free\_\-spectrum@{free\_\-spectrum}}
+\index{free\_\-spectrum@{free\_\-spectrum}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{free\_\-spectrum}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-spectrum ({\bf spectrum} $\ast$ {\em spec})}}
+\label{spc__spc_8h_a5be6cea9695b1d36f979acac98009ff3}
+Function: free\_\-spectrum Frees a \hyperlink{structspectrum}{spectrum} and its subordinate data structures
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spec}]-\/ a pointer to the \hyperlink{structspectrum}{spectrum} structure. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+72 {
+73   if (spec == NULL) return;
+74   free (spec->spec);
+75   spec->spec = NULL;
+76   free (spec);
+77   spec = NULL;
+78 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_abb978bc00496ea18cc7590c587133887}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!get\_\-ID\_\-index\_\-to\_\-SPC@{get\_\-ID\_\-index\_\-to\_\-SPC}}
+\index{get\_\-ID\_\-index\_\-to\_\-SPC@{get\_\-ID\_\-index\_\-to\_\-SPC}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{get\_\-ID\_\-index\_\-to\_\-SPC}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-ID\_\-index\_\-to\_\-SPC (char {\em filename}\mbox{[}$\,$\mbox{]}, \/  char {\em ID}\mbox{[}$\,$\mbox{]})}}
+\label{spc__spc_8h_abb978bc00496ea18cc7590c587133887}
+Function: get\_\-ID\_\-index\_\-to\_\-SPC Get the value of an HDU index keyword of the for \char`\"{}ID\%d\%c\char`\"{} from the first HDU of an existing FITS file.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]-\/ a pointer to an array containing the name of an existing FITS file. \item[{\em ID}]-\/ a pointer to a char array containing the \hyperlink{structbeam}{beam} ID in the form \char`\"{}ID\%d\%c\char`\"{}.\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+hdunum -\/ the number of the HDU containing this \hyperlink{structbeam}{beam}. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+739 {
+740   fitsfile *input;
+741   int f_status = 0, hdutype;
+742   char comment[FLEN_COMMENT];
+743   long hdunum;
+744   
+745   //  Open the file for reading 
+746   fits_open_file (&input, filename, READONLY, &f_status);
+747   if (f_status)
+748     {
+749       ffrprt (stderr, f_status);
+750       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+751                    "get_ID_index_to_SPC: Could not open" " file:",
+752                    filename);
+753     }
+754   /* Move to first hdu */
+755   fits_movabs_hdu (input, 1, &hdutype, &f_status);
+756   if (f_status)
+757     {
+758       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+759                    "get_ID_index_to_SPC: "
+760                    "Could not read extention %d from file: %s", hdunum,
+761                    filename);
+762     }
+763   
+764   fits_read_key_lng (input, ID, &hdunum, comment, &f_status);
+765   if (f_status)
+766     {
+767       if (f_status == 202)
+768         {
+769           hdunum = -1;
+770           f_status = 0;
+771         }
+772       else
+773         {
+774           ffrprt (stderr, f_status);
+775           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+776                        "get_ID_index_to_SPC: Error getting index keyword %s ",
+777                        ID);
+778         }
+779     }
+780 
+781   fits_close_file (input, &f_status);
+782   if (f_status)
+783     {
+784       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+785                    "get_ID_index_to_SPC: Error closing file: %s ",
+786                    filename);
+787     }
+788   
+789   return (int) hdunum;
+790 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a4a3cfebfb9e8d0b9e17e8f87ab3a59e2}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!get\_\-SPC\_\-colnum@{get\_\-SPC\_\-colnum}}
+\index{get\_\-SPC\_\-colnum@{get\_\-SPC\_\-colnum}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{get\_\-SPC\_\-colnum}]{\setlength{\rightskip}{0pt plus 5cm}int get\_\-SPC\_\-colnum (fitsfile $\ast$ {\em input}, \/  char {\em colname}\mbox{[}$\,$\mbox{]})}}
+\label{spc__spc_8h_a4a3cfebfb9e8d0b9e17e8f87ab3a59e2}
+Function: get\_\-SPC\_\-colnum A helper function which returns the collumn number of the column matching a given name. Function fails if collumn is not found.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em input}]-\/ a pointer to an opened FITS binary table \item[{\em colname}]-\/ the name of the desired column\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+colnum -\/ the number of the column. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+807 {
+808   int colnum, f_status = 0;
+809   
+810   fits_get_colnum (input, CASEINSEN, colname, &colnum, &f_status);
+811 #ifdef SPCDEBUG
+812   fprintf (stderr, "get_SPC_colnum: colum of %s is %d\n", colname, colnum);
+813 #endif
+814   if (f_status)
+815     {
+816       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+817                    "get_SPC_colnum: Could not find collumn %s ",
+818                    colname);
+819     }
+820 
+821   return colnum;
+822 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a9792a9c98d3cfae195b45055127a7af7}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!subtract\_\-spectra@{subtract\_\-spectra}}
+\index{subtract\_\-spectra@{subtract\_\-spectra}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{subtract\_\-spectra}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ subtract\_\-spectra ({\bf spectrum} $\ast$ {\em a}, \/  {\bf spectrum} $\ast$ {\em b})}}
+\label{spc__spc_8h_a9792a9c98d3cfae195b45055127a7af7}
+Function: subtract\_\-spectra Subtract one \hyperlink{structspectrum}{spectrum} form sa second one
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]-\/ the original \hyperlink{structspectrum}{spectrum} \item[{\em b}]-\/ the \hyperlink{structspectrum}{spectrum} to subtract\end{DoxyParams}
+Returns: 
+\begin{DoxyParams}{Parameters}
+\item[{\em res}]-\/ the subtracted \hyperlink{structspectrum}{spectrum} \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+128 {
+129   int i;
+130   spectrum *res;
+131   double alignement;
+132   
+133   if ( (a==NULL) || (b==NULL) )
+134     {
+135       aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+136                    "subtract_spectra: spectra empty.");
+137       return NULL;
+138     }
+139   
+140   if (a->spec_len != b->spec_len)
+141     {
+142       fprintf (stderr, "%d %d\n", a->spec_len, b->spec_len);
+143       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+144                    "subtract_spectra: spectra not aligned.");
+145     }
+146   
+147   /* Allocate new spectrum */
+148   res = allocate_spectrum (a->spec_len);
+149   
+150   for (i = 0; i < a->spec_len; i++)
+151     {
+152       if (isnan (a->spec[i].lambda_mean))
+153         {
+154           continue;
+155         }
+156       if (isnan (b->spec[i].lambda_mean))
+157         {
+158           continue;
+159         }
+160 
+161       // compute the difference between
+162       // the wavelength in the object and
+163       // the background spectral element
+164       alignement= (a->spec[i].lambda_mean - b->spec[i].lambda_mean)
+165         / a->spec[i].lambda_mean;
+166 
+167       // check whether the alignement is OK
+168       if (alignement > SPCTOL)
+169         {
+170           { 
+171             int j;
+172             for (j=0; j<a->spec_len; j++)
+173               fprintf(stderr,"%f %f\n",a->spec[j].lambda_mean,b->spec[j].
+      lambda_mean);
+174           }
+175           fprintf (stderr, "lambda: %f %f; misalignement: %f\n", a->spec[i].
+      lambda_mean,
+176                    b->spec[i].lambda_mean, alignement);
+177           aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+178                        "subtract_spectra: spectra not aligned.");
+179         }
+180       res->spec[i].lambda_mean = a->spec[i].lambda_mean;
+181       res->spec[i].dlambda = a->spec[i].dlambda;
+182       res->spec[i].count = a->spec[i].count - b->spec[i].count;
+183       res->spec[i].error =
+184         sqrt (pow (a->spec[i].error, 2) + pow (b->spec[i].error, 2));
+185       
+186       res->spec[i].flux = a->spec[i].flux - b->spec[i].flux;
+187       res->spec[i].ferror =
+188         sqrt (pow (a->spec[i].ferror, 2) +
+189               pow (b->spec[i].ferror, 2));
+190       
+191       res->spec[i].weight = a->spec[i].weight;
+192       res->spec[i].lambda_max = a->spec[i].lambda_max;
+193       res->spec[i].lambda_min = a->spec[i].lambda_min;
+194       res->spec[i].contam = a->spec[i].contam;
+195       res->spec[i].dq = a->spec[i].dq;
+196     }
+197   return res;
+198 }
+\end{DoxyCode}
+\hypertarget{spc__spc_8h_a3b09e9e958c00c75f26933bac7d0ffe8}{
+\index{spc\_\-spc.h@{spc\_\-spc.h}!trim\_\-spectrum@{trim\_\-spectrum}}
+\index{trim\_\-spectrum@{trim\_\-spectrum}!spc_spc.h@{spc\_\-spc.h}}
+\subsubsection[{trim\_\-spectrum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ trim\_\-spectrum ({\bf spectrum} $\ast$ {\em spc})}}
+\label{spc__spc_8h_a3b09e9e958c00c75f26933bac7d0ffe8}
+Function: trim\_\-spectrum A function which trims the beginning and ending INDEF values out of a \hyperlink{structspectrum}{spectrum} structure (left by the bin\_\-naive routine. The \hyperlink{structspectrum}{spectrum} is replace in place.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em spc}]-\/ a pointer to an existing \hyperlink{structspectrum}{spectrum} structure\end{DoxyParams}
+Returns: new\_\-spc -\/ pointer to a trimmed \hyperlink{structspectrum}{spectrum} structure 
+
+
+\begin{DoxyCode}
+1578 {
+1579   int i, is = 0, ie = 0;
+1580   spectrum *new_spc;
+1581 
+1582   //fprintf(stderr,"here\n");
+1583   for (i = 0; i < spc->spec_len; i++)
+1584     {
+1585       if (!(isnan (spc->spec[i].lambda_mean)))
+1586         {
+1587           is = i;       /* Beginning of data found */
+1588           break;
+1589         }
+1590     }
+1591   //fprintf(stderr,"here2\n");
+1592   
+1593   for (i = spc->spec_len - 1; i >= 0; i--)
+1594     {
+1595       if (!(isnan (spc->spec[i].lambda_mean)))
+1596         {
+1597           ie = i;       /* End of data found */
+1598           break;
+1599         }
+1600     }
+1601   //fprintf(stderr,"old length: %d\n",spc->spec_len);
+1602   //fprintf(stderr,"Begin at: %d, end at %d\n",is,ie);
+1603 
+1604   /* Allocate new spectrum structure and transfer content from
+1605      the old one into it. */
+1606   new_spc = allocate_spectrum (ie - is + 1);
+1607   for (i = is; i <= ie; i++)
+1608     {
+1609       new_spc->spec[i - is].lambda_mean = spc->spec[i].lambda_mean;
+1610       new_spc->spec[i - is].dlambda = spc->spec[i].dlambda;
+1611       new_spc->spec[i - is].lambda_min = spc->spec[i].lambda_min;
+1612       new_spc->spec[i - is].lambda_max = spc->spec[i].lambda_max;
+1613       new_spc->spec[i - is].error = spc->spec[i].error;
+1614       new_spc->spec[i - is].count = spc->spec[i].count;
+1615       new_spc->spec[i - is].weight = spc->spec[i].weight;
+1616       new_spc->spec[i - is].contam = spc->spec[i].contam;
+1617       new_spc->spec[i - is].dq = spc->spec[i].dq;
+1618       
+1619     }
+1620   new_spc->warning = spc->warning;
+1621 
+1622   //fprintf(stderr,"new length: %d\n",new_spc->spec_len);
+1623   
+1624   return new_spc;
+1625 }
+\end{DoxyCode}

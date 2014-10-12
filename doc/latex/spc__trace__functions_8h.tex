@@ -1,0 +1,262 @@
+\hypertarget{spc__trace__functions_8h}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-trace\_\-functions.h File Reference}
+\label{spc__trace__functions_8h}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-trace\_\-functions.h@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/include/axesim/spc\_\-trace\_\-functions.h}}
+}
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-integration.h$>$}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtrace__func}{trace\_\-func}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacespc__trace__functions}{spc\_\-trace\_\-functions}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structtrace__func}{trace\_\-func} $\ast$ \hyperlink{spc__trace__functions_8h_aa0286b1a730a1dcf027f685ed7655a0e}{create\_\-poly2} (const double a0, const double a1, const double a2)
+\item 
+\hyperlink{structtrace__func}{trace\_\-func} $\ast$ \hyperlink{spc__trace__functions_8h_a37d4651793aa16a39c74e145687ca705}{create\_\-polyN} (gsl\_\-vector $\ast$v)
+\item 
+\hyperlink{structtrace__func}{trace\_\-func} $\ast$ \hyperlink{spc__trace__functions_8h_ad575e70b1bef463a089f8570c0674e51}{vector\_\-to\_\-trace\_\-poly2} (gsl\_\-vector $\ast$v)
+\item 
+\hyperlink{structtrace__func}{trace\_\-func} $\ast$ \hyperlink{spc__trace__functions_8h_a63f2dd8f35451e510ac0347532bd4b91}{vector\_\-to\_\-trace\_\-polyN} (gsl\_\-vector $\ast$v)
+\item 
+double \hyperlink{spc__trace__functions_8h_acea025404ad9bbdcf170b80c5b06e0bb}{polyN\_\-ds} (double x, void $\ast$pars)
+\item 
+void \hyperlink{spc__trace__functions_8h_a1fa07d461a1154b16418e8565db86cc8}{free\_\-poly2} (\hyperlink{structtrace__func}{trace\_\-func} $\ast$func)
+\item 
+void \hyperlink{spc__trace__functions_8h_a91716a5e9814e72c4d94add2911d60e4}{free\_\-polyN} (\hyperlink{structtrace__func}{trace\_\-func} $\ast$func)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spc__trace__functions_8h_aa0286b1a730a1dcf027f685ed7655a0e}{
+\index{spc\_\-trace\_\-functions.h@{spc\_\-trace\_\-functions.h}!create\_\-poly2@{create\_\-poly2}}
+\index{create\_\-poly2@{create\_\-poly2}!spc_trace_functions.h@{spc\_\-trace\_\-functions.h}}
+\subsubsection[{create\_\-poly2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-func}$\ast$ create\_\-poly2 (const double {\em a0}, \/  const double {\em a1}, \/  const double {\em a2})}}
+\label{spc__trace__functions_8h_aa0286b1a730a1dcf027f685ed7655a0e}
+creates a 2nd order polynomial trace function
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a0}]coefficient for x$^\wedge$0 \item[{\em a1}]coefficient for x$^\wedge$1 \item[{\em a2}]coefficient for x$^\wedge$2 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+allocated \hyperlink{structtrace__func}{trace\_\-func} structure or NULL for failure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+189 {
+190      trace_func *func = malloc (sizeof (trace_func));
+191      double *cf;
+192 
+193      if (!func)
+194        {
+195             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+196                          "create_poly2: Out of memory");
+197        }
+198      if (!(cf = malloc (3 * sizeof (double))))
+199        {
+200             free (func);
+201             func = NULL;
+202             aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+203                          "create_poly2: Out of memory");
+204        }
+205      func->func = poly2;
+206      func->deriv = poly2_deriv;
+207      func->path_len = poly2_pathlen;
+208      func->data = cf;
+209      func->type = 2;
+210      cf[0] = a0;
+211      cf[1] = a1;
+212      cf[2] = a2;
+213 
+214      return func;
+215 }
+\end{DoxyCode}
+\hypertarget{spc__trace__functions_8h_a37d4651793aa16a39c74e145687ca705}{
+\index{spc\_\-trace\_\-functions.h@{spc\_\-trace\_\-functions.h}!create\_\-polyN@{create\_\-polyN}}
+\index{create\_\-polyN@{create\_\-polyN}!spc_trace_functions.h@{spc\_\-trace\_\-functions.h}}
+\subsubsection[{create\_\-polyN}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-func}$\ast$ create\_\-polyN (gsl\_\-vector $\ast$ {\em v})}}
+\label{spc__trace__functions_8h_a37d4651793aa16a39c74e145687ca705}
+creates a Nth order polynomial trace function
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]pointer to a gsl\_\-vector containing the coeeficients \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+allocated \hyperlink{structtrace__func}{trace\_\-func} structure or NULL for failure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+225 {
+226   trace_func *func = malloc (sizeof (trace_func));
+227   double *cf;
+228   int i;
+229 
+230   //fprintf(stderr,"CREATING %d\n",v->size);
+231   if (!func)
+232     {
+233       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+234                    "create_polyN: Out of memory");
+235     }
+236   if (!(cf = malloc ((v->size +1) * sizeof (double))))
+237     {
+238       free (func);
+239       func = NULL;
+240       aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+241                    "create_polyN: Out of memory");
+242     }
+243 
+244   func->func = polyN;
+245   func->deriv = polyN_deriv;
+246   func->path_len = polyN_pathlen;
+247   func->data = cf;
+248   func->type = v->size - 1;
+249   cf[0] = v->size;
+250   for (i=0;i<(v->size);i++)
+251     {
+252       cf[i+1]=gsl_vector_get (v, i);
+253     }
+254 
+255   return func;
+256 }
+\end{DoxyCode}
+\hypertarget{spc__trace__functions_8h_a1fa07d461a1154b16418e8565db86cc8}{
+\index{spc\_\-trace\_\-functions.h@{spc\_\-trace\_\-functions.h}!free\_\-poly2@{free\_\-poly2}}
+\index{free\_\-poly2@{free\_\-poly2}!spc_trace_functions.h@{spc\_\-trace\_\-functions.h}}
+\subsubsection[{free\_\-poly2}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-poly2 ({\bf trace\_\-func} $\ast$ {\em func})}}
+\label{spc__trace__functions_8h_a1fa07d461a1154b16418e8565db86cc8}
+Free the \hyperlink{structtrace__func}{trace\_\-func} struct for a 2nd order polynomial.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em func}]the \hyperlink{structtrace__func}{trace\_\-func} struct. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+318 {
+319      free (func->data);
+320      func->data = NULL;
+321      free (func);
+322      func = NULL;
+323 }
+\end{DoxyCode}
+\hypertarget{spc__trace__functions_8h_a91716a5e9814e72c4d94add2911d60e4}{
+\index{spc\_\-trace\_\-functions.h@{spc\_\-trace\_\-functions.h}!free\_\-polyN@{free\_\-polyN}}
+\index{free\_\-polyN@{free\_\-polyN}!spc_trace_functions.h@{spc\_\-trace\_\-functions.h}}
+\subsubsection[{free\_\-polyN}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-polyN ({\bf trace\_\-func} $\ast$ {\em func})}}
+\label{spc__trace__functions_8h_a91716a5e9814e72c4d94add2911d60e4}
+Free the \hyperlink{structtrace__func}{trace\_\-func} struct for a Nth order polynomial.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em func}]the \hyperlink{structtrace__func}{trace\_\-func} struct. \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+332 {
+333   free (func->data);
+334   func->data = NULL;
+335   free (func);
+336   func = NULL;
+337 }
+\end{DoxyCode}
+\hypertarget{spc__trace__functions_8h_acea025404ad9bbdcf170b80c5b06e0bb}{
+\index{spc\_\-trace\_\-functions.h@{spc\_\-trace\_\-functions.h}!polyN\_\-ds@{polyN\_\-ds}}
+\index{polyN\_\-ds@{polyN\_\-ds}!spc_trace_functions.h@{spc\_\-trace\_\-functions.h}}
+\subsubsection[{polyN\_\-ds}]{\setlength{\rightskip}{0pt plus 5cm}double polyN\_\-ds (double {\em x}, \/  void $\ast$ {\em pars})}}
+\label{spc__trace__functions_8h_acea025404ad9bbdcf170b80c5b06e0bb}
+sqrt(1+(dy/dx)$^\wedge$2) of an N$^\wedge$th order polynomial
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]the abscissa, usually relative to the beam's reference point. \item[{\em pars}]a pointer N+1 doubles, the length (N) and the coefficients of the polynom. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the derivative of the polynom at x. 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+107 {       
+108          return sqrt(1.+pow(polyN_deriv(x,pars),2.));
+109 }
+\end{DoxyCode}
+\hypertarget{spc__trace__functions_8h_ad575e70b1bef463a089f8570c0674e51}{
+\index{spc\_\-trace\_\-functions.h@{spc\_\-trace\_\-functions.h}!vector\_\-to\_\-trace\_\-poly2@{vector\_\-to\_\-trace\_\-poly2}}
+\index{vector\_\-to\_\-trace\_\-poly2@{vector\_\-to\_\-trace\_\-poly2}!spc_trace_functions.h@{spc\_\-trace\_\-functions.h}}
+\subsubsection[{vector\_\-to\_\-trace\_\-poly2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-func}$\ast$ vector\_\-to\_\-trace\_\-poly2 (gsl\_\-vector $\ast$ {\em v})}}
+\label{spc__trace__functions_8h_ad575e70b1bef463a089f8570c0674e51}
+creates a 2nd order polynomial trace function using the coefficients contained in a gsl vector of length 1,2, or 3.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em v,a}]gsl vector containing polynomial coefficients. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to new \hyperlink{structtrace__func}{trace\_\-func} \hyperlink{structobject}{object} which contains a second order polynomial trace description 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+270 {
+271                 
+272         float a0, a1, a2;
+273 
+274         if (v->size<1)
+275                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+276                 "Trace polynomial must at least have one coefficients (i.e. zerot
+      h order).\n"
+277                 "Only %d found.",v->size);
+278         a0 = gsl_vector_get (v, 0);
+279         if (v->size>1)
+280                 a1 = gsl_vector_get (v, 1);
+281         else
+282                 a1 = 0.0;
+283         if (v->size>2)
+284                 a2 = gsl_vector_get (v, 2);
+285         else
+286                 a2 = 0.0;
+287         if (v->size>3)
+288                 aXe_message (aXe_M_WARN4, __FILE__, __LINE__,   
+289                 "%d trace coefficients read but only 2nd order used!",v->size);
+290                 
+291         return create_poly2 (a0, a1, a2);
+292 
+293 
+294 }
+\end{DoxyCode}
+\hypertarget{spc__trace__functions_8h_a63f2dd8f35451e510ac0347532bd4b91}{
+\index{spc\_\-trace\_\-functions.h@{spc\_\-trace\_\-functions.h}!vector\_\-to\_\-trace\_\-polyN@{vector\_\-to\_\-trace\_\-polyN}}
+\index{vector\_\-to\_\-trace\_\-polyN@{vector\_\-to\_\-trace\_\-polyN}!spc_trace_functions.h@{spc\_\-trace\_\-functions.h}}
+\subsubsection[{vector\_\-to\_\-trace\_\-polyN}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-func}$\ast$ vector\_\-to\_\-trace\_\-polyN (gsl\_\-vector $\ast$ {\em v})}}
+\label{spc__trace__functions_8h_a63f2dd8f35451e510ac0347532bd4b91}
+creates a Nth order polynomial trace function using the coefficients contained in a gsl vector of length N.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em v,a}]gsl vector containing polynomial coefficients. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to new \hyperlink{structtrace__func}{trace\_\-func} \hyperlink{structobject}{object} which contains an Nth order polynomial trace description 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+307 {               
+308   return create_polyN (v);
+309 }
+\end{DoxyCode}

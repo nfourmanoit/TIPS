@@ -1,0 +1,2559 @@
+\hypertarget{model__utils_8c}{
+\section{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/model\_\-utils.c File Reference}
+\label{model__utils_8c}\index{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/model\_\-utils.c@{/renoir/fourmano/Desktop/OUSIM/TIPS/branches/tips\_\-build/src/axesim/model\_\-utils.c}}
+}
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$fitsio.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-matrix.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-vector.h$>$}\par
+{\ttfamily \#include $<$gsl/gsl\_\-interp.h$>$}\par
+{\ttfamily \#include \char`\"{}inout\_\-aper.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-grism.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-PET.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-wl\_\-calib.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aXe\_\-errors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fringe\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-resp.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spce\_\-pathlength.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}aper\_\-conf.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}crossdisp\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}spc\_\-FITScards.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}specmodel\_\-utils.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}model\_\-utils.h\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemodel__utils}{model\_\-utils}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{model__utils_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{MAX}(x, y)~(((x)$>$(y))?(x):(y))
+\item 
+\#define \hyperlink{model__utils_8c_a74e75242132eaabbc1c512488a135926}{MIN}(x, y)~(((x)$<$(y))?(x):(y))
+\item 
+\#define \hyperlink{model__utils_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{SQR}(x)~((x)$\ast$(x))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structdirim__emission}{dirim\_\-emission} $\ast$ \hyperlink{model__utils_8c_aa166b220ec60f701d55d841950dc269a}{model\_\-gauss\_\-dirim} (\hyperlink{structdirobject}{dirobject} $\ast$actdir, \hyperlink{structbeam}{beam} actbeam, \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, double psf\_\-offset)
+\item 
+\hyperlink{structcalib__function}{calib\_\-function} $\ast$ \hyperlink{model__utils_8c_a89e076f16fb5ab1d68d6fd60a8c56818}{get\_\-calib\_\-function} (\hyperlink{structbeamspec}{beamspec} $\ast$actspec, \hyperlink{structdirobject}{dirobject} $\ast$actdir, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf)
+\item 
+\hyperlink{structspectrum}{spectrum} $\ast$ \hyperlink{model__utils_8c_ac1c970f8545c70717925e789935baf15}{get\_\-throughput\_\-spec} (\hyperlink{structbeamspec}{beamspec} $\ast$actspec, char CONF\_\-file\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structtracedata}{tracedata} $\ast$ \hyperlink{model__utils_8c_a88c32a3ad7593c46dfa166a806205e05}{compute\_\-tracedata} (const \hyperlink{structbeam}{beam} actbeam, const \hyperlink{structdirobject}{dirobject} $\ast$actdir, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration, const \hyperlink{structbeamspec}{beamspec} $\ast$actspec)
+\item 
+\hyperlink{structtracedata}{tracedata} $\ast$ \hyperlink{model__utils_8c_a0ad6a3c9e3542d3085e0b4d840e76ad1}{compute\_\-short\_\-tracedata} (const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, const \hyperlink{structbeam}{beam} actbeam, const \hyperlink{structdirobject}{dirobject} $\ast$actdir, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration, const \hyperlink{structbeamspec}{beamspec} $\ast$actspec)
+\item 
+double \hyperlink{model__utils_8c_af6b109448b4b2c4087381a89a4946664}{get\_\-valid\_\-tracedata} (\hyperlink{structtracedata}{tracedata} $\ast$acttrace, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration)
+\item 
+void \hyperlink{model__utils_8c_a67e212ed30f3f8311e5eaa822dd69705}{select\_\-tracedata} (\hyperlink{structtracedata}{tracedata} $\ast$acttrace, const \hyperlink{structcalib__function}{calib\_\-function} $\ast$wl\_\-calibration, const int nentries)
+\item 
+void \hyperlink{model__utils_8c_ab5aca9ee955a502955517d541422cc27}{fill\_\-fluxfrom\_\-SED} (const \hyperlink{structdirobject}{dirobject} $\ast$actdir, \hyperlink{structtracedata}{tracedata} $\ast$acttrace)
+\item 
+void \hyperlink{model__utils_8c_a38db08b7fb859351801ecb7c45830a73}{print\_\-tracedata} (\hyperlink{structtracedata}{tracedata} $\ast$acttrace)
+\item 
+\hyperlink{structdirobject}{dirobject} $\ast$$\ast$ \hyperlink{model__utils_8c_ab4a6c2b0e26ff79ca76b2887d670b1df}{oblist\_\-to\_\-dirlist} (char grism\_\-file\mbox{[}$\,$\mbox{]}, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const \hyperlink{structpx__point}{px\_\-point} npixels, \hyperlink{structobject}{object} $\ast$$\ast$oblist, \hyperlink{structspectral__models}{spectral\_\-models} $\ast$spec\_\-mod, const double model\_\-scale, const int int\_\-type)
+\item 
+\hyperlink{structdirobject}{dirobject} $\ast$$\ast$ \hyperlink{model__utils_8c_a763b05dcf96d0f69417a38f7bf0a61da}{oblist\_\-to\_\-dirlist2} (char grism\_\-file\mbox{[}$\,$\mbox{]}, char CONF\_\-file\mbox{[}$\,$\mbox{]}, const \hyperlink{structpx__point}{px\_\-point} npixels, \hyperlink{structobject}{object} $\ast$$\ast$oblist, \hyperlink{structspectral__models}{spectral\_\-models} $\ast$spec\_\-mod, \hyperlink{structobject__models}{object\_\-models} $\ast$obj\_\-mod, const double model\_\-scale, const int int\_\-type)
+\item 
+\hyperlink{structdirobject}{dirobject} $\ast$ \hyperlink{model__utils_8c_ae01b7359b803f5823de49af7ba8de948}{fill\_\-dirobject} (const \hyperlink{structobject}{object} $\ast$actobject, const \hyperlink{structpx__point}{px\_\-point} npixels, gsl\_\-matrix $\ast$drzcoeffs, const double model\_\-scale, const int max\_\-offset)
+\item 
+\hyperlink{structdirobject}{dirobject} $\ast$ \hyperlink{model__utils_8c_aabe948f13d5487dcabd5499c635ca01e}{fill\_\-dirobj\_\-fromdirim} (const \hyperlink{structobject}{object} $\ast$actobject, \hyperlink{structobject__models}{object\_\-models} $\ast$objmodels)
+\item 
+\hyperlink{structdirobject}{dirobject} $\ast$ \hyperlink{model__utils_8c_a3c08d3f85de2d04b0f383f9beda7447e}{load\_\-dirobj\_\-img} (const \hyperlink{structobject}{object} $\ast$actobject, \hyperlink{structfits__access}{fits\_\-access} $\ast$modim\_\-access)
+\item 
+gsl\_\-vector $\ast$ \hyperlink{model__utils_8c_a5b20290920148fb8fb75adb149a94f6d}{get\_\-refpoint\_\-ranges} (const \hyperlink{structobject}{object} $\ast$actobject)
+\item 
+void \hyperlink{model__utils_8c_a5cd967f1d7c4d8c89f52a7cd3d6b4f81}{fill\_\-spectrum} (const \hyperlink{structobject}{object} $\ast$actobject, \hyperlink{structdirobject}{dirobject} $\ast$actdir, \hyperlink{structspectral__models}{spectral\_\-models} $\ast$spec\_\-mod, const int int\_\-type)
+\item 
+void \hyperlink{model__utils_8c_adee63ef5db37c64dcdd2288a4cff5113}{load\_\-spectrum} (const \hyperlink{structobject}{object} $\ast$actobject, \hyperlink{structdirobject}{dirobject} $\ast$actdir, \hyperlink{structfits__access}{fits\_\-access} $\ast$m\_\-access, const int int\_\-type)
+\item 
+\hyperlink{structenergy__distrib}{energy\_\-distrib} $\ast$ \hyperlink{model__utils_8c_a6b478169411f67ce4c7702fa7815b445}{make\_\-sed\_\-from\_\-beam} (const \hyperlink{structbeam}{beam} onebeam, const int int\_\-type, const int objID)
+\item 
+\hyperlink{structdirobject}{dirobject} $\ast$ \hyperlink{model__utils_8c_a39965b9d4410809472bb1a5fd4328026}{get\_\-dirobject\_\-from\_\-list} (\hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist, const int ID)
+\item 
+\hyperlink{structd__point}{d\_\-point} \hyperlink{model__utils_8c_a6dbc5b3a67592030d394cee3570b44e8}{get\_\-dirobject\_\-meanpos} (\hyperlink{structdirobject}{dirobject} $\ast$actdir)
+\item 
+\hyperlink{structbeam}{beam} \hyperlink{model__utils_8c_a457e67339a8e12cee377ffebf7410c0d}{get\_\-beam\_\-for\_\-beamspec} (\hyperlink{structobject}{object} $\ast$$\ast$oblist, const int nobjects, const \hyperlink{structbeamspec}{beamspec} $\ast$actspec)
+\item 
+\hyperlink{structbeamspec}{beamspec} $\ast$ \hyperlink{model__utils_8c_ab0112661e420045b9ed86e6e8cb71794}{get\_\-beamspec\_\-from\_\-list} (\hyperlink{structbeamspec}{beamspec} $\ast$$\ast$speclist, const int aperID, const int beamID)
+\item 
+void \hyperlink{model__utils_8c_a6ea108739ddb7ea09f86c3c51b1b5848}{print\_\-dirobject} (const \hyperlink{structdirobject}{dirobject} $\ast$actdir)
+\item 
+int \hyperlink{model__utils_8c_ade00a122791415b1ec8ba98f979bf914}{check\_\-interp\_\-type} (const int inter\_\-type, const int n\_\-flux, const int ID)
+\item 
+void \hyperlink{model__utils_8c_a72c9efb6343e03f3e19b0c81af37a54f}{free\_\-dirlist} (\hyperlink{structdirobject}{dirobject} $\ast$$\ast$dirlist)
+\item 
+void \hyperlink{model__utils_8c_aa711bf6afa5532517ed581be9e59d2d1}{free\_\-dirobject} (\hyperlink{structdirobject}{dirobject} $\ast$actdir)
+\item 
+void \hyperlink{model__utils_8c_af4aeb43aa090824fe3dcad3049d38a62}{free\_\-enerdist} (\hyperlink{structenergy__distrib}{energy\_\-distrib} $\ast$sed)
+\item 
+void \hyperlink{model__utils_8c_a9869f818df7a666d983da7b3d1956532}{free\_\-speclist} (\hyperlink{structbeamspec}{beamspec} $\ast$$\ast$speclist)
+\item 
+void \hyperlink{model__utils_8c_aa698da13e1ad04e38c6ce9c51e4d2923}{free\_\-tracedata} (\hyperlink{structtracedata}{tracedata} $\ast$acttrace)
+\item 
+double \hyperlink{model__utils_8c_ac6e79df79a058ccf4d82853e08a0c2df}{get\_\-flux\_\-from\_\-SED} (const \hyperlink{structenergy__distrib}{energy\_\-distrib} $\ast$sed, double in\_\-wave)
+\item 
+double \hyperlink{model__utils_8c_a2eba8404bd9e64513d02fa578502e122}{get\_\-aveflux\_\-from\_\-SED} (const \hyperlink{structenergy__distrib}{energy\_\-distrib} $\ast$sed, double in\_\-wave, double wave\_\-interv)
+\item 
+double \hyperlink{model__utils_8c_a8d6681aef9c109bc5c407c286c85d67c}{get\_\-flambda\_\-from\_\-magab} (double mag, double lambda)
+\item 
+void \hyperlink{model__utils_8c_ae73d0c2c001f041062d3f9776fd55dc1}{fill\_\-gaussvalues} (const \hyperlink{structd__point}{d\_\-point} dpixel, const \hyperlink{structbeam}{beam} actbeam, const \hyperlink{structdirobject}{dirobject} $\ast$actdir, const double lambda\_\-ref, const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, const double psf\_\-offset, \hyperlink{structtracedata}{tracedata} $\ast$acttrace)
+\item 
+\hyperlink{structbeam}{beam} \hyperlink{model__utils_8c_ab02649b7a821651ecce41bd6dc3394f6}{get\_\-newbeam} (const \hyperlink{structbeam}{beam} actbeam, const double dpsf)
+\item 
+double \hyperlink{model__utils_8c_af09a9a57d7ad0ec300ed94e9dd76d595}{get\_\-dpsf} (const double lambda\_\-ref, const double lambda, const \hyperlink{structaperture__conf}{aperture\_\-conf} $\ast$conf, const \hyperlink{structbeam}{beam} actbeam)
+\item 
+double \hyperlink{model__utils_8c_a5d8695af668aaed17d349ca4eb36292c}{get\_\-sub\_\-emodel\_\-value} (const \hyperlink{structd__point}{d\_\-point} dpixel, const \hyperlink{structbeam}{beam} actbeam, const \hyperlink{structd__point}{d\_\-point} drzscale)
+\item 
+double \hyperlink{model__utils_8c_ac36a7a4d559d6521def9d8198fa25bbf}{get\_\-emodel\_\-value} (const \hyperlink{structd__point}{d\_\-point} dpixel, const \hyperlink{structbeam}{beam} actbeam, const \hyperlink{structd__point}{d\_\-point} drzscale)
+\item 
+double \hyperlink{model__utils_8c_aaf9f8cca863f01beb42cceaf8c74e6ac}{get\_\-psf\_\-WFC} (const double lambda)
+\item 
+double \hyperlink{model__utils_8c_a78b257e92ab75a5531ccb6881ecd201e}{get\_\-psf\_\-HRC} (const double lambda)
+\item 
+double \hyperlink{model__utils_8c_af417d458a7783d5c0183ad9c69335fd0}{get\_\-psf\_\-SBC} (const double lambda)
+\item 
+double \hyperlink{model__utils_8c_a98ec48fe5d4a02d1711285b63fd4ed2a}{get\_\-polyN\_\-gsl} (const double x, const gsl\_\-vector $\ast$params)
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{model__utils_8c_aacc3ee1a7f283f8ef65cea31f4436a95}{
+\index{model\_\-utils.c@{model\_\-utils.c}!MAX@{MAX}}
+\index{MAX@{MAX}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX(x, \/  y)~(((x)$>$(y))?(x):(y))}}
+\label{model__utils_8c_aacc3ee1a7f283f8ef65cea31f4436a95}
+\hypertarget{model__utils_8c_a74e75242132eaabbc1c512488a135926}{
+\index{model\_\-utils.c@{model\_\-utils.c}!MIN@{MIN}}
+\index{MIN@{MIN}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{MIN}]{\setlength{\rightskip}{0pt plus 5cm}\#define MIN(x, \/  y)~(((x)$<$(y))?(x):(y))}}
+\label{model__utils_8c_a74e75242132eaabbc1c512488a135926}
+\hypertarget{model__utils_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}{
+\index{model\_\-utils.c@{model\_\-utils.c}!SQR@{SQR}}
+\index{SQR@{SQR}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{SQR}]{\setlength{\rightskip}{0pt plus 5cm}\#define SQR(x)~((x)$\ast$(x))}}
+\label{model__utils_8c_aa7866fa5e4e0ee9b034e9dab6599a9cc}
+
+
+\subsection{Function Documentation}
+\hypertarget{model__utils_8c_ade00a122791415b1ec8ba98f979bf914}{
+\index{model\_\-utils.c@{model\_\-utils.c}!check\_\-interp\_\-type@{check\_\-interp\_\-type}}
+\index{check\_\-interp\_\-type@{check\_\-interp\_\-type}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{check\_\-interp\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}int check\_\-interp\_\-type (const int {\em inter\_\-type}, \/  const int {\em n\_\-flux}, \/  const int {\em ID})}}
+\label{model__utils_8c_ade00a122791415b1ec8ba98f979bf914}
+Function: check\_\-interp\_\-type The function checks the requested interpolation type against the number of flux values in the models. The interpolation type is adjusted in case that there are not enough flux values for the reuqested type.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em inter\_\-type}]-\/ the requested interpolation \item[{\em n\_\-flux}]-\/ the number of flux values \item[{\em ID}]-\/ the \hyperlink{structobject}{object} ID\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+type -\/ the feasable interpolation type 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1590 {
+1591   int type=0;
+1592 
+1593   // for interpolation types other than linear at leas
+1594   // three flux values must be there
+1595   if (n_flux < 3 && inter_type > 1)
+1596     {
+1597       // make a warnign message if there are
+1598       // not enough flux value
+1599       if (inter_type > 2)
+1600         aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+1601                      "\naXe_PETCONT: Object: %i: interpolation switched from \"sp
+      line\" to \"linear\"!\n", ID);
+1602       else
+1603         aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+1604                      "\naXe_PETCONT: Object: %i: interpolation switched from \"po
+      lynomial\" to \"linear\"!\n", ID);
+1605 
+1606       // adjust the interpolation type to linear
+1607       type = 1;
+1608     }
+1609   else
+1610     {
+1611       // copy the requeted interpolation type
+1612       // if there are enough flux values
+1613       type = inter_type;
+1614     }
+1615 
+1616   // return the adjusted type
+1617   return type;
+1618 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a0ad6a3c9e3542d3085e0b4d840e76ad1}{
+\index{model\_\-utils.c@{model\_\-utils.c}!compute\_\-short\_\-tracedata@{compute\_\-short\_\-tracedata}}
+\index{compute\_\-short\_\-tracedata@{compute\_\-short\_\-tracedata}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{compute\_\-short\_\-tracedata}]{\setlength{\rightskip}{0pt plus 5cm}{\bf tracedata}$\ast$ compute\_\-short\_\-tracedata (const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  const {\bf beam} {\em actbeam}, \/  const {\bf dirobject} $\ast$ {\em actdir}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration}, \/  const {\bf beamspec} $\ast$ {\em actspec})}}
+\label{model__utils_8c_a0ad6a3c9e3542d3085e0b4d840e76ad1}
+Function: compute\_\-short\_\-tracedata
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} of the model \hyperlink{structspectrum}{spectrum} \item[{\em actdir}]-\/ the direct \hyperlink{structobject}{object} of the model \hyperlink{structspectrum}{spectrum} \item[{\em wl\_\-calibration}]-\/ the wavelength calibration of the model \hyperlink{structspectrum}{spectrum} \item[{\em actspec}]-\/ the model \hyperlink{structspectrum}{spectrum}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+acttrace -\/ the \hyperlink{structtracedata}{tracedata} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+338 {
+339 
+340   tracedata  *acttrace;
+341   trace_func *tracefun;
+342 
+343   gsl_vector *dx;
+344   gsl_vector *dy;
+345   gsl_vector *xi;
+346   gsl_vector *lambda;
+347   gsl_vector *dlambda;
+348   gsl_vector *flux;
+349   gsl_vector *gvalue;
+350 
+351   double tmp1, tmp2;
+352 
+353   int dx_min, dx_max;
+354   int npoints;
+355   int i;
+356   int nentries;
+357   int dx0, dx1;
+358 
+359   // allocate space for the tracedata
+360   acttrace = (tracedata *)malloc(sizeof(tracedata));
+361   if (acttrace == NULL)
+362     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+363                  "compute_tracedata:" " Could not allocate"
+364                  " memory for a tracedata object!");
+365 
+366   tracefun =  actbeam.spec_trace;
+367 
+368   dx0 = (double)conf->beam[actspec->beamID].offset.dx0;
+369   dx1 = (double)conf->beam[actspec->beamID].offset.dx1;
+370   dx_min = MIN(dx0, dx1)-1;
+371   dx_max = MAX(dx0, dx1)+1;
+372 
+373   // use the x-range of the direct obect area to
+374   // compute the dx-range for this beam
+375   //dx_min = MIN(actspec->model_ref.x - actdir->ix_min, actspec->model_ref.x - ac
+      tdir->ix_max)-5;
+376   //dx_max = MAX(actspec->model_ref.x - actdir->ix_min, actspec->model_ref.x - ac
+      tdir->ix_max)
+377   //  + (int)actspec->model->size1+5;
+378 
+379   // compute the number of points in the dx-range
+380   npoints = dx_max - dx_min + 1;
+381 
+382   // allocate space for the tracedata
+383   dx      = gsl_vector_alloc(npoints);
+384   dy      = gsl_vector_alloc(npoints);
+385   xi      = gsl_vector_alloc(npoints);
+386   lambda  = gsl_vector_alloc(npoints);
+387   dlambda = gsl_vector_alloc(npoints);
+388   flux    = gsl_vector_alloc(npoints);
+389   gvalue  = gsl_vector_alloc(npoints);
+390 
+391 
+392   // go over each point in the dx-range
+393   for (i=0; i < npoints; i++)
+394     {
+395 
+396       // compute the dx- and dy-values
+397       tmp1 = (double)(dx_min + i);
+398       tmp2 = tracefun->func (tmp1, tracefun->data);
+399 
+400       // store dx and dy, and xi (=dx)
+401       gsl_vector_set(dx, i, tmp1);
+402       gsl_vector_set(dy, i, tmp2);
+403       gsl_vector_set(xi, i, tmp1);
+404       gsl_vector_set(gvalue, i, 1.0);
+405       gsl_vector_set(flux, i, 1.0);
+406     }
+407 
+408   // compute the true xi values
+409   abscissa_to_pathlength (tracefun, xi);
+410 
+411   // go over each point in the dx-range
+412   for (i=0; i < npoints; i++)
+413     {
+414 
+415       // compute  and store lambda
+416       gsl_vector_set(lambda, i, wl_calibration->func(gsl_vector_get(xi, i), wl_ca
+      libration->order, wl_calibration->coeffs));
+417 
+418       // compute  and store dlambda
+419       tmp1 = wl_calibration->func(gsl_vector_get(xi, i)-0.5, wl_calibration->
+      order, wl_calibration->coeffs);
+420       tmp2 = wl_calibration->func(gsl_vector_get(xi, i)+0.5, wl_calibration->
+      order, wl_calibration->coeffs);
+421       gsl_vector_set(dlambda, i, fabs(tmp2-tmp1));
+422     }
+423 
+424   for (i=0; i < npoints; i++)
+425     {
+426       if (i == 0)
+427         {
+428           tmp1 = fabs(gsl_vector_get(lambda,i+1)-gsl_vector_get(lambda,i));
+429         }
+430       else if (i == npoints-1)
+431         {
+432           tmp1 = fabs(gsl_vector_get(lambda,i)-gsl_vector_get(lambda,i-1));
+433         }
+434       else
+435         {
+436           tmp1 = fabs(gsl_vector_get(lambda,i+1) - gsl_vector_get(lambda,i-1)) / 
+      2.0;
+437         }
+438       gsl_vector_set(dlambda, i, tmp1);
+439     }
+440 
+441   // transfer the quantities to the structure
+442   acttrace->npoints = npoints;
+443   acttrace->dx_start= dx_min;
+444 
+445   acttrace->dx      = dx;
+446   acttrace->dy      = dy;
+447   acttrace->xi      = xi;
+448   acttrace->lambda  = lambda;
+449   acttrace->dlambda = dlambda;
+450   acttrace->flux    = flux;
+451   acttrace->gvalue  = gvalue;
+452 
+453   // for prism data: constrain the tracedata
+454   if (wl_calibration->pr_range != NULL)
+455     {
+456      nentries = get_valid_tracedata(acttrace, wl_calibration);
+457      select_tracedata(acttrace, wl_calibration,nentries);
+458     }
+459   // return the tracestructure
+460   return acttrace;
+461 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a88c32a3ad7593c46dfa166a806205e05}{
+\index{model\_\-utils.c@{model\_\-utils.c}!compute\_\-tracedata@{compute\_\-tracedata}}
+\index{compute\_\-tracedata@{compute\_\-tracedata}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{compute\_\-tracedata}]{\setlength{\rightskip}{0pt plus 5cm}{\bf tracedata}$\ast$ compute\_\-tracedata (const {\bf beam} {\em actbeam}, \/  const {\bf dirobject} $\ast$ {\em actdir}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration}, \/  const {\bf beamspec} $\ast$ {\em actspec})}}
+\label{model__utils_8c_a88c32a3ad7593c46dfa166a806205e05}
+Function: compute\_\-tracedata The function creates a \hyperlink{structtracedata}{tracedata} structure for a specific \hyperlink{structbeam}{beam} model. A \hyperlink{structtracedata}{tracedata} structure consists of all relevant information (position, wavelength, dispersion) for the pixels along the trace of a specific \hyperlink{structbeam}{beam}. Since the reference point remains constant during the modelling of a \hyperlink{structbeam}{beam}, it is better to store the relevant data for the use in each pixel.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} of the model \hyperlink{structspectrum}{spectrum} \item[{\em actdir}]-\/ the direct \hyperlink{structobject}{object} of the model \hyperlink{structspectrum}{spectrum} \item[{\em wl\_\-calibration}]-\/ the wavelength calibration of the model \hyperlink{structspectrum}{spectrum} \item[{\em actspec}]-\/ the model \hyperlink{structspectrum}{spectrum}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+acttrace -\/ the \hyperlink{structtracedata}{tracedata} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+203 {
+204 
+205   tracedata  *acttrace;
+206   trace_func *tracefun;
+207 
+208   gsl_vector *dx;
+209   gsl_vector *dy;
+210   gsl_vector *xi;
+211   gsl_vector *lambda;
+212   gsl_vector *dlambda;
+213   gsl_vector *flux;
+214   gsl_vector *gvalue;
+215 
+216   double tmp1, tmp2;
+217 
+218   int dx_min, dx_max;
+219   int npoints;
+220   int i;
+221   int nentries;
+222 
+223   // allocate space for the tracedata
+224   acttrace = (tracedata *)malloc(sizeof(tracedata));
+225   if (acttrace == NULL)
+226     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+227                  "compute_tracedata:" " Could not allocate"
+228                  " memory for a tracedata object!");
+229 
+230   tracefun =  actbeam.spec_trace;
+231 
+232   // use the x-range of the direct obect area to
+233   // compute the dx-range for this beam
+234   dx_min = MIN(actspec->model_ref.x - actdir->ix_min, actspec->model_ref.x - actd
+      ir->ix_max)-5;
+235   dx_max = MAX(actspec->model_ref.x - actdir->ix_min, actspec->model_ref.x - actd
+      ir->ix_max)
+236     + (int)actspec->model->size1+5;
+237 
+238   // compute the number of points in the dx-range
+239   npoints = dx_max - dx_min + 1;
+240 
+241   // allocate space for the tracedata
+242   dx      = gsl_vector_alloc(npoints);
+243   dy      = gsl_vector_alloc(npoints);
+244   xi      = gsl_vector_alloc(npoints);
+245   lambda  = gsl_vector_alloc(npoints);
+246   dlambda = gsl_vector_alloc(npoints);
+247   flux    = gsl_vector_alloc(npoints);
+248   gvalue  = gsl_vector_alloc(npoints);
+249 
+250 
+251   // go over each point in the dx-range
+252   for (i=0; i < npoints; i++)
+253     {
+254 
+255       // compute the dx- and dy-values
+256       tmp1 = (double)(dx_min + i);
+257       tmp2 = tracefun->func (tmp1, tracefun->data);
+258 
+259       // store dx and dy, and xi (=dx)
+260       gsl_vector_set(dx, i, tmp1);
+261       gsl_vector_set(dy, i, tmp2);
+262       gsl_vector_set(xi, i, tmp1);
+263       gsl_vector_set(gvalue, i, 1.0);
+264       gsl_vector_set(flux, i, 1.0);
+265     }
+266 
+267   // compute the true xi values
+268   abscissa_to_pathlength (tracefun, xi);
+269 
+270   // go over each point in the dx-range
+271   for (i=0; i < npoints; i++)
+272     {
+273 
+274       // compute  and store lambda
+275       gsl_vector_set(lambda, i, wl_calibration->func(gsl_vector_get(xi, i), wl_ca
+      libration->order, wl_calibration->coeffs));
+276 
+277       // compute  and store dlambda
+278       tmp1 = wl_calibration->func(gsl_vector_get(xi, i)-0.5, wl_calibration->
+      order, wl_calibration->coeffs);
+279       tmp2 = wl_calibration->func(gsl_vector_get(xi, i)+0.5, wl_calibration->
+      order, wl_calibration->coeffs);
+280       gsl_vector_set(dlambda, i, fabs(tmp2-tmp1));
+281     }
+282 
+283   for (i=0; i < npoints; i++)
+284     {
+285       if (i == 0)
+286         {
+287           tmp1 = fabs(gsl_vector_get(lambda,i+1)-gsl_vector_get(lambda,i));
+288         }
+289       else if (i == npoints-1)
+290         {
+291           tmp1 = fabs(gsl_vector_get(lambda,i)-gsl_vector_get(lambda,i-1));
+292         }
+293       else
+294         {
+295           tmp1 = fabs(gsl_vector_get(lambda,i+1) - gsl_vector_get(lambda,i-1)) / 
+      2.0;
+296         }
+297       gsl_vector_set(dlambda, i, tmp1);
+298     }
+299 
+300   // transfer the quantities to the structure
+301   acttrace->npoints = npoints;
+302   acttrace->dx_start= dx_min;
+303 
+304   acttrace->dx      = dx;
+305   acttrace->dy      = dy;
+306   acttrace->xi      = xi;
+307   acttrace->lambda  = lambda;
+308   acttrace->dlambda = dlambda;
+309   acttrace->flux    = flux;
+310   acttrace->gvalue  = gvalue;
+311 
+312   // for prism data: constrain the tracedata
+313   if (wl_calibration->pr_range != NULL)
+314     {
+315      nentries = get_valid_tracedata(acttrace, wl_calibration);
+316      select_tracedata(acttrace, wl_calibration,nentries);
+317     }
+318   // return the tracestructure
+319   return acttrace;
+320 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_aabe948f13d5487dcabd5499c635ca01e}{
+\index{model\_\-utils.c@{model\_\-utils.c}!fill\_\-dirobj\_\-fromdirim@{fill\_\-dirobj\_\-fromdirim}}
+\index{fill\_\-dirobj\_\-fromdirim@{fill\_\-dirobj\_\-fromdirim}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{fill\_\-dirobj\_\-fromdirim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirobject}$\ast$ fill\_\-dirobj\_\-fromdirim (const {\bf object} $\ast$ {\em actobject}, \/  {\bf object\_\-models} $\ast$ {\em objmodels})}}
+\label{model__utils_8c_aabe948f13d5487dcabd5499c635ca01e}
+Function: fill\_\-dirobj\_\-fromdirim Transforms an \hyperlink{structobject}{object} which has a direct emission model associated to into a direct \hyperlink{structobject}{object}. The direct \hyperlink{structobject}{object} created is returned
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actobject}]-\/ the \hyperlink{structobject}{object} to be transformed \item[{\em \hyperlink{structobject__models}{object\_\-models}}]-\/ the structure with the direct emission models\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+actdir -\/ the \hyperlink{structdirobject}{dirobject} created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+960 {
+961 
+962   dirobject      *actdir=NULL;
+963   gsl_vector     *extention;
+964   dirim_emission *dirim;
+965 
+966   // allocate space for the dirobject
+967   actdir = (dirobject *) malloc (sizeof (dirobject));
+968   if (actdir == NULL)
+969     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+970                  "fill_dirobj_fromdirim:" " Could not allocate"
+971                  " memory for a dirobject object");
+972 
+973   // assign a direct emission model to a local variable
+974   dirim = get_dirim_emission(objmodels, actobject->beams[0].modimage);
+975 
+976   // transfer refpoint and ID
+977   actdir->ID = actobject->ID;
+978   actdir->refpoint.x = actobject->beams[0].refpoint.x;
+979   actdir->refpoint.y = actobject->beams[0].refpoint.y;
+980 
+981   // get the extentions on the reference points
+982   extention = get_refpoint_ranges(actobject);
+983 
+984   // derive and store min/max in x/y for the corners
+985   actdir->ix_min = (int)floor(actobject->beams[0].refpoint.x - dirim->xmean + gsl
+      _vector_get(extention, 0) + 0.5);
+986   actdir->ix_max = (int)floor(actobject->beams[0].refpoint.x + dirim->xmean + gsl
+      _vector_get(extention, 1) + 0.5);
+987   actdir->iy_min = (int)floor(actobject->beams[0].refpoint.y - dirim->ymean + gsl
+      _vector_get(extention, 2) + 0.5);
+988   actdir->iy_max = (int)floor(actobject->beams[0].refpoint.y + dirim->ymean + gsl
+      _vector_get(extention, 3) + 0.5);
+989 
+990   // fix the drizzle scale, since it has no
+991   // business in this context
+992   actdir->drzscale.x = 1.0;
+993   actdir->drzscale.y = 1.0;
+994 
+995   // store the direct emission
+996   // object in the direct object
+997   actdir->dirim = dirim;
+998 
+999   // free the memory for the vector
+1000   gsl_vector_free(extention);
+1001 
+1002   // return the dirobject
+1003   return actdir;
+1004 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ae01b7359b803f5823de49af7ba8de948}{
+\index{model\_\-utils.c@{model\_\-utils.c}!fill\_\-dirobject@{fill\_\-dirobject}}
+\index{fill\_\-dirobject@{fill\_\-dirobject}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{fill\_\-dirobject}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirobject}$\ast$ fill\_\-dirobject (const {\bf object} $\ast$ {\em actobject}, \/  const {\bf px\_\-point} {\em npixels}, \/  gsl\_\-matrix $\ast$ {\em drzcoeffs}, \/  const double {\em model\_\-scale}, \/  const int {\em max\_\-offset})}}
+\label{model__utils_8c_ae01b7359b803f5823de49af7ba8de948}
+Function: fill\_\-dirobject Transforms one \hyperlink{structobject}{object} into one \hyperlink{structdirobject}{dirobject}. Either transfers or computes the content of the \hyperlink{structdirobject}{dirobject} from the \hyperlink{structobject}{object}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actobject}]-\/ the \hyperlink{structobject}{object} to be transformed \item[{\em npixels}]-\/ the dimension of the grism image \item[{\em drzcoeffs}]-\/ the drizzle coefficients \item[{\em model\_\-scale}]-\/ the scale for the size of the direct \hyperlink{structobject}{object} area\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+actdir -\/ the \hyperlink{structdirobject}{dirobject} created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+880 {
+881 
+882   dirobject *actdir;
+883   d_point dirmod[4];
+884   double delx_a, dely_a;
+885   double delx_b, dely_b;
+886   gsl_vector *extention;
+887 
+888   // allocate space for the dirobject
+889   actdir = (dirobject *) malloc (sizeof (dirobject));
+890   if (actdir == NULL)
+891     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+892                  "fill_dirobject:" " Could not allocate"
+893                  " memory for a dirobject object");
+894 
+895   // compute the vector of maximum elongation along the large half axis
+896   delx_a = model_scale * actobject->beams[0].awidth * cos(actobject->beams[0].
+      aorient);
+897   dely_a = model_scale * actobject->beams[0].awidth * sin(actobject->beams[0].
+      aorient);
+898 
+899   // compute the vector of maximum elongation along the small half axis
+900   delx_b = model_scale * actobject->beams[0].bwidth * cos(actobject->beams[0].
+      aorient + M_PI/2.0);
+901   dely_b = model_scale * actobject->beams[0].bwidth * sin(actobject->beams[0].
+      aorient + M_PI/2.0);
+902 
+903   // corner refpoint + large vector + small vector
+904   dirmod[0].x = actobject->beams[0].refpoint.x + delx_a + delx_b;
+905   dirmod[0].y = actobject->beams[0].refpoint.y + dely_a + dely_b;
+906 
+907   // corner refpoint + large vector - small vector
+908   dirmod[1].x = actobject->beams[0].refpoint.x + delx_a - delx_b;
+909   dirmod[1].y = actobject->beams[0].refpoint.y + dely_a - dely_b;
+910 
+911   // corner refpoint - large vector + small vector
+912   dirmod[2].x = actobject->beams[0].refpoint.x - delx_a + delx_b;
+913   dirmod[2].y = actobject->beams[0].refpoint.y - dely_a + dely_b;
+914 
+915   // corner refpoint - large vector - small vector
+916   dirmod[3].x = actobject->beams[0].refpoint.x - delx_a - delx_b;
+917   dirmod[3].y = actobject->beams[0].refpoint.y - dely_a - dely_b;
+918 
+919   // transfer refpoint and ID
+920   actdir->ID = actobject->ID;
+921   actdir->refpoint.x = actobject->beams[0].refpoint.x;
+922   actdir->refpoint.y = actobject->beams[0].refpoint.y;
+923 
+924   // get the extentions on the reference points
+925   extention = get_refpoint_ranges(actobject);
+926 
+927   // derive and store min/max in x/y for the corners
+928   actdir->ix_min = (int)floor(MIN(MIN(dirmod[0].x,dirmod[1].x),MIN(dirmod[2].x,di
+      rmod[3].x))+ gsl_vector_get(extention, 0) + 0.5) - max_offset;
+929   actdir->ix_max = (int)floor(MAX(MAX(dirmod[0].x,dirmod[1].x),MAX(dirmod[2].x,di
+      rmod[3].x))+ gsl_vector_get(extention, 1) + 0.5) + max_offset;
+930   actdir->iy_min = (int)floor(MIN(MIN(dirmod[0].y,dirmod[1].y),MIN(dirmod[2].y,di
+      rmod[3].y))+ gsl_vector_get(extention, 2) + 0.5) - max_offset;
+931   actdir->iy_max = (int)floor(MAX(MAX(dirmod[0].y,dirmod[1].y),MAX(dirmod[2].y,di
+      rmod[3].y))+ gsl_vector_get(extention, 3) + 0.5) + max_offset;
+932 
+933   // derive the distortion scales along the major an minor axis
+934   actdir->drzscale = get_axis_scales(actobject->beams[0], drzcoeffs, npixels);
+935 
+936   actdir->dirim = NULL;
+937 
+938   // free the memory for the vector
+939   gsl_vector_free(extention);
+940 
+941   // return the dirobject
+942   return actdir;
+943 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ab5aca9ee955a502955517d541422cc27}{
+\index{model\_\-utils.c@{model\_\-utils.c}!fill\_\-fluxfrom\_\-SED@{fill\_\-fluxfrom\_\-SED}}
+\index{fill\_\-fluxfrom\_\-SED@{fill\_\-fluxfrom\_\-SED}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{fill\_\-fluxfrom\_\-SED}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-fluxfrom\_\-SED (const {\bf dirobject} $\ast$ {\em actdir}, \/  {\bf tracedata} $\ast$ {\em acttrace})}}
+\label{model__utils_8c_ab5aca9ee955a502955517d541422cc27}
+
+
+
+\begin{DoxyCode}
+634 {
+635   int i=0;
+636 
+637   // go over all tracedata points
+638   for (i=0; i<acttrace->npoints; i++)
+639     // compute and fill in the flux values at each wavelength
+640     //gsl_vector_set(acttrace->flux, i, get_flux_from_SED(actdir->SED, gsl_vector
+      _get(acttrace->lambda, i)/10.0));
+641     gsl_vector_set(acttrace->flux, i,
+642                    get_aveflux_from_SED(actdir->SED,
+643                                         gsl_vector_get(acttrace->lambda, i)/10.0,
+       gsl_vector_get(acttrace->dlambda, i)/10.0));
+644 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ae73d0c2c001f041062d3f9776fd55dc1}{
+\index{model\_\-utils.c@{model\_\-utils.c}!fill\_\-gaussvalues@{fill\_\-gaussvalues}}
+\index{fill\_\-gaussvalues@{fill\_\-gaussvalues}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{fill\_\-gaussvalues}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-gaussvalues (const {\bf d\_\-point} {\em dpixel}, \/  const {\bf beam} {\em actbeam}, \/  const {\bf dirobject} $\ast$ {\em actdir}, \/  const double {\em lambda\_\-ref}, \/  const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  const double {\em psf\_\-offset}, \/  {\bf tracedata} $\ast$ {\em acttrace})}}
+\label{model__utils_8c_ae73d0c2c001f041062d3f9776fd55dc1}
+
+
+
+\begin{DoxyCode}
+1975 {
+1976   beam new_beam;
+1977 
+1978   double dpsf=0.0;
+1979   //double gval=0.0;
+1980   double lambda=0.0;
+1981   //double factor=0.0;
+1982   //double nom=0.0;
+1983   //double denom=0.0;
+1984 
+1985   int i=0;
+1986   int minpsf_flagg=0;
+1987 
+1988   // get the acurate emission value with subgridding
+1989   //gval   = get_sub_emodel_value(dpixel, actbeam, actdir->drzscale);
+1990   //fprintf(stdout, "gvalue: %e %f %f", gval, actdir->drzscale.x, actdir->drzscal
+      e.y);
+1991 
+1992   //  0: fastest scenario: fill the vector with
+1993   //     identical values: 34s
+1994   //  gsl_vector_set_all(acttrace->gvalue, i, gval);
+1995 
+1996 
+1997   // 1: iterate over the vector and enter the same
+1998   //    value: 35s
+1999   if (conf->psfrange && conf->psfcoeffs)
+2000     {
+2001       // go over all tracedata (that means wavelength) points
+2002       for (i=0; i < acttrace->npoints; i++)
+2003         {
+2004           // derive the wavelength
+2005           lambda = gsl_vector_get(acttrace->lambda, i)/10.0;
+2006 
+2007           // derive the correction of the psf at the wavelength
+2008 
+2009           // 3: calculating the psf-offset: 90s
+2010           dpsf   = psf_offset + get_dpsf(lambda_ref, lambda, conf, actbeam);
+2011           //      dpsf=0.0;
+2012           //fprintf(stdout, "dpsf: %f", dpsf);
+2013 
+2014 
+2015           // derive a beam with the correct widths at the wavelength
+2016 
+2017           // 2: creating a new beam with a different size: 50s
+2018           new_beam = get_newbeam(actbeam,dpsf);
+2019 
+2020           // transport the
+2021           if (new_beam.ID)
+2022             minpsf_flagg=1;
+2023 
+2024           // derive the correction factor for the emission using the correct widt
+      hs
+2025           // 4: computing the correction factor for the wavelength: 255s
+2026           //factor = get_emodel_value(dpixel,new_beam,actdir->drzscale)/get_emode
+      l_value(dpixel,actbeam,actdir->drzscale);
+2027           //nom = get_emodel_value(dpixel,new_beam,actdir->drzscale);
+2028           //denom = get_emodel_value(dpixel,actbeam,actdir->drzscale);
+2029           //if (nom != 0.0 && denom != 0.0)
+2030           //  factor = nom / denom;
+2031           //else
+2032           //  factor = 1.0;
+2033           //fprintf(stdout, "factor: %f ", factor);
+2034 
+2035           // store the emission value, taking into account the correction
+2036           //gsl_vector_set(acttrace->gvalue, i, gval*factor);
+2037           gsl_vector_set_all(acttrace->gvalue, get_sub_emodel_value(dpixel, new_b
+      eam, actdir->drzscale));
+2038           //fprintf(stdout, "gvalue * factor: %e ", gval*factor);
+2039           }
+2040     }
+2041   else
+2042     {
+2043       // derive a beam with the correct widths at the wavelength
+2044       new_beam = get_newbeam(actbeam,psf_offset);
+2045       if (new_beam.ID)
+2046         minpsf_flagg=1;
+2047 
+2048       // derive the correction factor for the emission using the correct widths
+2049       //factor = get_emodel_value(dpixel,new_beam,actdir->drzscale)/get_emodel_va
+      lue(dpixel,actbeam,actdir->drzscale);
+2050       //nom = get_emodel_value(dpixel,new_beam,actdir->drzscale);
+2051       //denom = get_emodel_value(dpixel,actbeam,actdir->drzscale);
+2052       //if (nom != 0.0 && denom != 0.0)
+2053       //  factor = nom / denom;
+2054       //else
+2055       //  factor = 1.0;
+2056 
+2057       // store the emission value, taking into account the correction
+2058       //gsl_vector_set_all(acttrace->gvalue, gval*factor);
+2059       gsl_vector_set_all(acttrace->gvalue, get_sub_emodel_value(dpixel, new_beam,
+       actdir->drzscale));
+2060 
+2061     }
+2062   if (minpsf_flagg)
+2063     aXe_message (aXe_M_WARN4, __FILE__, __LINE__,
+2064                  "\naXe_PETCONT: points in PSF of object %i beam %c smaller than 
+      PSF_MIN=%f! Set to PSF_MIN\n", actdir->ID, BEAM(actbeam.ID), MINPSF);
+2065 
+2066 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a5cd967f1d7c4d8c89f52a7cd3d6b4f81}{
+\index{model\_\-utils.c@{model\_\-utils.c}!fill\_\-spectrum@{fill\_\-spectrum}}
+\index{fill\_\-spectrum@{fill\_\-spectrum}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{fill\_\-spectrum}]{\setlength{\rightskip}{0pt plus 5cm}void fill\_\-spectrum (const {\bf object} $\ast$ {\em actobject}, \/  {\bf dirobject} $\ast$ {\em actdir}, \/  {\bf spectral\_\-models} $\ast$ {\em spec\_\-mod}, \/  const int {\em int\_\-type})}}
+\label{model__utils_8c_a5cd967f1d7c4d8c89f52a7cd3d6b4f81}
+Function: fill\_\-spectrum Transfers the wavelength information from an \hyperlink{structobject}{object} to a \hyperlink{structdirobject}{dirobject}. Store the minimum and maximum wavelength as well as associated flux values in the structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actobject}]-\/ the \hyperlink{structobject}{object} to be transformed \item[{\em actdir}]-\/ the \hyperlink{structdirobject}{dirobject} to store the flux values in \item[{\em spec\_\-mod}]-\/ the spectral model list \item[{\em int\_\-type}]-\/ the interpolation type to be used \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1151 {
+1152   energy_distrib *sed;
+1153   //  double *sed_wavs;
+1154   //  double *sed_flux;
+1155 
+1156   beam onebeam;
+1157 
+1158   //int i_type=0;
+1159   //  int nwavs=0;
+1160   //int i = 0;
+1161   int j = 0;
+1162 
+1163   // the data are derived from the 1st non-zero beam in the object;
+1164   // go along the beams util you find a non-zero beam
+1165   while (actobject->beams[j].flux == NULL && j < actobject->nbeams)
+1166     j++;
+1167   // store this beam
+1168   onebeam = actobject->beams[j];
+1169 
+1170   // do something only if the first beam has flux values
+1171   if (onebeam.flux != NULL && j < actobject->nbeams)
+1172     {
+1173 
+1174       if (onebeam.modspec > 0 && spec_mod)
+1175         {
+1176           // get the model spectrum
+1177           sed = get_model_sed(spec_mod, onebeam.modspec);
+1178 
+1179           // mark that the SED does NOT come
+1180           // from broad band colours
+1181           actdir->bb_sed=0;
+1182         }
+1183       else
+1184         {
+1185 
+1186           sed = make_sed_from_beam(onebeam, int_type, actobject->ID);
+1187 
+1188           /*
+1189           //
+1190           // the code below is a mess!!!!
+1191           // MUST be re-factorized!!
+1192           //
+1193 
+1194           // determine the number of flux values, allocate space
+1195           nwavs = (onebeam.flux->size)/2;
+1196 
+1197           // determine the number of flux values, allocate space
+1198           nwavs = (onebeam.flux->size)/2;
+1199           sed = (energy_distrib*) malloc(sizeof(energy_distrib));
+1200           sed_wavs = (double*) malloc(nwavs*sizeof(double));
+1201           sed_flux = (double*) malloc(nwavs*sizeof(double));
+1202 
+1203           // transfer the data into the 'local' arrays
+1204           for (i=0; i<nwavs; i++)
+1205             {
+1206               sed_wavs[i] = gsl_vector_get(onebeam.flux, 2*i);
+1207               sed_flux[i] = gsl_vector_get(onebeam.flux, 2*i+1);
+1208             }
+1209 
+1210           // transfer the vector and length information
+1211           // to the SED object
+1212           sed->npoints    = nwavs;
+1213           sed->wavelength = sed_wavs ;
+1214           sed->flux       = sed_flux;
+1215 
+1216           // check the interpolation type
+1217           i_type = check_interp_type(int_type, nwavs, actobject->ID);
+1218           if (nwavs > 1)
+1219             {
+1220               // if possible, allocate and
+1221               // initialize an interpolation object
+1222               if (i_type == 2)
+1223                 sed->interp     = gsl_interp_alloc (gsl_interp_polynomial, (size_
+      t)nwavs);
+1224               else if (i_type == 3)
+1225                 sed->interp     = gsl_interp_alloc (gsl_interp_cspline, (size_t)n
+      wavs);
+1226               else
+1227                 sed->interp     = gsl_interp_alloc (gsl_interp_linear, (size_t)nw
+      avs);
+1228 
+1229               sed->accel      = gsl_interp_accel_alloc ();
+1230               gsl_interp_init (sed->interp, sed->wavelength, sed->flux, (size_t)s
+      ed->npoints);
+1231             }
+1232           else
+1233             {
+1234               // if no interpolation, set
+1235               // the memeber to NULL
+1236               sed->interp = NULL;
+1237               sed->accel= NULL;
+1238             }
+1239           */
+1240           // mark that the SED DOES come
+1241           // from broad band colours
+1242           actdir->bb_sed=1;
+1243         }
+1244     }
+1245   else
+1246     {
+1247       // make an error if there are no flux values
+1248       aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+1249                   "aXe_PETCONT: " "the OAF does not have flux values\n");
+1250     }
+1251 
+1252   // transfer the SED object to the direct object
+1253   actdir->SED = sed;
+1254 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a72c9efb6343e03f3e19b0c81af37a54f}{
+\index{model\_\-utils.c@{model\_\-utils.c}!free\_\-dirlist@{free\_\-dirlist}}
+\index{free\_\-dirlist@{free\_\-dirlist}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{free\_\-dirlist}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-dirlist ({\bf dirobject} $\ast$$\ast$ {\em dirlist})}}
+\label{model__utils_8c_a72c9efb6343e03f3e19b0c81af37a54f}
+Function: free\_\-dirlist Releases the memory allocated for a list of dirobjects. After releasing memory, all elements are set to NULL.
+
+Note that here the memory for a model image is NOT released, in this usage scenario only the references were stored. Also for high resolution spectra only references are stored. For broad band spectra memory was allocated and hence is free'd here!
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em dirlist}]-\/ the list of dirobjects  spec\_\-mod -\/ describes what all to free \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1637 {
+1638   int i, ndirs = 0;
+1639   //int j;
+1640 
+1641   // count the number of dirobjects
+1642   while (dirlist[ndirs] != NULL)
+1643     ndirs++;
+1644 
+1645   // go over each item in the list
+1646   for (i = 0; i < ndirs; i++)
+1647     {
+1648 
+1649       // only release memory for
+1650           // a broad band SED
+1651       if (dirlist[i]->bb_sed)
+1652         // free the energy distribution
+1653         free_enerdist (dirlist[i]->SED);
+1654 
+1655       // free the dirobject
+1656       free (dirlist[i]);
+1657 
+1658       // set the dirobject to NULL
+1659       dirlist[i] = NULL;
+1660     }
+1661 
+1662   // free the list
+1663   free (dirlist);
+1664 
+1665   // set the list to NULL
+1666   dirlist = NULL;
+1667 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_aa711bf6afa5532517ed581be9e59d2d1}{
+\index{model\_\-utils.c@{model\_\-utils.c}!free\_\-dirobject@{free\_\-dirobject}}
+\index{free\_\-dirobject@{free\_\-dirobject}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{free\_\-dirobject}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-dirobject ({\bf dirobject} $\ast$ {\em actdir})}}
+\label{model__utils_8c_aa711bf6afa5532517ed581be9e59d2d1}
+Function: free\_\-dirobject Releases the memory allocated for a direct \hyperlink{structobject}{object}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actdir}]-\/ the list of dirobjects \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1678                                   {
+1679         if (actdir->SED){
+1680                 free_enerdist(actdir->SED);
+1681                 actdir->SED = NULL;
+1682         }
+1683         if (actdir->dirim){
+1684                 free_dirim_emission(actdir->dirim);
+1685                 actdir->dirim = NULL;
+1686         }
+1687         free(actdir);
+1688         actdir=NULL;
+1689 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_af4aeb43aa090824fe3dcad3049d38a62}{
+\index{model\_\-utils.c@{model\_\-utils.c}!free\_\-enerdist@{free\_\-enerdist}}
+\index{free\_\-enerdist@{free\_\-enerdist}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{free\_\-enerdist}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-enerdist ({\bf energy\_\-distrib} $\ast$ {\em sed})}}
+\label{model__utils_8c_af4aeb43aa090824fe3dcad3049d38a62}
+Function: free\_\-enerdist The function releases all the memory of a SED \hyperlink{structobject}{object}
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em sed}]-\/ the SED \hyperlink{structobject}{object} \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1701 {
+1702 
+1703   // free the two arrays
+1704   free(sed->wavelength);
+1705   free(sed->flux);
+1706 
+1707   // free the intepolation
+1708   // structures if defined
+1709   if (sed->interp != NULL)
+1710     gsl_interp_free (sed->interp);
+1711   if (sed->accel != NULL)
+1712     gsl_interp_accel_free (sed->accel);
+1713 
+1714   // free the object itsel
+1715   free(sed);
+1716 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a9869f818df7a666d983da7b3d1956532}{
+\index{model\_\-utils.c@{model\_\-utils.c}!free\_\-speclist@{free\_\-speclist}}
+\index{free\_\-speclist@{free\_\-speclist}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{free\_\-speclist}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-speclist ({\bf beamspec} $\ast$$\ast$ {\em speclist})}}
+\label{model__utils_8c_a9869f818df7a666d983da7b3d1956532}
+Function: free\_\-speclist The function releases all the memory of a list of beamspec's.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em speclist}]-\/ a list of beamspecs \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1729 {
+1730 
+1731   int i=0;
+1732 
+1733   // go over each item in the list
+1734   while (speclist[i] != NULL)
+1735     {
+1736 
+1737       // free the memory in the matrix
+1738       gsl_matrix_free (speclist[i]->model);
+1739 
+1740       // free the beamspec object itself
+1741       free (speclist[i]);
+1742 
+1743       // set the beamspec to NULL,
+1744       // increment the counter
+1745       speclist[i++] = NULL;
+1746     }
+1747 
+1748   // free the memory of the list
+1749   free(speclist);
+1750 
+1751   // set the list to NULL
+1752   speclist = NULL;
+1753 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_aa698da13e1ad04e38c6ce9c51e4d2923}{
+\index{model\_\-utils.c@{model\_\-utils.c}!free\_\-tracedata@{free\_\-tracedata}}
+\index{free\_\-tracedata@{free\_\-tracedata}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{free\_\-tracedata}]{\setlength{\rightskip}{0pt plus 5cm}void free\_\-tracedata ({\bf tracedata} $\ast$ {\em acttrace})}}
+\label{model__utils_8c_aa698da13e1ad04e38c6ce9c51e4d2923}
+Function: free\_\-tracedata Releases the memory in a \hyperlink{structtracedata}{tracedata} structure.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em acttrace}]-\/ the structure to be freed \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1765 {
+1766   if (acttrace->npoints > 0)
+1767     {
+1768       gsl_vector_free(acttrace->dx);
+1769       gsl_vector_free(acttrace->dy);
+1770       gsl_vector_free(acttrace->xi);
+1771       gsl_vector_free(acttrace->lambda);
+1772       gsl_vector_free(acttrace->dlambda);
+1773       gsl_vector_free(acttrace->flux);
+1774       gsl_vector_free(acttrace->gvalue);
+1775     }
+1776   free(acttrace);
+1777 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a2eba8404bd9e64513d02fa578502e122}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-aveflux\_\-from\_\-SED@{get\_\-aveflux\_\-from\_\-SED}}
+\index{get\_\-aveflux\_\-from\_\-SED@{get\_\-aveflux\_\-from\_\-SED}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-aveflux\_\-from\_\-SED}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-aveflux\_\-from\_\-SED (const {\bf energy\_\-distrib} $\ast$ {\em sed}, \/  double {\em in\_\-wave}, \/  double {\em wave\_\-interv})}}
+\label{model__utils_8c_a2eba8404bd9e64513d02fa578502e122}
+Function: get\_\-aveflux\_\-from\_\-SED The function computes and returns the integrated flux of a given SED \hyperlink{structobject}{object} over a given interval at a given wavelength position. Beyond the wavelength interval the SED is defined on, the flux is taken as constant.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sed}]-\/ the SED-\/object to derive a flux value from \item[{\em in\_\-wave}]-\/ the wavelength to average the flux value at \item[{\em wave\_\-interv}]-\/ the wavelength interval to average over\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+flux -\/ the average for the requested wavelength interval 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1833 {
+1834   double wav_min=0.0;
+1835   double wav_max=0.0;
+1836 
+1837   double range_1=0.0;
+1838   double range_2=0.0;
+1839 
+1840   double flux=0.0;
+1841 
+1842   // check whether there is only one
+1843   // flux point
+1844   if (sed->npoints < 2)
+1845     // return the value at the single
+1846     // flux point
+1847     return sed->flux[0];
+1848 
+1849   // compute the interval coundaries
+1850   wav_min = in_wave - 0.5*wave_interv;
+1851   wav_max = in_wave + 0.5*wave_interv;
+1852 
+1853   // check whether the upper wavelength
+1854   // interval boundary is just shorter than
+1855   // the SED range
+1856   if (wav_max < sed->wavelength[0]){
+1857     // give the smallest SED flux value
+1858     flux = sed->flux[0];}
+1859 
+1860   // check whether the lower wavelength
+1861   // interval boundary is just longer than
+1862   // the SED range
+1863   else if (wav_min > sed->wavelength[sed->npoints-1]){
+1864     // give the highest defined value
+1865     flux = sed->flux[sed->npoints-1];}
+1866 
+1867   // check whether the interval covers the lower
+1868   // end covered by the SED
+1869   else if (wav_min < sed->wavelength[0] && wav_max > sed->wavelength[0])
+1870     {
+1871       // get the lower interval
+1872       range_1 = sed->wavelength[0] - wav_min;
+1873 
+1874       // check whether the upper boundary is
+1875       // covered by the SED
+1876       if (wav_max <= sed->wavelength[sed->npoints-1])
+1877         {
+1878           //fprintf(stderr,"got here!\n");
+1879           // get the integration interval
+1880           range_2 = wav_max - sed->wavelength[0];
+1881 
+1882           // average the two integrals
+1883           flux = (range_1*sed->flux[0] + gsl_interp_eval_integ(sed->interp, sed->
+      wavelength, sed->flux, sed->wavelength[0], wav_max, sed->accel)) / wave_interv;
+1884         }
+1885       else
+1886         {
+1887           // get the integration interval
+1888           range_2 = wav_max - sed->wavelength[sed->npoints-1];
+1889 
+1890           // average the three integrals
+1891           flux = (range_1*sed->flux[0] + range_2*sed->flux[sed->npoints-1]
+1892                   + gsl_interp_eval_integ(sed->interp, sed->wavelength, sed->
+      flux, sed->wavelength[0], sed->wavelength[sed->npoints-1], sed->accel)) / wave_in
+      terv;
+1893         }
+1894     }
+1895 
+1896   // check whether the interval start is beyound
+1897   // the lower
+1898   // end covered by the SED
+1899   else if (wav_min >= sed->wavelength[0] && wav_max >= sed->wavelength[0])
+1900     {
+1901       // check whether the interval is completely
+1902       // covered by the SED
+1903       if (wav_max <= sed->wavelength[sed->npoints-1])
+1904         {
+1905           // compute the integral over the SED and the interval
+1906           flux = gsl_interp_eval_integ(sed->interp, sed->wavelength, sed->flux, w
+      av_min, wav_max, sed->accel) / wave_interv;
+1907         }
+1908       // if the interval is partly out
+1909       // of the SED
+1910       else
+1911         {
+1912           // compute the range which is in
+1913           range_1 = sed->wavelength[sed->npoints-1] - wav_min;
+1914           // compute the range which is out
+1915           range_2 = wav_max - sed->wavelength[sed->npoints-1];
+1916 
+1917           // compute the integrated flux via weighted summation
+1918           // of the in part and the out part
+1919           flux = (gsl_interp_eval_integ(sed->interp, sed->wavelength, sed->flux, 
+      wav_min, sed->wavelength[sed->npoints-1], sed->accel)
+1920                   + range_2*sed->flux[sed->npoints-1]) / wave_interv;
+1921         }
+1922     }
+1923   // return the integrated flux value
+1924   return flux;
+1925 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a457e67339a8e12cee377ffebf7410c0d}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-beam\_\-for\_\-beamspec@{get\_\-beam\_\-for\_\-beamspec}}
+\index{get\_\-beam\_\-for\_\-beamspec@{get\_\-beam\_\-for\_\-beamspec}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-beam\_\-for\_\-beamspec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beam} get\_\-beam\_\-for\_\-beamspec ({\bf object} $\ast$$\ast$ {\em oblist}, \/  const int {\em nobjects}, \/  const {\bf beamspec} $\ast$ {\em actspec})}}
+\label{model__utils_8c_a457e67339a8e12cee377ffebf7410c0d}
+Function: get\_\-beam\_\-for\_\-beamspec The function selects for a given \hyperlink{structbeamspec}{beamspec} the corresponding \hyperlink{structbeam}{beam} from an \hyperlink{structobject}{object} list. The identification is done via objectID and beamID. An error is thrown in case that no matching \hyperlink{structbeam}{beam} could be found.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list to identify a \hyperlink{structbeam}{beam} from \item[{\em nobjects}]-\/ the number of objects in the \hyperlink{structobject}{object} list \item[{\em actspec}]-\/ the model \hyperlink{structspectrum}{spectrum} to identify a \hyperlink{structbeam}{beam} for\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+actbeam -\/ the identified \hyperlink{structbeam}{beam} 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1469 {
+1470 
+1471   beam actbeam;
+1472 
+1473   int i, j;
+1474 
+1475   // set the beam ID to -1 to identify
+1476   // failed identification
+1477   actbeam.ID = -1;
+1478 
+1479   // go over all objects in the list
+1480   for (i = 0; i < nobjects; i++)
+1481     {
+1482 
+1483       // search for a matching object ID
+1484       if (oblist[i]->ID == actspec->objectID)
+1485         {
+1486 
+1487           // go over all beams in the matchin object
+1488           for (j=0; j < oblist[i]->nbeams; j++)
+1489             {
+1490 
+1491               // search for a matching beam ID
+1492               if (oblist[i]->beams[j].ID == actspec->beamID)
+1493                 actbeam = oblist[i]->beams[j];
+1494             }
+1495         }
+1496     }
+1497 
+1498   // report an error in case that the identification failed
+1499   if (actbeam.ID == -1)
+1500     aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+1501                 "aXe_PETCONT: " "object ID %i, Beam %c not found\n", actspec->
+      objectID, BEAM(actspec->beamID));
+1502 
+1503   // return the identified beam
+1504   return actbeam;
+1505 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ab0112661e420045b9ed86e6e8cb71794}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-beamspec\_\-from\_\-list@{get\_\-beamspec\_\-from\_\-list}}
+\index{get\_\-beamspec\_\-from\_\-list@{get\_\-beamspec\_\-from\_\-list}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-beamspec\_\-from\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beamspec}$\ast$ get\_\-beamspec\_\-from\_\-list ({\bf beamspec} $\ast$$\ast$ {\em speclist}, \/  const int {\em aperID}, \/  const int {\em beamID})}}
+\label{model__utils_8c_ab0112661e420045b9ed86e6e8cb71794}
+Function: get\_\-beamspec\_\-from\_\-list The functions extracts and returns a specific model \hyperlink{structbeam}{beam} out of the list of model beams. The requested model \hyperlink{structbeam}{beam} is identified on the basis of the aperture ID and the \hyperlink{structbeam}{beam} ID. Without positive identification the last modelled \hyperlink{structspectrum}{spectrum} in the ist is returned, which is NULL.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em speclist}]-\/ \item[{\em aperID}]-\/ the \hyperlink{structobject}{object} ID of the requested \hyperlink{structbeam}{beam} \item[{\em beamID}]-\/ the \hyperlink{structbeam}{beam} ID of the requested \hyperlink{structbeam}{beam}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ the identified \hyperlink{structbeam}{beam} (or the NULL \hyperlink{structbeam}{beam} at the end of the list) 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1525 {
+1526   //beamspec *ret;
+1527   int i=0;
+1528 
+1529   while (speclist[i] != NULL)
+1530     {
+1531       if (speclist[i]->objectID == aperID && speclist[i]->beamID == beamID)
+1532         {
+1533           break;
+1534         }
+1535       i++;
+1536     }
+1537 
+1538 return speclist[i];
+1539 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a89e076f16fb5ab1d68d6fd60a8c56818}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-calib\_\-function@{get\_\-calib\_\-function}}
+\index{get\_\-calib\_\-function@{get\_\-calib\_\-function}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-calib\_\-function}]{\setlength{\rightskip}{0pt plus 5cm}{\bf calib\_\-function}$\ast$ get\_\-calib\_\-function ({\bf beamspec} $\ast$ {\em actspec}, \/  {\bf dirobject} $\ast$ {\em actdir}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const {\bf aperture\_\-conf} $\ast$ {\em conf})}}
+\label{model__utils_8c_a89e076f16fb5ab1d68d6fd60a8c56818}
+Function: get\_\-calib\_\-function The function extracts the necessary data for the wavelength calibration from the configuration file. The wavelength calibration is assembled for a particular \hyperlink{structbeam}{beam} of a particular \hyperlink{structobject}{object}.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actspec}]-\/ the model \hyperlink{structspectrum}{spectrum} this is done for \item[{\em actdir}]-\/ the \hyperlink{structdirobject}{dirobject} this is done for \item[{\em CONF\_\-file}]-\/ the full filename of the configuration file \item[{\em conf}]-\/ the configuration structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+wl\_\-calibration -\/ the wavelength calibration 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+117 {
+118   calib_function *wl_calibration;
+119   dispstruct     *disp;
+120   d_point pixel;
+121   int for_grism=0;
+122 
+123   // get the reference point right
+124   pixel.x = actdir->refpoint.x - conf->refx;
+125   pixel.y = actdir->refpoint.y - conf->refy;
+126 
+127   // look whether we are for grisms or prisms
+128   for_grism = check_for_grism (CONF_file,actspec->beamID);
+129 
+130   // get the dispersion structure
+131   disp = get_dispstruct_at_pos(CONF_file, for_grism,
+132                                actspec->beamID,pixel);
+133 
+134 
+135   // transform the dispersion structure into the
+136   // wavelength calibration
+137   wl_calibration = create_calib_from_gsl_vector(for_grism, disp->pol);
+138   if (!for_grism)
+139     wl_calibration->pr_range = get_prange (CONF_file, actspec->beamID);
+140 
+141   free_dispstruct(disp);
+142 
+143   // return the wavelength calibration
+144   return wl_calibration;
+145 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a39965b9d4410809472bb1a5fd4328026}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-dirobject\_\-from\_\-list@{get\_\-dirobject\_\-from\_\-list}}
+\index{get\_\-dirobject\_\-from\_\-list@{get\_\-dirobject\_\-from\_\-list}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-dirobject\_\-from\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirobject}$\ast$ get\_\-dirobject\_\-from\_\-list ({\bf dirobject} $\ast$$\ast$ {\em dirlist}, \/  const int {\em ID})}}
+\label{model__utils_8c_a39965b9d4410809472bb1a5fd4328026}
+Function: get\_\-dirobject\_\-from\_\-list The function identifies a \hyperlink{structdirobject}{dirobject} in a list of dirobjects. The identification is made on the attribute ID. The identified \hyperlink{structdirobject}{dirobject} is returned. If no \hyperlink{structdirobject}{dirobject} could be identified, the NULL \hyperlink{structobject}{object}, which is at the end of each \hyperlink{structdirobject}{dirobject} list, is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em dirlist}]-\/ the \hyperlink{structdirobject}{dirobject} list \item[{\em ID}]-\/ the ID number to be identified\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+\hyperlink{structdirobject}{dirobject} -\/ the identified \hyperlink{structdirobject}{dirobject} or the 'NULL'-\/dirobject 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1405 {
+1406 
+1407   //dirobject * actdir;
+1408   int i, ndirs = 0;
+1409 
+1410   // count the number of dirobjects in the list
+1411   while (dirlist[ndirs] != NULL)
+1412     ndirs++;
+1413 
+1414   // loop over all dirobject
+1415   for (i = 0; i < ndirs; i++)
+1416     {
+1417       // try to identify a dirobject,
+1418       // return it in case of a postitive identification
+1419       if (dirlist[i]->ID == ID)
+1420         return dirlist[i];
+1421     }
+1422 
+1423   // return the NULL-dirobject at the end of the list
+1424   return dirlist[ndirs];
+1425 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a6dbc5b3a67592030d394cee3570b44e8}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-dirobject\_\-meanpos@{get\_\-dirobject\_\-meanpos}}
+\index{get\_\-dirobject\_\-meanpos@{get\_\-dirobject\_\-meanpos}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-dirobject\_\-meanpos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf d\_\-point} get\_\-dirobject\_\-meanpos ({\bf dirobject} $\ast$ {\em actdir})}}
+\label{model__utils_8c_a6dbc5b3a67592030d394cee3570b44e8}
+Function: get\_\-dirobject\_\-meanpos The function computes the average pixel coos of a direct \hyperlink{structobject}{object}. This is done in a very simple way, by averaging the maximum and minimum pixel coordinates in both, x and y. Neither the shape nor the the intensity in the individual pixels are taken into account.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actdir}]-\/ the direct \hyperlink{structobject}{object}\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+m\_\-point -\/ the means coo's in x and y 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1444 {
+1445   d_point m_point;
+1446 
+1447   m_point.x = ((double)actdir->ix_max + (double)actdir->ix_min) / 2.0;
+1448   m_point.y = ((double)actdir->iy_max + (double)actdir->iy_min) / 2.0;
+1449 
+1450   return m_point;
+1451 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_af09a9a57d7ad0ec300ed94e9dd76d595}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-dpsf@{get\_\-dpsf}}
+\index{get\_\-dpsf@{get\_\-dpsf}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-dpsf}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-dpsf (const double {\em lambda\_\-ref}, \/  const double {\em lambda}, \/  const {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  const {\bf beam} {\em actbeam})}}
+\label{model__utils_8c_af09a9a57d7ad0ec300ed94e9dd76d595}
+Function: get\_\-dpsf The function computes the difference of the psf width at two different wavelengths. The dependence of the psf as a function of the wavelength is supposed to be a polynomial
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em lambda\_\-ref}]-\/ the reference wavelength \item[{\em lambda}]-\/ the wavelength to evaluate the difference for \item[{\em conf}]-\/ the configuration structure\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+dpsf -\/ the psf difference 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+2156 {
+2157 
+2158   double dpsf=0.0;
+2159   double lmin=0.0;
+2160   double lmax=0.0;
+2161 
+2162   // get the minimum and maximum wavelength
+2163   // for the dependency
+2164   lmin = gsl_vector_get(conf->psfrange, 0);
+2165   lmax = gsl_vector_get(conf->psfrange, 1);
+2166 
+2167   // the reference wavelength must be inside of the
+2168   // area where the polynomial is valid
+2169   if (lambda_ref < lmin){
+2170     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+2171                  "aXe_PETCONT:" "Reference wavelength %f"
+2172                  " is smaller than minimum wavelength: %f!\n", lambda_ref, lmin);
+      
+2173   }
+2174   else if (lambda_ref > lmax){
+2175     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+2176                  "aXe_PETCONT:" "Reference wavelength %f"
+2177                  " is larger than maximum wavelength: %f!\n", lambda_ref, lmax);
+2178   }
+2179   else{
+2180     if (lambda < lmin)
+2181       // if the target wavelength is larger,
+2182       // evaluate at the upper border
+2183       dpsf = get_polyN_gsl(lmin, conf->psfcoeffs) - get_polyN_gsl(lambda_ref, con
+      f->psfcoeffs);
+2184     else if (lambda > lmax)
+2185       // if the target wavelength is smaller,
+2186       // evaluate at the lower border
+2187       dpsf = get_polyN_gsl(lmax, conf->psfcoeffs) - get_polyN_gsl(lambda_ref, con
+      f->psfcoeffs);
+2188     else
+2189       // evaluate the exact position
+2190       dpsf = get_polyN_gsl(lambda, conf->psfcoeffs) - get_polyN_gsl(lambda_ref, c
+      onf->psfcoeffs);
+2191   }
+2192 
+2193   // return the result
+2194   return dpsf;
+2195 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ac36a7a4d559d6521def9d8198fa25bbf}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-emodel\_\-value@{get\_\-emodel\_\-value}}
+\index{get\_\-emodel\_\-value@{get\_\-emodel\_\-value}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-emodel\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-emodel\_\-value (const {\bf d\_\-point} {\em dpixel}, \/  const {\bf beam} {\em actbeam}, \/  const {\bf d\_\-point} {\em drzscale})}}
+\label{model__utils_8c_ac36a7a4d559d6521def9d8198fa25bbf}
+Function: get\_\-emodel\_\-value The function evaluates the emission of a 2D gauss model with the parameters as given in a \hyperlink{structbeam}{beam} at a particular position. A different pixelscale at the emission point due to geometrical distortion can be taken into account.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em dpixel}]-\/ the point to evaluate the emission model \item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to set up the model for \item[{\em pixscale}]-\/ the relative pixelscale at the model position\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+evalue -\/ the value of the emission model 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+2276 {
+2277   double evalue=0.0;
+2278 
+2279   double amod, bmod;
+2280   double xrel, yrel;
+2281   double angle;
+2282 
+2283   double arg;
+2284 
+2285   // apply the correction due to geom. distortion
+2286   amod =  actbeam.awidth / drzscale.x;
+2287   bmod =  actbeam.bwidth / drzscale.y;
+2288 
+2289   // make some precalculations
+2290   xrel = dpixel.x - actbeam.refpoint.x;
+2291   yrel = dpixel.y - actbeam.refpoint.y;
+2292   angle = actbeam.aorient;
+2293 
+2294   // determine the argument of the exponent
+2295   arg =
+2296     SQR(( xrel*cos(angle) + yrel*sin(angle)) / amod) +
+2297     SQR((-xrel*sin(angle) + yrel*cos(angle)) / bmod);
+2298 
+2299   // determine the emission value
+2300   evalue = 0.5/(amod*bmod*M_PI)*exp(-0.5*arg);
+2301 
+2302   // return the emission value
+2303   return evalue;
+2304 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a8d6681aef9c109bc5c407c286c85d67c}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-flambda\_\-from\_\-magab@{get\_\-flambda\_\-from\_\-magab}}
+\index{get\_\-flambda\_\-from\_\-magab@{get\_\-flambda\_\-from\_\-magab}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-flambda\_\-from\_\-magab}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-flambda\_\-from\_\-magab (double {\em mag}, \/  double {\em lambda})}}
+\label{model__utils_8c_a8d6681aef9c109bc5c407c286c85d67c}
+Function: get\_\-flambda\_\-from\_\-magab The subroutine calculates the flambda value for a mag\_\-AB value given with its wvavelength as input parameters.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em mag}]-\/ the mag\_\-AB value \item[{\em lambda}]-\/ the wavelength for mag\_\-AB\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+flambda -\/ the calculated flambda value 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1944 {
+1945   double flambda=0.0;
+1946   double fnu=0.0;
+1947 
+1948   fnu     = pow(10.0, -0.4*(mag+48.6));
+1949   flambda = 1.0e+16*LIGHTVEL*fnu/(lambda*lambda);
+1950 
+1951   return flambda;
+1952 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ac6e79df79a058ccf4d82853e08a0c2df}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-flux\_\-from\_\-SED@{get\_\-flux\_\-from\_\-SED}}
+\index{get\_\-flux\_\-from\_\-SED@{get\_\-flux\_\-from\_\-SED}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-flux\_\-from\_\-SED}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-flux\_\-from\_\-SED (const {\bf energy\_\-distrib} $\ast$ {\em sed}, \/  double {\em in\_\-wave})}}
+\label{model__utils_8c_ac6e79df79a058ccf4d82853e08a0c2df}
+Function: get\_\-flux\_\-from\_\-SED The functions returns the flux value at a given wavelength for a certain SED. In case that the wavelength is beyound the wavelength interval where the SED is defined, the closest model value in wavelength is returned. Otherwise the interpolated value as defined in the SED \hyperlink{structobject}{object} is returned
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sed}]-\/ the SED-\/object to derive a flux value from \item[{\em in\_\-wave}]-\/ the wavelength to compute the flux value for\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+flux -\/ the flux value for the requested wavelength 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1797 {
+1798         double flux=0.0;
+1799 
+1800         if (in_wave <= sed->wavelength[0]){
+1801                 // give the lowest defined value if
+1802                 // the requested wavelength is lower
+1803                 flux = sed->flux[0];
+1804         }
+1805         else if (in_wave > sed->wavelength[sed->npoints-1]){
+1806                 // give the highest defined value if
+1807                 // the requested wavelength is higher
+1808                 flux = sed->flux[sed->npoints-1];}
+1809         else {
+1810                 // derive the interpolated value
+1811                 flux = gsl_interp_eval(sed->interp, sed->wavelength, sed->flux, i
+      n_wave, sed->accel);}
+1812 
+1813         // return the interpolated flux value
+1814         return flux;
+1815 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ab02649b7a821651ecce41bd6dc3394f6}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-newbeam@{get\_\-newbeam}}
+\index{get\_\-newbeam@{get\_\-newbeam}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-newbeam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf beam} get\_\-newbeam (const {\bf beam} {\em actbeam}, \/  const double {\em dpsf})}}
+\label{model__utils_8c_ab02649b7a821651ecce41bd6dc3394f6}
+
+
+
+\begin{DoxyCode}
+2084 {
+2085   beam new_beam;
+2086 
+2087   new_beam.ID=0;
+2088 
+2089   // check the sign of the modification
+2090   if (dpsf >0.0)
+2091     {
+2092       // positive sign:
+2093       // add (in quadrature) the psf-modification
+2094       new_beam.awidth   = sqrt(SQR(actbeam.awidth) + SQR(dpsf));
+2095       new_beam.bwidth   = sqrt(SQR(actbeam.bwidth) + SQR(dpsf));
+2096     }
+2097   else
+2098     {
+2099 
+2100       // check whether awidth is big enough
+2101       if (actbeam.awidth+dpsf < MINPSF)
+2102         {
+2103           // set the minimum sign, and set the psf to MINPSF
+2104           new_beam.ID=1;
+2105           new_beam.awidth = MINPSF;
+2106         }
+2107       else
+2108         {
+2109           // negative sign:
+2110           // subtract (in quadrature) the psf-modification
+2111           new_beam.awidth = sqrt(SQR(actbeam.awidth) - SQR(dpsf));
+2112         }
+2113 
+2114       // check whether bwidth is big enough
+2115       if (actbeam.bwidth+dpsf < MINPSF)
+2116         {
+2117           // set the minimum sign, and set the psf to MINPSF
+2118           new_beam.ID=1;
+2119           new_beam.bwidth = MINPSF;
+2120         }
+2121       else
+2122         {
+2123           // negative sign:
+2124           // subtract (in quadrature) the psf-modification
+2125           new_beam.bwidth = sqrt(SQR(actbeam.bwidth) - SQR(dpsf));
+2126         }
+2127     }
+2128 
+2129 
+2130   // transfer necessary data
+2131   new_beam.aorient = actbeam.aorient;
+2132   new_beam.refpoint = actbeam.refpoint;
+2133 
+2134   // return the new beam
+2135   return new_beam;
+2136 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a98ec48fe5d4a02d1711285b63fd4ed2a}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-polyN\_\-gsl@{get\_\-polyN\_\-gsl}}
+\index{get\_\-polyN\_\-gsl@{get\_\-polyN\_\-gsl}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-polyN\_\-gsl}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-polyN\_\-gsl (const double {\em x}, \/  const gsl\_\-vector $\ast$ {\em params})}}
+\label{model__utils_8c_a98ec48fe5d4a02d1711285b63fd4ed2a}
+Function: get\_\-polyN\_\-gsl The function evaluates a polynomial at a given position.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em x}]-\/ the point to evaluate the polynomial \item[{\em params}]-\/ gsl-\/vector with the coefficients of the polynomial\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+p -\/ the value of the polynomial 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+2356 {
+2357   int i;
+2358 
+2359   double p=0.0;
+2360 
+2361   // go over the gsl-vector and
+2362   // sum up the individual terms
+2363   for (i=0; i<params->size; i++)
+2364     {
+2365       p += gsl_vector_get(params,i)*pow(x,i);
+2366     }
+2367 
+2368   // return the value
+2369   return p;
+2370 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a78b257e92ab75a5531ccb6881ecd201e}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-psf\_\-HRC@{get\_\-psf\_\-HRC}}
+\index{get\_\-psf\_\-HRC@{get\_\-psf\_\-HRC}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-psf\_\-HRC}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-psf\_\-HRC (const double {\em lambda})}}
+\label{model__utils_8c_a78b257e92ab75a5531ccb6881ecd201e}
+
+
+
+\begin{DoxyCode}
+2319 {
+2320   double psf = 0.0;
+2321 
+2322   psf = 8.1986545952891 - 0.82947763250959e-01*lambda          + 0.40134114766915
+      e-03*pow(lambda,2.0) -
+2323                           0.94651169604925e-06*pow(lambda,3.0) + 0.11804479784053
+      e-08*pow(lambda,4.0) -
+2324                           0.74395828991899e-12*pow(lambda,5.0) + 0.18657361078105
+      e-15*pow(lambda,6.0);
+2325 
+2326   return psf;
+2327 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_af417d458a7783d5c0183ad9c69335fd0}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-psf\_\-SBC@{get\_\-psf\_\-SBC}}
+\index{get\_\-psf\_\-SBC@{get\_\-psf\_\-SBC}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-psf\_\-SBC}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-psf\_\-SBC (const double {\em lambda})}}
+\label{model__utils_8c_af417d458a7783d5c0183ad9c69335fd0}
+
+
+
+\begin{DoxyCode}
+2331 {
+2332   double psf = 0.0;
+2333 
+2334   psf = 7.9833718878881 - 0.11283853224345    *lambda          + 0.64235625522476
+      e-03*pow(lambda,2.0)
+2335                         - 0.12471899390220e-05*pow(lambda,3.0);
+2336 
+2337   return psf;
+2338 
+2339 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_aaf9f8cca863f01beb42cceaf8c74e6ac}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-psf\_\-WFC@{get\_\-psf\_\-WFC}}
+\index{get\_\-psf\_\-WFC@{get\_\-psf\_\-WFC}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-psf\_\-WFC}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-psf\_\-WFC (const double {\em lambda})}}
+\label{model__utils_8c_aaf9f8cca863f01beb42cceaf8c74e6ac}
+
+
+
+\begin{DoxyCode}
+2309 {
+2310   double psf;
+2311 
+2312   psf = 1.2994407614072 + 0.11290883734113e-02*lambda - 0.44245634760175e-06*pow(
+      lambda,2.0);
+2313 
+2314   return psf;
+2315 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a5b20290920148fb8fb75adb149a94f6d}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-refpoint\_\-ranges@{get\_\-refpoint\_\-ranges}}
+\index{get\_\-refpoint\_\-ranges@{get\_\-refpoint\_\-ranges}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-refpoint\_\-ranges}]{\setlength{\rightskip}{0pt plus 5cm}gsl\_\-vector$\ast$ get\_\-refpoint\_\-ranges (const {\bf object} $\ast$ {\em actobject})}}
+\label{model__utils_8c_a5b20290920148fb8fb75adb149a94f6d}
+Function: get\_\-refpoint\_\-ranges
+
+Determines the differences of the reference point positions within the beams of an \hyperlink{structobject}{object}. The min/max values in x/y with respect to the reference point of the first \hyperlink{structbeam}{beam} are determined and returned in a vector.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actobject}]-\/ the \hyperlink{structobject}{object} to be transformed\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+ret -\/ the \hyperlink{structdirobject}{dirobject} created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1101 {
+1102   gsl_vector *ret;
+1103   int j;
+1104   //d_point reference;
+1105 
+1106   // allocate memory
+1107   ret = gsl_vector_alloc(4);
+1108 
+1109   // initialize the vector with the default value
+1110   gsl_vector_set(ret, 0, actobject->beams[0].refpoint.x);
+1111   gsl_vector_set(ret, 1, actobject->beams[0].refpoint.x);
+1112   gsl_vector_set(ret, 2, actobject->beams[0].refpoint.y);
+1113   gsl_vector_set(ret, 3, actobject->beams[0].refpoint.y);
+1114 
+1115 
+1116   // go over all beams in the object
+1117   for (j=1; j < actobject->nbeams; j++)
+1118     {
+1119       // get the the new absolute mins and maxs in the reference points
+1120       gsl_vector_set(ret, 0, MIN(gsl_vector_get(ret, 0) , actobject->beams[j].
+      refpoint.x));
+1121       gsl_vector_set(ret, 1, MAX(gsl_vector_get(ret, 1) , actobject->beams[j].
+      refpoint.x));
+1122       gsl_vector_set(ret, 2, MIN(gsl_vector_get(ret, 2) , actobject->beams[j].
+      refpoint.y));
+1123       gsl_vector_set(ret, 3, MAX(gsl_vector_get(ret, 3) , actobject->beams[j].
+      refpoint.y));
+1124     }
+1125 
+1126   // transform the absolute ranges into relative ones
+1127   gsl_vector_set(ret, 0, gsl_vector_get(ret, 0) - actobject->beams[0].refpoint.x)
+      ;
+1128   gsl_vector_set(ret, 1, gsl_vector_get(ret, 1) - actobject->beams[0].refpoint.x)
+      ;
+1129   gsl_vector_set(ret, 2, gsl_vector_get(ret, 2) - actobject->beams[0].refpoint.y)
+      ;
+1130   gsl_vector_set(ret, 3, gsl_vector_get(ret, 3) - actobject->beams[0].refpoint.y)
+      ;
+1131 
+1132   // return the result
+1133   return ret;
+1134 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a5d8695af668aaed17d349ca4eb36292c}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-sub\_\-emodel\_\-value@{get\_\-sub\_\-emodel\_\-value}}
+\index{get\_\-sub\_\-emodel\_\-value@{get\_\-sub\_\-emodel\_\-value}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-sub\_\-emodel\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-sub\_\-emodel\_\-value (const {\bf d\_\-point} {\em dpixel}, \/  const {\bf beam} {\em actbeam}, \/  const {\bf d\_\-point} {\em drzscale})}}
+\label{model__utils_8c_a5d8695af668aaed17d349ca4eb36292c}
+Function: get\_\-sub\_\-emodel\_\-value The function evaluates the emission of a 2D gauss model with the parameters as given in a \hyperlink{structbeam}{beam} at a particular position. This function derives the function values on a series of grid positions +-\/.5pixels in x/y around the requested positions. This avoids rounding problems. The 1D grisdsize is set by the macro NSUB in the header file
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em dpixel}]-\/ the point to evaluate the emission model \item[{\em actbeam}]-\/ the \hyperlink{structbeam}{beam} to set up the model for \item[{\em drzscale}]-\/ the relative pixelscale at the model position\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+sval -\/ the value of the emission model 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+2218 {
+2219   d_point dtmp;
+2220 
+2221   double sval   = 0.0;
+2222   double step   = 0.0;
+2223   double offset = 0.0;
+2224 
+2225   int irange = 0;
+2226   int kk=0, ll=0;
+2227 
+2228   // convert the number of steps to a local integer
+2229   irange = (int)NSUB;
+2230 
+2231   // compute the step size
+2232   step = 1.0/(2.0*(double)NSUB);
+2233 
+2234   // compute the initial offset
+2235   offset = step/2.0;
+2236 
+2237   for (kk=-irange; kk < irange; kk++)
+2238     {
+2239       for (ll=-irange; ll < irange; ll++)
+2240         {
+2241           // determine the actual grid position
+2242           dtmp.x = dpixel.x + (double)kk * step + offset;
+2243           dtmp.y = dpixel.y + (double)ll * step + offset;
+2244 
+2245           // get the value at the grid position
+2246           sval = sval + get_emodel_value(dtmp, actbeam, drzscale);
+2247         }
+2248     }
+2249 
+2250   // normalize the result
+2251   sval = sval *step * step;
+2252 
+2253   // return the result
+2254   return sval;
+2255 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ac1c970f8545c70717925e789935baf15}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-throughput\_\-spec@{get\_\-throughput\_\-spec}}
+\index{get\_\-throughput\_\-spec@{get\_\-throughput\_\-spec}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-throughput\_\-spec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf spectrum}$\ast$ get\_\-throughput\_\-spec ({\bf beamspec} $\ast$ {\em actspec}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]})}}
+\label{model__utils_8c_ac1c970f8545c70717925e789935baf15}
+Function: get\_\-throughput\_\-spec The function determines the throughput file for a certain model \hyperlink{structspectrum}{spectrum}. The filename is extracted from the configuration file. Then the throughput file is loaded into a \hyperlink{structspectrum}{spectrum} structure. The \hyperlink{structspectrum}{spectrum} structure is returned.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actspec}]-\/ the model \hyperlink{structspectrum}{spectrum} this is done for \item[{\em CONF\_\-file}]-\/ the full filename of the configuration file\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+resp -\/ the response function as a \hyperlink{structspectrum}{spectrum} structure 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+163 {
+164   spectrum *resp;
+165   char through_file[MAXCHAR];
+166   char through_file_path[MAXCHAR];
+167 
+168   // determine the filename of the throughput file from the configuration
+169   get_troughput_table_name(CONF_file, actspec->beamID, through_file);
+170 
+171   // build up the full filename
+172   build_path (AXE_CONFIG_PATH, through_file, through_file_path);
+173 
+174   // load the throughput into the spectrum struct
+175   resp=get_response_function_from_FITS(through_file_path,2);
+176 
+177   // return the spectrum struct
+178   return resp;
+179 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_af6b109448b4b2c4087381a89a4946664}{
+\index{model\_\-utils.c@{model\_\-utils.c}!get\_\-valid\_\-tracedata@{get\_\-valid\_\-tracedata}}
+\index{get\_\-valid\_\-tracedata@{get\_\-valid\_\-tracedata}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{get\_\-valid\_\-tracedata}]{\setlength{\rightskip}{0pt plus 5cm}double get\_\-valid\_\-tracedata ({\bf tracedata} $\ast$ {\em acttrace}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration})}}
+\label{model__utils_8c_af6b109448b4b2c4087381a89a4946664}
+
+
+
+\begin{DoxyCode}
+478 {
+479 
+480   double lower, upper, a_0, d_xi;
+481 
+482   int nentries=0;
+483         int i=0;
+484         //int iact;
+485 
+486   // get the lower and upper boundaries of the accepted range
+487   lower = gsl_vector_get(wl_calibration->pr_range, 0);
+488   upper = gsl_vector_get(wl_calibration->pr_range, 1);
+489 
+490   // get the a0 coefficient
+491   a_0 = wl_calibration->coeffs[0];
+492 
+493   // go over all point int he tracedata
+494   for (i=0; i < acttrace->npoints; i++)
+495     {
+496       // compute the offset from the singularity
+497       d_xi = gsl_vector_get(acttrace->xi, i) -  a_0;
+498 
+499       // enhance a counter if the offset is within the accepted range
+500       if (d_xi >= lower && d_xi <= upper)
+501         nentries++;
+502     }
+503 
+504   // return the number of valid data
+505   return nentries;
+506 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a3c08d3f85de2d04b0f383f9beda7447e}{
+\index{model\_\-utils.c@{model\_\-utils.c}!load\_\-dirobj\_\-img@{load\_\-dirobj\_\-img}}
+\index{load\_\-dirobj\_\-img@{load\_\-dirobj\_\-img}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{load\_\-dirobj\_\-img}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirobject}$\ast$ load\_\-dirobj\_\-img (const {\bf object} $\ast$ {\em actobject}, \/  {\bf fits\_\-access} $\ast$ {\em modim\_\-access})}}
+\label{model__utils_8c_a3c08d3f85de2d04b0f383f9beda7447e}
+Function: load\_\-dirobj\_\-img
+
+Returns: \begin{DoxyReturn}{Returns}
+diremission -\/ a direct emission model 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+1014 {
+1015         int modimg;
+1016 
+1017         dirobject      *actdir=NULL;
+1018         gsl_vector     *extention;
+1019         dirim_emission *diremission=NULL;
+1020 
+1021         int nrel;
+1022         int hdutype;
+1023         int f_status=0;
+1024 
+1025         // get the index where to get the model
+1026         modimg = actobject->beams[0].modimage;
+1027         move_in_fits(modim_access, modimg);
+1028 
+1029         // allocate memory for the return structure
+1030         actdir = (dirobject *) malloc(sizeof(dirobject));
+1031         if (actdir == NULL)
+1032                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1033                                 "load_dirobj_img:" " Could not allocate"
+1034                                 " memory for a dirobject object!");
+1035 
+1036         // allocate memory for the dirim structure
+1037         diremission = (dirim_emission *) malloc(sizeof(dirim_emission));
+1038         if (diremission == NULL)
+1039                 aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+1040                                 "load_dirobj_img:" " Could not allocate"
+1041                                 " memory for a dirim_emission object!");
+1042 
+1043         // load the image from the FITS file
+1044         diremission->modimage = FITSHDU_to_gsl(modim_access->fits_file, modim_acc
+      ess->fits_ptr, 1);
+1045 
+1046         // transfer the image dimension
+1047         diremission->dim_x = (int)diremission->modimage->size1;
+1048         diremission->dim_y = (int)diremission->modimage->size2;
+1049 
+1050         // compute and store the mean image coordinates
+1051         diremission->xmean = (float)(diremission->dim_x-1) / 2.0;
+1052         diremission->ymean = (float)(diremission->dim_y-1) / 2.0;
+1053 
+1054         // transfer refpoint and ID
+1055         actdir->ID = actobject->ID;
+1056         actdir->refpoint.x = actobject->beams[0].refpoint.x;
+1057         actdir->refpoint.y = actobject->beams[0].refpoint.y;
+1058 
+1059         // get the extentions on the reference points
+1060         extention = get_refpoint_ranges(actobject);
+1061 
+1062         // derive and store min/max in x/y for the corners
+1063         actdir->ix_min = (int)floor(actobject->beams[0].refpoint.x - diremission-
+      >xmean + gsl_vector_get(extention, 0) + 0.5);
+1064         actdir->ix_max = (int)floor(actobject->beams[0].refpoint.x + diremission-
+      >xmean + gsl_vector_get(extention, 1) + 0.5);
+1065         actdir->iy_min = (int)floor(actobject->beams[0].refpoint.y - diremission-
+      >ymean + gsl_vector_get(extention, 2) + 0.5);
+1066         actdir->iy_max = (int)floor(actobject->beams[0].refpoint.y + diremission-
+      >ymean + gsl_vector_get(extention, 3) + 0.5);
+1067 
+1068         // fix the drizzle scale, since it has no
+1069         // business in this context
+1070         actdir->drzscale.x = 1.0;
+1071         actdir->drzscale.y = 1.0;
+1072 
+1073         // store the direct emission
+1074         // object in the direct object
+1075         actdir->dirim = diremission;
+1076 
+1077         // free the memory for the vector
+1078         gsl_vector_free(extention);
+1079 
+1080         // return the structure
+1081         return actdir;
+1082 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_adee63ef5db37c64dcdd2288a4cff5113}{
+\index{model\_\-utils.c@{model\_\-utils.c}!load\_\-spectrum@{load\_\-spectrum}}
+\index{load\_\-spectrum@{load\_\-spectrum}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{load\_\-spectrum}]{\setlength{\rightskip}{0pt plus 5cm}void load\_\-spectrum (const {\bf object} $\ast$ {\em actobject}, \/  {\bf dirobject} $\ast$ {\em actdir}, \/  {\bf fits\_\-access} $\ast$ {\em m\_\-access}, \/  const int {\em int\_\-type})}}
+\label{model__utils_8c_adee63ef5db37c64dcdd2288a4cff5113}
+Function: load\_\-spectrum
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actobject}]-\/ the \hyperlink{structobject}{object} to be transformed \item[{\em actdir}]-\/ the \hyperlink{structdirobject}{dirobject} to store the flux values in \item[{\em m\_\-access}]-\/ the model acces structure \item[{\em int\_\-type}]-\/ the interpolation type to be used \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1268 {
+1269   energy_distrib *sed=NULL;
+1270 
+1271   beam onebeam;
+1272 
+1273   int j = 0;
+1274 
+1275   // the data are derived from the 1st non-zero beam in the object;
+1276   // go along the beams util you find a non-zero beam
+1277   while (actobject->beams[j].flux == NULL && j < actobject->nbeams)
+1278     j++;
+1279 
+1280   // store this beam
+1281   onebeam = actobject->beams[j];
+1282 
+1283   // do something only if the first beam has flux values
+1284   if (onebeam.flux != NULL && j < actobject->nbeams)
+1285     {
+1286 
+1287       if (onebeam.modspec > 0 && m_access)
+1288         {
+1289           // get the model spectrum
+1290           sed = load_model_sed(m_access, onebeam.modspec);
+1291 
+1292           // mark that the SED does NOT come
+1293           // from broad band colours
+1294           actdir->bb_sed=0;
+1295         }
+1296       else
+1297         {
+1298 
+1299           // get the model spectrum from broad band colours
+1300           sed = make_sed_from_beam(onebeam, int_type, actobject->ID);
+1301 
+1302           // mark that the SED DOES come
+1303           // from broad band colours
+1304           actdir->bb_sed=1;
+1305         }
+1306     }
+1307   else
+1308     {
+1309       // make an error if there are no flux values
+1310       aXe_message(aXe_M_FATAL, __FILE__, __LINE__,
+1311                   "aXe_PETCONT: " "the OAF does not have flux values\n");
+1312     }
+1313 
+1314   // transfer the SED object to the direct object
+1315   actdir->SED = sed;
+1316 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a6b478169411f67ce4c7702fa7815b445}{
+\index{model\_\-utils.c@{model\_\-utils.c}!make\_\-sed\_\-from\_\-beam@{make\_\-sed\_\-from\_\-beam}}
+\index{make\_\-sed\_\-from\_\-beam@{make\_\-sed\_\-from\_\-beam}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{make\_\-sed\_\-from\_\-beam}]{\setlength{\rightskip}{0pt plus 5cm}{\bf energy\_\-distrib}$\ast$ make\_\-sed\_\-from\_\-beam (const {\bf beam} {\em onebeam}, \/  const int {\em int\_\-type}, \/  const int {\em objID})}}
+\label{model__utils_8c_a6b478169411f67ce4c7702fa7815b445}
+Function: make\_\-sed\_\-from\_\-beam
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em onebeam}]-\/ the \hyperlink{structobject}{object} to be transformed \item[{\em int\_\-type}]-\/ the interpolation type to be used \item[{\em objID}]-\/ the interpolation type to be used \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1328 {
+1329   energy_distrib *sed;
+1330   double *sed_wavs;
+1331   double *sed_flux;
+1332 
+1333   int nwavs;
+1334   int i_type;
+1335   int i;
+1336 
+1337   // determine the number of flux values, allocate space
+1338   nwavs = (onebeam.flux->size)/2;
+1339 
+1340   // determine the number of flux values, allocate space
+1341   nwavs = (onebeam.flux->size)/2;
+1342   sed = (energy_distrib*) malloc(sizeof(energy_distrib));
+1343   sed_wavs = (double*) malloc(nwavs*sizeof(double));
+1344   sed_flux = (double*) malloc(nwavs*sizeof(double));
+1345 
+1346   // transfer the data into the 'local' arrays
+1347   for (i=0; i<nwavs; i++)
+1348     {
+1349       sed_wavs[i] = gsl_vector_get(onebeam.flux, 2*i);
+1350       sed_flux[i] = gsl_vector_get(onebeam.flux, 2*i+1);
+1351     }
+1352 
+1353   // transfer the vector and length information
+1354   // to the SED object
+1355   sed->npoints    = nwavs;
+1356   sed->wavelength = sed_wavs ;
+1357   sed->flux       = sed_flux;
+1358 
+1359   // check the interpolation type
+1360   i_type = check_interp_type(int_type, nwavs, objID);
+1361   if (nwavs > 1)
+1362     {
+1363       // if possible, allocate and
+1364       // initialize an interpolation object
+1365       if (i_type == 2)
+1366         sed->interp     = gsl_interp_alloc (gsl_interp_polynomial, (size_t)nwavs)
+      ;
+1367       else if (i_type == 3)
+1368         sed->interp     = gsl_interp_alloc (gsl_interp_cspline, (size_t)nwavs);
+1369       else
+1370         sed->interp     = gsl_interp_alloc (gsl_interp_linear, (size_t)nwavs);
+1371 
+1372       sed->accel      = gsl_interp_accel_alloc ();
+1373       gsl_interp_init (sed->interp, sed->wavelength, sed->flux, (size_t)sed->
+      npoints);
+1374     }
+1375   else
+1376     {
+1377       // if no interpolation, set
+1378       // the memeber to NULL
+1379       sed->interp = NULL;
+1380       sed->accel  = NULL;
+1381     }
+1382 
+1383   // return the sed
+1384   return sed;
+1385 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_aa166b220ec60f701d55d841950dc269a}{
+\index{model\_\-utils.c@{model\_\-utils.c}!model\_\-gauss\_\-dirim@{model\_\-gauss\_\-dirim}}
+\index{model\_\-gauss\_\-dirim@{model\_\-gauss\_\-dirim}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{model\_\-gauss\_\-dirim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirim\_\-emission}$\ast$ model\_\-gauss\_\-dirim ({\bf dirobject} $\ast$ {\em actdir}, \/  {\bf beam} {\em actbeam}, \/  {\bf aperture\_\-conf} $\ast$ {\em conf}, \/  double {\em psf\_\-offset})}}
+\label{model__utils_8c_aa166b220ec60f701d55d841950dc269a}
+
+
+
+\begin{DoxyCode}
+39 {
+40   int nx, ny;
+41   int ii, jj;
+42 
+43   double sval=0.0;
+44 
+45   d_point dpixel;
+46 
+47   dirim_emission *gauss_dirim = NULL;
+48 
+49   // check whether something can be done
+50   if (actdir->dirim || (conf->psfcoeffs && conf->psfrange) || psf_offset)
+51           // return NULL if not
+52           return NULL;
+53 
+54   // dimension the new matrix;
+55   // leave one border row more
+56   nx = actdir->ix_max - actdir->ix_min + 3;
+57   ny = actdir->iy_max - actdir->iy_min + 3;
+58 
+59   // allocate memory for the structure
+60   gauss_dirim = (dirim_emission *) malloc(sizeof(dirim_emission));
+61 
+62   // load the image in the gsl
+63   gauss_dirim->modimage = gsl_matrix_alloc(nx, ny);
+64 
+65   // transfer the image dimension
+66   gauss_dirim->dim_x = (int)gauss_dirim->modimage->size1;
+67   gauss_dirim->dim_y = (int)gauss_dirim->modimage->size2;
+68 
+69   // compute and store the mean image coordinates
+70   gauss_dirim->xmean = (float)(gauss_dirim->dim_x-1) / 2.0;
+71   gauss_dirim->ymean = (float)(gauss_dirim->dim_y-1) / 2.0;
+72 
+73   // go over all pixels in the area
+74   for (ii=0; ii < gauss_dirim->dim_x; ii++)
+75     {
+76           for (jj=0; jj < gauss_dirim->dim_y; jj++)
+77             {
+78                   // fill the dpixel structure with the position
+79                   // RELATIVE to the reverence position of the beam
+80                   dpixel.x = (double)ii - gauss_dirim->xmean + actbeam.refpoint.
+      x;
+81                   dpixel.y = (double)jj - gauss_dirim->ymean + actbeam.refpoint.
+      y;
+82 
+83                   // do a subsampling over the pixel
+84           // to get a more appropriate value for the
+85           // emission value
+86           sval = get_sub_emodel_value(dpixel, actbeam, actdir->drzscale);
+87 
+88           // set the emission value in the matrix
+89           gsl_matrix_set(gauss_dirim->modimage, ii, jj, sval);
+90 
+91             }
+92     }
+93 
+94   // return the matrix
+95   return gauss_dirim;
+96 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_ab4a6c2b0e26ff79ca76b2887d670b1df}{
+\index{model\_\-utils.c@{model\_\-utils.c}!oblist\_\-to\_\-dirlist@{oblist\_\-to\_\-dirlist}}
+\index{oblist\_\-to\_\-dirlist@{oblist\_\-to\_\-dirlist}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{oblist\_\-to\_\-dirlist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirobject}$\ast$$\ast$ oblist\_\-to\_\-dirlist (char {\em grism\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const {\bf px\_\-point} {\em npixels}, \/  {\bf object} $\ast$$\ast$ {\em oblist}, \/  {\bf spectral\_\-models} $\ast$ {\em spec\_\-mod}, \/  const double {\em model\_\-scale}, \/  const int {\em int\_\-type})}}
+\label{model__utils_8c_ab4a6c2b0e26ff79ca76b2887d670b1df}
+Function: oblist\_\-to\_\-dirlist Transforms a list of \char`\"{}object\char`\"{}'s into a list of \char`\"{}dirobject\char`\"{}'s. The list of \char`\"{}dirobject\char`\"{}'s is terminated with a NULL-\/object at the end.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em grism\_\-file}]-\/ the full path to the grism image \item[{\em CONF\_\-file}]-\/ the full path to the config file \item[{\em npixels}]-\/ the dimension of the grism image \item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list to start from \item[{\em spec\_\-mod}]-\/ the model spectra \item[{\em model\_\-scale}]-\/ the scale for the size of the direct \hyperlink{structobject}{object} area \item[{\em int\_\-type}]-\/ interpolation type\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+dirlist -\/ the \hyperlink{structdirobject}{dirobject} list created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+692 {
+693 
+694   dirobject **dirlist;
+695   aperture_conf *conf;
+696   gsl_matrix *drzcoeffs;
+697 
+698   int nobjects=0;
+699   int i=0;
+700   int j=0;
+701   int beamID;
+702   int max_offs;
+703 
+704   // load the configuration file
+705   conf = get_aperture_descriptor (CONF_file);
+706 
+707   // load the extension numbers
+708   get_extension_numbers(grism_file, conf,conf->optkey1,conf->optval1);
+709 
+710   // get the  matrix with the drizzle coefficients
+711   drzcoeffs = get_crossdisp_matrix(grism_file, conf->science_numext);
+712   if (drzcoeffs->size1 < 2 || !drzcoeffs->size2)
+713     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+714                  "oblist_to_dirlist:" " Could not get"
+715                  " the drizzle coefficients in file: %s\n", grism_file);
+716 
+717   // determine an offset from the PSF_OFFSET
+718   max_offs = (int)ceil(get_max_offset(conf));
+719 
+720   // determine the number of objects in the object list
+721   nobjects = object_list_size(oblist);
+722 
+723   // allocate space for the dirobject list
+724   dirlist = (dirobject **) malloc((nobjects+1) * sizeof(dirobject *));
+725   if (dirlist == NULL)
+726     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+727                  "oblist_to_dirlist:" " Could not allocate"
+728                  " memory for pointers to %i dirobject objects", nobjects+1);
+729 
+730   // loop over all objectsconfig->camera
+731   for (i = 0; i < nobjects; i++)
+732     {
+733       // make sure that there are beams in the object
+734       if (oblist[i]->nbeams > 0)
+735         {
+736           // create a dirobject for each object
+737           dirlist[j] = fill_dirobject(oblist[i], npixels, drzcoeffs, model_scale,
+       max_offs);
+738           fill_spectrum(oblist[i], dirlist[j], spec_mod, int_type);
+739           //      fill_dpsf_function(conf, dirlist[j]);
+740 
+741           // fill the xoffset and yoffset values.
+742           // within the gaussian models they are dummys.
+743           for (beamID=0; beamID < conf->nbeams; beamID++)
+744             {
+745               dirlist[j]->xy_off[beamID].x = 0.0;
+746               dirlist[j]->xy_off[beamID].y = 0.0;
+747             }
+748           j++;
+749         }
+750     }
+751 
+752   // terminate the dirobject list with NULL
+753   dirlist[j] = NULL;
+754 
+755   // release the memory for the drizzle matrix
+756   gsl_matrix_free(drzcoeffs);
+757 
+758   free_aperture_conf(conf);
+759 
+760   return dirlist;
+761 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a763b05dcf96d0f69417a38f7bf0a61da}{
+\index{model\_\-utils.c@{model\_\-utils.c}!oblist\_\-to\_\-dirlist2@{oblist\_\-to\_\-dirlist2}}
+\index{oblist\_\-to\_\-dirlist2@{oblist\_\-to\_\-dirlist2}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{oblist\_\-to\_\-dirlist2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dirobject}$\ast$$\ast$ oblist\_\-to\_\-dirlist2 (char {\em grism\_\-file}\mbox{[}$\,$\mbox{]}, \/  char {\em CONF\_\-file}\mbox{[}$\,$\mbox{]}, \/  const {\bf px\_\-point} {\em npixels}, \/  {\bf object} $\ast$$\ast$ {\em oblist}, \/  {\bf spectral\_\-models} $\ast$ {\em spec\_\-mod}, \/  {\bf object\_\-models} $\ast$ {\em obj\_\-mod}, \/  const double {\em model\_\-scale}, \/  const int {\em int\_\-type})}}
+\label{model__utils_8c_a763b05dcf96d0f69417a38f7bf0a61da}
+Function: oblist\_\-to\_\-dirlist2 Transforms a list of \char`\"{}object\char`\"{}'s into a list of \char`\"{}dirobject\char`\"{}'s. The list of \char`\"{}dirobject\char`\"{}'s is terminated with a NULL-\/object at the end.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em grism\_\-file}]-\/ the full path to the grism image \item[{\em CONF\_\-file}]-\/ the full path to the config file \item[{\em npixels}]-\/ the dimension of the grism image \item[{\em oblist}]-\/ the \hyperlink{structobject}{object} list to start from \item[{\em spec\_\-mod}]-\/ the model spectra \item[{\em obj\_\-mod}]-\/ te direct emission models \item[{\em model\_\-scale}]-\/ the scale for the size of the direct \hyperlink{structobject}{object} area \item[{\em int\_\-type}]-\/ interpolation type\end{DoxyParams}
+Returns: \begin{DoxyReturn}{Returns}
+dirlist -\/ the \hyperlink{structdirobject}{dirobject} list created 
+\end{DoxyReturn}
+
+
+
+\begin{DoxyCode}
+786 {
+787 
+788   dirobject     **dirlist;
+789   aperture_conf  *conf;
+790   gsl_matrix     *drzcoeffs;
+791 
+792   int nobjects=0;
+793   int i=0;
+794   int j=0;
+795   int beamID;
+796   int max_offs;
+797 
+798   // load the configuration file
+799   conf = get_aperture_descriptor (CONF_file);
+800 
+801   // load the extension numbers
+802   get_extension_numbers(grism_file, conf,conf->optkey1,conf->optval1);
+803 
+804   // get the  matrix with the drizzle coefficients
+805   drzcoeffs = get_crossdisp_matrix(grism_file, conf->science_numext);
+806   if (drzcoeffs->size1 < 2 || !drzcoeffs->size2)
+807     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+808                  "oblist_to_dirlist:" " Could not get"
+809                  " the drizzle coefficients in file: %s\n", grism_file);
+810 
+811   // determine an offset from the PSF_OFFSET
+812   max_offs = (int)ceil(get_max_offset(conf));
+813 
+814   // determine the number of objects in the object list
+815   nobjects = object_list_size(oblist);
+816 
+817   // allocate space for the dirobject list
+818   dirlist = (dirobject **) malloc((nobjects+1) * sizeof(dirobject *));
+819   if (dirlist == NULL)
+820     aXe_message (aXe_M_FATAL, __FILE__, __LINE__,
+821                  "oblist_to_dirlist:" " Could not allocate"
+822                  " memory for pointers to %i dirobject objects", nobjects+1);
+823 
+824   // loop over all objectsconfig->camera
+825   for (i = 0; i < nobjects; i++)
+826     {
+827       // make sure that there are beams in the object
+828       if (oblist[i]->nbeams > 0)
+829         {
+830 
+831           if (has_aperture_dirim(obj_mod, oblist[i]))
+832             dirlist[j] = fill_dirobj_fromdirim(oblist[i], obj_mod);
+833           else
+834             // create a dirobject for each object
+835             dirlist[j] = fill_dirobject(oblist[i], npixels, drzcoeffs, model_scal
+      e, max_offs);
+836 
+837           fill_spectrum(oblist[i], dirlist[j], spec_mod, int_type);
+838           //      fill_dpsf_function(conf, dirlist[j]);
+839 
+840           // fill the xoffset and yoffset values.
+841           // within the gaussian models they are dummys.
+842           for (beamID=0; beamID < conf->nbeams; beamID++)
+843             {
+844               dirlist[j]->xy_off[beamID].x = 0.0;
+845               dirlist[j]->xy_off[beamID].y = 0.0;
+846             }
+847           j++;
+848         }
+849     }
+850 
+851   // terminate the dirobject list with NULL
+852   dirlist[j] = NULL;
+853 
+854   // release the memory for the drizzle matrix
+855   gsl_matrix_free(drzcoeffs);
+856 
+857   free_aperture_conf(conf);
+858 
+859   return dirlist;
+860 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a6ea108739ddb7ea09f86c3c51b1b5848}{
+\index{model\_\-utils.c@{model\_\-utils.c}!print\_\-dirobject@{print\_\-dirobject}}
+\index{print\_\-dirobject@{print\_\-dirobject}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{print\_\-dirobject}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-dirobject (const {\bf dirobject} $\ast$ {\em actdir})}}
+\label{model__utils_8c_a6ea108739ddb7ea09f86c3c51b1b5848}
+Function: print\_\-dirobject Prints the data in a \hyperlink{structdirobject}{dirobject} onto the screens. \char`\"{}Natural\char`\"{} format is used, which means printed are first the upper corners, then the refpoint, then the lower corners.
+
+Parameters: 
+\begin{DoxyParams}{Parameters}
+\item[{\em actdir}]-\/ the \hyperlink{structdirobject}{dirobject} to be printed \end{DoxyParams}
+
+
+
+\begin{DoxyCode}
+1552                                          {
+1553   int i=0;
+1554   int npoints=0;
+1555 
+1556   fprintf(stdout, "Object ID: %i\n", actdir->ID);
+1557   fprintf(stdout,"%5i,%5i              %5i,%5i\n", actdir->ix_min, actdir->
+      iy_max, actdir->ix_max, actdir->iy_max);
+1558   fprintf(stdout,"        %7.1f,%7.1f         \n", actdir->refpoint.x, actdir->
+      refpoint.y);
+1559   fprintf(stdout,"%5i,%5i              %5i,%5i\n\n", actdir->ix_min, actdir->
+      iy_min, actdir->ix_max, actdir->iy_min);
+1560 
+1561 
+1562   npoints = actdir->SED->npoints;
+1563 
+1564   fprintf(stdout,"Wavelengths:\n");
+1565   fprintf(stdout,"Minimum: %.1f,%.3e  Maximum: %.1f, %.3e\n", actdir->SED->
+      wavelength[0], actdir->SED->flux[0],
+1566           actdir->SED->wavelength[npoints-1],  actdir->SED->flux[npoints-1]);
+1567   for (i=0; i<npoints;i++)
+1568     fprintf(stdout,"Wavelength: %.1f, Flux: %.5e\n", actdir->SED->wavelength[i], 
+      actdir->SED->flux[i]);
+1569   fprintf(stdout,"\n\n");
+1570 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a38db08b7fb859351801ecb7c45830a73}{
+\index{model\_\-utils.c@{model\_\-utils.c}!print\_\-tracedata@{print\_\-tracedata}}
+\index{print\_\-tracedata@{print\_\-tracedata}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{print\_\-tracedata}]{\setlength{\rightskip}{0pt plus 5cm}void print\_\-tracedata ({\bf tracedata} $\ast$ {\em acttrace})}}
+\label{model__utils_8c_a38db08b7fb859351801ecb7c45830a73}
+
+
+
+\begin{DoxyCode}
+657 {
+658   int i=0;
+659 
+660   fprintf(stdout, "Trace starting at: %f\n", acttrace->dx_start);
+661   for (i=0; i < acttrace->npoints; i++)
+662     {
+663       fprintf(stdout, "dx: %f, dy: %f, xi: %f, lambda: %f, dlambda: %f, gdata: %f
+      , flux: %g\n",
+664               gsl_vector_get(acttrace->dx, i), gsl_vector_get(acttrace->dy, i),gs
+      l_vector_get(acttrace->xi, i),
+665               gsl_vector_get(acttrace->lambda, i), gsl_vector_get(acttrace->
+      dlambda, i), gsl_vector_get(acttrace->gvalue, i),
+666               gsl_vector_get(acttrace->flux, i));
+667     }
+668 }
+\end{DoxyCode}
+\hypertarget{model__utils_8c_a67e212ed30f3f8311e5eaa822dd69705}{
+\index{model\_\-utils.c@{model\_\-utils.c}!select\_\-tracedata@{select\_\-tracedata}}
+\index{select\_\-tracedata@{select\_\-tracedata}!model_utils.c@{model\_\-utils.c}}
+\subsubsection[{select\_\-tracedata}]{\setlength{\rightskip}{0pt plus 5cm}void select\_\-tracedata ({\bf tracedata} $\ast$ {\em acttrace}, \/  const {\bf calib\_\-function} $\ast$ {\em wl\_\-calibration}, \/  const int {\em nentries})}}
+\label{model__utils_8c_a67e212ed30f3f8311e5eaa822dd69705}
+
+
+
+\begin{DoxyCode}
+525 {
+526   gsl_vector *dx;
+527   gsl_vector *dy;
+528   gsl_vector *xi;
+529   gsl_vector *lambda;
+530   gsl_vector *dlambda;
+531   gsl_vector *flux;
+532   gsl_vector *gvalue;
+533 
+534   double lower, upper, a_0, d_xi;
+535 
+536   int i=0, iact;
+537 
+538   // get the lower and upper boundaries of the accepted range
+539   lower = gsl_vector_get(wl_calibration->pr_range, 0);
+540   upper = gsl_vector_get(wl_calibration->pr_range, 1);
+541 
+542   // get the a0 coefficient
+543   a_0 = wl_calibration->coeffs[0];
+544 
+545   // check wehter thereis valid data at all
+546   if (nentries < 1)
+547     {
+548       // if no valid data, set all vectors to NULL
+549       dx      = NULL;
+550       dy      = NULL;
+551       xi      = NULL;
+552       lambda  = NULL;
+553       dlambda = NULL;
+554       flux    = NULL;
+555       gvalue    = NULL;
+556 
+557       acttrace->dx_start = 0.0;
+558     }
+559   else
+560     {
+561       // if there is valid data:
+562       // allocate space for the new tracedata structure
+563       dx      = gsl_vector_alloc(nentries);
+564       dy      = gsl_vector_alloc(nentries);
+565       xi      = gsl_vector_alloc(nentries);
+566       lambda  = gsl_vector_alloc(nentries);
+567       dlambda = gsl_vector_alloc(nentries);
+568       flux    = gsl_vector_alloc(nentries);
+569       gvalue  = gsl_vector_alloc(nentries);
+570 
+571       // go over all tracedata points
+572       iact=0;
+573       for (i=0; i < acttrace->npoints; i++)
+574         {
+575 
+576           // compute the offset from the singularity
+577           d_xi = gsl_vector_get(acttrace->xi, i) -  a_0;
+578 
+579           // if the offside is in the accepted range
+580           if (d_xi >= lower && d_xi <= upper)
+581             {
+582 
+583               // transfer the data from the old to the new structure
+584               gsl_vector_set(dx     , iact, gsl_vector_get(acttrace->dx, i));
+585               gsl_vector_set(dy     , iact, gsl_vector_get(acttrace->dy, i));
+586               gsl_vector_set(xi     , iact, gsl_vector_get(acttrace->xi, i));
+587               gsl_vector_set(lambda , iact, gsl_vector_get(acttrace->lambda, i));
+      
+588               gsl_vector_set(dlambda, iact, gsl_vector_get(acttrace->dlambda, i))
+      ;
+589               gsl_vector_set(gvalue , iact, 1.0);
+590 
+591               // enhance the counter
+592               iact++;
+593             }
+594         }
+595 
+596       // set the intitial value
+597       acttrace->dx_start = gsl_vector_get(dx, 0);
+598     }
+599 
+600   // set the number of points
+601   acttrace->npoints = nentries;
+602 
+603   // release the old vectors in the structure
+604   gsl_vector_free(acttrace->dx);
+605   gsl_vector_free(acttrace->dy);
+606   gsl_vector_free(acttrace->xi);
+607   gsl_vector_free(acttrace->lambda);
+608   gsl_vector_free(acttrace->dlambda);
+609   gsl_vector_free(acttrace->flux);
+610   gsl_vector_free(acttrace->gvalue);
+611 
+612   // fill the new vectors into the tracedata structure
+613   acttrace->dx      = dx;
+614   acttrace->dy      = dy;
+615   acttrace->xi      = xi;
+616   acttrace->lambda  = lambda;
+617   acttrace->dlambda = dlambda;
+618   acttrace->flux    = flux;
+619   acttrace->gvalue  = gvalue;
+620 }
+\end{DoxyCode}
